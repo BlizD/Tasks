@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="24">
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаExtendedTooltip" id="39"/>
+			<ChildItems>
+				<UsualGroup name="НаименованиеИСокращение" id="35">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование и сокращение</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="НаименованиеИСокращениеExtendedTooltip" id="40"/>
+					<ChildItems>
+						<InputField name="Наименование" id="3">
+							<DataPath>Объект.Description</DataPath>
+							<Wrap>false</Wrap>
+							<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+							<ExtendedTooltip name="НаименованиеExtendedTooltip" id="41"/>
+						</InputField>
+						<InputField name="КраткоеПредставление" id="33">
+							<DataPath>Объект.КраткоеПредставление</DataPath>
+							<ContextMenu name="КраткоеПредставлениеКонтекстноеМеню" id="34"/>
+							<ExtendedTooltip name="КраткоеПредставлениеExtendedTooltip" id="42"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<Width>8</Width>
+					<Wrap>false</Wrap>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодExtendedTooltip" id="43"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаНазначение" id="57">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа назначение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа назначение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНазначениеРасширеннаяПодсказка" id="58"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияНазначение" id="59">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Назначение:</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияНазначениеКонтекстноеМеню" id="60"/>
+					<ExtendedTooltip name="ДекорацияНазначениеРасширеннаяПодсказка" id="61"/>
+				</LabelDecoration>
+				<Button name="ВыбратьНазначение" id="62">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.ВыбратьНазначение</CommandName>
+					<ExtendedTooltip name="ВыбратьНазначениеРасширеннаяПодсказка" id="63"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаАдресации" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адресация задач исполнителям</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="ГруппаАдресацииExtendedTooltip" id="47"/>
+			<ChildItems>
+				<CheckBoxField name="ИспользуетсяБезКонтекстаДругихИзмеренийАдресации" id="5">
+					<DataPath>Объект.ИспользуетсяБезОбъектовАдресации</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Роль может назначаться исполнителям без указания уточняющих объектов</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Роль может назначаться исполнителям без указания других объектов адресации (основного или дополнительного).</v8:content>
+						</v8:item>
+					</ToolTip>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИспользуетсяБезКонтекстаДругихИзмеренийАдресацииКонтекстноеМеню" id="6"/>
+					<ExtendedTooltip name="ИспользуетсяБезКонтекстаДругихИзмеренийАдресацииExtendedTooltip" id="48"/>
+				</CheckBoxField>
+				<CheckBoxField name="ИспользуетсяВКонтекстеДругихИзмеренийАдресации" id="7">
+					<DataPath>Объект.ИспользуетсяСОбъектамиАдресации</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Роль назначается исполнителям с обязательным уточнением</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Роль может назначаться исполнителям с указанием определенных объектов адресации.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИспользуетсяВКонтекстеДругихИзмеренийАдресацииКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="ИспользуетсяВКонтекстеДругихИзмеренийАдресацииExtendedTooltip" id="50">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>В ряде случаев, роли исполнителя бывает недостаточно, чтобы точно определить круг исполнителей задач.
+Для этого можно указать уточняющие основные и дополнительные объекты адресации.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">ИспользуетсяВКонтекстеДругихИзмеренийАдресацииПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаАдресацииДополнительно" id="38">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адресация задач исполнителям (дополнительно)</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаАдресацииДополнительноExtendedTooltip" id="49"/>
+					<ChildItems>
+						<LabelDecoration name="Пояснение" id="36">
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<ContextMenu name="ПояснениеКонтекстноеМеню" id="37"/>
+							<ExtendedTooltip name="ПояснениеExtendedTooltip" id="54"/>
+						</LabelDecoration>
+						<UsualGroup name="ГруппаТипыОбъектовАдресации" id="22">
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаТипыОбъектовАдресацииExtendedTooltip" id="51"/>
+							<ChildItems>
+								<InputField name="ТипыОсновногоОбъектаАдресации" id="18">
+									<DataPath>Объект.ТипыОсновногоОбъектаАдресации</DataPath>
+									<Wrap>false</Wrap>
+									<OpenButton>false</OpenButton>
+									<ContextMenu name="ТипыОсновногоОбъектаАдресацииКонтекстноеМеню" id="19"/>
+									<ExtendedTooltip name="ТипыОсновногоОбъектаАдресацииExtendedTooltip" id="52"/>
+								</InputField>
+								<InputField name="ТипыДополнительногоОбъектаАдресации" id="20">
+									<DataPath>Объект.ТипыДополнительногоОбъектаАдресации</DataPath>
+									<Wrap>false</Wrap>
+									<OpenButton>false</OpenButton>
+									<ContextMenu name="ТипыДополнительногоОбъектаАдресацииКонтекстноеМеню" id="21"/>
+									<ExtendedTooltip name="ТипыДополнительногоОбъектаАдресацииExtendedTooltip" id="53"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКомментарий" id="27">
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКомментарийExtendedTooltip" id="55"/>
+			<ChildItems>
+				<InputField name="Комментарий" id="25">
+					<DataPath>Объект.Комментарий</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<Height>2</Height>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="КомментарийExtendedTooltip" id="56"/>
+					<Events>
+						<Event name="StartChoice">КомментарийНачалоВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.РолиИсполнителей</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыбратьНазначение" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать назначение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать назначение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьНазначение</Action>
+		</Command>
+	</Commands>
+</Form>

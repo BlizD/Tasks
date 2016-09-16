@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Права доступа</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="12">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьExtendedTooltip" id="42"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="21">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.Записать</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьExtendedTooltip" id="43"/>
+			</Button>
+			<Button name="ФормаДобавить" id="31">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Item.ГруппыПрав.StandardCommand.Add</CommandName>
+				<ExtendedTooltip name="ФормаДобавитьExtendedTooltip" id="44"/>
+			</Button>
+			<Button name="ФормаУдалить" id="33">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Item.ГруппыПрав.StandardCommand.Delete</CommandName>
+				<ExtendedTooltip name="ФормаУдалитьExtendedTooltip" id="45"/>
+			</Button>
+			<Button name="ФормаПереместитьВверх" id="37">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.ГруппыПрав.StandardCommand.MoveUp</CommandName>
+				<ExtendedTooltip name="ФормаПереместитьВверхExtendedTooltip" id="46"/>
+			</Button>
+			<Button name="ФормаПереместитьВниз" id="38">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.ГруппыПрав.StandardCommand.MoveDown</CommandName>
+				<ExtendedTooltip name="ФормаПереместитьВнизExtendedTooltip" id="47"/>
+			</Button>
+			<Button name="ФормаСправка" id="30">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаExtendedTooltip" id="48"/>
+			</Button>
+			<Button name="ФормаИзменитьФорму" id="36">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="ФормаИзменитьФормуExtendedTooltip" id="49"/>
+			</Button>
+			<Button name="ФормаВывестиСписок" id="59">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Item.ГруппыПрав.StandardCommand.OutputList</CommandName>
+				<ExtendedTooltip name="ФормаВывестиСписокРасширеннаяПодсказка" id="60"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Table name="ГруппыПрав" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ГруппыПрав</DataPath>
+			<RowPictureDataPath>ГруппыПрав.НомерКартинки</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.СостоянияПользователей</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</RowsPicture>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ГруппыПравКонтекстноеМеню" id="2">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ГруппыПравКонтекстноеМенюДобавить" id="23">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Item.ГруппыПрав.StandardCommand.Add</CommandName>
+						<ExtendedTooltip name="ГруппыПравКонтекстноеМенюДобавитьExtendedTooltip" id="50"/>
+					</Button>
+					<Button name="ГруппыПравКонтекстноеМенюСкопировать" id="24">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Item.ГруппыПрав.StandardCommand.Copy</CommandName>
+						<ExtendedTooltip name="ГруппыПравКонтекстноеМенюСкопироватьExtendedTooltip" id="51"/>
+					</Button>
+					<Button name="ГруппыПравКонтекстноеМенюУдалить" id="25">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Item.ГруппыПрав.StandardCommand.Delete</CommandName>
+						<ExtendedTooltip name="ГруппыПравКонтекстноеМенюУдалитьExtendedTooltip" id="52"/>
+					</Button>
+					<Button name="ГруппыПравКонтекстноеМенюСнятьУстановкуПрава" id="39">
+						<Type>CommandBarButton</Type>
+						<Enabled>false</Enabled>
+						<CommandName>Form.Command.СнятьУстановкуПрава</CommandName>
+						<ExtendedTooltip name="ГруппыПравКонтекстноеМенюСнятьУстановкуПраваExtendedTooltip" id="53"/>
+					</Button>
+					<Button name="ГруппыПравКонтекстноеМенюУстановитьЗапретПрава" id="40">
+						<Type>CommandBarButton</Type>
+						<Enabled>false</Enabled>
+						<CommandName>Form.Command.УстановитьЗапретПрава</CommandName>
+						<ExtendedTooltip name="ГруппыПравКонтекстноеМенюУстановитьЗапретПраваExtendedTooltip" id="54"/>
+					</Button>
+					<Button name="ГруппыПравКонтекстноеМенюУстановитьРазрешениеПрава" id="41">
+						<Type>CommandBarButton</Type>
+						<Enabled>false</Enabled>
+						<CommandName>Form.Command.УстановитьРазрешениеПрава</CommandName>
+						<ExtendedTooltip name="ГруппыПравКонтекстноеМенюУстановитьРазрешениеПраваExtendedTooltip" id="55"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="ГруппыПравКоманднаяПанель" id="3"/>
+			<ExtendedTooltip name="ГруппыПравExtendedTooltip" id="56"/>
+			<SearchStringAddition name="ГруппыПравСтрокаПоиска" id="61">
+				<AdditionSource>
+					<Item>ГруппыПрав</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ГруппыПравСтрокаПоискаКонтекстноеМеню" id="62"/>
+				<ExtendedTooltip name="ГруппыПравСтрокаПоискаРасширеннаяПодсказка" id="63"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ГруппыПравСостояниеПросмотра" id="64">
+				<AdditionSource>
+					<Item>ГруппыПрав</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ГруппыПравСостояниеПросмотраКонтекстноеМеню" id="65"/>
+				<ExtendedTooltip name="ГруппыПравСостояниеПросмотраРасширеннаяПодсказка" id="66"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ГруппыПравУправлениеПоиском" id="67">
+				<AdditionSource>
+					<Item>ГруппыПрав</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ГруппыПравУправлениеПоискомКонтекстноеМеню" id="68"/>
+				<ExtendedTooltip name="ГруппыПравУправлениеПоискомРасширеннаяПодсказка" id="69"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ГруппыПравВыбор</Event>
+				<Event name="BeforeDeleteRow">ГруппыПравПередУдалением</Event>
+				<Event name="OnActivateRow">ГруппыПравПриАктивизацииСтроки</Event>
+				<Event name="OnActivateField">ГруппыПравПриАктивизацииПоля</Event>
+				<Event name="BeforeRowChange">ГруппыПравПередНачаломИзменения</Event>
+				<Event name="OnStartEdit">ГруппыПравПриНачалеРедактирования</Event>
+				<Event name="OnChange">ГруппыПравПриИзменении</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ГруппыПравПользователь" id="19">
+					<DataPath>ГруппыПрав.Пользователь</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+					<Width>35</Width>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ГруппыПравПользовательКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="ГруппыПравПользовательExtendedTooltip" id="57"/>
+					<Events>
+						<Event name="OnChange">ГруппыПравПользовательПриИзменении</Event>
+						<Event name="AutoComplete">ГруппыПравПользовательАвтоПодбор</Event>
+						<Event name="StartChoice">ГруппыПравПользовательНачалоВыбора</Event>
+						<Event name="Clearing">ГруппыПравПользовательОчистка</Event>
+						<Event name="TextEditEnd">ГруппыПравПользовательОкончаниеВводаТекста</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<CheckBoxField name="НаследоватьПраваРодителей" id="15">
+			<DataPath>НаследоватьПраваРодителей</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наследовать права от вышестоящих папок</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="НаследоватьПраваРодителейКонтекстноеМеню" id="16"/>
+			<ExtendedTooltip name="НаследоватьПраваРодителейExtendedTooltip" id="58"/>
+			<Events>
+				<Event name="OnChange">НаследоватьПраваРодителейПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ГруппыПрав" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группы прав</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="Пользователь" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВнешниеПользователи</v8:Type>
+						<v8:Type>cfg:CatalogRef.ГруппыВнешнихПользователей</v8:Type>
+						<v8:Type>cfg:CatalogRef.ГруппыПользователей</v8:Type>
+						<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВладелецНастройки" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Владелец настройки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="НастройкаРодителя" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка родителя</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="НаследованиеРазрешено" id="4">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="НомерКартинки" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер картинки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПрямыеЗависимостиПрав" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прямые зависимости прав</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ОбратныеЗависимостиПрав" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обратные зависимости прав</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ВозможныеПрава" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Возможные права</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="НаследоватьПраваРодителей" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наследовать права родителей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВнешнийПользовательИлиГруппа" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Внешний пользователь или группа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьВнешнихПользователей" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать внешних пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СписокТиповПользователей" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список типов пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДобавленныеРеквизиты" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавленные реквизиты</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="РодительЗаполнен" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Родитель заполнен</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаписатьИЗакрыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаписатьИЗакрыть</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Записать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Записать</Action>
+		</Command>
+		<Command name="Перечитать" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перечитать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перечитать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Reread</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Перечитать</Action>
+		</Command>
+		<Command name="УстановитьРазрешениеПрава" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить разрешение права "Да"</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить разрешение права</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УстановитьРазрешениеПрава</Action>
+		</Command>
+		<Command name="УстановитьЗапретПрава" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить запрет права "Нет"</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить запрет права</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УстановитьЗапретПрава</Action>
+		</Command>
+		<Command name="СнятьУстановкуПрава" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять установку права "  "</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять установку права</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СнятьУстановкуПрава</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="СсылкаНаОбъект">
+			<Type/>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Исполнители роли</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandSet>
+		<ExcludedCommand>SwitchActivity</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаПодбор" id="33">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Подобрать</CommandName>
+				<ExtendedTooltip name="ФормаПодборExtendedTooltip" id="35"/>
+			</Button>
+			<Button name="ФормаПеречитать" id="34">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.Reread</CommandName>
+				<ExtendedTooltip name="ФормаПеречитатьExtendedTooltip" id="36"/>
+			</Button>
+			<ButtonGroup name="ГруппаКомандСписка" id="20">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа команд списка</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа команд списка</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>Item.Список</CommandSource>
+				<ExtendedTooltip name="ГруппаКомандСпискаExtendedTooltip" id="37"/>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="21">
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаExtendedTooltip" id="38"/>
+			<ChildItems>
+				<LabelField name="ОсновнойОбъектАдресации" id="18">
+					<DataPath>ОсновнойОбъектАдресации</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ОсновнойОбъектАдресацииКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="ОсновнойОбъектАдресацииExtendedTooltip" id="39"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="Список" id="22">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<Footer>true</Footer>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<DataPath>НаборЗаписей</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СписокКонтекстноеМеню" id="23"/>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="24"/>
+			<ExtendedTooltip name="СписокExtendedTooltip" id="40"/>
+			<SearchStringAddition name="СписокSearchString" id="43">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокSearchStringContextMenu" id="44"/>
+				<ExtendedTooltip name="СписокSearchStringExtendedTooltip" id="45"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокViewStatus" id="46">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокViewStatusContextMenu" id="47"/>
+				<ExtendedTooltip name="СписокViewStatusExtendedTooltip" id="48"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокSearchControl" id="49">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокSearchControlContextMenu" id="50"/>
+				<ExtendedTooltip name="СписокSearchControlExtendedTooltip" id="51"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeEditEnd">СписокПередОкончаниемРедактирования</Event>
+				<Event name="ChoiceProcessing">СписокОбработкаВыбора</Event>
+				<Event name="OnStartEdit">СписокПриНачалеРедактирования</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="Исполнитель" id="27">
+					<DataPath>НаборЗаписей.Исполнитель</DataPath>
+					<FooterDataPath>НаборЗаписей.RowsCount</FooterDataPath>
+					<FooterText>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Всего исполнителей назначено:</v8:content>
+						</v8:item>
+					</FooterText>
+					<Wrap>false</Wrap>
+					<ChooseType>false</ChooseType>
+					<ContextMenu name="ИсполнительКонтекстноеМеню" id="28"/>
+					<ExtendedTooltip name="ИсполнительExtendedTooltip" id="41"/>
+				</InputField>
+				<InputField name="ДополнительныйОбъектАдресации" id="31">
+					<DataPath>НаборЗаписей.ДополнительныйОбъектАдресации</DataPath>
+					<Wrap>false</Wrap>
+					<ContextMenu name="ДополнительныйОбъектАдресацииКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="ДополнительныйОбъектАдресацииExtendedTooltip" id="42"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Роль" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Роль</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.РолиИсполнителей</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОсновнойОбъектАдресации" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основной объект адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:Characteristic.ОбъектыАдресацииЗадач</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="НаборЗаписей" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Набор записей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ИсполнителиЗадач</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="Недействителен" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Недействителен</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТипыДополнительногоОбъектаАдресации" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Типы доп объекта адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:TypeDescription</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РольДоступнаДляВнешнихПользователей" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Роль доступна для внешних пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РольДоступнаДляПользователей" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Роль доступна для пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Назначение" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назначение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Подобрать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать пользователей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Properties</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Подобрать</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Роль">
+			<Type>
+				<v8:Type>cfg:CatalogRef.РолиИсполнителей</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ОсновнойОбъектАдресации">
+			<Type>
+				<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

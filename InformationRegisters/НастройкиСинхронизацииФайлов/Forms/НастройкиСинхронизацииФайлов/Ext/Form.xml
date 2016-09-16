@@ -1,0 +1,733 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаДобавитьСинхронизациюФайлов" id="78">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.СоздатьСинхронизациюФайлов</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Настроить синхронизацию файлов</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаДобавитьСинхронизациюФайловРасширеннаяПодсказка" id="79"/>
+			</Button>
+			<Popup name="НастройкиСинхронизацииГруппа" id="54">
+				<Visible>false</Visible>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Настроить синхронизацию файлов</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Настройки синхронизации группа</v8:content>
+					</v8:item>
+				</ToolTip>
+				<Picture>
+					<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="НастройкиСинхронизацииГруппаРасширеннаяПодсказка" id="55"/>
+				<ChildItems>
+					<Button name="ФормаДобавитьНастройку" id="56">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.СинхронизацияЭлемента</CommandName>
+						<ExtendedTooltip name="ФормаДобавитьНастройкуРасширеннаяПодсказка" id="57"/>
+					</Button>
+				</ChildItems>
+			</Popup>
+			<Popup name="НастройкиУчетнойЗаписиГруппа" id="72">
+				<Visible>false</Visible>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Установить учетную запись</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Настройки учетной записи группа</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="НастройкиУчетнойЗаписиГруппаРасширеннаяПодсказка" id="73"/>
+				<ChildItems>
+					<ButtonGroup name="ДоступныеУчетныеЗаписи" id="76">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Доступные учетные записи</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Доступные учетные записи</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ДоступныеУчетныеЗаписиРасширеннаяПодсказка" id="77"/>
+					</ButtonGroup>
+				</ChildItems>
+			</Popup>
+			<Button name="ФормаУдалитьНастройку" id="58">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.УдалитьНастройку</CommandName>
+				<ExtendedTooltip name="ФормаУдалитьНастройкуРасширеннаяПодсказка" id="59"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Table name="ДеревоОбъектовМетаданных" id="13">
+			<Representation>Tree</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<InitialTreeView>ExpandAllLevels</InitialTreeView>
+			<DataPath>ДеревоОбъектовМетаданных</DataPath>
+			<CommandSet>
+				<ExcludedCommand>HierarchicalList</ExcludedCommand>
+				<ExcludedCommand>Tree</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>List</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>OutputList</ExcludedCommand>
+				<ExcludedCommand>SelectAll</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+			</CommandSet>
+			<ContextMenu name="ДеревоОбъектовМетаданныхКонтекстноеМеню" id="14">
+				<ChildItems>
+					<Button name="ДеревоОбъектовМетаданныхКонтекстноеМенюСоздатьСинхронизациюФайлов" id="84">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.СоздатьСинхронизациюФайлов</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ДеревоОбъектовМетаданныхКонтекстноеМенюСоздатьСинхронизациюФайловРасширеннаяПодсказка" id="85"/>
+					</Button>
+					<Button name="ДеревоОбъектовМетаданныхКонтекстноеМенюИзменитьНастройкуСинхронизации" id="86">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ИзменитьНастройкуСинхронизации</CommandName>
+						<ExtendedTooltip name="ДеревоОбъектовМетаданныхКонтекстноеМенюИзменитьНастройкуСинхронизацииРасширеннаяПодсказка" id="87"/>
+					</Button>
+					<Button name="ДеревоОбъектовМетаданныхКонтекстноеМенюУдалитьНастройку" id="82">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.УдалитьНастройку</CommandName>
+						<ExtendedTooltip name="ДеревоОбъектовМетаданныхКонтекстноеМенюУдалитьНастройкуРасширеннаяПодсказка" id="83"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="ДеревоОбъектовМетаданныхКоманднаяПанель" id="15">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ДеревоОбъектовМетаданныхРасширеннаяПодсказка" id="16"/>
+			<SearchStringAddition name="ДеревоОбъектовМетаданныхСтрокаПоиска" id="17">
+				<AdditionSource>
+					<Item>ДеревоОбъектовМетаданных</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДеревоОбъектовМетаданныхСтрокаПоискаКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="ДеревоОбъектовМетаданныхСтрокаПоискаРасширеннаяПодсказка" id="19"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ДеревоОбъектовМетаданныхСостояниеПросмотра" id="20">
+				<AdditionSource>
+					<Item>ДеревоОбъектовМетаданных</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДеревоОбъектовМетаданныхСостояниеПросмотраКонтекстноеМеню" id="21"/>
+				<ExtendedTooltip name="ДеревоОбъектовМетаданныхСостояниеПросмотраРасширеннаяПодсказка" id="22"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ДеревоОбъектовМетаданныхУправлениеПоиском" id="23">
+				<AdditionSource>
+					<Item>ДеревоОбъектовМетаданных</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ДеревоОбъектовМетаданныхУправлениеПоискомКонтекстноеМеню" id="24"/>
+				<ExtendedTooltip name="ДеревоОбъектовМетаданныхУправлениеПоискомРасширеннаяПодсказка" id="25"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ДеревоОбъектовМетаданныхВыбор</Event>
+				<Event name="ChoiceProcessing">ДеревоОбъектовМетаданныхОбработкаВыбора</Event>
+			</Events>
+			<ChildItems>
+				<CheckBoxField name="ДеревоОбъектовМетаданныхСинхронизировать" id="44">
+					<DataPath>ДеревоОбъектовМетаданных.Синхронизировать</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ДеревоОбъектовМетаданныхСинхронизироватьКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ДеревоОбъектовМетаданныхСинхронизироватьРасширеннаяПодсказка" id="46"/>
+					<Events>
+						<Event name="OnChange">ДеревоОбъектовМетаданныхСинхронизироватьПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<InputField name="ДеревоОбъектовМетаданныхСинонимНаименованияОбъекта" id="29">
+					<DataPath>ДеревоОбъектовМетаданных.СинонимНаименованияОбъекта</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДеревоОбъектовМетаданныхСинонимНаименованияОбъектаКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ДеревоОбъектовМетаданныхСинонимНаименованияОбъектаРасширеннаяПодсказка" id="31"/>
+				</InputField>
+				<InputField name="ДеревоОбъектовМетаданныхУчетнаяЗапись" id="47">
+					<DataPath>ДеревоОбъектовМетаданных.УчетнаяЗапись</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДеревоОбъектовМетаданныхУчетнаяЗаписьКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ДеревоОбъектовМетаданныхУчетнаяЗаписьРасширеннаяПодсказка" id="49"/>
+					<Events>
+						<Event name="OnChange">ЗаписатьТекущиеНастройки</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДеревоОбъектовМетаданныхПравилоОтбора" id="32">
+					<DataPath>ДеревоОбъектовМетаданных.ПравилоОтбора</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CellHyperlink>true</CellHyperlink>
+					<ChoiceButton>true</ChoiceButton>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ДеревоОбъектовМетаданныхПравилоОтбораКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ДеревоОбъектовМетаданныхПравилоОтбораРасширеннаяПодсказка" id="34"/>
+					<Events>
+						<Event name="StartChoice">ДеревоОбъектовМетаданныхПравилоОтбораНачалоВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="СинхронизацияПоРасписанию" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизация по расписанию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизация по расписанию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="СинхронизацияПоРасписаниюРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<UsualGroup name="НастройкиСинхронизации" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки синхронизации</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки синхронизации</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="НастройкиСинхронизацииРасширеннаяПодсказка" id="4"/>
+					<ChildItems>
+						<CheckBoxField name="АвтоматическиСинхронизироватьФайлы" id="5">
+							<DataPath>АвтоматическиСинхронизироватьФайлы</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="АвтоматическиСинхронизироватьФайлыКонтекстноеМеню" id="6"/>
+							<ExtendedTooltip name="АвтоматическиСинхронизироватьФайлыРасширеннаяПодсказка" id="7"/>
+							<Events>
+								<Event name="OnChange">АвтоматическиСинхронизироватьФайлыПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<Button name="НастроитьРасписание" id="8">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.НастроитьРасписание</CommandName>
+							<ExtendedTooltip name="НастроитьРасписаниеРасширеннаяПодсказка" id="9"/>
+						</Button>
+						<Pages name="СинхронизацияФайлов" id="88">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Синхронизация файлов</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Синхронизация файлов</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="СинхронизацияФайловРасширеннаяПодсказка" id="89"/>
+							<ChildItems>
+								<Page name="Синхронизация" id="90">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Синхронизация</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Синхронизация</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СинхронизацияРасширеннаяПодсказка" id="91"/>
+									<ChildItems>
+										<Button name="Синхронизировать" id="80">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.Синхронизировать</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Синхронизировать</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="СинхронизироватьРасширеннаяПодсказка" id="81"/>
+										</Button>
+									</ChildItems>
+								</Page>
+								<Page name="СтатусФоновогоЗадания" id="92">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Статус фонового задания</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Статус фонового задания</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СтатусФоновогоЗаданияРасширеннаяПодсказка" id="93"/>
+									<ChildItems>
+										<LabelDecoration name="ИнформацияОФоновомЗадании" id="94">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняется синхронизация файлов...</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ИнформацияОФоновомЗаданииКонтекстноеМеню" id="95"/>
+											<ExtendedTooltip name="ИнформацияОФоновомЗаданииРасширеннаяПодсказка" id="96"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</UsualGroup>
+				<LabelDecoration name="Расписание" id="10">
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>каждый день, по дням недели [суббота, воскресенье ]; с 1:00:00 один раз в день, завершать после 7:00:00</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<ContextMenu name="РасписаниеКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="РасписаниеРасширеннаяПодсказка" id="12"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="АвтоматическиСинхронизироватьФайлы" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Автоматически синхронизировать файлы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторФоновогоЗадания" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор фонового задания</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущееФоновоеЗадание" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущее фоновое задание</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДеревоОбъектовМетаданных" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево объектов метаданных</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ВладелецФайла" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Владелец файла</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="СинонимНаименованияОбъекта" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Владелец файла</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПравилоОтбора" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правило</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЭтоФайл" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это файл</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ТипВладельцаФайла" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип владельца файла</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовМетаданных</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВозможностьДетализации" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Возможность детализации</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Синхронизировать" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Синхронизировать</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="УчетнаяЗапись" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Учетная запись</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.УчетныеЗаписиСинхронизацииФайлов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ПодПапкаОблачногоСервиса" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Под папка облачного сервиса</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТекущийВладелецФайла" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий владелец файла</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовМетаданных</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВладелецФайла" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Владелец файла</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="СтрокаНайдена" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Строка найдена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РежимРаботы" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим работы</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ДеревоОбъектовМетаданныхСинонимНаименованияОбъекта</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ДеревоОбъектовМетаданных.Синхронизировать</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ДеревоОбъектовМетаданныхПравилоОтбора</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ДеревоОбъектовМетаданных.Синхронизировать</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Видимость</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ДеревоОбъектовМетаданныхУчетнаяЗапись</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ДеревоОбъектовМетаданных.Синхронизировать</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ДеревоОбъектовМетаданных.УчетнаяЗапись</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ОтметкаНезаполненного</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="НастроитьРасписание" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить расписание</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить расписание</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НастроитьРасписание</Action>
+		</Command>
+		<Command name="СинхронизацияЭлемента" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизация элемента справочника</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизация элемента</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СинхронизацияЭлемента</Action>
+		</Command>
+		<Command name="УдалитьНастройку" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить настройку</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить настройку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УдалитьНастройку</Action>
+		</Command>
+		<Command name="Синхронизировать" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизировать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизировать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СинхронизацияДанных</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Синхронизировать</Action>
+		</Command>
+		<Command name="СоздатьСинхронизациюФайлов" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить синхронизацию файлов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать синхронизацию файлов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СоздатьСинхронизациюФайлов</Action>
+		</Command>
+		<Command name="ИзменитьНастройкуСинхронизации" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить настройку синхронизации</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИзменитьНастройкуСинхронизации</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="НазначитьИсполнителей" id="67">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<OnlyInAllActions>true</OnlyInAllActions>
+				<CommandName>Form.Item.Список.StandardCommand.Change</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Назначить исполнителей на роль</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="НазначитьИсполнителейExtendedTooltip" id="68"/>
+			</Button>
+			<ButtonGroup name="ГруппаПоиск" id="60">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Поиск</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ГруппаПоискExtendedTooltip" id="69"/>
+				<ChildItems>
+					<Button name="ФормаНайти" id="58">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Item.Список.StandardCommand.Find</CommandName>
+						<ExtendedTooltip name="ФормаНайтиExtendedTooltip" id="70"/>
+					</Button>
+					<Button name="ФормаОтменитьПоиск" id="59">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Item.Список.StandardCommand.CancelSearch</CommandName>
+						<ExtendedTooltip name="ФормаОтменитьПоискExtendedTooltip" id="71"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="Обновить" id="52">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.Обновить</CommandName>
+				<ExtendedTooltip name="ОбновитьExtendedTooltip" id="72"/>
+			</Button>
+			<Button name="ФормаВывестиСписок" id="57">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.Список.StandardCommand.OutputList</CommandName>
+				<ExtendedTooltip name="ФормаВывестиСписокExtendedTooltip" id="73"/>
+			</Button>
+			<ButtonGroup name="ФормаПерейти" id="65">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Перейти</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаПерейтиExtendedTooltip" id="74"/>
+				<ChildItems>
+					<Button name="ВсеНазначения" id="39">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<SkipOnInput>false</SkipOnInput>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.ВсеНазначения</CommandName>
+						<ExtendedTooltip name="ВсеНазначенияExtendedTooltip" id="75"/>
+					</Button>
+					<Button name="ФормаСписокРолей" id="66">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.СписокРолей</CommandName>
+						<ExtendedTooltip name="ФормаСписокРолейExtendedTooltip" id="76"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Table name="Список" id="45">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<Width>70</Width>
+			<HeightInTableRows>10</HeightInTableRows>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<DataPath>Список</DataPath>
+			<RowPictureDataPath>Список.Картинка</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.КоллекцияВидыСобытийЖурналаРегистрации</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="30" y="2"/>
+			</RowsPicture>
+			<CommandSet>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СписокКонтекстноеМеню" id="46">
+				<ChildItems>
+					<Button name="СписокНазначитьИсполнителей" id="54">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Список.StandardCommand.Change</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Назначить исполнителей на роль</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="СписокНазначитьИсполнителейExtendedTooltip" id="78"/>
+					</Button>
+					<Button name="СписокКонтекстноеМенюСведенияОРоли" id="88">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОткрытьСведенияОРоли</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюСведенияОРолиРасширеннаяПодсказка" id="89"/>
+					</Button>
+					<ButtonGroup name="СписокКонтекстноеМенюГруппа" id="63">
+						<ExtendedTooltip name="СписокКонтекстноеМенюГруппаExtendedTooltip" id="79"/>
+						<ChildItems>
+							<Button name="СписокКонтекстноеМенюНайти" id="62">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Список.StandardCommand.Find</CommandName>
+								<ExtendedTooltip name="СписокКонтекстноеМенюНайтиExtendedTooltip" id="80"/>
+							</Button>
+							<Button name="СписокКонтекстноеМенюОтменитьПоиск" id="61">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Список.StandardCommand.CancelSearch</CommandName>
+								<ExtendedTooltip name="СписокКонтекстноеМенюОтменитьПоискExtendedTooltip" id="81"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Button name="СписокКонтекстноеМенюВывестиСписок" id="56">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Список.StandardCommand.OutputList</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюВывестиСписокExtendedTooltip" id="82"/>
+					</Button>
+					<Button name="СписокКонтекстноеМенюВыделитьВсе" id="64">
+						<Type>CommandBarButton</Type>
+						<Visible>false</Visible>
+						<CommandName>Form.Item.Список.StandardCommand.SelectAll</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюВыделитьВсеExtendedTooltip" id="83"/>
+					</Button>
+					<Button name="СписокКонтекстноеМенюКопироватьВБуферОбмена" id="55">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Список.StandardCommand.CopyToClipboard</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюКопироватьВБуферОбменаExtendedTooltip" id="84"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="47">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СписокExtendedTooltip" id="85"/>
+			<SearchStringAddition name="СписокSearchString" id="90">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокSearchStringContextMenu" id="91"/>
+				<ExtendedTooltip name="СписокSearchStringExtendedTooltip" id="92"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокViewStatus" id="93">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокViewStatusContextMenu" id="94"/>
+				<ExtendedTooltip name="СписокViewStatusExtendedTooltip" id="95"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокSearchControl" id="96">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокSearchControlContextMenu" id="97"/>
+				<ExtendedTooltip name="СписокSearchControlExtendedTooltip" id="98"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокВыбор</Event>
+				<Event name="BeforeRowChange">СписокПередНачаломИзменения</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="Роль" id="48">
+					<DataPath>Список.Роль</DataPath>
+					<Wrap>false</Wrap>
+					<ContextMenu name="РольКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="РольExtendedTooltip" id="86"/>
+				</InputField>
+				<InputField name="Исполнители" id="50">
+					<DataPath>Список.ИсполнителиСтрока</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исполнители</v8:content>
+						</v8:item>
+					</Title>
+					<Width>35</Width>
+					<Wrap>false</Wrap>
+					<ContextMenu name="ИсполнителиКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="ИсполнителиExtendedTooltip" id="87"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ОсновнойОбъектАдресации" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основной объект адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:Characteristic.ОбъектыАдресацииЗадач</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ТипыОбъектовАдресации" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Типы объектов адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>cfg:ChartOfCharacteristicTypesRef.ОбъектыАдресацииЗадач</v8:Type>
+			</Settings>
+		</Attribute>
+		<Attribute name="Список" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Роль" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Роль</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИсполнителиСтрока" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исполнители строка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="РольСсылка" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Роль ссылка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.РолиИсполнителей</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Картинка" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Исполнители" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исполнители</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ВнешняяРоль" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Внешняя роль</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВсеНазначения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список всех назначений</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть все назначения исполнителей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВсеНазначенияВыполнить</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Обновить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбновитьВыполнить</Action>
+		</Command>
+		<Command name="СписокРолей" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Роли исполнителей</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть список ролей исполнителей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СписокРолей</Action>
+		</Command>
+		<Command name="ОткрытьСведенияОРоли" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть сведения о роли</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть сведения о роли</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьСведенияОРоли</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ОсновнойОбъектАдресации">
+			<Type>
+				<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

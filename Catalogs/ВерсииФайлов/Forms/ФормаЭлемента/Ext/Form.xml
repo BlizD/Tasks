@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<CommandBarLocation>Top</CommandBarLocation>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="Открыть" id="26">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.Открыть</CommandName>
+				<TextColor>style:ButtonTextColor</TextColor>
+				<BackColor>style:ButtonBackColor</BackColor>
+				<BorderColor>style:BorderColor</BorderColor>
+				<ExtendedTooltip name="ОткрытьExtendedTooltip" id="57"/>
+			</Button>
+			<Button name="ФормаСохранитьКак" id="50">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СохранитьКак</CommandName>
+				<ExtendedTooltip name="ФормаСохранитьКакExtendedTooltip" id="58"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Владелец" id="6">
+			<DataPath>Объект.Owner</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+			<Wrap>false</Wrap>
+			<BorderColor>style:BorderColor</BorderColor>
+			<ContextMenu name="ВладелецКонтекстноеМеню" id="7"/>
+			<ExtendedTooltip name="ВладелецExtendedTooltip" id="59"/>
+		</InputField>
+		<UsualGroup name="НаименованиеКод" id="31">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование код</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="НаименованиеКодExtendedTooltip" id="60"/>
+			<ChildItems>
+				<InputField name="ПолноеНаименование" id="29">
+					<DataPath>Объект.ПолноеНаименование</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование</v8:content>
+						</v8:item>
+					</Title>
+					<Wrap>false</Wrap>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="ПолноеНаименованиеКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ПолноеНаименованиеExtendedTooltip" id="61"/>
+					<Events>
+						<Event name="OnChange">ПолноеНаименованиеПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Код" id="2">
+					<DataPath>Объект.Code</DataPath>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Wrap>false</Wrap>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="КодКонтекстноеМеню" id="3"/>
+					<ExtendedTooltip name="КодExtendedTooltip" id="62"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="РодительскаяВерсия" id="33">
+			<DataPath>Объект.РодительскаяВерсия</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Wrap>false</Wrap>
+			<ChoiceParameterLinks>
+				<xr:Link>
+					<xr:Name>Отбор.Владелец</xr:Name>
+					<xr:DataPath xsi:type="xs:string">Объект.Owner</xr:DataPath>
+					<xr:ValueChange>Clear</xr:ValueChange>
+				</xr:Link>
+			</ChoiceParameterLinks>
+			<ContextMenu name="РодительскаяВерсияКонтекстноеМеню" id="34"/>
+			<ExtendedTooltip name="РодительскаяВерсияExtendedTooltip" id="63"/>
+		</InputField>
+		<UsualGroup name="РасширениеКартинка" id="32">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расширение картинка</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="РасширениеКартинкаExtendedTooltip" id="64"/>
+			<ChildItems>
+				<InputField name="Размер" id="8">
+					<DataPath>Объект.Размер</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Wrap>false</Wrap>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="РазмерКонтекстноеМеню" id="9"/>
+					<ExtendedTooltip name="РазмерExtendedTooltip" id="65"/>
+				</InputField>
+				<InputField name="Расширение" id="10">
+					<DataPath>Объект.Расширение</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Wrap>false</Wrap>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="РасширениеКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="РасширениеExtendedTooltip" id="66"/>
+				</InputField>
+				<PictureField name="Картинка" id="20">
+					<DataPath>Объект.ИндексКартинки</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Width>2</Width>
+					<Height>1</Height>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.КоллекцияПиктограммФайлов</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:TransparentPixel x="10" y="10"/>
+					</ValuesPicture>
+					<Border width="1">
+						<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+					</Border>
+					<ContextMenu name="КартинкаКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="КартинкаExtendedTooltip" id="67"/>
+				</PictureField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Комментарий" id="12">
+			<DataPath>Объект.Комментарий</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарий к версии</v8:content>
+				</v8:item>
+			</Title>
+			<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+			<Height>2</Height>
+			<BorderColor>style:BorderColor</BorderColor>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="13"/>
+			<ExtendedTooltip name="КомментарийExtendedTooltip" id="68"/>
+		</InputField>
+		<InputField name="Автор" id="14">
+			<DataPath>Объект.Автор</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Автор</v8:content>
+				</v8:item>
+			</Title>
+			<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+			<Wrap>false</Wrap>
+			<BorderColor>style:BorderColor</BorderColor>
+			<ContextMenu name="АвторКонтекстноеМеню" id="15"/>
+			<ExtendedTooltip name="АвторExtendedTooltip" id="69"/>
+		</InputField>
+		<UsualGroup name="ДатаИНомер" id="35">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата и номер</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ДатаИНомерExtendedTooltip" id="70"/>
+			<ChildItems>
+				<InputField name="ДатаСоздания" id="16">
+					<DataPath>Объект.ДатаСоздания</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Wrap>false</Wrap>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="ДатаСозданияКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="ДатаСозданияExtendedTooltip" id="71"/>
+				</InputField>
+				<InputField name="НомерВерсии" id="36">
+					<DataPath>Объект.НомерВерсии</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="НомерВерсииКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="НомерВерсииExtendedTooltip" id="72"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ДатаМодификацииФайла" id="48">
+			<DataPath>Объект.ДатаМодификацииФайла</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата изменения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата изменения данных версии файла (местное время)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ContextMenu name="ДатаМодификацииФайлаКонтекстноеМеню" id="49"/>
+			<ExtendedTooltip name="ДатаМодификацииФайлаРасширеннаяПодсказка" id="73"/>
+		</InputField>
+		<LabelField name="Кодировка" id="55">
+			<DataPath>Кодировка</DataPath>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="КодировкаКонтекстноеМеню" id="56"/>
+			<ExtendedTooltip name="КодировкаExtendedTooltip" id="74"/>
+		</LabelField>
+		<UsualGroup name="ГруппаХранение" id="38">
+			<UserVisible>
+				<xr:Common>false</xr:Common>
+			</UserVisible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа хранение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа хранение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаХранениеExtendedTooltip" id="75"/>
+			<ChildItems>
+				<InputField name="ТипХраненияФайла" id="39">
+					<DataPath>Объект.ТипХраненияФайла</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТипХраненияФайлаКонтекстноеМеню" id="40"/>
+					<ExtendedTooltip name="ТипХраненияФайлаExtendedTooltip" id="76"/>
+				</InputField>
+				<UsualGroup name="ГруппаТом" id="47">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа том</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа том</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаТомExtendedTooltip" id="77"/>
+					<ChildItems>
+						<InputField name="Том" id="51">
+							<DataPath>Объект.Том</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="ТомКонтекстноеМеню" id="52"/>
+							<ExtendedTooltip name="ТомExtendedTooltip" id="78"/>
+						</InputField>
+						<InputField name="ТомПолныйПуть" id="53">
+							<DataPath>ТомПолныйПуть</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="ТомПолныйПутьКонтекстноеМеню" id="54"/>
+							<ExtendedTooltip name="ТомПолныйПутьExtendedTooltip" id="79"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="ПутьКФайлу" id="43">
+					<DataPath>Объект.ПутьКФайлу</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ПутьКФайлуКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="ПутьКФайлуExtendedTooltip" id="80"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ВерсииФайлов</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.ФайлХранилище</Field>
+				<Field>Объект.ТекстХранилище</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="ТомПолныйПуть" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полный путь тома</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Кодировка" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кодировка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Открыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просмотреть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть версию файла для просмотра</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ОткрытьВыбранныйФайл</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьВыполнить</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="СохранитьКак" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить как...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить версию файла на диск или другое устройство</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СохранитьФайлКак</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>СохранитьКак</Action>
+			<Representation>Text</Representation>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>2:40e2fb30-bb03-4178-a8eb-ddf48337ef23</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

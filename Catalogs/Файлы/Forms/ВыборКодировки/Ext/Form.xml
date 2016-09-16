@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Height>15</Height>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<ChildItems>
+			<Button name="ФормаВыбрать" id="6">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Выбрать</CommandName>
+				<ExtendedTooltip name="ФормаВыбратьРасширеннаяПодсказка" id="10"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Table name="СписокКодировок" id="1">
+			<Representation>List</Representation>
+			<ReadOnly>true</ReadOnly>
+			<ChoiceMode>true</ChoiceMode>
+			<Header>false</Header>
+			<HorizontalLines>false</HorizontalLines>
+			<VerticalLines>false</VerticalLines>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<DataPath>СписокКодировок</DataPath>
+			<RowPictureDataPath>СписокКодировок.Picture</RowPictureDataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ContextMenu name="СписокКодировокКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="СписокКодировокКоманднаяПанель" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СписокКодировокExtendedTooltip" id="11"/>
+			<SearchStringAddition name="СписокКодировокSearchString" id="14">
+				<AdditionSource>
+					<Item>СписокКодировок</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокКодировокSearchStringContextMenu" id="15"/>
+				<ExtendedTooltip name="СписокКодировокSearchStringExtendedTooltip" id="16"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокКодировокViewStatus" id="17">
+				<AdditionSource>
+					<Item>СписокКодировок</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокКодировокViewStatusContextMenu" id="18"/>
+				<ExtendedTooltip name="СписокКодировокViewStatusExtendedTooltip" id="19"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокКодировокSearchControl" id="20">
+				<AdditionSource>
+					<Item>СписокКодировок</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокКодировокSearchControlContextMenu" id="21"/>
+				<ExtendedTooltip name="СписокКодировокSearchControlExtendedTooltip" id="22"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокКодировокВыбор</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="СписокКодировокЗначение" id="4">
+					<DataPath>СписокКодировок.Value</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокКодировокЗначениеКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="СписокКодировокЗначениеExtendedTooltip" id="12"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<CheckBoxField name="ПоказыватьТолькоОсновныеКодировки" id="8">
+			<DataPath>ПоказыватьТолькоОсновныеКодировки</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ПоказыватьТолькоОсновныеКодировкиКонтекстноеМеню" id="9"/>
+			<ExtendedTooltip name="ПоказыватьТолькоОсновныеКодировкиExtendedTooltip" id="13"/>
+			<Events>
+				<Event name="OnChange">ПоказыватьТолькоОсновныеКодировкиПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СписокКодировок" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список кодировок</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущаяКодировка" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая кодировка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказыватьТолькоОсновныеКодировки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать только основные кодировки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Выбрать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать кодировку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьКодировку</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выбрать исполнителя</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Перенаправить" id="3">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.Перенаправить</CommandName>
+				<ExtendedTooltip name="ПеренаправитьExtendedTooltip" id="43"/>
+			</Button>
+			<Button name="Отмена" id="4">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="ОтменаExtendedTooltip" id="44"/>
+			</Button>
+			<ButtonGroup name="ГруппаСправка" id="28">
+				<ExtendedTooltip name="ГруппаСправкаExtendedTooltip" id="45"/>
+				<ChildItems>
+					<Button name="Справка" id="27">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.StandardCommand.Help</CommandName>
+						<ExtendedTooltip name="СправкаExtendedTooltip" id="46"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="ДекорацияЗаголовок" id="5">
+			<Width>60</Width>
+			<SkipOnInput>false</SkipOnInput>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбранная задача</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДекорацияЗаголовокКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ДекорацияЗаголовокExtendedTooltip" id="47"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаАдресация" id="11">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаАдресацияExtendedTooltip" id="48"/>
+			<ChildItems>
+				<RadioButtonField name="ТипАдресации" id="9">
+					<DataPath>ТипАдресации</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Исполнителю:</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Исполнителям роли:</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ТипАдресацииКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="ТипАдресацииExtendedTooltip" id="49"/>
+					<Events>
+						<Event name="OnChange">ТипАдресацииПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="Группа" id="12">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаExtendedTooltip" id="50"/>
+					<ChildItems>
+						<InputField name="Исполнитель" id="1">
+							<DataPath>Исполнитель</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<TitleLocation>None</TitleLocation>
+							<Width>35</Width>
+							<OpenButton>false</OpenButton>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ContextMenu name="ИсполнительКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="ИсполнительExtendedTooltip" id="51"/>
+							<Events>
+								<Event name="OnChange">ИсполнительПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="Роль" id="13">
+							<DataPath>Роль</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<OpenButton>false</OpenButton>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ContextMenu name="РольКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="РольExtendedTooltip" id="52"/>
+							<Events>
+								<Event name="OnChange">РольПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОбъектыАдресации" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа объекты адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОбъектыАдресацииРасширеннаяПодсказка" id="61"/>
+			<ChildItems>
+				<LabelDecoration name="Отступ" id="62">
+					<ContextMenu name="ОтступКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="ОтступРасширеннаяПодсказка" id="64"/>
+				</LabelDecoration>
+				<UsualGroup name="ОбъектыАдресации" id="65">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объекты адресации</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ОбъектыАдресацииРасширеннаяПодсказка" id="66"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаОдинОбъектАдресации" id="33">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа один объект адресации</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа один объект адресации</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОдинОбъектАдресацииExtendedTooltip" id="53"/>
+							<ChildItems>
+								<InputField name="ОдинОсновнойОбъектАдресации" id="34">
+									<DataPath>ОсновнойОбъектАдресации</DataPath>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ОдинОсновнойОбъектАдресацииКонтекстноеМеню" id="35"/>
+									<ExtendedTooltip name="ОдинОсновнойОбъектАдресацииExtendedTooltip" id="54"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаДваОбъектаАдресации" id="36">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа два объекта адресации</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа два объекта адресации</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДваОбъектаАдресацииExtendedTooltip" id="55"/>
+							<ChildItems>
+								<InputField name="ОсновнойОбъектАдресации" id="37">
+									<DataPath>ОсновнойОбъектАдресации</DataPath>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ОсновнойОбъектАдресацииКонтекстноеМеню" id="38"/>
+									<ExtendedTooltip name="ОсновнойОбъектАдресацииExtendedTooltip" id="56"/>
+								</InputField>
+								<InputField name="ДополнительныйОбъектАдресации" id="39">
+									<DataPath>ДополнительныйОбъектАдресации</DataPath>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ДополнительныйОбъектАдресацииКонтекстноеМеню" id="40"/>
+									<ExtendedTooltip name="ДополнительныйОбъектАдресацииExtendedTooltip" id="57"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Комментарий" id="7">
+			<DataPath>Комментарий</DataPath>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="КомментарийExtendedTooltip" id="58"/>
+		</InputField>
+		<CheckBoxField name="ИгнорироватьПредупреждения" id="41">
+			<DataPath>ИгнорироватьПредупреждения</DataPath>
+			<Visible>false</Visible>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ИгнорироватьПредупрежденияКонтекстноеМеню" id="42"/>
+			<ExtendedTooltip name="ИгнорироватьПредупрежденияExtendedTooltip" id="59"/>
+		</CheckBoxField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Исполнитель" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исполнитель</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Комментарий" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарий</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТипАдресации" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Роль" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Роль</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.РолиИсполнителей</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользуетсяБезОбъектовАдресации" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Используется без объектов адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользуетсяСОбъектамиАдресации" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Используется с объектами адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОсновнойОбъектАдресации" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основной объект адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:Characteristic.ОбъектыАдресацииЗадач</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ТипыДополнительногоОбъектаАдресации" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Типы дополнительного объекта адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:TypeDescription</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТипыОсновногоОбъектаАдресации" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Типы основного объекта адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:TypeDescription</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДополнительныйОбъектАдресации" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доп. объект адресации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:Characteristic.ОбъектыАдресацииЗадач</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ИгнорироватьПредупреждения" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Игнорировать предупреждения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Перенаправить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенаправить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенаправить задачу новому исполнителю</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OK</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Задача">
+			<Type>
+				<v8:Type>cfg:TaskRef.ЗадачаИсполнителя</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="КоличествоЗадач">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ЗаголовокФормы">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

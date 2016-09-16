@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Резервная копия информационной базы</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<ChildItems>
+			<Button name="КнопкаОК" id="20">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.КомандаОК</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ОК</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="КнопкаОКExtendedTooltip" id="39"/>
+			</Button>
+			<Button name="КнопкаЗакрыть" id="21">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отмена</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="КнопкаЗакрытьExtendedTooltip" id="40"/>
+			</Button>
+			<Button name="ФормаСправка" id="38">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаExtendedTooltip" id="41"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<RadioButtonField name="СоздаватьРезервнуюКопию" id="1">
+			<DataPath>Объект.СоздаватьРезервнуюКопию</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<RadioButtonType>Auto</RadioButtonType>
+			<ColumnsCount>1</ColumnsCount>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Не создавать резервную копию</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">0</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Создать временную резервную копию</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">1</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Создать резервную копию и сохранить в указанном каталоге</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">2</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="СоздаватьРезервнуюКопиюКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="СоздаватьРезервнуюКопиюExtendedTooltip" id="42"/>
+			<Events>
+				<Event name="OnChange">СоздаватьРезервнуюКопиюПриИзменении</Event>
+			</Events>
+		</RadioButtonField>
+		<UsualGroup name="Отступ" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отступ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отступ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ОтступExtendedTooltip" id="43"/>
+			<ChildItems>
+				<InputField name="ПолеКаталогРезервнойКопии" id="3">
+					<DataPath>Объект.ИмяКаталогаРезервнойКопииИБ</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Каталог</v8:content>
+						</v8:item>
+					</Title>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="ПолеКаталогРезервнойКопииКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ПолеКаталогРезервнойКопииExtendedTooltip" id="44"/>
+					<Events>
+						<Event name="StartChoice">ПолеКаталогРезервнойКопииНачалоВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="ПанельИнформация" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель информация</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="ПанельИнформацияExtendedTooltip" id="45"/>
+			<ChildItems>
+				<Page name="АвтоматическийОткат" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автоматический откат</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автоматический откат</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="АвтоматическийОткатExtendedTooltip" id="46"/>
+					<ChildItems>
+						<LabelDecoration name="НадписьВосстанавливать1" id="36">
+							<SkipOnInput>false</SkipOnInput>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Автоматически будет выполнен откат к резервной копии
+при возникновении нештатной ситуации в процессе обновления программы.</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="НадписьВосстанавливать1КонтекстноеМеню" id="37"/>
+							<ExtendedTooltip name="НадписьВосстанавливать1ExtendedTooltip" id="47"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="РучнойОткат" id="32">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ручной откат</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="РучнойОткатExtendedTooltip" id="48"/>
+					<ChildItems>
+						<UsualGroup name="ВертикальнаяГруппа1" id="24">
+							<VerticalStretch>true</VerticalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ВертикальнаяГруппа1ExtendedTooltip" id="49"/>
+							<ChildItems>
+								<CheckBoxField name="ВосстанавливатьИнформационнуюБазу" id="22">
+									<DataPath>Объект.ВосстанавливатьИнформационнуюБазу</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ВосстанавливатьИнформационнуюБазуКонтекстноеМеню" id="23"/>
+									<ExtendedTooltip name="ВосстанавливатьИнформационнуюБазуExtendedTooltip" id="50"/>
+									<Events>
+										<Event name="OnChange">ВосстанавливатьИнформационнуюБазуПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<Pages name="СтраницыНадписиРучногоОтката" id="25">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страницы надписи ручного отката</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalStretch>true</VerticalStretch>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="СтраницыНадписиРучногоОткатаExtendedTooltip" id="51"/>
+									<ChildItems>
+										<Page name="Восстанавливать" id="26">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Восстанавливать</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="ВосстанавливатьExtendedTooltip" id="52"/>
+											<ChildItems>
+												<LabelDecoration name="НадписьВосстанавливать" id="11">
+													<SkipOnInput>false</SkipOnInput>
+													<TextColor>style:ПоясняющийТекст</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Система автоматически выполнит откат при возникновении
+нештатной ситуации в процессе обновления  программы.</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="НадписьВосстанавливатьКонтекстноеМеню" id="12"/>
+													<ExtendedTooltip name="НадписьВосстанавливатьExtendedTooltip" id="53"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+										<Page name="НеВосстанавливать" id="27">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Не восстанавливать</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="НеВосстанавливатьExtendedTooltip" id="54"/>
+											<ChildItems>
+												<LabelDecoration name="НадписьНеВосстанавливать" id="28">
+													<VerticalStretch>true</VerticalStretch>
+													<SkipOnInput>false</SkipOnInput>
+													<TextColor>style:ПоясняющийТекст</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>В указанном каталоге будет создана резервная копия, 
+но при возникновении нештатной ситуации откат из нее производиться не будет.</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="НадписьНеВосстанавливатьКонтекстноеМеню" id="29"/>
+													<ExtendedTooltip name="НадписьНеВосстанавливатьExtendedTooltip" id="55"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="БезОтката" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без отката</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без отката</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="БезОткатаExtendedTooltip" id="56"/>
+					<ChildItems>
+						<LabelDecoration name="Надпись1" id="17">
+							<SkipOnInput>false</SkipOnInput>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Откат к резервной копии НЕ будет выполняться при возникновении нештатной ситуации
+в процессе обновления программы. Рекомендуется выбирать этот вариант, только если
+резервное копирование ИБ уже выполняется другими средствами.</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="Надпись1КонтекстноеМеню" id="18"/>
+							<ExtendedTooltip name="Надпись1ExtendedTooltip" id="57"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ПоискИУстановкаОбновлений</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="КомандаОК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда ОК</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда ОК</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаОК</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ВыполнитьОбмен" id="125">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.ВыполнитьОбмен</CommandName>
+				<ExtendedTooltip name="ВыполнитьОбменExtendedTooltip" id="127"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Группа" id="103">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаExtendedTooltip" id="128"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<Wrap>false</Wrap>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="129"/>
+				</InputField>
+				<InputField name="Код" id="101">
+					<ContextMenu name="КодКонтекстноеМеню" id="102"/>
+					<ExtendedTooltip name="КодExtendedTooltip" id="130"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ОбменПоРасписанию" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обмен по расписанию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обмен по расписанию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>70</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ОбменПоРасписаниюExtendedTooltip" id="131"/>
+			<ChildItems>
+				<CheckBoxField name="ИспользоватьРегламентноеЗадание" id="24">
+					<DataPath>Объект.ИспользоватьРегламентноеЗадание</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автоматически по расписанию:</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИспользоватьРегламентноеЗаданиеКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="ИспользоватьРегламентноеЗаданиеExtendedTooltip" id="132"/>
+					<Events>
+						<Event name="OnChange">ИспользоватьРегламентноеЗаданиеПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<Button name="НастроитьРасписаниеРегламентногоЗадания" id="62">
+					<Type>Hyperlink</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Command.НастроитьРасписаниеРегламентногоЗадания</CommandName>
+					<ExtendedTooltip name="НастроитьРасписаниеРегламентногоЗаданияExtendedTooltip" id="133"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Состав" id="104">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состав настройки обмена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состав</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="СоставExtendedTooltip" id="134"/>
+			<ChildItems>
+				<Table name="СоставРасписания" id="5">
+					<Representation>List</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<Width>100</Width>
+					<RowSelectionMode>Row</RowSelectionMode>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<DataPath>Объект.НастройкиОбмена</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="СоставРасписанияКонтекстноеМеню" id="6">
+						<ChildItems>
+							<Button name="НастройкиТранспорта" id="86">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.НастройкиТранспорта</CommandName>
+								<ExtendedTooltip name="НастройкиТранспортаExtendedTooltip" id="135"/>
+							</Button>
+							<Button name="КонтекстноеМенюСоставРасписанияПерейтиВЖурналРегистрации" id="126">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ПерейтиВЖурналРегистрации</CommandName>
+								<ExtendedTooltip name="КонтекстноеМенюСоставРасписанияПерейтиВЖурналРегистрацииExtendedTooltip" id="136"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
+					<AutoCommandBar name="СоставРасписанияКоманднаяПанель" id="7"/>
+					<ExtendedTooltip name="СоставРасписанияExtendedTooltip" id="137"/>
+					<SearchStringAddition name="СоставРасписанияСтрокаПоиска" id="147">
+						<AdditionSource>
+							<Item>СоставРасписания</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СоставРасписанияСтрокаПоискаКонтекстноеМеню" id="148"/>
+						<ExtendedTooltip name="СоставРасписанияСтрокаПоискаРасширеннаяПодсказка" id="149"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СоставРасписанияСостояниеПросмотра" id="150">
+						<AdditionSource>
+							<Item>СоставРасписания</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СоставРасписанияСостояниеПросмотраКонтекстноеМеню" id="151"/>
+						<ExtendedTooltip name="СоставРасписанияСостояниеПросмотраРасширеннаяПодсказка" id="152"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СоставРасписанияУправлениеПоиском" id="153">
+						<AdditionSource>
+							<Item>СоставРасписания</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СоставРасписанияУправлениеПоискомКонтекстноеМеню" id="154"/>
+						<ExtendedTooltip name="СоставРасписанияУправлениеПоискомРасширеннаяПодсказка" id="155"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">СоставРасписанияПриАктивизацииСтроки</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="НастройкиОбменаНомерСтроки" id="108">
+							<DataPath>Объект.НастройкиОбмена.LineNumber</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="НастройкиОбменаНомерСтрокиКонтекстноеМеню" id="109"/>
+							<ExtendedTooltip name="НастройкиОбменаНомерСтрокиExtendedTooltip" id="138"/>
+						</LabelField>
+						<ColumnGroup name="КолонкиУзлаИнформационнойБазы" id="122">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Колонки узла информационной базы</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Колонки узла информационной базы</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="КолонкиУзлаИнформационнойБазыExtendedTooltip" id="139"/>
+							<ChildItems>
+								<PictureField name="НастройкиОбменаРезультатВыполненияОбмена" id="123">
+									<DataPath>Объект.НастройкиОбмена.РезультатВыполненияОбмена</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.СостояниеОбменаДанными</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</ValuesPicture>
+									<ContextMenu name="НастройкиОбменаРезультатВыполненияОбменаКонтекстноеМеню" id="124"/>
+									<ExtendedTooltip name="НастройкиОбменаРезультатВыполненияОбменаExtendedTooltip" id="140"/>
+								</PictureField>
+								<InputField name="НастройкиОбменаУзелИнформационнойБазы" id="112">
+									<DataPath>Объект.НастройкиОбмена.УзелИнформационнойБазы</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НастройкиОбменаУзелИнформационнойБазыКонтекстноеМеню" id="113"/>
+									<ExtendedTooltip name="НастройкиОбменаУзелИнформационнойБазыExtendedTooltip" id="141"/>
+									<Events>
+										<Event name="OnChange">НастройкиОбменаУзелИнформационнойБазыПриИзменении</Event>
+										<Event name="ChoiceProcessing">НастройкиОбменаУзелИнформационнойБазыОбработкаВыбора</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+						<InputField name="НастройкиОбменаВидТранспортаОбмена" id="114">
+							<DataPath>Объект.НастройкиОбмена.ВидТранспортаОбмена</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ContextMenu name="НастройкиОбменаВидТранспортаОбменаКонтекстноеМеню" id="115"/>
+							<ExtendedTooltip name="НастройкиОбменаВидТранспортаОбменаExtendedTooltip" id="142"/>
+							<Events>
+								<Event name="StartChoice">НастройкиОбменаВидТранспортаОбменаНачалоВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="НастройкиОбменаВыполняемоеДействие" id="116">
+							<DataPath>Объект.НастройкиОбмена.ВыполняемоеДействие</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="НастройкиОбменаВыполняемоеДействиеКонтекстноеМеню" id="117"/>
+							<ExtendedTooltip name="НастройкиОбменаВыполняемоеДействиеExtendedTooltip" id="143"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Дополнительно" id="107">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительно</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительно</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ДополнительноExtendedTooltip" id="145"/>
+			<ChildItems>
+				<InputField name="Комментарий" id="30">
+					<DataPath>Объект.Комментарий</DataPath>
+					<Height>2</Height>
+					<Wrap>false</Wrap>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="КомментарийExtendedTooltip" id="146"/>
+					<Events>
+						<Event name="StartChoice">КомментарийНачалоВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.СценарииОбменовДанными</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<Columns>
+				<AdditionalColumns table="Объект.НастройкиОбмена">
+					<Column name="РезультатВыполненияОбмена" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Результат выполнения обмена</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>1</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="РасписаниеРегламентногоЗадания" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расписание регламентного задания</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="СписокУзловОбмена" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список узлов обмена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="НастроитьРасписаниеРегламентногоЗадания" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расписание синхронизации</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить расписание регламентного задания</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SetTime</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>НастроитьРасписаниеРегламентногоЗадания</Action>
+		</Command>
+		<Command name="НастройкиТранспорта" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть параметры подключения для текущей строки настройки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СинхронизацияДанныхНастройка</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>НастройкиТранспорта</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ВыполнитьОбмен" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить сценарий</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить сценарий</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СинхронизацияДанныхВыполнение</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="7" y="5"/>
+			</Picture>
+			<Action>ВыполнитьОбмен</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ПерейтиВЖурналРегистрации" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>События обмена данных</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти в журнал регистрации событий обмена данных</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.EventLog</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПерейтиВЖурналРегистрации</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>0</Command>
+				<Type>Added</Type>
+				<Attribute>Items.СоставРасписания.CurrentData.УзелИнформационнойБазы</Attribute>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Added</Type>
+				<Attribute>Items.СоставРасписания.CurrentData.УзелИнформационнойБазы</Attribute>
+				<Index>3</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Added</Type>
+				<Attribute>Items.СоставРасписания.CurrentData.УзелИнформационнойБазы</Attribute>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Added</Type>
+				<Attribute>Items.СоставРасписания.CurrentData.УзелИнформационнойБазы</Attribute>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ИерархияВзаимодейстий</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВзаимодействиеОснование</dataPath>
+			<field>ВзаимодействиеОснование</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ответственный</dataPath>
+			<field>Ответственный</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Предмет</dataPath>
+			<field>Предмет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Рассмотрено</dataPath>
+			<field>Рассмотрено</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РассмотретьПосле</dataPath>
+			<field>РассмотретьПосле</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Тема</dataPath>
+			<field>Тема</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Участники</dataPath>
+			<field>Участники</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерКартинки</dataPath>
+			<field>НомерКартинки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПометкаУдаления</dataPath>
+			<field>ПометкаУдаления</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Тип</dataPath>
+			<field>Тип</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтатусИсходящегоПисьма</dataPath>
+			<field>СтатусИсходящегоПисьма</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Входящий</dataPath>
+			<field>Входящий</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Взаимодействия.Ссылка,
+	ПредметыПапкиВзаимодействий.Предмет,
+	Взаимодействия.Ответственный КАК Ответственный,
+	ЕСТЬNULL(ПредметыПапкиВзаимодействий.Рассмотрено, Ложь) КАК Рассмотрено,
+	ЕСТЬNULL(ПредметыПапкиВзаимодействий.РассмотретьПосле, ДатаВремя(1,1,1)) КАК РассмотретьПосле,
+	Взаимодействия.Тип,
+	Взаимодействия.СтатусИсходящегоПисьма,
+	Взаимодействия.ПометкаУдаления,
+	Взаимодействия.Входящий
+ПОМЕСТИТЬ ПредОтбор
+ИЗ
+	ЖурналДокументов.Взаимодействия КАК Взаимодействия
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыПапкиВзаимодействий
+		ПО Взаимодействия.Ссылка = ПредметыПапкиВзаимодействий.Взаимодействие
+{ГДЕ
+	(Взаимодействия.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВЫБОР
+		КОГДА Взаимодействия.Ссылка ССЫЛКА Документ.Встреча
+			ТОГДА ВЫБОР
+					КОГДА Взаимодействия.ПометкаУдаления
+						ТОГДА 10
+					ИНАЧЕ 0
+				КОНЕЦ
+		КОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ЗапланированноеВзаимодействие
+			ТОГДА ВЫБОР
+					КОГДА Взаимодействия.ПометкаУдаления
+						ТОГДА 11
+					ИНАЧЕ 1
+				КОНЕЦ
+		КОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ТелефонныйЗвонок
+			ТОГДА ВЫБОР
+					КОГДА Взаимодействия.ПометкаУдаления
+						ТОГДА 12
+					ИНАЧЕ 2
+				КОНЕЦ
+		КОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоВходящее
+			ТОГДА ВЫБОР
+					КОГДА Взаимодействия.ПометкаУдаления
+						ТОГДА 13
+					ИНАЧЕ 3
+				КОНЕЦ
+		КОГДА Взаимодействия.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоИсходящее
+			ТОГДА ВЫБОР
+					КОГДА Взаимодействия.ПометкаУдаления
+						ТОГДА 14
+					ИНАЧЕ ВЫБОР
+							КОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Черновик)
+								ТОГДА 15
+							КОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Исходящее)
+								ТОГДА 16
+							ИНАЧЕ 4
+						КОНЕЦ
+				КОНЕЦ
+		КОГДА Взаимодействия.Ссылка ССЫЛКА Документ.СообщениеSMS
+			ТОГДА ВЫБОР
+					КОГДА Взаимодействия.ПометкаУдаления
+						ТОГДА 22
+					ИНАЧЕ ВЫБОР
+							КОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Черновик)
+								ТОГДА 17
+							КОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Исходящее)
+								ТОГДА 18
+							КОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставляется)
+								ТОГДА 19
+							КОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.ЧастичноДоставлено)
+								ТОГДА 21
+							КОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.НеДоставлено)
+								ТОГДА 23
+							КОГДА Взаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставлено)
+								ТОГДА 24
+							ИНАЧЕ 17
+						КОНЕЦ
+				КОНЕЦ
+	КОНЕЦ КАК НомерКартинки,
+	Взаимодействия.Ссылка КАК Ссылка,
+	ЕСТЬNULL(ПредОтбор.Ссылка, НЕОПРЕДЕЛЕНО) КАК ВзаимодействиеОснование,
+	ПредметыПапкиВзаимодействий.Предмет,
+	Взаимодействия.Ответственный КАК Ответственный,
+	ЕСТЬNULL(ПредметыПапкиВзаимодействий.Рассмотрено, Ложь) КАК Рассмотрено,
+	ЕСТЬNULL(ПредметыПапкиВзаимодействий.РассмотретьПосле, ДатаВремя(1,1,1)) КАК РассмотретьПосле,
+	Взаимодействия.Дата,
+	Взаимодействия.Тема,
+	Взаимодействия.Участники,
+	Взаимодействия.ПометкаУдаления,
+	Взаимодействия.Тип,
+	Взаимодействия.СтатусИсходящегоПисьма,
+	Взаимодействия.Входящий
+ИЗ
+	ЖурналДокументов.Взаимодействия КАК Взаимодействия
+		ЛЕВОЕ СОЕДИНЕНИЕ ПредОтбор КАК ПредОтбор
+		ПО Взаимодействия.ВзаимодействиеОснование = ПредОтбор.Ссылка
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыПапкиВзаимодействий
+		ПО Взаимодействия.Ссылка = ПредметыПапкиВзаимодействий.Взаимодействие
+{ГДЕ
+	(Взаимодействия.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}</query>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>ИерархияВзаимодейстий</sourceDataSet>
+		<destinationDataSet>ИерархияВзаимодейстий</destinationDataSet>
+		<sourceExpression>Ссылка</sourceExpression>
+		<destinationExpression>ВзаимодействиеОснование</destinationExpression>
+		<startExpression>Неопределено</startExpression>
+	</dataSetLink>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Интервал.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Интервал.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Интервал</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Интервал</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Ссылка</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Дата</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НомерКартинки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Тема</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Участники</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Рассмотрено</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПометкаУдаления</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Ответственный</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>РассмотретьПосле</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Тип</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СтатусИсходящегоПисьма</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Ответственный</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Пользователи.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>bf534076-eba8-42ba-992d-f51a94f3015d</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Предмет</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>07262a4b-34a5-4ac0-83cd-89eff9465027</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">РассмотретьПосле</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+						<v8:date>0001-01-01T00:00:00</v8:date>
+					</dcsset:right>
+					<dcsset:userSettingID>6ba976a7-a5b4-4a37-88c7-47ddd35384af</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Рассмотрено</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					<dcsset:userSettingID>a40a6ab9-a1b8-4e4c-a615-a4af9c10cc39</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Дата</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+						<v8:date>0001-01-01T00:00:00</v8:date>
+					</dcsset:right>
+					<dcsset:userSettingID>69931a82-7a78-49f1-9314-7cd502422baa</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Дата</dcsset:field>
+					<dcsset:orderType>Desc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

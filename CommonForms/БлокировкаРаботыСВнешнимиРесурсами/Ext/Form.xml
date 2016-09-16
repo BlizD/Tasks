@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Информационная база была перемещена или восстановлена из резервной копии</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockWholeInterface</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Center</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ИнформационнаяБазаПеремещена" id="6">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ИнформационнаяБазаПеремещена</CommandName>
+				<ExtendedTooltip name="ИнформационнаяБазаПеремещенаРасширеннаяПодсказка" id="7"/>
+			</Button>
+			<Button name="ЭтоКопияИнформационнойБазы" id="8">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ЭтоКопияИнформационнойБазы</CommandName>
+				<ExtendedTooltip name="ЭтоКопияИнформационнойБазыРасширеннаяПодсказка" id="9"/>
+			</Button>
+			<Popup name="ФормаГруппаЕще" id="12">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Еще</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма группа еще</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ФормаГруппаЕщеРасширеннаяПодсказка" id="13"/>
+				<ChildItems>
+					<Button name="ФормаПроверятьИмяСервера" id="14">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>true</OnlyInAllActions>
+						<CommandName>Form.Command.ПроверятьИмяСервера</CommandName>
+						<ExtendedTooltip name="ФормаПроверятьИмяСервераРасширеннаяПодсказка" id="15"/>
+					</Button>
+					<Button name="ФормаСправкаВГруппе" id="16">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>true</OnlyInAllActions>
+						<CommandName>Form.StandardCommand.Help</CommandName>
+						<ExtendedTooltip name="ФормаСправкаВГруппеРасширеннаяПодсказка" id="17"/>
+					</Button>
+				</ChildItems>
+			</Popup>
+			<Button name="ФормаСправка" id="18">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>true</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="19"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="НадписьПредупреждение" id="1">
+			<Title formatted="true">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Размещение информационной базы изменилось с 
+%1
+на 
+%2
+
+&lt;link ЖурналРегистрации&gt;Техническая&lt;/&gt;&lt;link ЖурналРегистрации&gt; информация о причине блокировки&lt;/&gt;
+
+* Если информационная база была перемещена, нажмите &lt;b&gt;Информационная база перемещена&lt;/&gt;.
+* Если это копия информационной базы, нажмите &lt;b&gt;Это копия информационной базы&lt;/&gt;&lt;b&gt;.&lt;/&gt;
+  При этом работа со всеми внешними ресурсами (синхронизация данных, отправка почты и т.п.), выполняемая по расписанию,
+  будет заблокирована для предотвращения конфликтов с основой информационной базой.
+
+Блокировку также можно снять позднее в разделе &lt;b&gt;Администрирование&lt;/&gt;&lt;b&gt; - &lt;/&gt;&lt;b&gt;Поддержка и обслуживание&lt;/&gt;.</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="НадписьПредупреждениеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НадписьПредупреждениеРасширеннаяПодсказка" id="3"/>
+			<Events>
+				<Event name="URLProcessing">НадписьПредупреждениеОбработкаНавигационнойСсылки</Event>
+			</Events>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПараметрыБлокировки" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры блокировки</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ИнформационнаяБазаПеремещена" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информационная база перемещена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информационная база перемещена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИнформационнаяБазаПеремещена</Action>
+		</Command>
+		<Command name="ЭтоКопияИнформационнойБазы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это копия информационной базы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это копия информационной базы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЭтоКопияИнформационнойБазы</Action>
+		</Command>
+		<Command name="ПроверятьИмяСервера" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверять имя сервера</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверять имя сервера</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверятьИмяСервера</Action>
+		</Command>
+	</Commands>
+</Form>

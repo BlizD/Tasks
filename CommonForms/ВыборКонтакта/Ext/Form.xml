@@ -1,0 +1,931 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandSet>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаКомандаВыбрать" id="99">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.КомандаВыбрать</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Выбрать</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаКомандаВыбратьExtendedTooltip" id="105"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="СтраницыСписки" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы списки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы списки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="СтраницыСпискиExtendedTooltip" id="106"/>
+			<ChildItems>
+				<Page name="СтраницаПоискКонтактов" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поиск контактов</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница поиск контактов</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаПоискКонтактовExtendedTooltip" id="107"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаСтрокаПоиска" id="78">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа строка поиска</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа строка поиска</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаСтрокаПоискаExtendedTooltip" id="108"/>
+							<ChildItems>
+								<InputField name="ВариантыПоиска" id="79">
+									<DataPath>ВариантыПоиска</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>20</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ContextMenu name="ВариантыПоискаКонтекстноеМеню" id="80"/>
+									<ExtendedTooltip name="ВариантыПоискаExtendedTooltip" id="109"/>
+									<Events>
+										<Event name="OnChange">ВариантыПоискаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="СтрокаПоиска" id="17">
+									<DataPath>СтрокаПоиска</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Wrap>false</Wrap>
+									<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="18"/>
+									<ExtendedTooltip name="СтрокаПоискаExtendedTooltip" id="110"/>
+								</InputField>
+								<Button name="КомандаНайти" id="19">
+									<Type>UsualButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<CommandName>Form.Command.КомандаНайти</CommandName>
+									<ExtendedTooltip name="КомандаНайтиExtendedTooltip" id="111"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="НайденныеКонтакты" id="20">
+							<Representation>List</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<ReadOnly>true</ReadOnly>
+							<SkipOnInput>false</SkipOnInput>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<Height>10</Height>
+							<SelectionMode>SingleRow</SelectionMode>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<DataPath>НайденныеКонтакты</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="НайденныеКонтактыКонтекстноеМеню" id="21">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="НайтиВСпискеИзСпискаНайденных" id="90">
+										<Type>CommandBarButton</Type>
+										<SkipOnInput>false</SkipOnInput>
+										<CommandName>Form.Command.НайтиВСпискеИзСпискаНайденных</CommandName>
+										<ExtendedTooltip name="НайтиВСпискеИзСпискаНайденныхExtendedTooltip" id="112"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="НайденныеКонтактыКоманднаяПанель" id="22">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="НайденныеКонтактыExtendedTooltip" id="113"/>
+							<SearchStringAddition name="НайденныеКонтактыСтрокаПоиска" id="128">
+								<AdditionSource>
+									<Item>НайденныеКонтакты</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НайденныеКонтактыСтрокаПоискаКонтекстноеМеню" id="129"/>
+								<ExtendedTooltip name="НайденныеКонтактыСтрокаПоискаРасширеннаяПодсказка" id="130"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НайденныеКонтактыСостояниеПросмотра" id="131">
+								<AdditionSource>
+									<Item>НайденныеКонтакты</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НайденныеКонтактыСостояниеПросмотраКонтекстноеМеню" id="132"/>
+								<ExtendedTooltip name="НайденныеКонтактыСостояниеПросмотраРасширеннаяПодсказка" id="133"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НайденныеКонтактыУправлениеПоиском" id="134">
+								<AdditionSource>
+									<Item>НайденныеКонтакты</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НайденныеКонтактыУправлениеПоискомКонтекстноеМеню" id="135"/>
+								<ExtendedTooltip name="НайденныеКонтактыУправлениеПоискомРасширеннаяПодсказка" id="136"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">НайденныеКонтактыВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="Контакт" id="25">
+									<DataPath>НайденныеКонтакты.НаименованиеКонтакта</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Контакт</v8:content>
+										</v8:item>
+									</Title>
+									<Wrap>false</Wrap>
+									<ContextMenu name="КонтактКонтекстноеМеню" id="26"/>
+									<ExtendedTooltip name="КонтактExtendedTooltip" id="114"/>
+								</InputField>
+								<InputField name="Представление" id="23">
+									<DataPath>НайденныеКонтакты.Представление</DataPath>
+									<AutoCellHeight>true</AutoCellHeight>
+									<Height>3</Height>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ПредставлениеКонтекстноеМеню" id="24"/>
+									<ExtendedTooltip name="ПредставлениеExtendedTooltip" id="115"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаВсеКонтактыПоПредмету" id="70">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контакты по предмету</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница все контакты по предмету</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаВсеКонтактыПоПредметуExtendedTooltip" id="119"/>
+					<ChildItems>
+						<Table name="КонтактыПоПредмету" id="71">
+							<Representation>List</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<ReadOnly>true</ReadOnly>
+							<SkipOnInput>false</SkipOnInput>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<Height>10</Height>
+							<SelectionMode>SingleRow</SelectionMode>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<DataPath>КонтактыПоПредмету</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="КонтактыПоПредметуКонтекстноеМеню" id="72">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="НайтиВСпискеИзСпискаПредметов" id="89">
+										<Type>CommandBarButton</Type>
+										<SkipOnInput>false</SkipOnInput>
+										<CommandName>Form.Command.НайтиВСпискеИзСпискаПредметов</CommandName>
+										<ExtendedTooltip name="НайтиВСпискеИзСпискаПредметовExtendedTooltip" id="120"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="КонтактыПоПредметуКоманднаяПанель" id="73">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="КонтактыПоПредметуExtendedTooltip" id="121"/>
+							<SearchStringAddition name="КонтактыПоПредметуСтрокаПоиска" id="137">
+								<AdditionSource>
+									<Item>КонтактыПоПредмету</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="КонтактыПоПредметуСтрокаПоискаКонтекстноеМеню" id="138"/>
+								<ExtendedTooltip name="КонтактыПоПредметуСтрокаПоискаРасширеннаяПодсказка" id="139"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="КонтактыПоПредметуСостояниеПросмотра" id="140">
+								<AdditionSource>
+									<Item>КонтактыПоПредмету</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="КонтактыПоПредметуСостояниеПросмотраКонтекстноеМеню" id="141"/>
+								<ExtendedTooltip name="КонтактыПоПредметуСостояниеПросмотраРасширеннаяПодсказка" id="142"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="КонтактыПоПредметуУправлениеПоиском" id="143">
+								<AdditionSource>
+									<Item>КонтактыПоПредмету</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="КонтактыПоПредметуУправлениеПоискомКонтекстноеМеню" id="144"/>
+								<ExtendedTooltip name="КонтактыПоПредметуУправлениеПоискомРасширеннаяПодсказка" id="145"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">КонтактыПоПредметуВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ПредставлениеНаименования" id="91">
+									<DataPath>КонтактыПоПредмету.ПредставлениеНаименования</DataPath>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ПредставлениеНаименованияКонтекстноеМеню" id="92"/>
+									<ExtendedTooltip name="ПредставлениеНаименованияExtendedTooltip" id="122"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаПользователей" id="83">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователи</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаПользователейExtendedTooltip" id="123"/>
+					<ChildItems>
+						<Table name="ГруппыПользователей" id="100">
+							<Representation>Tree</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<SkipOnInput>false</SkipOnInput>
+							<Height>5</Height>
+							<SelectionMode>SingleRow</SelectionMode>
+							<RowSelectionMode>Row</RowSelectionMode>
+							<Header>false</Header>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<InitialTreeView>ExpandTopLevel</InitialTreeView>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ГруппыПользователей</DataPath>
+							<RowPictureDataPath>ГруппыПользователей.НомерКартинки</RowPictureDataPath>
+							<RowsPicture>
+								<xr:Ref>CommonPicture.СостоянияПользователей</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</RowsPicture>
+							<CommandSet>
+								<ExcludedCommand>HierarchicalList</ExcludedCommand>
+								<ExcludedCommand>Tree</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>List</ExcludedCommand>
+								<ExcludedCommand>Create</ExcludedCommand>
+								<ExcludedCommand>ListSettings</ExcludedCommand>
+								<ExcludedCommand>MoveItem</ExcludedCommand>
+								<ExcludedCommand>Refresh</ExcludedCommand>
+								<ExcludedCommand>OutputList</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Choose</ExcludedCommand>
+								<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>false</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="ГруппыПользователейКонтекстноеМеню" id="101"/>
+							<AutoCommandBar name="ГруппыПользователейКоманднаяПанель" id="102"/>
+							<ExtendedTooltip name="ГруппыПользователейExtendedTooltip" id="124"/>
+							<SearchStringAddition name="ГруппыПользователейСтрокаПоиска" id="146">
+								<AdditionSource>
+									<Item>ГруппыПользователей</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ГруппыПользователейСтрокаПоискаКонтекстноеМеню" id="147"/>
+								<ExtendedTooltip name="ГруппыПользователейСтрокаПоискаРасширеннаяПодсказка" id="148"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ГруппыПользователейСостояниеПросмотра" id="149">
+								<AdditionSource>
+									<Item>ГруппыПользователей</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ГруппыПользователейСостояниеПросмотраКонтекстноеМеню" id="150"/>
+								<ExtendedTooltip name="ГруппыПользователейСостояниеПросмотраРасширеннаяПодсказка" id="151"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ГруппыПользователейУправлениеПоиском" id="152">
+								<AdditionSource>
+									<Item>ГруппыПользователей</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ГруппыПользователейУправлениеПоискомКонтекстноеМеню" id="153"/>
+								<ExtendedTooltip name="ГруппыПользователейУправлениеПоискомРасширеннаяПодсказка" id="154"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnActivateRow">ГруппыПользователейПриАктивизацииСтроки</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="НаименованиеГруппы" id="103">
+									<DataPath>ГруппыПользователей.Description</DataPath>
+									<ContextMenu name="НаименованиеГруппыКонтекстноеМеню" id="104"/>
+									<ExtendedTooltip name="НаименованиеГруппыExtendedTooltip" id="125"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+						<Table name="СписокПользователей" id="84">
+							<SkipOnInput>false</SkipOnInput>
+							<Height>10</Height>
+							<SelectionMode>SingleRow</SelectionMode>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<DataPath>СписокПользователей</DataPath>
+							<RowPictureDataPath>СписокПользователей.DefaultPicture</RowPictureDataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Create</ExcludedCommand>
+								<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>false</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="СписокПользователейКонтекстноеМеню" id="85"/>
+							<AutoCommandBar name="СписокПользователейКоманднаяПанель" id="86"/>
+							<ExtendedTooltip name="СписокПользователейExtendedTooltip" id="126"/>
+							<SearchStringAddition name="СписокПользователейСтрокаПоиска" id="155">
+								<AdditionSource>
+									<Item>СписокПользователей</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокПользователейСтрокаПоискаКонтекстноеМеню" id="156"/>
+								<ExtendedTooltip name="СписокПользователейСтрокаПоискаРасширеннаяПодсказка" id="157"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокПользователейСостояниеПросмотра" id="158">
+								<AdditionSource>
+									<Item>СписокПользователей</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокПользователейСостояниеПросмотраКонтекстноеМеню" id="159"/>
+								<ExtendedTooltip name="СписокПользователейСостояниеПросмотраРасширеннаяПодсказка" id="160"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокПользователейУправлениеПоиском" id="161">
+								<AdditionSource>
+									<Item>СписокПользователей</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокПользователейУправлениеПоискомКонтекстноеМеню" id="162"/>
+								<ExtendedTooltip name="СписокПользователейУправлениеПоискомРасширеннаяПодсказка" id="163"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">СписокСправочникаВыбор</Event>
+								<Event name="OnActivateRow">Подключаемый_СписокКонтактыПриАктивизацииСтроки</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="Пользователь" id="87">
+									<DataPath>СписокПользователей.Ref</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пользователь</v8:content>
+										</v8:item>
+									</Title>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ПользовательКонтекстноеМеню" id="88"/>
+									<ExtendedTooltip name="ПользовательExtendedTooltip" id="127"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СтрокаПоиска" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Строка поиска</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НайденныеКонтакты" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найденные контакты</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Представление" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Найдено по</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НаименованиеКонтакта" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование контакта</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ссылка" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.КонтактВзаимодействия</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ИмяСправочника" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя справочника</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИнформацияОбАктуальностиИндексаППД" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информация об актуальности индекса ППД</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КонтактыПоПредмету" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контакты по предмету</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ссылка" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.КонтактВзаимодействия</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Наименование" id="2">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИмяСправочника" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя справочника</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПредставлениеНаименования" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контакт</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ВариантыПоиска" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Варианты поиска</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ППДВключен" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ППДВключен</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СписокПользователей" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>3/11</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	Пользователи.Ссылка,
+	Пользователи.ПометкаУдаления,
+	Пользователи.Предопределенный,
+	Пользователи.Наименование,
+	ВЫБОР
+		КОГДА Пользователи.ПометкаУдаления
+			ТОГДА 0
+		ИНАЧЕ 1
+	КОНЕЦ КАК НомерКартинки
+ИЗ
+	Справочник.Пользователи КАК Пользователи
+ГДЕ
+	Пользователи.Служебный = ЛОЖЬ
+	И Пользователи.ПометкаУдаления = ЛОЖЬ
+	И Пользователи.Недействителен = ЛОЖЬ
+	И ИСТИНА В
+			(ВЫБРАТЬ
+				ИСТИНА
+			ИЗ
+				РегистрСведений.СоставыГруппПользователей КАК СоставыГруппПользователей
+			ГДЕ
+				СоставыГруппПользователей.Пользователь = Пользователи.Ссылка
+				И СоставыГруппПользователей.ГруппаПользователей = &amp;ГруппаПользователей)
+</QueryText>
+				<MainTable>Catalog.Пользователи</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ВсеСпискиПоиска" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все списки поиска</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ИндексАктуален" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Индекс актуален</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоследнийАктивизированныйКонтакт" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Последний активизированный контакт</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ГруппыПользователей" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группы пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ГруппыПользователей.Parent</Field>
+			</UseAlways>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьГруппыПользователей</Item>
+			</FunctionalOptions>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникГруппыПользователей.Ссылка,
+	СправочникГруппыПользователей.ПометкаУдаления,
+	СправочникГруппыПользователей.Предопределенный,
+	СправочникГруппыПользователей.Родитель,
+	СправочникГруппыПользователей.Наименование,
+	ВЫБОР
+		КОГДА СправочникГруппыПользователей.ПометкаУдаления
+			ТОГДА 2
+		ИНАЧЕ 3
+	КОНЕЦ КАК НомерКартинки
+ИЗ
+	Справочник.ГруппыПользователей КАК СправочникГруппыПользователей</QueryText>
+				<MainTable>Catalog.ГруппыПользователей</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ИспользоватьГруппыПользователей" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать группы пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыФормы" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры формы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="КомандаНайти" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найти</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найти контакты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Find</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаНайтиВыполнить</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="НайтиВСпискеИзСпискаПредметов" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найти в списке</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найти в списке</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.FindInList</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>НайтиВСпискеИзСпискаПредметовВыполнить</Action>
+		</Command>
+		<Command name="НайтиВСпискеИзСпискаНайденных" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найти в списке</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найти в списке</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.FindInList</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>НайтиВСпискеИзСпискаНайденныхВыполнить</Action>
+		</Command>
+		<Command name="КомандаВыбрать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда выбрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда выбрать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ChooseValue</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаВыбрать</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Предмет">
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
+		</Parameter>
+		<Parameter name="Адрес">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Представление">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Контакт">
+			<Type>
+				<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+			</Type>
+		</Parameter>
+		<Parameter name="ТолькоEmail">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ТолькоТелефон">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ЗаменятьПустыеАдресИПредставление">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ДляФормыУточненияКонтактов">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

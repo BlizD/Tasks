@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Правила регистрации объектов</v8:content>
+		</v8:item>
+	</Title>
+	<Width>77</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandSet>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="50">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="51"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="52">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="53"/>
+			</Button>
+			<Button name="ФормаПеречитать" id="54">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.Reread</CommandName>
+				<ExtendedTooltip name="ФормаПеречитатьРасширеннаяПодсказка" id="55"/>
+			</Button>
+			<Button name="ФормаСохранитьПравилаРегистрацииВФайл" id="58">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СохранитьПравилаРегистрацииВФайл</CommandName>
+				<ExtendedTooltip name="ФормаСохранитьПравилаРегистрацииВФайлРасширеннаяПодсказка" id="59"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПланаОбмена" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа плана обмена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа плана обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПланаОбменаExtendedTooltip" id="34"/>
+			<ChildItems>
+				<InputField name="ИмяПланаОбмена" id="1">
+					<DataPath>Запись.ИмяПланаОбмена</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Синхронизация с программой</v8:content>
+						</v8:item>
+					</Title>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ContextMenu name="ИмяПланаОбменаКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="ИмяПланаОбменаExtendedTooltip" id="35"/>
+					<Events>
+						<Event name="OnChange">ИмяПланаОбменаПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОсновная" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Правила регистрации для программы "%1":</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа основная</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаОсновнаяExtendedTooltip" id="36"/>
+			<ChildItems>
+				<RadioButtonField name="ИсточникПравил" id="29">
+					<DataPath>ИсточникПравил</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Использовать типовые правила</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">ТиповыеИзКонфигурации</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Загрузить из файла на компьютере:</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">ЗагруженныеИзФайла</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ИсточникПравилКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ИсточникПравилExtendedTooltip" id="37"/>
+				</RadioButtonField>
+				<UsualGroup name="ГруппаИсточникиПравил" id="15">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаИсточникиПравилExtendedTooltip" id="38"/>
+					<ChildItems>
+						<Pages name="ИсточникМакетКонфигурации" id="16">
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ИсточникМакетКонфигурацииExtendedTooltip" id="39"/>
+							<ChildItems>
+								<Page name="СтраницаНесколькоМакетов" id="60">
+									<ExtendedTooltip name="СтраницаНесколькоМакетовРасширеннаяПодсказка" id="61"/>
+									<ChildItems>
+										<InputField name="ИмяМакетаПравил" id="7">
+											<DataPath>Запись.ИмяМакетаПравил</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ListChoiceMode>true</ListChoiceMode>
+											<TextEdit>false</TextEdit>
+											<ChoiceListButton>false</ChoiceListButton>
+											<ContextMenu name="ИмяМакетаПравилКонтекстноеМеню" id="8"/>
+											<ExtendedTooltip name="ИмяМакетаПравилExtendedTooltip" id="40"/>
+										</InputField>
+									</ChildItems>
+								</Page>
+								<Page name="СтраницаОдинМакет" id="62">
+									<ExtendedTooltip name="СтраницаОдинМакетРасширеннаяПодсказка" id="63"/>
+									<ChildItems>
+										<LabelDecoration name="ПустаяДекорация" id="64">
+											<ContextMenu name="ПустаяДекорацияКонтекстноеМеню" id="65"/>
+											<ExtendedTooltip name="ПустаяДекорацияРасширеннаяПодсказка" id="66"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<UsualGroup name="ИсточникФайл" id="17">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ИсточникФайлExtendedTooltip" id="44"/>
+							<ChildItems>
+								<InputField name="ИмяФайлаПравил" id="5">
+									<DataPath>Запись.ИмяФайлаПравил</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="ИмяФайлаПравилКонтекстноеМеню" id="6"/>
+									<ExtendedTooltip name="ИмяФайлаПравилExtendedTooltip" id="45"/>
+								</InputField>
+								<UsualGroup name="ГруппаДействияСПравиламиИзФайла" id="28">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа действия с правилами из файла</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа действия с правилами из файла</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаДействияСПравиламиИзФайлаExtendedTooltip" id="46"/>
+									<ChildItems>
+										<Button name="ЗагрузитьПравилаИзФайла" id="21">
+											<Type>UsualButton</Type>
+											<SkipOnInput>true</SkipOnInput>
+											<CommandName>Form.Command.ЗагрузитьПравила</CommandName>
+											<ExtendedTooltip name="ЗагрузитьПравилаИзФайлаExtendedTooltip" id="47"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ИнформацияОПравилах" id="11">
+			<DataPath>ИнформацияОПравилах</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Height>6</Height>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="ИнформацияОПравилахКонтекстноеМеню" id="12"/>
+			<ExtendedTooltip name="ИнформацияОПравилахExtendedTooltip" id="49"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ПравилаДляОбменаДанными</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ИнформацияОПравилах" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информация о правилах</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИсточникПравил" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Источник правил</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СобытиеЖурналаРегистрацииЗагрузкаПравилДляОбменаДанными" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Событие журнала регистрации загрузка правил для обмена данными</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗагрузитьПравила" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить правила</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.OpenFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗагрузитьПравила</Action>
+			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="СохранитьПравилаРегистрацииВФайл" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить правила регистрации в файл</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить правила в файл</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыгрузитьПравила</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ЗаписатьИЗакрыть" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаписатьИЗакрыть</Action>
+			<Representation>Text</Representation>
+		</Command>
+	</Commands>
+</Form>

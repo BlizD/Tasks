@@ -1,0 +1,153 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Language" content="ru-ru">
+    <meta http-equiv="Content-Type" content="text/html; charset=unicode">
+    <title>Восстановление данных из резервной копии...</title>
+    <hta:application id="oHTA" border="none" caption="no" contextmenu="no" icon="splash.ico"
+        innerborder="no" navigable="yes" showintaskbar="yes" scroll="no" version="1.0.0.0" />
+    <script language="javascript" src="helpers.js"></script>
+    <script language="javascript" src="main.js"></script>
+    <script language="javascript">
+
+        // Размер и положение окна по умолчанию.
+        var splashWindowWidth = 604;
+        var splashWindowHeight = 324;
+        var splashWindowLeft = 200;
+        var splashWindowTop = 100;
+
+        // Инициализация окна
+        if (window.screen) {
+            splashWindowLeft = (window.screen.availWidth - splashWindowWidth) / 2;
+            splashWindowTop = (window.screen.availHeight - splashWindowHeight) / 2;
+        }
+        window.moveTo(splashWindowLeft, splashWindowTop);
+        window.resizeTo(splashWindowWidth, splashWindowHeight);
+
+        // Переменные состояния
+        var step = 0;   // Текущий шаг процедуры восстановления базы данных.
+        var ret = 0;    // Код возврата предыдущего шага.
+        var finish = false;
+        var errStep = 0;
+
+        // Вывести сообщение о ходе восстановления данных
+        function setProgress(statusText) {
+            statusText += "...";
+            progressText.innerHTML = statusText;
+            log(statusText);
+        }
+
+        // Конечный автомат для выполнения шагов процедуры восстановления данных.
+        function doStep(step) {
+            switch (step) {
+                case 0:
+                    setProgress("Инициализация");
+                    break;
+                case 1:
+                    ret = initialize();
+                    break;
+                case 2:
+                    setProgress("Восстановление данных");
+                    ret = backupDB();
+                    break;
+                case 3:
+                    setProgress("Ожидание завершения восстановления данных");
+                    break;
+                case 4:
+                    ret = WaitUntilFinish();
+                    break;
+                case 5:
+                    setProgress("Разрешение подключений новых соединений");
+                    break;
+                case 6:
+                    ret = allowConnections();
+                    break;
+                case 7:
+                    setProgress("Завершение");
+                    break;
+                case 8:
+
+                    // Все готово.
+                    finalize(true);
+                    runEnterprise();
+                    self.close();
+                    ClearTempFiles();
+                    finish = true;
+                    break;
+                default:
+            }
+            return ret;
+        }
+
+        // Выпонить процедуру восстановления данных
+        function main() {
+            if (finish)
+                return;
+
+            if (ret > 0)   // Если предыдущий шаг завершился неудачно...
+            {
+                if (errStep == 0) {
+
+                    log(format("Завершение с ошибкой. Код ошибки: {0}. Подробности см. в предыдущей записи.", ret), true);
+                    finalize();
+                    runEnterprise();
+                    self.close();
+                    return;
+                }
+                finalize();
+                runEnterprise();
+                self.close();
+                ClearTempFiles();
+                finish = true;
+                return;
+            }
+
+            // Последовательное выполнение шагов процедуры восстановления данных
+            if (ret != -1)
+                step++;
+            doStep(step);
+
+            // Передача управления IE и повторный вызов main через 1 секунду (достаточно для завершения COM-соединения).
+            // Если еще не все сеансы завершены, то ret = -1 и ждем 18 секунд до следующей проверки.
+            if (!finish)
+                setTimeout("main()", ret != -1 ? 1000 : 18 * 1000);   // Передача управления IE и повторный вызов main.
+        }
+
+        function checkClose() {
+            if (!finish)
+                event.returnValue = format('Внимание: процесс восстановления данных был прерван, и информационная база осталась заблокированной!\n' +
+            'Для разблокирования информационной базы воспользуйтесь консолью кластера серверов или запустите "1С:Предприятие".');
+        }
+
+        function ClearTempFiles() {
+            // Удаляем временные файлы
+            try {
+                oFileSystemObject.DeleteFile(thisFileDir + '\\main.js');
+                oFileSystemObject.DeleteFile(thisFileDir + '\\helpers.js');
+                oFileSystemObject.DeleteFile(thisFileDir + '\\splash.png');
+                oFileSystemObject.DeleteFile(thisFileDir + '\\splash.ico');
+                oFileSystemObject.DeleteFile(thisFileDir + '\\progress.gif');
+                oFileSystemObject.DeleteFile(thisFileDir + '\\splash.hta');
+                oFileSystemObject.DeleteFile(TempCatalog + '\\1Cv8.1CD');
+            }
+            catch (e) { }
+        }
+
+    </script>
+</head>
+<body onload="window.setTimeout('main()',10);" style="border: 2px; background-image:url(splash.png); background-repeat: no-repeat; background-position: center center; background-attachment: fixed; background-color: #B3B3B3;">
+    <div id="progressIcon" style="position: absolute; left: 10px; top: 65px;">
+        <img src="progress.gif" border="0" />
+    </div>
+    <div id="captionText" style="font-size: 9pt; font-family: verdana,arial; font-weight: bold;
+        color: #606060; position: absolute; left: 80px; top: 70px;">
+        Пожалуйста, подождите.<br />
+        Выполняется восстановление базы данных<br />
+        из резервной копии.<br />
+        Не рекомендуется останавливать процесс.
+    </div>
+    <div id="progressText" style="font-size: 8pt; font-family: verdana,arial; color: #000000;
+        position: absolute; left: 10px; top: 240px;">
+        &nbsp;
+    </div>
+</body>
+</html>

@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="10">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="11"/>
+			</Button>
+			<Button name="ФормаСправка" id="110">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="111"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаСложностьПароля" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа сложность пароля</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСложностьПароляРасширеннаяПодсказка" id="34"/>
+			<ChildItems>
+				<CheckBoxField name="ПарольДолженОтвечатьТребованиямСложности" id="4">
+					<DataPath>ПарольДолженОтвечатьТребованиямСложности</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проверять, чтобы новый пароль:
+- имел не менее 7 символов; 
+- содержал любые 3 из 4-х типов символов: заглавные буквы,
+  строчные буквы, цифры, специальные символы;
+- не совпадал с именем (для входа).</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ПарольДолженОтвечатьТребованиямСложностиКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ПарольДолженОтвечатьТребованиямСложностиРасширеннаяПодсказка" id="6"/>
+					<Events>
+						<Event name="OnChange">ПарольДолженОтвечатьТребованиямСложностиПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаМинимальнаяДлинаПароля" id="43">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа минимальная длина пароля</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаМинимальнаяДлинаПароляРасширеннаяПодсказка" id="44"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаМинимальнаяДлинаПароляВключить" id="100">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа минимальная длина пароля включить</v8:content>
+								</v8:item>
+							</Title>
+							<Width>34</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаМинимальнаяДлинаПароляВключитьРасширеннаяПодсказка" id="101"/>
+							<ChildItems>
+								<CheckBoxField name="МинимальнаяДлинаПароляВключить" id="86">
+									<DataPath>МинимальнаяДлинаПароляВключить</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="МинимальнаяДлинаПароляВключитьКонтекстноеМеню" id="87"/>
+									<ExtendedTooltip name="МинимальнаяДлинаПароляВключитьРасширеннаяПодсказка" id="88"/>
+									<Events>
+										<Event name="OnChange">НастройкаВключитьПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="МинимальнаяДлинаПароля" id="1">
+							<DataPath>МинимальнаяДлинаПароля</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<MinValue xsi:type="xs:decimal">1</MinValue>
+							<ContextMenu name="МинимальнаяДлинаПароляКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="МинимальнаяДлинаПароляРасширеннаяПодсказка" id="3"/>
+							<Events>
+								<Event name="OnChange">МинимальнаяДлинаПароляПриИзменении</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="ПояснениеМинимальнаяДлинаПароля" id="45">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>знак.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПояснениеМинимальнаяДлинаПароляКонтекстноеМеню" id="46"/>
+							<ExtendedTooltip name="ПояснениеМинимальнаяДлинаПароляРасширеннаяПодсказка" id="47"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСменаПароля" id="108">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа смена пароля</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСменаПароляРасширеннаяПодсказка" id="109"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаМаксимальныйСрокДействияПароля" id="53">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа максимальный срок действия пароля</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаМаксимальныйСрокДействияПароляРасширеннаяПодсказка" id="54"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаМаксимальныйСрокДействияПароляВключить" id="104">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа максимальный срок действия пароля включить</v8:content>
+								</v8:item>
+							</Title>
+							<Width>34</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаМаксимальныйСрокДействияПароляВключитьРасширеннаяПодсказка" id="105"/>
+							<ChildItems>
+								<CheckBoxField name="МаксимальныйСрокДействияПароляВключить" id="92">
+									<DataPath>МаксимальныйСрокДействияПароляВключить</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="МаксимальныйСрокДействияПароляВключитьКонтекстноеМеню" id="93"/>
+									<ExtendedTooltip name="МаксимальныйСрокДействияПароляВключитьРасширеннаяПодсказка" id="94"/>
+									<Events>
+										<Event name="OnChange">НастройкаВключитьПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="МаксимальныйСрокДействияПароля" id="12">
+							<DataPath>МаксимальныйСрокДействияПароля</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Срок после первого входа с новым паролем,
+после которого пользователю потребуется сменить пароль.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MinValue xsi:type="xs:decimal">1</MinValue>
+							<ContextMenu name="МаксимальныйСрокДействияПароляКонтекстноеМеню" id="13"/>
+							<ExtendedTooltip name="МаксимальныйСрокДействияПароляРасширеннаяПодсказка" id="14"/>
+						</InputField>
+						<LabelDecoration name="ПояснениеМаксимальныйСрокДействияПароля" id="55">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>дн.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПояснениеМаксимальныйСрокДействияПароляКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="ПояснениеМаксимальныйСрокДействияПароляРасширеннаяПодсказка" id="57"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаМинимальныйСрокДействияПароля" id="48">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа минимальный срок действия пароля</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаМинимальныйСрокДействияПароляРасширеннаяПодсказка" id="49"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаМинимальныйСрокДействияПароляВключить" id="98">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа минимальный срок действия пароля включить</v8:content>
+								</v8:item>
+							</Title>
+							<Width>34</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаМинимальныйСрокДействияПароляВключитьРасширеннаяПодсказка" id="99"/>
+							<ChildItems>
+								<CheckBoxField name="МинимальныйСрокДействияПароляВключить" id="89">
+									<DataPath>МинимальныйСрокДействияПароляВключить</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="МинимальныйСрокДействияПароляВключитьКонтекстноеМеню" id="90"/>
+									<ExtendedTooltip name="МинимальныйСрокДействияПароляВключитьРасширеннаяПодсказка" id="91"/>
+									<Events>
+										<Event name="OnChange">НастройкаВключитьПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="МинимальныйСрокДействияПароля" id="25">
+							<DataPath>МинимальныйСрокДействияПароля</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Срок после первого входа с новым паролем,
+в течение которого пользователь не сможет сменить пароль.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MinValue xsi:type="xs:decimal">1</MinValue>
+							<ContextMenu name="МинимальныйСрокДействияПароляКонтекстноеМеню" id="26"/>
+							<ExtendedTooltip name="МинимальныйСрокДействияПароляРасширеннаяПодсказка" id="27"/>
+						</InputField>
+						<LabelDecoration name="ПояснениеМинимальныйСрокДействияПароля" id="50">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>дн.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПояснениеМинимальныйСрокДействияПароляКонтекстноеМеню" id="51"/>
+							<ExtendedTooltip name="ПояснениеМинимальныйСрокДействияПароляРасширеннаяПодсказка" id="52"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЗапретитьПовторениеПароляСредиПоследних" id="38">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа запретить повторение пароля среди последних</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗапретитьПовторениеПароляСредиПоследнихРасширеннаяПодсказка" id="39"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаЗапретитьПовторениеПароляСредиПоследнихВключить" id="102">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа запретить повторение пароля среди последних включить</v8:content>
+								</v8:item>
+							</Title>
+							<Width>34</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЗапретитьПовторениеПароляСредиПоследнихВключитьРасширеннаяПодсказка" id="103"/>
+							<ChildItems>
+								<CheckBoxField name="ЗапретитьПовторениеПароляСредиПоследнихВключить" id="83">
+									<DataPath>ЗапретитьПовторениеПароляСредиПоследнихВключить</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ЗапретитьПовторениеПароляСредиПоследнихВключитьКонтекстноеМеню" id="84"/>
+									<ExtendedTooltip name="ЗапретитьПовторениеПароляСредиПоследнихВключитьРасширеннаяПодсказка" id="85"/>
+									<Events>
+										<Event name="OnChange">НастройкаВключитьПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="ЗапретитьПовторениеПароляСредиПоследних" id="7">
+							<DataPath>ЗапретитьПовторениеПароляСредиПоследних</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<MinValue xsi:type="xs:decimal">1</MinValue>
+							<ContextMenu name="ЗапретитьПовторениеПароляСредиПоследнихКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="ЗапретитьПовторениеПароляСредиПоследнихРасширеннаяПодсказка" id="9"/>
+						</InputField>
+						<LabelDecoration name="ПояснениеЗапретитьПовторениеПароляСредиПоследних" id="40">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>знач.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПояснениеЗапретитьПовторениеПароляСредиПоследнихКонтекстноеМеню" id="41"/>
+							<ExtendedTooltip name="ПояснениеЗапретитьПовторениеПароляСредиПоследнихРасширеннаяПодсказка" id="42"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПросрочкаРаботыВПрограммеДоЗапрещенияВхода" id="75">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа просрочка работы в программе до запрещения входа</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПросрочкаРаботыВПрограммеДоЗапрещенияВходаРасширеннаяПодсказка" id="76"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаПросрочкаРаботыВПрограммеДоЗапрещенияВходаВключить" id="106">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа просрочка работы в программе до запрещения входа включить</v8:content>
+						</v8:item>
+					</Title>
+					<Width>34</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПросрочкаРаботыВПрограммеДоЗапрещенияВходаВключитьРасширеннаяПодсказка" id="107"/>
+					<ChildItems>
+						<CheckBoxField name="ПросрочкаРаботыВПрограммеДоЗапрещенияВходаВключить" id="95">
+							<DataPath>ПросрочкаРаботыВПрограммеДоЗапрещенияВходаВключить</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<TitleHeight>2</TitleHeight>
+							<VerticalAlign>Top</VerticalAlign>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПросрочкаРаботыВПрограммеДоЗапрещенияВходаВключитьКонтекстноеМеню" id="96"/>
+							<ExtendedTooltip name="ПросрочкаРаботыВПрограммеДоЗапрещенияВходаВключитьРасширеннаяПодсказка" id="97"/>
+							<Events>
+								<Event name="OnChange">НастройкаВключитьПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="ПросрочкаРаботыВПрограммеДоЗапрещенияВхода" id="77">
+					<DataPath>ПросрочкаРаботыВПрограммеДоЗапрещенияВхода</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Срок относительно последней активности пользователя,
+после которого вход в программу будет запрещен.
+
+Не влияет на администраторов.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<MinValue xsi:type="xs:decimal">1</MinValue>
+					<ContextMenu name="ПросрочкаРаботыВПрограммеДоЗапрещенияВходаКонтекстноеМеню" id="78"/>
+					<ExtendedTooltip name="ПросрочкаРаботыВПрограммеДоЗапрещенияВходаРасширеннаяПодсказка" id="79"/>
+				</InputField>
+				<LabelDecoration name="ПояснениеПросрочкаРаботыВПрограммеДоЗапрещенияВхода" id="80">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>дн.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ПояснениеПросрочкаРаботыВПрограммеДоЗапрещенияВходаКонтекстноеМеню" id="81"/>
+					<ExtendedTooltip name="ПояснениеПросрочкаРаботыВПрограммеДоЗапрещенияВходаРасширеннаяПодсказка" id="82"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="МинимальнаяДлинаПароля" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Минимальная длина пароля</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПарольДолженОтвечатьТребованиямСложности" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль должен отвечать требованиям сложности</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапретитьПовторениеПароляСредиПоследних" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запретить повторение пароля среди последних</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="МаксимальныйСрокДействияПароля" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Максимальный срок действия пароля</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="МинимальныйСрокДействияПароля" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Минимальный срок действия пароля</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказатьНастройкиВнешнихПользователей" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать настройки внешних пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПросрочкаРаботыВПрограммеДоЗапрещенияВхода" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просрочка работы в программе до запрещения входа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапретитьПовторениеПароляСредиПоследнихВключить" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запретить повторение пароля среди последних:</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МинимальнаяДлинаПароляВключить" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Минимальная длина пароля:</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МинимальныйСрокДействияПароляВключить" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Минимальный срок действия пароля:</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МаксимальныйСрокДействияПароляВключить" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Максимальный срок действия пароля:</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПросрочкаРаботыВПрограммеДоЗапрещенияВходаВключить" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрещать вход в программу пользователям, которые не работали в программе более:</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПредлагаемыеЗначенияНастроек" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предлагаемые значения настроек</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ТекстВопросаОбОчисткеНастроекКонфигуратора" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст вопроса об очистке настроек конфигуратора</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаписатьИЗакрыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьИЗакрыть</Action>
+		</Command>
+		<Command name="ПроверитьОтправкуКодаПодтверждения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить отправку кода подтверждения
+(на почтовый ящик текущего пользователя)</v8:content>
+				</v8:item>
+			</ToolTip>
+		</Command>
+		<Command name="ПроверитьОтправкуПриглашенияНаВход" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить отправку приглашения на вход
+(на почтовый ящик текущего пользователя)</v8:content>
+				</v8:item>
+			</ToolTip>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ПоказатьНастройкиВнешнихПользователей">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

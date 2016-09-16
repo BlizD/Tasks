@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Rights xmlns="http://v8.1c.ru/8.2/roles" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Rights">
+	<setForNewObjects>false</setForNewObjects>
+	<setForAttributesByDefault>true</setForAttributesByDefault>
+	<independentRightsOfChildObjects>false</independentRightsOfChildObjects>
+	<object>
+		<name>ChartOfCharacteristicTypes.РазделыДатЗапретаИзменения</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+		</right>
+		<right>
+			<name>View</name>
+			<value>true</value>
+		</right>
+		<right>
+			<name>InputByString</name>
+			<value>true</value>
+		</right>
+	</object>
+	<object>
+		<name>Report.ДатыЗапретаИзменения</name>
+		<right>
+			<name>Use</name>
+			<value>true</value>
+		</right>
+		<right>
+			<name>View</name>
+			<value>true</value>
+		</right>
+	</object>
+	<object>
+		<name>InformationRegister.ДатыЗапретаИзменения.Command.ДатыЗапретаИзмененияДанных</name>
+		<right>
+			<name>View</name>
+			<value>true</value>
+		</right>
+	</object>
+	<object>
+		<name>InformationRegister.ДатыЗапретаИзменения</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>// Запрет доступа к датам запрета загрузки.
+ДатыЗапретаИзменения ГДЕ НЕ(
+	  ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.Пользователи)
+	И ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.ГруппыПользователей)
+	И ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.ВнешниеПользователи)
+	И ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.ГруппыВнешнихПользователей)
+	И ДатыЗапретаИзменения.Пользователь              &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехПользователей))
+</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>Update</name>
+			<value>true</value>
+			<restrictionByCondition>
+				<condition>// Запрет доступа к датам запрета загрузки.
+ДатыЗапретаИзменения ГДЕ НЕ(
+	  ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.Пользователи)
+	И ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.ГруппыПользователей)
+	И ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.ВнешниеПользователи)
+	И ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.ГруппыВнешнихПользователей)
+	И ДатыЗапретаИзменения.Пользователь              &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехПользователей))
+</condition>
+			</restrictionByCondition>
+		</right>
+		<right>
+			<name>View</name>
+			<value>true</value>
+		</right>
+		<right>
+			<name>Edit</name>
+			<value>true</value>
+		</right>
+		<right>
+			<name>TotalsControl</name>
+			<value>true</value>
+		</right>
+	</object>
+</Rights>

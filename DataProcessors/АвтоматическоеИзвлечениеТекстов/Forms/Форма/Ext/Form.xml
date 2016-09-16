@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>50</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<ChildItems>
+			<Button name="Старт" id="18">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Старт</CommandName>
+				<ExtendedTooltip name="СтартExtendedTooltip" id="21"/>
+			</Button>
+			<Button name="Стоп" id="19">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Стоп</CommandName>
+				<ExtendedTooltip name="СтопExtendedTooltip" id="22"/>
+			</Button>
+			<Button name="ИзвлечьТекстИзВсехФайлов" id="20">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ИзвлечьВсе</CommandName>
+				<ExtendedTooltip name="ИзвлечьТекстИзВсехФайловExtendedTooltip" id="23"/>
+			</Button>
+			<Button name="Закрыть" id="3">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="ЗакрытьExtendedTooltip" id="24"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаИнтервалВремени" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа интервал времени</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа интервал времени</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаИнтервалВремениExtendedTooltip" id="25"/>
+			<ChildItems>
+				<InputField name="ИнтервалВремениВыполнения" id="1">
+					<DataPath>ИнтервалВремениВыполнения</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Интервал времени выполнения</v8:content>
+						</v8:item>
+					</Title>
+					<SpinButton>true</SpinButton>
+					<ContextMenu name="ИнтервалВремениВыполненияКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="ИнтервалВремениВыполненияExtendedTooltip" id="26"/>
+					<Events>
+						<Event name="OnChange">ИнтервалВремениВыполненияПриИзменении</Event>
+					</Events>
+				</InputField>
+				<LabelDecoration name="ДекорацияСек" id="9">
+					<SkipOnInput>false</SkipOnInput>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(сек)</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияСекКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="ДекорацияСекExtendedTooltip" id="27"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="КоличествоФайловВПорции" id="15">
+			<DataPath>КоличествоФайловВПорции</DataPath>
+			<ContextMenu name="КоличествоФайловВПорцииКонтекстноеМеню" id="16"/>
+			<ExtendedTooltip name="КоличествоФайловВПорцииExtendedTooltip" id="28"/>
+			<Events>
+				<Event name="OnChange">КоличествоФайловВПорцииПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="КоличествоФайловСНеизвлеченнымТекстом" id="12">
+			<DataPath>КоличествоФайловСНеизвлеченнымТекстом</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="КоличествоФайловСНеизвлеченнымТекстомКонтекстноеМеню" id="13"/>
+			<ExtendedTooltip name="КоличествоФайловСНеизвлеченнымТекстомExtendedTooltip" id="29"/>
+		</InputField>
+		<UsualGroup name="ГруппаСтатуса" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа статуса</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа статуса</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСтатусаExtendedTooltip" id="30"/>
+			<ChildItems>
+				<LabelField name="Статус" id="4">
+					<DataPath>Статус</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Height>1</Height>
+					<ContextMenu name="СтатусКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="СтатусExtendedTooltip" id="31"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.АвтоматическоеИзвлечениеТекстов</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ИнтервалВремениВыполнения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Интервал времени выполнения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>5</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Статус" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПрогнозируемоеВремяНачалаИзвлечения" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прогнозируемое время начала извлечения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КоличествоФайловСНеизвлеченнымТекстом" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество файлов с неизвлеченным текстом</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>7</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КоличествоФайловВПорции" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество файлов в одной порции</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>5</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВключеноИзвлечениеТекста" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включено извлечение текста</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Старт" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Старт</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Старт</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Старт</Action>
+		</Command>
+		<Command name="Стоп" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стоп</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стоп</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Стоп</Action>
+		</Command>
+		<Command name="ИзвлечьВсе" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Извлечь все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Извлечь текст из всех файлов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИзвлечьВсе</Action>
+		</Command>
+	</Commands>
+</Form>

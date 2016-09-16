@@ -1,0 +1,35 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/1.0.0.1">
+	<valueType name="NetworkProtocols" base="xs:string">
+		<enumeration xsi:type="xs:string">HTTP</enumeration>
+		<enumeration xsi:type="xs:string">FTP</enumeration>
+		<enumeration xsi:type="xs:string">HTTPS</enumeration>
+	</valueType>
+	<valueType name="DocumentPostingActions" base="xs:string">
+		<enumeration xsi:type="xs:string">Posting</enumeration>
+		<enumeration xsi:type="xs:string">UndoPosting</enumeration>
+	</valueType>
+	<objectType name="InternalFileHandler"/>
+	<objectType name="PermissionBase"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/1.0.0.1" name="InternetConnectionBase" base="d2p1:PermissionBase">
+		<property name="Protocol" type="d2p1:NetworkProtocols" lowerBound="0" nillable="true"/>
+		<property name="Host" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Port" type="xs:decimal" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/1.0.0.1" name="GetFileFromInternet" base="d2p1:InternetConnectionBase"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/1.0.0.1" name="SendFileToInternet" base="d2p1:InternetConnectionBase"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/1.0.0.1" name="SoapConnect" base="d2p1:PermissionBase">
+		<property name="WsdlDestination" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/1.0.0.1" name="CreateComObject" base="d2p1:PermissionBase">
+		<property name="ProgId" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/1.0.0.1" name="AttachAddin" base="d2p1:PermissionBase">
+		<property name="TemplateName" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/1.0.0.1" name="GetFileFromExternalSoftware" base="d2p1:PermissionBase"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/1.0.0.1" name="SendFileToExternalSoftware" base="d2p1:PermissionBase"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/1.0.0.1" name="DocumentPosting" base="d2p1:PermissionBase">
+		<property name="DocumentType" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Action" type="d2p1:DocumentPostingActions" lowerBound="0" nillable="true"/>
+	</objectType>
+</package>

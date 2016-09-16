@@ -1,0 +1,19 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/SSL/Exchange/Message">
+	<valueType name="Ref" base="xs:string" variety="Atomic"/>
+	<objectType name="Confirmation">
+		<property name="ExchangePlan" type="xs:string"/>
+		<property name="To" type="xs:string"/>
+		<property name="From" type="xs:string"/>
+		<property name="MessageNo" type="xs:integer"/>
+		<property name="ReceivedNo" type="xs:integer"/>
+	</objectType>
+	<objectType name="Header">
+		<property name="Format" type="xs:string"/>
+		<property name="CreationDate" type="xs:dateTime"/>
+		<property xmlns:d3p1="http://www.1c.ru/SSL/Exchange/Message" name="Confirmation" type="d3p1:Confirmation" lowerBound="0"/>
+		<property name="AvailableVersion" type="xs:string" upperBound="100"/>
+	</objectType>
+	<objectType name="Object" abstract="true">
+		<property name="AdditionalInfo" type="xs:anyType" lowerBound="0"/>
+	</objectType>
+</package>

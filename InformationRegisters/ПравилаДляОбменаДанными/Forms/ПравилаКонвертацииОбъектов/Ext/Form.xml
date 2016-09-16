@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Правила конвертации данных</v8:content>
+		</v8:item>
+	</Title>
+	<Width>77</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandSet>
+		<ExcludedCommand>Reread</ExcludedCommand>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="82">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="83"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="84">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="85"/>
+			</Button>
+			<Button name="ФормаПеречитать" id="50">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>0:1f317795-c420-4a30-b594-c492abc55f7a</CommandName>
+				<ExtendedTooltip name="ФормаПеречитатьExtendedTooltip" id="52"/>
+			</Button>
+			<Button name="ФормаУдалить" id="86">
+				<Type>CommandBarButton</Type>
+				<CommandName>0:c32d43de-b820-49d0-bf7a-d70829f48f40</CommandName>
+				<ExtendedTooltip name="ФормаУдалитьРасширеннаяПодсказка" id="87"/>
+			</Button>
+			<Button name="СохранитьПравилаВФайл" id="20">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>true</SkipOnInput>
+				<CommandName>Form.Command.СохранитьПравилаКонвертацииВФайл</CommandName>
+				<ExtendedTooltip name="СохранитьПравилаВФайлРасширеннаяПодсказка" id="62"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПланаОбмена" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа плана обмена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа плана обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПланаОбменаExtendedTooltip" id="53"/>
+			<ChildItems>
+				<InputField name="ИмяПланаОбмена" id="1">
+					<DataPath>Запись.ИмяПланаОбмена</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Синхронизация с программой</v8:content>
+						</v8:item>
+					</Title>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ContextMenu name="ИмяПланаОбменаКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="ИмяПланаОбменаExtendedTooltip" id="54"/>
+					<Events>
+						<Event name="OnChange">ИмяПланаОбменаПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОсновная" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Правила конвертации для программы "%1":</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа основная</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаОсновнаяExtendedTooltip" id="55"/>
+			<ChildItems>
+				<RadioButtonField name="ИсточникПравил" id="29">
+					<DataPath>ИсточникПравил</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Использовать типовые правила</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">ТиповыеИзКонфигурации</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Загрузить из файла на компьютере:</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">ЗагруженныеИзФайла</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ИсточникПравилКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ИсточникПравилExtendedTooltip" id="56"/>
+					<Events>
+						<Event name="OnChange">ИсточникПравилПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="ГруппаИсточникиПравил" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа источники правил</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаИсточникиПравилExtendedTooltip" id="57"/>
+					<ChildItems>
+						<Pages name="ИсточникМакетКонфигурации" id="16">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Источник макет конфигурации</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Источник макет конфигурации</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ИсточникМакетКонфигурацииExtendedTooltip" id="58"/>
+							<ChildItems>
+								<Page name="СтраницаНесколькоМакетов" id="95">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница несколько макетов</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СтраницаНесколькоМакетовРасширеннаяПодсказка" id="96"/>
+									<ChildItems>
+										<InputField name="ИмяМакетаПравил" id="7">
+											<DataPath>Запись.ИмяМакетаПравил</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Типовые правила</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<ListChoiceMode>true</ListChoiceMode>
+											<TextEdit>false</TextEdit>
+											<ChoiceListButton>false</ChoiceListButton>
+											<ContextMenu name="ИмяМакетаПравилКонтекстноеМеню" id="8"/>
+											<ExtendedTooltip name="ИмяМакетаПравилExtendedTooltip" id="59"/>
+											<Events>
+												<Event name="OnChange">ИмяМакетаПравилПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</Page>
+								<Page name="СтраницаОдинМакет" id="97">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница один макет</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СтраницаОдинМакетРасширеннаяПодсказка" id="98"/>
+									<ChildItems>
+										<LabelDecoration name="ПустаяДекорация" id="99">
+											<ContextMenu name="ПустаяДекорацияКонтекстноеМеню" id="100"/>
+											<ExtendedTooltip name="ПустаяДекорацияРасширеннаяПодсказка" id="101"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<UsualGroup name="ИсточникФайл" id="17">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Источник файл</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Источник файл</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ИсточникФайлExtendedTooltip" id="63"/>
+							<ChildItems>
+								<InputField name="ИмяФайлаПравил" id="5">
+									<DataPath>Запись.ИмяФайлаПравил</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<Height>1</Height>
+									<ContextMenu name="ИмяФайлаПравилКонтекстноеМеню" id="6"/>
+									<ExtendedTooltip name="ИмяФайлаПравилExtendedTooltip" id="64"/>
+								</InputField>
+								<Button name="ЗагрузитьТиповыеПравила" id="19">
+									<Type>UsualButton</Type>
+									<SkipOnInput>true</SkipOnInput>
+									<Height>1</Height>
+									<CommandName>Form.Command.ЗагрузитьПравила</CommandName>
+									<ExtendedTooltip name="ЗагрузитьТиповыеПравилаExtendedTooltip" id="61"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ИнформацияОПравилах" id="11">
+			<DataPath>ИнформацияОПравилах</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Height>6</Height>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="ИнформацияОПравилахКонтекстноеМеню" id="12"/>
+			<ExtendedTooltip name="ИнформацияОПравилахExtendedTooltip" id="79"/>
+		</InputField>
+		<UsualGroup name="ГруппаОтладки" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка режима отладки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа отладки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаОтладкиРасширеннаяПодсказка" id="68"/>
+			<ChildItems>
+				<CheckBoxField name="ВключитьРежимОтладки" id="88">
+					<DataPath>Запись.РежимОтладки</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Включить режим отладки</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВключитьРежимОтладкиКонтекстноеМеню" id="89"/>
+					<ExtendedTooltip name="ВключитьРежимОтладкиРасширеннаяПодсказка" id="90"/>
+					<Events>
+						<Event name="OnChange">ВключитьРежимОтладкиПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="Группа1" id="104">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="105"/>
+					<ChildItems>
+						<LabelDecoration name="Декорация1" id="106">
+							<Width>1</Width>
+							<ContextMenu name="Декорация1КонтекстноеМеню" id="107"/>
+							<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="108"/>
+						</LabelDecoration>
+						<UsualGroup name="ГруппаНастройкиОтладки" id="102">
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНастройкиОтладкиРасширеннаяПодсказка" id="103"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаОтладкиВыгрузки" id="38">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа отладки выгрузки</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа отладки выгрузки</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаОтладкиВыгрузкиExtendedTooltip" id="69"/>
+									<ChildItems>
+										<CheckBoxField name="ВключитьОтладкуВыгрузки" id="32">
+											<DataPath>Запись.РежимОтладкиВыгрузки</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Подключить внешнюю обработку для отладки выгрузки</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ВключитьОтладкуВыгрузкиКонтекстноеМеню" id="33"/>
+											<ExtendedTooltip name="ВключитьОтладкуВыгрузкиExtendedTooltip" id="70"/>
+											<Events>
+												<Event name="OnChange">ВключитьОтладкуВыгрузкиПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="ВнешняяОбработкаДляОтладкиВыгрузки" id="40">
+											<DataPath>Запись.ИмяФайлаОбработкиДляОтладкиВыгрузки</DataPath>
+											<Enabled>false</Enabled>
+											<TitleLocation>None</TitleLocation>
+											<ChoiceButton>true</ChoiceButton>
+											<ContextMenu name="ВнешняяОбработкаДляОтладкиВыгрузкиКонтекстноеМеню" id="41"/>
+											<ExtendedTooltip name="ВнешняяОбработкаДляОтладкиВыгрузкиExtendedTooltip" id="71"/>
+											<Events>
+												<Event name="StartChoice">ВнешняяОбработкаДляОтладкиВыгрузкиНачалоВыбора</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаОтладкиЗагрузки" id="39">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа отладки загрузки</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа отладки загрузки</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаОтладкиЗагрузкиExtendedTooltip" id="72"/>
+									<ChildItems>
+										<CheckBoxField name="ВключитьОтладкуЗагрузки" id="34">
+											<DataPath>Запись.РежимОтладкиЗагрузки</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Подключить внешнюю обработку для отладки загрузки</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ВключитьОтладкуЗагрузкиКонтекстноеМеню" id="35"/>
+											<ExtendedTooltip name="ВключитьОтладкуЗагрузкиExtendedTooltip" id="73"/>
+											<Events>
+												<Event name="OnChange">ВключитьОтладкуЗагрузкиПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="ВнешняяОбработкаДляОтладкиЗагрузки" id="36">
+											<DataPath>Запись.ИмяФайлаОбработкиДляОтладкиЗагрузки</DataPath>
+											<Enabled>false</Enabled>
+											<TitleLocation>None</TitleLocation>
+											<ChoiceButton>true</ChoiceButton>
+											<ContextMenu name="ВнешняяОбработкаДляОтладкиЗагрузкиКонтекстноеМеню" id="37"/>
+											<ExtendedTooltip name="ВнешняяОбработкаДляОтладкиЗагрузкиExtendedTooltip" id="74"/>
+											<Events>
+												<Event name="StartChoice">ВнешняяОбработкаДляОтладкиЗагрузкиНачалоВыбора</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаПротокол" id="42">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа протокол</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа протокол</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПротоколExtendedTooltip" id="75"/>
+									<ChildItems>
+										<CheckBoxField name="ВключитьПротоколированиеОбменаДанными" id="43">
+											<DataPath>Запись.РежимПротоколированияОбменаДанными</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ВключитьПротоколированиеОбменаДаннымиКонтекстноеМеню" id="44"/>
+											<ExtendedTooltip name="ВключитьПротоколированиеОбменаДаннымиExtendedTooltip" id="76"/>
+											<Events>
+												<Event name="OnChange">ВключитьПротоколированиеОбменаДаннымиПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="ФайлПротоколаОбмена" id="45">
+											<DataPath>Запись.ИмяФайлаПротоколаОбмена</DataPath>
+											<Enabled>false</Enabled>
+											<TitleLocation>None</TitleLocation>
+											<ChoiceButton>true</ChoiceButton>
+											<OpenButton>true</OpenButton>
+											<ContextMenu name="ФайлПротоколаОбменаКонтекстноеМеню" id="46"/>
+											<ExtendedTooltip name="ФайлПротоколаОбменаExtendedTooltip" id="77"/>
+											<Events>
+												<Event name="StartChoice">ФайлПротоколаОбменаНачалоВыбора</Event>
+												<Event name="Opening">ФайлПротоколаОбменаОткрытие</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<CheckBoxField name="НеОстанавливатьПоОшибке" id="47">
+									<DataPath>Запись.НеОстанавливатьПоОшибке</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Не останавливать выполнение обмена данными при возникновении ошибки</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="НеОстанавливатьПоОшибкеКонтекстноеМеню" id="48"/>
+									<ExtendedTooltip name="НеОстанавливатьПоОшибкеExtendedTooltip" id="78"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДополнительно" id="18">
+			<UserVisible>
+				<xr:Common>false</xr:Common>
+			</UserVisible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительно</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>LeftWidest</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДополнительноExtendedTooltip" id="80"/>
+			<ChildItems>
+				<CheckBoxField name="ИспользоватьФильтрВыборочнойРегистрацииОбъектов" id="13">
+					<DataPath>Запись.ИспользоватьФильтрВыборочнойРегистрацииОбъектов</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИспользоватьФильтрВыборочнойРегистрацииОбъектовКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ИспользоватьФильтрВыборочнойРегистрацииОбъектовExtendedTooltip" id="81"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ПравилаДляОбменаДанными</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ИнформацияОПравилах" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информация о правилах</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИсточникПравил" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Источник правил</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СобытиеЖурналаРегистрацииЗагрузкаПравилДляОбменаДанными" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Событие журнала регистрации загрузка правил для обмена данными</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗагрузитьПравила" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить правила</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.OpenFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗагрузитьПравила</Action>
+			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="СохранитьПравилаКонвертацииВФайл" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить правила конвертации  в файл</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить правила конвертации в файл на компьютере</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыгрузитьПравила</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ЗаписатьИЗакрыть" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаписатьИЗакрыть</Action>
+			<Representation>Text</Representation>
+		</Command>
+	</Commands>
+</Form>

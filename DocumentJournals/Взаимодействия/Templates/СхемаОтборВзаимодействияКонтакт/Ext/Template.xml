@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ОсновнойНаборДанных</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПометкаУдаления</dataPath>
+			<field>ПометкаУдаления</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номер</dataPath>
+			<field>Номер</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Проведен</dataPath>
+			<field>Проведен</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Автор</dataPath>
+			<field>Автор</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Входящий</dataPath>
+			<field>Входящий</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕстьВложения</dataPath>
+			<field>ЕстьВложения</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ответственный</dataPath>
+			<field>Ответственный</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Предмет</dataPath>
+			<field>Предмет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтатусИсходящегоПисьма</dataPath>
+			<field>СтатусИсходящегоПисьма</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Участники</dataPath>
+			<field>Участники</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипПредмета</dataPath>
+			<field>ТипПредмета</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УчетнаяЗапись</dataPath>
+			<field>УчетнаяЗапись</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Рассмотрено</dataPath>
+			<field>Рассмотрено</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РассмотретьПосле</dataPath>
+			<field>РассмотретьПосле</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Тип</dataPath>
+			<field>Тип</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Папка</dataPath>
+			<field>Папка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Тема</dataPath>
+			<field>Тема</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПолученоОтправлено</dataPath>
+			<field>ПолученоОтправлено</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Размер</dataPath>
+			<field>Размер</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Важность</dataPath>
+			<field>Важность</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВажностьНомерКартинки</dataPath>
+			<field>ВажностьНомерКартинки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Контакт</dataPath>
+			<field>Контакт</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Поиск</dataPath>
+			<field>Поиск</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЖурналДокументовВзаимодействия.Ссылка,
+	ЖурналДокументовВзаимодействия.Дата,
+	ЖурналДокументовВзаимодействия.ПометкаУдаления,
+	ЖурналДокументовВзаимодействия.Номер,
+	ЖурналДокументовВзаимодействия.Проведен,
+	ЖурналДокументовВзаимодействия.Автор,
+	ЖурналДокументовВзаимодействия.Входящий,
+	ЖурналДокументовВзаимодействия.Тема,
+	ЖурналДокументовВзаимодействия.Ответственный КАК Ответственный,
+	ЕСТЬNULL(ПредметыВзаимодействий.Рассмотрено, Ложь) КАК Рассмотрено,
+	ЕСТЬNULL(ПредметыВзаимодействий.РассмотретьПосле, ДатаВремя(1,1,1)) КАК РассмотретьПосле,
+	ЖурналДокументовВзаимодействия.Участники,
+	ЖурналДокументовВзаимодействия.Тип,
+	ЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма,
+	ЖурналДокументовВзаимодействия.ЕстьВложения,
+	ЖурналДокументовВзаимодействия.УчетнаяЗапись,
+	ЕСТЬNULL(ПредметыВзаимодействий.Предмет, НЕОПРЕДЕЛЕНО) КАК Предмет,
+	ТИПЗНАЧЕНИЯ(ПредметыВзаимодействий.Предмет) КАК ТипПредмета,
+	ПредметыВзаимодействий.ПапкаЭлектронногоПисьма КАК Папка,
+	ЖурналДокументовВзаимодействия.ПолученоОтправлено,
+	ЖурналДокументовВзаимодействия.Размер,
+	ЖурналДокументовВзаимодействия.Важность,
+	ВЫБОР
+		КОГДА ЖурналДокументовВзаимодействия.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Высокая) ТОГДА 2
+		КОГДА ЖурналДокументовВзаимодействия.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Низкая) ТОГДА 0
+		ИНАЧЕ 1
+	КОНЕЦ КАК ВажностьНомерКартинки
+ИЗ
+	ЖурналДокументов.Взаимодействия КАК ЖурналДокументовВзаимодействия
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыВзаимодействий
+		ПО ЖурналДокументовВзаимодействия.Ссылка = ПредметыВзаимодействий.Взаимодействие
+		{ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.КонтактыВзаимодействий КАК КонтактыВзаимодействий
+ПО ЖурналДокументовВзаимодействия.Ссылка = КонтактыВзаимодействий.Взаимодействие}
+{ГДЕ
+	ЖурналДокументовВзаимодействия.Ссылка КАК Поиск
+	,
+КонтактыВзаимодействий.Контакт}
+{ГДЕ
+	(ЖурналДокументовВзаимодействия.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания)}</query>
+	</dataSet>
+	<parameter>
+		<name>ДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Интервал.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ДатаОкончания</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Интервал.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Интервал</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Интервал</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Ссылка</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
