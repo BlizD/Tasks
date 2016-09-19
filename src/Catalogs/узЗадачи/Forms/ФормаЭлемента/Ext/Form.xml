@@ -37,6 +37,12 @@
 					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
 				</InputField>
+				<InputField name="Родитель" id="93">
+					<DataPath>Объект.Parent</DataPath>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="РодительКонтекстноеМеню" id="94"/>
+					<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="95"/>
+				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="Группа2" id="87">
@@ -50,6 +56,9 @@
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="ИсполнительКонтекстноеМеню" id="11"/>
 					<ExtendedTooltip name="ИсполнительРасширеннаяПодсказка" id="12"/>
+					<Events>
+						<Event name="OnChange">ИсполнительПриИзменении</Event>
+					</Events>
 				</InputField>
 				<InputField name="Статус" id="13">
 					<DataPath>Объект.Статус</DataPath>
@@ -251,12 +260,6 @@
 								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
-						<InputField name="Родитель" id="93">
-							<DataPath>Объект.Parent</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="РодительКонтекстноеМеню" id="94"/>
-							<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="95"/>
-						</InputField>
 						<InputField name="ДатаСоздания" id="16">
 							<DataPath>Объект.ДатаСоздания</DataPath>
 							<EditMode>EnterOnInput</EditMode>
@@ -314,6 +317,7 @@
 						</InputField>
 						<InputField name="ОсновнаяЗадача" id="49">
 							<DataPath>Объект.ОсновнаяЗадача</DataPath>
+							<ReadOnly>true</ReadOnly>
 							<EditMode>EnterOnInput</EditMode>
 							<ChoiceParameters>
 								<app:item name="Отбор.Родитель">
