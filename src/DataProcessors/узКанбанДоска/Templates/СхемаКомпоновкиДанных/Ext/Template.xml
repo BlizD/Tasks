@@ -94,6 +94,36 @@
 				<condition>true</condition>
 			</useRestriction>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Спринт</dataPath>
+			<field>Спринт</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаСоздания</dataPath>
+			<field>ДатаСоздания</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаПередачиИсполнителю</dataPath>
+			<field>ДатаПередачиИсполнителю</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаВыполнения</dataPath>
+			<field>ДатаВыполнения</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаПоследнегоИзменения</dataPath>
+			<field>ДатаПоследнегоИзменения</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВажностьЧисло</dataPath>
+			<field>ВажностьЧисло</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Важность число</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	узЗадачи.Ссылка КАК Задача,
@@ -106,13 +136,28 @@
 	узЗадачи.ОсновнаяЗадача.Наименование КАК ОсновнаяЗадачаПредставление,
 	узЗадачи.СрокИсполнения,
 	узЗадачи.Конфигурация,
+	узЗадачи.Спринт,
 	узЗадачи.Важность,
 	узЗадачи.НомерВнешнейЗаявки,
-	узЗадачи.ОсновнаяЗадача
+	узЗадачи.ОсновнаяЗадача,
+	узЗадачи.ДатаСоздания,
+	узЗадачи.ДатаПередачиИсполнителю,
+	узЗадачи.ДатаПоследнегоИзменения,
+	узЗадачи.ДатаВыполнения,
+	ВЫБОР
+		КОГДА узЗадачи.Важность = ЗНАЧЕНИЕ(Справочник.узВариантыВажностиЗадачи.Высокая)
+			ТОГДА 1
+		КОГДА узЗадачи.Важность = ЗНАЧЕНИЕ(Справочник.узВариантыВажностиЗадачи.Обычная)
+			ТОГДА 2
+		КОГДА узЗадачи.Важность = ЗНАЧЕНИЕ(Справочник.узВариантыВажностиЗадачи.Низкая)
+			ТОГДА 3						
+		ИНАЧЕ 2
+	КОНЕЦ КАК ВажностьЧисло
+	
 ИЗ
 	Справочник.узЗадачи КАК узЗадачи
 ГДЕ
-	НЕ узЗадачи.ЕстьПодчиненныеЗадачи </query>
+	НЕ узЗадачи.ЕстьПодчиненныеЗадачи</query>
 	</dataSet>
 	<calculatedField>
 		<dataPath>НомерЗадачиПредставление</dataPath>
@@ -150,12 +195,15 @@
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ОсновнаяЗадача</dcsset:field>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВажностьЧисло</dcsset:field>
+				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Исполнитель</dcsset:left>
-					<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
@@ -164,8 +212,21 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Спринт</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">ОсновнаяЗадача</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДатаПоследнегоИзменения</dcsset:left>
+					<dcsset:comparisonType>GreaterOrEqual</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+					</dcsset:right>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
