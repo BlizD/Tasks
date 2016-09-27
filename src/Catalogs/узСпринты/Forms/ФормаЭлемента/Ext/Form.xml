@@ -1,8 +1,21 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<ScalingMode>Normal</ScalingMode>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаКомандаОбновить" id="61">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаОбновить</CommandName>
+				<ExtendedTooltip name="ФормаКомандаОбновитьРасширеннаяПодсказка" id="62"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="Группа1" id="16">
 			<Representation>None</Representation>
@@ -15,6 +28,40 @@
 					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
 				</InputField>
+				<CheckBoxField name="СпринтЗавершен" id="51">
+					<DataPath>Объект.СпринтЗавершен</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="СпринтЗавершенКонтекстноеМеню" id="52"/>
+					<ExtendedTooltip name="СпринтЗавершенРасширеннаяПодсказка" id="53"/>
+					<Events>
+						<Event name="OnChange">СпринтЗавершенПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="Группа2" id="18">
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="19"/>
+					<ChildItems>
+						<InputField name="ДатаНачала" id="10">
+							<DataPath>Объект.ДатаНачала</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="ДатаНачалаРасширеннаяПодсказка" id="12"/>
+							<Events>
+								<Event name="OnChange">ДатаНачалаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ДатаОкончания" id="13">
+							<DataPath>Объект.ДатаОкончания</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="ДатаОкончанияРасширеннаяПодсказка" id="15"/>
+							<Events>
+								<Event name="OnChange">ДатаОкончанияПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<InputField name="Наименование" id="4">
@@ -23,31 +70,107 @@
 			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
 			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
 		</InputField>
-		<UsualGroup name="Группа2" id="18">
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="19"/>
+		<Table name="ТЧЗадачи" id="20">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ТЧЗадачи</DataPath>
+			<RowPictureDataPath>ТЧЗадачи.DefaultPicture</RowPictureDataPath>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="ТЧЗадачиКонтекстноеМеню" id="21"/>
+			<AutoCommandBar name="ТЧЗадачиКоманднаяПанель" id="22">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ТЧЗадачиРасширеннаяПодсказка" id="23"/>
+			<SearchStringAddition name="ТЧЗадачиСтрокаПоиска" id="24">
+				<AdditionSource>
+					<Item>ТЧЗадачи</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТЧЗадачиСтрокаПоискаКонтекстноеМеню" id="25"/>
+				<ExtendedTooltip name="ТЧЗадачиСтрокаПоискаРасширеннаяПодсказка" id="26"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТЧЗадачиСостояниеПросмотра" id="27">
+				<AdditionSource>
+					<Item>ТЧЗадачи</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТЧЗадачиСостояниеПросмотраКонтекстноеМеню" id="28"/>
+				<ExtendedTooltip name="ТЧЗадачиСостояниеПросмотраРасширеннаяПодсказка" id="29"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТЧЗадачиУправлениеПоиском" id="30">
+				<AdditionSource>
+					<Item>ТЧЗадачи</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТЧЗадачиУправлениеПоискомКонтекстноеМеню" id="31"/>
+				<ExtendedTooltip name="ТЧЗадачиУправлениеПоискомРасширеннаяПодсказка" id="32"/>
+			</SearchControlAddition>
 			<ChildItems>
-				<InputField name="ДатаНачала" id="10">
-					<DataPath>Объект.ДатаНачала</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="11"/>
-					<ExtendedTooltip name="ДатаНачалаРасширеннаяПодсказка" id="12"/>
-					<Events>
-						<Event name="OnChange">ДатаНачалаПриИзменении</Event>
-					</Events>
-				</InputField>
-				<InputField name="ДатаОкончания" id="13">
-					<DataPath>Объект.ДатаОкончания</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="14"/>
-					<ExtendedTooltip name="ДатаОкончанияРасширеннаяПодсказка" id="15"/>
-					<Events>
-						<Event name="OnChange">ДатаОкончанияПриИзменении</Event>
-					</Events>
-				</InputField>
+				<ColumnGroup name="ТЧЗадачиГруппа2" id="59">
+					<ExtendedTooltip name="ТЧЗадачиГруппа2РасширеннаяПодсказка" id="60"/>
+					<ChildItems>
+						<ColumnGroup name="ТЧЗадачиГруппа1" id="57">
+							<Group>InCell</Group>
+							<ExtendedTooltip name="ТЧЗадачиГруппа1РасширеннаяПодсказка" id="58"/>
+						</ColumnGroup>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="ТЧЗадачиОсновнаяЗадача" id="45">
+					<DataPath>ТЧЗадачи.ОсновнаяЗадача</DataPath>
+					<Width>1</Width>
+					<ContextMenu name="ТЧЗадачиОсновнаяЗадачаКонтекстноеМеню" id="46"/>
+					<ExtendedTooltip name="ТЧЗадачиОсновнаяЗадачаРасширеннаяПодсказка" id="47"/>
+				</LabelField>
+				<LabelField name="ТЧЗадачиНомерЗадачи" id="54">
+					<DataPath>ТЧЗадачи.НомерЗадачи</DataPath>
+					<Width>1</Width>
+					<ContextMenu name="ТЧЗадачиНомерЗадачиКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="ТЧЗадачиНомерЗадачиРасширеннаяПодсказка" id="56"/>
+				</LabelField>
+				<LabelField name="ТЧЗадачиЗадача" id="36">
+					<DataPath>ТЧЗадачи.Задача</DataPath>
+					<Height>2</Height>
+					<ContextMenu name="ТЧЗадачиЗадачаКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="ТЧЗадачиЗадачаРасширеннаяПодсказка" id="38"/>
+				</LabelField>
+				<LabelField name="ТЧЗадачиИсполнитель" id="39">
+					<DataPath>ТЧЗадачи.Исполнитель</DataPath>
+					<ContextMenu name="ТЧЗадачиИсполнительКонтекстноеМеню" id="40"/>
+					<ExtendedTooltip name="ТЧЗадачиИсполнительРасширеннаяПодсказка" id="41"/>
+				</LabelField>
+				<LabelField name="ТЧЗадачиСтатус" id="48">
+					<DataPath>ТЧЗадачи.Статус</DataPath>
+					<ContextMenu name="ТЧЗадачиСтатусКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="ТЧЗадачиСтатусРасширеннаяПодсказка" id="50"/>
+				</LabelField>
+				<LabelField name="ТЧЗадачиВажность" id="33">
+					<DataPath>ТЧЗадачи.Важность</DataPath>
+					<ContextMenu name="ТЧЗадачиВажностьКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="ТЧЗадачиВажностьРасширеннаяПодсказка" id="35"/>
+				</LabelField>
+				<LabelField name="ТЧЗадачиКонфигурация" id="42">
+					<DataPath>ТЧЗадачи.Конфигурация</DataPath>
+					<ContextMenu name="ТЧЗадачиКонфигурацияКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="ТЧЗадачиКонфигурацияРасширеннаяПодсказка" id="44"/>
+				</LabelField>
 			</ChildItems>
-		</UsualGroup>
+		</Table>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -57,5 +180,81 @@
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
 		</Attribute>
+		<Attribute name="ТЧЗадачи" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ТЧЗадачи</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	узЗадачи.ОсновнаяЗадача,
+	узЗадачи.Ссылка.Код КАК НомерЗадачи,
+	узЗадачи.Ссылка КАК Задача,
+	узЗадачи.Статус,
+	узЗадачи.Исполнитель,
+	узЗадачи.Важность,
+	узЗадачи.Конфигурация
+ИЗ
+	Справочник.узЗадачи КАК узЗадачи
+ГДЕ
+	узЗадачи.Спринт = &amp;Спринт
+	И НЕ &amp;ЭтоНовый
+	И НЕ узЗадачи.ЕстьПодчиненныеЗадачи</QueryText>
+				<MainTable>Catalog.узЗадачи</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ОсновнаяЗадача.РеквизитДопУпорядочивания</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Задача.РеквизитДопУпорядочивания</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="КомандаОбновить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаОбновить</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
 </Form>
