@@ -82,6 +82,9 @@
 				</v8:item>
 			</ToolTip>
 			<ExtendedTooltip name="ГруппаСтраницыРасширеннаяПодсказка" id="82"/>
+			<Events>
+				<Event name="OnCurrentPageChange">ГруппаСтраницыПриСменеСтраницы</Event>
+			</Events>
 			<ChildItems>
 				<Page name="ГруппаСтраницаСодержание" id="83">
 					<Title>
@@ -578,53 +581,93 @@
 								<Event name="Opening">КомментарииВКодеОткрытие</Event>
 							</Events>
 						</InputField>
-						<Table name="ИзмененныеОбъекты" id="52">
-							<Representation>List</Representation>
-							<AutoInsertNewRow>true</AutoInsertNewRow>
+						<Table name="ИзмененныеОбъекты" id="201">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<EnableStartDrag>true</EnableStartDrag>
-							<EnableDrag>true</EnableDrag>
-							<DataPath>Объект.ИзмененныеОбъекты</DataPath>
-							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="ИзмененныеОбъектыКонтекстноеМеню" id="53"/>
-							<AutoCommandBar name="ИзмененныеОбъектыКоманднаяПанель" id="54"/>
-							<ExtendedTooltip name="ИзмененныеОбъектыРасширеннаяПодсказка" id="55"/>
-							<SearchStringAddition name="ИзмененныеОбъектыСтрокаПоиска" id="56">
+							<DataPath>ИзмененныеОбъекты</DataPath>
+							<RowPictureDataPath>ИзмененныеОбъекты.DefaultPicture</RowPictureDataPath>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="ИзмененныеОбъектыКонтекстноеМеню" id="202"/>
+							<AutoCommandBar name="ИзмененныеОбъектыКоманднаяПанель" id="203">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ИзмененныеОбъектыВывестиСписок" id="235">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<OnlyInAllActions>true</OnlyInAllActions>
+										<CommandName>Form.Item.ИзмененныеОбъекты.StandardCommand.OutputList</CommandName>
+										<ExtendedTooltip name="ИзмененныеОбъектыВывестиСписокРасширеннаяПодсказка" id="236"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ИзмененныеОбъектыРасширеннаяПодсказка" id="204"/>
+							<SearchStringAddition name="ИзмененныеОбъектыСтрокаПоиска" id="205">
 								<AdditionSource>
 									<Item>ИзмененныеОбъекты</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ИзмененныеОбъектыСтрокаПоискаКонтекстноеМеню" id="57"/>
-								<ExtendedTooltip name="ИзмененныеОбъектыСтрокаПоискаРасширеннаяПодсказка" id="58"/>
+								<ContextMenu name="ИзмененныеОбъектыСтрокаПоискаКонтекстноеМеню" id="206"/>
+								<ExtendedTooltip name="ИзмененныеОбъектыСтрокаПоискаРасширеннаяПодсказка" id="207"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ИзмененныеОбъектыСостояниеПросмотра" id="59">
+							<ViewStatusAddition name="ИзмененныеОбъектыСостояниеПросмотра" id="208">
 								<AdditionSource>
 									<Item>ИзмененныеОбъекты</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ИзмененныеОбъектыСостояниеПросмотраКонтекстноеМеню" id="60"/>
-								<ExtendedTooltip name="ИзмененныеОбъектыСостояниеПросмотраРасширеннаяПодсказка" id="61"/>
+								<ContextMenu name="ИзмененныеОбъектыСостояниеПросмотраКонтекстноеМеню" id="209"/>
+								<ExtendedTooltip name="ИзмененныеОбъектыСостояниеПросмотраРасширеннаяПодсказка" id="210"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ИзмененныеОбъектыУправлениеПоиском" id="62">
+							<SearchControlAddition name="ИзмененныеОбъектыУправлениеПоиском" id="211">
 								<AdditionSource>
 									<Item>ИзмененныеОбъекты</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ИзмененныеОбъектыУправлениеПоискомКонтекстноеМеню" id="63"/>
-								<ExtendedTooltip name="ИзмененныеОбъектыУправлениеПоискомРасширеннаяПодсказка" id="64"/>
+								<ContextMenu name="ИзмененныеОбъектыУправлениеПоискомКонтекстноеМеню" id="212"/>
+								<ExtendedTooltip name="ИзмененныеОбъектыУправлениеПоискомРасширеннаяПодсказка" id="213"/>
 							</SearchControlAddition>
 							<ChildItems>
-								<LabelField name="ИзмененныеОбъектыНомерСтроки" id="65">
-									<DataPath>Объект.ИзмененныеОбъекты.LineNumber</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ИзмененныеОбъектыНомерСтрокиКонтекстноеМеню" id="66"/>
-									<ExtendedTooltip name="ИзмененныеОбъектыНомерСтрокиРасширеннаяПодсказка" id="67"/>
+								<LabelField name="ИзмененныеОбъектыВерсия" id="214">
+									<DataPath>ИзмененныеОбъекты.Версия</DataPath>
+									<ContextMenu name="ИзмененныеОбъектыВерсияКонтекстноеМеню" id="215"/>
+									<ExtendedTooltip name="ИзмененныеОбъектыВерсияРасширеннаяПодсказка" id="216"/>
 								</LabelField>
-								<InputField name="ИзмененныеОбъектыИдентификаторМетаданныхКонфигурации" id="68">
-									<DataPath>Объект.ИзмененныеОбъекты.ИдентификаторМетаданныхКонфигурации</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ИзмененныеОбъектыИдентификаторМетаданныхКонфигурацииКонтекстноеМеню" id="69"/>
-									<ExtendedTooltip name="ИзмененныеОбъектыИдентификаторМетаданныхКонфигурацииРасширеннаяПодсказка" id="70"/>
-								</InputField>
+								<LabelField name="ИзмененныеОбъектыВидИзменения" id="217">
+									<DataPath>ИзмененныеОбъекты.ВидИзменения</DataPath>
+									<ContextMenu name="ИзмененныеОбъектыВидИзмененияКонтекстноеМеню" id="218"/>
+									<ExtendedTooltip name="ИзмененныеОбъектыВидИзмененияРасширеннаяПодсказка" id="219"/>
+								</LabelField>
+								<LabelField name="ИзмененныеОбъектыДатаВерсии" id="220">
+									<DataPath>ИзмененныеОбъекты.ДатаВерсии</DataPath>
+									<ContextMenu name="ИзмененныеОбъектыДатаВерсииКонтекстноеМеню" id="221"/>
+									<ExtendedTooltip name="ИзмененныеОбъектыДатаВерсииРасширеннаяПодсказка" id="222"/>
+								</LabelField>
+								<LabelField name="ИзмененныеОбъектыПолноеИмяМетаданных" id="232">
+									<DataPath>ИзмененныеОбъекты.ПолноеИмяМетаданных</DataPath>
+									<ContextMenu name="ИзмененныеОбъектыПолноеИмяМетаданныхКонтекстноеМеню" id="233"/>
+									<ExtendedTooltip name="ИзмененныеОбъектыПолноеИмяМетаданныхРасширеннаяПодсказка" id="234"/>
+								</LabelField>
+								<LabelField name="ИзмененныеОбъектыЗадача" id="237">
+									<DataPath>ИзмененныеОбъекты.Задача</DataPath>
+									<ContextMenu name="ИзмененныеОбъектыЗадачаКонтекстноеМеню" id="238"/>
+									<ExtendedTooltip name="ИзмененныеОбъектыЗадачаРасширеннаяПодсказка" id="239"/>
+								</LabelField>
+								<LabelField name="ИзмененныеОбъектыПользовательХранилища" id="229">
+									<DataPath>ИзмененныеОбъекты.ПользовательХранилища</DataPath>
+									<ContextMenu name="ИзмененныеОбъектыПользовательХранилищаКонтекстноеМеню" id="230"/>
+									<ExtendedTooltip name="ИзмененныеОбъектыПользовательХранилищаРасширеннаяПодсказка" id="231"/>
+								</LabelField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
@@ -668,6 +711,71 @@
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
+		</Attribute>
+		<Attribute name="ИзмененныеОбъекты" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Измененные объекты</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ИзмененныеОбъекты.ПорядокКоллекции</Field>
+				<Field>ИзмененныеОбъекты.ИдентификаторОбъектаМетаданныхDescription</Field>
+				<Field>ИзмененныеОбъекты.Версия</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	узИсторияХранилищаИзмененныеОбъекты.Ссылка,
+	узИсторияХранилищаИзмененныеОбъекты.Ссылка.Версия,
+	узИсторияХранилищаИзмененныеОбъекты.ВидИзменения,
+	узИсторияХранилищаИзмененныеОбъекты.ИдентификаторОбъектаМетаданных,
+	узИсторияХранилищаИзмененныеОбъекты.Ссылка.ДатаВерсии,
+	узИсторияХранилищаИзмененныеОбъекты.Ссылка.ПользовательХранилища,
+	узИсторияХранилищаИзмененныеОбъекты.Ссылка.Комментарий,
+	узИсторияХранилищаИзмененныеОбъекты.ИдентификаторОбъектаМетаданных.ПорядокКоллекции КАК ПорядокКоллекции,
+	узИсторияХранилищаИзмененныеОбъекты.ИдентификаторОбъектаМетаданных.ПолноеИмяМетаданных КАК ПолноеИмяМетаданных,
+	узИсторияХранилищаИзмененныеОбъекты.ИдентификаторОбъектаМетаданных.Наименование,
+	узИсторияХранилищаИзмененныеОбъекты.Ссылка.Задача
+ИЗ
+	Справочник.узИсторияХранилища.ИзмененныеОбъекты КАК узИсторияХранилищаИзмененныеОбъекты
+ГДЕ
+	узИсторияХранилищаИзмененныеОбъекты.Ссылка.Задача В ИЕРАРХИИ(&amp;Задача)
+	И НЕ &amp;ЭтоНовый</QueryText>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Версия</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ПорядокКоллекции</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ИдентификаторОбъектаМетаданныхНаименование</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
 		</Attribute>
 	</Attributes>
 </Form>
