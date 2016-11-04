@@ -3,7 +3,7 @@
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
-			<v8:content>Укажите комментарий</v8:content>
+			<v8:content>Укажите комментарий / подзадачу</v8:content>
 		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -12,11 +12,10 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 		<ChildItems>
-			<Button name="ФормаКомандаДобавить" id="4">
+			<Button name="ФормаКомандаОК" id="19">
 				<Type>CommandBarButton</Type>
-				<DefaultButton>true</DefaultButton>
-				<CommandName>Form.Command.КомандаДобавить</CommandName>
-				<ExtendedTooltip name="ФормаКомандаДобавитьРасширеннаяПодсказка" id="5"/>
+				<CommandName>Form.Command.КомандаОК</CommandName>
+				<ExtendedTooltip name="ФормаКомандаОКРасширеннаяПодсказка" id="20"/>
 			</Button>
 			<Button name="ФормаЗакрыть" id="6">
 				<Type>CommandBarButton</Type>
@@ -28,6 +27,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
 		<InputField name="Комментарий" id="1">
@@ -39,18 +39,25 @@
 			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="3"/>
 		</InputField>
 		<UsualGroup name="Группа1" id="14">
-			<ReadOnly>true</ReadOnly>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="15"/>
 			<ChildItems>
+				<CheckBoxField name="Выполнено" id="16">
+					<DataPath>Выполнено</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВыполненоКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="ВыполненоРасширеннаяПодсказка" id="18"/>
+				</CheckBoxField>
 				<InputField name="ДатаКомментария" id="8">
 					<DataPath>ДатаКомментария</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<ContextMenu name="ДатаКомментарияКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="ДатаКомментарияРасширеннаяПодсказка" id="10"/>
 				</InputField>
 				<InputField name="Автор" id="11">
 					<DataPath>Автор</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<ContextMenu name="АвторКонтекстноеМеню" id="12"/>
 					<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="13"/>
 				</InputField>
@@ -112,22 +119,33 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-	</Attributes>
-	<Commands>
-		<Command name="КомандаДобавить" id="1">
+		<Attribute name="Выполнено" id="5">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Добавить</v8:content>
+					<v8:content>Выполнено</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="КомандаОК" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Команда добавить</v8:content>
+					<v8:content>Команда ОК</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>КомандаДобавить</Action>
+			<Action>КомандаОК</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
