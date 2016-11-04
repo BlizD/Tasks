@@ -7,21 +7,37 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<CheckBoxField name="РазрешеноРедактировать" id="59">
-			<DataPath>РазрешеноРедактировать</DataPath>
-			<CheckBoxType>Tumbler</CheckBoxType>
-			<EditFormat>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>БЛ=Нет; БИ=Да</v8:content>
-				</v8:item>
-			</EditFormat>
-			<ContextMenu name="РазрешеноРедактироватьКонтекстноеМеню" id="60"/>
-			<ExtendedTooltip name="РазрешеноРедактироватьРасширеннаяПодсказка" id="61"/>
-			<Events>
-				<Event name="OnChange">РазрешеноРедактироватьПриИзменении</Event>
-			</Events>
-		</CheckBoxField>
+		<UsualGroup name="Группа2" id="73">
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="74"/>
+			<ChildItems>
+				<CheckBoxField name="ВводВручную" id="67">
+					<DataPath>Объект.ВводВручную</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВводВручнуюКонтекстноеМеню" id="68"/>
+					<ExtendedTooltip name="ВводВручнуюРасширеннаяПодсказка" id="69"/>
+					<Events>
+						<Event name="OnChange">ВводВручнуюПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<CheckBoxField name="РазрешеноРедактировать" id="59">
+					<DataPath>РазрешеноРедактировать</DataPath>
+					<CheckBoxType>Tumbler</CheckBoxType>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БЛ=Нет; БИ=Да</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="РазрешеноРедактироватьКонтекстноеМеню" id="60"/>
+					<ExtendedTooltip name="РазрешеноРедактироватьРасширеннаяПодсказка" id="61"/>
+					<Events>
+						<Event name="OnChange">РазрешеноРедактироватьПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
 		<UsualGroup name="ГруппаРеквизиты" id="57">
 			<ReadOnly>true</ReadOnly>
 			<Title>
@@ -119,7 +135,6 @@
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ИзмененныеОбъектыКонтекстноеМеню" id="26"/>
 							<AutoCommandBar name="ИзмененныеОбъектыКоманднаяПанель" id="27">
-								<Autofill>false</Autofill>
 								<ChildItems>
 									<Button name="ИзмененныеОбъектыВывестиСписок" id="65">
 										<Type>CommandBarButton</Type>
@@ -155,6 +170,10 @@
 								<ContextMenu name="ИзмененныеОбъектыУправлениеПоискомКонтекстноеМеню" id="36"/>
 								<ExtendedTooltip name="ИзмененныеОбъектыУправлениеПоискомРасширеннаяПодсказка" id="37"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">ИзмененныеОбъектыПередНачаломДобавления</Event>
+								<Event name="OnStartEdit">ИзмененныеОбъектыПриНачалеРедактирования</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="ИзмененныеОбъектыНомерСтроки" id="38">
 									<DataPath>Объект.ИзмененныеОбъекты.LineNumber</DataPath>
@@ -167,6 +186,12 @@
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ИзмененныеОбъектыВидИзмененияКонтекстноеМеню" id="42"/>
 									<ExtendedTooltip name="ИзмененныеОбъектыВидИзмененияРасширеннаяПодсказка" id="43"/>
+								</InputField>
+								<InputField name="ИзмененныеОбъектыИдентификаторОбъектаМетаданных" id="70">
+									<DataPath>Объект.ИзмененныеОбъекты.ИдентификаторОбъектаМетаданных</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ИзмененныеОбъектыИдентификаторОбъектаМетаданныхКонтекстноеМеню" id="71"/>
+									<ExtendedTooltip name="ИзмененныеОбъектыИдентификаторОбъектаМетаданныхРасширеннаяПодсказка" id="72"/>
 								</InputField>
 								<LabelField name="ИзмененныеОбъектыИдентификаторОбъектаМетаданныхПолноеИмяМетаданных" id="62">
 									<DataPath>Объект.ИзмененныеОбъекты.ИдентификаторОбъектаМетаданных.ПолноеИмяМетаданных</DataPath>
