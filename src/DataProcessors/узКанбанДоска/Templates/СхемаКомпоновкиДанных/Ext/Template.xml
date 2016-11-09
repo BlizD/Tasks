@@ -126,6 +126,20 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
+	узНаблюдателиЗаЗадачами.Задача
+ПОМЕСТИТЬ ВТОтборЗадачПоНаблюдателю
+ИЗ
+	РегистрСведений.узНаблюдателиЗаЗадачами КАК узНаблюдателиЗаЗадачами
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;ИспользоватьОтборПоНаблюдателю
+				ТОГДА узНаблюдателиЗаЗадачами.Пользователь = &amp;Наблюдатель
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
 	узЗадачи.Ссылка КАК Задача,
 	узЗадачи.Ссылка.Наименование КАК ЗадачаПредставление,
 	узЗадачи.Ссылка.Код КАК НомерЗадачи,
@@ -150,14 +164,22 @@
 		КОГДА узЗадачи.Важность = ЗНАЧЕНИЕ(Справочник.узВариантыВажностиЗадачи.Обычная)
 			ТОГДА 2
 		КОГДА узЗадачи.Важность = ЗНАЧЕНИЕ(Справочник.узВариантыВажностиЗадачи.Низкая)
-			ТОГДА 3						
+			ТОГДА 3
 		ИНАЧЕ 2
 	КОНЕЦ КАК ВажностьЧисло
-	
 ИЗ
 	Справочник.узЗадачи КАК узЗадачи
 ГДЕ
-	НЕ узЗадачи.ЕстьПодчиненныеЗадачи</query>
+	НЕ узЗадачи.ЕстьПодчиненныеЗадачи
+	И ВЫБОР
+			КОГДА &amp;ИспользоватьОтборПоНаблюдателю
+				ТОГДА узЗадачи.Ссылка В
+						(ВЫБРАТЬ
+							ВТОтборЗадачПоНаблюдателю.Задача
+						ИЗ
+							ВТОтборЗадачПоНаблюдателю)
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ</query>
 	</dataSet>
 	<calculatedField>
 		<dataPath>НомерЗадачиПредставление</dataPath>
@@ -169,6 +191,35 @@
 			</v8:item>
 		</title>
 	</calculatedField>
+	<parameter>
+		<name>ИспользоватьОтборПоНаблюдателю</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Использовать отбор по наблюдателю</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
+		<expression>ЗНАЧЕНИЕЗАПОЛНЕНО(&amp;Наблюдатель)</expression>
+	</parameter>
+	<parameter>
+		<name>Наблюдатель</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Наблюдатель</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Пользователи</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -235,6 +286,19 @@
 					<dcsset:userSettingID>5e93f674-8e95-441a-ac61-d2687c796e5e</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ИспользоватьОтборПоНаблюдателю</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Наблюдатель</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>16655e8c-bf28-4bdf-9c46-8f88d2bccf2d</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
 					<dcsset:field>ВажностьЧисло</dcsset:field>

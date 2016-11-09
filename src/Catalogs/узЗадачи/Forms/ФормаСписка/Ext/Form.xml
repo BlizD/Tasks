@@ -38,6 +38,9 @@
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="СписокКомпоновщикНастроекПользовательскиеНастройки" id="1">
 			<Title>
@@ -51,6 +54,15 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СписокКомпоновщикНастроекПользовательскиеНастройкиРасширеннаяПодсказка" id="2"/>
 		</UsualGroup>
+		<InputField name="Наблюдатель" id="81">
+			<DataPath>Наблюдатель</DataPath>
+			<ClearButton>true</ClearButton>
+			<ContextMenu name="НаблюдательКонтекстноеМеню" id="82"/>
+			<ExtendedTooltip name="НаблюдательРасширеннаяПодсказка" id="83"/>
+			<Events>
+				<Event name="OnChange">НаблюдательПриИзменении</Event>
+			</Events>
+		</InputField>
 		<Table name="Список" id="3">
 			<CommandBarLocation>None</CommandBarLocation>
 			<DefaultItem>true</DefaultItem>
@@ -196,7 +208,7 @@
 					<ExtendedTooltip name="СтатусВидСтатусаРасширеннаяПодсказка" id="70"/>
 				</LabelField>
 				<CheckBoxField name="ЕстьПодчиненныеЗадачи" id="71">
-					<DataPath>Список.ЕстьПодчиненныеЗадачи</DataPath>
+					<DataPath>1/172</DataPath>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ЕстьПодчиненныеЗадачиКонтекстноеМеню" id="72"/>
 					<ExtendedTooltip name="ЕстьПодчиненныеЗадачиРасширеннаяПодсказка" id="73"/>
@@ -215,8 +227,52 @@
 				<Field>Список.Ref</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникузЗадачи.Ссылка,
+	СправочникузЗадачи.ПометкаУдаления,
+	СправочникузЗадачи.Родитель,
+	СправочникузЗадачи.Код,
+	СправочникузЗадачи.Наименование,
+	СправочникузЗадачи.Автор,
+	СправочникузЗадачи.Исполнитель,
+	СправочникузЗадачи.Статус,
+	СправочникузЗадачи.ДатаСоздания,
+	СправочникузЗадачи.СрокИсполнения,
+	СправочникузЗадачи.ДатаПередачиИсполнителю,
+	СправочникузЗадачи.ДатаПоследнегоИзменения,
+	СправочникузЗадачи.ДатаВыполнения,
+	СправочникузЗадачи.АвторПоследнегоИзменения,
+	СправочникузЗадачи.Содержание,
+	СправочникузЗадачи.ТекстСодержания,
+	СправочникузЗадачи.Конфигурация,
+	СправочникузЗадачи.Спринт,
+	СправочникузЗадачи.Важность,
+	СправочникузЗадачи.НомерВнешнейЗаявки,
+	СправочникузЗадачи.URLВнешнейЗаявки,
+	СправочникузЗадачи.КомментарииВКоде,
+	СправочникузЗадачи.ПроверитьВыполнение,
+	СправочникузЗадачи.ОсновнаяЗадача,
+	СправочникузЗадачи.РеквизитДопУпорядочивания
+ИЗ
+	Справочник.узЗадачи КАК СправочникузЗадачи
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;ИспользоватьОтборПоНаблюдателю
+				ТОГДА СправочникузЗадачи.Ссылка В
+						(ВЫБРАТЬ
+							узНаблюдателиЗаЗадачами.Задача
+						ИЗ
+							РегистрСведений.узНаблюдателиЗаЗадачами КАК узНаблюдателиЗаЗадачами
+						ГДЕ
+							ВЫБОР
+								КОГДА &amp;ИспользоватьОтборПоНаблюдателю
+									ТОГДА узНаблюдателиЗаЗадачами.Пользователь = &amp;Наблюдатель
+								ИНАЧЕ ИСТИНА
+							КОНЕЦ)
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ</QueryText>
 				<MainTable>Catalog.узЗадачи</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -239,6 +295,17 @@
 					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
 				</ListSettings>
 			</Settings>
+		</Attribute>
+		<Attribute name="Наблюдатель" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наблюдатель</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>
