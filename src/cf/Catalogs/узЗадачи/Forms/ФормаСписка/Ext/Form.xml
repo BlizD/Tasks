@@ -39,6 +39,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -130,6 +131,20 @@
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="17"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="18"/>
 				</LabelField>
+				<PictureField name="ЕстьЗаметки" id="84">
+					<DataPath>Список.ЕстьЗаметки</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.Заметка</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.Заметка</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ЕстьЗаметкиКонтекстноеМеню" id="85"/>
+					<ExtendedTooltip name="ЕстьЗаметкиРасширеннаяПодсказка" id="86"/>
+				</PictureField>
 				<LabelField name="Код" id="19">
 					<DataPath>Список.Code</DataPath>
 					<Title>
@@ -254,9 +269,18 @@
 	СправочникузЗадачи.КомментарииВКоде,
 	СправочникузЗадачи.ПроверитьВыполнение,
 	СправочникузЗадачи.ОсновнаяЗадача,
-	СправочникузЗадачи.РеквизитДопУпорядочивания
+	ВЫБОР
+		КОГДА ЕСТЬNULL(узНаличиеЗаметокПоПредмету.ЕстьЗаметки, ЛОЖЬ)
+			ТОГДА 0
+		ИНАЧЕ -1
+	КОНЕЦ КАК ЕстьЗаметки,	
+	СправочникузЗадачи.РеквизитДопУпорядочивания	
 ИЗ
 	Справочник.узЗадачи КАК СправочникузЗадачи
+	ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.узНаличиеЗаметокПоПредмету КАК узНаличиеЗаметокПоПредмету
+	ПО (СправочникузЗадачи.Ссылка = узНаличиеЗаметокПоПредмету.Предмет
+		И узНаличиеЗаметокПоПредмету.Автор = &amp;Пользователь)
+	
 ГДЕ
 	ВЫБОР
 			КОГДА &amp;ИспользоватьОтборПоНаблюдателю
@@ -272,7 +296,8 @@
 								ИНАЧЕ ИСТИНА
 							КОНЕЦ)
 			ИНАЧЕ ИСТИНА
-		КОНЕЦ</QueryText>
+		КОНЕЦ
+		</QueryText>
 				<MainTable>Catalog.узЗадачи</MainTable>
 				<ListSettings>
 					<dcsset:filter>
