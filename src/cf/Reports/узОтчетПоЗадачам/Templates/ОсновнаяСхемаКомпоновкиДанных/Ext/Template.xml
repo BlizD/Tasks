@@ -98,6 +98,18 @@
 			<dataPath>Спринт</dataPath>
 			<field>Спринт</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЧасыФакт</dataPath>
+			<field>ЧасыФакт</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЧасыКОплате</dataPath>
+			<field>ЧасыКОплате</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЧасыПлан</dataPath>
+			<field>ЧасыПлан</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	узЗадачи.Ссылка КАК Задача,
@@ -116,7 +128,10 @@
 	узЗадачи.СрокИсполнения,
 	узЗадачи.НомерВнешнейЗаявки,
 	узЗадачи.URLВнешнейЗаявки,
-	1 КАК КоличествоЗадач
+	1 КАК КоличествоЗадач,
+	узЗадачи.ЧасыПлан,
+	узЗадачи.ЧасыФакт,
+	узЗадачи.ЧасыКОплате
 ИЗ
 	Справочник.узЗадачи КАК узЗадачи
 ГДЕ
@@ -125,6 +140,18 @@
 	<totalField>
 		<dataPath>КоличествоЗадач</dataPath>
 		<expression>Сумма(КоличествоЗадач)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ЧасыКОплате</dataPath>
+		<expression>Сумма(ЧасыКОплате)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ЧасыПлан</dataPath>
+		<expression>Сумма(ЧасыПлан)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ЧасыФакт</dataPath>
+		<expression>Сумма(ЧасыФакт)</expression>
 	</totalField>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -154,6 +181,15 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СрокИсполнения</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЧасыПлан</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЧасыФакт</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЧасыКОплате</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>КоличествоЗадач</dcsset:field>
