@@ -623,6 +623,159 @@
 						</UsualGroup>
 					</ChildItems>
 				</Page>
+				<Page name="ГруппаСтраницаУчетВремени" id="320">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Учет времени</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа страница учет времени</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаСтраницаУчетВремениРасширеннаяПодсказка" id="321"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаЧасы" id="359">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа часы</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа часы</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЧасыРасширеннаяПодсказка" id="360"/>
+							<ChildItems>
+								<InputField name="ЧасыПлан" id="350">
+									<DataPath>Объект.ЧасыПлан</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>План</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ЧасыПланКонтекстноеМеню" id="351"/>
+									<ExtendedTooltip name="ЧасыПланРасширеннаяПодсказка" id="352"/>
+								</InputField>
+								<InputField name="ЧасыФакт" id="353">
+									<DataPath>Объект.ЧасыФакт</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Факт</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ЧасыФактКонтекстноеМеню" id="354"/>
+									<ExtendedTooltip name="ЧасыФактРасширеннаяПодсказка" id="355"/>
+									<Events>
+										<Event name="OnChange">ЧасыФактПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ЧасыКОплате" id="356">
+									<DataPath>Объект.ЧасыКОплате</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>К оплате</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ЧасыКОплатеКонтекстноеМеню" id="357"/>
+									<ExtendedTooltip name="ЧасыКОплатеРасширеннаяПодсказка" id="358"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="ФактическиеЧасы" id="322">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.ФактическиеЧасы</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ФактическиеЧасыКонтекстноеМеню" id="323"/>
+							<AutoCommandBar name="ФактическиеЧасыКоманднаяПанель" id="324"/>
+							<ExtendedTooltip name="ФактическиеЧасыРасширеннаяПодсказка" id="325"/>
+							<SearchStringAddition name="ФактическиеЧасыСтрокаПоиска" id="326">
+								<AdditionSource>
+									<Item>ФактическиеЧасы</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ФактическиеЧасыСтрокаПоискаКонтекстноеМеню" id="327"/>
+								<ExtendedTooltip name="ФактическиеЧасыСтрокаПоискаРасширеннаяПодсказка" id="328"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ФактическиеЧасыСостояниеПросмотра" id="329">
+								<AdditionSource>
+									<Item>ФактическиеЧасы</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ФактическиеЧасыСостояниеПросмотраКонтекстноеМеню" id="330"/>
+								<ExtendedTooltip name="ФактическиеЧасыСостояниеПросмотраРасширеннаяПодсказка" id="331"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ФактическиеЧасыУправлениеПоиском" id="332">
+								<AdditionSource>
+									<Item>ФактическиеЧасы</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ФактическиеЧасыУправлениеПоискомКонтекстноеМеню" id="333"/>
+								<ExtendedTooltip name="ФактическиеЧасыУправлениеПоискомРасширеннаяПодсказка" id="334"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnEditEnd">ФактическиеЧасыПриОкончанииРедактирования</Event>
+								<Event name="OnStartEdit">ФактическиеЧасыПриНачалеРедактирования</Event>
+								<Event name="AfterDeleteRow">ФактическиеЧасыПослеУдаления</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ФактическиеЧасыНомерСтроки" id="335">
+									<DataPath>Объект.ФактическиеЧасы.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ФактическиеЧасыНомерСтрокиКонтекстноеМеню" id="336"/>
+									<ExtendedTooltip name="ФактическиеЧасыНомерСтрокиРасширеннаяПодсказка" id="337"/>
+								</LabelField>
+								<InputField name="ФактическиеЧасыДатаНачала" id="338">
+									<DataPath>Объект.ФактическиеЧасы.ДатаНачала</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<OpenButton>true</OpenButton>
+									<ContextMenu name="ФактическиеЧасыДатаНачалаКонтекстноеМеню" id="339"/>
+									<ExtendedTooltip name="ФактическиеЧасыДатаНачалаРасширеннаяПодсказка" id="340"/>
+									<Events>
+										<Event name="OnChange">ФактическиеЧасыДатаНачалаПриИзменении</Event>
+										<Event name="Opening">ФактическиеЧасыДатаНачалаОткрытие</Event>
+									</Events>
+								</InputField>
+								<InputField name="ФактическиеЧасыДатаОкончания" id="341">
+									<DataPath>Объект.ФактическиеЧасы.ДатаОкончания</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<OpenButton>true</OpenButton>
+									<ContextMenu name="ФактическиеЧасыДатаОкончанияКонтекстноеМеню" id="342"/>
+									<ExtendedTooltip name="ФактическиеЧасыДатаОкончанияРасширеннаяПодсказка" id="343"/>
+									<Events>
+										<Event name="OnChange">ФактическиеЧасыДатаОкончанияПриИзменении</Event>
+										<Event name="Opening">ФактическиеЧасыДатаОкончанияОткрытие</Event>
+									</Events>
+								</InputField>
+								<InputField name="ФактическиеЧасыЧасыФакт" id="344">
+									<DataPath>Объект.ФактическиеЧасы.ЧасыФакт</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ФактическиеЧасыЧасыФактКонтекстноеМеню" id="345"/>
+									<ExtendedTooltip name="ФактическиеЧасыЧасыФактРасширеннаяПодсказка" id="346"/>
+								</InputField>
+								<InputField name="ФактическиеЧасыКомментарий" id="347">
+									<DataPath>Объект.ФактическиеЧасы.Комментарий</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ФактическиеЧасыКомментарийКонтекстноеМеню" id="348"/>
+									<ExtendedTooltip name="ФактическиеЧасыКомментарийРасширеннаяПодсказка" id="349"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 				<Page name="ГруппаСтраницаИстория" id="105">
 					<ReadOnly>true</ReadOnly>
 					<Title>
@@ -983,148 +1136,6 @@
 								</Page>
 							</ChildItems>
 						</Pages>
-					</ChildItems>
-				</Page>
-				<Page name="ГруппаСтраницаУчетВремени" id="320">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Учет времени</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа страница учет времени</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="ГруппаСтраницаУчетВремениРасширеннаяПодсказка" id="321"/>
-					<ChildItems>
-						<UsualGroup name="ГруппаЧасы" id="359">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа часы</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа часы</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаЧасыРасширеннаяПодсказка" id="360"/>
-							<ChildItems>
-								<InputField name="ЧасыПлан" id="350">
-									<DataPath>Объект.ЧасыПлан</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>План</v8:content>
-										</v8:item>
-									</Title>
-									<ContextMenu name="ЧасыПланКонтекстноеМеню" id="351"/>
-									<ExtendedTooltip name="ЧасыПланРасширеннаяПодсказка" id="352"/>
-								</InputField>
-								<InputField name="ЧасыФакт" id="353">
-									<DataPath>Объект.ЧасыФакт</DataPath>
-									<ReadOnly>true</ReadOnly>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Факт</v8:content>
-										</v8:item>
-									</Title>
-									<ContextMenu name="ЧасыФактКонтекстноеМеню" id="354"/>
-									<ExtendedTooltip name="ЧасыФактРасширеннаяПодсказка" id="355"/>
-								</InputField>
-								<InputField name="ЧасыКОплате" id="356">
-									<DataPath>Объект.ЧасыКОплате</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>К оплате</v8:content>
-										</v8:item>
-									</Title>
-									<ContextMenu name="ЧасыКОплатеКонтекстноеМеню" id="357"/>
-									<ExtendedTooltip name="ЧасыКОплатеРасширеннаяПодсказка" id="358"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<Table name="ФактическиеЧасы" id="322">
-							<AutoInsertNewRow>true</AutoInsertNewRow>
-							<EnableStartDrag>true</EnableStartDrag>
-							<EnableDrag>true</EnableDrag>
-							<DataPath>Объект.ФактическиеЧасы</DataPath>
-							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="ФактическиеЧасыКонтекстноеМеню" id="323"/>
-							<AutoCommandBar name="ФактическиеЧасыКоманднаяПанель" id="324"/>
-							<ExtendedTooltip name="ФактическиеЧасыРасширеннаяПодсказка" id="325"/>
-							<SearchStringAddition name="ФактическиеЧасыСтрокаПоиска" id="326">
-								<AdditionSource>
-									<Item>ФактическиеЧасы</Item>
-									<Type>SearchStringRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="ФактическиеЧасыСтрокаПоискаКонтекстноеМеню" id="327"/>
-								<ExtendedTooltip name="ФактическиеЧасыСтрокаПоискаРасширеннаяПодсказка" id="328"/>
-							</SearchStringAddition>
-							<ViewStatusAddition name="ФактическиеЧасыСостояниеПросмотра" id="329">
-								<AdditionSource>
-									<Item>ФактическиеЧасы</Item>
-									<Type>ViewStatusRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="ФактическиеЧасыСостояниеПросмотраКонтекстноеМеню" id="330"/>
-								<ExtendedTooltip name="ФактическиеЧасыСостояниеПросмотраРасширеннаяПодсказка" id="331"/>
-							</ViewStatusAddition>
-							<SearchControlAddition name="ФактическиеЧасыУправлениеПоиском" id="332">
-								<AdditionSource>
-									<Item>ФактическиеЧасы</Item>
-									<Type>SearchControl</Type>
-								</AdditionSource>
-								<ContextMenu name="ФактическиеЧасыУправлениеПоискомКонтекстноеМеню" id="333"/>
-								<ExtendedTooltip name="ФактическиеЧасыУправлениеПоискомРасширеннаяПодсказка" id="334"/>
-							</SearchControlAddition>
-							<ChildItems>
-								<LabelField name="ФактическиеЧасыНомерСтроки" id="335">
-									<DataPath>Объект.ФактическиеЧасы.LineNumber</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ФактическиеЧасыНомерСтрокиКонтекстноеМеню" id="336"/>
-									<ExtendedTooltip name="ФактическиеЧасыНомерСтрокиРасширеннаяПодсказка" id="337"/>
-								</LabelField>
-								<InputField name="ФактическиеЧасыДатаНачала" id="338">
-									<DataPath>Объект.ФактическиеЧасы.ДатаНачала</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ФактическиеЧасыДатаНачалаКонтекстноеМеню" id="339"/>
-									<ExtendedTooltip name="ФактическиеЧасыДатаНачалаРасширеннаяПодсказка" id="340"/>
-									<Events>
-										<Event name="OnChange">ФактическиеЧасыДатаНачалаПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="ФактическиеЧасыДатаОкончания" id="341">
-									<DataPath>Объект.ФактическиеЧасы.ДатаОкончания</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ФактическиеЧасыДатаОкончанияКонтекстноеМеню" id="342"/>
-									<ExtendedTooltip name="ФактическиеЧасыДатаОкончанияРасширеннаяПодсказка" id="343"/>
-									<Events>
-										<Event name="OnChange">ФактическиеЧасыДатаОкончанияПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="ФактическиеЧасыЧасыФакт" id="344">
-									<DataPath>Объект.ФактическиеЧасы.ЧасыФакт</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ФактическиеЧасыЧасыФактКонтекстноеМеню" id="345"/>
-									<ExtendedTooltip name="ФактическиеЧасыЧасыФактРасширеннаяПодсказка" id="346"/>
-								</InputField>
-								<InputField name="ФактическиеЧасыКомментарий" id="347">
-									<DataPath>Объект.ФактическиеЧасы.Комментарий</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ФактическиеЧасыКомментарийКонтекстноеМеню" id="348"/>
-									<ExtendedTooltip name="ФактическиеЧасыКомментарийРасширеннаяПодсказка" id="349"/>
-								</InputField>
-							</ChildItems>
-						</Table>
 					</ChildItems>
 				</Page>
 			</ChildItems>
