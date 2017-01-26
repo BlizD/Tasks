@@ -179,7 +179,8 @@
 						ИЗ
 							ВТОтборЗадачПоНаблюдателю)
 			ИНАЧЕ ИСТИНА
-		КОНЕЦ</query>
+		КОНЕЦ
+	И узЗадачи.Статус В (&amp;МассивВыбранныхСтатусовКолонок) </query>
 	</dataSet>
 	<calculatedField>
 		<dataPath>НомерЗадачиПредставление</dataPath>
@@ -219,6 +220,20 @@
 		</valueType>
 		<value xsi:nil="true"/>
 		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>МассивВыбранныхСтатусовКолонок</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Массив выбранных статусов колонок</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.узСтатусыЗадачи</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -279,12 +294,6 @@
 						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
 					</dcsset:right>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
-					<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
-					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.узСтатусыЗадачи.Архив</dcsset:right>
-					<dcsset:userSettingID>5e93f674-8e95-441a-ac61-d2687c796e5e</dcsset:userSettingID>
-				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -292,6 +301,11 @@
 					<dcscor:parameter>Наблюдатель</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:userSettingID>16655e8c-bf28-4bdf-9c46-8f88d2bccf2d</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>МассивВыбранныхСтатусовКолонок</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
