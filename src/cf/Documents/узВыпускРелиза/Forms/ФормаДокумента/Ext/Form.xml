@@ -208,16 +208,21 @@
 					<Group>Horizontal</Group>
 					<ExtendedTooltip name="ГруппаСоставРелизаРасширеннаяПодсказка" id="99"/>
 					<ChildItems>
-						<Table name="Задачи" id="14">
+						<Table name="ТЧЗадачи" id="14">
 							<Representation>List</Representation>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
-							<DataPath>Объект.Задачи</DataPath>
+							<DataPath>Объект.ТЧЗадачи</DataPath>
 							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="ЗадачиКонтекстноеМеню" id="15"/>
-							<AutoCommandBar name="ЗадачиКоманднаяПанель" id="16">
+							<ContextMenu name="ТЧЗадачиКонтекстноеМеню" id="15"/>
+							<AutoCommandBar name="ТЧЗадачиКоманднаяПанель" id="16">
 								<ChildItems>
+									<Button name="ТЧЗадачиКомандаОбновитьДанныеПоЗадачам" id="191">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.КомандаОбновитьДанныеПоЗадачам</CommandName>
+										<ExtendedTooltip name="ТЧЗадачиКомандаОбновитьДанныеПоЗадачамРасширеннаяПодсказка" id="192"/>
+									</Button>
 									<Button name="ЗадачиКомандаПодборЗадач" id="136">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.КомандаПодборЗадач</CommandName>
@@ -230,43 +235,45 @@
 									</Button>
 								</ChildItems>
 							</AutoCommandBar>
-							<ExtendedTooltip name="ЗадачиРасширеннаяПодсказка" id="17"/>
-							<SearchStringAddition name="ЗадачиСтрокаПоиска" id="18">
+							<ExtendedTooltip name="ТЧЗадачиРасширеннаяПодсказка" id="17"/>
+							<SearchStringAddition name="ТЧЗадачиСтрокаПоиска" id="18">
 								<AdditionSource>
-									<Item>Задачи</Item>
+									<Item>ТЧЗадачи</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ЗадачиСтрокаПоискаКонтекстноеМеню" id="19"/>
-								<ExtendedTooltip name="ЗадачиСтрокаПоискаРасширеннаяПодсказка" id="20"/>
+								<ContextMenu name="ТЧЗадачиСтрокаПоискаКонтекстноеМеню" id="19"/>
+								<ExtendedTooltip name="ТЧЗадачиСтрокаПоискаРасширеннаяПодсказка" id="20"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ЗадачиСостояниеПросмотра" id="21">
+							<ViewStatusAddition name="ТЧЗадачиСостояниеПросмотра" id="21">
 								<AdditionSource>
-									<Item>Задачи</Item>
+									<Item>ТЧЗадачи</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ЗадачиСостояниеПросмотраКонтекстноеМеню" id="22"/>
-								<ExtendedTooltip name="ЗадачиСостояниеПросмотраРасширеннаяПодсказка" id="23"/>
+								<ContextMenu name="ТЧЗадачиСостояниеПросмотраКонтекстноеМеню" id="22"/>
+								<ExtendedTooltip name="ТЧЗадачиСостояниеПросмотраРасширеннаяПодсказка" id="23"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ЗадачиУправлениеПоиском" id="24">
+							<SearchControlAddition name="ТЧЗадачиУправлениеПоиском" id="24">
 								<AdditionSource>
-									<Item>Задачи</Item>
+									<Item>ТЧЗадачи</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ЗадачиУправлениеПоискомКонтекстноеМеню" id="25"/>
-								<ExtendedTooltip name="ЗадачиУправлениеПоискомРасширеннаяПодсказка" id="26"/>
+								<ContextMenu name="ТЧЗадачиУправлениеПоискомКонтекстноеМеню" id="25"/>
+								<ExtendedTooltip name="ТЧЗадачиУправлениеПоискомРасширеннаяПодсказка" id="26"/>
 							</SearchControlAddition>
 							<Events>
+								<Event name="BeforeDeleteRow">ЗадачиПередУдалением</Event>
 								<Event name="OnActivateRow">ЗадачиПриАктивизацииСтроки</Event>
+								<Event name="AfterDeleteRow">ЗадачиПослеУдаления</Event>
 							</Events>
 							<ChildItems>
 								<LabelField name="ЗадачиНомерСтроки" id="27">
-									<DataPath>Объект.Задачи.LineNumber</DataPath>
+									<DataPath>Объект.ТЧЗадачи.LineNumber</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ЗадачиНомерСтрокиКонтекстноеМеню" id="28"/>
 									<ExtendedTooltip name="ЗадачиНомерСтрокиРасширеннаяПодсказка" id="29"/>
 								</LabelField>
 								<InputField name="ЗадачиЗадача" id="30">
-									<DataPath>Объект.Задачи.Задача</DataPath>
+									<DataPath>Объект.ТЧЗадачи.Задача</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ЗадачиЗадачаКонтекстноеМеню" id="31"/>
 									<ExtendedTooltip name="ЗадачиЗадачаРасширеннаяПодсказка" id="32"/>
@@ -275,7 +282,7 @@
 									</Events>
 								</InputField>
 								<LabelField name="ЗадачиЗадачаКод" id="102">
-									<DataPath>Объект.Задачи.Задача.Code</DataPath>
+									<DataPath>Объект.ТЧЗадачи.Задача.Code</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -287,25 +294,25 @@
 									<ExtendedTooltip name="ЗадачиЗадачаКодРасширеннаяПодсказка" id="104"/>
 								</LabelField>
 								<LabelField name="ЗадачиЗадачаСтатус" id="108">
-									<DataPath>Объект.Задачи.Задача.Статус</DataPath>
+									<DataPath>Объект.ТЧЗадачи.Задача.Статус</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ЗадачиЗадачаСтатусКонтекстноеМеню" id="109"/>
 									<ExtendedTooltip name="ЗадачиЗадачаСтатусРасширеннаяПодсказка" id="110"/>
 								</LabelField>
 								<LabelField name="ЗадачиЗадачаИсполнитель" id="105">
-									<DataPath>Объект.Задачи.Задача.Исполнитель</DataPath>
+									<DataPath>Объект.ТЧЗадачи.Задача.Исполнитель</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ЗадачиЗадачаИсполнительКонтекстноеМеню" id="106"/>
 									<ExtendedTooltip name="ЗадачиЗадачаИсполнительРасширеннаяПодсказка" id="107"/>
 								</LabelField>
 								<LabelField name="ЗадачиЗадачаОсновнаяЗадача" id="114">
-									<DataPath>Объект.Задачи.Задача.ОсновнаяЗадача</DataPath>
+									<DataPath>Объект.ТЧЗадачи.Задача.ОсновнаяЗадача</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ЗадачиЗадачаОсновнаяЗадачаКонтекстноеМеню" id="115"/>
 									<ExtendedTooltip name="ЗадачиЗадачаОсновнаяЗадачаРасширеннаяПодсказка" id="116"/>
 								</LabelField>
 								<LabelField name="ЗадачиЗадачаКомментарииВКоде" id="111">
-									<DataPath>Объект.Задачи.Задача.КомментарииВКоде</DataPath>
+									<DataPath>Объект.ТЧЗадачи.Задача.КомментарииВКоде</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ЗадачиЗадачаКомментарииВКодеКонтекстноеМеню" id="112"/>
 									<ExtendedTooltip name="ЗадачиЗадачаКомментарииВКодеРасширеннаяПодсказка" id="113"/>
@@ -587,6 +594,26 @@
 				</v8:item>
 			</ToolTip>
 			<Action>КомандаПодборЗадач</Action>
+		</Command>
+		<Command name="КомандаОбновитьДанныеПоЗадачам" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить данные по задачам</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда обновить данные по задачам</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаОбновитьДанныеПоЗадачам</Action>
+			<Representation>Picture</Representation>
 		</Command>
 	</Commands>
 </Form>
