@@ -1,4 +1,4 @@
-[![Открытый чат проекта https://gitter.im/Tasks_/Lobby](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Tasks_/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Открытый чат проекта https://gitter.im/Tasks_/Lobby](https://badges.gitter.im/Tasks_/Lobby.svg)](https://gitter.im/Tasks_/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 # Управление задачами: Канбан доска #
 
 Конфигурация "Управление задачами" с использованием библиотеки стандартных подсистем. Канбан доска
