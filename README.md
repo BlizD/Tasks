@@ -7,7 +7,7 @@
 
 ## Скачать последний релиз ## 
 
-* https://github.com/BlizD/Tasks/releases/download/1.0.3.001/Tasks_1.0.3.001.zip - скачать последний релиз;
+* https://github.com/BlizD/Tasks/releases/download/1.0.3.005/Tasks_1.0.3.005.zip - скачать последний релиз;
 * https://github.com/BlizD/Tasks/releases - все релизы.
 
 ## Видео инструкции (очень короткие самое длинное это 8 мин) ##
