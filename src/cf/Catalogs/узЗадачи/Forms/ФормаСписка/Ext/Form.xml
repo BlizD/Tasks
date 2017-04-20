@@ -36,6 +36,11 @@
 				<CommandName>Form.Command.ИзменитьВыделенные</CommandName>
 				<ExtendedTooltip name="ФормаИзменитьВыделенныеРасширеннаяПодсказка" id="75"/>
 			</Button>
+			<Button name="ФормаКомандаПоказатьСкрытьЗадачи" id="90">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаПоказатьСкрытьЗадачи</CommandName>
+				<ExtendedTooltip name="ФормаКомандаПоказатьСкрытьЗадачиРасширеннаяПодсказка" id="91"/>
+			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -257,7 +262,7 @@
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	СправочникузЗадачи.Ссылка,
 	СправочникузЗадачи.ПометкаУдаления,
@@ -310,7 +315,12 @@
 								ИНАЧЕ ИСТИНА
 							КОНЕЦ)
 			ИНАЧЕ ИСТИНА
-		КОНЕЦ</QueryText>
+		КОНЕЦ
+	И ВЫБОР КОГДА &amp;СкрыватьЗадачиСОпределеннымСтатусом ТОГДА
+		СправочникузЗадачи.Статус.СкрыватьЗадачиДляДанногоСтатусаВФормеСписка = ЛОЖЬ	
+	ИНАЧЕ
+		ИСТИНА
+	КОНЕЦ</QueryText>
 				<MainTable>Catalog.узЗадачи</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -447,6 +457,29 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ИзменитьВыделенные</Action>
+		</Command>
+		<Command name="КомандаПоказатьСкрытьЗадачи" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать/скрыть задачи</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show/hide tasks</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ro</v8:lang>
+					<v8:content>Show/hide tasks</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда показать скрыть задачи</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаПоказатьСкрытьЗадачи</Action>
 		</Command>
 	</Commands>
 </Form>
