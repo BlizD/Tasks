@@ -7,7 +7,7 @@
 
 ## Скачать последний релиз ## 
 
-* https://github.com/BlizD/Tasks/releases/download/1.0.3.005/Tasks_1.0.3.005.zip - скачать последний релиз;
+* https://github.com/BlizD/Tasks/releases/download/1.0.3.012/Tasks_1.0.3.012.zip - скачать последний релиз;
 * https://github.com/BlizD/Tasks/releases - все релизы.
 
 ## Видео инструкции (очень короткие самое длинное это 8 мин) ##
@@ -20,6 +20,7 @@
 * https://youtu.be/uRX_iuWirtI - как добавить свой реквизит в задачу без программирования; 
 * https://youtu.be/uRX_iuWirtI - как указать заметку для задачи, которая будет видна только Вам; 
 * https://youtu.be/jgNKw-6sCeQ - как быстро получить все открытые вопросы по задачам;
+* https://youtu.be/2VGnRisLa4Y - как вести свои текущие дела; 
 * https://youtu.be/khAwpz3eMMI - как ввести описания задачи с помощью Markdown;
 * https://youtu.be/vbdx8JhhDac - связь изменений в метаданных и задач, настройка загрузки изменений из хранилища 1с;
 * https://youtu.be/ILI_-HaBxM8 - как установить конфигурацию и как настроить отправку уведомлений; 
