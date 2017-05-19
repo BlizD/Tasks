@@ -219,6 +219,12 @@
 							<ContextMenu name="ТЧТекущиеДелаПорядокКонтекстноеМеню" id="61"/>
 							<ExtendedTooltip name="ТЧТекущиеДелаПорядокРасширеннаяПодсказка" id="62"/>
 						</InputField>
+						<InputField name="ТЧТекущиеДелаПорядокДоп" id="78">
+							<DataPath>Объект.ТЧТекущиеДела.ПорядокДоп</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ТЧТекущиеДелаПорядокДопКонтекстноеМеню" id="79"/>
+							<ExtendedTooltip name="ТЧТекущиеДелаПорядокДопРасширеннаяПодсказка" id="80"/>
+						</InputField>
 					</ChildItems>
 				</ColumnGroup>
 			</ChildItems>
@@ -255,6 +261,11 @@
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
 						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ТЧТекущиеДела.ДатаВыполнения</dcsset:left>
+						<dcsset:comparisonType>LessOrEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:Field">Объект.НаДатуКонецДня</dcsset:right>
+					</dcsset:item>
 				</dcsset:filter>
 				<dcsset:appearance>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -265,6 +276,36 @@
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>Шрифт</dcscor:parameter>
 						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="false" underline="false" strikeout="true" kind="WindowsFont"/>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ТЧТекущиеДела</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ТЧТекущиеДела.Выполнено</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ТЧТекущиеДела.ДатаВыполнения</dcsset:left>
+						<dcsset:comparisonType>Greater</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:Field">Объект.НаДатуКонецДня</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#00A600</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
 					</dcscor:item>
 				</dcsset:appearance>
 			</dcsset:item>
