@@ -7,7 +7,7 @@
 
 ## Скачать последний релиз ## 
 
-* https://github.com/BlizD/Tasks/releases/download/1.0.3.021/Tasks_1.0.3.021.zip - скачать последний релиз;
+* https://github.com/BlizD/Tasks/releases/download/1.0.3.024/Tasks_1.0.3.024.zip - скачать последний релиз;
 * https://github.com/BlizD/Tasks/releases - все релизы.
 
 ## Статистика использование программы за 8 месяцев ## 
@@ -17,11 +17,11 @@
 ![2](https://user-images.githubusercontent.com/10989306/27944416-68e29a98-62ef-11e7-9cba-2142ba625ba5.png)
 
 
-
 ## Видео инструкции (очень короткие самое длинное это 8 мин) ##
 
 * https://youtu.be/kwgkH9lPBVo - канбан доска, перетаскивание карточек, произвольные отборы, видимость колонок;
 * https://youtu.be/XzWCFyrIPcI - как работать с документом "Выпуск релиза";
+* https://youtu.be/mBQWm7G9U18 - как указать WIP лимит; 
 * https://youtu.be/PMvp0UqKybk - Статистика использования в период с Ноября 16 по Июнь 17;
 * https://youtu.be/eoKuUn8w1r8 - активность пользователя;
 * https://youtu.be/gS1Gi6Acjt4 - как добавить задачу, что такое основная задача, иерархия задач; 
