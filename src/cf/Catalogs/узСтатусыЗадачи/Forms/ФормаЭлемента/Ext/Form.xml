@@ -3,100 +3,273 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
-		<InputField name="Код" id="1">
-			<DataPath>Объект.Code</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="КодКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
-		</InputField>
-		<InputField name="Наименование" id="4">
-			<DataPath>Объект.Description</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
-			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
-		</InputField>
-		<InputField name="ВидСтатуса" id="7">
-			<DataPath>Объект.ВидСтатуса</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="ВидСтатусаКонтекстноеМеню" id="8"/>
-			<ExtendedTooltip name="ВидСтатусаРасширеннаяПодсказка" id="9"/>
-		</InputField>
-		<InputField name="РеквизитДопУпорядочивания" id="10">
-			<DataPath>Объект.РеквизитДопУпорядочивания</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="РеквизитДопУпорядочиванияКонтекстноеМеню" id="11"/>
-			<ExtendedTooltip name="РеквизитДопУпорядочиванияРасширеннаяПодсказка" id="12"/>
-		</InputField>
-		<CheckBoxField name="ВидимостьПоУмолчанию" id="13">
-			<DataPath>Объект.ВидимостьПоУмолчанию</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<CheckBoxType>Auto</CheckBoxType>
-			<ContextMenu name="ВидимостьПоУмолчаниюКонтекстноеМеню" id="14"/>
-			<ExtendedTooltip name="ВидимостьПоУмолчаниюРасширеннаяПодсказка" id="15"/>
-		</CheckBoxField>
-		<CheckBoxField name="НеИспользуется" id="16">
-			<DataPath>Объект.НеИспользуется</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<CheckBoxType>Auto</CheckBoxType>
-			<ContextMenu name="НеИспользуетсяКонтекстноеМеню" id="17"/>
-			<ExtendedTooltip name="НеИспользуетсяРасширеннаяПодсказка" id="18"/>
-		</CheckBoxField>
-		<CheckBoxField name="СкрыватьЗадачиДляДанногоСтатусаВФормеСписка" id="19">
-			<DataPath>Объект.СкрыватьЗадачиДляДанногоСтатусаВФормеСписка</DataPath>
-			<CheckBoxType>Auto</CheckBoxType>
-			<ContextMenu name="СкрыватьЗадачиДляДанногоСтатусаВФормеСпискаКонтекстноеМеню" id="20"/>
-			<ExtendedTooltip name="СкрыватьЗадачиДляДанногоСтатусаВФормеСпискаРасширеннаяПодсказка" id="21"/>
-		</CheckBoxField>
-		<Table name="Наблюдатели" id="22">
-			<TitleLocation>Top</TitleLocation>
-			<AutoInsertNewRow>true</AutoInsertNewRow>
-			<EnableStartDrag>true</EnableStartDrag>
-			<EnableDrag>true</EnableDrag>
-			<DataPath>Объект.Наблюдатели</DataPath>
-			<RowFilter xsi:nil="true"/>
-			<ContextMenu name="НаблюдателиКонтекстноеМеню" id="23"/>
-			<AutoCommandBar name="НаблюдателиКоманднаяПанель" id="24"/>
-			<ExtendedTooltip name="НаблюдателиРасширеннаяПодсказка" id="25"/>
-			<SearchStringAddition name="НаблюдателиСтрокаПоиска" id="26">
-				<AdditionSource>
-					<Item>Наблюдатели</Item>
-					<Type>SearchStringRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="НаблюдателиСтрокаПоискаКонтекстноеМеню" id="27"/>
-				<ExtendedTooltip name="НаблюдателиСтрокаПоискаРасширеннаяПодсказка" id="28"/>
-			</SearchStringAddition>
-			<ViewStatusAddition name="НаблюдателиСостояниеПросмотра" id="29">
-				<AdditionSource>
-					<Item>Наблюдатели</Item>
-					<Type>ViewStatusRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="НаблюдателиСостояниеПросмотраКонтекстноеМеню" id="30"/>
-				<ExtendedTooltip name="НаблюдателиСостояниеПросмотраРасширеннаяПодсказка" id="31"/>
-			</ViewStatusAddition>
-			<SearchControlAddition name="НаблюдателиУправлениеПоиском" id="32">
-				<AdditionSource>
-					<Item>Наблюдатели</Item>
-					<Type>SearchControl</Type>
-				</AdditionSource>
-				<ContextMenu name="НаблюдателиУправлениеПоискомКонтекстноеМеню" id="33"/>
-				<ExtendedTooltip name="НаблюдателиУправлениеПоискомРасширеннаяПодсказка" id="34"/>
-			</SearchControlAddition>
+		<Pages name="Группа1" id="41">
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="42"/>
 			<ChildItems>
-				<LabelField name="НаблюдателиНомерСтроки" id="35">
-					<DataPath>Объект.Наблюдатели.LineNumber</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="НаблюдателиНомерСтрокиКонтекстноеМеню" id="36"/>
-					<ExtendedTooltip name="НаблюдателиНомерСтрокиРасширеннаяПодсказка" id="37"/>
-				</LabelField>
-				<InputField name="НаблюдателиПользователь" id="38">
-					<DataPath>Объект.Наблюдатели.Пользователь</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="НаблюдателиПользовательКонтекстноеМеню" id="39"/>
-					<ExtendedTooltip name="НаблюдателиПользовательРасширеннаяПодсказка" id="40"/>
-				</InputField>
+				<Page name="ГруппаСтраницаОсновное" id="45">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основное</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Main</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ro</v8:lang>
+							<v8:content>Main</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа страница основное</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаСтраницаОсновноеРасширеннаяПодсказка" id="46"/>
+					<ChildItems>
+						<UsualGroup name="Группа2" id="63">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="64"/>
+							<ChildItems>
+								<InputField name="Наименование" id="4">
+									<DataPath>Объект.Description</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+									<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+								</InputField>
+								<InputField name="ВидСтатуса" id="7">
+									<DataPath>Объект.ВидСтатуса</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ВидСтатусаКонтекстноеМеню" id="8"/>
+									<ExtendedTooltip name="ВидСтатусаРасширеннаяПодсказка" id="9"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="НаименованиеДляКанбанДоски" id="71">
+							<DataPath>Объект.НаименованиеДляКанбанДоски</DataPath>
+							<ContextMenu name="НаименованиеДляКанбанДоскиКонтекстноеМеню" id="72"/>
+							<ExtendedTooltip name="НаименованиеДляКанбанДоскиРасширеннаяПодсказка" id="73"/>
+						</InputField>
+						<CheckBoxField name="ВидимостьПоУмолчанию" id="13">
+							<DataPath>Объект.ВидимостьПоУмолчанию</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Default visibility on the Kanban Board</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ro</v8:lang>
+									<v8:content>Default visibility on the Kanban Board</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ВидимостьПоУмолчаниюКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="ВидимостьПоУмолчаниюРасширеннаяПодсказка" id="15"/>
+						</CheckBoxField>
+						<CheckBoxField name="СкрыватьЗадачиДляДанногоСтатусаВФормеСписка" id="19">
+							<DataPath>Объект.СкрыватьЗадачиДляДанногоСтатусаВФормеСписка</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СкрыватьЗадачиДляДанногоСтатусаВФормеСпискаКонтекстноеМеню" id="20"/>
+							<ExtendedTooltip name="СкрыватьЗадачиДляДанногоСтатусаВФормеСпискаРасширеннаяПодсказка" id="21"/>
+						</CheckBoxField>
+						<LabelDecoration name="ДекорацияПояснение" id="68">
+							<TextColor>style:FieldSelectionBackColor</TextColor>
+							<Font ref="style:NormalTextFont" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>WIP лимит указывается в родителе, поэтому здесь редактирование запрещено</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияПояснениеКонтекстноеМеню" id="69"/>
+							<ExtendedTooltip name="ДекорацияПояснениеРасширеннаяПодсказка" id="70"/>
+						</LabelDecoration>
+						<CheckBoxField name="ИспользоватьWIPЛимит" id="51">
+							<DataPath>Объект.ИспользоватьWIPЛимит</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ИспользоватьWIPЛимитКонтекстноеМеню" id="52"/>
+							<ExtendedTooltip name="ИспользоватьWIPЛимитРасширеннаяПодсказка" id="53"/>
+							<Events>
+								<Event name="OnChange">ИспользоватьWIPЛимитПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<UsualGroup name="ГруппаWIPЛимит" id="49">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>WIP лимит</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа WIPЛимит</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаWIPЛимитРасширеннаяПодсказка" id="50"/>
+							<ChildItems>
+								<InputField name="WIPЛимит" id="60">
+									<DataPath>Объект.WIPЛимит</DataPath>
+									<ContextMenu name="WIPЛимитКонтекстноеМеню" id="61"/>
+									<ExtendedTooltip name="WIPЛимитРасширеннаяПодсказка" id="62"/>
+								</InputField>
+								<CheckBoxField name="ИспользоватьWIPЛимитНаИсполнителя" id="54">
+									<DataPath>Объект.ИспользоватьWIPЛимитНаИсполнителя</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ИспользоватьWIPЛимитНаИсполнителяКонтекстноеМеню" id="55"/>
+									<ExtendedTooltip name="ИспользоватьWIPЛимитНаИсполнителяРасширеннаяПодсказка" id="56"/>
+								</CheckBoxField>
+								<CheckBoxField name="WIPЛимитУказываетсяВРодителе" id="57">
+									<DataPath>Объект.WIPЛимитУказываетсяВРодителе</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="WIPЛимитУказываетсяВРодителеКонтекстноеМеню" id="58"/>
+									<ExtendedTooltip name="WIPЛимитУказываетсяВРодителеРасширеннаяПодсказка" id="59"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаСтраницаНаблюдатели" id="47">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наблюдатели</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Watchers</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ro</v8:lang>
+							<v8:content>Watchers</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа страница наблюдатели</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаСтраницаНаблюдателиРасширеннаяПодсказка" id="48"/>
+					<ChildItems>
+						<Table name="Наблюдатели" id="22">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.Наблюдатели</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="НаблюдателиКонтекстноеМеню" id="23"/>
+							<AutoCommandBar name="НаблюдателиКоманднаяПанель" id="24"/>
+							<ExtendedTooltip name="НаблюдателиРасширеннаяПодсказка" id="25"/>
+							<SearchStringAddition name="НаблюдателиСтрокаПоиска" id="26">
+								<AdditionSource>
+									<Item>Наблюдатели</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НаблюдателиСтрокаПоискаКонтекстноеМеню" id="27"/>
+								<ExtendedTooltip name="НаблюдателиСтрокаПоискаРасширеннаяПодсказка" id="28"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НаблюдателиСостояниеПросмотра" id="29">
+								<AdditionSource>
+									<Item>Наблюдатели</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НаблюдателиСостояниеПросмотраКонтекстноеМеню" id="30"/>
+								<ExtendedTooltip name="НаблюдателиСостояниеПросмотраРасширеннаяПодсказка" id="31"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НаблюдателиУправлениеПоиском" id="32">
+								<AdditionSource>
+									<Item>Наблюдатели</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НаблюдателиУправлениеПоискомКонтекстноеМеню" id="33"/>
+								<ExtendedTooltip name="НаблюдателиУправлениеПоискомРасширеннаяПодсказка" id="34"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="НаблюдателиНомерСтроки" id="35">
+									<DataPath>Объект.Наблюдатели.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НаблюдателиНомерСтрокиКонтекстноеМеню" id="36"/>
+									<ExtendedTooltip name="НаблюдателиНомерСтрокиРасширеннаяПодсказка" id="37"/>
+								</LabelField>
+								<InputField name="НаблюдателиПользователь" id="38">
+									<DataPath>Объект.Наблюдатели.Пользователь</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НаблюдателиПользовательКонтекстноеМеню" id="39"/>
+									<ExtendedTooltip name="НаблюдателиПользовательРасширеннаяПодсказка" id="40"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаСтраницаДополнительно" id="43">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительно</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Other</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ro</v8:lang>
+							<v8:content>Other</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа страница дополнительно</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаСтраницаДополнительноРасширеннаяПодсказка" id="44"/>
+					<ChildItems>
+						<InputField name="Код" id="1">
+							<DataPath>Объект.Code</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
+						</InputField>
+						<InputField name="РеквизитДопУпорядочивания" id="10">
+							<DataPath>Объект.РеквизитДопУпорядочивания</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="РеквизитДопУпорядочиванияКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="РеквизитДопУпорядочиванияРасширеннаяПодсказка" id="12"/>
+						</InputField>
+						<CheckBoxField name="НеИспользуется" id="16">
+							<DataPath>Объект.НеИспользуется</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="НеИспользуетсяКонтекстноеМеню" id="17"/>
+							<ExtendedTooltip name="НеИспользуетсяРасширеннаяПодсказка" id="18"/>
+						</CheckBoxField>
+						<InputField name="Родитель" id="65">
+							<DataPath>Объект.Parent</DataPath>
+							<ContextMenu name="РодительКонтекстноеМеню" id="66"/>
+							<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="67"/>
+						</InputField>
+					</ChildItems>
+				</Page>
 			</ChildItems>
-		</Table>
+		</Pages>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -105,6 +278,17 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="WIPЛимитУказанВРодителе" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>WIPЛимит указан в родителе</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 </Form>
