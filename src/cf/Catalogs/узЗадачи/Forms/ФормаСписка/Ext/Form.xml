@@ -68,15 +68,38 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СписокКомпоновщикНастроекПользовательскиеНастройкиРасширеннаяПодсказка" id="2"/>
 		</UsualGroup>
-		<InputField name="Наблюдатель" id="81">
-			<DataPath>Наблюдатель</DataPath>
-			<ClearButton>true</ClearButton>
-			<ContextMenu name="НаблюдательКонтекстноеМеню" id="82"/>
-			<ExtendedTooltip name="НаблюдательРасширеннаяПодсказка" id="83"/>
-			<Events>
-				<Event name="OnChange">НаблюдательПриИзменении</Event>
-			</Events>
-		</InputField>
+		<UsualGroup name="Группа1" id="98">
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="99"/>
+			<ChildItems>
+				<InputField name="НомерЗадачи" id="95">
+					<DataPath>НомерЗадачи</DataPath>
+					<ClearButton>true</ClearButton>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧГ=0</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="НомерЗадачиКонтекстноеМеню" id="96"/>
+					<ExtendedTooltip name="НомерЗадачиРасширеннаяПодсказка" id="97"/>
+					<Events>
+						<Event name="OnChange">НомерЗадачиПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Наблюдатель" id="81">
+					<DataPath>Наблюдатель</DataPath>
+					<SkipOnInput>true</SkipOnInput>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="НаблюдательКонтекстноеМеню" id="82"/>
+					<ExtendedTooltip name="НаблюдательРасширеннаяПодсказка" id="83"/>
+					<Events>
+						<Event name="OnChange">НаблюдательПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
 		<Table name="Список" id="3">
 			<CommandBarLocation>None</CommandBarLocation>
 			<DefaultItem>true</DefaultItem>
@@ -322,6 +345,11 @@
 							КОНЕЦ)
 			ИНАЧЕ ИСТИНА
 		КОНЕЦ
+	И ВЫБОР КОГДА &amp;ИспользоватьОтборПоНомеруЗадачи ТОГДА
+		СправочникузЗадачи.Код = &amp;НомерЗадачи	
+	ИНАЧЕ
+		ИСТИНА
+	КОНЕЦ		
 	И ВЫБОР КОГДА &amp;СкрыватьЗадачиСОпределеннымСтатусом ТОГДА
 		СправочникузЗадачи.Статус.СкрыватьЗадачиДляДанногоСтатусаВФормеСписка = ЛОЖЬ	
 	ИНАЧЕ
@@ -359,6 +387,33 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НомерЗадачи" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер задачи</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>7</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СкрыватьЗадачиСОпределеннымСтатусом" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скрывать задачи с определенным статусом</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
