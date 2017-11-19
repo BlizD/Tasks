@@ -14,7 +14,9 @@
 
 * https://youtu.be/PMvp0UqKybk - Статистика использования в период с Ноября 16 по Июнь 17;
 
-![2](https://user-images.githubusercontent.com/10989306/27944416-68e29a98-62ef-11e7-9cba-2142ba625ba5.png)
+Обновил картинку, статистика за год использования:
+
+![tasksfortheyear1](https://user-images.githubusercontent.com/10989306/32988224-b89f859c-cd10-11e7-8a52-1a9480720824.png)
 
 
 ## Видео инструкции (очень короткие самое длинное это 8 мин) ##
