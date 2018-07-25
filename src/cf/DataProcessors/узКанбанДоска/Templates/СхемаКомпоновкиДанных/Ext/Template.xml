@@ -176,6 +176,16 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КороткоеИмяЗаказчик</dataPath>
+			<field>КороткоеИмяЗаказчик</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Короткое имя заказчик</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	узНаблюдателиЗаЗадачами.Задача КАК Задача
@@ -312,7 +322,8 @@
 			ТОГДА ""
 		ИНАЧЕ "✉"
 	КОНЕЦ КАК ЕстьПисьма,
-	ВТРезультат.Заказчик
+	ВТРезультат.Заказчик,
+	ВТРезультат.Заказчик.узКороткоеИмя КАК КороткоеИмяЗаказчик
 ИЗ
 	ВТРезультат КАК ВТРезультат
 		ЛЕВОЕ СОЕДИНЕНИЕ ВТЗадачиСФайлами КАК ВТЗадачиСФайлами
@@ -438,6 +449,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Заказчик</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КороткоеИмяЗаказчик</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
