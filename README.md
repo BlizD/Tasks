@@ -12,6 +12,8 @@
 
 Почта проекта:  **sdesk1c@bk.ru**
 
+Канбан в условиях российской действительности https://infostart.ru/public/871013/
+
 ## Скачать последний релиз ## 
 
 * https://github.com/BlizD/Tasks/releases/download/1.0.4.010/Tasks_1.0.4.010.zip - скачать последний релиз;
