@@ -138,7 +138,7 @@
 	узЗадачи.Статус.ВидСтатуса КАК ВидСтатуса,
 	узЗадачи.Статус,
 	узЗадачи.Конфигурация,
-	узЗадачи.Спринт,
+	ЕСТЬNULL(узСпринтыЗадачСрезПоследних.Спринт, ЗНАЧЕНИЕ(Справочник.узСпринты.ПустаяСсылка)) КАК Спринт,
 	узЗадачи.Важность,
 	узЗадачи.ОсновнаяЗадача,
 	узЗадачи.РеквизитДопУпорядочивания,
@@ -153,6 +153,8 @@
 	узЗадачи.ЧасыКОплате
 ИЗ
 	Справочник.узЗадачи КАК узЗадачи
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.узСпринтыЗадач.СрезПоследних КАК узСпринтыЗадачСрезПоследних
+		ПО узЗадачи.Ссылка = узСпринтыЗадачСрезПоследних.Задача
 ГДЕ
 	узЗадачи.ПоказыватьВОтчетахИКанбанДоске</query>
 	</dataSet>
@@ -172,6 +174,23 @@
 		<dataPath>ЧасыФакт</dataPath>
 		<expression>Сумма(ЧасыФакт)</expression>
 	</totalField>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
