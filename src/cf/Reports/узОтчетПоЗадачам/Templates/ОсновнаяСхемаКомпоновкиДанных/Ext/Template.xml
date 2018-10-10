@@ -118,16 +118,22 @@
 			<field>Спринт</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ЧасыФакт</dataPath>
-			<field>ЧасыФакт</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ЧасыКОплате</dataPath>
 			<field>ЧасыКОплате</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ЧасыПлан</dataPath>
 			<field>ЧасыПлан</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЧасыФакт</dataPath>
+			<field>ЧасыФакт</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Часы факт</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
@@ -149,12 +155,14 @@
 	узЗадачи.URLВнешнейЗаявки,
 	1 КАК КоличествоЗадач,
 	узЗадачи.ЧасыПлан,
-	узЗадачи.ЧасыФакт,
+	узФактПоЗадачамОбороты.ФактОборот КАК ЧасыФакт,
 	узЗадачи.ЧасыКОплате
 ИЗ
 	Справочник.узЗадачи КАК узЗадачи
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.узСпринтыЗадач.СрезПоследних КАК узСпринтыЗадачСрезПоследних
 		ПО узЗадачи.Ссылка = узСпринтыЗадачСрезПоследних.Задача
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.узФактПоЗадачам.Обороты КАК узФактПоЗадачамОбороты
+		ПО узЗадачи.Ссылка = узФактПоЗадачамОбороты.Задача
 ГДЕ
 	узЗадачи.ПоказыватьВОтчетахИКанбанДоске</query>
 	</dataSet>
@@ -190,6 +198,40 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -270,6 +312,20 @@
 					<dcsset:userSettingID>244b0a1b-9445-4996-aeae-eab1da46a8be</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>НачалоПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>c61eece0-307c-49ab-b2a9-b2b461086ee2</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>КонецПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>fdf9ce7a-4ec2-47d0-893f-d943da680e0a</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
 					<dcsset:field>ВидСтатуса.РеквизитДопУпорядочивания</dcsset:field>
