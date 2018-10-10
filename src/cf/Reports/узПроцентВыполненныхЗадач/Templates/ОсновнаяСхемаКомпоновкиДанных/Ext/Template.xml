@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоДней</dataPath>
+			<field>КоличествоДней</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество дней</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоЗадач</dataPath>
+			<field>КоличествоЗадач</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество задач</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоВыполненныхЗадач</dataPath>
+			<field>КоличествоВыполненныхЗадач</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество выполненных задач</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ВЫБОР
+		КОГДА узЗадачи.Статус.ВидСтатуса = ЗНАЧЕНИЕ(Справочник.узВидыСтатусов.Готово)
+			ТОГДА РАЗНОСТЬДАТ(узЗадачи.ДатаСоздания, узЗадачи.ДатаВыполнения, ДЕНЬ)
+		ИНАЧЕ 0
+	КОНЕЦ КАК КоличествоДней,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ узЗадачи.Ссылка) КАК КоличествоВыполненныхЗадач
+ПОМЕСТИТЬ ВТВыполненные
+ИЗ
+	Справочник.узЗадачи КАК узЗадачи
+ГДЕ
+	узЗадачи.Статус.ВидСтатуса = ЗНАЧЕНИЕ(Справочник.узВидыСтатусов.Готово)
+
+СГРУППИРОВАТЬ ПО
+	ВЫБОР
+		КОГДА узЗадачи.Статус.ВидСтатуса = ЗНАЧЕНИЕ(Справочник.узВидыСтатусов.Готово)
+			ТОГДА РАЗНОСТЬДАТ(узЗадачи.ДатаСоздания, узЗадачи.ДатаВыполнения, ДЕНЬ)
+		ИНАЧЕ 0
+	КОНЕЦ
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ узЗадачи.Ссылка) КАК КоличествоЗадач
+ПОМЕСТИТЬ ВТВсеЗадачи
+ИЗ
+	Справочник.узЗадачи КАК узЗадачи
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТВсеЗадачи.КоличествоЗадач,
+	ВТВыполненные.КоличествоДней,
+	ВТВыполненные.КоличествоВыполненныхЗадач
+ИЗ
+	ВТВыполненные КАК ВТВыполненные,
+	ВТВсеЗадачи КАК ВТВсеЗадачи</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>ПроцентВыполнения</dataPath>
+		<expression>КоличествоВыполненныхЗадач/КоличествоЗадач*100</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Процент выполнения</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>15</v8:Digits>
+				<v8:FractionDigits>2</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<totalField>
+		<dataPath>КоличествоВыполненныхЗадач</dataPath>
+		<expression>Сумма(КоличествоВыполненныхЗадач)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоЗадач</dataPath>
+		<expression>Сумма(КоличествоЗадач)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентВыполнения</dataPath>
+		<expression>Сумма(ПроцентВыполнения)</expression>
+	</totalField>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоДней</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПроцентВыполнения</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:ChartType">Column3D</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemChart">
+				<dcsset:point>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>КоличествоДней</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:point>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
