@@ -16,7 +16,7 @@
 
 ## Скачать последний релиз ## 
 
-* https://github.com/BlizD/Tasks/releases/download/1.0.4.016/Tasks_1.0.4.016.zip - скачать последний релиз;
+* https://github.com/BlizD/Tasks/releases/download/1.0.4.010/Tasks_1.0.4.010.zip - скачать последний релиз;
 * https://github.com/BlizD/Tasks/releases - все релизы.
 
 ## Статистика использование программы за 8 месяцев ## 
