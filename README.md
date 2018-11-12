@@ -9,7 +9,7 @@
 Полное описание смотрим на инфостарт: (http://infostart.ru/public/552480/)
 
 Служба поддержки (ServiceDesk): https://infostart.ru/public/788003/
-
+Канал в телеграмме: [@mtasks](https://t.me/mtasks)
 Почта проекта:  **sdesk1c@bk.ru**
 
 Канбан в условиях российской действительности https://infostart.ru/public/871013/
