@@ -2,6 +2,11 @@
 [![Release](https://img.shields.io/github/tag/BlizD/Tasks.svg?label=Last%20release&a)](https://github.com/BlizD/Tasks/releases)
 [![Открытый чат проекта https://gitter.im/Tasks_/Lobby](https://badges.gitter.im/Tasks_/Lobby.svg)](https://gitter.im/Tasks_/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+## Скачать последний релиз ## 
+
+* https://github.com/BlizD/Tasks/releases/download/1.0.4.018/Tasks_1.0.4.018.zip - скачать последний релиз;
+* https://github.com/BlizD/Tasks/releases - все релизы.
+
 # Управление задачами: Канбан доска #
 
 Конфигурация "Управление задачами" с использованием библиотеки стандартных подсистем. Канбан доска
@@ -15,11 +20,6 @@
 Почта проекта:  **sdesk1c@bk.ru**
 
 Канбан в условиях российской действительности https://infostart.ru/public/871013/
-
-## Скачать последний релиз ## 
-
-* https://github.com/BlizD/Tasks/releases/download/1.0.4.018/Tasks_1.0.4.018.zip - скачать последний релиз;
-* https://github.com/BlizD/Tasks/releases - все релизы.
 
 ## Статистика использование программы за 8 месяцев ## 
 
