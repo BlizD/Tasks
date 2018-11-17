@@ -1,6 +1,8 @@
 [![Stars](https://img.shields.io/github/stars/BlizD/Tasks.svg?label=Github%20%E2%98%85&a)](https://github.com/BlizD/Tasks/stargazers)
 [![Release](https://img.shields.io/github/tag/BlizD/Tasks.svg?label=Last%20release&a)](https://github.com/BlizD/Tasks/releases)
-[![Открытый чат проекта https://gitter.im/Tasks_/Lobby](https://badges.gitter.im/Tasks_/Lobby.svg)](https://gitter.im/Tasks_/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Github All Releases](https://img.shields.io/github/downloads/BlizD/Tasks/total.svg)]() [+367 Инфостарт](https://infostart.ru/public/552480/) [+424 1clancer.ru](http://1clancer.ru/catalog/2764)
+[![Github Releases](https://img.shields.io/github/downloads/BlizD/Tasks/latest/total.svg)]()
+
 
 ## Скачать последний релиз ## 
 
