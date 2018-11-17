@@ -3,7 +3,7 @@
 [![Github All Releases](https://img.shields.io/github/downloads/BlizD/Tasks/total.svg)]() 
 [![Github Releases](https://img.shields.io/github/downloads/BlizD/Tasks/latest/total.svg)]()
 [+367 Инфостарт](https://infostart.ru/public/552480/) [+424 1clancer.ru](http://1clancer.ru/catalog/2764)
-
+[@mtasks](https://t.me/mtasks)
 
 ## Скачать последний релиз ## 
 
