@@ -7,7 +7,7 @@
 
 ## Скачать последний релиз ## 
 
-* https://github.com/BlizD/Tasks/releases/download/1.0.4.018/Tasks_1.0.4.018.zip - скачать последний релиз;
+* https://github.com/BlizD/Tasks/releases/download/1.0.4.022/Tasks_1.0.4.022.zip - скачать последний релиз;
 * https://github.com/BlizD/Tasks/releases - все релизы.
 
 # Управление задачами: Канбан доска #
