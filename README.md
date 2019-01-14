@@ -20,6 +20,8 @@
 
 Канал в телеграмме: [@mtasks](https://t.me/mtasks)
 
+Чат телеграмм: https://t.me/joinchat/KbD_hhM1tJGb3B3gz6QIvA
+
 Почта проекта:  **sdesk1c@bk.ru**
 
 Канбан в условиях российской действительности https://infostart.ru/public/871013/
