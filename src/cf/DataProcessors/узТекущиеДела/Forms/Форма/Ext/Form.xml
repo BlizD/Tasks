@@ -120,7 +120,10 @@
 						<ExtendedTooltip name="ТЧТекущиеДелаУправлениеПоискомРасширеннаяПодсказка" id="13"/>
 					</SearchControlAddition>
 					<Events>
+						<Event name="ValueChoice">ТЧТекущиеДелаВыборЗначения</Event>
+						<Event name="Selection">ТЧТекущиеДелаВыбор</Event>
 						<Event name="BeforeDeleteRow">ТЧТекущиеДелаПередУдалением</Event>
+						<Event name="OnActivateRow">ТЧТекущиеДелаПриАктивизацииСтроки</Event>
 						<Event name="OnStartEdit">ТЧТекущиеДелаПриНачалеРедактирования</Event>
 						<Event name="OnChange">ТЧТекущиеДелаПриИзменении</Event>
 					</Events>
@@ -244,6 +247,71 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаДопСведенияРасширеннаяПодсказка" id="109"/>
 					<ChildItems>
+						<UsualGroup name="ГруппаНастройкаРегламента" id="138">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка регламента</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа настройка регламента</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Collapsible</Behavior>
+							<CollapsedRepresentationTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка регламента</v8:content>
+								</v8:item>
+							</CollapsedRepresentationTitle>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="ГруппаНастройкаРегламентаРасширеннаяПодсказка" id="139"/>
+							<ChildItems>
+								<UsualGroup name="Группа3" id="157">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="158"/>
+									<ChildItems>
+										<Button name="КомандаНастроитьРасписание" id="153">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.КомандаНастроитьРасписание</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>&lt;Расписание не задано&gt;</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="КомандаНастроитьРасписаниеРасширеннаяПодсказка" id="154"/>
+										</Button>
+										<Button name="КомандаСохранитьРегламентноеТекущееДело" id="155">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.КомандаСохранитьРегламентноеТекущееДело</CommandName>
+											<ExtendedTooltip name="КомандаСохранитьРегламентноеТекущееДелоРасширеннаяПодсказка" id="156"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<CheckBoxField name="ТЧТекущиеДелаВключеноРегламентноеТекущееДело" id="143">
+									<DataPath>Items.ТЧТекущиеДела.CurrentData.ВключеноРегламентноеТекущееДело</DataPath>
+									<CheckBoxType>Tumbler</CheckBoxType>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>БЛ=Нет; БИ=Да</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ContextMenu name="ТЧТекущиеДелаВключеноРегламентноеТекущееДелоКонтекстноеМеню" id="144"/>
+									<ExtendedTooltip name="ТЧТекущиеДелаВключеноРегламентноеТекущееДелоРасширеннаяПодсказка" id="145"/>
+									<Events>
+										<Event name="OnChange">ТЧТекущиеДелаВключеноРегламентноеТекущееДелоПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
 						<InputField name="ТЧТекущиеДелаТекстСодержания1" id="110">
 							<DataPath>Items.ТЧТекущиеДела.CurrentData.ТекстСодержания</DataPath>
 							<TitleLocation>Top</TitleLocation>
@@ -392,17 +460,44 @@
 									<ContextMenu name="ТЧТекущиеДелаПорядокКонтекстноеМеню" id="61"/>
 									<ExtendedTooltip name="ТЧТекущиеДелаПорядокРасширеннаяПодсказка" id="62"/>
 								</InputField>
+								<UsualGroup name="ГруппаСтароеСодержание" id="151">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Старое содержание</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа старое содержание</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Behavior>Collapsible</Behavior>
+									<CollapsedRepresentationTitle>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Старое содержание</v8:content>
+										</v8:item>
+									</CollapsedRepresentationTitle>
+									<Collapsed>true</Collapsed>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="ГруппаСтароеСодержаниеРасширеннаяПодсказка" id="152"/>
+									<ChildItems>
+										<InputField name="ТЧТекущиеДелаТекстСодержанияСтарое" id="146">
+											<DataPath>Items.ТЧТекущиеДела.CurrentData.ТекстСодержанияСтарое</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<AutoMaxHeight>false</AutoMaxHeight>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>true</VerticalStretch>
+											<MultiLine>true</MultiLine>
+											<ContextMenu name="ТЧТекущиеДелаТекстСодержанияСтароеКонтекстноеМеню" id="147"/>
+											<ExtendedTooltip name="ТЧТекущиеДелаТекстСодержанияСтароеРасширеннаяПодсказка" id="148"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="Группа4" id="119">
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="Группа4РасширеннаяПодсказка" id="120"/>
-						</UsualGroup>
-						<UsualGroup name="Группа5" id="121">
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="Группа5РасширеннаяПодсказка" id="122"/>
 						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
@@ -441,6 +536,15 @@
 						<Event name="OnChange">ПоказыватьПозжеПриИзменении</Event>
 					</Events>
 				</CheckBoxField>
+				<CheckBoxField name="ПоказыватьРегламентные" id="135">
+					<DataPath>Объект.ПоказыватьРегламентные</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ПоказыватьРегламентныеКонтекстноеМеню" id="136"/>
+					<ExtendedTooltip name="ПоказыватьРегламентныеРасширеннаяПодсказка" id="137"/>
+					<Events>
+						<Event name="OnChange">ПоказыватьРегламентныеПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
@@ -456,6 +560,48 @@
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Показывать доп сведения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РасписаниеРегламентногоЗадания" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расписание регламентного задания</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="СтрокаТЧТекущиеДелаТекущееДело" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Строка ТЧТекущие дела текущее дело</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.узТекущиеДела</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МодифицированностьТекущегоДела" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Модифицированность текущего дела</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтключитьВозможностьСозданиеРегламентныхТекущихДел" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить возможность создание регламентных текущих дел</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -669,6 +815,41 @@
 				</v8:item>
 			</ToolTip>
 			<Action>КомандаНастройки</Action>
+		</Command>
+		<Command name="КомандаНастроитьРасписание" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расписание</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда настроить расписание</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаНастроитьРасписание</Action>
+		</Command>
+		<Command name="КомандаСохранитьРегламентноеТекущееДело" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить регламентное текущее дело</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаСохранитьРегламентноеТекущееДело</Action>
+			<Representation>TextPicture</Representation>
 		</Command>
 	</Commands>
 </Form>
