@@ -2,12 +2,12 @@
 [![Release](https://img.shields.io/github/tag/BlizD/Tasks.svg?label=Last%20release&a)](https://github.com/BlizD/Tasks/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/BlizD/Tasks/total.svg)]() 
 [![Github Releases](https://img.shields.io/github/downloads/BlizD/Tasks/latest/total.svg)]()
-[+350 Инфостарт](https://infostart.ru/public/552480/) [+400 1clancer.ru](http://1clancer.ru/catalog/2764)
+[+410 Инфостарт](https://infostart.ru/public/552480/) [+550 1clancer.ru](http://1clancer.ru/catalog/2764)
 
 
 ## Скачать последний релиз ## 
 
-* https://github.com/BlizD/Tasks/releases/download/1.0.4.022/Tasks_1.0.4.022.zip - скачать последний релиз;
+* https://github.com/BlizD/Tasks/releases/download/1.0.4.030/Tasks_1.0.4.030.zip - скачать последний релиз;
 * https://github.com/BlizD/Tasks/releases - все релизы.
 
 # Управление задачами: Канбан доска #
