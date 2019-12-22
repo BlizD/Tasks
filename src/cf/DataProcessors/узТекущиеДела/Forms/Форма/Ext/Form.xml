@@ -10,6 +10,11 @@
 		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
+		<UsualGroup name="Группа4" id="166">
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа4РасширеннаяПодсказка" id="167"/>
+		</UsualGroup>
 		<UsualGroup name="Группа2" id="106">
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
@@ -31,10 +36,25 @@
 								<CommandName>Form.Command.КомандаСделал</CommandName>
 								<ExtendedTooltip name="ТЧТекущиеДелаКонтекстноеМенюКомандаВыполнилРасширеннаяПодсказка" id="64"/>
 							</Button>
+							<Button name="ТЧТекущиеДелаКонтекстноеМенюКомандаДобавитьФактРабот" id="159">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.КомандаДобавитьФактРабот</CommandName>
+								<ExtendedTooltip name="ТЧТекущиеДелаКонтекстноеМенюКомандаДобавитьФактРаботРасширеннаяПодсказка" id="160"/>
+							</Button>
 						</ChildItems>
 					</ContextMenu>
 					<AutoCommandBar name="ТЧТекущиеДелаКоманднаяПанель" id="3">
 						<ChildItems>
+							<Button name="ТЧТекущиеДелаКомандаДобавитьФактРабот" id="161">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.КомандаДобавитьФактРабот</CommandName>
+								<ExtendedTooltip name="ТЧТекущиеДелаКомандаДобавитьФактРаботРасширеннаяПодсказка" id="162"/>
+							</Button>
+							<Button name="ТЧТекущиеДелаКомандаЧасовЗаДень" id="168">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.КомандаЧасовЗаДень</CommandName>
+								<ExtendedTooltip name="ТЧТекущиеДелаКомандаЧасовЗаДеньРасширеннаяПодсказка" id="169"/>
+							</Button>
 							<Button name="ТЧТекущиеДелаПереместитьВверх" id="46">
 								<Type>CommandBarButton</Type>
 								<OnlyInAllActions>true</OnlyInAllActions>
@@ -615,6 +635,28 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="узИспользоватьУчетВремени" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Уз использовать учет времени</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущийПользователь" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий пользователь</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+			</Type>
+		</Attribute>
 		<ConditionalAppearance>
 			<dcsset:item>
 				<dcsset:selection>
@@ -857,6 +899,47 @@
 			</Picture>
 			<Action>КомандаСохранитьРегламентноеТекущееДело</Action>
 			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="КомандаДобавитьФактРабот" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить факт работ</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда добавить факт работ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ScheduledJob</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаДобавитьФактРабот</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.узИспользоватьУчетВремени</Item>
+			</FunctionalOptions>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="КомандаЧасовЗаДень" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>0 часов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Часов за день</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаЧасовЗаДень</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.узИспользоватьУчетВремени</Item>
+			</FunctionalOptions>
 		</Command>
 	</Commands>
 </Form>
