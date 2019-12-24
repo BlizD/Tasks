@@ -1,0 +1,23 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/SaaS/ManageZonesBackup/1.0.3.1">
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<import namespace="http://www.1c.ru/SaaS/Messages"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="PlanZoneBackup" base="d2p1:AuthenticatedZoneBody">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="BackupId" type="d3p1:UUID"/>
+		<property name="Date" type="xs:dateTime"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="UpdateScheduledZoneBackupSettings" base="d2p1:AuthenticatedZoneBody">
+		<property name="CreateDailyBackup" type="xs:boolean"/>
+		<property name="CreateMonthlyBackup" type="xs:boolean"/>
+		<property name="CreateYearlyBackup" type="xs:boolean"/>
+		<property name="CreateBackupOnlyAfterUsersActivity" type="xs:boolean"/>
+		<property name="BackupCreationBeginTime" type="xs:time"/>
+		<property name="BackupCreationEndTime" type="xs:time"/>
+		<property name="MonthlyBackupCreationDay" type="xs:int"/>
+		<property name="YearlyBackupCreationMonth" type="xs:int"/>
+		<property name="YearlyBackupCreationDay" type="xs:int"/>
+		<property name="LastDailyBackupDate" type="xs:dateTime"/>
+		<property name="LastMonthlyBackupDate" type="xs:dateTime"/>
+		<property name="LastYearlyBackupDate" type="xs:dateTime"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="CancelScheduledZoneBackup" base="d2p1:AuthenticatedZoneBody"/>
+</package>

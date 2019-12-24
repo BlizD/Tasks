@@ -1,0 +1,28 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/SaaS/SuppliedData">
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<import namespace="http://v8.1c.ru/8.1/data/enterprise"/>
+	<import namespace="http://www.1c.ru/SaaS/RemoteAdministration/Messages"/>
+	<valueType name="DataProcessorType" base="xs:string" variety="Atomic">
+		<enumeration>Background</enumeration>
+		<enumeration>Interactive</enumeration>
+		<enumeration>InteractiveAndBackground</enumeration>
+	</valueType>
+	<objectType name="ArrayOfDescriptor">
+		<property xmlns:d3p1="http://www.1c.ru/SaaS/SuppliedData" name="Descriptor" type="d3p1:Descriptor" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType name="ArrayOfProperty">
+		<property xmlns:d3p1="http://www.1c.ru/SaaS/SuppliedData" name="Property" type="d3p1:Property" lowerBound="0" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/RemoteAdministration/Messages" name="Descriptor" base="d2p1:Сообщение">
+		<property name="DataType" type="xs:string"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="FileGUID" type="d3p1:UUID"/>
+		<property name="RecommendedUpdateDate" type="xs:dateTime" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.1c.ru/SaaS/SuppliedData" name="Properties" type="d3p1:ArrayOfProperty"/>
+		<property name="CreationDate" type="xs:dateTime"/>
+	</objectType>
+	<objectType name="Property">
+		<property name="Code" type="xs:string"/>
+		<property name="Value" type="xs:string"/>
+		<property name="IsKey" type="xs:boolean" lowerBound="0"/>
+	</objectType>
+</package>

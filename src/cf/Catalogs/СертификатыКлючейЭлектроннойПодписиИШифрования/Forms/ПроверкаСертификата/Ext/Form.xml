@@ -1,0 +1,1179 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаПроверить" id="9">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Проверить</CommandName>
+				<ToolTipRepresentation>None</ToolTipRepresentation>
+				<ExtendedTooltip name="ФормаПроверитьРасширеннаяПодсказка" id="10"/>
+			</Button>
+			<Button name="ФормаЗакрыть" id="11">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ToolTipRepresentation>None</ToolTipRepresentation>
+				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="12"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПроверкаНаКомпьютереНаСервере" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа проверка на компьютере на сервере</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПроверкаНаКомпьютереНаСервереРасширеннаяПодсказка" id="25"/>
+			<ChildItems>
+				<PictureDecoration name="НаКлиентеКартинка" id="26">
+					<Width>3</Width>
+					<Height>2</Height>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>На клиенте картинка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат проверки сертификата на компьютере.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<PictureSize>Proportionally</PictureSize>
+					<Picture>
+						<xr:Ref>CommonPicture.КомпьютерКлиент</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="НаКлиентеКартинкаКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="НаКлиентеКартинкаРасширеннаяПодсказка" id="28"/>
+				</PictureDecoration>
+				<PictureDecoration name="НаСервереКартинка" id="29">
+					<Width>3</Width>
+					<Height>2</Height>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>На сервере картинка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат проверки сертификата на сервере.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<PictureSize>Proportionally</PictureSize>
+					<Picture>
+						<xr:Ref>CommonPicture.КомпьютерСервер</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="НаСервереКартинкаКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="НаСервереКартинкаРасширеннаяПодсказка" id="31"/>
+				</PictureDecoration>
+				<LabelDecoration name="СписокПроверокНадпись" id="144">
+					<Height>2</Height>
+					<Font ref="style:NormalTextFont" height="11" kind="StyleItem"/>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проверки, которые будут выполнены</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СписокПроверокНадписьКонтекстноеМеню" id="145"/>
+					<ExtendedTooltip name="СписокПроверокНадписьРасширеннаяПодсказка" id="146"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОбщиеПроверки" id="149">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Общие проверки</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОбщиеПроверкиРасширеннаяПодсказка" id="150"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаЗаконныйСертификат" id="1">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа законный сертификат</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаконныйСертификатРасширеннаяПодсказка" id="2"/>
+					<ChildItems>
+						<PictureDecoration name="ЗаконныйСертификатНаКлиентеКартинка" id="32">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Законный сертификат на клиенте картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ЗаконныйСертификатНаКлиентеКартинкаКонтекстноеМеню" id="33"/>
+							<ExtendedTooltip name="ЗаконныйСертификатНаКлиентеКартинкаРасширеннаяПодсказка" id="34"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="ЗаконныйСертификатНаСервереКартинка" id="3">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Законный сертификат на сервере картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ЗаконныйСертификатНаСервереКартинкаКонтекстноеМеню" id="4"/>
+							<ExtendedTooltip name="ЗаконныйСертификатНаСервереКартинкаРасширеннаяПодсказка" id="5"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="ЗаконныйСертификатНадпись" id="6">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Соответствие законодательству Российской Федерации</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ЗаконныйСертификатНадписьКонтекстноеМеню" id="7"/>
+							<ExtendedTooltip name="ЗаконныйСертификатНадписьРасширеннаяПодсказка" id="8">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Показывает соответствие федеральному закону Российской Федерации от 6 апреля 2011 г. N 63-ФЗ "Об электронной подписи".
+Рекомендуется использовать квалифицированные сертификаты ключа подписи (КСКП) по 63-ФЗ.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаНаличиеСертификата" id="38">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа наличие сертификата</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНаличиеСертификатаРасширеннаяПодсказка" id="39"/>
+					<ChildItems>
+						<PictureDecoration name="НаличиеСертификатаНаКлиентеКартинка" id="40">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Наличие сертификата на клиенте картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="НаличиеСертификатаНаКлиентеКартинкаКонтекстноеМеню" id="41"/>
+							<ExtendedTooltip name="НаличиеСертификатаНаКлиентеКартинкаРасширеннаяПодсказка" id="42"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="НаличиеСертификатаНаСервереКартинка" id="43">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Наличие сертификата на сервере картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="НаличиеСертификатаНаСервереКартинкаКонтекстноеМеню" id="44"/>
+							<ExtendedTooltip name="НаличиеСертификатаНаСервереКартинкаРасширеннаяПодсказка" id="45"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="НаличиеСертификатаНадпись" id="46">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Наличие сертификата в личном списке</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="НаличиеСертификатаНадписьКонтекстноеМеню" id="47"/>
+							<ExtendedTooltip name="НаличиеСертификатаНадписьРасширеннаяПодсказка" id="48">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Показывает установлен ли сертификат в личный список (личное хранилище)
+на компьютере. Для подписания и расшифровки требуется, чтобы сертификат
+был установлен в личный список на компьютере и был связан с закрытым ключом.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаДанныеСертификата" id="49">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа данные сертификата</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаДанныеСертификатаРасширеннаяПодсказка" id="50"/>
+					<ChildItems>
+						<PictureDecoration name="ДанныеСертификатаНаКлиентеКартинка" id="51">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Данные сертификата на клиенте картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ДанныеСертификатаНаКлиентеКартинкаКонтекстноеМеню" id="52"/>
+							<ExtendedTooltip name="ДанныеСертификатаНаКлиентеКартинкаРасширеннаяПодсказка" id="53"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="ДанныеСертификатаНаСервереКартинка" id="54">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Данные сертификата на сервере картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ДанныеСертификатаНаСервереКартинкаКонтекстноеМеню" id="55"/>
+							<ExtendedTooltip name="ДанныеСертификатаНаСервереКартинкаРасширеннаяПодсказка" id="56"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="ДанныеСертификатаНадпись" id="57">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Корректность данных сертификата</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДанныеСертификатаНадписьКонтекстноеМеню" id="58"/>
+							<ExtendedTooltip name="ДанныеСертификатаНадписьРасширеннаяПодсказка" id="59">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Показывает результат проверки данных сертификата
+с помощью программы электронной подписи и шифрования.
+
+Данные сертификата, загруженные из файла сертификата или другим путем,
+могут быть некорректны по разным причинам, но самые частые следующие:
+- закончился срок действия сертификата;
+- сертификат в списке отозванных.
+</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаНаличиеПрограммыСертификата" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа наличие программы сертификата</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНаличиеПрограммыСертификатаРасширеннаяПодсказка" id="17"/>
+					<ChildItems>
+						<PictureDecoration name="НаличиеПрограммыНаКлиентеКартинка" id="18">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Наличие программы на клиенте картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="НаличиеПрограммыНаКлиентеКартинкаКонтекстноеМеню" id="19"/>
+							<ExtendedTooltip name="НаличиеПрограммыНаКлиентеКартинкаРасширеннаяПодсказка" id="20"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="НаличиеПрограммыНаСервереКартинка" id="35">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Наличие программы на сервере картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="НаличиеПрограммыНаСервереКартинкаКонтекстноеМеню" id="36"/>
+							<ExtendedTooltip name="НаличиеПрограммыНаСервереКартинкаРасширеннаяПодсказка" id="37"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="НаличиеПрограммыНадпись" id="21">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Наличие программы для подписания и расшифровки</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="НаличиеПрограммыНадписьКонтекстноеМеню" id="22"/>
+							<ExtendedTooltip name="НаличиеПрограммыНадписьРасширеннаяПодсказка" id="23">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Показывает имеется ли на компьютере программа,
+указанная в сертификате для закрытого ключа,
+которая позволяет подписывать и расшифровывать данные.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПроверкиОпераций" id="127">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверки операций</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПроверкиОперацийРасширеннаяПодсказка" id="128"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаПодписаниеДанных" id="85">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа подписание данных</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПодписаниеДанныхРасширеннаяПодсказка" id="86"/>
+					<ChildItems>
+						<PictureDecoration name="ПодписаниеНаКлиентеКартинка" id="87">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подписание на клиенте картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ПодписаниеНаКлиентеКартинкаКонтекстноеМеню" id="88"/>
+							<ExtendedTooltip name="ПодписаниеНаКлиентеКартинкаРасширеннаяПодсказка" id="89"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="ПодписаниеНаСервереКартинка" id="90">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подписание на сервере картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ПодписаниеНаСервереКартинкаКонтекстноеМеню" id="91"/>
+							<ExtendedTooltip name="ПодписаниеНаСервереКартинкаРасширеннаяПодсказка" id="92"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="ПодписаниеНадпись" id="93">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подписание данных</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ПодписаниеНадписьКонтекстноеМеню" id="94"/>
+							<ExtendedTooltip name="ПодписаниеНадписьРасширеннаяПодсказка" id="95">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Показывает возможность подписания данных закрытым ключом сертификата
+с помощью программы электронной подписи и шифрования.
+Требуется пароль.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПроверкаПодписиДанных" id="96">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа проверка подписи данных</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПроверкаПодписиДанныхРасширеннаяПодсказка" id="97"/>
+					<ChildItems>
+						<PictureDecoration name="ПроверкаПодписиНаКлиентеКартинка" id="98">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка подписи на клиенте картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ПроверкаПодписиНаКлиентеКартинкаКонтекстноеМеню" id="99"/>
+							<ExtendedTooltip name="ПроверкаПодписиНаКлиентеКартинкаРасширеннаяПодсказка" id="100"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="ПроверкаПодписиНаСервереКартинка" id="101">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка подписи на сервере картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ПроверкаПодписиНаСервереКартинкаКонтекстноеМеню" id="102"/>
+							<ExtendedTooltip name="ПроверкаПодписиНаСервереКартинкаРасширеннаяПодсказка" id="103"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="ПроверкаПодписиНадпись" id="104">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка созданной подписи</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ПроверкаПодписиНадписьКонтекстноеМеню" id="105"/>
+							<ExtendedTooltip name="ПроверкаПодписиНадписьРасширеннаяПодсказка" id="106">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Показывает возможность проверки имеющейся подписи открытым ключом сертификата
+с помощью программы электронной подписи и шифрования.
+</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаШифрованиеДанных" id="60">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа шифрование данных</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаШифрованиеДанныхРасширеннаяПодсказка" id="61"/>
+					<ChildItems>
+						<PictureDecoration name="ШифрованиеНаКлиентеКартинка" id="62">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Шифрование на клиенте картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ШифрованиеНаКлиентеКартинкаКонтекстноеМеню" id="63"/>
+							<ExtendedTooltip name="ШифрованиеНаКлиентеКартинкаРасширеннаяПодсказка" id="64"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="ШифрованиеНаСервереКартинка" id="65">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Шифрование на сервере картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ШифрованиеНаСервереКартинкаКонтекстноеМеню" id="66"/>
+							<ExtendedTooltip name="ШифрованиеНаСервереКартинкаРасширеннаяПодсказка" id="67"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="ШифрованиеНадпись" id="68">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Шифрование данных</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ШифрованиеНадписьКонтекстноеМеню" id="69"/>
+							<ExtendedTooltip name="ШифрованиеНадписьРасширеннаяПодсказка" id="70">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Показывает возможность шифрования данных открытым ключом сертификата
+с помощью программы электронной подписи и шифрования.
+</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаРасшифровкаДанных" id="71">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа расшифровка данных</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРасшифровкаДанныхРасширеннаяПодсказка" id="72"/>
+					<ChildItems>
+						<PictureDecoration name="РасшифровкаНаКлиентеКартинка" id="73">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расшифровка на клиенте картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="РасшифровкаНаКлиентеКартинкаКонтекстноеМеню" id="74"/>
+							<ExtendedTooltip name="РасшифровкаНаКлиентеКартинкаРасширеннаяПодсказка" id="75"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="РасшифровкаНаСервереКартинка" id="76">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расшифровка на сервере картинка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка не выполнялась.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="РасшифровкаНаСервереКартинкаКонтекстноеМеню" id="77"/>
+							<ExtendedTooltip name="РасшифровкаНаСервереКартинкаРасширеннаяПодсказка" id="78"/>
+							<Events>
+								<Event name="Click">КартинкаНажатие</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="РасшифровкаНадпись" id="79">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расшифровка данных</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="РасшифровкаНадписьКонтекстноеМеню" id="80"/>
+							<ExtendedTooltip name="РасшифровкаНадписьРасширеннаяПодсказка" id="81">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Показывает возможность расшифровки данных закрытым ключом сертификата
+с помощью программы электронной подписи и шифрования.
+Требуется пароль.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДополнительныеПроверки" id="147">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные проверки</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДополнительныеПроверкиРасширеннаяПодсказка" id="148"/>
+		</UsualGroup>
+		<UsualGroup name="ГруппаВводаПароля" id="142">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Введите пароль закрытого ключа сертификата</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаВводаПароляРасширеннаяПодсказка" id="143"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаЗаголовкиПолей" id="129">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа заголовки полей</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЗаголовкиПолейРасширеннаяПодсказка" id="130"/>
+					<ChildItems>
+						<LabelDecoration name="ПарольЗаголовок" id="134">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Пароль:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПарольЗаголовокКонтекстноеМеню" id="135"/>
+							<ExtendedTooltip name="ПарольЗаголовокРасширеннаяПодсказка" id="136"/>
+						</LabelDecoration>
+						<LabelDecoration name="ВертикальныйОтступ" id="137">
+							<ContextMenu name="ВертикальныйОтступКонтекстноеМеню" id="138"/>
+							<ExtendedTooltip name="ВертикальныйОтступРасширеннаяПодсказка" id="139"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПоля" id="140">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа поля</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПоляРасширеннаяПодсказка" id="141"/>
+					<ChildItems>
+						<InputField name="Пароль" id="107">
+							<DataPath>Пароль</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<PasswordMode>true</PasswordMode>
+							<ContextMenu name="ПарольКонтекстноеМеню" id="108"/>
+							<ExtendedTooltip name="ПарольРасширеннаяПодсказка" id="109"/>
+							<Events>
+								<Event name="OnChange">ПарольПриИзменении</Event>
+							</Events>
+						</InputField>
+						<Pages name="Страницы" id="110">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="111"/>
+							<ChildItems>
+								<Page name="СтраницаЗапоминаниеПароля" id="112">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница запоминание пароля</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="СтраницаЗапоминаниеПароляРасширеннаяПодсказка" id="113"/>
+									<ChildItems>
+										<CheckBoxField name="ЗапомнитьПароль" id="114">
+											<DataPath>ЗапомнитьПароль</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Запомнить пароль сертификата до закрытия программы. При снятии флажка пароль стирается из памяти, если запоминался ранее.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ЗапомнитьПарольКонтекстноеМеню" id="115"/>
+											<ExtendedTooltip name="ЗапомнитьПарольРасширеннаяПодсказка" id="116"/>
+											<Events>
+												<Event name="OnChange">ЗапомнитьПарольПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</Page>
+								<Page name="СтраницаПояснениеУсиленногоПароля" id="117">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница пояснение усиленного пароля</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="СтраницаПояснениеУсиленногоПароляРасширеннаяПодсказка" id="118"/>
+									<ChildItems>
+										<LabelDecoration name="ПояснениеУсиленногоПароля" id="119">
+											<TextColor>style:ПоясняющийТекст</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Нажмите Проверить, чтобы перейти к вводу пароля.
+</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Пароль запрашивает программа электронной подписи, а не программа 1С:Предприятие,
+так как для выбранного сертификата указана усиленная защита закрытого ключа.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<ContextMenu name="ПояснениеУсиленногоПароляКонтекстноеМеню" id="120"/>
+											<ExtendedTooltip name="ПояснениеУсиленногоПароляРасширеннаяПодсказка" id="121"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="СтраницаПояснениеУстановленногоПароля" id="122">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница пояснение установленного пароля</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="СтраницаПояснениеУстановленногоПароляРасширеннаяПодсказка" id="123"/>
+									<ChildItems>
+										<LabelDecoration name="ПояснениеУстановленногоПароля" id="124">
+											<TextColor>style:ПоясняющийТекст</TextColor>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<ContextMenu name="ПояснениеУстановленногоПароляКонтекстноеМеню" id="125"/>
+											<ExtendedTooltip name="ПояснениеУстановленногоПароляРасширеннаяПодсказка" id="126">
+												<Events>
+													<Event name="URLProcessing">ПояснениеУстановленногоПароляРасширеннаяПодсказкаОбработкаНавигационнойСсылки</Event>
+												</Events>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="Click">ПояснениеУстановленногоПароляНажатие</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<PictureDecoration name="ДекорацияОтступ" id="82">
+			<Height>2</Height>
+			<PictureSize>Stretch</PictureSize>
+			<ContextMenu name="ДекорацияОтступКонтекстноеМеню" id="83"/>
+			<ExtendedTooltip name="ДекорацияОтступРасширеннаяПодсказка" id="84"/>
+		</PictureDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Пароль" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Сертификат" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.СертификатыКлючейЭлектроннойПодписиИШифрования</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресСертификата" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес сертификата</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Программа" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Программа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ПрограммыЭлектроннойПодписиИШифрования</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапомнитьПароль" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запомнить пароль</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Отпечаток" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отпечаток</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СертификатУсиленнаяЗащитаЗакрытогоКлюча" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат усиленная защита закрытого ключа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДополнительныеПроверки" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные проверки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОперацииНаСервере" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Операции на сервере</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПроверкаПриВыборе" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверка при выборе</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПроверкиНаКлиенте" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверки на клиенте</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ПроверкиНаСервере" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверки на сервере</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ПарольПринят" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль принят</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяПервойПроверки" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя первой проверки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СтандартныеПроверки" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стандартные проверки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Проверить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Проверить</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Сертификат">
+			<Type>
+				<v8:Type>cfg:CatalogRef.СертификатыКлючейЭлектроннойПодписиИШифрования</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ЗаголовокФормы">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ПроверкаПриВыборе">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ПараметрыДополнительныхПроверок">
+			<Type/>
+		</Parameter>
+	</Parameters>
+</Form>

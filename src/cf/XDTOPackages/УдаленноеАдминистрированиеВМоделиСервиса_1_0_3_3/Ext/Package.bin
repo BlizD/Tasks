@@ -1,0 +1,63 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/1cFresh/RemoteAdministration/App/1.0.3.3">
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<import namespace="http://www.1c.ru/SaaS/Messages"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="UpdateUser" base="d2p1:ZoneBody">
+		<property name="Name" type="xs:string"/>
+		<property name="FullName" type="xs:string"/>
+		<property name="StoredPasswordValue" type="xs:string"/>
+		<property name="Language" type="xs:string"/>
+		<property name="EMail" type="xs:string" lowerBound="0"/>
+		<property name="Phone" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="UserServiceID" type="d3p1:UUID"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="UserApplicationID" type="d3p1:UUID" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="SetFullControl" base="d2p1:ZoneBody">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="UserServiceID" type="d3p1:UUID"/>
+		<property name="Value" type="xs:boolean"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="SetApplicationAccess" base="d2p1:ZoneBody">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="UserServiceID" type="d3p1:UUID"/>
+		<property name="Value" type="xs:boolean"/>
+		<property name="Name" type="xs:string" lowerBound="0"/>
+		<property name="StoredPasswordValue" type="xs:string" lowerBound="0"/>
+		<property name="Language" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="SetDefaultUserRights" base="d2p1:ZoneBody">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="UserServiceID" type="d3p1:UUID"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="PrepareApplication" base="d2p1:ZoneBody">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="DataFileId" type="d3p1:UUID" lowerBound="0"/>
+		<property name="Kind" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="DeleteApplication" base="d2p1:ZoneBody"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="SetApplicationParams" base="d2p1:ZoneBody">
+		<property name="ZoneKey" type="xs:string" lowerBound="0"/>
+		<property name="TimeZone" type="xs:string"/>
+		<property name="Presentation" type="xs:string"/>
+		<property name="Prefix" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="SetIBParams" base="d2p1:Body">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Params" type="d3p1:Structure"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="SetServiceManagerEndPoint" base="d2p1:Body"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="PrepareCustomApplication" base="d2p1:ZoneBody">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="DataFileId" type="d3p1:UUID"/>
+	</objectType>
+	<objectType name="ApplicationRating">
+		<property name="Zone" type="xs:integer"/>
+		<property name="Rating" type="xs:integer"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="SetApplicationsRating" base="d2p1:Body">
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/RemoteAdministration/App/1.0.3.3" name="Item" type="d3p1:ApplicationRating" upperBound="-1" form="Element"/>
+		<property name="SetAllZones" type="xs:boolean"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="BindApplication" base="d2p1:AuthenticatedZoneBody">
+		<property name="TimeZone" type="xs:string"/>
+		<property name="Presentation" type="xs:string"/>
+		<property name="Prefix" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/RemoteAdministration/App/1.0.3.3" name="UsersList" type="d3p1:UsersList"/>
+	</objectType>
+	<objectType name="UsersList">
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/RemoteAdministration/App/1.0.3.3" name="Item" type="d3p1:UpdateUser" lowerBound="0" upperBound="-1"/>
+	</objectType>
+</package>

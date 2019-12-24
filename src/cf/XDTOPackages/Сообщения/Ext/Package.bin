@@ -1,0 +1,27 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/SaaS/Messages">
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<objectType name="Message">
+		<property xmlns:d3p1="http://www.1c.ru/SaaS/Messages" name="Header" type="d3p1:Header"/>
+		<property xmlns:d3p1="http://www.1c.ru/SaaS/Messages" name="Body" type="d3p1:Body"/>
+		<property name="AdditionalInfo" type="xs:anyType" lowerBound="0"/>
+	</objectType>
+	<objectType name="Header">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Id" type="d3p1:UUID"/>
+		<property name="Created" type="xs:dateTime"/>
+		<property name="Sent" type="xs:dateTime" lowerBound="0"/>
+		<property name="Delivered" type="xs:dateTime" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.1c.ru/SaaS/Messages" name="Sender" type="d3p1:Node"/>
+		<property xmlns:d3p1="http://www.1c.ru/SaaS/Messages" name="Recipient" type="d3p1:Node" lowerBound="0"/>
+	</objectType>
+	<objectType name="Node">
+		<property name="Code" type="xs:string"/>
+		<property name="Presentation" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="Body" abstract="true"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="ZoneBody" base="d2p1:Body" abstract="true">
+		<property name="Zone" type="xs:integer"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="AuthenticatedZoneBody" base="d2p1:ZoneBody" abstract="true">
+		<property name="ZoneKey" type="xs:string" lowerBound="0"/>
+	</objectType>
+</package>
