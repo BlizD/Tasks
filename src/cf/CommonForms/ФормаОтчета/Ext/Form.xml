@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<AutoTitle>false</AutoTitle>
 	<AutoURL>false</AutoURL>
 	<CommandBarLocation>None</CommandBarLocation>
@@ -12,6 +12,7 @@
 	<ReportFormType>Main</ReportFormType>
 	<VariantAppearance>ОтчетНаименованиеТекущегоВарианта</VariantAppearance>
 	<AutoShowState>Auto</AutoShowState>
+	<ReportResultViewMode>Auto</ReportResultViewMode>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -68,14 +69,14 @@
 				<Button name="СформироватьОтчет" id="101">
 					<Type>CommandBarButton</Type>
 					<DefaultButton>true</DefaultButton>
-					<OnlyInAllActions>true</OnlyInAllActions>
 					<CommandName>Form.Command.ОтчетСкомпоноватьРезультат</CommandName>
+					<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 					<ExtendedTooltip name="СформироватьОтчетРасширеннаяПодсказка" id="135"/>
 				</Button>
 				<Button name="ФормироватьСразу" id="468">
 					<Type>CommandBarButton</Type>
-					<OnlyInAllActions>false</OnlyInAllActions>
 					<CommandName>Form.Command.ФормироватьСразу</CommandName>
+					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 					<ExtendedTooltip name="ФормироватьСразуРасширеннаяПодсказка" id="469"/>
 				</Button>
 				<ButtonGroup name="ГруппаНастройкиОтчета" id="104">
@@ -84,14 +85,14 @@
 						<Button name="ВсеНастройки" id="458">
 							<Type>CommandBarButton</Type>
 							<Representation>Text</Representation>
-							<OnlyInAllActions>true</OnlyInAllActions>
 							<CommandName>Form.Command.ВсеНастройки</CommandName>
+							<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 							<ExtendedTooltip name="ВсеНастройкиРасширеннаяПодсказка" id="459"/>
 						</Button>
 						<Button name="ИзменитьУсловияОтборов" id="630">
 							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
 							<CommandName>Form.Command.ИзменитьУсловияОтборов</CommandName>
+							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 							<ExtendedTooltip name="ИзменитьУсловияОтборовРасширеннаяПодсказка" id="631"/>
 						</Button>
 						<Popup name="ГруппаВариантыОтчета" id="358">
@@ -117,7 +118,6 @@
 								<Button name="СохранитьВариант" id="506">
 									<Type>CommandBarButton</Type>
 									<Representation>PictureAndText</Representation>
-									<OnlyInAllActions>true</OnlyInAllActions>
 									<CommandName>Form.StandardCommand.SaveVariant</CommandName>
 									<Picture>
 										<xr:Ref>CommonPicture.СохранитьВариантОтчета</xr:Ref>
@@ -129,6 +129,7 @@
 											<v8:content>Сохранить вариант отчета...</v8:content>
 										</v8:item>
 									</Title>
+									<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 									<ExtendedTooltip name="СохранитьВариантРасширеннаяПодсказка" id="507"/>
 								</Button>
 								<ButtonGroup name="ВариантыОтчета" id="360">
@@ -149,8 +150,8 @@
 								<Button name="ДругиеОтчеты" id="508">
 									<Type>CommandBarButton</Type>
 									<Representation>PictureAndText</Representation>
-									<OnlyInAllActions>true</OnlyInAllActions>
 									<CommandName>Form.Command.ДругиеОтчеты</CommandName>
+									<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 									<ExtendedTooltip name="ДругиеОтчетыРасширеннаяПодсказка" id="509"/>
 								</Button>
 							</ChildItems>
@@ -188,13 +189,12 @@
 									<ChildItems>
 										<Button name="ИзменитьВариант" id="452">
 											<Type>CommandBarButton</Type>
-											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.Command.ИзменитьВариантОтчета</CommandName>
+											<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 											<ExtendedTooltip name="ИзменитьВариантРасширеннаяПодсказка" id="453"/>
 										</Button>
 										<Button name="ВыбратьВариант" id="639">
 											<Type>CommandBarButton</Type>
-											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.StandardCommand.LoadVariant</CommandName>
 											<Title>
 												<v8:item>
@@ -202,14 +202,15 @@
 													<v8:content>Выбрать вариант отчета...</v8:content>
 												</v8:item>
 											</Title>
+											<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 											<ExtendedTooltip name="ВыбратьВариантРасширеннаяПодсказка" id="640"/>
 										</Button>
 									</ChildItems>
 								</ButtonGroup>
 								<Button name="СброситьНастройки" id="382">
 									<Type>CommandBarButton</Type>
-									<OnlyInAllActions>false</OnlyInAllActions>
 									<CommandName>Form.Command.НастройкиПоУмолчанию</CommandName>
+									<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 									<ExtendedTooltip name="СброситьНастройкиРасширеннаяПодсказка" id="383"/>
 								</Button>
 								<ButtonGroup name="ГруппаПользовательскиеНастройки" id="504">
@@ -217,14 +218,14 @@
 									<ChildItems>
 										<Button name="ВыбратьНастройки" id="462">
 											<Type>CommandBarButton</Type>
-											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.StandardCommand.LoadReportSettings</CommandName>
+											<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 											<ExtendedTooltip name="ВыбратьНастройкиРасширеннаяПодсказка" id="463"/>
 										</Button>
 										<Button name="СохранитьНастройки" id="460">
 											<Type>CommandBarButton</Type>
-											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.StandardCommand.SaveReportSettings</CommandName>
+											<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 											<ExtendedTooltip name="СохранитьНастройкиРасширеннаяПодсказка" id="461"/>
 										</Button>
 									</ChildItems>
@@ -251,22 +252,22 @@
 						<Button name="Найти" id="62">
 							<Type>CommandBarButton</Type>
 							<Representation>Text</Representation>
-							<OnlyInAllActions>true</OnlyInAllActions>
 							<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.Find</CommandName>
+							<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 							<ExtendedTooltip name="НайтиРасширеннаяПодсказка" id="120"/>
 						</Button>
 						<Button name="РазвернутьВсеГруппы" id="61">
 							<Type>CommandBarButton</Type>
 							<Representation>Picture</Representation>
-							<OnlyInAllActions>true</OnlyInAllActions>
 							<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.ExpandAllGroups</CommandName>
+							<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 							<ExtendedTooltip name="РазвернутьВсеГруппыРасширеннаяПодсказка" id="122"/>
 						</Button>
 						<Button name="СвернутьВсеГруппы" id="60">
 							<Type>CommandBarButton</Type>
 							<Representation>Picture</Representation>
-							<OnlyInAllActions>true</OnlyInAllActions>
 							<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.CollapseAllGroups</CommandName>
+							<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 							<ExtendedTooltip name="СвернутьВсеГруппыРасширеннаяПодсказка" id="121"/>
 						</Button>
 						<Button name="АвтоСуммаКнопка" id="637">
@@ -342,27 +343,26 @@
 						<Button name="Печать" id="52">
 							<Type>CommandBarButton</Type>
 							<Representation>Picture</Representation>
-							<OnlyInAllActions>true</OnlyInAllActions>
 							<CommandName>Form.StandardCommand.Print</CommandName>
+							<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 							<ExtendedTooltip name="ПечатьРасширеннаяПодсказка" id="138"/>
 						</Button>
 						<Button name="ПредварительныйПросмотр" id="90">
 							<Type>CommandBarButton</Type>
 							<Representation>Picture</Representation>
-							<OnlyInAllActions>true</OnlyInAllActions>
 							<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.Preview</CommandName>
+							<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 							<ExtendedTooltip name="ПредварительныйПросмотрРасширеннаяПодсказка" id="139"/>
 						</Button>
 						<Button name="ПараметрыСтраницы" id="94">
 							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
 							<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.PageSetup</CommandName>
+							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 							<ExtendedTooltip name="ПараметрыСтраницыРасширеннаяПодсказка" id="140"/>
 						</Button>
 						<Button name="Сохранить" id="51">
 							<Type>CommandBarButton</Type>
 							<Representation>Picture</Representation>
-							<OnlyInAllActions>true</OnlyInAllActions>
 							<CommandName>Form.StandardCommand.Save</CommandName>
 							<Title>
 								<v8:item>
@@ -370,6 +370,7 @@
 									<v8:content>Сохранить...</v8:content>
 								</v8:item>
 							</Title>
+							<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 							<ExtendedTooltip name="СохранитьРасширеннаяПодсказка" id="141"/>
 						</Button>
 						<Popup name="ГруппаОтправить" id="63">
@@ -395,8 +396,8 @@
 								<Button name="ОтправитьПоЭлектроннойПочте" id="97">
 									<Type>CommandBarButton</Type>
 									<Representation>Picture</Representation>
-									<OnlyInAllActions>true</OnlyInAllActions>
 									<CommandName>Form.Command.ОтправитьПоЭлектроннойПочте</CommandName>
+									<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 									<ExtendedTooltip name="ОтправитьПоЭлектроннойПочтеРасширеннаяПодсказка" id="128"/>
 								</Button>
 							</ChildItems>
@@ -405,20 +406,20 @@
 				</ButtonGroup>
 				<Button name="НовоеОкно" id="41">
 					<Type>CommandBarButton</Type>
-					<OnlyInAllActions>false</OnlyInAllActions>
 					<CommandName>Form.StandardCommand.NewWindow</CommandName>
+					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 					<ExtendedTooltip name="НовоеОкноРасширеннаяПодсказка" id="159"/>
 				</Button>
 				<Button name="ИзменитьФорму" id="42">
 					<Type>CommandBarButton</Type>
-					<OnlyInAllActions>false</OnlyInAllActions>
 					<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 					<ExtendedTooltip name="ИзменитьФормуРасширеннаяПодсказка" id="160"/>
 				</Button>
 				<Button name="Справка" id="43">
 					<Type>CommandBarButton</Type>
-					<OnlyInAllActions>true</OnlyInAllActions>
 					<CommandName>Form.StandardCommand.Help</CommandName>
+					<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 					<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="161"/>
 				</Button>
 			</ChildItems>
@@ -446,6 +447,8 @@
 			<TitleLocation>None</TitleLocation>
 			<Width>60</Width>
 			<Height>15</Height>
+			<VerticalScrollBar>true</VerticalScrollBar>
+			<HorizontalScrollBar>true</HorizontalScrollBar>
 			<ContextMenu name="ОтчетТабличныйДокументКонтекстноеМеню" id="8">
 				<ChildItems>
 					<Button name="ОтчетТабличныйДокументКонтекстноеМенюОтчетСкомпоноватьРезультат" id="168">
@@ -471,15 +474,15 @@
 							<Button name="СвернутьВсеГруппы_Контекст" id="522">
 								<Type>CommandBarButton</Type>
 								<Representation>Picture</Representation>
-								<OnlyInAllActions>true</OnlyInAllActions>
 								<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.CollapseAllGroups</CommandName>
+								<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 								<ExtendedTooltip name="СвернутьВсеГруппы_КонтекстРасширеннаяПодсказка" id="523"/>
 							</Button>
 							<Button name="РазвернутьВсеГруппы_Контекст" id="524">
 								<Type>CommandBarButton</Type>
 								<Representation>Picture</Representation>
-								<OnlyInAllActions>true</OnlyInAllActions>
 								<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.ExpandAllGroups</CommandName>
+								<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 								<ExtendedTooltip name="РазвернутьВсеГруппы_КонтекстРасширеннаяПодсказка" id="525"/>
 							</Button>
 						</ChildItems>
@@ -1024,6 +1027,7 @@
 			</Picture>
 			<Action>ВсеНастройки</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ИзменитьВариантОтчета" id="3">
 			<Title>
@@ -1039,6 +1043,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ИзменитьВариантОтчета</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="НастройкиПоУмолчанию" id="7">
 			<Title>
@@ -1054,6 +1059,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>НастройкиПоУмолчанию</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОтправитьПоЭлектроннойПочте" id="4">
 			<Title>
@@ -1073,6 +1079,7 @@
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>ОтправитьПоЭлектроннойПочте</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОтчетСкомпоноватьРезультат" id="5">
 			<Title>
@@ -1094,6 +1101,7 @@
 			</Picture>
 			<Action>ОтчетСкомпоноватьРезультат</Action>
 			<Representation>Text</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ВычислитьСумму" id="6">
 			<Title>
@@ -1114,6 +1122,7 @@
 			</Picture>
 			<Action>ВычислитьСумму</Action>
 			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ФормироватьСразу" id="2">
 			<Title>
@@ -1129,6 +1138,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ФормироватьСразу</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ДругиеОтчеты" id="8">
 			<Title>
@@ -1148,6 +1158,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ДругиеОтчеты</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ИзменитьВидСравнения" id="9">
 			<Title>
@@ -1162,6 +1173,7 @@
 					<v8:content>Изменить вид сравнения</v8:content>
 				</v8:item>
 			</ToolTip>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ВыбратьПериод" id="10">
 			<Title>
@@ -1180,6 +1192,7 @@
 				<xr:Ref>StdPicture.Select</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ИзменитьУсловияОтборов" id="11">
 			<Title>
@@ -1199,6 +1212,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ИзменитьУсловияОтборов</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
 </Form>

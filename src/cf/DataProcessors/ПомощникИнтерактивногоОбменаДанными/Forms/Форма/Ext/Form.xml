@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -12,16 +12,16 @@
 	<Customizable>false</Customizable>
 	<CommandBarLocation>None</CommandBarLocation>
 	<CommandSet>
-		<ExcludedCommand>No</ExcludedCommand>
-		<ExcludedCommand>SaveValues</ExcludedCommand>
-		<ExcludedCommand>Close</ExcludedCommand>
 		<ExcludedCommand>Abort</ExcludedCommand>
-		<ExcludedCommand>Retry</ExcludedCommand>
-		<ExcludedCommand>Yes</ExcludedCommand>
 		<ExcludedCommand>Cancel</ExcludedCommand>
-		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
 		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>No</ExcludedCommand>
 		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
@@ -383,6 +383,7 @@
 														<xr:Ref>CommonPicture.Информация32</xr:Ref>
 														<xr:LoadTransparent>false</xr:LoadTransparent>
 													</Picture>
+													<FileDragMode>AsFile</FileDragMode>
 													<ContextMenu name="Декорация4КонтекстноеМеню" id="722"/>
 													<ExtendedTooltip name="Декорация4ExtendedTooltip" id="755"/>
 												</PictureDecoration>
@@ -432,8 +433,8 @@
 									<ChildItems>
 										<Button name="ВыполнитьЗагрузкуДанныхДляСтроки" id="726">
 											<Type>CommandBarButton</Type>
-											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.Command.ВыполнитьЗагрузкуДанныхДляСтроки</CommandName>
+											<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 											<ExtendedTooltip name="ВыполнитьЗагрузкуДанныхДляСтрокиExtendedTooltip" id="760"/>
 										</Button>
 									</ChildItems>
@@ -443,14 +444,14 @@
 									<ChildItems>
 										<Button name="ВывестиСписок" id="712">
 											<Type>CommandBarButton</Type>
-											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.Item.ДеревоИнформацииСтатистики.StandardCommand.OutputList</CommandName>
+											<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 											<ExtendedTooltip name="ВывестиСписокExtendedTooltip" id="762"/>
 										</Button>
 										<Button name="КопироватьВБуферОбмена" id="713">
 											<Type>CommandBarButton</Type>
-											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.Item.ДеревоИнформацииСтатистики.StandardCommand.CopyToClipboard</CommandName>
+											<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 											<ExtendedTooltip name="КопироватьВБуферОбменаExtendedTooltip" id="763"/>
 										</Button>
 									</ChildItems>
@@ -477,21 +478,22 @@
 							<RowSelectionMode>Row</RowSelectionMode>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<InitialTreeView>ExpandAllLevels</InitialTreeView>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ДеревоИнформацииСтатистики</DataPath>
 							<CommandSet>
-								<ExcludedCommand>HierarchicalList</ExcludedCommand>
-								<ExcludedCommand>Tree</ExcludedCommand>
-								<ExcludedCommand>Copy</ExcludedCommand>
-								<ExcludedCommand>List</ExcludedCommand>
-								<ExcludedCommand>SortListAsc</ExcludedCommand>
-								<ExcludedCommand>MoveUp</ExcludedCommand>
-								<ExcludedCommand>SelectAll</ExcludedCommand>
-								<ExcludedCommand>SortListDesc</ExcludedCommand>
-								<ExcludedCommand>Delete</ExcludedCommand>
-								<ExcludedCommand>EndEdit</ExcludedCommand>
 								<ExcludedCommand>Add</ExcludedCommand>
 								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>HierarchicalList</ExcludedCommand>
+								<ExcludedCommand>List</ExcludedCommand>
 								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>Tree</ExcludedCommand>
 							</CommandSet>
 							<SearchStringLocation>None</SearchStringLocation>
 							<ViewStatusLocation>None</ViewStatusLocation>
@@ -582,6 +584,7 @@
 											<DataPath>ДеревоИнформацииСтатистики.Картинка</DataPath>
 											<TitleLocation>None</TitleLocation>
 											<EditMode>EnterOnInput</EditMode>
+											<FileDragMode>AsFile</FileDragMode>
 											<ContextMenu name="ДеревоИнформацииСтатистикиКартинкаКонтекстноеМеню" id="415"/>
 											<ExtendedTooltip name="ДеревоИнформацииСтатистикиКартинкаExtendedTooltip" id="774"/>
 										</PictureField>
@@ -618,6 +621,7 @@
 										<xr:Ref>CommonPicture.СтатусыСопоставленияОбъектов</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
 									</ValuesPicture>
+									<FileDragMode>AsFile</FileDragMode>
 									<ContextMenu name="ДеревоИнформацииСтатистикиИндексКартинкиКонтекстноеМеню" id="428"/>
 									<ExtendedTooltip name="ДеревоИнформацииСтатистикиИндексКартинкиExtendedTooltip" id="777"/>
 								</PictureField>
@@ -814,6 +818,7 @@
 																			<v8:content>Картинка неопределено</v8:content>
 																		</v8:item>
 																	</Title>
+																	<FileDragMode>AsFile</FileDragMode>
 																	<ContextMenu name="КартинкаНеопределеноКонтекстноеМеню" id="379"/>
 																	<ExtendedTooltip name="КартинкаНеопределеноExtendedTooltip" id="790"/>
 																</PictureDecoration>
@@ -844,6 +849,7 @@
 																			<v8:content>Картинка успех</v8:content>
 																		</v8:item>
 																	</Title>
+																	<FileDragMode>AsFile</FileDragMode>
 																	<ContextMenu name="КартинкаУспехКонтекстноеМеню" id="382"/>
 																	<ExtendedTooltip name="КартинкаУспехExtendedTooltip" id="792"/>
 																</PictureDecoration>
@@ -878,6 +884,7 @@
 																		<xr:Ref>CommonPicture.СостояниеОбменаДаннымиОшибка</xr:Ref>
 																		<xr:LoadTransparent>false</xr:LoadTransparent>
 																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
 																	<ContextMenu name="КартинкаОшибкаКонтекстноеМеню" id="385"/>
 																	<ExtendedTooltip name="КартинкаОшибкаExtendedTooltip" id="794"/>
 																</PictureDecoration>
@@ -912,6 +919,7 @@
 																		<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
 																		<xr:LoadTransparent>false</xr:LoadTransparent>
 																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
 																	<ContextMenu name="КартинкаПредупреждение1КонтекстноеМеню" id="388"/>
 																	<ExtendedTooltip name="КартинкаПредупреждение1ExtendedTooltip" id="796"/>
 																</PictureDecoration>
@@ -990,6 +998,7 @@
 																			<v8:content>Картинка неопределено</v8:content>
 																		</v8:item>
 																	</Title>
+																	<FileDragMode>AsFile</FileDragMode>
 																	<ContextMenu name="КартинкаНеопределено1КонтекстноеМеню" id="394"/>
 																	<ExtendedTooltip name="КартинкаНеопределено1ExtendedTooltip" id="801"/>
 																</PictureDecoration>
@@ -1020,6 +1029,7 @@
 																			<v8:content>Картинка успех</v8:content>
 																		</v8:item>
 																	</Title>
+																	<FileDragMode>AsFile</FileDragMode>
 																	<ContextMenu name="КартинкаУспех1КонтекстноеМеню" id="397"/>
 																	<ExtendedTooltip name="КартинкаУспех1ExtendedTooltip" id="803"/>
 																</PictureDecoration>
@@ -1054,6 +1064,7 @@
 																		<xr:Ref>CommonPicture.СостояниеОбменаДаннымиОшибка</xr:Ref>
 																		<xr:LoadTransparent>false</xr:LoadTransparent>
 																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
 																	<ContextMenu name="КартинкаОшибка1КонтекстноеМеню" id="400"/>
 																	<ExtendedTooltip name="КартинкаОшибка1ExtendedTooltip" id="805"/>
 																</PictureDecoration>
@@ -1088,6 +1099,7 @@
 																		<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
 																		<xr:LoadTransparent>false</xr:LoadTransparent>
 																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
 																	<ContextMenu name="КартинкаПредупреждениеКонтекстноеМеню" id="403"/>
 																	<ExtendedTooltip name="КартинкаПредупреждениеExtendedTooltip" id="807"/>
 																</PictureDecoration>
@@ -1193,6 +1205,7 @@
 														<xr:Ref>CommonPicture.Информация32</xr:Ref>
 														<xr:LoadTransparent>false</xr:LoadTransparent>
 													</Picture>
+													<FileDragMode>AsFile</FileDragMode>
 													<ContextMenu name="Декорация14КонтекстноеМеню" id="340"/>
 													<ExtendedTooltip name="Декорация14ExtendedTooltip" id="814"/>
 												</PictureDecoration>
@@ -1962,6 +1975,7 @@
 												<xr:Ref>CommonPicture.СинхронизацияДанныхАнализДанных48</xr:Ref>
 												<xr:LoadTransparent>false</xr:LoadTransparent>
 											</Picture>
+											<FileDragMode>AsFile</FileDragMode>
 											<ContextMenu name="Декорация27КонтекстноеМеню" id="701"/>
 											<ExtendedTooltip name="Декорация27ExtendedTooltip" id="876"/>
 										</PictureDecoration>
@@ -2064,6 +2078,7 @@
 												<xr:Ref>CommonPicture.СинхронизацияДанныхДлительнаяОперация48</xr:Ref>
 												<xr:LoadTransparent>false</xr:LoadTransparent>
 											</Picture>
+											<FileDragMode>AsFile</FileDragMode>
 											<ContextMenu name="Декорация29КонтекстноеМеню" id="692"/>
 											<ExtendedTooltip name="Декорация29ExtendedTooltip" id="883"/>
 										</PictureDecoration>
@@ -2119,6 +2134,7 @@
 								<xr:Ref>CommonPicture.Предупреждение32</xr:Ref>
 								<xr:LoadTransparent>true</xr:LoadTransparent>
 							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
 							<ContextMenu name="КартинкаОшибкаРасхожденияВерсийКонтекстноеМеню" id="920"/>
 							<ExtendedTooltip name="КартинкаОшибкаРасхожденияВерсийРасширеннаяПодсказка" id="921"/>
 						</PictureDecoration>
@@ -3405,6 +3421,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ОбновитьИнформациюСопоставленияПолностью</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОткрытьФормуСопоставления" id="1">
 			<Title>
@@ -3426,6 +3443,7 @@
 			</Picture>
 			<Action>ОткрытьФормуСопоставления</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ВыполнитьЗагрузкуДанныхДляСтроки" id="3">
 			<Title>
@@ -3447,6 +3465,7 @@
 			</Picture>
 			<Action>ВыполнитьЗагрузкуДанныхДляСтроки</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОткрытьКаталогОбменаИнформацией" id="4">
 			<Title>
@@ -3462,6 +3481,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ОткрытьКаталогОбменаИнформацией</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="НастроитьПараметрыТранспортаСообщенийОбмена" id="6">
 			<Title>
@@ -3477,6 +3497,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>НастроитьПараметрыТранспортаСообщенийОбмена</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ПерейтиВЖурналРегистрацииСобытийЗагрузкиДанных" id="7">
 			<Title>
@@ -3492,6 +3513,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПерейтиВЖурналРегистрацииСобытийЗагрузкиДанных</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ПерейтиВЖурналРегистрацииСобытийВыгрузкиДанных" id="8">
 			<Title>
@@ -3507,6 +3529,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПерейтиВЖурналРегистрацииСобытийВыгрузкиДанных</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="КомандаГотово" id="9">
 			<Title>
@@ -3516,6 +3539,7 @@
 				</v8:item>
 			</Title>
 			<Action>КомандаГотово</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="КомандаДалее" id="10">
 			<Title>
@@ -3525,6 +3549,7 @@
 				</v8:item>
 			</Title>
 			<Action>КомандаДалее</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="КомандаОтмена" id="12">
 			<Title>
@@ -3534,6 +3559,7 @@
 				</v8:item>
 			</Title>
 			<Action>КомандаОтмена</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ДополнениеВыгрузкиДетальныйОтбор" id="5">
 			<Title>
@@ -3549,6 +3575,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ДополнениеВыгрузкиДетальныйОтбор</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ДополнениеВыгрузкиИсторияОтборов" id="13">
 			<Title>
@@ -3568,6 +3595,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ДополнениеВыгрузкиИсторияОтборов</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ДополнениеВыгрузкиОбщийОтборДокументов" id="14">
 			<Title>
@@ -3583,6 +3611,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ДополнениеВыгрузкиОбщийОтборДокументов</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ДополнениеВыгрузкиОчисткаДетальногоОтбора" id="16">
 			<Title>
@@ -3602,6 +3631,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ДополнениеВыгрузкиОчисткаДетальногоОтбора</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ДополнениеВыгрузкиОчисткаОбщегоОтбора" id="17">
 			<Title>
@@ -3621,6 +3651,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ДополнениеВыгрузкиОчисткаОбщегоОтбора</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ДополнениеВыгрузкиСоставВыгрузки" id="18">
 			<Title>
@@ -3640,6 +3671,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ДополнениеВыгрузкиСоставВыгрузки</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОткрытьНастройкуРасписания" id="19">
 			<Title>
@@ -3659,6 +3691,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ОткрытьНастройкуРасписания</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ДополнениеВыгрузкиОтборПоСценариюУзла" id="22">
 			<Title>
@@ -3674,6 +3707,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ДополнениеВыгрузкиОтборПоСценариюУзла</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ПродолжитьСинхронизацию" id="2">
 			<Title>
@@ -3689,6 +3723,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПродолжитьСинхронизацию</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
 </Form>
