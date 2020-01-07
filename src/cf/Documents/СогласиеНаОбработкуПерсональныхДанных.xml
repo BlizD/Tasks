@@ -182,7 +182,7 @@
 			<FullTextSearchOnInputByString>DontUse</FullTextSearchOnInputByString>
 			<ChoiceDataGetModeOnInputByString>Directly</ChoiceDataGetModeOnInputByString>
 			<DefaultObjectForm>Document.СогласиеНаОбработкуПерсональныхДанных.Form.ФормаДокумента</DefaultObjectForm>
-			<DefaultListForm/>
+			<DefaultListForm>Document.СогласиеНаОбработкуПерсональныхДанных.Form.ФормаСписка</DefaultListForm>
 			<DefaultChoiceForm/>
 			<AuxiliaryObjectForm/>
 			<AuxiliaryListForm/>
@@ -226,7 +226,7 @@
 					<v8:content>Согласие субъекта на обработку его персональных данных оператором в соответствии с требованиями 152-ФЗ</v8:content>
 				</v8:item>
 			</Explanation>
-			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+			<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
 			<DataHistory>DontUse</DataHistory>
 			<UpdateDataHistoryImmediatelyAfterWrite>false</UpdateDataHistoryImmediatelyAfterWrite>
 			<ExecuteAfterWriteDataHistoryVersionProcessing>false</ExecuteAfterWriteDataHistoryVersionProcessing>
@@ -243,7 +243,7 @@
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+						<v8:TypeSet>cfg:DefinedType.Организация</v8:TypeSet>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -260,9 +260,57 @@
 					<ExtendedEdit>false</ExtendedEdit>
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
-					<FillFromFillingValue>false</FillFromFillingValue>
+					<FillFromFillingValue>true</FillFromFillingValue>
 					<FillValue xsi:nil="true"/>
 					<FillChecking>ShowError</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Indexing>DontIndex</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
+					<DataHistory>Use</DataHistory>
+				</Properties>
+			</Attribute>
+			<Attribute uuid="f4f185af-5507-427c-b82b-515ea71f3fc1">
+				<Properties>
+					<Name>НаименованиеОрганизации</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование организации</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Используется для размещения полного официального наименования организации  для вывода в печатные формы документов.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillFromFillingValue>false</FillFromFillingValue>
+					<FillValue xsi:type="xs:string"/>
+					<FillChecking>DontCheck</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
 					<ChoiceParameters/>
@@ -296,7 +344,12 @@
 					<PasswordMode>false</PasswordMode>
 					<Format/>
 					<EditFormat/>
-					<ToolTip/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Юридический адрес организации, используемый в официальных документах</v8:content>
+						</v8:item>
+					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
 					<Mask/>
 					<MultiLine>false</MultiLine>
@@ -363,6 +416,54 @@
 					<DataHistory>Use</DataHistory>
 				</Properties>
 			</Attribute>
+			<Attribute uuid="96dac7e8-5113-4217-ac0a-fffea4acc410">
+				<Properties>
+					<Name>ФИООтветственногоЗаОбработкуПДн</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ФИО ответственного</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>150</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия, имя и отчество ответственного за обработку ПДн</v8:content>
+						</v8:item>
+					</ToolTip>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillFromFillingValue>false</FillFromFillingValue>
+					<FillValue xsi:type="xs:string"/>
+					<FillChecking>DontCheck</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Indexing>DontIndex</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
+					<DataHistory>Use</DataHistory>
+				</Properties>
+			</Attribute>
 			<Attribute uuid="d6fa2b86-1c3b-4c14-8a66-b6dbd40bca19">
 				<Properties>
 					<Name>Субъект</Name>
@@ -391,7 +492,7 @@
 					<ExtendedEdit>false</ExtendedEdit>
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
-					<FillFromFillingValue>false</FillFromFillingValue>
+					<FillFromFillingValue>true</FillFromFillingValue>
 					<FillValue xsi:nil="true"/>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
@@ -475,7 +576,12 @@
 					<PasswordMode>false</PasswordMode>
 					<Format/>
 					<EditFormat/>
-					<ToolTip/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адрес местонахождения субъекта</v8:content>
+						</v8:item>
+					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
 					<Mask/>
 					<MultiLine>false</MultiLine>
@@ -733,9 +839,9 @@
 				</Properties>
 			</Attribute>
 			<Form>ФормаДокумента</Form>
+			<Form>ФормаСписка</Form>
 			<Template>ПФ_MXL_СогласиеНаОбработкуПерсональныхДанных</Template>
-			<Template>ПФ_DOC_СогласиеНаОбработкуПерсональныхДанных</Template>
-			<Template>ПФ_ODT_СогласиеНаОбработкуПерсональныхДанных</Template>
+			<Template>ПФ_DOC_СогласиеНаОбработкуПерсональныхДанных_ru</Template>
 		</ChildObjects>
 	</Document>
 </MetaDataObject>

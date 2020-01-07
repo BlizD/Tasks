@@ -1,12 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Group>Horizontal</Group>
+	<Group>HorizontalIfPossible</Group>
 	<ChildItemsWidth>LeftWide</ChildItemsWidth>
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
 		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="176">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.StandardCommand.WriteAndClose</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="177"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="178">
+				<Type>CommandBarButton</Type>
+				<Representation>Picture</Representation>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.Write</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="179"/>
+			</Button>
 			<Button name="ФормаПоказатьВСписке" id="172">
 				<Type>CommandBarButton</Type>
 				<Visible>false</Visible>
@@ -26,10 +43,110 @@
 				</Title>
 				<ExtendedTooltip name="ФормаПоказатьВЖурналеРасширеннаяПодсказка" id="175"/>
 			</Button>
+			<ButtonGroup name="ФормаГлобальныеКоманды" id="182">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма глобальные команды</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="ФормаГлобальныеКомандыРасширеннаяПодсказка" id="183"/>
+			</ButtonGroup>
+			<Popup name="ПодменюПечать" id="180">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Печать</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды печати</v8:content>
+					</v8:item>
+				</ToolTip>
+				<Picture>
+					<xr:Ref>StdPicture.Print</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ПодменюПечатьРасширеннаяПодсказка" id="181"/>
+			</Popup>
+			<ButtonGroup name="ФормаГруппаКомандыФормы" id="202">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды формы</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>Form</CommandSource>
+				<ExtendedTooltip name="ФормаГруппаКомандыФормыРасширеннаяПодсказка" id="203"/>
+			</ButtonGroup>
+			<Popup name="ПодменюОтчеты" id="194">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отчеты</v8:content>
+					</v8:item>
+				</Title>
+				<Picture>
+					<xr:Ref>CommonPicture.Отчеты</xr:Ref>
+					<xr:LoadTransparent>false</xr:LoadTransparent>
+				</Picture>
+				<Representation>PictureAndText</Representation>
+				<ExtendedTooltip name="ПодменюОтчетыРасширеннаяПодсказка" id="195"/>
+				<ChildItems>
+					<ButtonGroup name="ПодменюОтчетыВажное" id="196">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Подменю отчеты важное</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ПодменюОтчетыВажноеРасширеннаяПодсказка" id="197"/>
+					</ButtonGroup>
+					<ButtonGroup name="ПодменюОтчетыПерейти" id="198">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Подменю отчеты перейти</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Подменю отчеты важное</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ПодменюОтчетыПерейтиРасширеннаяПодсказка" id="199"/>
+					</ButtonGroup>
+					<ButtonGroup name="ПодменюОтчетыСмТакже" id="200">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Подменю отчеты см также</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Подменю отчеты важное</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ПодменюОтчетыСмТакжеРасширеннаяПодсказка" id="201"/>
+					</ButtonGroup>
+				</ChildItems>
+			</Popup>
+			<Button name="ФормаСправка" id="190">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="191"/>
+			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
@@ -44,15 +161,9 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа левая</v8:content>
+					<v8:content>Левая</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа левая</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -66,13 +177,6 @@
 							<v8:content>Время проведения</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа период проведения</v8:content>
-						</v8:item>
-					</ToolTip>
-					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -86,13 +190,6 @@
 									<v8:content>Время начала</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Время начала</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаНачалаExtendedTooltip" id="121"/>
@@ -116,14 +213,13 @@
 								<InputField name="ВремяНачала" id="67">
 									<DataPath>ВремяНачала</DataPath>
 									<TitleLocation>None</TitleLocation>
-									<Width>13</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
 									<DropListButton>true</DropListButton>
 									<ChoiceButton>false</ChoiceButton>
 									<ClearButton>false</ClearButton>
 									<SpinButton>true</SpinButton>
 									<OpenButton>false</OpenButton>
 									<CreateButton>false</CreateButton>
-									<ListChoiceMode>true</ListChoiceMode>
 									<EditFormat>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -147,13 +243,6 @@
 									<v8:content>Время окончания</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Время окончания</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаОкончаниеExtendedTooltip" id="124"/>
@@ -177,14 +266,15 @@
 								<InputField name="ВремяОкончания" id="73">
 									<DataPath>ВремяОкончания</DataPath>
 									<TitleLocation>None</TitleLocation>
-									<Width>13</Width>
+									<Width>10</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
 									<DropListButton>true</DropListButton>
 									<ChoiceButton>false</ChoiceButton>
 									<ClearButton>false</ClearButton>
 									<SpinButton>true</SpinButton>
 									<OpenButton>false</OpenButton>
 									<CreateButton>false</CreateButton>
-									<ListChoiceMode>true</ListChoiceMode>
 									<EditFormat>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -211,6 +301,7 @@
 						</v8:item>
 					</Title>
 					<Width>50</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Wrap>false</Wrap>
 					<ContextMenu name="МестоПроведенияВстречиКонтекстноеМеню" id="10"/>
 					<ExtendedTooltip name="МестоПроведенияВстречиExtendedTooltip" id="130"/>
@@ -218,6 +309,7 @@
 				<InputField name="Тема" id="87">
 					<DataPath>Объект.Тема</DataPath>
 					<Width>50</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<ContextMenu name="ТемаКонтекстноеМеню" id="88"/>
 					<ExtendedTooltip name="ТемаExtendedTooltip" id="131"/>
 				</InputField>
@@ -228,12 +320,6 @@
 							<v8:content>Страницы описание участники дополнительно</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страницы описание участники дополнительно</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницыОписаниеУчастникиДополнительноРасширеннаяПодсказка" id="132"/>
 					<Events>
 						<Event name="OnCurrentPageChange">СтраницыОписаниеУчастникиДополнительноПриСменеСтраницы</Event>
@@ -246,18 +332,12 @@
 									<v8:content>Описание</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Описание</v8:content>
-								</v8:item>
-							</ToolTip>
-							<VerticalStretch>true</VerticalStretch>
 							<ExtendedTooltip name="СтраницаОписаниеExtendedTooltip" id="133"/>
 							<ChildItems>
 								<InputField name="Описание" id="76">
 									<DataPath>Объект.Описание</DataPath>
 									<TitleLocation>None</TitleLocation>
+									<AutoMaxWidth>false</AutoMaxWidth>
 									<Height>3</Height>
 									<Wrap>false</Wrap>
 									<ContextMenu name="ОписаниеКонтекстноеМеню" id="77"/>
@@ -286,15 +366,18 @@
 									<SkipOnInput>false</SkipOnInput>
 									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>Объект.Участники</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Участники</v8:content>
+										</v8:item>
+									</Title>
 									<CommandSet>
 										<ExcludedCommand>Change</ExcludedCommand>
 										<ExcludedCommand>Copy</ExcludedCommand>
 										<ExcludedCommand>EndEdit</ExcludedCommand>
 										<ExcludedCommand>SelectAll</ExcludedCommand>
 									</CommandSet>
-									<SearchStringLocation>None</SearchStringLocation>
-									<ViewStatusLocation>None</ViewStatusLocation>
-									<SearchControlLocation>None</SearchControlLocation>
 									<RowFilter xsi:nil="true"/>
 									<ContextMenu name="УчастникиКонтекстноеМеню" id="26"/>
 									<AutoCommandBar name="УчастникиКоманднаяПанель" id="27">
@@ -378,12 +461,6 @@
 									<v8:content>Дополнительно</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страница дополнительные реквизиты</v8:content>
-								</v8:item>
-							</ToolTip>
 							<ExtendedTooltip name="СтраницаДополнительныеРеквизитыExtendedTooltip" id="135"/>
 						</Page>
 						<Page name="СтраницаКомментарий" id="104">
@@ -393,17 +470,12 @@
 									<v8:content>Комментарий</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Комментарий</v8:content>
-								</v8:item>
-							</ToolTip>
 							<ExtendedTooltip name="СтраницаКомментарийExtendedTooltip" id="136"/>
 							<ChildItems>
 								<InputField name="Комментарий" id="105">
 									<DataPath>Объект.Комментарий</DataPath>
 									<TitleLocation>None</TitleLocation>
+									<AutoMaxWidth>false</AutoMaxWidth>
 									<VerticalStretch>true</VerticalStretch>
 									<Wrap>false</Wrap>
 									<MultiLine>true</MultiLine>
@@ -420,16 +492,11 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа правая</v8:content>
+					<v8:content>Правая</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа правая</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
+			<VerticalAlign>Bottom</VerticalAlign>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПраваяРасширеннаяПодсказка" id="159"/>
@@ -437,18 +504,27 @@
 				<InputField name="Предмет" id="48">
 					<DataPath>Предмет</DataPath>
 					<TitleLocation>Top</TitleLocation>
-					<Width>25</Width>
+					<Width>30</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Wrap>false</Wrap>
 					<DropListButton>false</DropListButton>
-					<ClearButton>true</ClearButton>
+					<ChoiceButton>true</ChoiceButton>
+					<ClearButton>false</ClearButton>
 					<OpenButton>true</OpenButton>
+					<TextEdit>false</TextEdit>
 					<ContextMenu name="ПредметКонтекстноеМеню" id="49"/>
 					<ExtendedTooltip name="ПредметExtendedTooltip" id="117"/>
+					<Events>
+						<Event name="StartChoice">ПредметНачалоВыбора</Event>
+					</Events>
 				</InputField>
 				<InputField name="Ответственный" id="17">
 					<DataPath>Объект.Ответственный</DataPath>
 					<TitleLocation>Top</TitleLocation>
-					<Width>25</Width>
+					<Width>30</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Wrap>false</Wrap>
 					<ContextMenu name="ОтветственныйКонтекстноеМеню" id="18"/>
 					<ExtendedTooltip name="ОтветственныйExtendedTooltip" id="119"/>
@@ -492,12 +568,7 @@
 							<v8:content>Страницы указаны контакты</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страницы указаны контакты</v8:content>
-						</v8:item>
-					</ToolTip>
+					<GroupVerticalAlign>Top</GroupVerticalAlign>
 					<PagesRepresentation>None</PagesRepresentation>
 					<ExtendedTooltip name="СтраницыУказаныКонтактыExtendedTooltip" id="141"/>
 					<ChildItems>
@@ -508,15 +579,10 @@
 									<v8:content>Страница контакты не заполнены</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страница контакты не заполнены</v8:content>
-								</v8:item>
-							</ToolTip>
 							<ExtendedTooltip name="СтраницаКонтактыНеЗаполненыExtendedTooltip" id="142"/>
 							<ChildItems>
 								<LabelDecoration name="ДекорацияКонтактыНеЗаполнены" id="95">
+									<AutoMaxWidth>false</AutoMaxWidth>
 									<TextColor>style:FieldSelectionBackColor</TextColor>
 									<Title formatted="false">
 										<v8:item>
@@ -536,12 +602,6 @@
 									<v8:content>Страница контакты заполнены</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страница контакты заполнены</v8:content>
-								</v8:item>
-							</ToolTip>
 							<ExtendedTooltip name="СтраницаКонтактыЗаполненыExtendedTooltip" id="144"/>
 							<ChildItems>
 								<LabelDecoration name="ДекорацияКонтактыЗаполнены" id="97">
@@ -553,11 +613,6 @@
 						</Page>
 					</ChildItems>
 				</Pages>
-				<LabelDecoration name="ДекорацияПустая" id="160">
-					<VerticalStretch>true</VerticalStretch>
-					<ContextMenu name="ДекорацияПустаяКонтекстноеМеню" id="161"/>
-					<ExtendedTooltip name="ДекорацияПустаяРасширеннаяПодсказка" id="162"/>
-				</LabelDecoration>
 				<UsualGroup name="ГруппаАвторДатаРегистрации" id="107">
 					<Title>
 						<v8:item>
@@ -565,12 +620,8 @@
 							<v8:content>Автор, дата регистрации</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Автор, дата регистрации</v8:content>
-						</v8:item>
-					</ToolTip>
+					<VerticalStretch>true</VerticalStretch>
+					<GroupVerticalAlign>Bottom</GroupVerticalAlign>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -623,23 +674,11 @@
 			</UseAlways>
 		</Attribute>
 		<Attribute name="НеобходимоОповещение" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Необходимо оповещение</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ВзаимодействиеОснование" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Взаимодействие основание</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:DocumentRef.ЭлектронноеПисьмоИсходящее</v8:Type>
 				<v8:Type>cfg:DocumentRef.ЗапланированноеВзаимодействие</v8:Type>
@@ -708,12 +747,6 @@
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="Продолжительность" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Продолжительность</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
 				<v8:NumberQualifiers>
@@ -724,15 +757,10 @@
 			</Type>
 		</Attribute>
 		<Attribute name="СписокИнтерактивноСоздаваемыхКонтактов" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список интерактивно создаваемых контактов</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="Предмет" id="10">
 			<Title>
@@ -773,12 +801,6 @@
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ИзменилисьКонтакты" id="11">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Изменились контакты</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -834,6 +856,15 @@
 			<Item>
 				<Command>3:ee6e5e56-5848-46b6-89bf-b9345a57d94c</Command>
 				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ПрисоединенныеФайлы</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>
 					<xr:Common>false</xr:Common>

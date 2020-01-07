@@ -3,20 +3,19 @@
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
-		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="НаименованиеКод" id="17">
-			<ToolTip>
+			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Наименование код</v8:content>
 				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
+			</Title>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="НаименованиеКодExtendedTooltip" id="93"/>
@@ -25,6 +24,7 @@
 					<DataPath>Объект.Description</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<Width>44</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
 					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="94"/>
@@ -45,7 +45,7 @@
 		<InputField name="Родитель" id="5">
 			<DataPath>Объект.Parent</DataPath>
 			<EditMode>EnterOnInput</EditMode>
-			<Width>43</Width>
+			<Width>44</Width>
 			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="РодительКонтекстноеМеню" id="6"/>
 			<ExtendedTooltip name="РодительExtendedTooltip" id="96"/>
@@ -66,65 +66,26 @@
 				<Event name="StartChoice">ПредставлениеНачалоВыбора</Event>
 			</Events>
 		</InputField>
-		<InputField name="ТипОтвета" id="9">
-			<DataPath>ТипОтвета</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<Width>43</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<DropListButton>true</DropListButton>
-			<ChoiceButton>false</ChoiceButton>
-			<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-			<ClearButton>false</ClearButton>
-			<SpinButton>false</SpinButton>
-			<OpenButton>false</OpenButton>
-			<CreateButton>false</CreateButton>
-			<ListChoiceMode>true</ListChoiceMode>
-			<AutoMarkIncomplete>true</AutoMarkIncomplete>
-			<ChooseType>false</ChooseType>
-			<DropListWidth>43</DropListWidth>
-			<BackColor>style:ФонУправляющегоПоля</BackColor>
-			<ContextMenu name="ТипОтветаКонтекстноеМеню" id="10"/>
-			<ExtendedTooltip name="ТипОтветаExtendedTooltip" id="102"/>
-			<Events>
-				<Event name="OnChange">ТипОтветаПриИзменении</Event>
-			</Events>
-		</InputField>
-		<UsualGroup name="ТипЗаполнение" id="19">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Тип заполнение</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Тип заполнение</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Width>72</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ТипЗаполнениеExtendedTooltip" id="101"/>
-		</UsualGroup>
 		<UsualGroup name="Комментарий" id="18">
-			<ToolTip>
+			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Комментарий</v8:content>
 				</v8:item>
-			</ToolTip>
-			<Width>72</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<Group>Horizontal</Group>
+			</Title>
+			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="КомментарийExtendedTooltip" id="98"/>
 			<ChildItems>
 				<CheckBoxField name="ТребуетсяКомментарий" id="11">
 					<DataPath>Объект.ТребуетсяКомментарий</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Попросить респондента прокомментировать ответ, пояснив характер комментария:</v8:content>
+						</v8:item>
+					</Title>
 					<TitleLocation>Right</TitleLocation>
 					<EditMode>EnterOnInput</EditMode>
 					<CheckBoxType>Auto</CheckBoxType>
@@ -136,12 +97,126 @@
 				</CheckBoxField>
 				<InputField name="ПояснениеКомментария" id="13">
 					<DataPath>Объект.ПояснениеКомментария</DataPath>
+					<TitleLocation>None</TitleLocation>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>40</Width>
-					<HorizontalStretch>false</HorizontalStretch>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>54</MaxWidth>
 					<ContextMenu name="ПояснениеКомментарияКонтекстноеМеню" id="14"/>
 					<ExtendedTooltip name="ПояснениеКомментарияExtendedTooltip" id="100"/>
 				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаТипОтвета" id="144">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип ответа</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаТипОтветаРасширеннаяПодсказка" id="145"/>
+			<ChildItems>
+				<InputField name="ТипОтвета" id="9">
+					<DataPath>ТипОтвета</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<DropListButton>true</DropListButton>
+					<ChoiceButton>false</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+					<ClearButton>false</ClearButton>
+					<SpinButton>false</SpinButton>
+					<OpenButton>false</OpenButton>
+					<CreateButton>false</CreateButton>
+					<ListChoiceMode>true</ListChoiceMode>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ChooseType>false</ChooseType>
+					<DropListWidth>43</DropListWidth>
+					<BackColor>style:ФонУправляющегоПоля</BackColor>
+					<ContextMenu name="ТипОтветаКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="ТипОтветаExtendedTooltip" id="102"/>
+					<Events>
+						<Event name="OnChange">ТипОтветаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<Pages name="ГруппаВидПереключателя" id="146">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид переключателя</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="ГруппаВидПереключателяРасширеннаяПодсказка" id="147"/>
+					<ChildItems>
+						<Page name="ГруппаВидПереключателяНеОтображать" id="150">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вид переключателя не отображать</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаВидПереключателяНеОтображатьРасширеннаяПодсказка" id="151"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияНеОтображатьВидПереключателя" id="152">
+									<ContextMenu name="ДекорацияНеОтображатьВидПереключателяКонтекстноеМеню" id="153"/>
+									<ExtendedTooltip name="ДекорацияНеОтображатьВидПереключателяРасширеннаяПодсказка" id="154"/>
+								</LabelDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="ГруппаВидПереключателяОтображать" id="148">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вид переключателя отображать</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаВидПереключателяОтображатьРасширеннаяПодсказка" id="149"/>
+							<ChildItems>
+								<InputField name="ВидПереключателя" id="141">
+									<DataPath>Объект.ВидПереключателя</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид</v8:content>
+										</v8:item>
+									</Title>
+									<Width>12</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="ВидПереключателяКонтекстноеМеню" id="142"/>
+									<ExtendedTooltip name="ВидПереключателяРасширеннаяПодсказка" id="143"/>
+								</InputField>
+							</ChildItems>
+						</Page>
+						<Page name="ГруппаВидОтображенияБулевоОтображать" id="162">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вид переключателя отображать</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаВидОтображенияБулевоОтображатьРасширеннаяПодсказка" id="163"/>
+							<ChildItems>
+								<InputField name="ВидОтображенияБулево" id="164">
+									<DataPath>Объект.ВидФлажка</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид</v8:content>
+										</v8:item>
+									</Title>
+									<Width>12</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="ВидОтображенияБулевоКонтекстноеМеню" id="165"/>
+									<ExtendedTooltip name="ВидОтображенияБулевоРасширеннаяПодсказка" id="166"/>
+								</InputField>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
 			</ChildItems>
 		</UsualGroup>
 		<Pages name="ЗависимыеПараметры" id="20">
@@ -151,12 +226,6 @@
 					<v8:content>Зависимые параметры</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Зависимые параметры</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Width>72</Width>
 			<PagesRepresentation>None</PagesRepresentation>
 			<ExtendedTooltip name="ЗависимыеПараметрыExtendedTooltip" id="104"/>
@@ -168,12 +237,6 @@
 							<v8:content>Страница число</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница число</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаЧислоExtendedTooltip" id="105"/>
 					<ChildItems>
 						<UsualGroup name="РеквизитыЧисла" id="84">
@@ -183,13 +246,6 @@
 									<v8:content>Реквизиты числа</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Реквизиты числа</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="РеквизитыЧислаExtendedTooltip" id="106"/>
@@ -243,13 +299,7 @@
 							<v8:content>Страница строка</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница строка</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Horizontal</Group>
+					<Group>HorizontalIfPossible</Group>
 					<ExtendedTooltip name="СтраницаСтрокаExtendedTooltip" id="112"/>
 					<ChildItems>
 						<InputField name="ДлинаСтроки" id="91">
@@ -268,12 +318,6 @@
 							<v8:content>Варианты ответов</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Варианты ответов</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ВариантыОтветовExtendedTooltip" id="116"/>
 					<ChildItems>
 						<UsualGroup name="ВариантыОтветовИнформация" id="77">
@@ -284,8 +328,6 @@
 								</v8:item>
 							</Title>
 							<HorizontalStretch>true</HorizontalStretch>
-							<VerticalStretch>false</VerticalStretch>
-							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
 							<ShowTitle>false</ShowTitle>
@@ -305,7 +347,7 @@
 						<Table name="ТаблицаВариантыОтветов" id="55">
 							<Representation>List</Representation>
 							<SkipOnInput>false</SkipOnInput>
-							<Width>72</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<HeightInTableRows>8</HeightInTableRows>
 							<SelectionMode>SingleRow</SelectionMode>
 							<RowSelectionMode>Row</RowSelectionMode>
@@ -314,9 +356,12 @@
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ВариантыОтветов</DataPath>
 							<RowPictureDataPath>ВариантыОтветов.DefaultPicture</RowPictureDataPath>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Таблица варианты ответов</v8:content>
+								</v8:item>
+							</Title>
 							<AutoRefresh>false</AutoRefresh>
 							<AutoRefreshPeriod>60</AutoRefreshPeriod>
 							<Period>
@@ -331,30 +376,7 @@
 							<AllowRootChoice>false</AllowRootChoice>
 							<UpdateOnDataChange>Auto</UpdateOnDataChange>
 							<ContextMenu name="ТаблицаВариантыОтветовКонтекстноеМеню" id="56"/>
-							<AutoCommandBar name="ТаблицаВариантыОтветовКоманднаяПанель" id="57">
-								<ChildItems>
-									<Button name="ТаблицаВариантыОтветовПереместитьВариантОтветаВверх" id="87">
-										<Type>CommandBarButton</Type>
-										<SkipOnInput>false</SkipOnInput>
-										<CommandName>Form.Command.ПереместитьВариантОтветаВверх</CommandName>
-										<Picture>
-											<xr:Ref>StdPicture.MoveUp</xr:Ref>
-											<xr:LoadTransparent>true</xr:LoadTransparent>
-										</Picture>
-										<ExtendedTooltip name="ТаблицаВариантыОтветовПереместитьВариантОтветаВверхExtendedTooltip" id="119"/>
-									</Button>
-									<Button name="ТаблицаВариантыОтветовПереместитьВариантОтветаВниз" id="88">
-										<Type>CommandBarButton</Type>
-										<SkipOnInput>false</SkipOnInput>
-										<CommandName>Form.Command.ПереместитьВариантОтветаВниз</CommandName>
-										<Picture>
-											<xr:Ref>StdPicture.MoveDown</xr:Ref>
-											<xr:LoadTransparent>true</xr:LoadTransparent>
-										</Picture>
-										<ExtendedTooltip name="ТаблицаВариантыОтветовПереместитьВариантОтветаВнизExtendedTooltip" id="120"/>
-									</Button>
-								</ChildItems>
-							</AutoCommandBar>
+							<AutoCommandBar name="ТаблицаВариантыОтветовКоманднаяПанель" id="57"/>
 							<ExtendedTooltip name="ТаблицаВариантыОтветовExtendedTooltip" id="121"/>
 							<SearchStringAddition name="ТаблицаВариантыОтветовСтрокаПоиска" id="132">
 								<AdditionSource>
@@ -448,17 +470,10 @@
 							<v8:content>Пустая</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Пустая</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Width>72</Width>
 					<ExtendedTooltip name="ПустаяExtendedTooltip" id="127"/>
 					<ChildItems>
 						<LabelDecoration name="Декорация" id="52">
-							<Width>77</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<SkipOnInput>false</SkipOnInput>
 							<ContextMenu name="ДекорацияКонтекстноеМеню" id="53"/>
 							<ExtendedTooltip name="ДекорацияExtendedTooltip" id="128"/>
@@ -561,51 +576,16 @@
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="НаименованиеДоРедактирования" id="7">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="ПереместитьВариантОтветаВверх" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить вариант ответа вверх</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить вариант ответа вверх</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.MoveUp</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ПереместитьЭлементВверх</Action>
-			<ModifiesSavedData>true</ModifiesSavedData>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
-		<Command name="ПереместитьВариантОтветаВниз" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить вариант ответа вниз</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить вариант ответа вниз</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.MoveDown</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ПереместитьЭлементВниз</Action>
-			<ModifiesSavedData>true</ModifiesSavedData>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
-	</Commands>
 	<CommandInterface>
 		<NavigationPanel>
 			<Item>

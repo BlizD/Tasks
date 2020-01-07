@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ОбщийИсточникДанных</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetUnion">
+		<name>РегистрацияИзменений</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОбъектТип</dataPath>
+			<field>ОбъектТип</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект тип</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОбъектСсылка</dataPath>
+			<field>ОбъектСсылка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект ссылка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<item xsi:type="DataSetQuery">
+			<name>ОпределениеПолей</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбъектТип</dataPath>
+				<field>ОбъектТип</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Объект тип</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбъектСсылка</dataPath>
+				<field>ОбъектСсылка</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Объект ссылка</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>ОбщийИсточникДанных</dataSource>
+			<query>ВЫБРАТЬ
+	NULL 						КАК ОбъектСсылка,
+	NULL 						КАК ОбъектТип
+ГДЕ
+	ЛОЖЬ</query>
+		</item>
+	</dataSet>
+	<dataSet xsi:type="DataSetUnion">
+		<name>ОбщееКоличествоЭлементов</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОбщееКоличество</dataPath>
+			<field>ОбщееКоличество</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Всего объектов в базе</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Тип</dataPath>
+			<field>Тип</field>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<item xsi:type="DataSetQuery">
+			<name>ОпределениеПолей</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ОбщееКоличество</dataPath>
+				<field>ОбщееКоличество</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Тип</dataPath>
+				<field>Тип</field>
+			</field>
+			<dataSource>ОбщийИсточникДанных</dataSource>
+			<query>ВЫБРАТЬ 
+    NULL КАК Тип,
+    0    КАК ОбщееКоличество
+ГДЕ 
+    ЛОЖЬ    </query>
+		</item>
+	</dataSet>
+	<totalField>
+		<dataPath>ОбщееКоличество</dataPath>
+		<expression>КОЛИЧЕСТВО(ОбъектСсылка)</expression>
+		<group>ОбъектТип</group>
+		<group>ОбщийИтог</group>
+	</totalField>
+	<parameter>
+		<name>ДатаФормирования</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата формирования</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ПредставлениеСписка</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Представление списка</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:type="xs:string"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ПользовательскиеДанные</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Пользовательские данные</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОбщееКоличество</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+			</dcsset:selection>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состав данных</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ОбъектТип</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ОбщееКоличество</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ОбъектСсылка</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

@@ -6,23 +6,13 @@
 			<v8:content>Даты запрета изменения данных</v8:content>
 		</v8:item>
 	</Title>
-	<Width>60</Width>
 	<AutoTitle>false</AutoTitle>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<ChildItems>
-			<Button name="ПоказатьОтчет" id="429">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ПоказатьОтчет</CommandName>
-				<ExtendedTooltip name="ПоказатьОтчетРасширеннаяПодсказка" id="430"/>
-			</Button>
-			<Button name="Обновить" id="200">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.Обновить</CommandName>
-				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-				<ExtendedTooltip name="ОбновитьExtendedTooltip" id="321"/>
-			</Button>
-		</ChildItems>
-	</AutoCommandBar>
+	<AutoURL>false</AutoURL>
+	<CommandBarLocation>None</CommandBarLocation>
+	<CommandSet>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
@@ -31,134 +21,147 @@
 		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ИспользованиеДатЗапретаВыключено" id="431">
-			<Visible>false</Visible>
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Использование дат запрета выключено</v8:content>
-				</v8:item>
-			</Title>
-			<Group>Horizontal</Group>
-			<Representation>NormalSeparation</Representation>
+		<UsualGroup name="ГруппаШапка" id="446">
+			<VerticalAlign>Center</VerticalAlign>
+			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ИспользованиеДатЗапретаВыключеноРасширеннаяПодсказка" id="432"/>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="447"/>
 			<ChildItems>
-				<PictureDecoration name="ИспользованиеДатЗапретаВыключеноКартинка" id="433">
-					<Width>2</Width>
-					<Height>1</Height>
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Использование дат запрета выключено картинка</v8:content>
-						</v8:item>
-					</Title>
-					<Picture>
-						<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</Picture>
-					<FileDragMode>AsFile</FileDragMode>
-					<ContextMenu name="ИспользованиеДатЗапретаВыключеноКартинкаКонтекстноеМеню" id="434"/>
-					<ExtendedTooltip name="ИспользованиеДатЗапретаВыключеноКартинкаРасширеннаяПодсказка" id="435"/>
-				</PictureDecoration>
-				<LabelDecoration name="ИспользованиеДатЗапретаВыключеноНадпись" id="436">
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Использование дат запрета выключено в настройках программы.</v8:content>
-						</v8:item>
-					</Title>
-					<ContextMenu name="ИспользованиеДатЗапретаВыключеноНадписьКонтекстноеМеню" id="437"/>
-					<ExtendedTooltip name="ИспользованиеДатЗапретаВыключеноНадписьРасширеннаяПодсказка" id="438"/>
-				</LabelDecoration>
+				<RadioButtonField name="УстановкаДатыЗапрета" id="439">
+					<DataPath>УстановкаДатыЗапретаНовое</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Tumbler</RadioButtonType>
+					<ColumnsCount>3</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Для всех пользователей</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">ДляВсехПользователей</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>По пользователям</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">ПоПользователям</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="УстановкаДатыЗапретаКонтекстноеМеню" id="440"/>
+					<ExtendedTooltip name="УстановкаДатыЗапретаРасширеннаяПодсказка" id="441"/>
+					<Events>
+						<Event name="OnChange">УстановкаДатыЗапретаПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<CommandBar name="КоманднаяПанель" id="444">
+					<HorizontalLocation>Right</HorizontalLocation>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="445"/>
+					<ChildItems>
+						<Button name="Обновить" id="200">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Обновить</CommandName>
+							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+							<ExtendedTooltip name="ОбновитьExtendedTooltip" id="321"/>
+						</Button>
+						<Button name="ПоказатьОтчет" id="429">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ПоказатьОтчет</CommandName>
+							<ExtendedTooltip name="ПоказатьОтчетРасширеннаяПодсказка" id="430"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="УстановкаДатыЗапрета" id="201">
-			<DataPath>УстановкаДатыЗапрета</DataPath>
-			<Width>28</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<ListChoiceMode>true</ListChoiceMode>
-			<TextEdit>false</TextEdit>
-			<ChoiceList>
-				<xr:Item>
-					<xr:Presentation/>
-					<xr:CheckState>0</xr:CheckState>
-					<xr:Value xsi:type="FormChoiceListDesTimeValue">
-						<Presentation>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Нет запрета изменения данных</v8:content>
-							</v8:item>
-						</Presentation>
-						<Value xsi:type="xs:string">НетЗапрета</Value>
-					</xr:Value>
-				</xr:Item>
-				<xr:Item>
-					<xr:Presentation/>
-					<xr:CheckState>0</xr:CheckState>
-					<xr:Value xsi:type="FormChoiceListDesTimeValue">
-						<Presentation>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Для всех пользователей</v8:content>
-							</v8:item>
-						</Presentation>
-						<Value xsi:type="xs:string">ДляВсехПользователей</Value>
-					</xr:Value>
-				</xr:Item>
-				<xr:Item>
-					<xr:Presentation/>
-					<xr:CheckState>0</xr:CheckState>
-					<xr:Value xsi:type="FormChoiceListDesTimeValue">
-						<Presentation>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>По пользователям</v8:content>
-							</v8:item>
-						</Presentation>
-						<Value xsi:type="xs:string">ПоПользователям</Value>
-					</xr:Value>
-				</xr:Item>
-			</ChoiceList>
-			<BackColor>style:ФонУправляющегоПоля</BackColor>
-			<ContextMenu name="УстановкаДатыЗапретаКонтекстноеМеню" id="202"/>
-			<ExtendedTooltip name="УстановкаДатыЗапретаExtendedTooltip" id="322"/>
-			<Events>
-				<Event name="Clearing">УстановкаДатыЗапретаОчистка</Event>
-				<Event name="ChoiceProcessing">УстановкаДатыЗапретаОбработкаВыбора</Event>
-			</Events>
-		</InputField>
+		<Pages name="ИспользованиеДатЗапрета" id="451">
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="ИспользованиеДатЗапретаРасширеннаяПодсказка" id="452"/>
+			<ChildItems>
+				<Page name="Включено" id="453">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Включено</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ВключеноРасширеннаяПодсказка" id="454"/>
+					<ChildItems>
+						<LabelDecoration name="УстановкаДатыЗапретаПояснение" id="448">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Разрешен ввод и редактирование любых данных прошлых периодов.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="УстановкаДатыЗапретаПояснениеКонтекстноеМеню" id="449"/>
+							<ExtendedTooltip name="УстановкаДатыЗапретаПояснениеРасширеннаяПодсказка" id="450"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="Отключено" id="455">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отключено</v8:content>
+						</v8:item>
+					</Title>
+					<Group>HorizontalIfPossible</Group>
+					<BackColor>style:ФонУправляющегоПоля</BackColor>
+					<ExtendedTooltip name="ОтключеноРасширеннаяПодсказка" id="456"/>
+					<ChildItems>
+						<PictureDecoration name="ИспользованиеДатЗапретаВыключеноКартинка" id="433">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Использование дат запрета выключено картинка</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="ИспользованиеДатЗапретаВыключеноКартинкаКонтекстноеМеню" id="434"/>
+							<ExtendedTooltip name="ИспользованиеДатЗапретаВыключеноКартинкаРасширеннаяПодсказка" id="435"/>
+						</PictureDecoration>
+						<LabelDecoration name="ИспользованиеДатЗапретаВыключеноНадпись" id="436">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Даты запрета ввода и редактирования данных прошлых периодов отключены в настройках программы.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ИспользованиеДатЗапретаВыключеноНадписьКонтекстноеМеню" id="437"/>
+							<ExtendedTooltip name="ИспользованиеДатЗапретаВыключеноНадписьРасширеннаяПодсказка" id="438"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
 		<UsualGroup name="НастройкаДатыЗапрета" id="203">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Настройка даты запрета</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Настройка даты запрета</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
-			<Representation>None</Representation>
+			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="НастройкаДатыЗапретаExtendedTooltip" id="323"/>
 			<ChildItems>
 				<UsualGroup name="УстановкаПоПользователям" id="204">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Установка по пользователям</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Установка по пользователям</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -169,6 +172,7 @@
 							<ChangeRowOrder>false</ChangeRowOrder>
 							<HeightInTableRows>3</HeightInTableRows>
 							<SelectionMode>SingleRow</SelectionMode>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
@@ -190,9 +194,6 @@
 								<ExcludedCommand>SortListAsc</ExcludedCommand>
 								<ExcludedCommand>SortListDesc</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ПользователиКонтекстноеМеню" id="125"/>
 							<AutoCommandBar name="ПользователиКоманднаяПанель" id="126">
@@ -210,18 +211,6 @@
 										<ExtendedTooltip name="ПользователиДобавитьРасширеннаяПодсказка" id="398"/>
 									</Button>
 									<ButtonGroup name="ПользователиСтандартныеКоманды" id="177">
-										<Title>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Пользователи стандартные команды</v8:content>
-											</v8:item>
-										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Пользователи стандартные команды</v8:content>
-											</v8:item>
-										</ToolTip>
 										<CommandSource>Item.Пользователи</CommandSource>
 										<ExtendedTooltip name="ПользователиСтандартныеКомандыExtendedTooltip" id="326"/>
 									</ButtonGroup>
@@ -310,8 +299,9 @@
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ТекущийПользовательПредставление" id="409">
+					<Width>60</Width>
 					<Group>Vertical</Group>
-					<Representation>None</Representation>
+					<Representation>NormalSeparation</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ТекущийПользовательПредставлениеРасширеннаяПодсказка" id="410"/>
 					<ChildItems>
@@ -326,15 +316,10 @@
 											<v8:content>Страница пользователь не выбран</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Страница пользователь не выбран</v8:content>
-										</v8:item>
-									</ToolTip>
 									<ExtendedTooltip name="СтраницаПользовательНеВыбранExtendedTooltip" id="332"/>
 									<ChildItems>
 										<LabelDecoration name="ПользовательНеВыбран" id="269">
+											<AutoMaxWidth>false</AutoMaxWidth>
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -353,95 +338,9 @@
 											<v8:content>Страница пользователь выбран</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Страница пользователь выбран</v8:content>
-										</v8:item>
-									</ToolTip>
 									<ExtendedTooltip name="СтраницаПользовательВыбранExtendedTooltip" id="334"/>
 									<ChildItems>
-										<InputField name="СпособУказанияДатыЗапрета" id="216">
-											<DataPath>СпособУказанияДатыЗапрета</DataPath>
-											<Width>24</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ListChoiceMode>true</ListChoiceMode>
-											<TextEdit>false</TextEdit>
-											<ChoiceList>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Общая дата</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:string">ОбщаяДата</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>По разделам</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:string">ПоРазделам</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>По разделам и объектам</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:string">ПоРазделамИОбъектам</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>По объектам</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:string">ПоОбъектам</Value>
-													</xr:Value>
-												</xr:Item>
-											</ChoiceList>
-											<BackColor>style:ФонУправляющегоПоля</BackColor>
-											<ContextMenu name="СпособУказанияДатыЗапретаКонтекстноеМеню" id="217"/>
-											<ExtendedTooltip name="СпособУказанияДатыЗапретаExtendedTooltip" id="335"/>
-											<Events>
-												<Event name="Clearing">СпособУказанияДатыЗапретаОчистка</Event>
-												<Event name="ChoiceProcessing">СпособУказанияДатыЗапретаОбработкаВыбора</Event>
-											</Events>
-										</InputField>
 										<Pages name="СпособыУказания" id="218">
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Способы указания</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Способы указания</v8:content>
-												</v8:item>
-											</ToolTip>
 											<PagesRepresentation>None</PagesRepresentation>
 											<ExtendedTooltip name="СпособыУказанияExtendedTooltip" id="336"/>
 											<ChildItems>
@@ -452,355 +351,374 @@
 															<v8:content>Способ указания общая дата</v8:content>
 														</v8:item>
 													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Способ указания общая дата</v8:content>
-														</v8:item>
-													</ToolTip>
 													<ExtendedTooltip name="СпособУказанияОбщаяДатаExtendedTooltip" id="337"/>
 													<ChildItems>
-														<LabelDecoration name="Отступ" id="220">
-															<ContextMenu name="ОтступКонтекстноеМеню" id="221"/>
-															<ExtendedTooltip name="ОтступExtendedTooltip" id="338"/>
-														</LabelDecoration>
-														<UsualGroup name="ДатаЗапретаСОписанием" id="222">
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Дата запрета с описанием</v8:content>
-																</v8:item>
-															</Title>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Дата запрета с описанием</v8:content>
-																</v8:item>
-															</ToolTip>
-															<Group>Horizontal</Group>
-															<Representation>None</Representation>
-															<ShowTitle>false</ShowTitle>
-															<ExtendedTooltip name="ДатаЗапретаСОписаниемExtendedTooltip" id="339"/>
+														<Pages name="ГруппаРежимыРаботы" id="459">
+															<PagesRepresentation>None</PagesRepresentation>
+															<ExtendedTooltip name="ГруппаРежимыРаботыРасширеннаяПодсказка" id="460"/>
 															<ChildItems>
-																<InputField name="ОписаниеДатыЗапрета" id="223">
-																	<DataPath>ОписаниеДатыЗапрета</DataPath>
+																<Page name="ПростойРежим" id="465">
 																	<Title>
 																		<v8:item>
 																			<v8:lang>ru</v8:lang>
-																			<v8:content>Дата запрета</v8:content>
+																			<v8:content>Простой режим</v8:content>
 																		</v8:item>
 																	</Title>
-																	<HorizontalStretch>false</HorizontalStretch>
-																	<ListChoiceMode>true</ListChoiceMode>
-																	<TextEdit>false</TextEdit>
-																	<ChoiceList>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Произвольная дата</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">ПроизвольнаяДата</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Конец прошлого года</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">КонецПрошлогоГода</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Конец прошлого квартала</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">КонецПрошлогоКвартала</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Конец прошлого месяца</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">КонецПрошлогоМесяца</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Конец прошлой недели</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">КонецПрошлойНедели</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Предыдущий день</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">ПредыдущийДень</Value>
-																			</xr:Value>
-																		</xr:Item>
-																	</ChoiceList>
-																	<BackColor>style:ФонУправляющегоПоля</BackColor>
-																	<ContextMenu name="ОписаниеДатыЗапретаКонтекстноеМеню" id="224"/>
-																	<ExtendedTooltip name="ОписаниеДатыЗапретаExtendedTooltip" id="340"/>
-																	<Events>
-																		<Event name="OnChange">ОписаниеДатыЗапретаПриИзменении</Event>
-																	</Events>
-																</InputField>
-																<Pages name="ПроизвольнаяДата" id="225">
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Произвольная дата</v8:content>
-																		</v8:item>
-																	</Title>
-																	<ToolTip>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Произвольная дата</v8:content>
-																		</v8:item>
-																	</ToolTip>
-																	<PagesRepresentation>None</PagesRepresentation>
-																	<ExtendedTooltip name="ПроизвольнаяДатаExtendedTooltip" id="341"/>
+																	<ExtendedTooltip name="ПростойРежимРасширеннаяПодсказка" id="466"/>
 																	<ChildItems>
-																		<Page name="ПроизвольнаяДатаИспользуется" id="226">
-																			<Title>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Произвольная дата используется</v8:content>
-																				</v8:item>
-																			</Title>
-																			<ToolTip>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Произвольная дата используется</v8:content>
-																				</v8:item>
-																			</ToolTip>
-																			<ExtendedTooltip name="ПроизвольнаяДатаИспользуетсяExtendedTooltip" id="342"/>
+																		<RadioButtonField name="ЗапретИзмененияДанныхНеУстановлен" id="467">
+																			<DataPath>ОписаниеДатыЗапрета</DataPath>
+																			<Visible>false</Visible>
+																			<TitleLocation>None</TitleLocation>
+																			<RadioButtonType>Auto</RadioButtonType>
+																			<ChoiceList>
+																				<xr:Item>
+																					<xr:Presentation/>
+																					<xr:CheckState>0</xr:CheckState>
+																					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																						<Presentation>
+																							<v8:item>
+																								<v8:lang>ru</v8:lang>
+																								<v8:content>Запрет изменения данных не установлен</v8:content>
+																							</v8:item>
+																						</Presentation>
+																						<Value xsi:type="xs:string"/>
+																					</xr:Value>
+																				</xr:Item>
+																			</ChoiceList>
+																			<ContextMenu name="ЗапретИзмененияДанныхНеУстановленКонтекстноеМеню" id="468"/>
+																			<ExtendedTooltip name="ЗапретИзмененияДанныхНеУстановленРасширеннаяПодсказка" id="469"/>
+																		</RadioButtonField>
+																		<UsualGroup name="ГруппаПроизвольнаяДата" id="470">
+																			<Representation>None</Representation>
+																			<ShowTitle>false</ShowTitle>
+																			<ExtendedTooltip name="ГруппаПроизвольнаяДатаРасширеннаяПодсказка" id="471"/>
 																			<ChildItems>
-																				<InputField name="ДатаЗапрета" id="227">
-																					<DataPath>ДатаЗапрета</DataPath>
+																				<RadioButtonField name="ПроизвольнаяДатаЗапрета" id="472">
+																					<DataPath>ОписаниеДатыЗапрета</DataPath>
+																					<Visible>false</Visible>
 																					<TitleLocation>None</TitleLocation>
+																					<RadioButtonType>Auto</RadioButtonType>
+																					<ChoiceList>
+																						<xr:Item>
+																							<xr:Presentation/>
+																							<xr:CheckState>0</xr:CheckState>
+																							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																								<Presentation>
+																									<v8:item>
+																										<v8:lang>ru</v8:lang>
+																										<v8:content>Дата запрета:</v8:content>
+																									</v8:item>
+																								</Presentation>
+																								<Value xsi:type="xs:string">ПроизвольнаяДата</Value>
+																							</xr:Value>
+																						</xr:Item>
+																					</ChoiceList>
+																					<ContextMenu name="ПроизвольнаяДатаЗапретаКонтекстноеМеню" id="473"/>
+																					<ExtendedTooltip name="ПроизвольнаяДатаЗапретаРасширеннаяПодсказка" id="474"/>
+																				</RadioButtonField>
+																				<InputField name="ДатаЗапретаПростойРежим" id="475">
+																					<DataPath>ДатаЗапрета</DataPath>
 																					<ClearButton>true</ClearButton>
-																					<ContextMenu name="ДатаЗапретаКонтекстноеМеню" id="228"/>
-																					<ExtendedTooltip name="ДатаЗапретаExtendedTooltip" id="343"/>
+																					<ContextMenu name="ДатаЗапретаПростойРежимКонтекстноеМеню" id="476"/>
+																					<ExtendedTooltip name="ДатаЗапретаПростойРежимРасширеннаяПодсказка" id="477"/>
 																					<Events>
 																						<Event name="OnChange">ДатаЗапретаПриИзменении</Event>
 																					</Events>
 																				</InputField>
 																			</ChildItems>
-																		</Page>
-																		<Page name="ПроизвольнаяДатаНеИспользуется" id="229">
-																			<Title>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Произвольная дата не используется</v8:content>
-																				</v8:item>
-																			</Title>
-																			<ToolTip>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Произвольная дата не используется</v8:content>
-																				</v8:item>
-																			</ToolTip>
-																			<ExtendedTooltip name="ПроизвольнаяДатаНеИспользуетсяExtendedTooltip" id="344"/>
+																		</UsualGroup>
+																		<UsualGroup name="ГруппаБольшеВозможностей" id="478">
+																			<Representation>NormalSeparation</Representation>
+																			<ShowTitle>false</ShowTitle>
+																			<ExtendedTooltip name="ГруппаБольшеВозможностейРасширеннаяПодсказка" id="479"/>
 																			<ChildItems>
-																				<LabelDecoration name="ПустаяНадписьДляОтображенияСтраницы1" id="230">
-																					<ContextMenu name="ПустаяНадписьДляОтображенияСтраницы1КонтекстноеМеню" id="231"/>
-																					<ExtendedTooltip name="ПустаяНадписьДляОтображенияСтраницы1ExtendedTooltip" id="345"/>
+																				<LabelDecoration name="БольшеВозможностей" id="480">
+																					<AutoMaxWidth>false</AutoMaxWidth>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Больше возможностей &gt;&gt;</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Указать относительную дату запрета и отсрочку</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<Hyperlink>true</Hyperlink>
+																					<ContextMenu name="БольшеВозможностейКонтекстноеМеню" id="481"/>
+																					<ExtendedTooltip name="БольшеВозможностейРасширеннаяПодсказка" id="482"/>
+																					<Events>
+																						<Event name="Click">БольшеВозможностейНажатие</Event>
+																					</Events>
 																				</LabelDecoration>
 																			</ChildItems>
-																		</Page>
+																		</UsualGroup>
 																	</ChildItems>
-																</Pages>
-															</ChildItems>
-														</UsualGroup>
-														<Pages name="СвойстваНепроизвольнойДаты" id="232">
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Свойства непроизвольной даты</v8:content>
-																</v8:item>
-															</Title>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Свойства непроизвольной даты</v8:content>
-																</v8:item>
-															</ToolTip>
-															<PagesRepresentation>None</PagesRepresentation>
-															<ExtendedTooltip name="СвойстваНепроизвольнойДатыExtendedTooltip" id="346"/>
-															<ChildItems>
-																<Page name="НепроизвольнаяДатаИспользуется" id="233">
+																</Page>
+																<Page name="РасширенныйРежим" id="463">
+																	<Visible>false</Visible>
 																	<Title>
 																		<v8:item>
 																			<v8:lang>ru</v8:lang>
-																			<v8:content>Непроизвольная дата используется</v8:content>
+																			<v8:content>Расширенный режим</v8:content>
 																		</v8:item>
 																	</Title>
-																	<ToolTip>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Непроизвольная дата используется</v8:content>
-																		</v8:item>
-																	</ToolTip>
-																	<ShowTitle>false</ShowTitle>
-																	<ExtendedTooltip name="НепроизвольнаяДатаИспользуетсяExtendedTooltip" id="347"/>
+																	<ExtendedTooltip name="РасширенныйРежимРасширеннаяПодсказка" id="464"/>
 																	<ChildItems>
-																		<CheckBoxField name="РазрешитьИзменениеДанныхДоДатыЗапрета" id="234">
-																			<DataPath>РазрешитьИзменениеДанныхДоДатыЗапрета</DataPath>
-																			<TitleLocation>Right</TitleLocation>
-																			<CheckBoxType>Auto</CheckBoxType>
-																			<ContextMenu name="РазрешитьИзменениеДанныхДоДатыЗапретаКонтекстноеМеню" id="235"/>
-																			<ExtendedTooltip name="РазрешитьИзменениеДанныхДоДатыЗапретаExtendedTooltip" id="348"/>
-																			<Events>
-																				<Event name="OnChange">РазрешитьИзменениеДанныхДоДатыЗапретаПриИзменении</Event>
-																			</Events>
-																		</CheckBoxField>
-																		<Pages name="СвойствоКоличествоДнейРазрешенияИзменения" id="236">
-																			<Title>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Свойство количество дней разрешения изменения</v8:content>
-																				</v8:item>
-																			</Title>
-																			<ToolTip>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Свойство количество дней разрешения изменения</v8:content>
-																				</v8:item>
-																			</ToolTip>
-																			<PagesRepresentation>None</PagesRepresentation>
-																			<ExtendedTooltip name="СвойствоКоличествоДнейРазрешенияИзмененияExtendedTooltip" id="349"/>
+																		<UsualGroup name="ДатаЗапретаСОписанием" id="222">
+																			<Representation>None</Representation>
+																			<ShowTitle>false</ShowTitle>
+																			<ExtendedTooltip name="ДатаЗапретаСОписаниемExtendedTooltip" id="339"/>
 																			<ChildItems>
-																				<Page name="ИзменениеДанныхДоДатыЗапретаРазрешено" id="237">
+																				<InputField name="ОписаниеДатыЗапрета" id="223">
+																					<DataPath>ОписаниеДатыЗапрета</DataPath>
 																					<Title>
 																						<v8:item>
 																							<v8:lang>ru</v8:lang>
-																							<v8:content>Изменение данных до даты запрета разрешено</v8:content>
+																							<v8:content>Дата запрета</v8:content>
 																						</v8:item>
 																					</Title>
-																					<ToolTip>
-																						<v8:item>
-																							<v8:lang>ru</v8:lang>
-																							<v8:content>Изменение данных до даты запрета разрешено</v8:content>
-																						</v8:item>
-																					</ToolTip>
-																					<Group>Horizontal</Group>
-																					<ExtendedTooltip name="ИзменениеДанныхДоДатыЗапретаРазрешеноExtendedTooltip" id="350"/>
+																					<Width>20</Width>
+																					<HorizontalStretch>false</HorizontalStretch>
+																					<ListChoiceMode>true</ListChoiceMode>
+																					<TextEdit>false</TextEdit>
+																					<ChoiceList>
+																						<xr:Item>
+																							<xr:Presentation/>
+																							<xr:CheckState>0</xr:CheckState>
+																							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																								<Presentation>
+																									<v8:item>
+																										<v8:lang>ru</v8:lang>
+																										<v8:content>Не установлена</v8:content>
+																									</v8:item>
+																								</Presentation>
+																								<Value xsi:type="xs:string"/>
+																							</xr:Value>
+																						</xr:Item>
+																						<xr:Item>
+																							<xr:Presentation/>
+																							<xr:CheckState>0</xr:CheckState>
+																							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																								<Presentation>
+																									<v8:item>
+																										<v8:lang>ru</v8:lang>
+																										<v8:content>Произвольная дата</v8:content>
+																									</v8:item>
+																								</Presentation>
+																								<Value xsi:type="xs:string">ПроизвольнаяДата</Value>
+																							</xr:Value>
+																						</xr:Item>
+																						<xr:Item>
+																							<xr:Presentation/>
+																							<xr:CheckState>0</xr:CheckState>
+																							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																								<Presentation>
+																									<v8:item>
+																										<v8:lang>ru</v8:lang>
+																										<v8:content>Конец прошлого года</v8:content>
+																									</v8:item>
+																								</Presentation>
+																								<Value xsi:type="xs:string">КонецПрошлогоГода</Value>
+																							</xr:Value>
+																						</xr:Item>
+																						<xr:Item>
+																							<xr:Presentation/>
+																							<xr:CheckState>0</xr:CheckState>
+																							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																								<Presentation>
+																									<v8:item>
+																										<v8:lang>ru</v8:lang>
+																										<v8:content>Конец прошлого квартала</v8:content>
+																									</v8:item>
+																								</Presentation>
+																								<Value xsi:type="xs:string">КонецПрошлогоКвартала</Value>
+																							</xr:Value>
+																						</xr:Item>
+																						<xr:Item>
+																							<xr:Presentation/>
+																							<xr:CheckState>0</xr:CheckState>
+																							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																								<Presentation>
+																									<v8:item>
+																										<v8:lang>ru</v8:lang>
+																										<v8:content>Конец прошлого месяца</v8:content>
+																									</v8:item>
+																								</Presentation>
+																								<Value xsi:type="xs:string">КонецПрошлогоМесяца</Value>
+																							</xr:Value>
+																						</xr:Item>
+																						<xr:Item>
+																							<xr:Presentation/>
+																							<xr:CheckState>0</xr:CheckState>
+																							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																								<Presentation>
+																									<v8:item>
+																										<v8:lang>ru</v8:lang>
+																										<v8:content>Конец прошлой недели</v8:content>
+																									</v8:item>
+																								</Presentation>
+																								<Value xsi:type="xs:string">КонецПрошлойНедели</Value>
+																							</xr:Value>
+																						</xr:Item>
+																						<xr:Item>
+																							<xr:Presentation/>
+																							<xr:CheckState>0</xr:CheckState>
+																							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																								<Presentation>
+																									<v8:item>
+																										<v8:lang>ru</v8:lang>
+																										<v8:content>Предыдущий день</v8:content>
+																									</v8:item>
+																								</Presentation>
+																								<Value xsi:type="xs:string">ПредыдущийДень</Value>
+																							</xr:Value>
+																						</xr:Item>
+																					</ChoiceList>
+																					<BackColor>style:ФонУправляющегоПоля</BackColor>
+																					<ContextMenu name="ОписаниеДатыЗапретаКонтекстноеМеню" id="224"/>
+																					<ExtendedTooltip name="ОписаниеДатыЗапретаExtendedTooltip" id="340"/>
+																					<Events>
+																						<Event name="OnChange">ОписаниеДатыЗапретаПриИзменении</Event>
+																						<Event name="Clearing">ОписаниеДатыЗапретаОчистка</Event>
+																					</Events>
+																				</InputField>
+																				<Pages name="ПроизвольнаяДата" id="225">
+																					<PagesRepresentation>None</PagesRepresentation>
+																					<ExtendedTooltip name="ПроизвольнаяДатаExtendedTooltip" id="341"/>
 																					<ChildItems>
-																						<LabelDecoration name="КоличествоДнейРазрешенияЗаголовок" id="238">
-																							<Title formatted="false">
-																								<v8:item>
-																									<v8:lang>ru</v8:lang>
-																									<v8:content>В течение</v8:content>
-																								</v8:item>
-																							</Title>
-																							<ContextMenu name="КоличествоДнейРазрешенияЗаголовокКонтекстноеМеню" id="239"/>
-																							<ExtendedTooltip name="КоличествоДнейРазрешенияЗаголовокExtendedTooltip" id="351"/>
-																						</LabelDecoration>
-																						<InputField name="КоличествоДнейРазрешения" id="240">
-																							<DataPath>КоличествоДнейРазрешения</DataPath>
+																						<Page name="ПроизвольнаяДатаИспользуется" id="226">
 																							<Title>
 																								<v8:item>
 																									<v8:lang>ru</v8:lang>
-																									<v8:content>  дней после даты запрета</v8:content>
+																									<v8:content>Произвольная дата используется</v8:content>
 																								</v8:item>
 																							</Title>
-																							<TitleLocation>Right</TitleLocation>
-																							<ContextMenu name="КоличествоДнейРазрешенияКонтекстноеМеню" id="241"/>
-																							<ExtendedTooltip name="КоличествоДнейРазрешенияExtendedTooltip" id="352"/>
-																							<Events>
-																								<Event name="OnChange">КоличествоДнейРазрешенияПриИзменении</Event>
-																								<Event name="AutoComplete">КоличествоДнейРазрешенияАвтоПодбор</Event>
-																							</Events>
-																						</InputField>
+																							<ExtendedTooltip name="ПроизвольнаяДатаИспользуетсяExtendedTooltip" id="342"/>
+																							<ChildItems>
+																								<InputField name="ДатаЗапрета" id="227">
+																									<DataPath>ДатаЗапрета</DataPath>
+																									<TitleLocation>None</TitleLocation>
+																									<ClearButton>true</ClearButton>
+																									<EditFormat>
+																										<v8:item>
+																											<v8:lang>ru</v8:lang>
+																											<v8:content>ДП=01.01.0001</v8:content>
+																										</v8:item>
+																									</EditFormat>
+																									<ContextMenu name="ДатаЗапретаКонтекстноеМеню" id="228"/>
+																									<ExtendedTooltip name="ДатаЗапретаExtendedTooltip" id="343"/>
+																									<Events>
+																										<Event name="OnChange">ДатаЗапретаПриИзменении</Event>
+																									</Events>
+																								</InputField>
+																							</ChildItems>
+																						</Page>
+																						<Page name="ПроизвольнаяДатаНеИспользуется" id="229">
+																							<Title>
+																								<v8:item>
+																									<v8:lang>ru</v8:lang>
+																									<v8:content>Произвольная дата не используется</v8:content>
+																								</v8:item>
+																							</Title>
+																							<ExtendedTooltip name="ПроизвольнаяДатаНеИспользуетсяExtendedTooltip" id="344"/>
+																							<ChildItems>
+																								<LabelDecoration name="ПустаяНадписьДляОтображенияСтраницы1" id="230">
+																									<ContextMenu name="ПустаяНадписьДляОтображенияСтраницы1КонтекстноеМеню" id="231"/>
+																									<ExtendedTooltip name="ПустаяНадписьДляОтображенияСтраницы1ExtendedTooltip" id="345"/>
+																								</LabelDecoration>
+																							</ChildItems>
+																						</Page>
+																					</ChildItems>
+																				</Pages>
+																			</ChildItems>
+																		</UsualGroup>
+																		<Pages name="СвойстваДатыЗапрета" id="232">
+																			<PagesRepresentation>None</PagesRepresentation>
+																			<ExtendedTooltip name="СвойстваДатыЗапретаРасширеннаяПодсказка" id="346"/>
+																			<ChildItems>
+																				<Page name="ОтносительнаяДата" id="483">
+																					<ShowTitle>false</ShowTitle>
+																					<ExtendedTooltip name="ОтносительнаяДатаРасширеннаяПодсказка" id="484"/>
+																					<ChildItems>
+																						<UsualGroup name="ГруппаКоличествоДнейРазрешения" id="485">
+																							<Representation>NormalSeparation</Representation>
+																							<ShowTitle>false</ShowTitle>
+																							<ExtendedTooltip name="ГруппаКоличествоДнейРазрешенияРасширеннаяПодсказка" id="486"/>
+																							<ChildItems>
+																								<CheckBoxField name="РазрешитьИзменениеДанныхДоДатыЗапрета" id="487">
+																									<DataPath>РазрешитьИзменениеДанныхДоДатыЗапрета</DataPath>
+																									<TitleLocation>Right</TitleLocation>
+																									<CheckBoxType>Auto</CheckBoxType>
+																									<ContextMenu name="РазрешитьИзменениеДанныхДоДатыЗапретаКонтекстноеМеню" id="488"/>
+																									<ExtendedTooltip name="РазрешитьИзменениеДанныхДоДатыЗапретаРасширеннаяПодсказка" id="489"/>
+																									<Events>
+																										<Event name="OnChange">РазрешитьИзменениеДанныхДоДатыЗапретаПриИзменении</Event>
+																									</Events>
+																								</CheckBoxField>
+																								<InputField name="КоличествоДнейРазрешения" id="490">
+																									<DataPath>КоличествоДнейРазрешения</DataPath>
+																									<Title>
+																										<v8:item>
+																											<v8:lang>ru</v8:lang>
+																											<v8:content> дней</v8:content>
+																										</v8:item>
+																									</Title>
+																									<TitleLocation>Right</TitleLocation>
+																									<ContextMenu name="КоличествоДнейРазрешенияКонтекстноеМеню" id="491"/>
+																									<ExtendedTooltip name="КоличествоДнейРазрешенияРасширеннаяПодсказка" id="492"/>
+																									<Events>
+																										<Event name="OnChange">КоличествоДнейРазрешенияПриИзменении</Event>
+																										<Event name="AutoComplete">КоличествоДнейРазрешенияАвтоПодбор</Event>
+																									</Events>
+																								</InputField>
+																							</ChildItems>
+																						</UsualGroup>
+																						<LabelDecoration name="ПояснениеНепроизвольнойДаты" id="493">
+																							<AutoMaxWidth>false</AutoMaxWidth>
+																							<TextColor>style:ПоясняющийТекст</TextColor>
+																							<Title formatted="false">
+																								<v8:item>
+																									<v8:lang>ru</v8:lang>
+																									<v8:content>Запрещено изменение данных по %1</v8:content>
+																								</v8:item>
+																							</Title>
+																							<ContextMenu name="ПояснениеНепроизвольнойДатыКонтекстноеМеню" id="494"/>
+																							<ExtendedTooltip name="ПояснениеНепроизвольнойДатыРасширеннаяПодсказка" id="495"/>
+																						</LabelDecoration>
 																					</ChildItems>
 																				</Page>
-																				<Page name="ИзменениеДанныхДоДатыЗапретаНеРазрешено" id="242">
+																				<Page name="НетПояснения" id="247">
 																					<Title>
 																						<v8:item>
 																							<v8:lang>ru</v8:lang>
-																							<v8:content>Изменение данных до даты запрета не разрешено</v8:content>
+																							<v8:content>Нет пояснения</v8:content>
 																						</v8:item>
 																					</Title>
-																					<ToolTip>
-																						<v8:item>
-																							<v8:lang>ru</v8:lang>
-																							<v8:content>Изменение данных до даты запрета не разрешено</v8:content>
-																						</v8:item>
-																					</ToolTip>
-																					<ExtendedTooltip name="ИзменениеДанныхДоДатыЗапретаНеРазрешеноExtendedTooltip" id="353"/>
+																					<ExtendedTooltip name="НетПоясненияРасширеннаяПодсказка" id="356"/>
 																					<ChildItems>
-																						<LabelDecoration name="ПустаяНадписьДляОтображенияСтраницы2" id="243">
-																							<ContextMenu name="ПустаяНадписьДляОтображенияСтраницы2КонтекстноеМеню" id="244"/>
-																							<ExtendedTooltip name="ПустаяНадписьДляОтображенияСтраницы2ExtendedTooltip" id="354"/>
+																						<LabelDecoration name="МеньшеВозможностей" id="248">
+																							<AutoMaxWidth>false</AutoMaxWidth>
+																							<Title formatted="false">
+																								<v8:item>
+																									<v8:lang>ru</v8:lang>
+																									<v8:content>&lt;&lt; Меньше возможностей</v8:content>
+																								</v8:item>
+																							</Title>
+																							<Hyperlink>true</Hyperlink>
+																							<ContextMenu name="МеньшеВозможностейКонтекстноеМеню" id="249"/>
+																							<ExtendedTooltip name="МеньшеВозможностейРасширеннаяПодсказка" id="357"/>
+																							<Events>
+																								<Event name="Click">МеньшеВозможностейНажатие</Event>
+																							</Events>
 																						</LabelDecoration>
 																					</ChildItems>
 																				</Page>
 																			</ChildItems>
 																		</Pages>
-																		<LabelDecoration name="ПояснениеНепроизвольнойДаты" id="245">
-																			<Width>53</Width>
-																			<Height>3</Height>
-																			<TextColor>#000080</TextColor>
-																			<ContextMenu name="ПояснениеНепроизвольнойДатыКонтекстноеМеню" id="246"/>
-																			<ExtendedTooltip name="ПояснениеНепроизвольнойДатыExtendedTooltip" id="355"/>
-																		</LabelDecoration>
-																	</ChildItems>
-																</Page>
-																<Page name="НепроизвольнаяДатаНеИспользуется" id="247">
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Непроизвольная дата не используется</v8:content>
-																		</v8:item>
-																	</Title>
-																	<ToolTip>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Непроизвольная дата не используется</v8:content>
-																		</v8:item>
-																	</ToolTip>
-																	<ExtendedTooltip name="НепроизвольнаяДатаНеИспользуетсяExtendedTooltip" id="356"/>
-																	<ChildItems>
-																		<LabelDecoration name="ПустаяНадписьДляОтображенияСтраницы3" id="248">
-																			<ContextMenu name="ПустаяНадписьДляОтображенияСтраницы3КонтекстноеМеню" id="249"/>
-																			<ExtendedTooltip name="ПустаяНадписьДляОтображенияСтраницы3ExtendedTooltip" id="357"/>
-																		</LabelDecoration>
 																	</ChildItems>
 																</Page>
 															</ChildItems>
@@ -814,18 +732,13 @@
 															<v8:content>Способ указания по разделам объектам</v8:content>
 														</v8:item>
 													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Способ указания по разделам объектам</v8:content>
-														</v8:item>
-													</ToolTip>
 													<ExtendedTooltip name="СпособУказанияПоРазделамОбъектамExtendedTooltip" id="358"/>
 													<ChildItems>
 														<Table name="ДатыЗапрета" id="132">
 															<Representation>Tree</Representation>
 															<ChangeRowOrder>false</ChangeRowOrder>
 															<HeightInTableRows>3</HeightInTableRows>
+															<UseAlternationRowColor>true</UseAlternationRowColor>
 															<AutoInsertNewRow>true</AutoInsertNewRow>
 															<InitialTreeView>ExpandAllLevels</InitialTreeView>
 															<EnableStartDrag>true</EnableStartDrag>
@@ -844,9 +757,6 @@
 																<ExcludedCommand>SortListDesc</ExcludedCommand>
 																<ExcludedCommand>Tree</ExcludedCommand>
 															</CommandSet>
-															<SearchStringLocation>None</SearchStringLocation>
-															<ViewStatusLocation>None</ViewStatusLocation>
-															<SearchControlLocation>None</SearchControlLocation>
 															<ContextMenu name="ДатыЗапретаКонтекстноеМеню" id="133">
 																<Autofill>false</Autofill>
 																<ChildItems>
@@ -863,15 +773,15 @@
 																	<Button name="ДатыЗапретаКонтекстноеМенюУдалить" id="276">
 																		<Type>CommandBarButton</Type>
 																		<CommandName>Form.Item.ДатыЗапрета.StandardCommand.Delete</CommandName>
-																		<ExtendedTooltip name="ДатыЗапретаКонтекстноеМенюУдалитьExtendedTooltip" id="391"/>
-																	</Button>
-																	<ButtonGroup name="ДатыЗапретаКонтекстноеМенюСтандартныеКоманды" id="275">
 																		<Title>
 																			<v8:item>
 																				<v8:lang>ru</v8:lang>
-																				<v8:content>Даты запрета контекстное меню стандартные команды</v8:content>
+																				<v8:content>Отключить</v8:content>
 																			</v8:item>
 																		</Title>
+																		<ExtendedTooltip name="ДатыЗапретаКонтекстноеМенюУдалитьExtendedTooltip" id="391"/>
+																	</Button>
+																	<ButtonGroup name="ДатыЗапретаКонтекстноеМенюСтандартныеКоманды" id="275">
 																		<CommandSource>Item.ДатыЗапрета</CommandSource>
 																		<ExtendedTooltip name="ДатыЗапретаКонтекстноеМенюСтандартныеКомандыExtendedTooltip" id="392"/>
 																	</ButtonGroup>
@@ -880,14 +790,10 @@
 															<AutoCommandBar name="ДатыЗапретаКоманднаяПанель" id="134">
 																<Autofill>false</Autofill>
 																<ChildItems>
-																	<Button name="ДатыЗапретаРазделы" id="399">
-																		<Type>CommandBarButton</Type>
-																		<CommandName>Form.Command.Разделы</CommandName>
-																		<ExtendedTooltip name="ДатыЗапретаРазделыРасширеннаяПодсказка" id="400"/>
-																	</Button>
 																	<Button name="ДатыЗапретаПодобрать" id="401">
 																		<Type>CommandBarButton</Type>
 																		<CommandName>Form.Command.ПодобратьОбъекты</CommandName>
+																		<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 																		<ExtendedTooltip name="ДатыЗапретаПодобратьРасширеннаяПодсказка" id="402"/>
 																	</Button>
 																	<Button name="ДатыЗапретаДобавить" id="405">
@@ -899,21 +805,22 @@
 																	<Button name="ДатыЗапретаИзменить" id="407">
 																		<Type>CommandBarButton</Type>
 																		<CommandName>Form.Item.ДатыЗапрета.StandardCommand.Change</CommandName>
+																		<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 																		<ExtendedTooltip name="ДатыЗапретаИзменитьРасширеннаяПодсказка" id="408"/>
 																	</Button>
-																	<ButtonGroup name="ДатыЗапретаСтандартныеКоманды" id="403">
+																	<Button name="ДатыЗапретаУдалить" id="457">
+																		<Type>CommandBarButton</Type>
+																		<CommandName>Form.Item.ДатыЗапрета.StandardCommand.Delete</CommandName>
 																		<Title>
 																			<v8:item>
 																				<v8:lang>ru</v8:lang>
-																				<v8:content>Даты запрета стандартные команды</v8:content>
+																				<v8:content>Отключить</v8:content>
 																			</v8:item>
 																		</Title>
-																		<ToolTip>
-																			<v8:item>
-																				<v8:lang>ru</v8:lang>
-																				<v8:content>Даты запрета стандартные команды</v8:content>
-																			</v8:item>
-																		</ToolTip>
+																		<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+																		<ExtendedTooltip name="ДатыЗапретаУдалитьРасширеннаяПодсказка" id="458"/>
+																	</Button>
+																	<ButtonGroup name="ДатыЗапретаСтандартныеКоманды" id="403">
 																		<CommandSource>Item.ДатыЗапрета</CommandSource>
 																		<ExtendedTooltip name="ДатыЗапретаСтандартныеКомандыРасширеннаяПодсказка" id="404"/>
 																	</ButtonGroup>
@@ -975,7 +882,7 @@
 																		<Event name="ChoiceProcessing">ДатыЗапретаПолноеПредставлениеОбработкаВыбора</Event>
 																	</Events>
 																</InputField>
-																<InputField name="ДатыЗапретаОписаниеДатыЗапретаПредставление" id="141">
+																<LabelField name="ДатыЗапретаОписаниеДатыЗапретаПредставление" id="141">
 																	<DataPath>ДатыЗапрета.ОписаниеДатыЗапретаПредставление</DataPath>
 																	<Title>
 																		<v8:item>
@@ -984,18 +891,17 @@
 																		</v8:item>
 																	</Title>
 																	<EditMode>EnterOnInput</EditMode>
+																	<CellHyperlink>true</CellHyperlink>
 																	<Width>16</Width>
-																	<ChoiceButton>true</ChoiceButton>
-																	<TextEdit>false</TextEdit>
 																	<ContextMenu name="ДатыЗапретаОписаниеДатыЗапретаПредставлениеКонтекстноеМеню" id="142"/>
 																	<ExtendedTooltip name="ДатыЗапретаОписаниеДатыЗапретаПредставлениеExtendedTooltip" id="395"/>
-																</InputField>
+																</LabelField>
 																<InputField name="ДатыЗапретаДатаЗапрета" id="135">
 																	<DataPath>ДатыЗапрета.ДатаЗапрета</DataPath>
 																	<Title>
 																		<v8:item>
 																			<v8:lang>ru</v8:lang>
-																			<v8:content>Запрет изменения по</v8:content>
+																			<v8:content>Действует по</v8:content>
 																		</v8:item>
 																	</Title>
 																	<EditMode>EnterOnInput</EditMode>
@@ -1013,6 +919,94 @@
 												</Page>
 											</ChildItems>
 										</Pages>
+										<UsualGroup name="ГруппаРасширенныеВозможности" id="442">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Другие способы указания даты запрета</v8:content>
+												</v8:item>
+											</Title>
+											<Behavior>Collapsible</Behavior>
+											<ControlRepresentation>Picture</ControlRepresentation>
+											<Representation>NormalSeparation</Representation>
+											<ExtendedTooltip name="ГруппаРасширенныеВозможностиРасширеннаяПодсказка" id="443"/>
+											<ChildItems>
+												<InputField name="СпособУказанияДатыЗапрета" id="216">
+													<DataPath>СпособУказанияДатыЗапрета</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Указывать дату запрета</v8:content>
+														</v8:item>
+													</Title>
+													<Width>24</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ListChoiceMode>true</ListChoiceMode>
+													<TextEdit>false</TextEdit>
+													<ChoiceList>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Общая дата</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:string">ОбщаяДата</Value>
+															</xr:Value>
+														</xr:Item>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>По разделам</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:string">ПоРазделам</Value>
+															</xr:Value>
+														</xr:Item>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>По разделам и объектам</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:string">ПоРазделамИОбъектам</Value>
+															</xr:Value>
+														</xr:Item>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>По объектам</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:string">ПоОбъектам</Value>
+															</xr:Value>
+														</xr:Item>
+													</ChoiceList>
+													<BackColor>style:ФонУправляющегоПоля</BackColor>
+													<ContextMenu name="СпособУказанияДатыЗапретаКонтекстноеМеню" id="217"/>
+													<ExtendedTooltip name="СпособУказанияДатыЗапретаExtendedTooltip" id="335"/>
+													<Events>
+														<Event name="Clearing">СпособУказанияДатыЗапретаОчистка</Event>
+														<Event name="ChoiceProcessing">СпособУказанияДатыЗапретаОбработкаВыбора</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
 									</ChildItems>
 								</Page>
 							</ChildItems>
@@ -1050,12 +1044,6 @@
 					</Type>
 				</Column>
 				<Column name="Представление" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Представление</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -1065,23 +1053,11 @@
 					</Type>
 				</Column>
 				<Column name="Раздел" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Раздел</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>cfg:ChartOfCharacteristicTypesRef.РазделыДатЗапретаИзменения</v8:Type>
 					</Type>
 				</Column>
 				<Column name="Объект" id="6">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Объект</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:TypeSet>cfg:Characteristic.РазделыДатЗапретаИзменения</v8:TypeSet>
 					</Type>
@@ -1116,12 +1092,6 @@
 					</Type>
 				</Column>
 				<Column name="ОписаниеДатыЗапрета" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Описание даты запрета</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -1131,12 +1101,6 @@
 					</Type>
 				</Column>
 				<Column name="КоличествоДнейРазрешения" id="7">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Количество дней разрешения</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -1147,45 +1111,21 @@
 					</Type>
 				</Column>
 				<Column name="ЭтоРаздел" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это раздел</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="БезДатыЗапрета" id="11">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Без даты запрета</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="РазделБезОбъектов" id="12">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Раздел без объектов</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ЗаписьСуществует" id="9">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Запись существует</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -1219,12 +1159,6 @@
 					</Type>
 				</Column>
 				<Column name="Пользователь" id="9">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Пользователь</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ВнешниеПользователи</v8:Type>
 						<v8:Type>cfg:CatalogRef.ГруппыВнешнихПользователей</v8:Type>
@@ -1235,12 +1169,6 @@
 					</Type>
 				</Column>
 				<Column name="Представление" id="11">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Представление</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -1265,23 +1193,11 @@
 					</Type>
 				</Column>
 				<Column name="БезДатыЗапрета" id="16">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Без даты запрета</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="НомерКартинки" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер картинки</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -1294,160 +1210,59 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="ВсеРазделыБезОбъектов" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Все разделы без объектов</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="ТипыОбъектовРазделов" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Типы объектов разделов</v8:content>
-				</v8:item>
-			</Title>
+		<Attribute name="Разделы" id="5">
 			<Type/>
 		</Attribute>
 		<Attribute name="БезРазделовИОбъектов" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Без разделов и объектов</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ЕдинственныйРаздел" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Единственный раздел</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:ChartOfCharacteristicTypesRef.РазделыДатЗапретаИзменения</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПоказыватьРазделыТекущегоПользователя" id="11">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показывать разделы текущего пользователя</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ИспользоватьВнешнихПользователей" id="12">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Использовать внешних пользователей</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="СправочникВнешниеПользователиДоступен" id="13">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Справочник внешние пользователи доступен</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="СписокТиповПользователей" id="14">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список типов пользователей</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
-		<Attribute name="УстановленныеБлокировки" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Установленные блокировки</v8:content>
-				</v8:item>
-			</Title>
+		<Attribute name="АдресУстановленныхБлокировок" id="10">
 			<Type>
-				<v8:Type>v8:ValueTable</v8:Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
 			</Type>
-			<Columns>
-				<Column name="Раздел" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Раздел</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>cfg:ChartOfCharacteristicTypesRef.РазделыДатЗапретаИзменения</v8:Type>
-					</Type>
-				</Column>
-				<Column name="Объект" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Объект</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:TypeSet>cfg:Characteristic.РазделыДатЗапретаИзменения</v8:TypeSet>
-					</Type>
-				</Column>
-				<Column name="Пользователь" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Пользователь</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>cfg:CatalogRef.ВнешниеПользователи</v8:Type>
-						<v8:Type>cfg:CatalogRef.ГруппыВнешнихПользователей</v8:Type>
-						<v8:Type>cfg:CatalogRef.ГруппыПользователей</v8:Type>
-						<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
-						<v8:Type>cfg:EnumRef.ВидыНазначенияДатЗапрета</v8:Type>
-						<v8:TypeSet>cfg:ExchangePlanRef</v8:TypeSet>
-					</Type>
-				</Column>
-			</Columns>
 		</Attribute>
 		<Attribute name="РазделПустаяСсылка" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Раздел пустая ссылка</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:ChartOfCharacteristicTypesRef.РазделыДатЗапретаИзменения</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ТекущийПользователь" id="15">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Текущий пользователь</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.ВнешниеПользователи</v8:Type>
 				<v8:Type>cfg:CatalogRef.ГруппыВнешнихПользователей</v8:Type>
@@ -1458,41 +1273,17 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ПользователиТекущаяСтрока" id="16">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пользователи текущая строка</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="РазделыБезОбъектов" id="17">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Разделы без объектов</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ПоказыватьРазделы" id="18">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показывать разделы</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="УстановкаДатыЗапрета" id="19">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Установка даты запрета</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -1521,7 +1312,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Разрешить изменение данных до даты запрета</v8:content>
+					<v8:content>Вступает в действие с отсрочкой в</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1573,12 +1364,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="НачалоДня" id="26">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Начало дня</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>
@@ -1587,45 +1372,58 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ЗначениеДляВсехПользователей" id="27">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Значение для всех пользователей</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.ВидыНазначенияДатЗапрета</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ЗакрытьФормуБезПодтверждения" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Закрыть форму без подтверждения</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ИнтерфейсВерсия82" id="28">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Интерфейс версия82</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ЗаписьСуществует" id="29">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="УстановкаДатыЗапретаНовое" id="30">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Запись существует</v8:content>
+					<v8:content>Установка даты запрета новое</v8:content>
 				</v8:item>
 			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВыбранРасширенныйРежим" id="31">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресТаблицыРазделов" id="32">
+			<Type/>
+		</Attribute>
+		<Attribute name="ТекстНадписиОтносительнойДатыЗапрета" id="33">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЕстьНедоступныеОбъекты" id="34">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -1683,22 +1481,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПодобратьПользователей</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
-		<Command name="Разделы" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Разделы</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Разделы</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>Разделы</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ПоказатьОтчет" id="9">

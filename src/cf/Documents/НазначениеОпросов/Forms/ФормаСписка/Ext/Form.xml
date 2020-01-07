@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаПользовательскихНастроек" id="32">
 			<UserVisible>
@@ -12,12 +15,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа пользовательских настроек</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="33"/>
@@ -33,9 +30,12 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -79,20 +79,17 @@
 				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="41"/>
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="42"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+			</Events>
 			<ChildItems>
 				<ColumnGroup name="ГруппаНомерДата" id="26">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа номер дата</v8:content>
+							<v8:content>Номер дата</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа номер дата</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Width>10</Width>
 					<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="27"/>
 					<ChildItems>
@@ -106,8 +103,7 @@
 						<LabelField name="Дата" id="4">
 							<DataPath>Список.Date</DataPath>
 							<DefaultItem>true</DefaultItem>
-							<Width>10</Width>
-							<HorizontalStretch>false</HorizontalStretch>
+							<Width>9</Width>
 							<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
 							<ExtendedTooltip name="ДатаExtendedTooltip" id="17"/>
 						</LabelField>
@@ -117,15 +113,9 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа наименование шаблон</v8:content>
+							<v8:content>Наименование шаблон</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа наименование шаблон</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ГруппаНаименованиеШаблонРасширеннаяПодсказка" id="29"/>
 					<ChildItems>
 						<LabelField name="Наименование" id="14">
@@ -148,15 +138,9 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа даты</v8:content>
+							<v8:content>Даты</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа даты</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ГруппаДатыРасширеннаяПодсказка" id="31"/>
 					<ChildItems>
 						<LabelField name="ДатаНачала" id="10">
@@ -192,6 +176,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ref</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>false</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>

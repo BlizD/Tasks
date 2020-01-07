@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>75</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<CommandBarLocation>None</CommandBarLocation>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
@@ -15,12 +14,6 @@
 					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
-				</v8:item>
-			</ToolTip>
 			<CommandSource>Form</CommandSource>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="27"/>
 		</CommandBar>
@@ -31,7 +24,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -48,9 +40,12 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -136,36 +131,45 @@
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
-	СправочникРолиИсполнителей.Ссылка,
-	СправочникРолиИсполнителей.ПометкаУдаления,
-	СправочникРолиИсполнителей.Предопределенный,
-	СправочникРолиИсполнителей.Код,
-	СправочникРолиИсполнителей.Наименование,
-	СправочникРолиИсполнителей.ИспользуетсяБезОбъектовАдресации,
-	СправочникРолиИсполнителей.ИспользуетсяСОбъектамиАдресации,
-	СправочникРолиИсполнителей.ТипыОсновногоОбъектаАдресации,
-	СправочникРолиИсполнителей.ТипыДополнительногоОбъектаАдресации,
-	СправочникРолиИсполнителей.Комментарий,
+				<QueryText>ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ИсполнителиЗадач.РольИсполнителя КАК РольИсполнителя
+ПОМЕСТИТЬ Исполнители
+ИЗ
+	РегистрСведений.ИсполнителиЗадач КАК ИсполнителиЗадач
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.РолиИсполнителей КАК СправочникРолиИсполнителей
+		ПО (ИсполнителиЗадач.РольИсполнителя = СправочникРолиИсполнителей.Ссылка)
+;
+
+ВЫБРАТЬ
+	СправочникРолиИсполнителейПереопределяемый.Ссылка,
+	СправочникРолиИсполнителейПереопределяемый.ПометкаУдаления,
+	СправочникРолиИсполнителейПереопределяемый.Предопределенный,
+	СправочникРолиИсполнителейПереопределяемый.Код,
+	СправочникРолиИсполнителейПереопределяемый.Наименование,
+	СправочникРолиИсполнителейПереопределяемый.ИспользуетсяБезОбъектовАдресации,
+	СправочникРолиИсполнителейПереопределяемый.ИспользуетсяСОбъектамиАдресации,
+	СправочникРолиИсполнителейПереопределяемый.ТипыОсновногоОбъектаАдресации,
+	СправочникРолиИсполнителейПереопределяемый.ТипыДополнительногоОбъектаАдресации,
+	СправочникРолиИсполнителейПереопределяемый.Комментарий,
 	ВЫБОР
-		КОГДА СправочникРолиИсполнителей.ИспользуетсяСОбъектамиАдресации
+		КОГДА СправочникРолиИсполнителейПереопределяемый.ИспользуетсяСОбъектамиАдресации
 			ТОГДА ИСТИНА
-		КОГДА СправочникРолиИсполнителей.Ссылка В
-				(ВЫБРАТЬ ПЕРВЫЕ 1
-					РегистрСведений.ИсполнителиЗадач.РольИсполнителя.Ссылка
+		КОГДА СправочникРолиИсполнителейПереопределяемый.Ссылка В
+				(ВЫБРАТЬ
+					Исполнители.РольИсполнителя
 				ИЗ
-					РегистрСведений.ИсполнителиЗадач
+					Исполнители
 				ГДЕ
-					РегистрСведений.ИсполнителиЗадач.РольИсполнителя = СправочникРолиИсполнителей.Ссылка)
+					Исполнители.РольИсполнителя = СправочникРолиИсполнителейПереопределяемый.Ссылка)
 			ТОГДА ИСТИНА
 		ИНАЧЕ ЛОЖЬ
 	КОНЕЦ КАК ЕстьИсполнители,
-	СправочникРолиИсполнителей.ВнешняяРоль,
-	СправочникРолиИсполнителей.КраткоеПредставление
+	СправочникРолиИсполнителейПереопределяемый.ВнешняяРоль,
+	СправочникРолиИсполнителейПереопределяемый.КраткоеПредставление
 	ИЗ
-	Справочник.РолиИсполнителей.Назначение КАК РолиИсполнителейНазначение
-		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.РолиИсполнителей КАК СправочникРолиИсполнителей
-		ПО РолиИсполнителейНазначение.Ссылка = СправочникРолиИсполнителей.Ссылка</QueryText>
+	Справочник.РолиИсполнителей.Назначение КАК РолиИсполнителейНазначениеПереопределяемый
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.РолиИсполнителей КАК СправочникРолиИсполнителейПереопределяемый
+		ПО РолиИсполнителейНазначениеПереопределяемый.Ссылка = СправочникРолиИсполнителейПереопределяемый.Ссылка</QueryText>
 				<MainTable>Catalog.РолиИсполнителей</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -177,30 +181,6 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
-						<dcsset:item>
-							<dcsset:selection/>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemGroup">
-									<dcsset:groupType>AndGroup</dcsset:groupType>
-									<dcsset:item xsi:type="dcsset:FilterItemComparison">
-										<dcsset:left xsi:type="dcscor:Field">ЕстьИсполнители</dcsset:left>
-										<dcsset:comparisonType>Equal</dcsset:comparisonType>
-										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:FilterItemComparison">
-										<dcsset:left xsi:type="dcscor:Field">ВнешняяРоль</dcsset:left>
-										<dcsset:comparisonType>Equal</dcsset:comparisonType>
-										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-									</dcsset:item>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветТекста</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">style:РольБезИсполнителей</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
@@ -210,12 +190,6 @@
 			</Settings>
 		</Attribute>
 		<Attribute name="ЭтоВнешнийПользователь" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Это внешний пользователь</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>

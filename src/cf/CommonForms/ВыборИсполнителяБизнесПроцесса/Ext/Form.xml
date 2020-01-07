@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>85</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
-	<Group>Horizontal</Group>
+	<Group>HorizontalIfPossible</Group>
 	<CommandSet>
 		<ExcludedCommand>CustomizeForm</ExcludedCommand>
 	</CommandSet>
@@ -24,18 +23,6 @@
 	</Events>
 	<ChildItems>
 		<Pages name="Страницы" id="23">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Страницы</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Страницы</v8:content>
-				</v8:item>
-			</ToolTip>
 			<ExtendedTooltip name="СтраницыExtendedTooltip" id="56"/>
 			<ChildItems>
 				<Page name="Пользователи" id="24">
@@ -45,27 +32,9 @@
 							<v8:content>Пользователи</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Пользователи</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ПользователиExtendedTooltip" id="57"/>
 					<ChildItems>
 						<CommandBar name="КоманднаяПанельПользователи" id="31">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Командная панель пользователи</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Командная панель пользователи</v8:content>
-								</v8:item>
-							</ToolTip>
 							<CommandSource>Item.СписокПользователи</CommandSource>
 							<ExtendedTooltip name="КоманднаяПанельПользователиExtendedTooltip" id="58"/>
 						</CommandBar>
@@ -94,9 +63,6 @@
 								<ExcludedCommand>Delete</ExcludedCommand>
 								<ExcludedCommand>SetDeletionMark</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<AutoRefresh>false</AutoRefresh>
 							<AutoRefreshPeriod>60</AutoRefreshPeriod>
 							<Period>
@@ -148,6 +114,14 @@
 									<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
 									<ExtendedTooltip name="НаименованиеExtendedTooltip" id="60"/>
 								</LabelField>
+								<LabelField name="Ссылка" id="83">
+									<DataPath>СписокПользователи.Ref</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="СсылкаКонтекстноеМеню" id="84"/>
+									<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="85"/>
+								</LabelField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
@@ -159,12 +133,6 @@
 							<v8:content>Роли исполнителей</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Роли</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="РолиExtendedTooltip" id="61"/>
 					<ChildItems>
 						<Table name="СписокРоли" id="26">
@@ -186,9 +154,6 @@
 								<ExcludedCommand>Delete</ExcludedCommand>
 								<ExcludedCommand>SetDeletionMark</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<AutoRefresh>false</AutoRefresh>
 							<AutoRefreshPeriod>60</AutoRefreshPeriod>
 							<Period>
@@ -237,6 +202,14 @@
 									<DataPath>СписокРоли.Description</DataPath>
 									<ContextMenu name="НаименованиеРолиКонтекстноеМеню" id="30"/>
 									<ExtendedTooltip name="НаименованиеРолиExtendedTooltip" id="63"/>
+								</LabelField>
+								<LabelField name="СписокРолиСсылка" id="86">
+									<DataPath>СписокРоли.Ref</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="СписокРолиСсылкаКонтекстноеМеню" id="87"/>
+									<ExtendedTooltip name="СписокРолиСсылкаРасширеннаяПодсказка" id="88"/>
 								</LabelField>
 							</ChildItems>
 						</Table>
@@ -368,27 +341,6 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
-						<dcsset:item>
-							<dcsset:selection/>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ВнешняяРоль</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-								</dcsset:item>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ЕстьИсполнители</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветТекста</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">style:РольБезИсполнителей</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>

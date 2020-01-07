@@ -26,18 +26,6 @@
 	</Events>
 	<ChildItems>
 		<Pages name="СтраницыСписки" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Страницы списки</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Страницы списки</v8:content>
-				</v8:item>
-			</ToolTip>
 			<ExtendedTooltip name="СтраницыСпискиExtendedTooltip" id="106"/>
 			<ChildItems>
 				<Page name="СтраницаПоискКонтактов" id="2">
@@ -47,28 +35,9 @@
 							<v8:content>Поиск контактов</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница поиск контактов</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаПоискКонтактовExtendedTooltip" id="107"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаСтрокаПоиска" id="78">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа строка поиска</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа строка поиска</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаСтрокаПоискаExtendedTooltip" id="108"/>
@@ -80,10 +49,12 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
 									<ListChoiceMode>true</ListChoiceMode>
+									<TextEdit>false</TextEdit>
 									<ContextMenu name="ВариантыПоискаКонтекстноеМеню" id="80"/>
 									<ExtendedTooltip name="ВариантыПоискаExtendedTooltip" id="109"/>
 									<Events>
 										<Event name="OnChange">ВариантыПоискаПриИзменении</Event>
+										<Event name="Clearing">ВариантыПоискаОчистка</Event>
 									</Events>
 								</InputField>
 								<InputField name="СтрокаПоиска" id="17">
@@ -113,9 +84,6 @@
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>НайденныеКонтакты</DataPath>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="НайденныеКонтактыКонтекстноеМеню" id="21">
 								<Autofill>false</Autofill>
@@ -191,12 +159,6 @@
 							<v8:content>Контакты по предмету</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница все контакты по предмету</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаВсеКонтактыПоПредметуExtendedTooltip" id="119"/>
 					<ChildItems>
 						<Table name="КонтактыПоПредмету" id="71">
@@ -207,13 +169,11 @@
 							<ChangeRowSet>false</ChangeRowSet>
 							<ChangeRowOrder>false</ChangeRowOrder>
 							<Height>10</Height>
+							<AutoMaxHeight>false</AutoMaxHeight>
 							<SelectionMode>SingleRow</SelectionMode>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>КонтактыПоПредмету</DataPath>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="КонтактыПоПредметуКонтекстноеМеню" id="72">
 								<Autofill>false</Autofill>
@@ -298,7 +258,6 @@
 							</RowsPicture>
 							<CommandSet>
 								<ExcludedCommand>Change</ExcludedCommand>
-								<ExcludedCommand>Choose</ExcludedCommand>
 								<ExcludedCommand>Copy</ExcludedCommand>
 								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
 								<ExcludedCommand>Create</ExcludedCommand>
@@ -312,9 +271,6 @@
 								<ExcludedCommand>SetDeletionMark</ExcludedCommand>
 								<ExcludedCommand>Tree</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<AutoRefresh>false</AutoRefresh>
 							<AutoRefreshPeriod>60</AutoRefreshPeriod>
 							<Period>
@@ -361,14 +317,25 @@
 							<ChildItems>
 								<LabelField name="НаименованиеГруппы" id="103">
 									<DataPath>ГруппыПользователей.Description</DataPath>
+									<Height>4</Height>
+									<AutoMaxHeight>false</AutoMaxHeight>
 									<ContextMenu name="НаименованиеГруппыКонтекстноеМеню" id="104"/>
 									<ExtendedTooltip name="НаименованиеГруппыExtendedTooltip" id="125"/>
+								</LabelField>
+								<LabelField name="ГруппыПользователейСсылка" id="164">
+									<DataPath>ГруппыПользователей.Ref</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="ГруппыПользователейСсылкаКонтекстноеМеню" id="165"/>
+									<ExtendedTooltip name="ГруппыПользователейСсылкаРасширеннаяПодсказка" id="166"/>
 								</LabelField>
 							</ChildItems>
 						</Table>
 						<Table name="СписокПользователей" id="84">
 							<SkipOnInput>false</SkipOnInput>
-							<Height>10</Height>
+							<Height>6</Height>
+							<AutoMaxHeight>false</AutoMaxHeight>
 							<SelectionMode>SingleRow</SelectionMode>
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<FileDragMode>AsFile</FileDragMode>
@@ -381,9 +348,6 @@
 								<ExcludedCommand>Delete</ExcludedCommand>
 								<ExcludedCommand>SetDeletionMark</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<AutoRefresh>false</AutoRefresh>
 							<AutoRefreshPeriod>60</AutoRefreshPeriod>
 							<Period>
@@ -425,7 +389,7 @@
 								<ExtendedTooltip name="СписокПользователейУправлениеПоискомРасширеннаяПодсказка" id="163"/>
 							</SearchControlAddition>
 							<Events>
-								<Event name="Selection">СписокСправочникаВыбор</Event>
+								<Event name="Selection">Подключаемый_СписокСправочникаВыбор</Event>
 								<Event name="OnActivateRow">Подключаемый_СписокКонтактыПриАктивизацииСтроки</Event>
 							</Events>
 							<ChildItems>
@@ -441,6 +405,14 @@
 									<ContextMenu name="ПользовательКонтекстноеМеню" id="88"/>
 									<ExtendedTooltip name="ПользовательExtendedTooltip" id="127"/>
 								</InputField>
+								<LabelField name="СписокПользователейСсылка" id="167">
+									<DataPath>СписокПользователей.Ref</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="СписокПользователейСсылкаКонтекстноеМеню" id="168"/>
+									<ExtendedTooltip name="СписокПользователейСсылкаРасширеннаяПодсказка" id="169"/>
+								</LabelField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
@@ -506,23 +478,11 @@
 					</Type>
 				</Column>
 				<Column name="Ссылка" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Ссылка</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:TypeSet>cfg:DefinedType.КонтактВзаимодействия</v8:TypeSet>
 					</Type>
 				</Column>
 				<Column name="ИмяСправочника" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Имя справочника</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -534,12 +494,6 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="ИнформацияОбАктуальностиИндексаППД" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Информация об актуальности индекса ППД</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -560,12 +514,6 @@
 			</Type>
 			<Columns>
 				<Column name="Ссылка" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Ссылка</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:TypeSet>cfg:DefinedType.КонтактВзаимодействия</v8:TypeSet>
 					</Type>
@@ -580,12 +528,6 @@
 					</Type>
 				</Column>
 				<Column name="ИмяСправочника" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Имя справочника</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -627,12 +569,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ППДВключен" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>ППДВключен</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -647,6 +583,9 @@
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
+			<UseAlways>
+				<Field>СписокПользователей.Ref</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
@@ -695,32 +634,14 @@
 			</Settings>
 		</Attribute>
 		<Attribute name="ВсеСпискиПоиска" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Все списки поиска</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ИндексАктуален" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Индекс актуален</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПоследнийАктивизированныйКонтакт" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Последний активизированный контакт</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
 			</Type>
@@ -737,6 +658,7 @@
 			</Type>
 			<UseAlways>
 				<Field>ГруппыПользователей.Parent</Field>
+				<Field>ГруппыПользователей.Ref</Field>
 			</UseAlways>
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьГруппыПользователей</Item>
@@ -777,23 +699,11 @@
 			</Settings>
 		</Attribute>
 		<Attribute name="ИспользоватьГруппыПользователей" id="12">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Использовать группы пользователей</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПараметрыФормы" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Параметры формы</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
@@ -930,6 +840,11 @@
 		<Parameter name="ДляФормыУточненияКонтактов">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИдентификаторФормы">
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
 			</Type>
 		</Parameter>
 	</Parameters>

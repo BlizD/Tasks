@@ -6,7 +6,6 @@
 			<v8:content>Очистка адресного классификатора</v8:content>
 		</v8:item>
 	</Title>
-	<Height>15</Height>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<SaveDataInSettings>UseList</SaveDataInSettings>
@@ -18,7 +17,6 @@
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
-		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
 		<Pages name="ШагиОчистки" id="59">
@@ -28,12 +26,6 @@
 					<v8:content>Шаги очистки</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Шаги очистки</v8:content>
-				</v8:item>
-			</ToolTip>
 			<PagesRepresentation>None</PagesRepresentation>
 			<ExtendedTooltip name="ШагиОчисткиРасширеннаяПодсказка" id="60"/>
 			<ChildItems>
@@ -44,12 +36,6 @@
 							<v8:content>Выбор регионов очистки</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Выбор регионов очистки</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ВыборРегионовОчисткиРасширеннаяПодсказка" id="62"/>
 					<ChildItems>
 						<Table name="СубъектыРФ" id="1">
@@ -65,6 +51,12 @@
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>СубъектыРФ</DataPath>
 							<RowPictureDataPath>СубъектыРФ.Загружено</RowPictureDataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Субъекты РФ</v8:content>
+								</v8:item>
+							</Title>
 							<CommandSet>
 								<ExcludedCommand>Add</ExcludedCommand>
 								<ExcludedCommand>Change</ExcludedCommand>
@@ -75,14 +67,28 @@
 								<ExcludedCommand>MoveUp</ExcludedCommand>
 								<ExcludedCommand>SelectAll</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="СубъектыРФКонтекстноеМеню" id="2"/>
 							<AutoCommandBar name="СубъектыРФКоманднаяПанель" id="3">
 								<Autofill>false</Autofill>
 								<ChildItems>
+									<ButtonGroup name="ГруппаОтметьЗагруженные" id="138">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Отметь загруженные</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ГруппаОтметьЗагруженныеРасширеннаяПодсказка" id="139"/>
+										<ChildItems>
+											<Button name="СубъектыРФОтметьЗагруженные" id="136">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ОтметитьЗагруженные</CommandName>
+												<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="СубъектыРФОтметьЗагруженныеРасширеннаяПодсказка" id="137"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
 									<Button name="СубъектыРФУстановитьФлажки" id="47">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.УстановитьФлажки</CommandName>
@@ -96,11 +102,13 @@
 									<Button name="СубъектыРФНайти" id="43">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Item.СубъектыРФ.StandardCommand.Find</CommandName>
+										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="СубъектыРФНайтиРасширеннаяПодсказка" id="44"/>
 									</Button>
 									<Button name="СубъектыРФОтменитьПоиск" id="45">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Item.СубъектыРФ.StandardCommand.CancelSearch</CommandName>
+										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="СубъектыРФОтменитьПоискРасширеннаяПодсказка" id="46"/>
 									</Button>
 								</ChildItems>
@@ -166,44 +174,75 @@
 								</ColumnGroup>
 							</ChildItems>
 						</Table>
+						<UsualGroup name="ГруппаПодвалТаблицы" id="143">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подвал таблицы</v8:content>
+								</v8:item>
+							</Title>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПодвалТаблицыРасширеннаяПодсказка" id="144"/>
+							<ChildItems>
+								<CheckBoxField name="ПоказыватьТолькоЗагруженныеРегионы" id="140">
+									<DataPath>ПоказыватьТолькоЗагруженныеРегионы</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ПоказыватьТолькоЗагруженныеРегионыКонтекстноеМеню" id="141"/>
+									<ExtendedTooltip name="ПоказыватьТолькоЗагруженныеРегионыРасширеннаяПодсказка" id="142"/>
+									<Events>
+										<Event name="OnChange">ПоказыватьТолькоЗагруженныеРегионыПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<UsualGroup name="ГруппаКоличествоРегионов" id="145">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Количество регионов</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalStretch>true</HorizontalStretch>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаКоличествоРегионовРасширеннаяПодсказка" id="146"/>
+									<ChildItems>
+										<LabelField name="ВыбраноРегионовДляОчистки" id="51">
+											<DataPath>ВыбраноРегионовДляОчистки</DataPath>
+											<HorizontalAlign>Left</HorizontalAlign>
+											<Width>2</Width>
+											<Format>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ЧН=-</v8:content>
+												</v8:item>
+											</Format>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="ВыбраноРегионовДляОчисткиКонтекстноеМеню" id="52"/>
+											<ExtendedTooltip name="ВыбраноРегионовДляОчисткиРасширеннаяПодсказка" id="53"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
 						<UsualGroup name="ГруппаКомандЗагрузки" id="8">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа команд загрузки</v8:content>
+									<v8:content>Команд загрузки</v8:content>
 								</v8:item>
 							</Title>
-							<HorizontalStretch>true</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>NormalSeparation</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаКомандЗагрузкиРасширеннаяПодсказка" id="9"/>
 							<ChildItems>
-								<LabelField name="ВыбраноРегионовДляОчистки" id="51">
-									<DataPath>ВыбраноРегионовДляОчистки</DataPath>
-									<HorizontalAlign>Left</HorizontalAlign>
-									<Width>2</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<Format>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>ЧН=-</v8:content>
-										</v8:item>
-									</Format>
-									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-									<ContextMenu name="ВыбраноРегионовДляОчисткиКонтекстноеМеню" id="52"/>
-									<ExtendedTooltip name="ВыбраноРегионовДляОчисткиРасширеннаяПодсказка" id="53"/>
-								</LabelField>
-								<LabelDecoration name="НадписьОтступ" id="116">
-									<HorizontalStretch>true</HorizontalStretch>
-									<ContextMenu name="НадписьОтступКонтекстноеМеню" id="117"/>
-									<ExtendedTooltip name="НадписьОтступРасширеннаяПодсказка" id="118"/>
-								</LabelDecoration>
 								<CommandBar name="ГруппаКомандЗагрузкиПанель" id="128">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа команд загрузки панель</v8:content>
+											<v8:content>Команд загрузки панель</v8:content>
 										</v8:item>
 									</Title>
 									<HorizontalLocation>Right</HorizontalLocation>
@@ -228,40 +267,24 @@
 							<v8:content>Ожидание очистки</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Ожидание очистки</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ОжиданиеОчисткиРасширеннаяПодсказка" id="64"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаОписание" id="65">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа описание</v8:content>
+									<v8:content>Описание</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа описание</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаОписаниеРасширеннаяПодсказка" id="66"/>
 							<ChildItems>
 								<PictureDecoration name="КартинкаДлительнаяОперация" id="67">
-									<Width>10</Width>
-									<Height>4</Height>
-									<HorizontalStretch>false</HorizontalStretch>
-									<VerticalStretch>false</VerticalStretch>
 									<Picture>
 										<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
-										<xr:LoadTransparent>true</xr:LoadTransparent>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
 									</Picture>
 									<FileDragMode>AsFile</FileDragMode>
 									<ContextMenu name="КартинкаДлительнаяОперацияКонтекстноеМеню" id="68"/>
@@ -273,6 +296,7 @@
 									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 									<ContextMenu name="ТекстОписанияОчисткиКонтекстноеМеню" id="74"/>
 									<ExtendedTooltip name="ТекстОписанияОчисткиРасширеннаяПодсказка" id="75">
+										<AutoMaxWidth>false</AutoMaxWidth>
 										<Title formatted="false">
 											<v8:item>
 												<v8:lang>ru</v8:lang>
@@ -284,41 +308,31 @@
 								</LabelField>
 							</ChildItems>
 						</UsualGroup>
-						<LabelDecoration name="Декорация2" id="80">
-							<VerticalStretch>true</VerticalStretch>
-							<ContextMenu name="Декорация2КонтекстноеМеню" id="81"/>
-							<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="82"/>
-						</LabelDecoration>
-						<LabelField name="ТекстСостоянияЗагрузки" id="88">
-							<DataPath>ТекстСостоянияОчистки</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<ContextMenu name="ТекстСостоянияЗагрузкиКонтекстноеМеню" id="89"/>
-							<ExtendedTooltip name="ТекстСостоянияЗагрузкиРасширеннаяПодсказка" id="90"/>
-						</LabelField>
 						<UsualGroup name="ГруппаКомандОтмены" id="76">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа команд отмены</v8:content>
+									<v8:content>Команд отмены</v8:content>
 								</v8:item>
 							</Title>
-							<HorizontalStretch>true</HorizontalStretch>
 							<VerticalStretch>true</VerticalStretch>
-							<Group>Horizontal</Group>
+							<Group>Vertical</Group>
+							<VerticalAlign>Bottom</VerticalAlign>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаКомандОтменыРасширеннаяПодсказка" id="77"/>
 							<ChildItems>
-								<LabelDecoration name="Декорация3" id="85">
-									<HorizontalStretch>true</HorizontalStretch>
-									<ContextMenu name="Декорация3КонтекстноеМеню" id="86"/>
-									<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="87"/>
-								</LabelDecoration>
+								<LabelField name="ТекстСостоянияЗагрузки" id="88">
+									<DataPath>ТекстСостоянияОчистки</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="ТекстСостоянияЗагрузкиКонтекстноеМеню" id="89"/>
+									<ExtendedTooltip name="ТекстСостоянияЗагрузкиРасширеннаяПодсказка" id="90"/>
+								</LabelField>
 								<CommandBar name="ГруппаКомандОтменыПанель" id="130">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа команд отмены панель</v8:content>
+											<v8:content>Команд отмены панель</v8:content>
 										</v8:item>
 									</Title>
 									<HorizontalLocation>Right</HorizontalLocation>
@@ -342,12 +356,6 @@
 							<v8:content>Успешное завершение</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Успешное завершение</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="УспешноеЗавершениеРасширеннаяПодсказка" id="92"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаОписаниеЗавершения" id="93">
@@ -357,22 +365,12 @@
 									<v8:content>Группа описание</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа описание</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаОписаниеЗавершенияРасширеннаяПодсказка" id="94"/>
 							<ChildItems>
 								<PictureDecoration name="КартинкаУспешноеЗавершение" id="95">
-									<Width>10</Width>
-									<Height>2</Height>
-									<HorizontalStretch>false</HorizontalStretch>
-									<VerticalStretch>false</VerticalStretch>
 									<Title formatted="false">
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -381,7 +379,7 @@
 									</Title>
 									<Picture>
 										<xr:Ref>CommonPicture.Успешно32</xr:Ref>
-										<xr:LoadTransparent>true</xr:LoadTransparent>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
 									</Picture>
 									<FileDragMode>AsFile</FileDragMode>
 									<ContextMenu name="КартинкаУспешноеЗавершениеКонтекстноеМеню" id="96"/>
@@ -392,40 +390,31 @@
 									<ReadOnly>true</ReadOnly>
 									<TitleLocation>None</TitleLocation>
 									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
 									<ContextMenu name="ТекстОписанияОчисткиЗавершенияКонтекстноеМеню" id="99"/>
 									<ExtendedTooltip name="ТекстОписанияОчисткиЗавершенияРасширеннаяПодсказка" id="100"/>
 								</LabelField>
 							</ChildItems>
 						</UsualGroup>
-						<LabelDecoration name="Декорация4" id="103">
-							<VerticalStretch>true</VerticalStretch>
-							<ContextMenu name="Декорация4КонтекстноеМеню" id="104"/>
-							<ExtendedTooltip name="Декорация4РасширеннаяПодсказка" id="105"/>
-						</LabelDecoration>
 						<UsualGroup name="ГруппаКомандЗавершения" id="101">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа команд завершения</v8:content>
+									<v8:content>Команд завершения</v8:content>
 								</v8:item>
 							</Title>
-							<HorizontalStretch>true</HorizontalStretch>
 							<VerticalStretch>true</VerticalStretch>
 							<Group>Horizontal</Group>
+							<VerticalAlign>Bottom</VerticalAlign>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаКомандЗавершенияРасширеннаяПодсказка" id="102"/>
 							<ChildItems>
-								<LabelDecoration name="Декорация5" id="111">
-									<HorizontalStretch>true</HorizontalStretch>
-									<ContextMenu name="Декорация5КонтекстноеМеню" id="112"/>
-									<ExtendedTooltip name="Декорация5РасширеннаяПодсказка" id="113"/>
-								</LabelDecoration>
 								<CommandBar name="ГруппаКомандЗавершенияПанель" id="132">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа команд завершения панель</v8:content>
+											<v8:content>Команд завершения панель</v8:content>
 										</v8:item>
 									</Title>
 									<HorizontalLocation>Right</HorizontalLocation>
@@ -459,12 +448,6 @@
 			</Type>
 			<Columns>
 				<Column name="КодСубъектаРФ" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Код субъекта РФ</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -490,12 +473,6 @@
 					</Type>
 				</Column>
 				<Column name="Загружено" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Загружено</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -559,8 +536,21 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="ПараметрыДлительнойОперации" id="10">
-			<Type/>
+		<Attribute name="ИдентификаторЗадания" id="12">
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказыватьТолькоЗагруженныеРегионы" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать только загруженные регионы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>
@@ -634,6 +624,22 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПрерватьОчистку</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОтметитьЗагруженные" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметить загруженные</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометки для загруженных регионов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтметитьЗагруженные</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>

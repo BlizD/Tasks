@@ -6,7 +6,7 @@
 			<v8:content>Подписание данных</v8:content>
 		</v8:item>
 	</Title>
-	<Width>48</Width>
+	<Width>45</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Bottom</CommandBarLocation>
@@ -43,13 +43,14 @@
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаПредставлениеДанных" id="450">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа представление данных</v8:content>
+					<v8:content>Представление данных</v8:content>
 				</v8:item>
 			</Title>
 			<Group>Vertical</Group>
@@ -65,6 +66,7 @@
 							<v8:content>Данные</v8:content>
 						</v8:item>
 					</Title>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Hiperlink>true</Hiperlink>
 					<ContextMenu name="ПредставлениеДанныхКонтекстноеМеню" id="19"/>
 					<ExtendedTooltip name="ПредставлениеДанныхРасширеннаяПодсказка" id="20"/>
@@ -74,230 +76,182 @@
 				</LabelField>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="ГруппаПодписание" id="378">
+		<UsualGroup name="ГруппаПодписаниеИКомментарий" id="452">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Введите пароль закрытого ключа сертификата</v8:content>
+					<v8:content>Подписание и комментарий</v8:content>
 				</v8:item>
 			</Title>
-			<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
-			<Group>Horizontal</Group>
+			<Group>Vertical</Group>
 			<Representation>None</Representation>
-			<ExtendedTooltip name="ГруппаПодписаниеРасширеннаяПодсказка" id="379"/>
+			<United>false</United>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПодписаниеИКомментарийРасширеннаяПодсказка" id="453"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаЗаголовкиПолей" id="425">
+				<UsualGroup name="ГруппаПодписание" id="378">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа заголовки полей</v8:content>
+							<v8:content>Введите пароль закрытого ключа сертификата</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Vertical</Group>
+					<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
 					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаЗаголовкиПолейРасширеннаяПодсказка" id="426"/>
+					<ExtendedTooltip name="ГруппаПодписаниеРасширеннаяПодсказка" id="379"/>
 					<ChildItems>
-						<LabelDecoration name="СертификатЗаголовок" id="427">
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Сертификат:</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="СертификатЗаголовокКонтекстноеМеню" id="428"/>
-							<ExtendedTooltip name="СертификатЗаголовокРасширеннаяПодсказка" id="429"/>
-						</LabelDecoration>
-						<LabelDecoration name="ПарольЗаголовок" id="430">
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Пароль:</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="ПарольЗаголовокКонтекстноеМеню" id="431"/>
-							<ExtendedTooltip name="ПарольЗаголовокРасширеннаяПодсказка" id="432"/>
-						</LabelDecoration>
-						<LabelDecoration name="ВертикальныйОтступ" id="435">
-							<ContextMenu name="ВертикальныйОтступКонтекстноеМеню" id="436"/>
-							<ExtendedTooltip name="ВертикальныйОтступРасширеннаяПодсказка" id="437"/>
-						</LabelDecoration>
-					</ChildItems>
-				</UsualGroup>
-				<UsualGroup name="ГруппаПоля" id="433">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа поля</v8:content>
-						</v8:item>
-					</Title>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаПоляРасширеннаяПодсказка" id="434"/>
-					<ChildItems>
-						<InputField name="Сертификат" id="313">
-							<DataPath>Сертификат</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<DropListButton>true</DropListButton>
-							<ChoiceButtonRepresentation>ShowInDropList</ChoiceButtonRepresentation>
-							<OpenButton>true</OpenButton>
-							<CreateButton>false</CreateButton>
-							<QuickChoice>false</QuickChoice>
-							<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
-							<ContextMenu name="СертификатКонтекстноеМеню" id="314"/>
-							<ExtendedTooltip name="СертификатРасширеннаяПодсказка" id="315"/>
-							<Events>
-								<Event name="OnChange">СертификатПриИзменении</Event>
-								<Event name="AutoComplete">СертификатАвтоПодбор</Event>
-								<Event name="StartChoice">СертификатНачалоВыбора</Event>
-								<Event name="Opening">СертификатОткрытие</Event>
-								<Event name="TextEditEnd">СертификатОкончаниеВводаТекста</Event>
-								<Event name="ChoiceProcessing">СертификатОбработкаВыбора</Event>
-							</Events>
-						</InputField>
-						<InputField name="Пароль" id="316">
-							<DataPath>Пароль</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<HorizontalStretch>false</HorizontalStretch>
-							<Wrap>false</Wrap>
-							<PasswordMode>true</PasswordMode>
-							<ContextMenu name="ПарольКонтекстноеМеню" id="317"/>
-							<ExtendedTooltip name="ПарольРасширеннаяПодсказка" id="318"/>
-							<Events>
-								<Event name="OnChange">ПарольПриИзменении</Event>
-							</Events>
-						</InputField>
-						<Pages name="Страницы" id="416">
+						<UsualGroup name="ГруппаПоля" id="433">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Страницы</v8:content>
+									<v8:content>Поля</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страницы</v8:content>
-								</v8:item>
-							</ToolTip>
-							<PagesRepresentation>None</PagesRepresentation>
-							<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="417"/>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПоляРасширеннаяПодсказка" id="434"/>
 							<ChildItems>
-								<Page name="СтраницаЗапоминаниеПароля" id="418">
+								<InputField name="Сертификат" id="313">
+									<DataPath>Сертификат</DataPath>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+									<OpenButton>true</OpenButton>
+									<CreateButton>false</CreateButton>
+									<QuickChoice>false</QuickChoice>
+									<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+									<ContextMenu name="СертификатКонтекстноеМеню" id="314"/>
+									<ExtendedTooltip name="СертификатРасширеннаяПодсказка" id="315"/>
+									<Events>
+										<Event name="OnChange">СертификатПриИзменении</Event>
+										<Event name="AutoComplete">СертификатАвтоПодбор</Event>
+										<Event name="StartChoice">СертификатНачалоВыбора</Event>
+										<Event name="Opening">СертификатОткрытие</Event>
+										<Event name="TextEditEnd">СертификатОкончаниеВводаТекста</Event>
+										<Event name="ChoiceProcessing">СертификатОбработкаВыбора</Event>
+									</Events>
+								</InputField>
+								<InputField name="Пароль" id="316">
+									<DataPath>Пароль</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<PasswordMode>true</PasswordMode>
+									<ContextMenu name="ПарольКонтекстноеМеню" id="317"/>
+									<ExtendedTooltip name="ПарольРасширеннаяПодсказка" id="318"/>
+									<Events>
+										<Event name="OnChange">ПарольПриИзменении</Event>
+									</Events>
+								</InputField>
+								<Pages name="Страницы" id="416">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Страница запоминание пароля</v8:content>
+											<v8:content>Страницы</v8:content>
 										</v8:item>
 									</Title>
-									<ExtendedTooltip name="СтраницаЗапоминаниеПароляРасширеннаяПодсказка" id="419"/>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="417"/>
 									<ChildItems>
-										<CheckBoxField name="ЗапомнитьПароль" id="324">
-											<DataPath>ЗапомнитьПароль</DataPath>
-											<TitleLocation>Right</TitleLocation>
-											<ToolTip>
+										<Page name="СтраницаЗапоминаниеПароля" id="418">
+											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Запомнить пароль сертификата до закрытия программы. При снятии флажка пароль стирается из памяти, если запоминался ранее.</v8:content>
-												</v8:item>
-											</ToolTip>
-											<ToolTipRepresentation>Button</ToolTipRepresentation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="ЗапомнитьПарольКонтекстноеМеню" id="325"/>
-											<ExtendedTooltip name="ЗапомнитьПарольРасширеннаяПодсказка" id="326"/>
-											<Events>
-												<Event name="OnChange">ЗапомнитьПарольПриИзменении</Event>
-											</Events>
-										</CheckBoxField>
-									</ChildItems>
-								</Page>
-								<Page name="СтраницаПояснениеУсиленногоПароля" id="438">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Страница пояснение усиленного пароля</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="СтраницаПояснениеУсиленногоПароляРасширеннаяПодсказка" id="439"/>
-									<ChildItems>
-										<LabelDecoration name="ПояснениеУсиленногоПароля" id="440">
-											<TextColor>style:ПоясняющийТекст</TextColor>
-											<Title formatted="false">
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Нажмите Подписать, чтобы перейти к вводу пароля.
-</v8:content>
+													<v8:content>Страница запоминание пароля</v8:content>
 												</v8:item>
 											</Title>
-											<ToolTip>
+											<ExtendedTooltip name="СтраницаЗапоминаниеПароляРасширеннаяПодсказка" id="419"/>
+											<ChildItems>
+												<CheckBoxField name="ЗапомнитьПароль" id="324">
+													<DataPath>ЗапомнитьПароль</DataPath>
+													<TitleLocation>Right</TitleLocation>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Запомнить пароль сертификата до закрытия программы. При снятии флажка пароль стирается из памяти, если запоминался ранее.</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ToolTipRepresentation>Button</ToolTipRepresentation>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ЗапомнитьПарольКонтекстноеМеню" id="325"/>
+													<ExtendedTooltip name="ЗапомнитьПарольРасширеннаяПодсказка" id="326"/>
+													<Events>
+														<Event name="OnChange">ЗапомнитьПарольПриИзменении</Event>
+													</Events>
+												</CheckBoxField>
+											</ChildItems>
+										</Page>
+										<Page name="СтраницаПояснениеУсиленногоПароля" id="438">
+											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Пароль запрашивает программа электронной подписи, а не программа 1С:Предприятие,
-так как для выбранного сертификата указана усиленная защита закрытого ключа.</v8:content>
+													<v8:content>Страница пояснение усиленного пароля</v8:content>
 												</v8:item>
-											</ToolTip>
-											<ToolTipRepresentation>Button</ToolTipRepresentation>
-											<ContextMenu name="ПояснениеУсиленногоПароляКонтекстноеМеню" id="441"/>
-											<ExtendedTooltip name="ПояснениеУсиленногоПароляРасширеннаяПодсказка" id="442"/>
-										</LabelDecoration>
+											</Title>
+											<ExtendedTooltip name="СтраницаПояснениеУсиленногоПароляРасширеннаяПодсказка" id="439"/>
+											<ChildItems>
+												<LabelDecoration name="ПояснениеУсиленногоПароля" id="440">
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<TextColor>style:ПоясняющийТекст</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Нажмите Подписать, чтобы перейти к вводу пароля.
+</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Пароль запрашивает программа электронной подписи, а не программа 1С:Предприятие,
+так как для выбранного сертификата указана усиленная защита закрытого ключа.</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ToolTipRepresentation>Button</ToolTipRepresentation>
+													<ContextMenu name="ПояснениеУсиленногоПароляКонтекстноеМеню" id="441"/>
+													<ExtendedTooltip name="ПояснениеУсиленногоПароляРасширеннаяПодсказка" id="442"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+										<Page name="СтраницаПояснениеУстановленногоПароля" id="443">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница пояснение установленного пароля</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="СтраницаПояснениеУстановленногоПароляРасширеннаяПодсказка" id="444"/>
+											<ChildItems>
+												<LabelDecoration name="ПояснениеУстановленногоПароля" id="445">
+													<TextColor>style:ПоясняющийТекст</TextColor>
+													<ToolTipRepresentation>Button</ToolTipRepresentation>
+													<ContextMenu name="ПояснениеУстановленногоПароляКонтекстноеМеню" id="446"/>
+													<ExtendedTooltip name="ПояснениеУстановленногоПароляРасширеннаяПодсказка" id="447">
+														<Events>
+															<Event name="URLProcessing">ПояснениеУстановленногоПароляРасширеннаяПодсказкаОбработкаНавигационнойСсылки</Event>
+														</Events>
+													</ExtendedTooltip>
+													<Events>
+														<Event name="Click">ПояснениеУстановленногоПароляНажатие</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
 									</ChildItems>
-								</Page>
-								<Page name="СтраницаПояснениеУстановленногоПароля" id="443">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Страница пояснение установленного пароля</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="СтраницаПояснениеУстановленногоПароляРасширеннаяПодсказка" id="444"/>
-									<ChildItems>
-										<LabelDecoration name="ПояснениеУстановленногоПароля" id="445">
-											<TextColor>style:ПоясняющийТекст</TextColor>
-											<ToolTipRepresentation>Button</ToolTipRepresentation>
-											<ContextMenu name="ПояснениеУстановленногоПароляКонтекстноеМеню" id="446"/>
-											<ExtendedTooltip name="ПояснениеУстановленногоПароляРасширеннаяПодсказка" id="447">
-												<Events>
-													<Event name="URLProcessing">ПояснениеУстановленногоПароляРасширеннаяПодсказкаОбработкаНавигационнойСсылки</Event>
-												</Events>
-											</ExtendedTooltip>
-											<Events>
-												<Event name="Click">ПояснениеУстановленногоПароляНажатие</Event>
-											</Events>
-										</LabelDecoration>
-									</ChildItems>
-								</Page>
+								</Pages>
 							</ChildItems>
-						</Pages>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
-			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="ГруппаКомментарий" id="411">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа комментарий</v8:content>
-				</v8:item>
-			</Title>
-			<Group>Horizontal</Group>
-			<Representation>NormalSeparation</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаКомментарийРасширеннаяПодсказка" id="412"/>
-			<ChildItems>
-				<LabelDecoration name="КомментарийЗаголовок" id="413">
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Комментарий к подписи:</v8:content>
-						</v8:item>
-					</Title>
-					<ContextMenu name="КомментарийЗаголовокКонтекстноеМеню" id="414"/>
-					<ExtendedTooltip name="КомментарийЗаголовокРасширеннаяПодсказка" id="415"/>
-				</LabelDecoration>
 				<InputField name="Комментарий" id="408">
 					<DataPath>Комментарий</DataPath>
-					<TitleLocation>None</TitleLocation>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий к подписи</v8:content>
+						</v8:item>
+					</Title>
+					<TitleHeight>2</TitleHeight>
 					<Height>1</Height>
 					<ContextMenu name="КомментарийКонтекстноеМеню" id="409"/>
 					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="410"/>
@@ -375,12 +329,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="СертификатОтпечаток" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сертификат отпечаток</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -390,76 +338,32 @@
 			</Type>
 		</Attribute>
 		<Attribute name="СертификатСписокВыбора" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сертификат список выбора</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ОтборСертификатов" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отбор сертификатов</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>v8:ValueListType</v8:Type>
-			</Type>
+			<Type/>
 		</Attribute>
 		<Attribute name="ВыходныеПараметрыДополнительныхДействий" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Выходные параметры дополнительных действий</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="СертификатПрограмма" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сертификат программа</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.ПрограммыЭлектроннойПодписиИШифрования</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="БезПодтверждения" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Без подтверждения</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ОповеститьОбОкончанииСрокаДействия" id="11">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Оповестить об окончании срока действия</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="СертификатДействителенДо" id="15">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сертификат действителен до</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>
@@ -468,61 +372,44 @@
 			</Type>
 		</Attribute>
 		<Attribute name="СертификатНаСервереОписаниеОшибки" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сертификат на сервере описание ошибки</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="МенеджерКриптографииНаСервереОписаниеОшибки" id="16">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Менеджер криптографии на сервере описание ошибки</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ОтборОтпечатков" id="17">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отбор отпечатков</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="СертификатУсиленнаяЗащитаЗакрытогоКлюча" id="18">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сертификат усиленная защита закрытого ключа</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ВыполнятьНаСервере" id="19">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Выполнять на сервере</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="СертификатАдрес" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сертификат адрес</v8:content>
-				</v8:item>
-			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВыполнятьВМоделиСервиса" id="20">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СертификатОрганизация" id="21">
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.Организация</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяПоляАктивизироватьПоУмолчанию" id="22">
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>

@@ -33,20 +33,30 @@
 	<ChildItems>
 		<UsualGroup name="СтраницаДела" id="14">
 			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страница дела</v8:content>
+				</v8:item>
+			</Title>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СтраницаДелаРасширеннаяПодсказка" id="15"/>
 		</UsualGroup>
 		<UsualGroup name="СтраницаДлительнаяОперация" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страница длительная операция</v8:content>
+				</v8:item>
+			</Title>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СтраницаДлительнаяОперацияРасширеннаяПодсказка" id="10"/>
 			<ChildItems>
 				<PictureDecoration name="КартинкаДлительнаяОперация" id="11">
-					<Width>6</Width>
-					<Height>3</Height>
 					<Picture>
 						<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
@@ -59,14 +69,17 @@
 		</UsualGroup>
 		<UsualGroup name="СтраницаТекущихДелНет" id="16">
 			<Visible>false</Visible>
-			<Group>Horizontal</Group>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страница текущих дел нет</v8:content>
+				</v8:item>
+			</Title>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СтраницаТекущихДелНетРасширеннаяПодсказка" id="17"/>
 			<ChildItems>
 				<PictureDecoration name="КартинкаИнформация" id="18">
-					<Width>4</Width>
-					<Height>2</Height>
 					<Picture>
 						<xr:Ref>CommonPicture.Информация32</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
@@ -76,6 +89,7 @@
 					<ExtendedTooltip name="КартинкаИнформацияРасширеннаяПодсказка" id="20"/>
 				</PictureDecoration>
 				<LabelDecoration name="ТекстИнформация" id="21">
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Height>2</Height>
 					<Title formatted="false">
 						<v8:item>
@@ -88,26 +102,54 @@
 				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
-	</ChildItems>
-	<Attributes>
-		<Attribute name="ПараметрыДел" id="2">
+		<UsualGroup name="СтраницаОшибка" id="24">
+			<Visible>false</Visible>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Параметры дел</v8:content>
+					<v8:content>Страница ошибка</v8:content>
 				</v8:item>
 			</Title>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="СтраницаОшибкаРасширеннаяПодсказка" id="25"/>
+			<ChildItems>
+				<PictureDecoration name="ДекорацияОшибка" id="26">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декорация ошибка</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.Ошибка32</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ДекорацияОшибкаКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ДекорацияОшибкаРасширеннаяПодсказка" id="28"/>
+				</PictureDecoration>
+				<InputField name="ТекстОшибки" id="32">
+					<DataPath>ТекстОшибки</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<MultiLine>true</MultiLine>
+					<BorderColor>style:FormBackColor</BorderColor>
+					<ContextMenu name="ТекстОшибкиКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ТекстОшибкиРасширеннаяПодсказка" id="34"/>
+				</InputField>
+				<LabelDecoration name="ДекорацияТекстОшибки" id="29">
+					<ContextMenu name="ДекорацияТекстОшибкиКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ДекорацияТекстОшибкиРасширеннаяПодсказка" id="31"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПараметрыДел" id="2">
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
 			<Columns>
 				<Column name="Идентификатор" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Идентификатор</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -117,12 +159,6 @@
 					</Type>
 				</Column>
 				<Column name="Форма" id="2">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Форма</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -132,70 +168,43 @@
 					</Type>
 				</Column>
 				<Column name="ПараметрыФормы" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Параметры формы</v8:content>
-						</v8:item>
-					</Title>
 					<Type/>
 				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="НастройкиАвтообновления" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Настройки автообновления</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ИнтерфейсТакси" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Интерфейс такси</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ТолькоОбновлениеДел" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Только обновление дел</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="РазделыСВажнымиДелами" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Разделы с важными делами</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ДлительнаяОперация" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Длительная операция</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ТекущиеДелаВХранилище" id="1">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекстОшибки" id="10">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Текущие дела в хранилище</v8:content>
+					<v8:content>Текст ошибки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

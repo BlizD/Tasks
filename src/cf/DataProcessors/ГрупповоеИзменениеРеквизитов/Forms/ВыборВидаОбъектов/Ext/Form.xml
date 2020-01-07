@@ -6,8 +6,6 @@
 			<v8:content>Выберите изменяемые элементы</v8:content>
 		</v8:item>
 	</Title>
-	<Width>45</Width>
-	<Height>10</Height>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandSet>
@@ -54,6 +52,12 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>ДоступныеОбъектыДляИзменения</DataPath>
 			<RowPictureDataPath>ДоступныеОбъектыДляИзменения.Picture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступные объекты для изменения</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Add</ExcludedCommand>
 				<ExcludedCommand>Change</ExcludedCommand>
@@ -67,9 +71,6 @@
 				<ExcludedCommand>SortListAsc</ExcludedCommand>
 				<ExcludedCommand>SortListDesc</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<ContextMenu name="ДоступныеОбъектыДляИзмененияКонтекстноеМеню" id="9"/>
 			<AutoCommandBar name="ДоступныеОбъектыДляИзмененияКоманднаяПанель" id="10">
 				<Autofill>false</Autofill>
@@ -99,6 +100,10 @@
 				<ContextMenu name="ДоступныеОбъектыДляИзмененияУправлениеПоискомКонтекстноеМеню" id="24"/>
 				<ExtendedTooltip name="ДоступныеОбъектыДляИзмененияУправлениеПоискомРасширеннаяПодсказка" id="25"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ДоступныеОбъектыДляИзмененияВыбор</Event>
+				<Event name="OnChange">ДоступныеОбъектыДляИзмененияПриИзменении</Event>
+			</Events>
 			<ChildItems>
 				<ColumnGroup name="ДоступныеОбъектыДляИзмененияГруппа" id="26">
 					<Title>
@@ -107,12 +112,6 @@
 							<v8:content>Доступные объекты для изменения группа</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Доступные объекты для изменения группа</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Group>InCell</Group>
 					<ExtendedTooltip name="ДоступныеОбъектыДляИзмененияГруппаРасширеннаяПодсказка" id="27"/>
 					<ChildItems>
@@ -122,9 +121,6 @@
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="ДоступныеОбъектыДляИзмененияПометкаКонтекстноеМеню" id="29"/>
 							<ExtendedTooltip name="ДоступныеОбъектыДляИзмененияПометкаРасширеннаяПодсказка" id="30"/>
-							<Events>
-								<Event name="OnChange">ДоступныеОбъектыДляИзмененияПометкаПриИзменении</Event>
-							</Events>
 						</CheckBoxField>
 						<InputField name="ДоступныеОбъектыДляИзмененияЗначение" id="12">
 							<DataPath>ДоступныеОбъектыДляИзменения.Value</DataPath>
@@ -155,6 +151,7 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 	</Attributes>
 	<Commands>

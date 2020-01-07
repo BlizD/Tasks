@@ -56,12 +56,28 @@
 			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
 		</typeDef>
 	</property>
+	<property name="Steads">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.v8.1c.ru/ssl/AddressSystem" name="Stead" type="d4p1:Stead" lowerBound="0" upperBound="-1"/>
+			<property name="Version" type="xs:int" form="Attribute"/>
+			<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+		</typeDef>
+	</property>
+	<property name="Links">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.v8.1c.ru/ssl/AddressSystem" name="Link" type="d4p1:Link" lowerBound="0" upperBound="-1"/>
+			<property name="Version" type="xs:int" form="Attribute"/>
+			<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+		</typeDef>
+	</property>
 	<valueType name="SortDirection" base="xs:string" variety="Atomic">
 		<enumeration>ASC</enumeration>
 		<enumeration>DESC</enumeration>
 	</valueType>
-	<valueType name="StringBlob" variety="Union" memberTypes="xs:base64Binary xs:string"/>
-	<valueType xmlns:d2p1="http://v8.1c.ru/8.1/data/core" name="UUID" variety="Union" memberTypes="d2p1:UUID xs:base64Binary"/>
+	<valueType name="StringBlob" variety="Union" memberTypes="{http://www.w3.org/2001/XMLSchema}base64Binary {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType name="UUID" variety="Union" memberTypes="{http://v8.1c.ru/8.1/data/core}UUID {http://www.w3.org/2001/XMLSchema}base64Binary"/>
 	<valueType name="Levels" variety="List" itemType="xs:int"/>
 	<objectType name="Object">
 		<property name="REGIONCODE" type="xs:int" form="Attribute"/>
@@ -250,5 +266,16 @@
 		</property>
 		<property name="Адрес_по_документу" type="xs:string" lowerBound="0" nillable="true"/>
 		<property name="Местоположение" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Stead">
+		<property name="REGIONCODE" type="xs:int" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AOGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property name="POSTALCODE" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="NUMBERS" type="d3p1:StringBlob" lowerBound="1" form="Attribute"/>
+	</objectType>
+	<objectType name="Link">
+		<property name="REGIONCODE" type="xs:int" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AOGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="MUNPARENTGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
 	</objectType>
 </package>

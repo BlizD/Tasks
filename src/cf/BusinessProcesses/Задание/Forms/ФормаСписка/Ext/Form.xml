@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<CommandBarLocation>None</CommandBarLocation>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:string">КоманднаяПанель</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
@@ -14,7 +21,6 @@
 					<v8:content>Отборы</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПоРеквизитамExtendedTooltip" id="59"/>
@@ -22,7 +28,6 @@
 				<InputField name="ПоАвтору" id="14">
 					<DataPath>ПоАвтору</DataPath>
 					<Width>35</Width>
-					<HorizontalStretch>false</HorizontalStretch>
 					<ClearButton>true</ClearButton>
 					<OpenButton>false</OpenButton>
 					<ContextMenu name="ПоАвторуКонтекстноеМеню" id="15"/>
@@ -34,7 +39,6 @@
 				<InputField name="ПоИсполнителю" id="17">
 					<DataPath>ПоИсполнителю</DataPath>
 					<Width>35</Width>
-					<HorizontalStretch>false</HorizontalStretch>
 					<ClearButton>true</ClearButton>
 					<OpenButton>false</OpenButton>
 					<ContextMenu name="ПоИсполнителюКонтекстноеМеню" id="18"/>
@@ -50,7 +54,6 @@
 						<xr:Common>false</xr:Common>
 					</UserVisible>
 					<Width>35</Width>
-					<HorizontalStretch>false</HorizontalStretch>
 					<ClearButton>true</ClearButton>
 					<OpenButton>false</OpenButton>
 					<ContextMenu name="ПоПроверяющемуКонтекстноеМеню" id="20"/>
@@ -68,8 +71,6 @@
 					<v8:content>Флажки</v8:content>
 				</v8:item>
 			</Title>
-			<HorizontalStretch>true</HorizontalStretch>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ФлажкиExtendedTooltip" id="63"/>
@@ -103,7 +104,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -116,12 +116,6 @@
 					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
-				</v8:item>
-			</ToolTip>
 			<CommandSource>Form</CommandSource>
 			<ExtendedTooltip name="КоманднаяПанельExtendedTooltip" id="66"/>
 			<ChildItems>
@@ -154,10 +148,17 @@
 			<EnableStartDrag>true</EnableStartDrag>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
-			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<RowPictureDataPath>Список.КартинкаСтроки</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.СостоянияПроцессов</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</RowsPicture>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -213,6 +214,12 @@
 			<ChildItems>
 				<PictureField name="ВажностьКартинка" id="24">
 					<DataPath>Список.ВажностьКартинка</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Важность</v8:content>
+						</v8:item>
+					</Title>
 					<TitleLocation>None</TitleLocation>
 					<ToolTip>
 						<v8:item>
@@ -233,29 +240,6 @@
 					<FileDragMode>AsFile</FileDragMode>
 					<ContextMenu name="ВажностьКартинкаКонтекстноеМеню" id="25"/>
 					<ExtendedTooltip name="ВажностьКартинкаExtendedTooltip" id="70"/>
-				</PictureField>
-				<PictureField name="Остановлен" id="46">
-					<DataPath>Список.Остановлен</DataPath>
-					<TitleLocation>None</TitleLocation>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Бизнес-процесс остановлен</v8:content>
-						</v8:item>
-					</ToolTip>
-					<HeaderPicture>
-						<xr:Ref>CommonPicture.ЗнакСтопЧБ</xr:Ref>
-						<xr:LoadTransparent>false</xr:LoadTransparent>
-					</HeaderPicture>
-					<Width>2</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ValuesPicture>
-						<xr:Ref>CommonPicture.ЗнакСтоп</xr:Ref>
-						<xr:LoadTransparent>false</xr:LoadTransparent>
-					</ValuesPicture>
-					<FileDragMode>AsFile</FileDragMode>
-					<ContextMenu name="ОстановленКонтекстноеМеню" id="47"/>
-					<ExtendedTooltip name="ОстановленExtendedTooltip" id="71"/>
 				</PictureField>
 				<LabelField name="Номер" id="4">
 					<DataPath>Список.Number</DataPath>
@@ -317,15 +301,6 @@
 					<ContextMenu name="СрокПроверкиКонтекстноеМеню" id="45"/>
 					<ExtendedTooltip name="СрокПроверкиExtendedTooltip" id="79"/>
 				</LabelField>
-				<CheckBoxField name="Стартован" id="12">
-					<DataPath>Список.Started</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="СтартованКонтекстноеМеню" id="13"/>
-					<ExtendedTooltip name="СтартованExtendedTooltip" id="80"/>
-				</CheckBoxField>
 				<LabelField name="ДатаЗавершения" id="38">
 					<DataPath>Список.ДатаЗавершения</DataPath>
 					<Title>
@@ -449,6 +424,22 @@
 	БизнесПроцессЗадание.СрокИсполнения,
 	БизнесПроцессЗадание.СрокПроверки,
 	ВЫБОР
+		КОГДА БизнесПроцессЗадание.ПометкаУдаления
+			ТОГДА 6
+		КОГДА БизнесПроцессЗадание.Завершен = ИСТИНА
+			ТОГДА 5
+		КОГДА БизнесПроцессЗадание.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияБизнесПроцессов.Остановлен)
+			ТОГДА 4
+		КОГДА БизнесПроцессЗадание.Стартован = ИСТИНА
+			ТОГДА 3
+		КОГДА ПроцессыДляЗапуска.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияПроцессовДляЗапуска.ГотовКСтарту)
+				И ПроцессыДляЗапуска.ДатаОтложенногоСтарта &lt;&gt; ДАТАВРЕМЯ(1, 1, 1)
+			ТОГДА 1
+		КОГДА ПроцессыДляЗапуска.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияПроцессовДляЗапуска.СтартОтменен)
+			ТОГДА 2
+		ИНАЧЕ 0
+	КОНЕЦ КАК КартинкаСтроки,
+	ВЫБОР
 		КОГДА БизнесПроцессЗадание.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиЗадачи.Низкая)
 			ТОГДА 0
 		КОГДА БизнесПроцессЗадание.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиЗадачи.Высокая)
@@ -460,9 +451,16 @@
 			ТОГДА ИСТИНА
 		ИНАЧЕ ЛОЖЬ
 	КОНЕЦ КАК Остановлен,
-	БизнесПроцессЗадание.ЗадачаИсточник
+	БизнесПроцессЗадание.ЗадачаИсточник,
+	ВЫБОР
+		КОГДА ПроцессыДляЗапуска.Состояние ЕСТЬ NULL 
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК Отложен
 ИЗ
-	БизнесПроцесс.Задание КАК БизнесПроцессЗадание</QueryText>
+	БизнесПроцесс.Задание КАК БизнесПроцессЗадание
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПроцессыДляЗапуска КАК ПроцессыДляЗапуска
+		ПО БизнесПроцессЗадание.Ссылка = ПроцессыДляЗапуска.БизнесПроцесс</QueryText>
 				<MainTable>BusinessProcess.Задание</MainTable>
 				<ListSettings>
 					<dcsset:filter>

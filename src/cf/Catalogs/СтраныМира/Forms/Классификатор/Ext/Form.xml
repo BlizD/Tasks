@@ -6,8 +6,6 @@
 			<v8:content>Классификатор стран мира (ОКСМ)</v8:content>
 		</v8:item>
 	</Title>
-	<Width>100</Width>
-	<Height>12</Height>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>None</CommandBarLocation>
@@ -31,6 +29,12 @@
 				<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</RowsPicture>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Классификатор</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Add</ExcludedCommand>
 				<ExcludedCommand>Copy</ExcludedCommand>
@@ -39,9 +43,6 @@
 				<ExcludedCommand>MoveDown</ExcludedCommand>
 				<ExcludedCommand>MoveUp</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="КлассификаторКонтекстноеМеню" id="18">
 				<ChildItems>
@@ -89,6 +90,27 @@
 			</ContextMenu>
 			<AutoCommandBar name="КлассификаторКоманднаяПанель" id="19">
 				<ChildItems>
+					<Button name="КлассификаторИзменить" id="78">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Классификатор.StandardCommand.Change</CommandName>
+						<ExtendedTooltip name="КлассификаторИзменитьРасширеннаяПодсказка" id="79"/>
+					</Button>
+					<ButtonGroup name="КлассификаторГруппаВывестиСписок" id="82">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Классификатор группа вывести список</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="КлассификаторГруппаВывестиСписокРасширеннаяПодсказка" id="83"/>
+						<ChildItems>
+							<Button name="КлассификаторВывестиСписок" id="80">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Классификатор.StandardCommand.OutputList</CommandName>
+								<ExtendedTooltip name="КлассификаторВывестиСписокРасширеннаяПодсказка" id="81"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
 					<ButtonGroup name="КлассификаторГруппаПоиск" id="34">
 						<Title>
 							<v8:item>
@@ -96,12 +118,6 @@
 								<v8:content>Классификатор группа поиск</v8:content>
 							</v8:item>
 						</Title>
-						<ToolTip>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Классификатор группа поиск</v8:content>
-							</v8:item>
-						</ToolTip>
 						<ExtendedTooltip name="КлассификаторГруппаПоискExtendedTooltip" id="56"/>
 						<ChildItems>
 							<Button name="КлассификаторНайти" id="32">
@@ -202,11 +218,28 @@
 					<ContextMenu name="КлассификаторКолАльфа3КонтекстноеМеню" id="29"/>
 					<ExtendedTooltip name="КлассификаторКолАльфа3ExtendedTooltip" id="67"/>
 				</InputField>
+				<CheckBoxField name="КлассификаторУчастникЕАЭС" id="84">
+					<DataPath>Классификатор.УчастникЕАЭС</DataPath>
+					<Enabled>false</Enabled>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="КлассификаторУчастникЕАЭСКонтекстноеМеню" id="85"/>
+					<ExtendedTooltip name="КлассификаторУчастникЕАЭСРасширеннаяПодсказка" id="86"/>
+				</CheckBoxField>
 				<InputField name="КлассификаторНаименованиеПолное" id="24">
 					<DataPath>Классификатор.НаименованиеПолное</DataPath>
 					<TextEdit>false</TextEdit>
 					<ContextMenu name="КлассификаторНаименованиеПолноеКонтекстноеМеню" id="25"/>
 					<ExtendedTooltip name="КлассификаторНаименованиеПолноеExtendedTooltip" id="68"/>
+				</InputField>
+				<InputField name="КлассификаторМеждународноеНаименование" id="87">
+					<DataPath>Классификатор.МеждународноеНаименование</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="КлассификаторМеждународноеНаименованиеКонтекстноеМеню" id="88"/>
+					<ExtendedTooltip name="КлассификаторМеждународноеНаименованиеРасширеннаяПодсказка" id="89"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -302,12 +335,6 @@
 					</Type>
 				</Column>
 				<Column name="ИндексПиктограммы" id="7">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Индекс пиктограммы</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -317,15 +344,35 @@
 						</v8:NumberQualifiers>
 					</Type>
 				</Column>
+				<Column name="УчастникЕАЭС" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Участник ЕАЭС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="МеждународноеНаименование" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Международное наименование</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="ПоляКлассификатора" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Поля классификатора</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -335,12 +382,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ПредставлениеОбъектаКлассификатора" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Представление объекта классификатора</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -350,12 +391,11 @@
 			</Type>
 		</Attribute>
 		<Attribute name="РежимВыбора" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Режим выбора</v8:content>
-				</v8:item>
-			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЕстьПравоРедактироватьСтраны" id="5">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>

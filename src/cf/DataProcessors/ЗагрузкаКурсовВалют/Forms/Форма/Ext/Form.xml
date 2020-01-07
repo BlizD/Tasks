@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>80</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:string">КоманднаяПанель</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -11,22 +17,30 @@
 	</Events>
 	<ChildItems>
 		<UsualGroup name="КоманднаяПанель" id="43">
-			<Group>Horizontal</Group>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
+				</v8:item>
+			</Title>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="46"/>
 			<ChildItems>
+				<Button name="ФормаЗагрузитьКурсыВалют" id="32">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.ЗагрузитьКурсыВалют</CommandName>
+					<ExtendedTooltip name="ФормаЗагрузитьКурсыВалютExtendedTooltip" id="48"/>
+				</Button>
 				<CommandBar name="КоманднаяПанельЛевая" id="42">
-					<HorizontalStretch>false</HorizontalStretch>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Командная панель левая</v8:content>
+						</v8:item>
+					</Title>
 					<ExtendedTooltip name="КоманднаяПанельЛеваяExtendedTooltip" id="47"/>
-					<ChildItems>
-						<Button name="ФормаЗагрузитьКурсыВалют" id="32">
-							<Type>CommandBarButton</Type>
-							<DefaultButton>true</DefaultButton>
-							<CommandName>Form.Command.ЗагрузитьКурсыВалют</CommandName>
-							<ExtendedTooltip name="ФормаЗагрузитьКурсыВалютExtendedTooltip" id="48"/>
-						</Button>
-					</ChildItems>
 				</CommandBar>
 				<InputField name="НачалоПериода" id="2">
 					<DataPath>Объект.НачалоПериодаЗагрузки</DataPath>
@@ -58,6 +72,12 @@
 					<ExtendedTooltip name="ОкончаниеПериодаExtendedTooltip" id="50"/>
 				</InputField>
 				<CommandBar name="КоманднаяПанельПравая" id="44">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Командная панель правая</v8:content>
+						</v8:item>
+					</Title>
 					<CommandSource>Form</CommandSource>
 					<ExtendedTooltip name="КоманднаяПанельПраваяExtendedTooltip" id="51"/>
 					<ChildItems>
@@ -82,12 +102,6 @@
 					<v8:content>Страницы</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Страницы</v8:content>
-				</v8:item>
-			</ToolTip>
 			<PagesRepresentation>None</PagesRepresentation>
 			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="64"/>
 			<ChildItems>
@@ -98,12 +112,6 @@
 							<v8:content>Страница список валют</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница список валют</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаСписокВалютРасширеннаяПодсказка" id="66"/>
 					<ChildItems>
 						<Table name="СписокВалют" id="7">
@@ -111,13 +119,18 @@
 							<SkipOnInput>false</SkipOnInput>
 							<ChangeRowSet>false</ChangeRowSet>
 							<ChangeRowOrder>false</ChangeRowOrder>
-							<Width>40</Width>
 							<HeightInTableRows>10</HeightInTableRows>
 							<SelectionMode>SingleRow</SelectionMode>
 							<RowSelectionMode>Row</RowSelectionMode>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.СписокВалют</DataPath>
 							<BorderColor>style:BorderColor</BorderColor>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Список валют</v8:content>
+								</v8:item>
+							</Title>
 							<CommandSet>
 								<ExcludedCommand>Add</ExcludedCommand>
 								<ExcludedCommand>CancelSearch</ExcludedCommand>
@@ -132,9 +145,6 @@
 								<ExcludedCommand>SortListAsc</ExcludedCommand>
 								<ExcludedCommand>SortListDesc</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="СписокВалютКонтекстноеМеню" id="20">
 								<ChildItems>
@@ -205,18 +215,27 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Цифровой код</v8:content>
+											<v8:content>Цифр. код</v8:content>
 										</v8:item>
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
 									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<Width>7</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="КодВалютыКонтекстноеМеню" id="22"/>
 									<ExtendedTooltip name="КодВалютыExtendedTooltip" id="57"/>
 								</LabelField>
 								<LabelField name="СписокВалютСимвольныйКод" id="40">
 									<DataPath>Объект.СписокВалют.СимвольныйКод</DataPath>
 									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Симв. код</v8:content>
+										</v8:item>
+									</Title>
 									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="СписокВалютСимвольныйКодКонтекстноеМеню" id="41"/>
 									<ExtendedTooltip name="СписокВалютСимвольныйКодExtendedTooltip" id="58"/>
 								</LabelField>
@@ -230,7 +249,8 @@
 										</v8:item>
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
-									<Width>20</Width>
+									<Width>15</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="СписокВалютПредставлениеКонтекстноеМеню" id="39"/>
 									<ExtendedTooltip name="СписокВалютПредставлениеExtendedTooltip" id="59"/>
 								</InputField>
@@ -239,6 +259,8 @@
 									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<Width>9</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="ДатаКурсаКонтекстноеМеню" id="23"/>
 									<ExtendedTooltip name="ДатаКурсаExtendedTooltip" id="60"/>
 								</LabelField>
@@ -247,6 +269,7 @@
 									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="КурсКонтекстноеМеню" id="24"/>
 									<ExtendedTooltip name="КурсExtendedTooltip" id="61"/>
 								</LabelField>
@@ -255,9 +278,21 @@
 									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="КратностьКонтекстноеМеню" id="25"/>
 									<ExtendedTooltip name="КратностьExtendedTooltip" id="62"/>
 								</LabelField>
+								<InputField name="СписокВалютОтступ" id="84">
+									<DataPath>Объект.СписокВалют.Отступ</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<AutoMaxHeight>false</AutoMaxHeight>
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="СписокВалютОтступКонтекстноеМеню" id="85"/>
+									<ExtendedTooltip name="СписокВалютОтступРасширеннаяПодсказка" id="86"/>
+								</InputField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
@@ -269,18 +304,11 @@
 							<v8:content>Страница выполняется загрузка курсов</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница выполняется загрузка курсов</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Horizontal</Group>
+					<Group>HorizontalIfPossible</Group>
+					<VerticalAlign>Center</VerticalAlign>
 					<ExtendedTooltip name="СтраницаВыполняетсяЗагрузкаКурсовРасширеннаяПодсказка" id="68"/>
 					<ChildItems>
 						<PictureDecoration name="КартинкаДлительнаяОперация" id="69">
-							<Width>6</Width>
-							<Height>3</Height>
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -289,14 +317,14 @@
 							</Title>
 							<Picture>
 								<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
 							</Picture>
 							<FileDragMode>AsFile</FileDragMode>
 							<ContextMenu name="КартинкаДлительнаяОперацияКонтекстноеМеню" id="70"/>
 							<ExtendedTooltip name="КартинкаДлительнаяОперацияРасширеннаяПодсказка" id="71"/>
 						</PictureDecoration>
 						<LabelDecoration name="НадписьВыполняетсяЗагрузкаКурсовВалют" id="72">
-							<Height>3</Height>
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -317,42 +345,29 @@
 				<v8:Type>cfg:DataProcessorObject.ЗагрузкаКурсовВалют</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<Columns>
+				<AdditionalColumns table="Объект.СписокВалют">
+					<Column name="Отступ" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Отступ</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>1</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
 		</Attribute>
 		<Attribute name="СообщитьЧтоКурсыАктуальны" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сообщить что курсы актуальны</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ИдентификаторФоновогоЗадания" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Идентификатор фонового задания</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>v8:UUID</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="АдресРезультата" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Адрес результата</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 	</Attributes>
@@ -361,13 +376,13 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Загрузить</v8:content>
+					<v8:content>Загрузить и закрыть</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Загрузить курсы выбранных валют с веб-сайта РБК</v8:content>
+					<v8:content>Загрузить курсы выбранных валют с веб-сайта 1С</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ЗагрузитьКурсыВалют</Action>

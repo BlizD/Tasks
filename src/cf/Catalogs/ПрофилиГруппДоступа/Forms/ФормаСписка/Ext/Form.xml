@@ -12,7 +12,12 @@
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаНастроек" id="33">
-			<Group>Horizontal</Group>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроек</v8:content>
+				</v8:item>
+			</Title>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаНастроекРасширеннаяПодсказка" id="34"/>
@@ -125,7 +130,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="21"/>
@@ -139,6 +143,12 @@
 			</Title>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="23"/>
 			<ChildItems>
+				<Button name="ФормаВыбрать" id="64">
+					<Type>CommandBarButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.StandardCommand.Choose</CommandName>
+					<ExtendedTooltip name="ФормаВыбратьРасширеннаяПодсказка" id="65"/>
+				</Button>
 				<Button name="ФормаСоздать" id="50">
 					<Type>CommandBarButton</Type>
 					<CommandName>Form.StandardCommand.Create</CommandName>
@@ -192,6 +202,7 @@
 			<SkipOnInput>false</SkipOnInput>
 			<DefaultItem>true</DefaultItem>
 			<Height>8</Height>
+			<ChoiceMode>true</ChoiceMode>
 			<SelectionMode>SingleRow</SelectionMode>
 			<Header>false</Header>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
@@ -200,13 +211,16 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Delete</ExcludedCommand>
 				<ExcludedCommand>Refresh</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -248,6 +262,9 @@
 				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="31"/>
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="32"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="OnChange">СписокПриИзменении</Event>
+			</Events>
 			<ChildItems>
 				<InputField name="Наименование" id="4">
 					<DataPath>Список.Наименование</DataPath>

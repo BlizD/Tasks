@@ -8,43 +8,38 @@
 	</Title>
 	<WindowOpeningMode>LockWholeInterface</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
-	<CommandBarLocation>Bottom</CommandBarLocation>
+	<CommandBarLocation>None</CommandBarLocation>
+	<CommandSet>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>Help</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<HorizontalAlign>Right</HorizontalAlign>
 		<Autofill>false</Autofill>
-		<ChildItems>
-			<Button name="ФормаЗавершить" id="11">
-				<Type>CommandBarButton</Type>
-				<DefaultButton>true</DefaultButton>
-				<CommandName>Form.Command.Завершить</CommandName>
-				<ExtendedTooltip name="ФормаЗавершитьРасширеннаяПодсказка" id="12"/>
-			</Button>
-			<Button name="ФормаПродолжить" id="9">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ПродолжитьОбновление</CommandName>
-				<ExtendedTooltip name="ФормаПродолжитьРасширеннаяПодсказка" id="10"/>
-			</Button>
-		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаКартинкаИТекст" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа картинка и текст</v8:content>
-				</v8:item>
-			</Title>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
+			<Height>5</Height>
+			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаКартинкаИТекстРасширеннаяПодсказка" id="2"/>
 			<ChildItems>
 				<PictureDecoration name="Картинка" id="3">
-					<Width>3</Width>
-					<Height>2</Height>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -59,50 +54,64 @@
 					<ContextMenu name="КартинкаКонтекстноеМеню" id="4"/>
 					<ExtendedTooltip name="КартинкаРасширеннаяПодсказка" id="5"/>
 				</PictureDecoration>
-				<UsualGroup name="ГруппаПояснение" id="16">
-					<Title>
+				<LabelDecoration name="Сообщение" id="6">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа пояснение</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа пояснение</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаПояснениеРасширеннаяПодсказка" id="17"/>
-					<ChildItems>
-						<LabelDecoration name="Сообщение" id="6">
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Дополнительные процедуры обработки данных на предыдущую версию не завершены.
+							<v8:content>Дополнительные процедуры обработки данных на предыдущую версию не завершены.
 Рекомендуется выполнить восстановление из резервной копии и дождаться их выполнения,
 в противном случае это может привести к ошибкам при обновлении или неработоспособности программы.</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="СообщениеКонтекстноеМеню" id="7"/>
-							<ExtendedTooltip name="СообщениеРасширеннаяПодсказка" id="8"/>
-						</LabelDecoration>
-						<LabelDecoration name="Подсказка" id="13">
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Посмотреть статус выполнения дополнительных процедур обработки данных
-можно в разделе "Администрирование" - "Поддержка и обслуживание", гиперссылка
-"Результаты обновления и дополнительная обработка данных".</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="ПодсказкаКонтекстноеМеню" id="14"/>
-							<ExtendedTooltip name="ПодсказкаРасширеннаяПодсказка" id="15"/>
-						</LabelDecoration>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СообщениеКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="СообщениеРасширеннаяПодсказка" id="8"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПояснение" id="16">
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПояснениеРасширеннаяПодсказка" id="17"/>
+			<ChildItems>
+				<LabelDecoration name="Подсказка" id="13">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Посмотреть статус выполнения дополнительных процедур обработки данных
+можно в разделе &lt;b&gt;Администрирование &lt;/&gt;- &lt;b&gt;Обслуживание&lt;/&gt;.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ПодсказкаКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ПодсказкаРасширеннаяПодсказка" id="15"/>
+				</LabelDecoration>
+				<CommandBar name="КоманднаяПанель" id="18">
+					<GroupVerticalAlign>Bottom</GroupVerticalAlign>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="19"/>
+					<ChildItems>
+						<Button name="ФормаЗавершить" id="11">
+							<Type>CommandBarButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<AutoMaxHeight>false</AutoMaxHeight>
+							<CommandName>Form.Command.Завершить</CommandName>
+							<ExtendedTooltip name="ФормаЗавершитьРасширеннаяПодсказка" id="12"/>
+						</Button>
+						<Button name="ФормаПродолжить" id="9">
+							<Type>CommandBarButton</Type>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<AutoMaxHeight>false</AutoMaxHeight>
+							<CommandName>Form.Command.ПродолжитьОбновление</CommandName>
+							<ExtendedTooltip name="ФормаПродолжитьРасширеннаяПодсказка" id="10"/>
+						</Button>
 					</ChildItems>
-				</UsualGroup>
+				</CommandBar>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>

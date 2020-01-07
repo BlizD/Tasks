@@ -6,9 +6,15 @@
 			<v8:content>Группы пользователя</v8:content>
 		</v8:item>
 	</Title>
-	<Width>60</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:string">КоманднаяПанель</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -43,6 +49,7 @@
 									<v8:content>Командная панель</v8:content>
 								</v8:item>
 							</Title>
+							<CommandSource>Form</CommandSource>
 							<ExtendedTooltip name="КоманднаяПанельExtendedTooltip" id="29"/>
 							<ChildItems>
 								<Button name="ФормаЗаписатьИЗакрыть" id="9">
@@ -61,16 +68,6 @@
 									<CommandName>Form.Item.ДеревоГрупп.StandardCommand.OutputList</CommandName>
 									<ExtendedTooltip name="ВывестиСписокExtendedTooltip" id="32"/>
 								</Button>
-								<Button name="ИзменитьФорму" id="25">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-									<ExtendedTooltip name="ИзменитьФормуExtendedTooltip" id="33"/>
-								</Button>
-								<Button name="Справка" id="26">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.StandardCommand.Help</CommandName>
-									<ExtendedTooltip name="СправкаExtendedTooltip" id="34"/>
-								</Button>
 							</ChildItems>
 						</CommandBar>
 						<Table name="ДеревоГрупп" id="1">
@@ -86,6 +83,12 @@
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ДеревоГрупп</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дерево групп</v8:content>
+								</v8:item>
+							</Title>
 							<CommandSet>
 								<ExcludedCommand>Add</ExcludedCommand>
 								<ExcludedCommand>Change</ExcludedCommand>
@@ -100,9 +103,6 @@
 								<ExcludedCommand>SortListDesc</ExcludedCommand>
 								<ExcludedCommand>Tree</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<ContextMenu name="ДеревоГруппКонтекстноеМеню" id="2"/>
 							<AutoCommandBar name="ДеревоГруппКоманднаяПанель" id="3">
 								<Autofill>false</Autofill>
@@ -140,15 +140,9 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа пометка картинка</v8:content>
+											<v8:content>Пометка картинка</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа пометка картинка</v8:content>
-										</v8:item>
-									</ToolTip>
 									<Group>InCell</Group>
 									<ExtendedTooltip name="ГруппаПометкаКартинкаExtendedTooltip" id="36"/>
 									<ChildItems>
@@ -198,12 +192,10 @@
 							<v8:content>Предупреждение</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Horizontal</Group>
+					<Group>AlwaysHorizontal</Group>
 					<ExtendedTooltip name="ПредупреждениеExtendedTooltip" id="40"/>
 					<ChildItems>
 						<PictureDecoration name="КартинкаПредупреждения" id="21">
-							<Width>5</Width>
-							<Height>2</Height>
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -219,6 +211,7 @@
 							<ExtendedTooltip name="КартинкаПредупрежденияExtendedTooltip" id="41"/>
 						</PictureDecoration>
 						<LabelDecoration name="ТекстПредупреждения" id="23">
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<Height>2</Height>
 							<Title formatted="false">
 								<v8:item>
@@ -226,6 +219,7 @@
 									<v8:content>Не заведено ни одной группы пользователей.</v8:content>
 								</v8:item>
 							</Title>
+							<VerticalAlign>Center</VerticalAlign>
 							<ContextMenu name="ТекстПредупрежденияКонтекстноеМеню" id="24"/>
 							<ExtendedTooltip name="ТекстПредупрежденияExtendedTooltip" id="42"/>
 						</LabelDecoration>
@@ -291,12 +285,6 @@
 					</Type>
 				</Column>
 				<Column name="ГруппаНеИзменяется" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа не изменяется</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -304,32 +292,14 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="СписокПользователей" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список пользователей</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="РежимОткрытияИзКарточкиПользователя" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Режим открытия из карточки пользователя</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ВнешниеПользователи" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Внешние пользователи</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -374,6 +344,12 @@
 				<v8:Type>cfg:CatalogRef.ВнешниеПользователи</v8:Type>
 				<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
 			</Type>
+		</Parameter>
+		<Parameter name="Пользователи">
+			<Type/>
+		</Parameter>
+		<Parameter name="ВнешниеПользователи">
+			<Type/>
 		</Parameter>
 	</Parameters>
 </Form>

@@ -6,8 +6,6 @@
 			<v8:content>Настройка подменю "Печать"</v8:content>
 		</v8:item>
 	</Title>
-	<Width>60</Width>
-	<Height>10</Height>
 	<AutoTitle>false</AutoTitle>
 	<CommandSet>
 		<ExcludedCommand>Abort</ExcludedCommand>
@@ -45,6 +43,12 @@
 				<ExtendedTooltip name="ФормаСнятьФлажкиРасширеннаяПодсказка" id="22"/>
 			</Button>
 			<ButtonGroup name="ФормаГруппа1" id="39">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Форма группа 1</v8:content>
+					</v8:item>
+				</Title>
 				<ExtendedTooltip name="ФормаГруппа1РасширеннаяПодсказка" id="40"/>
 				<ChildItems>
 					<Button name="ФормаУстановитьНастройкиПоУмолчанию" id="37">
@@ -78,9 +82,12 @@
 			<EnableDrag>true</EnableDrag>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>КомандыПечати</DataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команды печати</v8:content>
+				</v8:item>
+			</Title>
 			<ContextMenu name="КомандыПечатиКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="КомандыПечатиКоманднаяПанель" id="3">
 				<Autofill>false</Autofill>
@@ -158,6 +165,12 @@
 					</ChildItems>
 				</ColumnGroup>
 				<ColumnGroup name="КомандыПечатиГруппа2" id="44">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Команды печати группа 2</v8:content>
+						</v8:item>
+					</Title>
 					<Group>InCell</Group>
 					<ExtendedTooltip name="КомандыПечатиГруппа2РасширеннаяПодсказка" id="45"/>
 					<ChildItems>
@@ -194,12 +207,6 @@
 			<SavedData>true</SavedData>
 			<Columns>
 				<Column name="Владелец" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Владелец</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовМетаданных</v8:Type>
 					</Type>
@@ -236,23 +243,11 @@
 					</Type>
 				</Column>
 				<Column name="Картинка" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Картинка</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>v8ui:Picture</v8:Type>
 					</Type>
 				</Column>
 				<Column name="УникальныйИдентификатор" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Уникальный идентификатор</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -262,12 +257,6 @@
 					</Type>
 				</Column>
 				<Column name="МенеджерПечати" id="6">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Менеджер печати</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -292,12 +281,6 @@
 					</Type>
 				</Column>
 				<Column name="НавигационнаяСсылка" id="8">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Навигационная ссылка</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -307,12 +290,6 @@
 					</Type>
 				</Column>
 				<Column name="ЭтоВнешняяКомандаПечати" id="9">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это внешняя команда печати</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -320,74 +297,10 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="Отбор" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отбор</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:use>false</dcsset:use>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>КомандыПечати</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">КомандыПечати.МенеджерПечати</dcsset:left>
-						<dcsset:comparisonType>Contains</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:string">ДополнительныеОтчетыИОбработки</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>Шрифт</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Font" ref="style:TextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>КомандыПечати</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">КомандыПечати.Видимость</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветТекста</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">web:Gray</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection/>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">КомандыПечати.Владелец</dcsset:left>
-						<dcsset:comparisonType>Filled</dcsset:comparisonType>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>Шрифт</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Font" ref="style:TextFont" bold="false" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="УстановитьФлажки" id="1">

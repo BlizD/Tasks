@@ -14,15 +14,44 @@
 		<Event name="BeforeLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<InputField name="Наименование" id="4">
-			<DataPath>Объект.Description</DataPath>
-			<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-			<Width>40</Width>
-			<Wrap>false</Wrap>
-			<BorderColor>style:BorderColor</BorderColor>
-			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
-			<ExtendedTooltip name="НаименованиеExtendedTooltip" id="153"/>
-		</InputField>
+		<UsualGroup name="ГруппаШапка" id="241">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="242"/>
+			<ChildItems>
+				<InputField name="Наименование" id="4">
+					<DataPath>Объект.Description</DataPath>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Width>40</Width>
+					<Wrap>false</Wrap>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="153"/>
+				</InputField>
+				<InputField name="Родитель" id="40">
+					<DataPath>Объект.Parent</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>В группе</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="РодительКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="РодительExtendedTooltip" id="184"/>
+					<Events>
+						<Event name="OnChange">РодительПриИзменении</Event>
+						<Event name="StartChoice">РодительНачалоВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
 		<Pages name="СоставИРоли" id="9">
 			<Title>
 				<v8:item>
@@ -30,12 +59,6 @@
 					<v8:content>Состав и роли</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Состав и роли</v8:content>
-				</v8:item>
-			</ToolTip>
 			<ExtendedTooltip name="СоставИРолиExtendedTooltip" id="154"/>
 			<ChildItems>
 				<Page name="ВнешниеПользователиГруппы" id="55">
@@ -54,7 +77,6 @@
 									<v8:content>Тип пользователей</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ТипПользователейExtendedTooltip" id="156"/>
@@ -111,21 +133,15 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа назначение</v8:content>
+											<v8:content>Назначение</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа назначение</v8:content>
-										</v8:item>
-									</ToolTip>
-									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ГруппаНазначениеРасширеннаяПодсказка" id="240"/>
 									<ChildItems>
 										<LabelDecoration name="ЗаголовокНазначение" id="236">
+											<AutoMaxWidth>false</AutoMaxWidth>
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -147,7 +163,6 @@
 						<Table name="Состав" id="10">
 							<Representation>List</Representation>
 							<SkipOnInput>false</SkipOnInput>
-							<Width>30</Width>
 							<Header>false</Header>
 							<HorizontalLines>false</HorizontalLines>
 							<VerticalLines>false</VerticalLines>
@@ -170,9 +185,6 @@
 								<ExcludedCommand>SortListAsc</ExcludedCommand>
 								<ExcludedCommand>SortListDesc</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="СоставКонтекстноеМеню" id="11">
 								<Autofill>false</Autofill>
@@ -284,12 +296,6 @@
 										<CommandName>Form.Command.СортироватьПоУбыванию</CommandName>
 										<ExtendedTooltip name="СоставСортироватьПоУбываниюРасширеннаяПодсказка" id="201"/>
 									</Button>
-									<Button name="ПоказыватьНедействительныхПользователей" id="149">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.ПоказыватьНедействительныхПользователей</CommandName>
-										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-										<ExtendedTooltip name="ПоказыватьНедействительныхПользователейExtendedTooltip" id="152"/>
-									</Button>
 									<ButtonGroup name="СоставСтандартныеКоманды" id="194">
 										<Title>
 											<v8:item>
@@ -299,6 +305,14 @@
 										</Title>
 										<CommandSource>Item.Состав</CommandSource>
 										<ExtendedTooltip name="СоставСтандартныеКомандыРасширеннаяПодсказка" id="195"/>
+										<ChildItems>
+											<Button name="ПоказыватьНедействительныхПользователей" id="149">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПоказыватьНедействительныхПользователей</CommandName>
+												<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="ПоказыватьНедействительныхПользователейExtendedTooltip" id="152"/>
+											</Button>
+										</ChildItems>
 									</ButtonGroup>
 								</ChildItems>
 							</AutoCommandBar>
@@ -352,21 +366,6 @@
 								</CheckBoxField>
 							</ChildItems>
 						</Table>
-						<InputField name="Родитель" id="40">
-							<DataPath>Объект.Parent</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>В группе</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="РодительКонтекстноеМеню" id="41"/>
-							<ExtendedTooltip name="РодительExtendedTooltip" id="184"/>
-							<Events>
-								<Event name="OnChange">РодительПриИзменении</Event>
-								<Event name="StartChoice">РодительНачалоВыбора</Event>
-							</Events>
-						</InputField>
 					</ChildItems>
 				</Page>
 				<Page name="РолиГруппы" id="56">
@@ -376,12 +375,6 @@
 							<v8:content>Разрешенные действия (роли)</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Роли группы</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="РолиГруппыExtendedTooltip" id="174"/>
 					<ChildItems>
 						<UsualGroup name="ОтображениеРолей" id="64">
@@ -391,7 +384,6 @@
 									<v8:content>Отображение ролей</v8:content>
 								</v8:item>
 							</Title>
-							<Width>48</Width>
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -415,6 +407,12 @@
 										<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
 									</RowsPicture>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Роли</v8:content>
+										</v8:item>
+									</Title>
 									<CommandSet>
 										<ExcludedCommand>Add</ExcludedCommand>
 										<ExcludedCommand>Change</ExcludedCommand>
@@ -429,9 +427,6 @@
 										<ExcludedCommand>SortListDesc</ExcludedCommand>
 										<ExcludedCommand>Tree</ExcludedCommand>
 									</CommandSet>
-									<SearchStringLocation>None</SearchStringLocation>
-									<ViewStatusLocation>None</ViewStatusLocation>
-									<SearchControlLocation>None</SearchControlLocation>
 									<ContextMenu name="РолиКонтекстноеМеню" id="132"/>
 									<AutoCommandBar name="РолиКоманднаяПанель" id="133">
 										<Autofill>false</Autofill>
@@ -456,7 +451,9 @@
 											</Button>
 											<Button name="РолиПоказатьПодсистемыРолей" id="146">
 												<Type>CommandBarButton</Type>
+												<Representation>Picture</Representation>
 												<CommandName>Form.Command.ГруппировкаРолейПоПодсистемам</CommandName>
+												<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 												<ExtendedTooltip name="РолиПоказатьПодсистемыРолейExtendedTooltip" id="179"/>
 											</Button>
 											<ButtonGroup name="РолиСтандартныеКоманды" id="210">
@@ -545,12 +542,9 @@
 						<InputField name="Комментарий" id="38">
 							<DataPath>Объект.Комментарий</DataPath>
 							<TitleLocation>None</TitleLocation>
-							<MultiLine>true</MultiLine>
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<ContextMenu name="КомментарийКонтекстноеМеню" id="39"/>
 							<ExtendedTooltip name="КомментарийExtendedTooltip" id="185"/>
-							<Events>
-								<Event name="StartChoice">КомментарийНачалоВыбора</Event>
-							</Events>
 						</InputField>
 					</ChildItems>
 				</Page>
@@ -559,12 +553,6 @@
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Объект</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogObject.ГруппыВнешнихПользователей</v8:Type>
 			</Type>
@@ -588,21 +576,9 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="ДействияВФорме" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Действия в форме</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ТипыОбъектовАвторизации" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Типы объектов авторизации</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
@@ -646,12 +622,6 @@
 					</Type>
 				</Column>
 				<Column name="НомерКартинки" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер картинки</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -662,12 +632,6 @@
 					</Type>
 				</Column>
 				<Column name="Имя" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Имя</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -677,34 +641,16 @@
 					</Type>
 				</Column>
 				<Column name="ЭтоРоль" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это роль</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ЭтоНедоступнаяРоль" id="6">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это недоступная роль</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ЭтоНесуществующаяРоль" id="7">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это несуществующая роль</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -712,12 +658,6 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="ПоказатьПодсистемыРолей" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показать подсистемы ролей</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -726,23 +666,11 @@
 			</Save>
 		</Attribute>
 		<Attribute name="КоллекцияРолей" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Коллекция ролей</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
 			<Columns>
 				<Column name="Роль" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Роль</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -769,12 +697,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ЭтоГруппаВсеВнешниеПользователи" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Это группа все внешние пользователи</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -802,7 +724,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Только выбранные роли</v8:content>
+					<v8:content>Только выбранные</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>

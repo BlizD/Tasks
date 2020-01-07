@@ -5,30 +5,56 @@
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
-			<Popup name="ГруппаПечать" id="85">
+			<Popup name="ПодменюПечать" id="85">
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
 						<v8:content>Печать</v8:content>
 					</v8:item>
 				</Title>
-				<ToolTip>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Группа печать</v8:content>
-					</v8:item>
-				</ToolTip>
 				<Picture>
 					<xr:Ref>StdPicture.Print</xr:Ref>
 					<xr:LoadTransparent>true</xr:LoadTransparent>
 				</Picture>
 				<Representation>PictureAndText</Representation>
-				<ExtendedTooltip name="ГруппаПечатьРасширеннаяПодсказка" id="86"/>
+				<ExtendedTooltip name="ПодменюПечатьРасширеннаяПодсказка" id="86"/>
+				<ChildItems>
+					<ButtonGroup name="ПодменюПечатьВажное" id="87">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Печать (Важное)</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ПодменюПечатьВажноеРасширеннаяПодсказка" id="88"/>
+					</ButtonGroup>
+					<ButtonGroup name="ПодменюПечатьОбычное" id="89">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Печать (Обычное)</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ПодменюПечатьОбычноеРасширеннаяПодсказка" id="90"/>
+					</ButtonGroup>
+					<ButtonGroup name="ПодменюПечатьСмТакже" id="91">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Печать (См. также)</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ПодменюПечатьСмТакжеРасширеннаяПодсказка" id="92"/>
+					</ButtonGroup>
+				</ChildItems>
 			</Popup>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -39,8 +65,6 @@
 					<v8:content>Номер и дата</v8:content>
 				</v8:item>
 			</Title>
-			<HorizontalStretch>false</HorizontalStretch>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="НомерДатаГруппаРасширеннаяПодсказка" id="41"/>
@@ -67,6 +91,7 @@
 				</v8:item>
 			</Title>
 			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="ОператорПерсональныхДанныхГруппаРасширеннаяПодсказка" id="68"/>
 			<ChildItems>
 				<UsualGroup name="ОрганизацияАдресГруппа" id="75">
@@ -81,15 +106,41 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ОрганизацияАдресГруппаРасширеннаяПодсказка" id="76"/>
 					<ChildItems>
-						<InputField name="Организация" id="7">
-							<DataPath>Объект.Организация</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="8"/>
-							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="9"/>
-							<Events>
-								<Event name="OnChange">ОрганизацияПриИзменении</Event>
-							</Events>
-						</InputField>
+						<UsualGroup name="ОрганизацияГруппа" id="96">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Организация</v8:content>
+								</v8:item>
+							</Title>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ThroughAlign>DontUse</ThroughAlign>
+							<ExtendedTooltip name="ОрганизацияГруппаРасширеннаяПодсказка" id="97"/>
+							<ChildItems>
+								<InputField name="Организация" id="7">
+									<DataPath>Объект.Организация</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОрганизацияКонтекстноеМеню" id="8"/>
+									<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="9"/>
+									<Events>
+										<Event name="OnChange">ОрганизацияПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="НаименованиеОрганизации" id="93">
+									<DataPath>Объект.НаименованиеОрганизации</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Наименование для печати</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ContextMenu name="НаименованиеОрганизацииКонтекстноеМеню" id="94"/>
+									<ExtendedTooltip name="НаименованиеОрганизацииРасширеннаяПодсказка" id="95"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
 						<InputField name="ЮридическийАдресОрганизации" id="10">
 							<DataPath>Объект.ЮридическийАдресОрганизации</DataPath>
 							<Title>
@@ -104,18 +155,46 @@
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
-				<InputField name="ОтветственныйЗаОбработкуПерсональныхДанных" id="13">
-					<DataPath>Объект.ОтветственныйЗаОбработкуПерсональныхДанных</DataPath>
+				<UsualGroup name="ОтветственныйЗаПДнГруппа" id="101">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ответственный за обработку ПДн</v8:content>
+							<v8:content>Ответственный за ПДн</v8:content>
 						</v8:item>
 					</Title>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ОтветственныйЗаОбработкуПерсональныхДанныхКонтекстноеМеню" id="14"/>
-					<ExtendedTooltip name="ОтветственныйЗаОбработкуПерсональныхДанныхРасширеннаяПодсказка" id="15"/>
-				</InputField>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ОтветственныйЗаПДнГруппаРасширеннаяПодсказка" id="102"/>
+					<ChildItems>
+						<InputField name="ОтветственныйЗаОбработкуПерсональныхДанных" id="13">
+							<DataPath>Объект.ОтветственныйЗаОбработкуПерсональныхДанных</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ответственный за обработку ПДн</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ОтветственныйЗаОбработкуПерсональныхДанныхКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="ОтветственныйЗаОбработкуПерсональныхДанныхРасширеннаяПодсказка" id="15"/>
+							<Events>
+								<Event name="OnChange">ОтветственныйЗаОбработкуПерсональныхДанныхПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ФИООтветственногоЗаОбработкуПДн" id="98">
+							<DataPath>Объект.ФИООтветственногоЗаОбработкуПДн</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ФИО ответственного для печати</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ФИООтветственногоЗаОбработкуПДнКонтекстноеМеню" id="99"/>
+							<ExtendedTooltip name="ФИООтветственногоЗаОбработкуПДнРасширеннаяПодсказка" id="100"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="СубъектГруппа" id="57">
@@ -125,8 +204,8 @@
 					<v8:content>Субъект персональных данных</v8:content>
 				</v8:item>
 			</Title>
-			<Width>35</Width>
 			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="СубъектГруппаРасширеннаяПодсказка" id="58"/>
 			<ChildItems>
 				<UsualGroup name="СубъектФИОГруппа" id="73">
@@ -136,7 +215,7 @@
 							<v8:content>Субъект и ФИО</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Horizontal</Group>
+					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="СубъектФИОГруппаРасширеннаяПодсказка" id="74"/>
@@ -191,14 +270,11 @@
 					<v8:content>Сведения о согласии</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СведенияОСогласииГруппаРасширеннаяПодсказка" id="78"/>
 			<ChildItems>
 				<PictureDecoration name="ПредупреждениеКартинка" id="79">
-					<Width>3</Width>
-					<Height>2</Height>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -206,7 +282,7 @@
 						</v8:item>
 					</Title>
 					<Picture>
-						<xr:Ref>CommonPicture.Предупреждение32</xr:Ref>
+						<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</Picture>
 					<FileDragMode>AsFile</FileDragMode>
@@ -214,6 +290,7 @@
 					<ExtendedTooltip name="ПредупреждениеКартинкаРасширеннаяПодсказка" id="81"/>
 				</PictureDecoration>
 				<LabelDecoration name="ПредупреждениеТекст" id="82">
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Height>2</Height>
 					<TextColor>style:ПоясняющийТекст</TextColor>
 					<Title formatted="true">
@@ -234,7 +311,6 @@
 					<v8:content>Срок действия</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СрокДействияГруппаРасширеннаяПодсказка" id="72"/>
@@ -270,7 +346,6 @@
 					<v8:content>Ответственный и комментарий</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ChildItemsWidth>LeftWide</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
@@ -279,12 +354,8 @@
 				<InputField name="Комментарий" id="37">
 					<DataPath>Объект.Комментарий</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<ChoiceButton>true</ChoiceButton>
 					<ContextMenu name="КомментарийКонтекстноеМеню" id="38"/>
 					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="39"/>
-					<Events>
-						<Event name="StartChoice">КомментарийНачалоВыбора</Event>
-					</Events>
 				</InputField>
 				<InputField name="Ответственный" id="34">
 					<DataPath>Объект.Ответственный</DataPath>
@@ -305,6 +376,9 @@
 			<UseAlways>
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
+		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="2">
+			<Type/>
 		</Attribute>
 	</Attributes>
 </Form>

@@ -6,9 +6,12 @@
 			<v8:content>Подбор сертификатов для шифрования данных</v8:content>
 		</v8:item>
 	</Title>
-	<Width>80</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -24,7 +27,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СписокКомпоновщикНастроекПользовательскиеНастройкиРасширеннаяПодсказка" id="2"/>
@@ -36,13 +38,13 @@
 					<v8:content>Горизонтальная группа</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГоризонтальнаяГруппаРасширеннаяПодсказка" id="81"/>
 			<ChildItems>
 				<CheckBoxField name="ГруппаПользователейИспользование" id="77">
 					<DataPath>ГруппаПользователейИспользование</DataPath>
+					<TitleLocation>Right</TitleLocation>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ГруппаПользователейИспользованиеКонтекстноеМеню" id="78"/>
 					<ExtendedTooltip name="ГруппаПользователейИспользованиеРасширеннаяПодсказка" id="79"/>
@@ -189,13 +191,16 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Copy</ExcludedCommand>
 				<ExcludedCommand>Delete</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -294,7 +299,7 @@
 			</Events>
 			<ChildItems>
 				<LabelField name="Наименование" id="25">
-					<DataPath>Список.Description</DataPath>
+					<DataPath>Список.Наименование</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<Width>25</Width>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="26"/>
@@ -328,7 +333,7 @@
 					<ExtendedTooltip name="КемВыданРасширеннаяПодсказка" id="33"/>
 				</LabelField>
 				<LabelField name="Ссылка" id="22">
-					<DataPath>Список.Ref</DataPath>
+					<DataPath>Список.Ссылка</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
@@ -344,37 +349,49 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ссылка</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	Сертификаты.Ссылка,
-	Сертификаты.ПометкаУдаления,
-	Сертификаты.Наименование,
-	Сертификаты.КомуВыдан,
-	Сертификаты.Фирма,
-	Сертификаты.Фамилия,
-	Сертификаты.Имя,
-	Сертификаты.Отчество,
-	Сертификаты.Должность,
-	Сертификаты.КемВыдан,
-	Сертификаты.ДействителенДо,
-	Сертификаты.Подписание,
-	Сертификаты.Шифрование,
-	Сертификаты.Отпечаток,
-	Сертификаты.ДанныеСертификата,
-	Сертификаты.Программа,
-	Сертификаты.Отозван,
-	Сертификаты.УсиленнаяЗащитаЗакрытогоКлюча,
-	Сертификаты.Организация,
-	Сертификаты.Пользователь,
-	Сертификаты.ПользовательОповещенОСрокеДействия,
-	Сертификаты.Предопределенный,
-	Сертификаты.ИмяПредопределенныхДанных
+	СертификатыПереопределяемый.Ссылка КАК Ссылка,
+	СертификатыПереопределяемый.ПометкаУдаления КАК ПометкаУдаления,
+	СертификатыПереопределяемый.Наименование КАК Наименование,
+	СертификатыПереопределяемый.КомуВыдан КАК КомуВыдан,
+	СертификатыПереопределяемый.Фирма КАК Фирма,
+	СертификатыПереопределяемый.Фамилия КАК Фамилия,
+	СертификатыПереопределяемый.Имя КАК Имя,
+	СертификатыПереопределяемый.Отчество КАК Отчество,
+	СертификатыПереопределяемый.Должность КАК Должность,
+	СертификатыПереопределяемый.КемВыдан КАК КемВыдан,
+	СертификатыПереопределяемый.ДействителенДо КАК ДействителенДо,
+	СертификатыПереопределяемый.Подписание КАК Подписание,
+	СертификатыПереопределяемый.Шифрование КАК Шифрование,
+	СертификатыПереопределяемый.Отпечаток КАК Отпечаток,
+	СертификатыПереопределяемый.ДанныеСертификата КАК ДанныеСертификата,
+	СертификатыПереопределяемый.Программа КАК Программа,
+	СертификатыПереопределяемый.Отозван КАК Отозван,
+	СертификатыПереопределяемый.УсиленнаяЗащитаЗакрытогоКлюча КАК УсиленнаяЗащитаЗакрытогоКлюча,
+	СертификатыПереопределяемый.Организация КАК Организация,
+	СертификатыПереопределяемый.Пользователь КАК Пользователь,
+	СертификатыПереопределяемый.ПользовательОповещенОСрокеДействия КАК ПользовательОповещенОСрокеДействия,
+	СертификатыПереопределяемый.Предопределенный КАК Предопределенный,
+	СертификатыПереопределяемый.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных
 ИЗ
-	Справочник.СертификатыКлючейЭлектроннойПодписиИШифрования КАК Сертификаты
+	Справочник.СертификатыКлючейЭлектроннойПодписиИШифрования КАК СертификатыПереопределяемый
 ГДЕ
-	Сертификаты.СостояниеЗаявления В (ЗНАЧЕНИЕ(Перечисление.СостоянияЗаявленияНаВыпускСертификата.ПустаяСсылка), ЗНАЧЕНИЕ(Перечисление.СостоянияЗаявленияНаВыпускСертификата.Исполнено))</QueryText>
+	&amp;ДополнительноеУсловие
+{ГДЕ
+	(ИСТИНА В
+			(ВЫБРАТЬ ПЕРВЫЕ 1
+				ИСТИНА
+			ИЗ
+				РегистрСведений.СоставыГруппПользователей КАК СоставыГруппПользователейПереопределяемый
+			ГДЕ
+				СоставыГруппПользователейПереопределяемый.Пользователь = СертификатыПереопределяемый.Пользователь
+				И СоставыГруппПользователейПереопределяемый.ГруппаПользователей В (&amp;ГруппаПользователей)))}</QueryText>
 				<MainTable>Catalog.СертификатыКлючейЭлектроннойПодписиИШифрования</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -383,13 +400,6 @@
 							<dcsset:comparisonType>Equal</dcsset:comparisonType>
 							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 							<dcsset:viewMode>Normal</dcsset:viewMode>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:use>false</dcsset:use>
-							<dcsset:left xsi:type="dcscor:Field">Фирма</dcsset:left>
-							<dcsset:comparisonType>Contains</dcsset:comparisonType>
-							<dcsset:right xsi:type="xs:string"/>
-							<dcsset:userSettingID>c6ced8af-e03e-4536-8cbc-e9d809ba45d4</dcsset:userSettingID>
 						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
@@ -430,12 +440,9 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ВыполнятьНаСервере" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Выполнять на сервере</v8:content>
-				</v8:item>
-			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="Организация" id="5">
 			<Type/>
 		</Attribute>
 	</Attributes>

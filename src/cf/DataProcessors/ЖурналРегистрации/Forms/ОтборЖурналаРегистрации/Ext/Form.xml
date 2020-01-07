@@ -1,8 +1,40 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>70</Width>
-	<CommandBarLocation>None</CommandBarLocation>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="OK" id="27">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.УстановитьОтборИЗакрытьФорму</CommandName>
+				<TextColor>style:ButtonTextColor</TextColor>
+				<BorderColor>style:BorderColor</BorderColor>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Применить и закрыть</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="OKExtendedTooltip" id="236"/>
+			</Button>
+			<Button name="Отменить" id="29">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<TextColor>style:ButtonTextColor</TextColor>
+				<BackColor>style:ButtonBackColor</BackColor>
+				<BorderColor>style:BorderColor</BorderColor>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отмена</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ОтменитьExtendedTooltip" id="237"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
@@ -12,118 +44,141 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа даты</v8:content>
+					<v8:content>Даты</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа даты</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
+			<United>false</United>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаДатыExtendedTooltip" id="200"/>
 			<ChildItems>
-				<InputField name="ИнтервалОтбора" id="189">
-					<DataPath>ИнтервалОтбора</DataPath>
-					<Width>10</Width>
-					<Wrap>false</Wrap>
-					<ContextMenu name="ИнтервалОтбораКонтекстноеМеню" id="190"/>
-					<ExtendedTooltip name="ИнтервалОтбораExtendedTooltip" id="202"/>
-					<Events>
-						<Event name="OnChange">ИнтервалОтбораПриИзменении</Event>
-					</Events>
-				</InputField>
-				<InputField name="ДатаНачала" id="7">
-					<DataPath>ИнтервалОтбораДатаНачала</DataPath>
+				<UsualGroup name="ЛеваяКолонка" id="285">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Начало</v8:content>
+							<v8:content>Левая колонка</v8:content>
 						</v8:item>
 					</Title>
-					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-					<Wrap>false</Wrap>
-					<ClearButton>true</ClearButton>
-					<BorderColor>style:BorderColor</BorderColor>
-					<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="ДатаНачалаExtendedTooltip" id="204"/>
-					<Events>
-						<Event name="OnChange">ИнтервалОтбораДатаПриИзменении</Event>
-					</Events>
-				</InputField>
-				<InputField name="ДатаОкончания" id="5">
-					<DataPath>ИнтервалОтбораДатаОкончания</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Окончание</v8:content>
-						</v8:item>
-					</Title>
-					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-					<Wrap>false</Wrap>
-					<ClearButton>true</ClearButton>
-					<BorderColor>style:BorderColor</BorderColor>
-					<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="6"/>
-					<ExtendedTooltip name="ДатаОкончанияExtendedTooltip" id="205"/>
-					<Events>
-						<Event name="OnChange">ИнтервалОтбораДатаПриИзменении</Event>
-					</Events>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="Группа" id="195">
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаExtendedTooltip" id="206"/>
-			<ChildItems>
-				<UsualGroup name="ГруппаВажность" id="197">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа важность</v8:content>
-						</v8:item>
-					</Title>
-					<Group>Vertical</Group>
-					<Representation>NormalSeparation</Representation>
+					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаВажностьРасширеннаяПодсказка" id="211"/>
+					<ExtendedTooltip name="ЛеваяКолонкаРасширеннаяПодсказка" id="286"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаЗаголовокСпискаВажность" id="238">
+						<InputField name="ДатаНачала" id="7">
+							<DataPath>ИнтервалОтбораДатаНачала</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа заголовок списка важность</v8:content>
+									<v8:content>Интервал с</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Horizontal</Group>
+							<TitleLocation>Left</TitleLocation>
+							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+							<Wrap>false</Wrap>
+							<ClearButton>true</ClearButton>
+							<BorderColor>style:BorderColor</BorderColor>
+							<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="ДатаНачалаExtendedTooltip" id="204"/>
+							<Events>
+								<Event name="OnChange">ИнтервалОтбораДатаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ДатаОкончания" id="5">
+							<DataPath>ИнтервалОтбораДатаОкончания</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>по</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+							<Wrap>false</Wrap>
+							<ClearButton>true</ClearButton>
+							<BorderColor>style:BorderColor</BorderColor>
+							<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="6"/>
+							<ExtendedTooltip name="ДатаОкончанияExtendedTooltip" id="205"/>
+							<Events>
+								<Event name="OnChange">ИнтервалОтбораДатаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<Button name="ВыбратьПериод" id="320">
+							<Type>UsualButton</Type>
+							<Width>4</Width>
+							<CommandName>Form.Command.ВыбратьПериод</CommandName>
+							<ExtendedTooltip name="ВыбратьПериодРасширеннаяПодсказка" id="321"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ПраваяКолонка" id="287">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правая колонка</v8:content>
+						</v8:item>
+					</Title>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ПраваяКолонкаРасширеннаяПодсказка" id="288"/>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОсновное" id="322">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основное</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОсновноеРасширеннаяПодсказка" id="323"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаВажность" id="289">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Важность</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВажностьРасширеннаяПодсказка" id="290"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаКоманднаяПанель" id="318">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Командная панель</v8:content>
+								</v8:item>
+							</Title>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаЗаголовокСпискаВажностьРасширеннаяПодсказка" id="239"/>
+							<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="319"/>
 							<ChildItems>
-								<LabelDecoration name="Заголовок" id="240">
+								<LabelDecoration name="ДекорацияЗаголовок" id="315">
+									<AutoMaxWidth>false</AutoMaxWidth>
 									<Title formatted="false">
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Важность:</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="ЗаголовокКонтекстноеМеню" id="241"/>
-									<ExtendedTooltip name="ЗаголовокРасширеннаяПодсказка" id="242"/>
+									<ContextMenu name="ДекорацияЗаголовокКонтекстноеМеню" id="316"/>
+									<ExtendedTooltip name="ДекорацияЗаголовокРасширеннаяПодсказка" id="317"/>
 								</LabelDecoration>
-								<CommandBar name="ГруппаФлажки" id="247">
+								<CommandBar name="КоманднаяПанельВажность" id="313">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа флажки</v8:content>
+											<v8:content>Командная панель важность</v8:content>
 										</v8:item>
 									</Title>
 									<HorizontalLocation>Right</HorizontalLocation>
-									<ExtendedTooltip name="ГруппаФлажкиРасширеннаяПодсказка" id="248"/>
+									<ExtendedTooltip name="КоманднаяПанельВажностьРасширеннаяПодсказка" id="314"/>
 									<ChildItems>
 										<Button name="УстановитьФлажки" id="243">
 											<Type>CommandBarButton</Type>
@@ -145,20 +200,22 @@
 							<SkipOnInput>false</SkipOnInput>
 							<ChangeRowSet>false</ChangeRowSet>
 							<ChangeRowOrder>false</ChangeRowOrder>
-							<Width>20</Width>
+							<Width>30</Width>
 							<HeightInTableRows>4</HeightInTableRows>
 							<SelectionMode>SingleRow</SelectionMode>
 							<RowSelectionMode>Row</RowSelectionMode>
 							<Header>false</Header>
 							<HorizontalLines>false</HorizontalLines>
 							<VerticalLines>false</VerticalLines>
-							<VerticalStretch>false</VerticalStretch>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Важность</DataPath>
 							<BorderColor>style:BorderColor</BorderColor>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Важность</v8:content>
+								</v8:item>
+							</Title>
 							<ContextMenu name="ВажностьКонтекстноеМеню" id="42"/>
 							<AutoCommandBar name="ВажностьКоманднаяПанель" id="143">
 								<HorizontalAlign>Right</HorizontalAlign>
@@ -191,6 +248,12 @@
 							</SearchControlAddition>
 							<ChildItems>
 								<ColumnGroup name="ВажностьИЗначение" id="263">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Важность и значение</v8:content>
+										</v8:item>
+									</Title>
 									<Group>InCell</Group>
 									<ExtendedTooltip name="ВажностьИЗначениеРасширеннаяПодсказка" id="264"/>
 									<ChildItems>
@@ -220,9 +283,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа основные отборы</v8:content>
+							<v8:content>Основные отборы</v8:content>
 						</v8:item>
 					</Title>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
 					<Group>Vertical</Group>
 					<Representation>NormalSeparation</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -301,19 +365,30 @@
 				</v8:item>
 			</Title>
 			<Group>Vertical</Group>
-			<Representation>None</Representation>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>NormalSeparation</Representation>
+			<United>false</United>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ExtendedTooltip name="ГруппаДанныеРасширеннаяПодсказка" id="215"/>
 			<ChildItems>
 				<UsualGroup name="ГруппаДанныеСвойства" id="161">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные свойства</v8:content>
+						</v8:item>
+					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Данные</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Group>Horizontal</Group>
+					<Group>Vertical</Group>
 					<Representation>None</Representation>
+					<United>false</United>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаДанныеСвойстваExtendedTooltip" id="216"/>
 					<ChildItems>
@@ -337,75 +412,80 @@
 							<ContextMenu name="ДанныеКонтекстноеМеню" id="52"/>
 							<ExtendedTooltip name="ДанныеExtendedTooltip" id="218"/>
 						</InputField>
+						<InputField name="ПредставлениеДанных" id="53">
+							<DataPath>ПредставлениеДанных</DataPath>
+							<TitleHeight>2</TitleHeight>
+							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+							<Wrap>false</Wrap>
+							<ClearButton>true</ClearButton>
+							<BorderColor>style:BorderColor</BorderColor>
+							<ContextMenu name="ПредставлениеДанныхКонтекстноеМеню" id="54"/>
+							<ExtendedTooltip name="ПредставлениеДанныхExtendedTooltip" id="219"/>
+						</InputField>
 					</ChildItems>
 				</UsualGroup>
-				<InputField name="ПредставлениеДанных" id="53">
-					<DataPath>ПредставлениеДанных</DataPath>
-					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-					<Wrap>false</Wrap>
-					<ClearButton>true</ClearButton>
-					<BorderColor>style:BorderColor</BorderColor>
-					<ContextMenu name="ПредставлениеДанныхКонтекстноеМеню" id="54"/>
-					<ExtendedTooltip name="ПредставлениеДанныхExtendedTooltip" id="219"/>
-				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="ГруппаПрочиеСвойства" id="164">
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаПрочиеСвойстваExtendedTooltip" id="224"/>
+		<UsualGroup name="ГруппаТранзакции" id="331">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Транзакции</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>NormalSeparation</Representation>
+			<ShowLeftMargin>false</ShowLeftMargin>
+			<ExtendedTooltip name="ГруппаТранзакцииРасширеннаяПодсказка" id="332"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаТранзакция" id="56">
+				<UsualGroup name="ЛеваяКолонка4" id="297">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Транзакция</v8:content>
+							<v8:content>Левая колонка 4</v8:content>
 						</v8:item>
 					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
 					<Group>Vertical</Group>
-					<Representation>NormalSeparation</Representation>
-					<ExtendedTooltip name="ГруппаТранзакцияExtendedTooltip" id="230"/>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ЛеваяКолонка4РасширеннаяПодсказка" id="298"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаЗаголовокСпискаСтатусТранзакции" id="261">
+						<UsualGroup name="ГруппаКоманднаяПанельТранзакция" id="324">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа заголовок списка статус транзакции</v8:content>
+									<v8:content>Командная панель транзакция</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа заголовок списка статус транзакции</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаЗаголовокСпискаСтатусТранзакцииРасширеннаяПодсказка" id="262"/>
+							<ExtendedTooltip name="ГруппаКоманднаяПанельТранзакцияРасширеннаяПодсказка" id="325"/>
 							<ChildItems>
-								<LabelDecoration name="НадписьСтатусТранзакции" id="252">
+								<LabelDecoration name="Декорация1" id="326">
+									<AutoMaxWidth>false</AutoMaxWidth>
 									<Title formatted="false">
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Статус транзакции:</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="НадписьСтатусТранзакцииКонтекстноеМеню" id="253"/>
-									<ExtendedTooltip name="НадписьСтатусТранзакцииРасширеннаяПодсказка" id="254"/>
+									<ContextMenu name="Декорация1КонтекстноеМеню" id="327"/>
+									<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="328"/>
 								</LabelDecoration>
-								<CommandBar name="ГруппаФлажки2" id="255">
+								<CommandBar name="КоманднаяПанельТранзакция" id="329">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа флажки2</v8:content>
+											<v8:content>Командная панель транзакция</v8:content>
 										</v8:item>
 									</Title>
-									<HorizontalStretch>true</HorizontalStretch>
 									<HorizontalLocation>Right</HorizontalLocation>
-									<ExtendedTooltip name="ГруппаФлажки2РасширеннаяПодсказка" id="256"/>
+									<ExtendedTooltip name="КоманднаяПанельТранзакцияРасширеннаяПодсказка" id="330"/>
 									<ChildItems>
 										<Button name="УстановитьСтатусы" id="257">
 											<Type>CommandBarButton</Type>
@@ -423,29 +503,28 @@
 						</UsualGroup>
 						<Table name="СтатусТранзакции" id="74">
 							<Representation>List</Representation>
-							<CommandBarLocation>None</CommandBarLocation>
+							<CommandBarLocation>Top</CommandBarLocation>
 							<SkipOnInput>false</SkipOnInput>
 							<ChangeRowSet>false</ChangeRowSet>
 							<ChangeRowOrder>false</ChangeRowOrder>
+							<Width>30</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>30</MaxWidth>
 							<HeightInTableRows>4</HeightInTableRows>
 							<SelectionMode>SingleRow</SelectionMode>
 							<RowSelectionMode>Row</RowSelectionMode>
 							<Header>false</Header>
 							<HorizontalLines>false</HorizontalLines>
 							<VerticalLines>false</VerticalLines>
-							<VerticalStretch>false</VerticalStretch>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>СтатусТранзакции</DataPath>
 							<BorderColor>style:BorderColor</BorderColor>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Статус транзакции</v8:content>
+									<v8:content>Статус</v8:content>
 								</v8:item>
 							</Title>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<ContextMenu name="СтатусТранзакцииКонтекстноеМеню" id="75"/>
 							<AutoCommandBar name="СтатусТранзакцииКоманднаяПанель" id="145">
 								<HorizontalAlign>Right</HorizontalAlign>
@@ -478,6 +557,12 @@
 							</SearchControlAddition>
 							<ChildItems>
 								<ColumnGroup name="ГруппаПометкаИЗначение" id="265">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пометка и значение</v8:content>
+										</v8:item>
+									</Title>
 									<Group>InCell</Group>
 									<ExtendedTooltip name="ГруппаПометкаИЗначениеРасширеннаяПодсказка" id="266"/>
 									<ChildItems>
@@ -501,118 +586,102 @@
 								</ColumnGroup>
 							</ChildItems>
 						</Table>
-						<InputField name="Транзакция" id="76">
-							<DataPath>Транзакция</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Идентификатор</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Left</TitleLocation>
-							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-							<Wrap>false</Wrap>
-							<ClearButton>true</ClearButton>
-							<BorderColor>style:BorderColor</BorderColor>
-							<ContextMenu name="ТранзакцияКонтекстноеМеню" id="77"/>
-							<ExtendedTooltip name="ТранзакцияExtendedTooltip" id="231"/>
-						</InputField>
 					</ChildItems>
 				</UsualGroup>
-				<UsualGroup name="ГруппаПрочее" id="59">
+				<InputField name="Транзакция" id="76">
+					<DataPath>Транзакция</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Прочее</v8:content>
+							<v8:content>Идентификатор</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Vertical</Group>
-					<Representation>NormalSeparation</Representation>
-					<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
-					<ExtendedTooltip name="ГруппаПрочееРасширеннаяПодсказка" id="225"/>
-					<ChildItems>
-						<InputField name="РабочиеСерверы" id="165">
-							<DataPath>РабочиеСерверы</DataPath>
-							<TitleLocation>Left</TitleLocation>
-							<Wrap>false</Wrap>
-							<ClearButton>true</ClearButton>
-							<BorderColor>style:BorderColor</BorderColor>
-							<ContextMenu name="РабочиеСерверыКонтекстноеМеню" id="166"/>
-							<ExtendedTooltip name="РабочиеСерверыExtendedTooltip" id="227"/>
-							<Events>
-								<Event name="StartChoice">ИсполнениеВыбора</Event>
-							</Events>
-						</InputField>
-						<InputField name="ОсновныеIPПорты" id="167">
-							<DataPath>ОсновныеIPПорты</DataPath>
-							<Wrap>false</Wrap>
-							<ClearButton>true</ClearButton>
-							<BorderColor>style:BorderColor</BorderColor>
-							<ContextMenu name="ОсновныеIPПортыКонтекстноеМеню" id="168"/>
-							<ExtendedTooltip name="ОсновныеIPПортыExtendedTooltip" id="228"/>
-							<Events>
-								<Event name="StartChoice">ИсполнениеВыбора</Event>
-							</Events>
-						</InputField>
-						<InputField name="ВспомогательныеIPПорты" id="169">
-							<DataPath>ВспомогательныеIPПорты</DataPath>
-							<Wrap>false</Wrap>
-							<ClearButton>true</ClearButton>
-							<BorderColor>style:BorderColor</BorderColor>
-							<ContextMenu name="ВспомогательныеIPПортыКонтекстноеМеню" id="170"/>
-							<ExtendedTooltip name="ВспомогательныеIPПортыExtendedTooltip" id="229"/>
-							<Events>
-								<Event name="StartChoice">ИсполнениеВыбора</Event>
-							</Events>
-						</InputField>
-						<InputField name="РазделениеДанныхСеанса" id="249">
-							<DataPath>РазделениеДанныхСеанса</DataPath>
-							<ClearButton>true</ClearButton>
-							<ContextMenu name="РазделениеДанныхСеансаКонтекстноеМеню" id="250"/>
-							<ExtendedTooltip name="РазделениеДанныхСеансаРасширеннаяПодсказка" id="251"/>
-							<Events>
-								<Event name="StartChoice">ИсполнениеВыбора</Event>
-							</Events>
-						</InputField>
-						<InputField name="Комментарий" id="43">
-							<DataPath>Комментарий</DataPath>
-							<TitleLocation>Left</TitleLocation>
-							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-							<Wrap>false</Wrap>
-							<MultiLine>true</MultiLine>
-							<BorderColor>style:BorderColor</BorderColor>
-							<ContextMenu name="КомментарийКонтекстноеМеню" id="44"/>
-							<ExtendedTooltip name="КомментарийExtendedTooltip" id="223"/>
-						</InputField>
-					</ChildItems>
-				</UsualGroup>
+					<TitleLocation>Left</TitleLocation>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Wrap>false</Wrap>
+					<ClearButton>true</ClearButton>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="ТранзакцияКонтекстноеМеню" id="77"/>
+					<ExtendedTooltip name="ТранзакцияExtendedTooltip" id="231"/>
+				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<CommandBar name="ГруппаКнопокФормы" id="28">
-			<HorizontalLocation>Right</HorizontalLocation>
-			<ExtendedTooltip name="ГруппаКнопокФормыExtendedTooltip" id="235"/>
+		<UsualGroup name="ГруппаПрочее" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочее</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>NormalSeparation</Representation>
+			<ShowLeftMargin>false</ShowLeftMargin>
+			<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
+			<ExtendedTooltip name="ГруппаПрочееРасширеннаяПодсказка" id="225"/>
 			<ChildItems>
-				<Button name="OK" id="27">
-					<Type>CommandBarButton</Type>
-					<DefaultButton>true</DefaultButton>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.УстановитьОтборИЗакрытьФорму</CommandName>
-					<TextColor>style:ButtonTextColor</TextColor>
-					<BackColor>style:ButtonBackColor</BackColor>
+				<InputField name="РабочиеСерверы" id="165">
+					<DataPath>РабочиеСерверы</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<TitleHeight>2</TitleHeight>
+					<Wrap>false</Wrap>
+					<ClearButton>true</ClearButton>
 					<BorderColor>style:BorderColor</BorderColor>
-					<ExtendedTooltip name="OKExtendedTooltip" id="236"/>
-				</Button>
-				<Button name="Отменить" id="29">
-					<Type>CommandBarButton</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.StandardCommand.Cancel</CommandName>
-					<TextColor>style:ButtonTextColor</TextColor>
-					<BackColor>style:ButtonBackColor</BackColor>
+					<ContextMenu name="РабочиеСерверыКонтекстноеМеню" id="166"/>
+					<ExtendedTooltip name="РабочиеСерверыExtendedTooltip" id="227"/>
+					<Events>
+						<Event name="StartChoice">ИсполнениеВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ОсновныеIPПорты" id="167">
+					<DataPath>ОсновныеIPПорты</DataPath>
+					<TitleHeight>2</TitleHeight>
+					<Wrap>false</Wrap>
+					<ClearButton>true</ClearButton>
 					<BorderColor>style:BorderColor</BorderColor>
-					<ExtendedTooltip name="ОтменитьExtendedTooltip" id="237"/>
-				</Button>
+					<ContextMenu name="ОсновныеIPПортыКонтекстноеМеню" id="168"/>
+					<ExtendedTooltip name="ОсновныеIPПортыExtendedTooltip" id="228"/>
+					<Events>
+						<Event name="StartChoice">ИсполнениеВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ВспомогательныеIPПорты" id="169">
+					<DataPath>ВспомогательныеIPПорты</DataPath>
+					<TitleHeight>2</TitleHeight>
+					<Wrap>false</Wrap>
+					<ClearButton>true</ClearButton>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="ВспомогательныеIPПортыКонтекстноеМеню" id="170"/>
+					<ExtendedTooltip name="ВспомогательныеIPПортыExtendedTooltip" id="229"/>
+					<Events>
+						<Event name="StartChoice">ИсполнениеВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="РазделениеДанныхСеанса" id="249">
+					<DataPath>РазделениеДанныхСеанса</DataPath>
+					<TitleHeight>2</TitleHeight>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="РазделениеДанныхСеансаКонтекстноеМеню" id="250"/>
+					<ExtendedTooltip name="РазделениеДанныхСеансаРасширеннаяПодсказка" id="251"/>
+					<Events>
+						<Event name="StartChoice">ИсполнениеВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="Комментарий" id="43">
+					<DataPath>Комментарий</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<VerticalStretch>false</VerticalStretch>
+					<Wrap>false</Wrap>
+					<MultiLine>true</MultiLine>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="КомментарийExtendedTooltip" id="223"/>
+				</InputField>
 			</ChildItems>
-		</CommandBar>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="СписокПользователей" id="4">
@@ -639,15 +708,10 @@
 			</Settings>
 		</Attribute>
 		<Attribute name="События" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>События</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="Компьютеры" id="6">
 			<Title>
@@ -834,12 +898,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="Сеансы" id="16">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сеансы</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
@@ -903,7 +961,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Вспомог.IP порты</v8:content>
+					<v8:content>Вспомогательные IP порты</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -924,12 +982,6 @@
 			</Settings>
 		</Attribute>
 		<Attribute name="ПустаяСтрокаДляВыравнивания" id="20">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пустая строка для выравнивания</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -939,23 +991,11 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ИнтервалОтбора" id="22">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Интервал</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:StandardPeriod</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="РедакторСоставаСвойстваИмяЭлемента" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Редактор состава свойства имя элемента</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -1002,25 +1042,15 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="СобытияПоУмолчанию" id="23">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>События по умолчанию</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="Заголовок" id="24">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заголовок</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -1039,6 +1069,7 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 	</Attributes>
 	<Commands>
@@ -1138,6 +1169,22 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>СнятьСтатусыТранзакции</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьПериод" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать период</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИнтервалОтбораПриИзменении</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>

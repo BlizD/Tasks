@@ -5,6 +5,8 @@
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -16,8 +18,6 @@
 					<v8:content>Номер и дата</v8:content>
 				</v8:item>
 			</Title>
-			<HorizontalStretch>false</HorizontalStretch>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="НомерДатаГруппаРасширеннаяПодсказка" id="41"/>
@@ -44,6 +44,7 @@
 				</v8:item>
 			</Title>
 			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="ОператорПерсональныхДанныхГруппаРасширеннаяПодсказка" id="68"/>
 			<ChildItems>
 				<UsualGroup name="ОрганизацияАдресГруппа" id="75">
@@ -81,18 +82,46 @@
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
-				<InputField name="ОтветственныйЗаОбработкуПерсональныхДанных" id="13">
-					<DataPath>Объект.ОтветственныйЗаОбработкуПерсональныхДанных</DataPath>
+				<UsualGroup name="ОтветственныйЗаПДнГруппа" id="88">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ответственный за обработку ПДн</v8:content>
+							<v8:content>Ответственный за ПДн</v8:content>
 						</v8:item>
 					</Title>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ОтветственныйЗаОбработкуПерсональныхДанныхКонтекстноеМеню" id="14"/>
-					<ExtendedTooltip name="ОтветственныйЗаОбработкуПерсональныхДанныхРасширеннаяПодсказка" id="15"/>
-				</InputField>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ОтветственныйЗаПДнГруппаРасширеннаяПодсказка" id="89"/>
+					<ChildItems>
+						<InputField name="ОтветственныйЗаОбработкуПерсональныхДанных" id="13">
+							<DataPath>Объект.ОтветственныйЗаОбработкуПерсональныхДанных</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ответственный за обработку ПДн</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ОтветственныйЗаОбработкуПерсональныхДанныхКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="ОтветственныйЗаОбработкуПерсональныхДанныхРасширеннаяПодсказка" id="15"/>
+							<Events>
+								<Event name="OnChange">ОтветственныйЗаОбработкуПерсональныхДанныхПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ФИООтветственногоЗаОбработкуПДн" id="93">
+							<DataPath>Объект.ФИООтветственногоЗаОбработкуПДн</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ФИО ответственного для печати</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ФИООтветственногоЗаОбработкуПДнКонтекстноеМеню" id="94"/>
+							<ExtendedTooltip name="ФИООтветственногоЗаОбработкуПДнРасширеннаяПодсказка" id="95"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="СубъектГруппа" id="57">
@@ -102,8 +131,8 @@
 					<v8:content>Субъект персональных данных</v8:content>
 				</v8:item>
 			</Title>
-			<Width>35</Width>
 			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="СубъектГруппаРасширеннаяПодсказка" id="58"/>
 			<ChildItems>
 				<UsualGroup name="СубъектФИОГруппа" id="73">
@@ -113,7 +142,6 @@
 							<v8:content>Субъект и ФИО</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="СубъектФИОГруппаРасширеннаяПодсказка" id="74"/>
@@ -139,15 +167,12 @@
 					<v8:content>Сведения о согласии</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Behavior>Collapsible</Behavior>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СведенияОСогласииГруппаРасширеннаяПодсказка" id="78"/>
 			<ChildItems>
 				<PictureDecoration name="СведенияКартинка" id="85">
-					<Width>3</Width>
-					<Height>2</Height>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -155,7 +180,7 @@
 						</v8:item>
 					</Title>
 					<Picture>
-						<xr:Ref>CommonPicture.Информация32</xr:Ref>
+						<xr:Ref>CommonPicture.Информация</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</Picture>
 					<FileDragMode>AsFile</FileDragMode>
@@ -163,6 +188,7 @@
 					<ExtendedTooltip name="СведенияКартинкаРасширеннаяПодсказка" id="87"/>
 				</PictureDecoration>
 				<LabelDecoration name="СведенияТекст" id="82">
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Height>2</Height>
 					<TextColor>style:ПоясняющийТекст</TextColor>
 					<Title formatted="true">
@@ -183,13 +209,6 @@
 					<v8:content>Дата отзыва</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дата отзыва группа</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ДатаОтзываГруппаРасширеннаяПодсказка" id="72"/>
@@ -219,7 +238,6 @@
 					<v8:content>Ответственный и комментарий</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ChildItemsWidth>LeftWide</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
@@ -228,12 +246,8 @@
 				<InputField name="Комментарий" id="37">
 					<DataPath>Объект.Комментарий</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<ChoiceButton>true</ChoiceButton>
 					<ContextMenu name="КомментарийКонтекстноеМеню" id="38"/>
 					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="39"/>
-					<Events>
-						<Event name="StartChoice">КомментарийНачалоВыбора</Event>
-					</Events>
 				</InputField>
 				<InputField name="Ответственный" id="34">
 					<DataPath>Объект.Ответственный</DataPath>

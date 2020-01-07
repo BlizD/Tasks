@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>100</Width>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -12,12 +11,6 @@
 						<v8:content>Командная панель редактирования</v8:content>
 					</v8:item>
 				</Title>
-				<ToolTip>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Командная панель редактирования</v8:content>
-					</v8:item>
-				</ToolTip>
 				<CommandSource>Item.Содержание</CommandSource>
 				<ExtendedTooltip name="КоманднаяПанельРедактированияExtendedTooltip" id="107"/>
 			</ButtonGroup>
@@ -25,18 +18,19 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="СодержаниеЗаметки" id="14">
-			<ToolTip>
+			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Содержание заметки</v8:content>
 				</v8:item>
-			</ToolTip>
+			</Title>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -46,21 +40,15 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа предмет</v8:content>
+							<v8:content>Предмет</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа предмет</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаПредметExtendedTooltip" id="109"/>
 					<ChildItems>
 						<LabelDecoration name="НадписьПредмет" id="65">
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -71,8 +59,8 @@
 							<ExtendedTooltip name="НадписьПредметExtendedTooltip" id="110"/>
 						</LabelDecoration>
 						<LabelDecoration name="Предмет" id="63">
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<HorizontalStretch>true</HorizontalStretch>
-							<Font ref="style:TextFont" kind="StyleItem"/>
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -113,7 +101,7 @@
 				</v8:item>
 			</ToolTip>
 			<EditMode>EnterOnInput</EditMode>
-			<AutoMaxHeight>false</AutoMaxHeight>
+			<Width>20</Width>
 			<ContextMenu name="СодержаниеКонтекстноеМеню" id="10"/>
 			<ExtendedTooltip name="СодержаниеExtendedTooltip" id="112"/>
 		</FormattedDocumentField>
@@ -124,13 +112,6 @@
 					<v8:content>Параметры отображения</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Параметры отображения</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ПараметрыОтображенияExtendedTooltip" id="113"/>
@@ -163,6 +144,7 @@
 				</InputField>
 				<InputField name="ГруппаЗаметок" id="105">
 					<DataPath>Объект.Parent</DataPath>
+					<Width>20</Width>
 					<OpenButton>false</OpenButton>
 					<ContextMenu name="ГруппаЗаметокКонтекстноеМеню" id="106"/>
 					<ExtendedTooltip name="ГруппаЗаметокExtendedTooltip" id="116"/>
@@ -176,18 +158,12 @@
 					<v8:content>Информация об авторе</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Информация об авторе</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ИнформацияОбАвтореExtendedTooltip" id="117"/>
 			<ChildItems>
 				<LabelDecoration name="НадписьАвтор" id="92">
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -198,6 +174,7 @@
 					<ExtendedTooltip name="НадписьАвторExtendedTooltip" id="118"/>
 				</LabelDecoration>
 				<LabelDecoration name="Автор" id="94">
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -220,6 +197,7 @@
 			</ChildItems>
 		</UsualGroup>
 		<LabelDecoration name="ДатаЗаметки" id="103">
+			<AutoMaxWidth>false</AutoMaxWidth>
 			<TextColor>style:ПоясняющийТекст</TextColor>
 			<Title formatted="false">
 				<v8:item>

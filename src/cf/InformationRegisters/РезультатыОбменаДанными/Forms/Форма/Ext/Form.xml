@@ -13,6 +13,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="OnClose">ПриЗакрытии</Event>
@@ -22,24 +23,15 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа отборов</v8:content>
+					<v8:content>Отборов</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа отборов</v8:content>
-				</v8:item>
-			</ToolTip>
-			<HorizontalStretch>true</HorizontalStretch>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаОтборовExtendedTooltip" id="364"/>
 			<ChildItems>
 				<InputField name="Период" id="34">
 					<DataPath>Период</DataPath>
-					<Width>30</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ClearButton>true</ClearButton>
 					<ContextMenu name="ПериодКонтекстноеМеню" id="35">
@@ -52,7 +44,6 @@
 				</InputField>
 				<InputField name="УзелИнформационнойБазы" id="36">
 					<DataPath>УзелИнформационнойБазы</DataPath>
-					<Width>30</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ClearButton>true</ClearButton>
 					<OpenButton>false</OpenButton>
@@ -76,7 +67,6 @@
 							<v8:content>Причина</v8:content>
 						</v8:item>
 					</Title>
-					<Width>30</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ClearButton>true</ClearButton>
 					<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="56">
@@ -89,6 +79,17 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
+		<Button name="ПоказатьИнформациюДляТехническихСпециалистов" id="821">
+			<Type>Hyperlink</Type>
+			<CommandName>Form.Command.ПоказатьИнформациюДляТехническихСпециалистов</CommandName>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать информацию для технических специалистов</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="ПоказатьИнформациюДляТехническихСпециалистовРасширеннаяПодсказка" id="822"/>
+		</Button>
 		<Pages name="РезультатыОбменаДанными" id="1">
 			<Title>
 				<v8:item>
@@ -96,17 +97,286 @@
 					<v8:content>Результаты обмена данными</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Результаты обмена данными</v8:content>
-				</v8:item>
-			</ToolTip>
 			<ExtendedTooltip name="РезультатыОбменаДаннымиExtendedTooltip" id="368"/>
 			<Events>
 				<Event name="OnCurrentPageChange">РезультатыОбменаДаннымиПриСменеСтраницы</Event>
 			</Events>
 			<ChildItems>
+				<Page name="СтраницаОшибкиXDTO" id="537">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проблемы при отправке</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список объектов зарегистрированных к отправке в другую программу, но имеют проблемы из-за которых не могут быть выгружены.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Picture>
+						<xr:Ref>CommonPicture.ИнформацияПоНедоступнымПолям</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="СтраницаОшибкиXDTOРасширеннаяПодсказка" id="538"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияОшибкиXDTO" id="596">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>При отправке данных в другую программу, обнаружены объекты информационной базы, которые зарегистрированы к обмену, но не могут быть выгружены по различным причинам. Необходимо открыть проблемный объект и устранить причины, мешающие его отправке в другую программу. При последующей отправке в другую программу список проблем будет актуализирован.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияОшибкиXDTOКонтекстноеМеню" id="597"/>
+							<ExtendedTooltip name="ДекорацияОшибкиXDTOРасширеннаяПодсказка" id="598"/>
+						</LabelDecoration>
+						<Table name="ОшибкиОбъектаXDTO" id="672">
+							<ReadOnly>true</ReadOnly>
+							<RowSelectionMode>Row</RowSelectionMode>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>ОшибкиОбъектаXDTO</DataPath>
+							<RowPictureDataPath>ОшибкиОбъектаXDTO.DefaultPicture</RowPictureDataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Незаполненные реквизиты</v8:content>
+								</v8:item>
+							</Title>
+							<CurrentRowUse>SelectionPresentation</CurrentRowUse>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="ОшибкиОбъектаXDTOКонтекстноеМеню" id="673">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ОшибкиОбъектаXDTOКонтекстноеМенюИзменитьВыделенныеОбъекты" id="705">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ИзменитьВыделенныеОшибкиXTDO</CommandName>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOКонтекстноеМенюИзменитьВыделенныеОбъектыРасширеннаяПодсказка" id="706"/>
+									</Button>
+									<Button name="ОшибкиОбъектаXDTOКонтекстноеМенюИзменить" id="707">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Изменить</CommandName>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOКонтекстноеМенюИзменитьРасширеннаяПодсказка" id="708"/>
+									</Button>
+									<ButtonGroup name="ОшибкиОбъектаXDTOКонтекстноеМенюГруппаИгнорирования" id="709">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Незаполненные реквизиты контекстное меню группа игнорирования</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOКонтекстноеМенюГруппаИгнорированияРасширеннаяПодсказка" id="710"/>
+										<ChildItems>
+											<Button name="ОшибкиОбъектаXDTOКонтекстноеМенюИгнорироватьОбъект" id="711">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ИгнорироватьОбъект</CommandName>
+												<ExtendedTooltip name="ОшибкиОбъектаXDTOКонтекстноеМенюИгнорироватьОбъектРасширеннаяПодсказка" id="712"/>
+											</Button>
+											<Button name="ОшибкиОбъектаXDTOКонтекстноеМенюНеИгнорироватьОбъект" id="713">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.НеИгнорироватьОбъект</CommandName>
+												<ExtendedTooltip name="ОшибкиОбъектаXDTOКонтекстноеМенюНеИгнорироватьОбъектРасширеннаяПодсказка" id="714"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Button name="ОшибкиОбъектаXDTOКонтекстноеМенюКопироватьВБуферОбмена" id="715">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.НезаполненныеРеквизиты.StandardCommand.CopyToClipboard</CommandName>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOКонтекстноеМенюКопироватьВБуферОбменаРасширеннаяПодсказка" id="716"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="ОшибкиОбъектаXDTOКоманднаяПанель" id="674">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ОшибкиОбъектаXDTOИзменитьВыделенныеОбъекты" id="717">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ИзменитьВыделенныеОшибкиXTDO</CommandName>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOИзменитьВыделенныеОбъектыРасширеннаяПодсказка" id="718"/>
+									</Button>
+									<Button name="ОшибкиОбъектаXDTOИзменить" id="719">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Изменить</CommandName>
+										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOИзменитьРасширеннаяПодсказка" id="720"/>
+									</Button>
+									<ButtonGroup name="ГруппаИгнорированияОшибокXDTO" id="721">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Игнорирования ошибок XDTO</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ГруппаИгнорированияОшибокXDTOРасширеннаяПодсказка" id="722"/>
+										<ChildItems>
+											<Button name="ОшибкиОбъектаXDTOИгнорироватьОшибку" id="723">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ИгнорироватьОшибку</CommandName>
+												<ExtendedTooltip name="ОшибкиОбъектаXDTOИгнорироватьОшибкуРасширеннаяПодсказка" id="724"/>
+											</Button>
+											<Button name="ОшибкиОбъектаXDTOНеИгнорироватьОшибку" id="725">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.НеИгнорироватьОшибку</CommandName>
+												<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="ОшибкиОбъектаXDTOНеИгнорироватьОшибкуРасширеннаяПодсказка" id="726"/>
+											</Button>
+											<Button name="ОшибкиОбъектаXDTOПоказыватьПроигнорированные" id="727">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПоказыватьПроигнорированныеНезаполненные</CommandName>
+												<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="ОшибкиОбъектаXDTOПоказыватьПроигнорированныеРасширеннаяПодсказка" id="728"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Button name="ОшибкиОбъектаXDTOОбновить" id="729">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Обновить</CommandName>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOОбновитьРасширеннаяПодсказка" id="730"/>
+									</Button>
+									<Button name="ОшибкиОбъектаXDTOНайти" id="731">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.НезаполненныеРеквизиты.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOНайтиРасширеннаяПодсказка" id="732"/>
+									</Button>
+									<Button name="ОшибкиОбъектаXDTOОтменитьПоиск" id="733">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.НезаполненныеРеквизиты.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOОтменитьПоискРасширеннаяПодсказка" id="734"/>
+									</Button>
+									<Button name="ОшибкиОбъектаXDTOВывестиСписок" id="735">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.НезаполненныеРеквизиты.StandardCommand.OutputList</CommandName>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOВывестиСписокРасширеннаяПодсказка" id="736"/>
+									</Button>
+									<Button name="ОшибкиОбъектаXDTOНастройкаСписка" id="737">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.НезаполненныеРеквизиты.StandardCommand.ListSettings</CommandName>
+										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOНастройкаСпискаРасширеннаяПодсказка" id="738"/>
+									</Button>
+									<Button name="ОшибкиОбъектаXDTOИзменитьФорму" id="739">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOИзменитьФормуРасширеннаяПодсказка" id="740"/>
+									</Button>
+									<Button name="ОшибкиОбъектаXDTOСправка" id="741">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.Help</CommandName>
+										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+										<ExtendedTooltip name="ОшибкиОбъектаXDTOСправкаРасширеннаяПодсказка" id="742"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ОшибкиОбъектаXDTOРасширеннаяПодсказка" id="675"/>
+							<SearchStringAddition name="ОшибкиОбъектаXDTOСтрокаПоиска" id="676">
+								<AdditionSource>
+									<Item>ОшибкиОбъектаXDTO</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиОбъектаXDTOСтрокаПоискаКонтекстноеМеню" id="677"/>
+								<ExtendedTooltip name="ОшибкиОбъектаXDTOСтрокаПоискаРасширеннаяПодсказка" id="678"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОшибкиОбъектаXDTOСостояниеПросмотра" id="679">
+								<AdditionSource>
+									<Item>ОшибкиОбъектаXDTO</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиОбъектаXDTOСостояниеПросмотраКонтекстноеМеню" id="680"/>
+								<ExtendedTooltip name="ОшибкиОбъектаXDTOСостояниеПросмотраРасширеннаяПодсказка" id="681"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОшибкиОбъектаXDTOУправлениеПоиском" id="682">
+								<AdditionSource>
+									<Item>ОшибкиОбъектаXDTO</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиОбъектаXDTOУправлениеПоискомКонтекстноеМеню" id="683"/>
+								<ExtendedTooltip name="ОшибкиОбъектаXDTOУправлениеПоискомРасширеннаяПодсказка" id="684"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ОшибкиОбъектаXDTOВыбор</Event>
+								<Event name="BeforeRowChange">ОшибкиОбъектаXDTOПередНачаломИзменения</Event>
+							</Events>
+							<ChildItems>
+								<ColumnGroup name="ОшибкиОбъектаXDTOГруппаКартинки" id="685">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Незаполненные реквизиты группа картинки</v8:content>
+										</v8:item>
+									</Title>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="ОшибкиОбъектаXDTOГруппаКартинкиРасширеннаяПодсказка" id="686"/>
+									<ChildItems>
+										<PictureField name="ОшибкиОбъектаXDTOКартинка" id="743">
+											<DataPath>ОшибкиОбъектаXDTO.ПометкаУдаления</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Картинка</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<ValuesPicture>
+												<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</ValuesPicture>
+											<ContextMenu name="ОшибкиОбъектаXDTOКартинкаКонтекстноеМеню" id="744"/>
+											<ExtendedTooltip name="ОшибкиОбъектаXDTOКартинкаРасширеннаяПодсказка" id="745"/>
+										</PictureField>
+										<LabelField name="ОшибкиОбъектаXDTOПредставлениеОбъекта" id="746">
+											<DataPath>ОшибкиОбъектаXDTO.ОбъектМетаданных</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Вид данных</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ОшибкиОбъектаXDTOПредставлениеОбъектаКонтекстноеМеню" id="747"/>
+											<ExtendedTooltip name="ОшибкиОбъектаXDTOПредставлениеОбъектаРасширеннаяПодсказка" id="748"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="ОшибкиОбъектаXDTOСсылка" id="749">
+									<DataPath>ОшибкиОбъектаXDTO.Ссылка</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Данные</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОшибкиОбъектаXDTOСсылкаКонтекстноеМеню" id="750"/>
+									<ExtendedTooltip name="ОшибкиОбъектаXDTOСсылкаРасширеннаяПодсказка" id="751"/>
+								</InputField>
+								<InputField name="ОшибкиОбъектаXDTOДатаВозникновения" id="752">
+									<DataPath>ОшибкиОбъектаXDTO.ДатаВозникновения</DataPath>
+									<ContextMenu name="ОшибкиОбъектаXDTOДатаВозникновенияКонтекстноеМеню" id="753"/>
+									<ExtendedTooltip name="ОшибкиОбъектаXDTOДатаВозникновенияРасширеннаяПодсказка" id="754"/>
+								</InputField>
+								<InputField name="ОшибкиОбъектаXDTOУзелИнформационнойБазы" id="755">
+									<DataPath>ОшибкиОбъектаXDTO.УзелИнформационнойБазы</DataPath>
+									<ContextMenu name="ОшибкиОбъектаXDTOУзелИнформационнойБазыКонтекстноеМеню" id="756"/>
+									<ExtendedTooltip name="ОшибкиОбъектаXDTOУзелИнформационнойБазыРасширеннаяПодсказка" id="757"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 				<Page name="СтраницаНепроведенныеДокументы" id="2">
 					<Title>
 						<v8:item>
@@ -114,12 +384,6 @@
 							<v8:content>Непроведенные документы</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница непроведенные документы</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Picture>
 						<xr:Ref>StdPicture.Document</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
@@ -127,6 +391,7 @@
 					<ExtendedTooltip name="СтраницаНепроведенныеДокументыExtendedTooltip" id="369"/>
 					<ChildItems>
 						<LabelDecoration name="ДекорацияДокументы" id="57">
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<TextColor>style:ПоясняющийТекст</TextColor>
 							<Title formatted="false">
 								<v8:item>
@@ -144,9 +409,13 @@
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>НепроведенныеДокументы</DataPath>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Непроведенные документы</v8:content>
+								</v8:item>
+							</Title>
+							<CurrentRowUse>SelectionPresentation</CurrentRowUse>
 							<AutoRefresh>false</AutoRefresh>
 							<AutoRefreshPeriod>60</AutoRefreshPeriod>
 							<Period>
@@ -185,12 +454,6 @@
 												<v8:content>Непроведенные документы контекстное меню группа игнорирования</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Непроведенные документы контекстное меню группа игнорирования</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="НепроведенныеДокументыКонтекстноеМенюГруппаИгнорированияExtendedTooltip" id="374"/>
 										<ChildItems>
 											<Button name="НепроведенныеДокументыКонтекстноеМенюИгнорироватьДокумент" id="65">
@@ -235,15 +498,9 @@
 										<Title>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
-												<v8:content>Группа игнорирования документов</v8:content>
+												<v8:content>Игнорирования документов</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Группа игнорирования документов</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="ГруппаИгнорированияДокументовExtendedTooltip" id="381"/>
 										<ChildItems>
 											<Button name="НепроведенныеДокументыИгнорироватьДокумент" id="21">
@@ -339,6 +596,12 @@
 									<UserVisible>
 										<xr:Common>false</xr:Common>
 									</UserVisible>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Данные</v8:content>
+										</v8:item>
+									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -355,17 +618,17 @@
 											<v8:content>Непроведенные документы группа картинки</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Непроведенные документы группа картинки</v8:content>
-										</v8:item>
-									</ToolTip>
 									<Group>InCell</Group>
 									<ExtendedTooltip name="НепроведенныеДокументыГруппаКартинкиExtendedTooltip" id="393"/>
 									<ChildItems>
 										<PictureField name="НепроведенныеДокументыПометкаУдаления" id="259">
 											<DataPath>НепроведенныеДокументы.ПометкаУдаления</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Пометка удаления</v8:content>
+												</v8:item>
+											</Title>
 											<TitleLocation>None</TitleLocation>
 											<Width>9</Width>
 											<ValuesPicture>
@@ -415,13 +678,19 @@
 								</LabelField>
 								<LabelField name="НепроведенныеДокументыДатаДокумента" id="253">
 									<DataPath>НепроведенныеДокументы.ДатаДокумента</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата</v8:content>
+										</v8:item>
+									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Дата документа</v8:content>
 										</v8:item>
 									</ToolTip>
-									<Width>15</Width>
+									<Width>9</Width>
 									<ContextMenu name="НепроведенныеДокументыДатаДокументаКонтекстноеМеню" id="254"/>
 									<ExtendedTooltip name="НепроведенныеДокументыДатаДокументаExtendedTooltip" id="398"/>
 								</LabelField>
@@ -442,7 +711,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Дата</v8:content>
+											<v8:content>Дата получения</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
@@ -475,20 +744,6 @@
 								</LabelField>
 							</ChildItems>
 						</Table>
-						<InputField name="НепроведенныеДокументыПричинаПодробно" id="170">
-							<DataPath>Items.НепроведенныеДокументы.CurrentData.Причина</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Документ не удалось провести автоматически по причине</v8:content>
-								</v8:item>
-							</Title>
-							<Height>4</Height>
-							<MultiLine>true</MultiLine>
-							<ContextMenu name="НепроведенныеДокументыПричинаПодробноКонтекстноеМеню" id="171"/>
-							<ExtendedTooltip name="НепроведенныеДокументыПричинаПодробноExtendedTooltip" id="402"/>
-						</InputField>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаНезаполненныеРеквизиты" id="39">
@@ -498,12 +753,6 @@
 							<v8:content>Незаполненные реквизиты</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница незаполненные реквизиты</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Picture>
 						<xr:Ref>StdPicture.Catalog</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
@@ -511,6 +760,7 @@
 					<ExtendedTooltip name="СтраницаНезаполненныеРеквизитыExtendedTooltip" id="403"/>
 					<ChildItems>
 						<LabelDecoration name="ДекорацияОбъекты" id="59">
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<TextColor>style:ПоясняющийТекст</TextColor>
 							<Title formatted="false">
 								<v8:item>
@@ -529,9 +779,13 @@
 							<EnableStartDrag>true</EnableStartDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>НезаполненныеРеквизиты</DataPath>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Незаполненные реквизиты</v8:content>
+								</v8:item>
+							</Title>
+							<CurrentRowUse>SelectionPresentation</CurrentRowUse>
 							<AutoRefresh>false</AutoRefresh>
 							<AutoRefreshPeriod>60</AutoRefreshPeriod>
 							<Period>
@@ -565,12 +819,6 @@
 												<v8:content>Незаполненные реквизиты контекстное меню группа игнорирования</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Незаполненные реквизиты контекстное меню группа игнорирования</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="НезаполненныеРеквизитыКонтекстноеМенюГруппаИгнорированияExtendedTooltip" id="407"/>
 										<ChildItems>
 											<Button name="НезаполненныеРеквизитыКонтекстноеМенюИгнорироватьОбъект" id="97">
@@ -610,15 +858,9 @@
 										<Title>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
-												<v8:content>Группа игнорирования объектов</v8:content>
+												<v8:content>Игнорирования объектов</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Группа игнорирования объектов</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="ГруппаИгнорированияОбъектовExtendedTooltip" id="413"/>
 										<ChildItems>
 											<Button name="НезаполненныеРеквизитыИгнорироватьОбъект" id="89">
@@ -716,17 +958,17 @@
 											<v8:content>Незаполненные реквизиты группа картинки</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Незаполненные реквизиты группа картинки</v8:content>
-										</v8:item>
-									</ToolTip>
 									<Group>InCell</Group>
 									<ExtendedTooltip name="НезаполненныеРеквизитыГруппаКартинкиExtendedTooltip" id="425"/>
 									<ChildItems>
 										<PictureField name="НезаполненныеРеквизитыПометкаУдаления" id="262">
 											<DataPath>НезаполненныеРеквизиты.ПометкаУдаления</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Пометка удаления</v8:content>
+												</v8:item>
+											</Title>
 											<TitleLocation>None</TitleLocation>
 											<ToolTip>
 												<v8:item>
@@ -819,20 +1061,6 @@
 								</LabelField>
 							</ChildItems>
 						</Table>
-						<InputField name="НезаполненныеРеквизитыПричинаПодробно" id="174">
-							<DataPath>Items.НезаполненныеРеквизиты.CurrentData.Причина</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Данные не удалось записать по причине</v8:content>
-								</v8:item>
-							</Title>
-							<Height>4</Height>
-							<MultiLine>true</MultiLine>
-							<ContextMenu name="НезаполненныеРеквизитыПричинаПодробноКонтекстноеМеню" id="175"/>
-							<ExtendedTooltip name="НезаполненныеРеквизитыПричинаПодробноExtendedTooltip" id="432"/>
-						</InputField>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаКоллизии" id="42">
@@ -842,12 +1070,6 @@
 							<v8:content>Конфликты</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница коллизии</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Picture>
 						<xr:Ref>CommonPicture.СинхронизацияДанныхКоллизия</xr:Ref>
 						<xr:LoadTransparent>false</xr:LoadTransparent>
@@ -855,6 +1077,7 @@
 					<ExtendedTooltip name="СтраницаКоллизииExtendedTooltip" id="433"/>
 					<ChildItems>
 						<LabelDecoration name="ДекорацияКоллизии" id="176">
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<TextColor>style:ПоясняющийТекст</TextColor>
 							<Title formatted="false">
 								<v8:item>
@@ -873,9 +1096,13 @@
 							<EnableStartDrag>true</EnableStartDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Коллизии</DataPath>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Коллизии</v8:content>
+								</v8:item>
+							</Title>
+							<CurrentRowUse>SelectionPresentation</CurrentRowUse>
 							<AutoRefresh>false</AutoRefresh>
 							<AutoRefreshPeriod>60</AutoRefreshPeriod>
 							<Period>
@@ -919,12 +1146,6 @@
 												<v8:content>Коллизии контекстное меню группа разделитель</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Коллизии контекстное меню группа разделитель</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="КоллизииКонтекстноеМенюГруппаРазделительРасширеннаяПодсказка" id="439"/>
 										<ChildItems>
 											<Button name="КоллизииКонтекстноеМенюНеИгнорироватьКонфликт" id="317">
@@ -936,7 +1157,7 @@
 									</ButtonGroup>
 									<Button name="КоллизииКонтекстноеМенюКопироватьВБуферОбмена" id="274">
 										<Type>CommandBarButton</Type>
-										<CommandName>102:88078230-1f6b-415f-99e4-ad2ff73810cf</CommandName>
+										<CommandName>Form.Item.Коллизии.StandardCommand.CopyToClipboard</CommandName>
 										<ExtendedTooltip name="КоллизииКонтекстноеМенюКопироватьВБуферОбменаExtendedTooltip" id="441"/>
 									</Button>
 								</ChildItems>
@@ -980,12 +1201,6 @@
 												<v8:content>Коллизии группа игнорирования</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Коллизии группа игнорирования</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="КоллизииГруппаИгнорированияExtendedTooltip" id="446"/>
 										<ChildItems>
 											<Button name="КоллизииИгнорироватьКонфликт" id="272">
@@ -1030,12 +1245,6 @@
 												<v8:content>Коллизии группа служебные</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Коллизии группа служебные</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="КоллизииГруппаСлужебныеExtendedTooltip" id="451"/>
 										<ChildItems>
 											<Button name="ФормаОбновить" id="28">
@@ -1203,15 +1412,6 @@
 								</LabelField>
 							</ChildItems>
 						</Table>
-						<InputField name="ПричинаКонфликта" id="353">
-							<DataPath>ПричинаКонфликта</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<TitleLocation>Top</TitleLocation>
-							<Height>4</Height>
-							<MultiLine>true</MultiLine>
-							<ContextMenu name="ПричинаКонфликтаКонтекстноеМеню" id="354"/>
-							<ExtendedTooltip name="ПричинаКонфликтаExtendedTooltip" id="465"/>
-						</InputField>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаНепринятыеПоДатеЗапрета" id="50">
@@ -1221,12 +1421,6 @@
 							<v8:content>Непринятые по дате запрета</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница непринятые по дате запрета</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Picture>
 						<xr:Ref>CommonPicture.СинхронизацияДанныхНепринятыеПоДате</xr:Ref>
 						<xr:LoadTransparent>false</xr:LoadTransparent>
@@ -1234,6 +1428,7 @@
 					<ExtendedTooltip name="СтраницаНепринятыеПоДатеЗапретаExtendedTooltip" id="466"/>
 					<ChildItems>
 						<LabelDecoration name="ДекорацияНепринятые" id="178">
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<TextColor>style:ПоясняющийТекст</TextColor>
 							<Title formatted="false">
 								<v8:item>
@@ -1252,9 +1447,13 @@
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>НепринятыеПоДате</DataPath>
 							<RowPictureDataPath>НепринятыеПоДате.DefaultPicture</RowPictureDataPath>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Непринятые по дате</v8:content>
+								</v8:item>
+							</Title>
+							<CurrentRowUse>SelectionPresentation</CurrentRowUse>
 							<AutoRefresh>false</AutoRefresh>
 							<AutoRefreshPeriod>60</AutoRefreshPeriod>
 							<Period>
@@ -1303,12 +1502,6 @@
 												<v8:content>Непринятые по дате контекстное меню группа игнорирования</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Непринятые по дате контекстное меню группа игнорирования</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="НепринятыеПоДатеКонтекстноеМенюГруппаИгнорированияExtendedTooltip" id="473"/>
 										<ChildItems>
 											<Button name="НепринятыеПоДатеКонтекстноеМенюИгнорироватьНепринятый" id="319">
@@ -1325,7 +1518,7 @@
 									</ButtonGroup>
 									<Button name="НепринятыеПоДатеКонтекстноеМенюКопироватьВБуферОбмена" id="257">
 										<Type>CommandBarButton</Type>
-										<CommandName>128:88078230-1f6b-415f-99e4-ad2ff73810cf</CommandName>
+										<CommandName>Form.Item.НепринятыеПоДате.StandardCommand.CopyToClipboard</CommandName>
 										<ExtendedTooltip name="НепринятыеПоДатеКонтекстноеМенюКопироватьВБуферОбменаExtendedTooltip" id="476"/>
 									</Button>
 								</ChildItems>
@@ -1363,12 +1556,6 @@
 												<v8:content>Непринятые по дате группа игнорирования</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Непринятые по дате группа игнорирования</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="НепринятыеПоДатеГруппаИгнорированияExtendedTooltip" id="481"/>
 										<ChildItems>
 											<Button name="НепринятыеПоДатеИгнорироватьНепринятый" id="311">
@@ -1397,12 +1584,6 @@
 												<v8:content>Непринятые по дате группа служебные</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Непринятые по дате группа служебные</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="НепринятыеПоДатеГруппаСлужебныеExtendedTooltip" id="485"/>
 										<ChildItems>
 											<Button name="НепринятыеПоДатеОбновить" id="359">
@@ -1477,6 +1658,12 @@
 							<ChildItems>
 								<LabelField name="НепринятыеПоДатеДата" id="334">
 									<DataPath>НепринятыеПоДате.Дата</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата</v8:content>
+										</v8:item>
+									</Title>
 									<ContextMenu name="НепринятыеПоДатеДатаКонтекстноеМеню" id="335"/>
 									<ExtendedTooltip name="НепринятыеПоДатеДатаРасширеннаяПодсказка" id="494"/>
 								</LabelField>
@@ -1533,8 +1720,390 @@
 								</LabelField>
 							</ChildItems>
 						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаОшибкиПриВыполненииКодаОбработчиковОтправки" id="535">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибки кода обработчиков при отправки</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибки при выполнении кода обработчиков отправки</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Picture>
+						<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="СтраницаОшибкиПриВыполненииКодаОбработчиковОтправкиРасширеннаяПодсказка" id="536"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияОшибкиОтправки" id="761">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>При отправке данных в другую программу, обнаружены ошибки в код правил конвертации объектов. Необходимо либо обновится на актуальную версию программы, либо связаться с обслуживающей организацией.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияОшибкиОтправкиКонтекстноеМеню" id="762"/>
+							<ExtendedTooltip name="ДекорацияОшибкиОтправкиРасширеннаяПодсказка" id="763"/>
+						</LabelDecoration>
+						<Table name="ОшибкиПриВыполненииКодаОбработчиковОтправки" id="554">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>ОшибкиПриВыполненииКодаОбработчиковОтправки</DataPath>
+							<RowPictureDataPath>ОшибкиПриВыполненииКодаОбработчиковОтправки.DefaultPicture</RowPictureDataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ошибки при выполнении кода обработчиков отправки</v8:content>
+								</v8:item>
+							</Title>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковОтправкиКонтекстноеМеню" id="555"/>
+							<AutoCommandBar name="ОшибкиПриВыполненииКодаОбработчиковОтправкиКоманднаяПанель" id="556">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковОтправкиРасширеннаяПодсказка" id="557"/>
+							<SearchStringAddition name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСтрокаПоиска" id="558">
+								<AdditionSource>
+									<Item>ОшибкиПриВыполненииКодаОбработчиковОтправки</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСтрокаПоискаКонтекстноеМеню" id="559"/>
+								<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСтрокаПоискаРасширеннаяПодсказка" id="560"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСостояниеПросмотра" id="561">
+								<AdditionSource>
+									<Item>ОшибкиПриВыполненииКодаОбработчиковОтправки</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСостояниеПросмотраКонтекстноеМеню" id="562"/>
+								<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСостояниеПросмотраРасширеннаяПодсказка" id="563"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОшибкиПриВыполненииКодаОбработчиковОтправкиУправлениеПоиском" id="564">
+								<AdditionSource>
+									<Item>ОшибкиПриВыполненииКодаОбработчиковОтправки</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковОтправкиУправлениеПоискомКонтекстноеМеню" id="565"/>
+								<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковОтправкиУправлениеПоискомРасширеннаяПодсказка" id="566"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковОтправкиДатаВозникновения" id="773">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковОтправки.ДатаВозникновения</DataPath>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковОтправкиДатаВозникновенияКонтекстноеМеню" id="774"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковОтправкиДатаВозникновенияРасширеннаяПодсказка" id="775"/>
+								</LabelField>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковОтправкиПредставлениеОбъекта" id="779">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковОтправки.ПредставлениеОбъекта</DataPath>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковОтправкиПредставлениеОбъектаКонтекстноеМеню" id="780"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковОтправкиПредставлениеОбъектаРасширеннаяПодсказка" id="781"/>
+								</LabelField>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковОтправкиПричина" id="782">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковОтправки.Причина</DataPath>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковОтправкиПричинаКонтекстноеМеню" id="783"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковОтправкиПричинаРасширеннаяПодсказка" id="784"/>
+								</LabelField>
+								<CheckBoxField name="ОшибкиПриВыполненииКодаОбработчиковОтправкиПропущена" id="785">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковОтправки.Пропущена</DataPath>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковОтправкиПропущенаКонтекстноеМеню" id="786"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковОтправкиПропущенаРасширеннаяПодсказка" id="787"/>
+								</CheckBoxField>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСсылка" id="788">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковОтправки.Ссылка</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Данные</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСсылкаКонтекстноеМеню" id="789"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСсылкаРасширеннаяПодсказка" id="790"/>
+								</LabelField>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковОтправкиУзелИнформационнойБазы" id="791">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковОтправки.УзелИнформационнойБазы</DataPath>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковОтправкиУзелИнформационнойБазыКонтекстноеМеню" id="792"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковОтправкиУзелИнформационнойБазыРасширеннаяПодсказка" id="793"/>
+								</LabelField>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСтандартнаяКартинка" id="794">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковОтправки.DefaultPicture</DataPath>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСтандартнаяКартинкаКонтекстноеМеню" id="795"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковОтправкиСтандартнаяКартинкаРасширеннаяПодсказка" id="796"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаОшибкиПриВыполненииКодаОбработчиковПолучения" id="539">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибки кода обработчиков при получения</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибки при выполнении кода обработчиков получения</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Picture>
+						<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="СтраницаОшибкиПриВыполненииКодаОбработчиковПолученияРасширеннаяПодсказка" id="540"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияОшибкиПолучения" id="764">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>При получении данных из другой программы, обнаружены ошибки в код правил конвертации объектов. Необходимо либо обновится на актуальную версию программы, либо связаться с обслуживающей организацией.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияОшибкиПолученияКонтекстноеМеню" id="765"/>
+							<ExtendedTooltip name="ДекорацияОшибкиПолученияРасширеннаяПодсказка" id="766"/>
+						</LabelDecoration>
+						<Table name="ОшибкиПриВыполненииКодаОбработчиковПолучения" id="567">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>ОшибкиПриВыполненииКодаОбработчиковПолучения</DataPath>
+							<RowPictureDataPath>ОшибкиПриВыполненииКодаОбработчиковПолучения.DefaultPicture</RowPictureDataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ошибки при выполнении кода обработчиков получения</v8:content>
+								</v8:item>
+							</Title>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковПолученияКонтекстноеМеню" id="568"/>
+							<AutoCommandBar name="ОшибкиПриВыполненииКодаОбработчиковПолученияКоманднаяПанель" id="569">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковПолученияРасширеннаяПодсказка" id="570"/>
+							<SearchStringAddition name="ОшибкиПриВыполненииКодаОбработчиковПолученияСтрокаПоиска" id="571">
+								<AdditionSource>
+									<Item>ОшибкиПриВыполненииКодаОбработчиковПолучения</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковПолученияСтрокаПоискаКонтекстноеМеню" id="572"/>
+								<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковПолученияСтрокаПоискаРасширеннаяПодсказка" id="573"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОшибкиПриВыполненииКодаОбработчиковПолученияСостояниеПросмотра" id="574">
+								<AdditionSource>
+									<Item>ОшибкиПриВыполненииКодаОбработчиковПолучения</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковПолученияСостояниеПросмотраКонтекстноеМеню" id="575"/>
+								<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковПолученияСостояниеПросмотраРасширеннаяПодсказка" id="576"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОшибкиПриВыполненииКодаОбработчиковПолученияУправлениеПоиском" id="577">
+								<AdditionSource>
+									<Item>ОшибкиПриВыполненииКодаОбработчиковПолучения</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковПолученияУправлениеПоискомКонтекстноеМеню" id="578"/>
+								<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковПолученияУправлениеПоискомРасширеннаяПодсказка" id="579"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковПолученияДатаВозникновения" id="797">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковПолучения.ДатаВозникновения</DataPath>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковПолученияДатаВозникновенияКонтекстноеМеню" id="798"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковПолученияДатаВозникновенияРасширеннаяПодсказка" id="799"/>
+								</LabelField>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковПолученияПредставлениеОбъекта" id="803">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковПолучения.ПредставлениеОбъекта</DataPath>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковПолученияПредставлениеОбъектаКонтекстноеМеню" id="804"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковПолученияПредставлениеОбъектаРасширеннаяПодсказка" id="805"/>
+								</LabelField>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковПолученияПричина" id="806">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковПолучения.Причина</DataPath>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковПолученияПричинаКонтекстноеМеню" id="807"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковПолученияПричинаРасширеннаяПодсказка" id="808"/>
+								</LabelField>
+								<CheckBoxField name="ОшибкиПриВыполненииКодаОбработчиковПолученияПропущена" id="809">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковПолучения.Пропущена</DataPath>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковПолученияПропущенаКонтекстноеМеню" id="810"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковПолученияПропущенаРасширеннаяПодсказка" id="811"/>
+								</CheckBoxField>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковПолученияСсылка" id="812">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковПолучения.Ссылка</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Данные</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковПолученияСсылкаКонтекстноеМеню" id="813"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковПолученияСсылкаРасширеннаяПодсказка" id="814"/>
+								</LabelField>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковПолученияУзелИнформационнойБазы" id="815">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковПолучения.УзелИнформационнойБазы</DataPath>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковПолученияУзелИнформационнойБазыКонтекстноеМеню" id="816"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковПолученияУзелИнформационнойБазыРасширеннаяПодсказка" id="817"/>
+								</LabelField>
+								<LabelField name="ОшибкиПриВыполненииКодаОбработчиковПолученияСтандартнаяКартинка" id="818">
+									<DataPath>ОшибкиПриВыполненииКодаОбработчиковПолучения.DefaultPicture</DataPath>
+									<ContextMenu name="ОшибкиПриВыполненииКодаОбработчиковПолученияСтандартнаяКартинкаКонтекстноеМеню" id="819"/>
+									<ExtendedTooltip name="ОшибкиПриВыполненииКодаОбработчиковПолученияСтандартнаяКартинкаРасширеннаяПодсказка" id="820"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<Pages name="ПанельПодробноеОписание" id="823">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель подробное описание</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="ПанельПодробноеОписаниеРасширеннаяПодсказка" id="824"/>
+			<ChildItems>
+				<Page name="СтраницаОшибкиXDTOПодробноеОписание" id="825">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница ошибки XDTO подробное описание</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаОшибкиXDTOПодробноеОписаниеРасширеннаяПодсказка" id="826"/>
+					<ChildItems>
+						<InputField name="ОшибкиОбъектаXDTOПричинаПодробно" id="758">
+							<DataPath>Items.ОшибкиОбъектаXDTO.CurrentData.Причина</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Данные не удалось отправить по причине</v8:content>
+								</v8:item>
+							</Title>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ОшибкиОбъектаXDTOПричинаПодробноКонтекстноеМеню" id="759"/>
+							<ExtendedTooltip name="ОшибкиОбъектаXDTOПричинаПодробноРасширеннаяПодсказка" id="760"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаНепроведенныеДокументыПодробноеОписание" id="827">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница непроведенные документы подробное описание</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаНепроведенныеДокументыПодробноеОписаниеРасширеннаяПодсказка" id="828"/>
+					<ChildItems>
+						<InputField name="НепроведенныеДокументыПричинаПодробно" id="170">
+							<DataPath>Items.НепроведенныеДокументы.CurrentData.Причина</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Документ не удалось провести автоматически по причине</v8:content>
+								</v8:item>
+							</Title>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="НепроведенныеДокументыПричинаПодробноКонтекстноеМеню" id="171"/>
+							<ExtendedTooltip name="НепроведенныеДокументыПричинаПодробноExtendedTooltip" id="402"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаНезаполненныеРеквизитыПодробноеОписание" id="829">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница незаполненные реквизиты подробное описание</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаНезаполненныеРеквизитыПодробноеОписаниеРасширеннаяПодсказка" id="830"/>
+					<ChildItems>
+						<InputField name="НезаполненныеРеквизитыПричинаПодробно" id="174">
+							<DataPath>Items.НезаполненныеРеквизиты.CurrentData.Причина</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Данные не удалось записать по причине</v8:content>
+								</v8:item>
+							</Title>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="НезаполненныеРеквизитыПричинаПодробноКонтекстноеМеню" id="175"/>
+							<ExtendedTooltip name="НезаполненныеРеквизитыПричинаПодробноExtendedTooltip" id="432"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаКоллизииПодробноеОписание" id="831">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница коллизии подробное описание</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаКоллизииПодробноеОписаниеРасширеннаяПодсказка" id="832"/>
+					<ChildItems>
+						<InputField name="ПричинаКонфликта" id="353">
+							<DataPath>ПричинаКонфликта</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<TitleLocation>Top</TitleLocation>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ПричинаКонфликтаКонтекстноеМеню" id="354"/>
+							<ExtendedTooltip name="ПричинаКонфликтаExtendedTooltip" id="465"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаНепринятыеПоДатеЗапретаПодробноеОписание" id="833">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница непринятые по дате запрета подробное описание</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаНепринятыеПоДатеЗапретаПодробноеОписаниеРасширеннаяПодсказка" id="834"/>
+					<ChildItems>
 						<InputField name="НепринятыеПоДатеПричинаЗапретаПодробно" id="225">
-							<DataPath>Items.НепринятыеПоДате.CurrentData.НомерЭтойВерсии</DataPath>
+							<DataPath>Items.НепринятыеПоДате.CurrentData.ПричинаЗапрета</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<Title>
 								<v8:item>
@@ -1542,10 +2111,60 @@
 									<v8:content>Данные были отклонены из-за запрета</v8:content>
 								</v8:item>
 							</Title>
-							<Height>4</Height>
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<MultiLine>true</MultiLine>
 							<ContextMenu name="НепринятыеПоДатеПричинаЗапретаПодробноКонтекстноеМеню" id="226"/>
 							<ExtendedTooltip name="НепринятыеПоДатеПричинаЗапретаПодробноExtendedTooltip" id="498"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаОшибкиПриВыполненииКодаОбработчиковОтправкиПодробноеОписание" id="835">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница ошибки при выполнении кода обработчиков отправки подробное описание</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаОшибкиПриВыполненииКодаОбработчиковОтправкиПодробноеОписаниеРасширеннаяПодсказка" id="836"/>
+					<ChildItems>
+						<InputField name="ОшибкиКодаОтправкаПричинаПодробно" id="767">
+							<DataPath>Items.ОшибкиПриВыполненииКодаОбработчиковОтправки.CurrentData.Причина</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Данные не удалось отправить по причине</v8:content>
+								</v8:item>
+							</Title>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ОшибкиКодаОтправкаПричинаПодробноКонтекстноеМеню" id="768"/>
+							<ExtendedTooltip name="ОшибкиКодаОтправкаПричинаПодробноРасширеннаяПодсказка" id="769"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаОшибкиПриВыполненииКодаОбработчиковПолученияПодробноеОписание" id="837">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница ошибки при выполнении кода обработчиков получения подробное описание</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаОшибкиПриВыполненииКодаОбработчиковПолученияПодробноеОписаниеРасширеннаяПодсказка" id="838"/>
+					<ChildItems>
+						<InputField name="ОшибкиКодаПолучениеПричинаПодробно" id="770">
+							<DataPath>Items.ОшибкиПриВыполненииКодаОбработчиковПолучения.CurrentData.Причина</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Данные не удалось получить по причине</v8:content>
+								</v8:item>
+							</Title>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ОшибкиКодаПолучениеПричинаПодробноКонтекстноеМеню" id="771"/>
+							<ExtendedTooltip name="ОшибкиКодаПолучениеПричинаПодробноРасширеннаяПодсказка" id="772"/>
 						</InputField>
 					</ChildItems>
 				</Page>
@@ -1709,22 +2328,6 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
-						<dcsset:item>
-							<dcsset:selection/>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">Пропущена</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветТекста</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">style:ТекстЗапрещеннойЯчейкиЦвет</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
@@ -1779,69 +2382,6 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
-						<dcsset:item>
-							<dcsset:selection/>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ВерсияПроигнорирована</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветТекста</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">style:ТекстЗапрещеннойЯчейкиЦвет</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:selection>
-								<dcsset:item>
-									<dcsset:field>ДругаяВерсияПринята</dcsset:field>
-								</dcsset:item>
-							</dcsset:selection>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemGroup">
-									<dcsset:groupType>AndGroup</dcsset:groupType>
-									<dcsset:item xsi:type="dcsset:FilterItemComparison">
-										<dcsset:left xsi:type="dcscor:Field">ДругаяВерсияПринята</dcsset:left>
-										<dcsset:comparisonType>Equal</dcsset:comparisonType>
-										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:FilterItemComparison">
-										<dcsset:left xsi:type="dcscor:Field">ВерсияПроигнорирована</dcsset:left>
-										<dcsset:comparisonType>Equal</dcsset:comparisonType>
-										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-									</dcsset:item>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветТекста</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">style:НепринятаяВерсия</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:selection>
-								<dcsset:item>
-									<dcsset:field>ДругаяВерсияПринята</dcsset:field>
-								</dcsset:item>
-							</dcsset:selection>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">НомерДругойВерсии</dcsset:left>
-									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>Текст</dcscor:parameter>
-									<dcscor:value xsi:type="xs:string">Удалена</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
@@ -1861,8 +2401,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<UseAlways>
+				<Field>~НепринятыеПоДате.ДругаяВерсияПринята</Field>
 				<Field>НепринятыеПоДате.АвторДругойВерсии</Field>
-				<Field>НепринятыеПоДате.ДругаяВерсияПринята</Field>
+				<Field>НепринятыеПоДате.ВерсияПроигнорирована</Field>
 				<Field>НепринятыеПоДате.НовыйОбъект</Field>
 				<Field>НепринятыеПоДате.НомерДругойВерсии</Field>
 				<Field>НепринятыеПоДате.НомерЭтойВерсии</Field>
@@ -1875,14 +2416,13 @@
 				<QueryText>ВЫБРАТЬ
 	NULL КАК Дата,
 	NULL КАК Ссылка,
-	NULL КАК ТипСтрокой,
-	NULL КАК НомерЭтойВерсии,
+	NULL КАК ПричинаЗапрета,
 	NULL КАК НовыйОбъект,
 	NULL КАК НомерДругойВерсии,
 	NULL КАК АвторДругойВерсии,
-	NULL КАК ДругаяВерсияПринята,
-	NULL КАК ВерсияПроигнорирована
-</QueryText>
+	NULL КАК НомерЭтойВерсии,
+	NULL КАК ТипСтрокой,
+	NULL КАК ВерсияПроигнорирована</QueryText>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -1897,68 +2437,6 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
-						<dcsset:item>
-							<dcsset:selection/>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ВерсияПроигнорирована</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветТекста</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">style:ТекстЗапрещеннойЯчейкиЦвет</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:selection>
-								<dcsset:item>
-									<dcsset:field>Ссылка</dcsset:field>
-								</dcsset:item>
-							</dcsset:selection>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">НовыйОбъект</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>Текст</dcscor:parameter>
-									<dcscor:value xsi:type="xs:string">Отсутствуют</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:selection>
-								<dcsset:item>
-									<dcsset:field>НомерДругойВерсии</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>АвторДругойВерсии</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>ДатаДругойВерсии</dcsset:field>
-								</dcsset:item>
-							</dcsset:selection>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ВерсияПроигнорирована</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветТекста</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">style:НепринятаяВерсия</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
@@ -1968,56 +2446,26 @@
 			</Settings>
 		</Attribute>
 		<Attribute name="ИспользуетсяВерсионирование" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Используется версионирование</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПоказыватьПроигнорированныеКонфликты" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показывать проигнорированные конфликты</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПоказыватьПроигнорированныеНезаполненные" id="11">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показывать проигнорированные незаполненные</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПоказыватьПроигнорированныеНепринятые" id="12">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показывать проигнорированные непринятые</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПоказыватьПроигнорированныеНепроведенные" id="13">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показывать проигнорированные непроведенные</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -2038,22 +2486,208 @@
 			</Type>
 		</Attribute>
 		<Attribute name="СписокУзлов" id="14">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список узлов</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="НастройкиОтборовДинамическихСписков" id="15">
+			<Type/>
+		</Attribute>
+		<Attribute name="ОшибкиПриВыполненииКодаОбработчиковОтправки" id="16">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Настройки отборов динамических списков</v8:content>
+					<v8:content>Ошибки при выполнении кода обработчиков отправки</v8:content>
 				</v8:item>
 			</Title>
-			<Type/>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковОтправки.ДатаВозникновения</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковОтправки.ПометкаУдаления</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковОтправки.ПредставлениеОбъекта</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковОтправки.Причина</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковОтправки.Пропущена</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковОтправки.Ссылка</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковОтправки.УзелИнформационнойБазы</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	РезультатыОбменаДанными.ПроблемныйОбъект КАК Ссылка,
+	ВЫБОР
+		КОГДА РезультатыОбменаДанными.ПометкаУдаления
+			ТОГДА 4
+		ИНАЧЕ 3
+	КОНЕЦ КАК ПометкаУдаления,
+	РезультатыОбменаДанными.УзелИнформационнойБазы,
+	РезультатыОбменаДанными.ДатаВозникновения,
+	РезультатыОбменаДанными.Причина,
+	РезультатыОбменаДанными.Пропущена,
+	РезультатыОбменаДанными.ПредставлениеОбъекта КАК ПредставлениеОбъекта
+ИЗ
+	РегистрСведений.РезультатыОбменаДанными КАК РезультатыОбменаДанными
+ГДЕ
+	РезультатыОбменаДанными.ТипПроблемы = ЗНАЧЕНИЕ(Перечисление.ТипыПроблемОбменаДанными.ОшибкаВыполненияКодаОбработчиковПриОтправкеДанных)</QueryText>
+				<MainTable>InformationRegister.РезультатыОбменаДанными</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ОшибкиПриВыполненииКодаОбработчиковПолучения" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибки при выполнении кода обработчиков получения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковПолучения.ДатаВозникновения</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковПолучения.ПометкаУдаления</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковПолучения.ПредставлениеОбъекта</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковПолучения.Причина</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковПолучения.Пропущена</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковПолучения.Ссылка</Field>
+				<Field>ОшибкиПриВыполненииКодаОбработчиковПолучения.УзелИнформационнойБазы</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	РезультатыОбменаДанными.ПроблемныйОбъект КАК Ссылка,
+	ВЫБОР
+		КОГДА РезультатыОбменаДанными.ПометкаУдаления
+			ТОГДА 4
+		ИНАЧЕ 3
+	КОНЕЦ КАК ПометкаУдаления,
+	РезультатыОбменаДанными.УзелИнформационнойБазы,
+	РезультатыОбменаДанными.ДатаВозникновения,
+	РезультатыОбменаДанными.Причина,
+	РезультатыОбменаДанными.Пропущена,
+	РезультатыОбменаДанными.ПредставлениеОбъекта КАК ПредставлениеОбъекта
+ИЗ
+	РегистрСведений.РезультатыОбменаДанными КАК РезультатыОбменаДанными
+ГДЕ
+	РезультатыОбменаДанными.ТипПроблемы = ЗНАЧЕНИЕ(Перечисление.ТипыПроблемОбменаДанными.ОшибкаВыполненияКодаОбработчиковПриПолученииДанных)</QueryText>
+				<MainTable>InformationRegister.РезультатыОбменаДанными</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ОшибкиОбъектаXDTO" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибки объекта XDTO</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>~ОшибкиОбъектаXDTO.ТипСтрокой</Field>
+				<Field>ОшибкиОбъектаXDTO.ДатаВозникновения</Field>
+				<Field>ОшибкиОбъектаXDTO.ПометкаУдаления</Field>
+				<Field>ОшибкиОбъектаXDTO.ПредставлениеОбъекта</Field>
+				<Field>ОшибкиОбъектаXDTO.Причина</Field>
+				<Field>ОшибкиОбъектаXDTO.Пропущена</Field>
+				<Field>ОшибкиОбъектаXDTO.Ссылка</Field>
+				<Field>ОшибкиОбъектаXDTO.УзелИнформационнойБазы</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	РезультатыОбменаДанными.ПроблемныйОбъект КАК Ссылка,
+	ВЫБОР
+		КОГДА РезультатыОбменаДанными.ПометкаУдаления
+			ТОГДА 4
+		ИНАЧЕ 3
+	КОНЕЦ КАК ПометкаУдаления,
+	РезультатыОбменаДанными.УзелИнформационнойБазы КАК УзелИнформационнойБазы,
+	РезультатыОбменаДанными.ДатаВозникновения КАК ДатаВозникновения,
+	РезультатыОбменаДанными.Причина КАК Причина,
+	РезультатыОбменаДанными.Пропущена КАК Пропущена,
+	РезультатыОбменаДанными.ПредставлениеОбъекта КАК ПредставлениеОбъекта,
+	РезультатыОбменаДанными.ОбъектМетаданных КАК ОбъектМетаданных
+ИЗ
+	РегистрСведений.РезультатыОбменаДанными КАК РезультатыОбменаДанными
+ГДЕ
+	РезультатыОбменаДанными.ТипПроблемы = ЗНАЧЕНИЕ(Перечисление.ТипыПроблемОбменаДанными.ОшибкаПроверкиСконвертированногоОбъекта)</QueryText>
+				<MainTable>InformationRegister.РезультатыОбменаДанными</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ПоказыватьПроигнорированныеОшибки" id="19">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтсутствуетОбменXDTO" id="20">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтсутствуетОбменПоПравилам" id="21">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтсутствуетСтандартныйОбмен" id="22">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтсутствуетОбменРИБ" id="23">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>
@@ -2489,6 +3123,81 @@
 			</ToolTip>
 			<Action>ИзменитьРезультатКонфликта</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ИзменитьВыделенныеОшибкиXTDO" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные объекты</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить выделенные ошибки XTDO</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИзменитьВыделенныеОшибкиПроверки</Action>
+		</Command>
+		<Command name="ИгнорироватьОшибку" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Игнорировать ошибку</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Игнорировать ошибку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИгнорироватьОшибку</Action>
+		</Command>
+		<Command name="НеИгнорироватьОшибку" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не игнорировать ошибку</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не игнорировать ошибку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НеИгнорироватьОшибку</Action>
+		</Command>
+		<Command name="ПоказыватьПроигнорированныеОшибки" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать проигнорированные ошибки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать проигнорированные ошибки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоказыватьПроигнорированныеОшибки</Action>
+		</Command>
+		<Command name="ПоказатьИнформациюДляТехническихСпециалистов" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать информацию для технических специалистов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать информацию для технических специалистов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоказатьИнформациюДляТехническихСпециалистов</Action>
 		</Command>
 	</Commands>
 	<Parameters>

@@ -37,12 +37,6 @@
 						<v8:content>Сброс настроек</v8:content>
 					</v8:item>
 				</Title>
-				<ToolTip>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Сброс настроек</v8:content>
-					</v8:item>
-				</ToolTip>
 				<ExtendedTooltip name="СбросНастроекExtendedTooltip" id="154"/>
 				<ChildItems>
 					<Button name="ФормаСброситьНастройкиРазмещения" id="119">
@@ -89,6 +83,7 @@
 		<Event name="AfterWrite">ПослеЗаписи</Event>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
@@ -98,6 +93,9 @@
 			<DataPath>Объект.Description</DataPath>
 			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
 			<ExtendedTooltip name="НаименованиеExtendedTooltip" id="161"/>
+			<Events>
+				<Event name="Opening">НаименованиеОткрытие</Event>
+			</Events>
 		</InputField>
 		<InputField name="Описание" id="3">
 			<DataPath>Объект.Описание</DataPath>
@@ -115,108 +113,97 @@
 			<ExtendedTooltip name="ОписаниеExtendedTooltip" id="162"/>
 			<Events>
 				<Event name="StartChoice">ОписаниеНачалоВыбора</Event>
+				<Event name="Opening">ОписаниеОткрытие</Event>
 			</Events>
 		</InputField>
-		<UsualGroup name="ГруппаДоступен" id="106">
+		<InputField name="Автор" id="115">
+			<DataPath>Объект.Автор</DataPath>
+			<ContextMenu name="АвторКонтекстноеМеню" id="116"/>
+			<ExtendedTooltip name="АвторExtendedTooltip" id="167"/>
+		</InputField>
+		<RadioButtonField name="Доступен" id="109">
+			<DataPath>Доступен</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<RadioButtonType>Auto</RadioButtonType>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Только для автора</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:string">1</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Всем пользователям</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:string">2</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<ContextMenu name="ДоступенКонтекстноеМеню" id="110"/>
+			<ExtendedTooltip name="ДоступенExtendedTooltip" id="164"/>
+			<Events>
+				<Event name="OnChange">ДоступенПриИзменении</Event>
+			</Events>
+		</RadioButtonField>
+		<UsualGroup name="ДеревоПодсистемЗаголовокИВидимостьПоУмолчанию" id="236">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа доступен</v8:content>
+					<v8:content>Дерево подсистем заголовок и видимость по умолчанию</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа доступен</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаДоступенExtendedTooltip" id="163"/>
+			<ExtendedTooltip name="ДеревоПодсистемЗаголовокИВидимостьПоУмолчаниюРасширеннаяПодсказка" id="237"/>
 			<ChildItems>
-				<RadioButtonField name="Доступен" id="109">
-					<DataPath>Доступен</DataPath>
-					<TitleLocation>Left</TitleLocation>
-					<RadioButtonType>Auto</RadioButtonType>
-					<ColumnsCount>1</ColumnsCount>
-					<ChoiceList>
-						<xr:Item>
-							<xr:Presentation/>
-							<xr:CheckState>0</xr:CheckState>
-							<xr:Value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Только для автора:</v8:content>
-									</v8:item>
-								</Presentation>
-								<Value xsi:type="xs:string">1</Value>
-							</xr:Value>
-						</xr:Item>
-						<xr:Item>
-							<xr:Presentation/>
-							<xr:CheckState>0</xr:CheckState>
-							<xr:Value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Всем пользователям</v8:content>
-									</v8:item>
-								</Presentation>
-								<Value xsi:type="xs:string">2</Value>
-							</xr:Value>
-						</xr:Item>
-					</ChoiceList>
-					<ContextMenu name="ДоступенКонтекстноеМеню" id="110"/>
-					<ExtendedTooltip name="ДоступенExtendedTooltip" id="164"/>
-					<Events>
-						<Event name="OnChange">ДоступенПриИзменении</Event>
-					</Events>
-				</RadioButtonField>
-				<UsualGroup name="ГруппаАвторИВидимостьПоУмолчанию" id="108">
-					<Title>
+				<LabelDecoration name="ДеревоПодсистемЗаголовок" id="238">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа автор и видимость по умолчанию</v8:content>
+							<v8:content>Размещение в панелях отчетов:        </v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа автор и видимость по умолчанию</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаАвторИВидимостьПоУмолчаниюExtendedTooltip" id="165"/>
-					<ChildItems>
-						<InputField name="Автор" id="115">
-							<DataPath>Объект.Автор</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<ContextMenu name="АвторКонтекстноеМеню" id="116"/>
-							<ExtendedTooltip name="АвторExtendedTooltip" id="167"/>
-						</InputField>
-						<CheckBoxField name="ВидимостьПоУмолчанию" id="203">
-							<DataPath>Объект.ВидимостьПоУмолчанию</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ВидимостьПоУмолчаниюКонтекстноеМеню" id="204"/>
-							<ExtendedTooltip name="ВидимостьПоУмолчаниюРасширеннаяПодсказка" id="205"/>
-						</CheckBoxField>
-					</ChildItems>
-				</UsualGroup>
+					<GroupHorizontalAlign>Left</GroupHorizontalAlign>
+					<ContextMenu name="ДеревоПодсистемЗаголовокКонтекстноеМеню" id="239"/>
+					<ExtendedTooltip name="ДеревоПодсистемЗаголовокРасширеннаяПодсказка" id="240"/>
+				</LabelDecoration>
+				<CheckBoxField name="ВидимостьПоУмолчанию" id="203">
+					<DataPath>Объект.ВидимостьПоУмолчанию</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВидимостьПоУмолчаниюКонтекстноеМеню" id="204"/>
+					<ExtendedTooltip name="ВидимостьПоУмолчаниюРасширеннаяПодсказка" id="205"/>
+				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
 		<Table name="ДеревоПодсистем" id="80">
 			<Representation>Tree</Representation>
-			<TitleLocation>Top</TitleLocation>
 			<ChangeRowOrder>false</ChangeRowOrder>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<InitialTreeView>ExpandAllLevels</InitialTreeView>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>ДеревоПодсистем</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево подсистем</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Add</ExcludedCommand>
 				<ExcludedCommand>Copy</ExcludedCommand>
@@ -229,9 +216,7 @@
 				<ExcludedCommand>SortListDesc</ExcludedCommand>
 				<ExcludedCommand>Tree</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<CurrentRowUse>SelectionPresentationAndChoice</CurrentRowUse>
 			<ContextMenu name="ДеревоПодсистемКонтекстноеМеню" id="81"/>
 			<AutoCommandBar name="ДеревоПодсистемКоманднаяПанель" id="82">
 				<Autofill>false</Autofill>
@@ -262,23 +247,17 @@
 				<ExtendedTooltip name="ДеревоПодсистемSearchControlExtendedTooltip" id="214"/>
 			</SearchControlAddition>
 			<ChildItems>
-				<ColumnGroup name="ГруппаКолонок" id="83">
+				<ColumnGroup name="ГруппаКолонок" id="83" DisplayImportance="VeryHigh">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа колонок</v8:content>
+							<v8:content>Колонок</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа колонок</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Group>InCell</Group>
 					<ExtendedTooltip name="ГруппаКолонокExtendedTooltip" id="170"/>
 					<ChildItems>
-						<CheckBoxField name="ДеревоПодсистемИспользование" id="104">
+						<CheckBoxField name="ДеревоПодсистемИспользование" id="104" DisplayImportance="VeryHigh">
 							<DataPath>ДеревоПодсистем.Использование</DataPath>
 							<TitleLocation>None</TitleLocation>
 							<HorizontalAlign>Left</HorizontalAlign>
@@ -290,7 +269,7 @@
 								<Event name="OnChange">ДеревоПодсистемИспользованиеПриИзменении</Event>
 							</Events>
 						</CheckBoxField>
-						<InputField name="ДеревоПодсистемПредставление" id="86">
+						<InputField name="ДеревоПодсистемПредставление" id="86" DisplayImportance="VeryHigh">
 							<DataPath>ДеревоПодсистем.Представление</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<HorizontalAlign>Left</HorizontalAlign>
@@ -304,10 +283,7 @@
 					<DataPath>ДеревоПодсистем.Важность</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<Width>8</Width>
-					<ChoiceButton>true</ChoiceButton>
 					<ClearButton>true</ClearButton>
-					<SpinButton>false</SpinButton>
-					<OpenButton>false</OpenButton>
 					<ListChoiceMode>true</ListChoiceMode>
 					<ChooseType>false</ChooseType>
 					<ChoiceListButton>false</ChoiceListButton>
@@ -340,17 +316,11 @@
 					<v8:content>Техническая информация</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Техническая информация</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Behavior>Collapsible</Behavior>
 			<Collapsed>true</Collapsed>
 			<ControlRepresentation>Picture</ControlRepresentation>
-			<Representation>StrongSeparation</Representation>
+			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="ТехническаяИнформацияExtendedTooltip" id="174"/>
 			<ChildItems>
 				<InputField name="Отчет" id="136">
@@ -371,6 +341,7 @@
 					<ExtendedTooltip name="ПредопределенныйВариантExtendedTooltip" id="176"/>
 				</InputField>
 				<Table name="Размещение" id="122">
+					<Visible>false</Visible>
 					<ReadOnly>true</ReadOnly>
 					<AutoInsertNewRow>true</AutoInsertNewRow>
 					<EnableStartDrag>true</EnableStartDrag>
@@ -399,9 +370,6 @@
 						<ExcludedCommand>SortListAsc</ExcludedCommand>
 						<ExcludedCommand>SortListDesc</ExcludedCommand>
 					</CommandSet>
-					<SearchStringLocation>None</SearchStringLocation>
-					<ViewStatusLocation>None</ViewStatusLocation>
-					<SearchControlLocation>None</SearchControlLocation>
 					<RowFilter xsi:nil="true"/>
 					<ContextMenu name="РазмещениеКонтекстноеМеню" id="123"/>
 					<AutoCommandBar name="РазмещениеКоманднаяПанель" id="124"/>
@@ -460,11 +428,16 @@
 						</CheckBoxField>
 					</ChildItems>
 				</Table>
-				<UsualGroup name="Группа2" id="190">
-					<Group>Horizontal</Group>
+				<UsualGroup name="НаименованияПолейИПараметров" id="190">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименования полей и параметров</v8:content>
+						</v8:item>
+					</Title>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="191"/>
+					<ExtendedTooltip name="НаименованияПолейИПараметровРасширеннаяПодсказка" id="191"/>
 					<ChildItems>
 						<InputField name="НаименованияПолей" id="182">
 							<DataPath>Объект.НаименованияПолей</DataPath>
@@ -484,6 +457,82 @@
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
+				<Table name="Представления" id="244">
+					<ReadOnly>true</ReadOnly>
+					<HeightInTableRows>3</HeightInTableRows>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>Объект.Представления</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представления</v8:content>
+						</v8:item>
+					</Title>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ПредставленияКонтекстноеМеню" id="245"/>
+					<AutoCommandBar name="ПредставленияКоманднаяПанель" id="246"/>
+					<ExtendedTooltip name="ПредставленияРасширеннаяПодсказка" id="247"/>
+					<SearchStringAddition name="ПредставленияСтрокаПоиска" id="248">
+						<AdditionSource>
+							<Item>Представления</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ПредставленияСтрокаПоискаКонтекстноеМеню" id="249"/>
+						<ExtendedTooltip name="ПредставленияСтрокаПоискаРасширеннаяПодсказка" id="250"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ПредставленияСостояниеПросмотра" id="251">
+						<AdditionSource>
+							<Item>Представления</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ПредставленияСостояниеПросмотраКонтекстноеМеню" id="252"/>
+						<ExtendedTooltip name="ПредставленияСостояниеПросмотраРасширеннаяПодсказка" id="253"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ПредставленияУправлениеПоиском" id="254">
+						<AdditionSource>
+							<Item>Представления</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ПредставленияУправлениеПоискомКонтекстноеМеню" id="255"/>
+						<ExtendedTooltip name="ПредставленияУправлениеПоискомРасширеннаяПодсказка" id="256"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<LabelField name="ПредставленияНомерСтроки" id="257">
+							<DataPath>Объект.Представления.LineNumber</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ПредставленияНомерСтрокиКонтекстноеМеню" id="258"/>
+							<ExtendedTooltip name="ПредставленияНомерСтрокиРасширеннаяПодсказка" id="259"/>
+						</LabelField>
+						<InputField name="ПредставленияКодЯзыка" id="260">
+							<DataPath>Объект.Представления.КодЯзыка</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ПредставленияКодЯзыкаКонтекстноеМеню" id="261"/>
+							<ExtendedTooltip name="ПредставленияКодЯзыкаРасширеннаяПодсказка" id="262"/>
+						</InputField>
+						<InputField name="ПредставленияНаименование" id="263">
+							<DataPath>Объект.Представления.Наименование</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ПредставленияНаименованиеКонтекстноеМеню" id="264"/>
+							<ExtendedTooltip name="ПредставленияНаименованиеРасширеннаяПодсказка" id="265"/>
+						</InputField>
+						<InputField name="ПредставленияОписание" id="266">
+							<DataPath>Объект.Представления.Описание</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ПредставленияОписаниеКонтекстноеМеню" id="267"/>
+							<ExtendedTooltip name="ПредставленияОписаниеРасширеннаяПодсказка" id="268"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+				<CheckBoxField name="ИнтерактивнаяПометкаУдаления" id="241">
+					<DataPath>Объект.ИнтерактивнаяПометкаУдаления</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ИнтерактивнаяПометкаУдаленияКонтекстноеМеню" id="242"/>
+					<ExtendedTooltip name="ИнтерактивнаяПометкаУдаленияРасширеннаяПодсказка" id="243"/>
+				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
@@ -496,29 +545,8 @@
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ПолныеПраваНаВарианты" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Полные права на варианты</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ОшибкаОткрытия" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Ошибка открытия</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="ДеревоПодсистем" id="2">
@@ -531,14 +559,9 @@
 			<Type>
 				<v8:Type>v8:ValueTree</v8:Type>
 			</Type>
+			<SavedData>true</SavedData>
 			<Columns>
 				<Column name="Ссылка" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Ссылка</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовРасширений</v8:Type>
 						<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовМетаданных</v8:Type>
@@ -560,12 +583,6 @@
 					</Type>
 				</Column>
 				<Column name="Имя" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Имя</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -575,12 +592,6 @@
 					</Type>
 				</Column>
 				<Column name="ПолноеИмя" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Полное имя</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -590,12 +601,6 @@
 					</Type>
 				</Column>
 				<Column name="Приоритет" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Приоритет</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -636,12 +641,6 @@
 					</Type>
 				</Column>
 				<Column name="Модифицированность" id="10">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Модифицированность</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -649,12 +648,6 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="ИмяОтчета" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Имя отчета</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -664,12 +657,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ЭтоВнешний" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Это внешний</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -688,30 +675,20 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
-		</Attribute>
-		<Attribute name="СвойстваПредопределенного" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Свойства предопределенного</v8:content>
-				</v8:item>
-			</Title>
-			<Type/>
-			<View>
-				<xr:Common>false</xr:Common>
-			</View>
-			<Edit>
-				<xr:Common>false</xr:Common>
-			</Edit>
+			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ПараметрыОткрытияФормыОтчета" id="11">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Параметры открытия формы отчета</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
+		</Attribute>
+		<Attribute name="ДоступенВсемПользователям" id="12">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоПредопределенный" id="15">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 </Form>

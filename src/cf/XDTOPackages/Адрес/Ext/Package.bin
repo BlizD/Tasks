@@ -1,0 +1,37 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.v8.1c.ru/ssl/contactinfo_ru">
+	<import namespace="http://www.v8.1c.ru/ssl/contactinfo"/>
+	<objectType xmlns:d2p1="http://www.v8.1c.ru/ssl/contactinfo" name="АдресРФ" base="d2p1:НациональныйАдрес">
+		<property name="СубъектРФ" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Округ" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="СвРайМО" lowerBound="0" nillable="true">
+			<typeDef xsi:type="ObjectType">
+				<property name="Район" type="xs:string" lowerBound="0" nillable="true"/>
+				<property name="СвМО" lowerBound="0" nillable="true" form="Element">
+					<typeDef xsi:type="ObjectType">
+						<property name="МунОбр1" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+						<property name="МунОбр2" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Город" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ВнутригРайон" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="НаселПункт" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Улица" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ОКТМО" type="xs:integer" lowerBound="0" nillable="true"/>
+		<property name="ОКАТО" type="xs:integer" lowerBound="0" nillable="true"/>
+		<property name="ДопАдрЭл" lowerBound="0" upperBound="-1" nillable="true">
+			<typeDef xsi:type="ObjectType">
+				<property name="ТипАдрЭл" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+				<property name="Значение" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+				<property name="Номер" lowerBound="0" upperBound="1" nillable="true">
+					<typeDef xsi:type="ObjectType">
+						<property name="Тип" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+						<property name="Значение" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Местоположение" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+</package>

@@ -19,12 +19,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа пользовательских настроек</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="24"/>
@@ -40,13 +34,16 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Copy</ExcludedCommand>
 				<ExcludedCommand>Create</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -94,20 +91,45 @@
 				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
 			</Events>
 			<ChildItems>
-				<LabelField name="Дата" id="4">
-					<DataPath>Список.Date</DataPath>
-					<DefaultItem>true</DefaultItem>
-					<Width>10</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ДатаExtendedTooltip" id="15"/>
-				</LabelField>
 				<LabelField name="Номер" id="6">
 					<DataPath>Список.Number</DataPath>
 					<Width>14</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="НомерКонтекстноеМеню" id="7"/>
 					<ExtendedTooltip name="НомерExtendedTooltip" id="16"/>
+				</LabelField>
+				<LabelField name="Дата" id="4">
+					<DataPath>Список.Date</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Width>9</Width>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаExtendedTooltip" id="15"/>
+				</LabelField>
+				<LabelField name="РежимАнкетирования" id="34">
+					<DataPath>Список.РежимАнкетирования</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Режим</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="РежимАнкетированияКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="РежимАнкетированияРасширеннаяПодсказка" id="36"/>
+				</LabelField>
+				<LabelField name="ШаблонАнкеты" id="37">
+					<DataPath>Список.ШаблонАнкеты</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шаблон</v8:content>
+						</v8:item>
+					</Title>
+					<Width>25</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ШаблонАнкетыКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="ШаблонАнкетыРасширеннаяПодсказка" id="39"/>
 				</LabelField>
 				<LabelField name="Опрос" id="8">
 					<DataPath>Список.Опрос</DataPath>
@@ -148,9 +170,32 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ref</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументАнкета.Ссылка,
+	ДокументАнкета.ПометкаУдаления,
+	ДокументАнкета.Номер,
+	ДокументАнкета.Дата,
+	ДокументАнкета.Проведен,
+	ДокументАнкета.Опрос,
+	ДокументАнкета.Респондент,
+	ДокументАнкета.ДатаРедактирования,
+	ДокументАнкета.РедактируемыйРаздел,
+	ДокументАнкета.Комментарий,
+	ДокументАнкета.Интервьюер,
+	ДокументАнкета.РежимАнкетирования,
+	ВЫБОР
+		КОГДА ДокументАнкета.РежимАнкетирования = ЗНАЧЕНИЕ(ПЕречисление.РежимыАнкетирования.Интервью)
+			ТОГДА ДокументАнкета.ШаблонАнкеты
+		ИНАЧЕ ДокументАнкета.Опрос.ШаблонАнкеты
+	КОНЕЦ КАК ШаблонАнкеты
+ИЗ
+	Документ.Анкета КАК ДокументАнкета</QueryText>
 				<MainTable>Document.Анкета</MainTable>
 				<ListSettings>
 					<dcsset:filter>

@@ -26,22 +26,9 @@
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
-		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
 		<CommandBar name="ВерхняяПанель" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Верхняя панель</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Верхняя панель</v8:content>
-				</v8:item>
-			</ToolTip>
 			<ExtendedTooltip name="ВерхняяПанельExtendedTooltip" id="9"/>
 			<ChildItems>
 				<Button name="ФормаНазад" id="1">
@@ -55,18 +42,6 @@
 					<ExtendedTooltip name="ФормаВпередExtendedTooltip" id="11"/>
 				</Button>
 				<ButtonGroup name="БезПодменю" id="8">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Без подменю</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Без подменю</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="БезПодменюExtendedTooltip" id="12"/>
 					<ChildItems>
 						<Button name="ГлавнаяСтраница" id="17">
@@ -137,9 +112,18 @@
 		<CheckBoxField name="ПоказыватьПриНачалеРаботы" id="5">
 			<DataPath>ПоказыватьПриНачалеРаботы</DataPath>
 			<TitleLocation>Right</TitleLocation>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>При отключении флажка информация не будет показываться месяц или до следующего обновления.</v8:content>
+				</v8:item>
+			</ToolTip>
 			<CheckBoxType>Auto</CheckBoxType>
 			<ContextMenu name="ПоказыватьПриНачалеРаботыКонтекстноеМеню" id="6"/>
 			<ExtendedTooltip name="ПоказыватьПриНачалеРаботыExtendedTooltip" id="14"/>
+			<Events>
+				<Event name="OnChange">ПоказыватьПриНачалеРаботыПриИзменении</Event>
+			</Events>
 		</CheckBoxField>
 	</ChildItems>
 	<Attributes>
@@ -176,29 +160,11 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ПодготовленныеПакеты" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Подготовленные пакеты</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
-			<View>
-				<xr:Common>false</xr:Common>
-			</View>
-			<Edit>
-				<xr:Common>false</xr:Common>
-			</Edit>
 			<Columns>
 				<Column name="Идентификатор" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Идентификатор</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -208,12 +174,6 @@
 					</Type>
 				</Column>
 				<Column name="ИмяМакета" id="2">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Имя макета</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -223,12 +183,6 @@
 					</Type>
 				</Column>
 				<Column name="Раздел" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Раздел</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -238,12 +192,6 @@
 					</Type>
 				</Column>
 				<Column name="НаименованиеСтартовойСтраницы" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Наименование стартовой страницы</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -253,12 +201,6 @@
 					</Type>
 				</Column>
 				<Column name="ИмяФайлаСтартовойСтраницы" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Имя файла стартовой страницы</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -268,12 +210,6 @@
 					</Type>
 				</Column>
 				<Column name="ДатаНачалаПоказа" id="8">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Дата начала показа</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:dateTime</v8:Type>
 						<v8:DateQualifiers>
@@ -282,12 +218,6 @@
 					</Type>
 				</Column>
 				<Column name="ДатаОкончанияПоказа" id="9">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Дата окончания показа</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:dateTime</v8:Type>
 						<v8:DateQualifiers>
@@ -296,12 +226,6 @@
 					</Type>
 				</Column>
 				<Column name="НомерВРегистре" id="10">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер в регистре</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -312,12 +236,6 @@
 					</Type>
 				</Column>
 				<Column name="Приоритет" id="12">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Приоритет</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -328,12 +246,6 @@
 					</Type>
 				</Column>
 				<Column name="АдресСтартовойСтраницы" id="13">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Адрес стартовой страницы</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -343,12 +255,6 @@
 					</Type>
 				</Column>
 				<Column name="ЗаголовокФормы" id="14">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Заголовок формы</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -358,12 +264,6 @@
 					</Type>
 				</Column>
 				<Column name="ВебСтраницы" id="15">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Веб страницы</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>v8:ValueTable</v8:Type>
 					</Type>
@@ -418,26 +318,11 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="КонфигурацияБазовая" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Конфигурация базовая</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
-			<Edit>
-				<xr:Common>false</xr:Common>
-			</Edit>
 		</Attribute>
 		<Attribute name="КаталогВременныхФайлов" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Каталог временных файлов</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -445,20 +330,8 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
-			<View>
-				<xr:Common>false</xr:Common>
-			</View>
-			<Edit>
-				<xr:Common>false</xr:Common>
-			</Edit>
 		</Attribute>
 		<Attribute name="СтандартныйПрефикс" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Стандартный префикс</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -466,34 +339,13 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
-			<Edit>
-				<xr:Common>false</xr:Common>
-			</Edit>
 		</Attribute>
 		<Attribute name="ИсторияПросмотра" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>История просмотра</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
-			<View>
-				<xr:Common>false</xr:Common>
-			</View>
-			<Edit>
-				<xr:Common>false</xr:Common>
-			</Edit>
 			<Columns>
 				<Column name="ИдентификаторПакета" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Идентификатор пакета</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -504,12 +356,6 @@
 					</Type>
 				</Column>
 				<Column name="АдресСтраницы" id="2">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Адрес страницы</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -521,12 +367,6 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="ТекущаяСтрокаИндекс" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Текущая строка индекс</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
 				<v8:NumberQualifiers>
@@ -536,27 +376,7 @@
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="КонфигурацияМоделиСервиса" id="11">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Конфигурация модели сервиса</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-			<Edit>
-				<xr:Common>false</xr:Common>
-			</Edit>
-		</Attribute>
 		<Attribute name="ТипКонфигурации" id="13">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Тип конфигурации</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -564,48 +384,18 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
-			<Edit>
-				<xr:Common>false</xr:Common>
-			</Edit>
 		</Attribute>
 		<Attribute name="ПравоСохраненияДанных" id="12">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Право сохранения данных</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
-			<Edit>
-				<xr:Common>false</xr:Common>
-			</Edit>
 		</Attribute>
 		<Attribute name="ЭтоВебКлиент" id="14">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Это веб клиент</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
-			<View>
-				<xr:Common>false</xr:Common>
-			</View>
-			<Edit>
-				<xr:Common>false</xr:Common>
-			</Edit>
 		</Attribute>
-		<Attribute name="ОтсутствуютДанныеДляОтображения" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отсутствуют данные для отображения</v8:content>
-				</v8:item>
-			</Title>
+		<Attribute name="ОтказВПриОткрытии" id="8">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>

@@ -43,15 +43,15 @@
 				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 				<ExtendedTooltip name="ФормаНастройкаExtendedTooltip" id="76"/>
 			</Button>
-			<Button name="ФормаЭкспортДанных" id="93">
+			<Button name="ФормаЭкспортЗамеров" id="118">
 				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ЭкспортДанных</CommandName>
+				<CommandName>Form.Command.ЭкспортЗамеров</CommandName>
 				<Picture>
-					<xr:Ref>StdPicture.SaveValues</xr:Ref>
+					<xr:Ref>StdPicture.CreateInitialImage</xr:Ref>
 					<xr:LoadTransparent>true</xr:LoadTransparent>
 				</Picture>
 				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-				<ExtendedTooltip name="ФормаЭкспортДанныхРасширеннаяПодсказка" id="94"/>
+				<ExtendedTooltip name="ФормаЭкспортЗамеровРасширеннаяПодсказка" id="119"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -68,24 +68,18 @@
 					<v8:content>Настройки отбора замеров</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Настройки</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<ExtendedTooltip name="НастройкиExtendedTooltip" id="77"/>
 			<ChildItems>
 				<UsualGroup name="НастройкаПериода" id="99">
-					<ToolTip>
+					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Настройка периода</v8:content>
 						</v8:item>
-					</ToolTip>
-					<Group>Horizontal</Group>
+					</Title>
 					<ShowTitle>false</ShowTitle>
+					<ThroughAlign>Use</ThroughAlign>
 					<ExtendedTooltip name="НастройкаПериодаРасширеннаяПодсказка" id="100"/>
 					<ChildItems>
 						<InputField name="ДатаНачала" id="69">
@@ -105,6 +99,7 @@
 							<DataPath>Объект.Шаг</DataPath>
 							<HorizontalStretch>false</HorizontalStretch>
 							<DropListButton>true</DropListButton>
+							<ListChoiceMode>true</ListChoiceMode>
 							<ChoiceList>
 								<xr:Item>
 									<xr:Presentation/>
@@ -156,14 +151,8 @@
 							<v8:content>Настройка комментарий</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Настройка комментарий</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Horizontal</Group>
 					<ShowTitle>false</ShowTitle>
+					<ThroughAlign>Use</ThroughAlign>
 					<ExtendedTooltip name="НастройкаКомментарийРасширеннаяПодсказка" id="102"/>
 					<ChildItems>
 						<InputField name="Комментарий" id="103">
@@ -242,12 +231,6 @@
 					<v8:content>Форма</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Форма</v8:content>
-				</v8:item>
-			</ToolTip>
 			<ExtendedTooltip name="ФормаExtendedTooltip" id="81"/>
 			<Events>
 				<Event name="OnCurrentPageChange">ФормаПриСменеСтраницы</Event>
@@ -260,12 +243,6 @@
 							<v8:content>Таблица</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница таблица</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаТаблицаExtendedTooltip" id="82"/>
 					<ChildItems>
 						<Table name="Производительность" id="23">
@@ -275,6 +252,12 @@
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.Производительность</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Производительность</v8:content>
+								</v8:item>
+							</Title>
 							<CommandSet>
 								<ExcludedCommand>Add</ExcludedCommand>
 								<ExcludedCommand>CancelSearch</ExcludedCommand>
@@ -288,9 +271,6 @@
 								<ExcludedCommand>SortListAsc</ExcludedCommand>
 								<ExcludedCommand>SortListDesc</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ПроизводительностьКонтекстноеМеню" id="24">
 								<Autofill>false</Autofill>
@@ -442,12 +422,6 @@
 							<v8:content>Диаграмма</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница диаграмма</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="СтраницаДиаграммаExtendedTooltip" id="91"/>
 					<ChildItems>
 						<ChartField name="Диаграмма" id="21">
@@ -482,23 +456,16 @@
 			</Save>
 		</Attribute>
 		<Attribute name="ТаблицаОбновлена" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Таблица обновлена</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ДиаграммаОбновлена" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Диаграмма обновлена</v8:content>
-				</v8:item>
-			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЕстьБСП" id="4">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -551,22 +518,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПереместитьВниз</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
-		<Command name="ЭкспортДанных" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Экспорт данных</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Экспорт данных</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ЭкспортДанных</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Настройка" id="5">
@@ -647,6 +598,22 @@
 				</v8:item>
 			</ToolTip>
 			<Action>УдалитьКлючевуюОперацию</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЭкспортЗамеров" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Экспорт замеров</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Экспорт замеров</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЭкспортЗамеров</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>

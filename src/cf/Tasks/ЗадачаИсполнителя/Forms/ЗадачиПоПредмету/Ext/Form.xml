@@ -13,6 +13,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
 	</Events>
@@ -24,7 +25,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -37,12 +37,6 @@
 					<v8:content>Командная панель списка</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель списка</v8:content>
-				</v8:item>
-			</ToolTip>
 			<CommandSource>Form</CommandSource>
 			<ExtendedTooltip name="КоманднаяПанельСпискаExtendedTooltip" id="65"/>
 			<ChildItems>
@@ -50,15 +44,9 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа принять к исполнению</v8:content>
+							<v8:content>Принять к исполнению</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа принять к исполнению</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ГруппаПринятьКИсполнениюРасширеннаяПодсказка" id="121"/>
 					<ChildItems>
 						<Button name="ПринятьКИсполнению" id="122">
@@ -107,9 +95,12 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -156,15 +147,9 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа важность</v8:content>
+							<v8:content>Важность</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа важность</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ГруппаВажностьРасширеннаяПодсказка" id="100"/>
 					<ChildItems>
 						<PictureField name="ВажностьКартинка" id="52">
@@ -199,6 +184,12 @@
 						</PictureField>
 						<PictureField name="Остановлена" id="56">
 							<DataPath>Список.Остановлена</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остановлена</v8:content>
+								</v8:item>
+							</Title>
 							<TitleLocation>None</TitleLocation>
 							<ToolTip>
 								<v8:item>
@@ -226,31 +217,19 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа описание</v8:content>
+							<v8:content>Описание</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа описание</v8:content>
-						</v8:item>
-					</ToolTip>
+					<Group>Horizontal</Group>
 					<ExtendedTooltip name="ГруппаОписаниеРасширеннаяПодсказка" id="104"/>
 					<ChildItems>
 						<ColumnGroup name="ГруппаНаименование" id="101">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа наименование</v8:content>
+									<v8:content>Наименование</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа наименование</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
 							<ExtendedTooltip name="ГруппаНаименованиеРасширеннаяПодсказка" id="102"/>
 							<ChildItems>
 								<InputField name="Наименование" id="6">
@@ -266,6 +245,23 @@
 									<ContextMenu name="НаименованиеКонтекстноеМеню" id="7"/>
 									<ExtendedTooltip name="НаименованиеExtendedTooltip" id="71"/>
 								</InputField>
+								<LabelField name="Автор" id="107">
+									<DataPath>Список.Автор</DataPath>
+									<Width>30</Width>
+									<ContextMenu name="АвторКонтекстноеМеню" id="108"/>
+									<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="109"/>
+								</LabelField>
+							</ChildItems>
+						</ColumnGroup>
+						<ColumnGroup name="ГруппаАвтор" id="105">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Автор</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаАвторРасширеннаяПодсказка" id="106"/>
+							<ChildItems>
 								<InputField name="Номер" id="4">
 									<DataPath>Список.Number</DataPath>
 									<DefaultItem>true</DefaultItem>
@@ -280,30 +276,6 @@
 									<ContextMenu name="НомерКонтекстноеМеню" id="5"/>
 									<ExtendedTooltip name="НомерExtendedTooltip" id="70"/>
 								</InputField>
-							</ChildItems>
-						</ColumnGroup>
-						<ColumnGroup name="ГруппаАвтор" id="105">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа автор</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа автор</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<ExtendedTooltip name="ГруппаАвторРасширеннаяПодсказка" id="106"/>
-							<ChildItems>
-								<LabelField name="Автор" id="107">
-									<DataPath>Список.Автор</DataPath>
-									<Width>30</Width>
-									<ContextMenu name="АвторКонтекстноеМеню" id="108"/>
-									<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="109"/>
-								</LabelField>
 								<LabelField name="Дата" id="110">
 									<DataPath>Список.Date</DataPath>
 									<HorizontalStretch>false</HorizontalStretch>
@@ -318,15 +290,9 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа исполнение</v8:content>
+							<v8:content>Исполнение</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа исполнение</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ГруппаИсполнениеРасширеннаяПодсказка" id="114"/>
 					<ChildItems>
 						<ColumnGroup name="ГруппаИсполнитель" id="64">
@@ -374,15 +340,9 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа срок исполнения</v8:content>
+									<v8:content>Срок исполнения</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа срок исполнения</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<ExtendedTooltip name="ГруппаСрокИсполненияРасширеннаяПодсказка" id="116"/>
 							<ChildItems>
@@ -455,6 +415,12 @@
 			<EnableDrag>true</EnableDrag>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>ДеревоЗадач</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево задач</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Add</ExcludedCommand>
 				<ExcludedCommand>Copy</ExcludedCommand>
@@ -468,9 +434,6 @@
 				<ExcludedCommand>SortListDesc</ExcludedCommand>
 				<ExcludedCommand>Tree</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<ContextMenu name="ДеревоЗадачКонтекстноеМеню" id="26">
 				<Autofill>false</Autofill>
 				<ChildItems>
@@ -627,12 +590,6 @@
 							<v8:content>Тип и наименование</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Тип и наименование</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Group>InCell</Group>
 					<ExtendedTooltip name="ТипИНаименованиеExtendedTooltip" id="91"/>
 					<ChildItems>
@@ -793,12 +750,6 @@
 			</Type>
 			<Columns>
 				<Column name="Ссылка" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Ссылка</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>cfg:TaskRef.ЗадачаИсполнителя</v8:Type>
 						<v8:TypeSet>cfg:BusinessProcessRef</v8:TypeSet>
@@ -905,12 +856,6 @@
 					</Type>
 				</Column>
 				<Column name="Просрочена" id="9">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Просрочена</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>

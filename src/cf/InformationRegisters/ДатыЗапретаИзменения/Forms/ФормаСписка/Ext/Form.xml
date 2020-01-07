@@ -1,10 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>110</Width>
-	<CommandSet>
-		<ExcludedCommand>Copy</ExcludedCommand>
-		<ExcludedCommand>Create</ExcludedCommand>
-	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -19,7 +14,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="31"/>
@@ -44,6 +38,12 @@
 					<CommandName>Form.Command.ДатыЗапретаЗагрузкиДанных</CommandName>
 					<ExtendedTooltip name="ФормаДатыЗапретаЗагрузкиДанныхExtendedTooltip" id="21"/>
 				</Button>
+				<Button name="ФормаВключитьВозможностьРедактирования" id="43">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.ВключитьВозможностьРедактирования</CommandName>
+					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+					<ExtendedTooltip name="ФормаВключитьВозможностьРедактированияРасширеннаяПодсказка" id="44"/>
+				</Button>
 			</ChildItems>
 		</CommandBar>
 		<Table name="Список" id="1">
@@ -57,13 +57,12 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<CommandSet>
-				<ExcludedCommand>Copy</ExcludedCommand>
-				<ExcludedCommand>Create</ExcludedCommand>
-			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -173,17 +172,8 @@
 				<Field>Список.Раздел</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>true</ManualQuery>
+				<ManualQuery>false</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
-	ДатыЗапретаИзменения.Раздел,
-	ДатыЗапретаИзменения.Объект,
-	ДатыЗапретаИзменения.Пользователь,
-	ДатыЗапретаИзменения.ДатаЗапрета,
-	ДатыЗапретаИзменения.ОписаниеДатыЗапрета,
-	ДатыЗапретаИзменения.Комментарий
-ИЗ
-	РегистрСведений.ДатыЗапретаИзменения КАК ДатыЗапретаИзменения</QueryText>
 				<MainTable>InformationRegister.ДатыЗапретаИзменения</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -235,6 +225,22 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ДатыЗапретаЗагрузкиДанных</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВключитьВозможностьРедактирования" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования только для целей поиска неисправности (требуется углубленное понимание работы механизма)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВключитьВозможностьРедактирования</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>

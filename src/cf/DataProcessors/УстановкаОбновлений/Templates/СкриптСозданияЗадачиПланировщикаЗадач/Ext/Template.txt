@@ -1,0 +1,43 @@
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018, ООО 1С-Софт
+// Все права защищены. Эта программа и сопроводительные материалы предоставляются 
+// в соответствии с условиями лицензии Attribution 4.0 International (CC BY 4.0)
+// Текст лицензии доступен по ссылке:
+// https://creativecommons.org/licenses/by/4.0/legalcode
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+'use strict'
+
+var StartBoundary = [ДатаЗапуска] // Дата запуска в формате yyyy-MM-ddTHH:mm:ss.
+var ProgramName = [ПутьСкрипта] // Путь к исполняемому файлу, запускаемому планировщиком.
+var ProgramArgs = [ПараметрыСкрипта] // Параметры, передаваемые запускаемому исполняемому файлу.
+var TaskName = [ИмяЗадачи] // Имя задачи планировщика.
+var TaskDescription = [ОписаниеЗадачи] // Описание задачи планировщика.
+
+var TASK_CREATE_OR_UPDATE = 6
+var TASK_LOGON_GROUP = 4
+
+try {
+  var schedule = new ActiveXObject('Schedule.Service')
+  schedule.Connect()
+
+  var task = schedule.NewTask(0)
+  task.RegistrationInfo.Description = TaskDescription
+  task.Principal.RunLevel = 1
+  task.Settings.Enabled = true
+  task.Settings.Hidden = false
+
+  var trigger = task.Triggers.Create(1)
+  trigger.StartBoundary = StartBoundary
+  trigger.Enabled = true
+
+  var action = task.Actions.Create(0)
+  action.Path = ProgramName
+  action.Arguments = ProgramArgs
+
+  var root = schedule.GetFolder('\\')
+  root.RegisterTaskDefinition(TaskName, task, TASK_CREATE_OR_UPDATE, 'SYSTEM', undefined, TASK_LOGON_GROUP)
+} catch (ex) {
+  WScript.Echo(ex.message)
+  WScript.Quit(1)
+}

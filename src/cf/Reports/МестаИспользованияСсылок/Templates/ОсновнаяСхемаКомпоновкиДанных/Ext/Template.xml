@@ -12,12 +12,9 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Ссылка</v8:content>
+					<v8:content>Наименование</v8:content>
 				</v8:item>
 			</title>
-			<valueType>
-				<v8:TypeSet xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:AnyRef</v8:TypeSet>
-			</valueType>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Данные</dataPath>
@@ -82,13 +79,26 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</valueType>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЭтоСлужебныеДанные</dataPath>
+			<field>ЭтоСлужебныеДанные</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это служебные данные</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+		</field>
 		<dataSource>ИсточникДанных</dataSource>
 		<objectName>МестаИспользования</objectName>
 	</dataSet>
 	<calculatedField>
 		<dataPath>КоличествоДанных</dataPath>
 		<expression>ВЫБОР
-КОГДА ВспомогательныеДанные ТОГДА 0
+КОГДА ЭтоСлужебныеДанные ТОГДА 0
 ИНАЧЕ 1
 КОНЕЦ</expression>
 		<title xsi:type="v8:LocalStringType">
@@ -181,21 +191,6 @@
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Ссылка</dcsset:field>
-						<dcsset:lwsTitle>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Наименование</v8:content>
-							</v8:item>
-						</dcsset:lwsTitle>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Ссылка.Код</dcsset:field>
-						<dcsset:lwsTitle>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Код</v8:content>
-							</v8:item>
-						</dcsset:lwsTitle>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>КоличествоДанных</dcsset:field>
@@ -244,7 +239,7 @@
 					</dcsset:groupItems>
 					<dcsset:filter>
 						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">ВспомогательныеДанные</dcsset:left>
+							<dcsset:left xsi:type="dcscor:Field">ЭтоСлужебныеДанные</dcsset:left>
 							<dcsset:comparisonType>Equal</dcsset:comparisonType>
 							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 						</dcsset:item>
@@ -259,15 +254,6 @@
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Места использования</v8:content>
-								</v8:item>
-							</dcsset:lwsTitle>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>КоличествоДанных</dcsset:field>
-							<dcsset:lwsTitle>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Вхождений</v8:content>
 								</v8:item>
 							</dcsset:lwsTitle>
 						</dcsset:item>

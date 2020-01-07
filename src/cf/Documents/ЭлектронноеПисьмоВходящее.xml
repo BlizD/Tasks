@@ -186,8 +186,8 @@
 				<xr:Characteristic>
 					<xr:CharacteristicTypes from="Catalog.НаборыДополнительныхРеквизитовИСведений.TabularSection.ДополнительныеРеквизиты">
 						<xr:KeyField>Catalog.НаборыДополнительныхРеквизитовИСведений.TabularSection.ДополнительныеРеквизиты.Attribute.Свойство</xr:KeyField>
-						<xr:TypesFilterField>Catalog.НаборыДополнительныхРеквизитовИСведений.TabularSection.ДополнительныеРеквизиты.StandardAttribute.Ref</xr:TypesFilterField>
-						<xr:TypesFilterValue xsi:type="xr:DesignTimeRef">Catalog.НаборыДополнительныхРеквизитовИСведений.Документ_ЭлектронноеПисьмоВходящее</xr:TypesFilterValue>
+						<xr:TypesFilterField>Catalog.НаборыДополнительныхРеквизитовИСведений.TabularSection.ДополнительныеРеквизиты.Attribute.ИмяПредопределенногоНабора</xr:TypesFilterField>
+						<xr:TypesFilterValue xsi:type="xs:string">Документ_ЭлектронноеПисьмоВходящее</xr:TypesFilterValue>
 					</xr:CharacteristicTypes>
 					<xr:CharacteristicValues from="Document.ЭлектронноеПисьмоВходящее.TabularSection.ДополнительныеРеквизиты">
 						<xr:ObjectField>Document.ЭлектронноеПисьмоВходящее.TabularSection.ДополнительныеРеквизиты.StandardAttribute.Ref</xr:ObjectField>
@@ -198,8 +198,8 @@
 				<xr:Characteristic>
 					<xr:CharacteristicTypes from="Catalog.НаборыДополнительныхРеквизитовИСведений.TabularSection.ДополнительныеСведения">
 						<xr:KeyField>Catalog.НаборыДополнительныхРеквизитовИСведений.TabularSection.ДополнительныеСведения.Attribute.Свойство</xr:KeyField>
-						<xr:TypesFilterField>Catalog.НаборыДополнительныхРеквизитовИСведений.TabularSection.ДополнительныеСведения.StandardAttribute.Ref</xr:TypesFilterField>
-						<xr:TypesFilterValue xsi:type="xr:DesignTimeRef">Catalog.НаборыДополнительныхРеквизитовИСведений.Документ_ЭлектронноеПисьмоВходящее</xr:TypesFilterValue>
+						<xr:TypesFilterField>Catalog.НаборыДополнительныхРеквизитовИСведений.TabularSection.ДополнительныеСведения.Attribute.ИмяПредопределенногоНабора</xr:TypesFilterField>
+						<xr:TypesFilterValue xsi:type="xs:string">Документ_ЭлектронноеПисьмоВходящее</xr:TypesFilterValue>
 					</xr:CharacteristicTypes>
 					<xr:CharacteristicValues from="InformationRegister.ДополнительныеСведения">
 						<xr:ObjectField>InformationRegister.ДополнительныеСведения.Dimension.Объект</xr:ObjectField>
@@ -249,7 +249,7 @@
 			</ListPresentation>
 			<ExtendedListPresentation/>
 			<Explanation/>
-			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+			<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
 			<DataHistory>DontUse</DataHistory>
 			<UpdateDataHistoryImmediatelyAfterWrite>false</UpdateDataHistoryImmediatelyAfterWrite>
 			<ExecuteAfterWriteDataHistoryVersionProcessing>false</ExecuteAfterWriteDataHistoryVersionProcessing>
@@ -451,7 +451,7 @@
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
-							<v8:Length>200</v8:Length>
+							<v8:Length>255</v8:Length>
 							<v8:AllowedLength>Variable</v8:AllowedLength>
 						</v8:StringQualifiers>
 					</Type>
@@ -499,7 +499,7 @@
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
-							<v8:Length>200</v8:Length>
+							<v8:Length>255</v8:Length>
 							<v8:AllowedLength>Variable</v8:AllowedLength>
 						</v8:StringQualifiers>
 					</Type>
@@ -547,7 +547,7 @@
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
-							<v8:Length>200</v8:Length>
+							<v8:Length>255</v8:Length>
 							<v8:AllowedLength>Variable</v8:AllowedLength>
 						</v8:StringQualifiers>
 					</Type>
@@ -955,11 +955,11 @@
 			</Attribute>
 			<Attribute uuid="7caabe33-184f-45db-bef4-59d4e9cd2394">
 				<Properties>
-					<Name>Предмет</Name>
+					<Name>УдалитьПредмет</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Предмет</v8:content>
+							<v8:content>(не используется) предмет</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1551,6 +1551,54 @@
 					<LinkByType/>
 					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
 					<Indexing>DontIndex</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
+					<DataHistory>Use</DataHistory>
+				</Properties>
+			</Attribute>
+			<Attribute uuid="efd4e0a3-2f98-40ef-8089-c853cd588fa6">
+				<Properties>
+					<Name>ХэшСумма</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Хэш сумма</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>32</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Содержит хэш сумму заголовка электронного письма</v8:content>
+						</v8:item>
+					</ToolTip>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillFromFillingValue>false</FillFromFillingValue>
+					<FillValue xsi:type="xs:string"/>
+					<FillChecking>DontCheck</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Indexing>Index</Indexing>
 					<FullTextSearch>Use</FullTextSearch>
 					<DataHistory>Use</DataHistory>
 				</Properties>

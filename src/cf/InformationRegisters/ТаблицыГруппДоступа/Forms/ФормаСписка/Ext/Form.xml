@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>75</Width>
 	<CommandSet>
 		<ExcludedCommand>Copy</ExcludedCommand>
 	</CommandSet>
@@ -18,7 +17,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="37"/>
@@ -58,12 +56,15 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Copy</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -120,25 +121,106 @@
 					<ContextMenu name="СписокГруппаДоступаКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="СписокГруппаДоступаРасширеннаяПодсказка" id="30"/>
 				</LabelField>
-				<CheckBoxField name="СписокЧтение" id="24">
-					<DataPath>Список.Чтение</DataPath>
-					<ToolTip>
+				<ColumnGroup name="СписокГруппаПравоЧтение" id="61">
+					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Флажок, установленный истина, показывает наличие права добавления в заданной таблице для заданного пользователя в пределах заданной группы доступа</v8:content>
+							<v8:content>Право Чтение</v8:content>
 						</v8:item>
-					</ToolTip>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="СписокЧтениеКонтекстноеМеню" id="25"/>
-					<ExtendedTooltip name="СписокЧтениеРасширеннаяПодсказка" id="31"/>
-				</CheckBoxField>
-				<CheckBoxField name="СписокИзменение" id="12">
-					<DataPath>Список.Изменение</DataPath>
-					<DefaultItem>true</DefaultItem>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="СписокИзменениеКонтекстноеМеню" id="13"/>
-					<ExtendedTooltip name="СписокИзменениеРасширеннаяПодсказка" id="33"/>
-				</CheckBoxField>
+					</Title>
+					<ExtendedTooltip name="СписокГруппаПравоЧтениеРасширеннаяПодсказка" id="62"/>
+					<ChildItems>
+						<CheckBoxField name="СписокЧтение" id="24">
+							<DataPath>Список.Чтение</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Чтение</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Флажок, установленный истина, показывает наличие права добавления в заданной таблице для заданного пользователя в пределах заданной группы доступа</v8:content>
+								</v8:item>
+							</ToolTip>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СписокЧтениеКонтекстноеМеню" id="25"/>
+							<ExtendedTooltip name="СписокЧтениеРасширеннаяПодсказка" id="31"/>
+						</CheckBoxField>
+						<CheckBoxField name="СписокЧтениеБезОграничения" id="49">
+							<DataPath>Список.ЧтениеБезОграничения</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Без ограничения</v8:content>
+								</v8:item>
+							</Title>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СписокЧтениеБезОграниченияКонтекстноеМеню" id="50"/>
+							<ExtendedTooltip name="СписокЧтениеБезОграниченияРасширеннаяПодсказка" id="51"/>
+						</CheckBoxField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="СписокГруппаПравоИзменение" id="63">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право Изменение</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СписокГруппаПравоИзменениеРасширеннаяПодсказка" id="64"/>
+					<ChildItems>
+						<CheckBoxField name="СписокИзменение" id="12">
+							<DataPath>Список.Изменение</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СписокИзменениеКонтекстноеМеню" id="13"/>
+							<ExtendedTooltip name="СписокИзменениеРасширеннаяПодсказка" id="33"/>
+						</CheckBoxField>
+						<CheckBoxField name="СписокИзменениеБезОграничения" id="52">
+							<DataPath>Список.ИзменениеБезОграничения</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Без ограничения</v8:content>
+								</v8:item>
+							</Title>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СписокИзменениеБезОграниченияКонтекстноеМеню" id="53"/>
+							<ExtendedTooltip name="СписокИзменениеБезОграниченияРасширеннаяПодсказка" id="54"/>
+						</CheckBoxField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="СписокГруппаПравоДобавление" id="65">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право Добавление</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СписокГруппаПравоДобавлениеРасширеннаяПодсказка" id="66"/>
+					<ChildItems>
+						<CheckBoxField name="СписокДобавление" id="55">
+							<DataPath>Список.Добавление</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СписокДобавлениеКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="СписокДобавлениеРасширеннаяПодсказка" id="57"/>
+						</CheckBoxField>
+						<CheckBoxField name="СписокДобавлениеБезОграничения" id="58">
+							<DataPath>Список.ДобавлениеБезОграничения</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Без ограничения</v8:content>
+								</v8:item>
+							</Title>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СписокДобавлениеБезОграниченияКонтекстноеМеню" id="59"/>
+							<ExtendedTooltip name="СписокДобавлениеБезОграниченияРасширеннаяПодсказка" id="60"/>
+						</CheckBoxField>
+					</ChildItems>
+				</ColumnGroup>
 				<LabelField name="СписокТипТаблицы" id="16">
 					<DataPath>Список.ТипТаблицы</DataPath>
 					<DefaultItem>true</DefaultItem>
@@ -158,11 +240,15 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	ТаблицыГруппДоступа.Таблица,
-	ТаблицыГруппДоступа.ГруппаДоступа,
-	Истина КАК Чтение,
-	ТаблицыГруппДоступа.Изменение,
-	ТаблицыГруппДоступа.ТипТаблицы
+	ТаблицыГруппДоступа.Таблица КАК Таблица,
+	ТаблицыГруппДоступа.ГруппаДоступа КАК ГруппаДоступа,
+	ИСТИНА КАК Чтение,
+	ТаблицыГруппДоступа.Изменение КАК Изменение,
+	ТаблицыГруппДоступа.Добавление КАК Добавление,
+	ТаблицыГруппДоступа.ЧтениеБезОграничения КАК ЧтениеБезОграничения,
+	ТаблицыГруппДоступа.ИзменениеБезОграничения КАК ИзменениеБезОграничения,
+	ТаблицыГруппДоступа.ДобавлениеБезОграничения КАК ДобавлениеБезОграничения,
+	ТаблицыГруппДоступа.ТипТаблицы КАК ТипТаблицы
 ИЗ
 	РегистрСведений.ТаблицыГруппДоступа КАК ТаблицыГруппДоступа</QueryText>
 				<MainTable>InformationRegister.ТаблицыГруппДоступа</MainTable>

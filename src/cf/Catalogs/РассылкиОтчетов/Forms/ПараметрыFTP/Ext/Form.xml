@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>80</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
@@ -21,32 +20,31 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ОсновныеПараметры" id="11">
+		<InputField name="СерверИКаталог" id="9">
+			<DataPath>СерверИКаталог</DataPath>
+			<InputHint>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ftp://сервер/каталог/</v8:content>
+				</v8:item>
+			</InputHint>
+			<ContextMenu name="СерверИКаталогКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="СерверИКаталогExtendedTooltip" id="22"/>
+			<Events>
+				<Event name="OnChange">СерверИКаталогПриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаНастройкиПортаИТипаСоединения" id="28">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Основные параметры</v8:content>
+					<v8:content>Настройки номера порта и типа соединения</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Основные параметры</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ОсновныеПараметрыExtendedTooltip" id="21"/>
+			<ExtendedTooltip name="ГруппаНастройкиПортаИТипаСоединенияРасширеннаяПодсказка" id="29"/>
 			<ChildItems>
-				<InputField name="СерверИКаталог" id="9">
-					<DataPath>СерверИКаталог</DataPath>
-					<ContextMenu name="СерверИКаталогКонтекстноеМеню" id="10"/>
-					<ExtendedTooltip name="СерверИКаталогExtendedTooltip" id="22"/>
-					<Events>
-						<Event name="OnChange">СерверИКаталогПриИзменении</Event>
-					</Events>
-				</InputField>
 				<InputField name="Порт" id="3">
 					<DataPath>Порт</DataPath>
 					<SpinButton>true</SpinButton>
@@ -61,37 +59,13 @@
 					<ContextMenu name="ПортКонтекстноеМеню" id="4"/>
 					<ExtendedTooltip name="ПортExtendedTooltip" id="23"/>
 				</InputField>
-			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="ДополнительныеПараметры" id="12">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дополнительные параметры</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дополнительные параметры</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ДополнительныеПараметрыExtendedTooltip" id="24"/>
-			<ChildItems>
-				<InputField name="Логин" id="5">
-					<DataPath>Логин</DataPath>
-					<ContextMenu name="ЛогинКонтекстноеМеню" id="6"/>
-					<ExtendedTooltip name="ЛогинExtendedTooltip" id="25"/>
-				</InputField>
-				<InputField name="Пароль" id="7">
-					<DataPath>Пароль</DataPath>
-					<PasswordMode>true</PasswordMode>
-					<ContextMenu name="ПарольКонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="ПарольExtendedTooltip" id="26"/>
-				</InputField>
+				<LabelDecoration name="ДекорацияРазделитель" id="30">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>10</MaxWidth>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="ДекорацияРазделительКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="ДекорацияРазделительРасширеннаяПодсказка" id="32"/>
+				</LabelDecoration>
 				<CheckBoxField name="ПассивноеСоединение" id="17">
 					<DataPath>ПассивноеСоединение</DataPath>
 					<TitleLocation>Right</TitleLocation>
@@ -101,15 +75,30 @@
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
+		<InputField name="Логин" id="5">
+			<DataPath>Логин</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>35</MaxWidth>
+			<ContextMenu name="ЛогинКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ЛогинExtendedTooltip" id="25"/>
+		</InputField>
+		<InputField name="Пароль" id="7">
+			<DataPath>Пароль</DataPath>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль FTP сервера.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>35</MaxWidth>
+			<PasswordMode>true</PasswordMode>
+			<ContextMenu name="ПарольКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ПарольExtendedTooltip" id="26"/>
+		</InputField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Сервер" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сервер</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -176,12 +165,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="Каталог" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Каталог</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>

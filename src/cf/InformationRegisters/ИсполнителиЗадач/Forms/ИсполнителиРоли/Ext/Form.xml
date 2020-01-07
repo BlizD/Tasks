@@ -9,7 +9,6 @@
 	<AutoTitle>false</AutoTitle>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
-		<Event name="047d4d09-961c-4bdc-8519-eef10674c35b">ПослеЗаписи</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -22,9 +21,12 @@
 			<EnableStartDrag>true</EnableStartDrag>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Исполнители</DataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исполнители</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -65,6 +67,9 @@
 				<ContextMenu name="ИсполнителиУправлениеПоискомКонтекстноеМеню" id="23"/>
 				<ExtendedTooltip name="ИсполнителиУправлениеПоискомРасширеннаяПодсказка" id="24"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="AfterDeleteRow">ИсполнителиПослеУдаления</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="Исполнитель" id="6">
 					<DataPath>Исполнители.Исполнитель</DataPath>
@@ -76,6 +81,12 @@
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основной объект адресации</v8:content>
+						</v8:item>
+					</Title>
 					<ContextMenu name="ОсновнойОбъектАдресацииКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="ОсновнойОбъектАдресацииExtendedTooltip" id="14"/>
 				</LabelField>
@@ -106,10 +117,14 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	РегистрСведенийИсполнителиЗадач.РольИсполнителя,
-	РегистрСведенийИсполнителиЗадач.Исполнитель,
-	РегистрСведенийИсполнителиЗадач.ОсновнойОбъектАдресации,
-	РегистрСведенийИсполнителиЗадач.ДополнительныйОбъектАдресации
+	РегистрСведенийИсполнителиЗадач.РольИсполнителя КАК РольИсполнителя,
+	РегистрСведенийИсполнителиЗадач.Исполнитель КАК Исполнитель,
+	ВЫБОР
+		КОГДА РегистрСведенийИсполнителиЗадач.ОсновнойОбъектАдресации = НЕОПРЕДЕЛЕНО
+			ТОГДА &amp;БезОбъектаАдресации
+		ИНАЧЕ РегистрСведенийИсполнителиЗадач.ОсновнойОбъектАдресации
+	КОНЕЦ КАК ОсновнойОбъектАдресации,
+	РегистрСведенийИсполнителиЗадач.ДополнительныйОбъектАдресации КАК ДополнительныйОбъектАдресации
 ИЗ
 	РегистрСведений.ИсполнителиЗадач КАК РегистрСведенийИсполнителиЗадач</QueryText>
 				<MainTable>InformationRegister.ИсполнителиЗадач</MainTable>

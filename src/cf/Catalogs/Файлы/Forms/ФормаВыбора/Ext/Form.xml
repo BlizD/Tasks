@@ -8,10 +8,67 @@
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
-	<CommandBarLocation>None</CommandBarLocation>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<CommandBarLocation>Top</CommandBarLocation>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Выбрать" id="35" DisplayImportance="VeryLow">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Item.Список.StandardCommand.Choose</CommandName>
+				<ExtendedTooltip name="ВыбратьExtendedTooltip" id="46"/>
+			</Button>
+			<Button name="ДобавитьФайл" id="64" DisplayImportance="VeryHigh">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<CommandName>Form.Command.ДобавитьФайл</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Добавить файл</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ДобавитьФайлExtendedTooltip" id="65"/>
+			</Button>
+			<Button name="Изменить" id="33" DisplayImportance="VeryLow">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Item.Список.StandardCommand.Change</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Открыть карточку</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ИзменитьExtendedTooltip" id="47"/>
+			</Button>
+			<Button name="ИзменитьФорму" id="69" DisplayImportance="VeryLow">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="ИзменитьФормуРасширеннаяПодсказка" id="70"/>
+			</Button>
+			<Button name="Обновить" id="81" DisplayImportance="VeryLow">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Refresh</CommandName>
+				<ExtendedTooltip name="ОбновитьРасширеннаяПодсказка" id="82"/>
+			</Button>
+			<Button name="Справка" id="30" DisplayImportance="VeryLow">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="СправкаExtendedTooltip" id="48"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -22,66 +79,17 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="86"/>
 		</UsualGroup>
-		<CommandBar name="КоманднаяПанель" id="83">
+		<UsualGroup name="ГруппаСписки" id="29">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
+					<v8:content>Списки</v8:content>
 				</v8:item>
 			</Title>
-			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="84"/>
-			<ChildItems>
-				<Button name="Выбрать" id="35">
-					<Type>CommandBarButton</Type>
-					<DefaultButton>true</DefaultButton>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Item.Список.StandardCommand.Choose</CommandName>
-					<ExtendedTooltip name="ВыбратьExtendedTooltip" id="46"/>
-				</Button>
-				<Button name="ДобавитьФайл" id="64">
-					<Type>CommandBarButton</Type>
-					<Representation>Text</Representation>
-					<CommandName>Form.Command.ДобавитьФайл</CommandName>
-					<ExtendedTooltip name="ДобавитьФайлExtendedTooltip" id="65"/>
-				</Button>
-				<Button name="Изменить" id="33">
-					<Type>CommandBarButton</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Item.Список.StandardCommand.Change</CommandName>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Открыть карточку</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="ИзменитьExtendedTooltip" id="47"/>
-				</Button>
-				<Button name="ИзменитьФорму" id="69">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-					<ExtendedTooltip name="ИзменитьФормуРасширеннаяПодсказка" id="70"/>
-				</Button>
-				<Button name="Обновить" id="81">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.StandardCommand.Refresh</CommandName>
-					<ExtendedTooltip name="ОбновитьРасширеннаяПодсказка" id="82"/>
-				</Button>
-				<Button name="Справка" id="30">
-					<Type>CommandBarButton</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.StandardCommand.Help</CommandName>
-					<ExtendedTooltip name="СправкаExtendedTooltip" id="48"/>
-				</Button>
-			</ChildItems>
-		</CommandBar>
-		<UsualGroup name="ГруппаСписки" id="29">
-			<Height>10</Height>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаСпискиExtendedTooltip" id="49"/>
@@ -103,9 +111,16 @@
 					<FileDragMode>AsFile</FileDragMode>
 					<DataPath>Папки</DataPath>
 					<BorderColor>style:BorderColor</BorderColor>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Папки</v8:content>
+						</v8:item>
+					</Title>
 					<SearchStringLocation>None</SearchStringLocation>
 					<ViewStatusLocation>None</ViewStatusLocation>
 					<SearchControlLocation>None</SearchControlLocation>
+					<CurrentRowUse>SelectionPresentation</CurrentRowUse>
 					<AutoRefresh>false</AutoRefresh>
 					<AutoRefreshPeriod>60</AutoRefreshPeriod>
 					<Period>
@@ -157,17 +172,17 @@
 									<v8:content>Картинка и наименование папок</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Картинка и наименование папок</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>InCell</Group>
 							<ExtendedTooltip name="КартинкаИНаименованиеПапокExtendedTooltip" id="51"/>
 							<ChildItems>
 								<PictureField name="ПапкиИндексКартинки" id="37">
 									<DataPath>Папки.ИндексКартинки</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Индекс картинки</v8:content>
+										</v8:item>
+									</Title>
 									<ValuesPicture>
 										<xr:Ref>CommonPicture.Папки</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
@@ -206,7 +221,6 @@
 				</Table>
 				<Table name="Список" id="2">
 					<CommandBarLocation>None</CommandBarLocation>
-					<ReadOnly>true</ReadOnly>
 					<SkipOnInput>false</SkipOnInput>
 					<DefaultItem>true</DefaultItem>
 					<Width>67</Width>
@@ -217,6 +231,17 @@
 					<FileDragMode>AsFile</FileDragMode>
 					<DataPath>Список</DataPath>
 					<BorderColor>style:BorderColor</BorderColor>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список</v8:content>
+						</v8:item>
+					</Title>
+					<CommandSet>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>Delete</ExcludedCommand>
+						<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+					</CommandSet>
 					<SearchStringLocation>None</SearchStringLocation>
 					<ViewStatusLocation>None</ViewStatusLocation>
 					<SearchControlLocation>None</SearchControlLocation>
@@ -291,9 +316,19 @@
 						<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="103"/>
 						<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="104"/>
 					</SearchControlAddition>
+					<Events>
+						<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
+						<Event name="BeforeDeleteRow">СписокПередУдалением</Event>
+					</Events>
 					<ChildItems>
-						<PictureField name="СписокНомерКартинкиПодписанЗашифрован" id="41">
+						<PictureField name="СписокНомерКартинкиПодписанЗашифрован" id="41" DisplayImportance="VeryLow">
 							<DataPath>Список.НомерКартинкиПодписанЗашифрован</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер картинки</v8:content>
+								</v8:item>
+							</Title>
 							<TitleLocation>None</TitleLocation>
 							<ToolTip>
 								<v8:item>
@@ -314,7 +349,7 @@
 							<ContextMenu name="СписокНомерКартинкиПодписанЗашифрованКонтекстноеМеню" id="42"/>
 							<ExtendedTooltip name="СписокНомерКартинкиПодписанЗашифрованРасширеннаяПодсказка" id="55"/>
 						</PictureField>
-						<ColumnGroup name="СписокГруппаКартинкаИНаименование" id="34">
+						<ColumnGroup name="СписокГруппаКартинкаИНаименование" id="34" DisplayImportance="VeryHigh">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -372,7 +407,7 @@
 								</InputField>
 							</ChildItems>
 						</ColumnGroup>
-						<InputField name="СписокАвтор" id="21">
+						<InputField name="СписокАвтор" id="21" DisplayImportance="Usual">
 							<DataPath>Список.Автор</DataPath>
 							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 							<Width>15</Width>
@@ -382,7 +417,7 @@
 							<ContextMenu name="СписокАвторКонтекстноеМеню" id="22"/>
 							<ExtendedTooltip name="СписокАвторРасширеннаяПодсказка" id="61"/>
 						</InputField>
-						<InputField name="СписокДатаСоздания" id="23">
+						<InputField name="СписокДатаСоздания" id="23" DisplayImportance="Usual">
 							<DataPath>Список.ДатаСоздания</DataPath>
 							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 							<Width>15</Width>
@@ -392,7 +427,7 @@
 							<ContextMenu name="СписокДатаСозданияКонтекстноеМеню" id="24"/>
 							<ExtendedTooltip name="СписокДатаСозданияРасширеннаяПодсказка" id="62"/>
 						</InputField>
-						<LabelField name="СписокСсылка" id="39">
+						<LabelField name="СписокСсылка" id="39" DisplayImportance="VeryLow">
 							<DataPath>Список.Ref</DataPath>
 							<UserVisible>
 								<xr:Common>false</xr:Common>
@@ -415,17 +450,14 @@
 			<UseAlways>
 				<Field>Список.Ref</Field>
 				<Field>Список.ПодписанЭП</Field>
-				<Field>Список.ТекущаяВерсияРасширение</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	Файлы.Ссылка,
 	Файлы.ПометкаУдаления,
 	Файлы.Предопределенный,
-	Файлы.Код,
-	Файлы.Наименование,
 	Файлы.Автор,
 	Файлы.ДатаСоздания,
 	Файлы.ХранитьВерсии,
@@ -433,7 +465,7 @@
 	Файлы.ТекущаяВерсия,
 	Файлы.ИндексКартинки,
 	Файлы.Описание,
-	Файлы.ПолноеНаименование,
+	Файлы.Наименование,
 	Файлы.ВладелецФайла,
 	Файлы.ПодписанЭП,
 	Файлы.Зашифрован,
@@ -447,7 +479,7 @@
 			ТОГДА 0
 		ИНАЧЕ -1
 	КОНЕЦ КАК НомерКартинкиПодписанЗашифрован,
-	Файлы.ТекущаяВерсияРасширение
+	Файлы.Расширение
 ИЗ
 	Справочник.Файлы КАК Файлы
 ГДЕ
@@ -489,22 +521,21 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	СправочникПапкиФайлов.Ссылка,
-	СправочникПапкиФайлов.ПометкаУдаления,
-	СправочникПапкиФайлов.Предопределенный,
-	СправочникПапкиФайлов.Родитель,
-	СправочникПапкиФайлов.Код,
-	СправочникПапкиФайлов.Наименование,
-	СправочникПапкиФайлов.Описание,
-	СправочникПапкиФайлов.Ответственный,
-	СправочникПапкиФайлов.ДатаСоздания,
-	СправочникПапкиФайлов.ДополнительныеРеквизиты,
+	СправочникПапкиФайловПереопределяемый.Ссылка,
+	СправочникПапкиФайловПереопределяемый.ПометкаУдаления,
+	СправочникПапкиФайловПереопределяемый.Предопределенный,
+	СправочникПапкиФайловПереопределяемый.Родитель,
+	СправочникПапкиФайловПереопределяемый.Код,
+	СправочникПапкиФайловПереопределяемый.Наименование,
+	СправочникПапкиФайловПереопределяемый.Описание,
+	СправочникПапкиФайловПереопределяемый.Ответственный,
+	СправочникПапкиФайловПереопределяемый.ДатаСоздания,
 	Выбор 
 		Когда ПометкаУдаления = Истина Тогда 1 
         Иначе 0
         Конец как ИндексКартинки
 ИЗ
-	Справочник.ПапкиФайлов КАК СправочникПапкиФайлов</QueryText>
+	Справочник.ПапкиФайлов КАК СправочникПапкиФайловПереопределяемый</QueryText>
 				<MainTable>Catalog.ПапкиФайлов</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -524,13 +555,18 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
+		<Attribute name="РежимВыбораШаблона" id="3">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ДобавитьФайл" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Создать файл</v8:content>
+					<v8:content>Добавить файл</v8:content>
 				</v8:item>
 			</Title>
 			<Picture>
@@ -543,10 +579,16 @@
 		</Command>
 	</Commands>
 	<Parameters>
-		<Parameter name="Параметр1">
+		<Parameter name="ВладелецФайла">
+			<Type/>
+		</Parameter>
+		<Parameter name="ВыборШаблона">
 			<Type>
-				<v8:Type>cfg:CatalogRef.ПапкиФайлов</v8:Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
+		</Parameter>
+		<Parameter name="ТекущаяСтрока">
+			<Type/>
 		</Parameter>
 	</Parameters>
 </Form>

@@ -3,6 +3,9 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаПользовательскихНастроек" id="8">
 			<Title>
@@ -11,12 +14,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа пользовательских настроек</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -29,12 +26,6 @@
 					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
-				</v8:item>
-			</ToolTip>
 			<CommandSource>Form</CommandSource>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="11"/>
 		</CommandBar>
@@ -48,9 +39,12 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -120,6 +114,8 @@
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
 				<Field>Список.Ref</Field>
+				<Field>Список.Ведущая</Field>
+				<Field>Список.Заблокирована</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>false</ManualQuery>
@@ -135,43 +131,6 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
-						<dcsset:item>
-							<dcsset:selection/>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">Заблокирована</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-								</dcsset:item>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">Ведущая</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>Шрифт</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:selection/>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">Заблокирована</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветТекста</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">style:ТекстЗапрещеннойЯчейкиЦвет</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>

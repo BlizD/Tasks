@@ -23,62 +23,41 @@
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Выбрать" id="39">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Choose</CommandName>
+				<ExtendedTooltip name="ВыбратьExtendedTooltip" id="43"/>
+			</Button>
+			<Button name="Справка" id="40">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="СправкаExtendedTooltip" id="44"/>
+			</Button>
+		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ГруппаПользовательскихНастроек" id="61">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа пользовательских настроек</v8:content>
-				</v8:item>
-			</Title>
-			<VerticalStretch>false</VerticalStretch>
+		<UsualGroup name="ГруппаПользовательскихНастроек" id="61" DisplayImportance="High">
 			<Group>Vertical</Group>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="62"/>
 		</UsualGroup>
-		<CommandBar name="КоманднаяПанель" id="63">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
-				</v8:item>
-			</Title>
-			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="64"/>
-			<ChildItems>
-				<Button name="Выбрать" id="39">
-					<Type>CommandBarButton</Type>
-					<DefaultButton>true</DefaultButton>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.StandardCommand.Choose</CommandName>
-					<ExtendedTooltip name="ВыбратьExtendedTooltip" id="43"/>
-				</Button>
-				<Button name="Справка" id="40">
-					<Type>CommandBarButton</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.StandardCommand.Help</CommandName>
-					<ExtendedTooltip name="СправкаExtendedTooltip" id="44"/>
-				</Button>
-			</ChildItems>
-		</CommandBar>
 		<UsualGroup name="ГруппаСписки" id="29">
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа списки</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Height>10</Height>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаСпискиExtendedTooltip" id="45"/>
 			<ChildItems>
 				<Table name="Папки" id="11">
 					<Representation>Tree</Representation>
+					<TitleLocation>Top</TitleLocation>
 					<CommandBarLocation>None</CommandBarLocation>
 					<ReadOnly>true</ReadOnly>
 					<SkipOnInput>false</SkipOnInput>
@@ -93,9 +72,16 @@
 					<FileDragMode>AsFile</FileDragMode>
 					<DataPath>Папки</DataPath>
 					<BorderColor>style:BorderColor</BorderColor>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Папки</v8:content>
+						</v8:item>
+					</Title>
 					<SearchStringLocation>None</SearchStringLocation>
 					<ViewStatusLocation>None</ViewStatusLocation>
 					<SearchControlLocation>None</SearchControlLocation>
+					<CurrentRowUse>SelectionPresentation</CurrentRowUse>
 					<AutoRefresh>false</AutoRefresh>
 					<AutoRefreshPeriod>60</AutoRefreshPeriod>
 					<Period>
@@ -141,23 +127,17 @@
 					</Events>
 					<ChildItems>
 						<ColumnGroup name="КартинкаИНаименованиеПапок" id="36">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Картинка и наименование папок</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Картинка и наименование папок</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>InCell</Group>
 							<ExtendedTooltip name="КартинкаИНаименованиеПапокExtendedTooltip" id="47"/>
 							<ChildItems>
 								<PictureField name="ПапкиИндексКартинки" id="37">
 									<DataPath>Папки.ИндексКартинки</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Индекс картинки</v8:content>
+										</v8:item>
+									</Title>
 									<ValuesPicture>
 										<xr:Ref>CommonPicture.Папки</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
@@ -255,19 +235,7 @@
 						<Event name="ValueChoice">СписокВыборЗначения</Event>
 					</Events>
 					<ChildItems>
-						<ColumnGroup name="КартинкаИНаименование" id="34">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Картинка и наименование</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Картинка и наименование</v8:content>
-								</v8:item>
-							</ToolTip>
+						<ColumnGroup name="КартинкаИНаименование" id="34" DisplayImportance="VeryHigh">
 							<Group>InCell</Group>
 							<ExtendedTooltip name="КартинкаИНаименованиеExtendedTooltip" id="51"/>
 							<ChildItems>
@@ -319,7 +287,7 @@
 								</InputField>
 							</ChildItems>
 						</ColumnGroup>
-						<InputField name="СписокАвтор" id="21">
+						<InputField name="СписокАвтор" id="21" DisplayImportance="Usual">
 							<DataPath>Список.Автор</DataPath>
 							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 							<Width>14</Width>
@@ -329,7 +297,7 @@
 							<ContextMenu name="СписокАвторКонтекстноеМеню" id="22"/>
 							<ExtendedTooltip name="СписокАвторРасширеннаяПодсказка" id="55"/>
 						</InputField>
-						<InputField name="СписокДатаСоздания" id="23">
+						<InputField name="СписокДатаСоздания" id="23" DisplayImportance="Usual">
 							<DataPath>Список.ДатаСоздания</DataPath>
 							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 							<Width>15</Width>
@@ -339,7 +307,7 @@
 							<ContextMenu name="СписокДатаСозданияКонтекстноеМеню" id="24"/>
 							<ExtendedTooltip name="СписокДатаСозданияРасширеннаяПодсказка" id="56"/>
 						</InputField>
-						<LabelField name="СписокСсылка" id="41">
+						<LabelField name="СписокСсылка" id="41" DisplayImportance="VeryLow">
 							<DataPath>Список.Ref</DataPath>
 							<UserVisible>
 								<xr:Common>false</xr:Common>
@@ -369,7 +337,6 @@
 	Файлы.Ссылка,
 	Файлы.ПометкаУдаления,
 	Файлы.Предопределенный,
-	Файлы.Код,
 	Файлы.Наименование,
 	Файлы.Автор,
 	Файлы.ДатаСоздания,
@@ -378,7 +345,6 @@
 	Файлы.ТекущаяВерсия,
 	Файлы.ИндексКартинки,
 	Файлы.Описание,
-	Файлы.ПолноеНаименование,
 	Файлы.ВладелецФайла
 ИЗ
 	Справочник.Файлы КАК Файлы
@@ -421,22 +387,21 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	СправочникПапкиФайлов.Ссылка,
-	СправочникПапкиФайлов.ПометкаУдаления,
-	СправочникПапкиФайлов.Предопределенный,
-	СправочникПапкиФайлов.Родитель,
-	СправочникПапкиФайлов.Код,
-	СправочникПапкиФайлов.Наименование,
-	СправочникПапкиФайлов.Описание,
-	СправочникПапкиФайлов.Ответственный,
-	СправочникПапкиФайлов.ДатаСоздания,
-	СправочникПапкиФайлов.ДополнительныеРеквизиты,
+	СправочникПапкиФайловПереопределяемый.Ссылка,
+	СправочникПапкиФайловПереопределяемый.ПометкаУдаления,
+	СправочникПапкиФайловПереопределяемый.Предопределенный,
+	СправочникПапкиФайловПереопределяемый.Родитель,
+	СправочникПапкиФайловПереопределяемый.Код,
+	СправочникПапкиФайловПереопределяемый.Наименование,
+	СправочникПапкиФайловПереопределяемый.Описание,
+	СправочникПапкиФайловПереопределяемый.Ответственный,
+	СправочникПапкиФайловПереопределяемый.ДатаСоздания,
 	Выбор 
 		Когда ПометкаУдаления = Истина Тогда 1 
         Иначе 0
         Конец как ИндексКартинки
 ИЗ
-	Справочник.ПапкиФайлов КАК СправочникПапкиФайлов</QueryText>
+	Справочник.ПапкиФайлов КАК СправочникПапкиФайловПереопределяемый</QueryText>
 				<MainTable>Catalog.ПапкиФайлов</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -458,9 +423,12 @@
 		</Attribute>
 	</Attributes>
 	<Parameters>
-		<Parameter name="Параметр1">
+		<Parameter name="ВладелецФайла">
+			<Type/>
+		</Parameter>
+		<Parameter name="ВыборШаблона">
 			<Type>
-				<v8:Type>cfg:CatalogRef.ПапкиФайлов</v8:Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Parameter>
 	</Parameters>

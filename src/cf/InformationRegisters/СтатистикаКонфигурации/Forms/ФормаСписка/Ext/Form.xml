@@ -27,8 +27,12 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -77,15 +81,9 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа операция статистики</v8:content>
+							<v8:content>Операция статистики</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа операция статистики</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ГруппаОперацияСтатистикиРасширеннаяПодсказка" id="35"/>
 					<ChildItems>
 						<LabelField name="Наименование" id="16">
@@ -116,15 +114,9 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа область</v8:content>
+							<v8:content>Область</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа область</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ГруппаОбластьРасширеннаяПодсказка" id="37"/>
 					<ChildItems>
 						<LabelField name="НаименованиеОбласти" id="31">
@@ -155,15 +147,9 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа значение</v8:content>
+							<v8:content>Значение</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа значение</v8:content>
-						</v8:item>
-					</ToolTip>
 					<ExtendedTooltip name="ГруппаЗначениеРасширеннаяПодсказка" id="39"/>
 					<ChildItems>
 						<LabelField name="ЗначениеПредставление" id="43">
@@ -209,15 +195,15 @@
 		КОГДА 0 ТОГДА РегистрСведенийСтатистикаКонфигурации.Значение
 		КОГДА 1 ТОГДА
 			ВЫБОР РегистрСведенийСтатистикаКонфигурации.Значение
-				КОГДА 0 ТОГДА ЛОЖЬ
+				КОГДА 0 ТОГДА Ложь
 				КОГДА 1 ТОГДА ИСТИНА
 			КОНЕЦ
 	КОНЕЦ КАК ЗначениеПредставление,
 	ОперацииСтатистики.Наименование,
 	РегистрСведенийСтатистикаКонфигурации.ВидСтатистики КАК ВидСтатистики,
 	ВЫБОР РегистрСведенийСтатистикаКонфигурации.ВидСтатистики
-		КОГДА 0 ТОГДА ВЫРАЗИТЬ(&amp;Метаданные КАК СТРОКА(50))
-		КОГДА 1 ТОГДА ВЫРАЗИТЬ(&amp;ФункциональнаяОпция КАК СТРОКА(50))
+		КОГДА 0 ТОГДА &amp;Метаданные
+		КОГДА 1 ТОГДА &amp;ФункциональнаяОпция
 	КОНЕЦ КАК ВидСтатистикиПредставление,
 	РегистрСведенийСтатистикаКонфигурации.ИдентификаторОбластиСтатистики,
 	ОбластиСтатистики.Наименование КАК НаименованиеОбласти
@@ -246,32 +232,5 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ЗначениеПредставление</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Список.ЗначениеПредставление</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>Формат</dcscor:parameter>
-						<dcscor:value xsi:type="v8:LocalStringType">
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>ЧН=0,000</v8:content>
-							</v8:item>
-						</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 </Form>

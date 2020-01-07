@@ -1,0 +1,61 @@
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018, ООО 1С-Софт
+// Все права защищены. Эта программа и сопроводительные материалы предоставляются 
+// в соответствии с условиями лицензии Attribution 4.0 International (CC BY 4.0)
+// Текст лицензии доступен по ссылке:
+// https://creativecommons.org/licenses/by/4.0/legalcode
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// helpers.js
+// Вспомогательные функции.
+
+var SW_HIDE = 0
+var SW_SHOWNORMAL = 1
+var SW_SHOWMINIMIZED = 2
+var SW_SHOWMAXIMIZED = 3
+var SW_MAXIMIZE = 3
+var SW_SHOWNOACTIVATE = 4
+var SW_SHOW = 5
+var SW_MINIMIZE = 6
+var SW_SHOWMINNOACTIVE = 7
+var SW_SHOWNA = 8
+var SW_RESTORE = 9
+var SW_SHOWDEFAULT = 10
+
+var ForReading = 1 // Open a file for reading only. You can't write to this file.
+var ForWriting = 2 // Open a file for writing.
+var ForAppending = 8 // Open a file and write to the end of the file.
+var TristateUseDefault = -2
+var TristateTrue = -1
+var TristateFalse = 0
+
+var EVENT_SUCCESS = 0
+var EVENT_CRITICAL = 1
+var EVENT_WARNING = 2
+var EVENT_INFO = 4
+
+function format (str) {
+  for (var i = 1; i < arguments.length; i++) {
+    str = str.replace('{' + (i - 1) + '}', arguments[i])
+  }
+  return str
+}
+
+function SWtoString (flag) {
+  switch (flag) {
+    case SW_HIDE: return 'SW_HIDE'
+    case SW_SHOWNORMAL: return 'SW_SHOWNORMAL'
+    case SW_SHOWMINIMIZED: return 'SW_SHOWMINIMIZED'
+    case SW_SHOWMAXIMIZED: return 'SW_SHOWMAXIMIZED'
+    case SW_MAXIMIZE: return 'SW_MAXIMIZE'
+    case SW_SHOWNOACTIVATE: return 'SW_SHOWNOACTIVATE'
+    case SW_SHOW: return 'SW_SHOW'
+    case SW_MINIMIZE: return 'SW_MINIMIZE'
+    case SW_SHOWMINNOACTIVE: return 'SW_SHOWMINNOACTIVE'
+    case SW_SHOWNA: return 'SW_SHOWNA'
+    case SW_RESTORE: return 'SW_RESTORE'
+    case SW_SHOWDEFAULT: return 'SW_SHOWDEFAULT'
+    default:
+      return format('N/A: {0}', flag)
+  }
+}

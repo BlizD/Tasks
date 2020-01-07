@@ -6,7 +6,9 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<InputField name="Наименование" id="1">
@@ -26,6 +28,9 @@
 			<EditMode>EnterOnInput</EditMode>
 			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
 			<ExtendedTooltip name="НаименованиеExtendedTooltip" id="7"/>
+			<Events>
+				<Event name="Opening">НаименованиеОткрытие</Event>
+			</Events>
 		</InputField>
 		<InputField name="Родитель" id="5">
 			<DataPath>Объект.Parent</DataPath>

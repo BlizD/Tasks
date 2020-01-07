@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>65</Width>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -9,12 +8,24 @@
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаПользовательскихНастроек" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пользовательских настроек</v8:content>
+				</v8:item>
+			</Title>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="20"/>
 		</UsualGroup>
 		<CommandBar name="КоманднаяПанель" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSource>Form</CommandSource>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="18"/>
 		</CommandBar>
@@ -23,6 +34,7 @@
 			<CommandBarLocation>None</CommandBarLocation>
 			<SkipOnInput>false</SkipOnInput>
 			<DefaultItem>true</DefaultItem>
+			<ChoiceMode>true</ChoiceMode>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<InitialTreeView>ExpandTopLevel</InitialTreeView>
 			<FileDragMode>AsFile</FileDragMode>
@@ -32,14 +44,17 @@
 				<xr:Ref>CommonPicture.СостоянияПользователей</xr:Ref>
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</RowsPicture>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
 				<ExcludedCommand>Delete</ExcludedCommand>
 				<ExcludedCommand>OutputList</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -81,6 +96,9 @@
 				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="28"/>
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="29"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="OnChange">СписокПриИзменении</Event>
+			</Events>
 			<ChildItems>
 				<InputField name="Наименование" id="4">
 					<DataPath>Список.Description</DataPath>
@@ -117,6 +135,8 @@
 		<InputField name="ПолеКомментарий" id="14">
 			<DataPath>Items.Список.CurrentData.Комментарий</DataPath>
 			<ReadOnly>true</ReadOnly>
+			<TitleLocation>Left</TitleLocation>
+			<AutoMaxWidth>false</AutoMaxWidth>
 			<ContextMenu name="ПолеКомментарийКонтекстноеМеню" id="15"/>
 			<ExtendedTooltip name="ПолеКомментарийРасширеннаяПодсказка" id="16"/>
 		</InputField>

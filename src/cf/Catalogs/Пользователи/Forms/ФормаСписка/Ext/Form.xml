@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>80</Width>
-	<Height>16</Height>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:string">КоманднаяПанель</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<CommandSet>
 		<ExcludedCommand>Create</ExcludedCommand>
 	</CommandSet>
@@ -17,6 +22,12 @@
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаПользовательскихНастроек" id="160">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пользовательских настроек</v8:content>
+				</v8:item>
+			</Title>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -29,19 +40,18 @@
 					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
-				</v8:item>
-			</ToolTip>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="159"/>
 			<ChildItems>
 				<Button name="ЗавершитьИЗакрыть" id="95">
 					<Type>CommandBarButton</Type>
 					<Visible>false</Visible>
+					<Representation>Text</Representation>
 					<DefaultButton>true</DefaultButton>
 					<CommandName>Form.Command.ЗавершитьИЗакрыть</CommandName>
+					<Picture>
+						<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
 					<ExtendedTooltip name="ЗавершитьИЗакрытьExtendedTooltip" id="98"/>
 				</Button>
 				<Button name="ВыбратьГруппуПользователей" id="68">
@@ -100,6 +110,12 @@
 					</Title>
 					<ExtendedTooltip name="КоманднаяПанельПользователиExtendedTooltip" id="104"/>
 					<ChildItems>
+						<Button name="ФормаВыбрать" id="216">
+							<Type>CommandBarButton</Type>
+							<Visible>false</Visible>
+							<CommandName>Form.StandardCommand.Choose</CommandName>
+							<ExtendedTooltip name="ФормаВыбратьРасширеннаяПодсказка" id="217"/>
+						</Button>
 						<Button name="ФормаСкопировать" id="212">
 							<Type>CommandBarButton</Type>
 							<CommandName>Form.StandardCommand.Copy</CommandName>
@@ -153,24 +169,17 @@
 				</Button>
 			</ChildItems>
 		</CommandBar>
-		<UsualGroup name="Группа" id="24">
+		<UsualGroup name="ГруппаСодержимое" id="24">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа</v8:content>
+					<v8:content>Содержимое</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаExtendedTooltip" id="108"/>
+			<ExtendedTooltip name="ГруппаСодержимоеРасширеннаяПодсказка" id="108"/>
 			<ChildItems>
 				<UsualGroup name="ГруппыИПользователи" id="74">
 					<Title>
@@ -179,29 +188,28 @@
 							<v8:content>Группы и пользователи</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппыИПользователиExtendedTooltip" id="109"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаГруппы" id="75">
+						<UsualGroup name="ГруппаГруппы" id="75" DisplayImportance="VeryLow">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа группы</v8:content>
+									<v8:content>Группы пользователей</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаГруппыExtendedTooltip" id="110"/>
 							<ChildItems>
-								<Table name="ГруппыПользователей" id="25">
+								<Table name="ГруппыПользователей" id="25" DisplayImportance="VeryHigh">
 									<Representation>Tree</Representation>
 									<CommandBarLocation>None</CommandBarLocation>
 									<SkipOnInput>false</SkipOnInput>
 									<Height>10</Height>
+									<ChoiceMode>true</ChoiceMode>
 									<RowSelectionMode>Row</RowSelectionMode>
 									<Header>false</Header>
 									<HorizontalLines>false</HorizontalLines>
@@ -214,12 +222,16 @@
 										<xr:Ref>CommonPicture.СостоянияПользователей</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
 									</RowsPicture>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группы пользователей</v8:content>
+										</v8:item>
+									</Title>
 									<CommandSet>
 										<ExcludedCommand>Delete</ExcludedCommand>
 									</CommandSet>
-									<SearchStringLocation>None</SearchStringLocation>
-									<ViewStatusLocation>None</ViewStatusLocation>
-									<SearchControlLocation>None</SearchControlLocation>
+									<CurrentRowUse>SelectionPresentationAndChoice</CurrentRowUse>
 									<AutoRefresh>false</AutoRefresh>
 									<AutoRefreshPeriod>60</AutoRefreshPeriod>
 									<Period>
@@ -274,6 +286,7 @@
 										<Event name="BeforeAddRow">ГруппыПользователейПередНачаломДобавления</Event>
 										<Event name="OnActivateRow">ГруппыПользователейПриАктивизацииСтроки</Event>
 										<Event name="Drag">ГруппыПользователейПеретаскивание</Event>
+										<Event name="OnChange">ГруппыПользователейПриИзменении</Event>
 									</Events>
 									<ChildItems>
 										<LabelField name="НаименованиеГруппы" id="30">
@@ -297,18 +310,16 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа выбрать группу</v8:content>
+											<v8:content>Выбрать группу</v8:content>
 										</v8:item>
 									</Title>
+									<VerticalStretch>true</VerticalStretch>
 									<Group>Vertical</Group>
+									<VerticalAlign>Center</VerticalAlign>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ГруппаВыбратьГруппуExtendedTooltip" id="113"/>
 									<ChildItems>
-										<LabelDecoration name="Отступ" id="87">
-											<ContextMenu name="ОтступКонтекстноеМеню" id="88"/>
-											<ExtendedTooltip name="ОтступExtendedTooltip" id="114"/>
-										</LabelDecoration>
 										<Button name="ВыбратьГруппу" id="89">
 											<Type>UsualButton</Type>
 											<Width>5</Width>
@@ -331,14 +342,13 @@
 								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
-						<UsualGroup name="ГруппаПользователи" id="76">
+						<UsualGroup name="ГруппаПользователи" id="76" DisplayImportance="VeryHigh">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа пользователи</v8:content>
+									<v8:content>Пользователи</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаПользователиExtendedTooltip" id="118"/>
@@ -348,6 +358,7 @@
 									<CommandBarLocation>None</CommandBarLocation>
 									<SkipOnInput>false</SkipOnInput>
 									<Height>10</Height>
+									<ChoiceMode>true</ChoiceMode>
 									<Header>false</Header>
 									<HorizontalLines>false</HorizontalLines>
 									<VerticalLines>false</VerticalLines>
@@ -359,12 +370,15 @@
 										<xr:Ref>CommonPicture.СостоянияПользователей</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
 									</RowsPicture>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пользователи список</v8:content>
+										</v8:item>
+									</Title>
 									<CommandSet>
 										<ExcludedCommand>Delete</ExcludedCommand>
 									</CommandSet>
-									<SearchStringLocation>None</SearchStringLocation>
-									<ViewStatusLocation>None</ViewStatusLocation>
-									<SearchControlLocation>None</SearchControlLocation>
 									<AutoRefresh>false</AutoRefresh>
 									<AutoRefreshPeriod>60</AutoRefreshPeriod>
 									<Period>
@@ -456,6 +470,7 @@
 										<Event name="BeforeAddRow">ПользователиСписокПередНачаломДобавления</Event>
 										<Event name="OnActivateRow">ПользователиСписокПриАктивизацииСтроки</Event>
 										<Event name="BeforeRowChange">ПользователиСписокПередНачаломИзменения</Event>
+										<Event name="OnChange">ПользователиСписокПриИзменении</Event>
 									</Events>
 									<ChildItems>
 										<LabelField name="Наименование" id="51">
@@ -478,18 +493,16 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа выбрать пользователя</v8:content>
+											<v8:content>Выбрать пользователя</v8:content>
 										</v8:item>
 									</Title>
+									<VerticalStretch>true</VerticalStretch>
 									<Group>Vertical</Group>
+									<VerticalAlign>Center</VerticalAlign>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ГруппаВыбратьПользователяExtendedTooltip" id="122"/>
 									<ChildItems>
-										<LabelDecoration name="Отступ2" id="92">
-											<ContextMenu name="Отступ2КонтекстноеМеню" id="93"/>
-											<ExtendedTooltip name="Отступ2ExtendedTooltip" id="123"/>
-										</LabelDecoration>
 										<Button name="ВыбратьПользователяКоманда" id="94">
 											<Type>UsualButton</Type>
 											<Width>5</Width>
@@ -516,7 +529,7 @@
 						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
-				<UsualGroup name="ВыбранныеПользователиИГруппы" id="77">
+				<UsualGroup name="ВыбранныеПользователиИГруппы" id="77" DisplayImportance="VeryLow">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -558,9 +571,6 @@
 								<ExcludedCommand>SortListAsc</ExcludedCommand>
 								<ExcludedCommand>SortListDesc</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="СписокВыбранныхПользователейИГруппКонтекстноеМеню" id="79"/>
 							<AutoCommandBar name="СписокВыбранныхПользователейИГруппКоманднаяПанель" id="80">
@@ -614,16 +624,9 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа показывать пользователей дочерних групп и недействительных</v8:content>
+					<v8:content>Показывать пользователей дочерних групп и недействительных</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа показывать пользователей дочерних групп и недействительных</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПоказыватьПользователейДочернихГруппИНедействительныхРасширеннаяПодсказка" id="130"/>
@@ -682,16 +685,18 @@
 							</Title>
 							<Group>Vertical</Group>
 							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
 							<TitleDataPath>Items.ГруппыПользователей.CurrentData.Description</TitleDataPath>
 							<ExtendedTooltip name="ЗаголовокКомментарияГруппыРасширеннаяПодсказка" id="142"/>
 							<ChildItems>
 								<InputField name="ГруппыПользователейКомментарий" id="143">
 									<DataPath>Items.ГруппыПользователей.CurrentData.Комментарий</DataPath>
 									<ReadOnly>true</ReadOnly>
-									<TitleLocation>None</TitleLocation>
+									<TitleLocation>Left</TitleLocation>
 									<AutoCellHeight>true</AutoCellHeight>
 									<ShowInHeader>false</ShowInHeader>
-									<Height>3</Height>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<Height>2</Height>
 									<ContextMenu name="ГруппыПользователейКомментарийКонтекстноеМеню" id="144"/>
 									<ExtendedTooltip name="ГруппыПользователейКомментарийРасширеннаяПодсказка" id="145"/>
 								</InputField>
@@ -718,16 +723,18 @@
 							</Title>
 							<Group>Vertical</Group>
 							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
 							<TitleDataPath>Items.ПользователиСписок.CurrentData.Description</TitleDataPath>
 							<ExtendedTooltip name="ЗаголовокКомментарияПользователяРасширеннаяПодсказка" id="149"/>
 							<ChildItems>
 								<InputField name="ПользователиСписокКомментарий" id="150">
 									<DataPath>Items.ПользователиСписок.CurrentData.Комментарий</DataPath>
 									<ReadOnly>true</ReadOnly>
-									<TitleLocation>None</TitleLocation>
+									<TitleLocation>Left</TitleLocation>
 									<AutoCellHeight>true</AutoCellHeight>
 									<ShowInHeader>false</ShowInHeader>
-									<Height>3</Height>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<Height>2</Height>
 									<ContextMenu name="ПользователиСписокКомментарийКонтекстноеМеню" id="151"/>
 									<ExtendedTooltip name="ПользователиСписокКомментарийРасширеннаяПодсказка" id="152"/>
 								</InputField>
@@ -783,7 +790,8 @@
 		КОГДА Пользователи.ИдентификаторПользователяИБ = &amp;ПустойУникальныйИдентификатор
 			ТОГДА ЛОЖЬ
 		ИНАЧЕ ИСТИНА
-	КОНЕЦ КАК ВозможноСменитьПароль
+	КОНЕЦ КАК ВозможноСменитьПароль,
+	Пользователи.ИдентификаторПользователяИБ
 ИЗ
 	Справочник.Пользователи КАК Пользователи
 ГДЕ
@@ -898,12 +906,6 @@
 			</Save>
 		</Attribute>
 		<Attribute name="ХранимыеПараметры" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Хранимые параметры</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ВыбранныеПользователиИГруппы" id="4">
@@ -932,12 +934,6 @@
 					</Type>
 				</Column>
 				<Column name="НомерКартинки" id="2">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер картинки</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -948,12 +944,6 @@
 					</Type>
 				</Column>
 				<Column name="Недействителен" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Недействителен</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -961,29 +951,8 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="СписокВыбранныхПользователейИзменен" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список выбранных пользователей изменен</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ИмяТекущегоЭлемента" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Имя текущего элемента</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="ПоказыватьНедействительныхПользователей" id="8">

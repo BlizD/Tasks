@@ -9,83 +9,16 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Bottom</CommandBarLocation>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:string">ПанельКоманд</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<HorizontalAlign>Right</HorizontalAlign>
-		<ChildItems>
-			<Button name="КомандаОК" id="32">
-				<Type>CommandBarButton</Type>
-				<DefaultButton>true</DefaultButton>
-				<CommandName>Form.Command.КомандаОК</CommandName>
-				<ExtendedTooltip name="КомандаОКExtendedTooltip" id="49"/>
-			</Button>
-			<Button name="Отмена" id="30">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.КомандаОтмена</CommandName>
-				<ExtendedTooltip name="ОтменаExtendedTooltip" id="50"/>
-			</Button>
-			<Button name="ОчиститьТелефон" id="34">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ОчиститьТелефон</CommandName>
-				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-				<ExtendedTooltip name="ОчиститьТелефонExtendedTooltip" id="53"/>
-			</Button>
-			<Button name="ИзменитьФорму" id="35">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-				<ExtendedTooltip name="ИзменитьФормуExtendedTooltip" id="55"/>
-			</Button>
-			<Button name="Справка" id="31">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.Help</CommandName>
-				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-				<ExtendedTooltip name="СправкаExtendedTooltip" id="51"/>
-			</Button>
-			<Popup name="ФормаВсеДействия" id="62">
-				<Title>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Все действия</v8:content>
-					</v8:item>
-				</Title>
-				<ToolTip>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Все действия формы</v8:content>
-					</v8:item>
-				</ToolTip>
-				<Picture>
-					<xr:Ref>CommonPicture.Подменю</xr:Ref>
-					<xr:LoadTransparent>false</xr:LoadTransparent>
-				</Picture>
-				<Representation>Picture</Representation>
-				<ExtendedTooltip name="ФормаВсеДействияExtendedTooltip" id="63"/>
-				<ChildItems>
-					<Button name="ОчиститьТелефонВсеДействия" id="64">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.ОчиститьТелефон</CommandName>
-						<ExtendedTooltip name="ОчиститьТелефонВсеДействияРасширеннаяПодсказка" id="65"/>
-					</Button>
-					<ButtonGroup name="Группа5" id="66">
-						<ExtendedTooltip name="Группа5ExtendedTooltip" id="67"/>
-						<ChildItems>
-							<Button name="ИзменитьФормуВсеДействия" id="68">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-								<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-								<ExtendedTooltip name="ИзменитьФормуВсеДействияРасширеннаяПодсказка" id="69"/>
-							</Button>
-							<Button name="СправкаФормыВсеДействия" id="70">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.StandardCommand.Help</CommandName>
-								<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-								<ExtendedTooltip name="СправкаФормыВсеДействияРасширеннаяПодсказка" id="71"/>
-							</Button>
-						</ChildItems>
-					</ButtonGroup>
-				</ChildItems>
-			</Popup>
-		</ChildItems>
+		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -93,137 +26,121 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ГруппаТелефона" id="24">
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаТелефонаExtendedTooltip" id="40"/>
-			<ChildItems>
-				<InputField name="КодСтраны" id="5">
-					<DataPath>КодСтраны</DataPath>
-					<TitleLocation>Top</TitleLocation>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Код страны в телефонном номере</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Width>6</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<InputHint>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>+7</v8:content>
-						</v8:item>
-					</InputHint>
-					<ContextMenu name="КодСтраныКонтекстноеМеню" id="6"/>
-					<ExtendedTooltip name="КодСтраныExtendedTooltip" id="41"/>
-					<Events>
-						<Event name="OnChange">КодСтраныПриИзменении</Event>
-					</Events>
-				</InputField>
-				<InputField name="КодГорода" id="3">
-					<DataPath>КодГорода</DataPath>
-					<TitleLocation>Top</TitleLocation>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Код города в телефонном номере</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Width>6</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<DropListButton>true</DropListButton>
-					<InputHint>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>123</v8:content>
-						</v8:item>
-					</InputHint>
-					<ContextMenu name="КодГородаКонтекстноеМеню" id="4"/>
-					<ExtendedTooltip name="КодГородаExtendedTooltip" id="42"/>
-					<Events>
-						<Event name="OnChange">КодГородаПриИзменении</Event>
-					</Events>
-				</InputField>
-				<InputField name="НомерТелефона" id="9">
-					<DataPath>НомерТелефона</DataPath>
-					<TitleLocation>Top</TitleLocation>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер телефона в телефонном номере</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Width>21</Width>
-					<HorizontalStretch>true</HorizontalStretch>
-					<InputHint>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>123-45-67</v8:content>
-						</v8:item>
-					</InputHint>
-					<ContextMenu name="НомерТелефонаКонтекстноеМеню" id="10"/>
-					<ExtendedTooltip name="НомерТелефонаExtendedTooltip" id="43"/>
-					<Events>
-						<Event name="OnChange">НомерТелефонаПриИзменении</Event>
-					</Events>
-				</InputField>
-				<InputField name="Добавочный" id="1">
-					<DataPath>Добавочный</DataPath>
-					<TitleLocation>Top</TitleLocation>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Добавочный номер</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Width>8</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ДобавочныйКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="ДобавочныйExtendedTooltip" id="44"/>
-					<Events>
-						<Event name="OnChange">ДобавочныйПриИзменении</Event>
-					</Events>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
-		<InputField name="Представление" id="11">
-			<DataPath>Представление</DataPath>
-			<ReadOnly>true</ReadOnly>
-			<TitleLocation>None</TitleLocation>
-			<HorizontalStretch>true</HorizontalStretch>
-			<BackColor>style:ButtonBackColor</BackColor>
-			<InputHint>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Введите номер телефона</v8:content>
-				</v8:item>
-			</InputHint>
-			<ContextMenu name="ПредставлениеКонтекстноеМеню" id="12"/>
-			<ExtendedTooltip name="ПредставлениеExtendedTooltip" id="45"/>
-		</InputField>
-		<UsualGroup name="ГруппаКомментарий" id="72">
+		<UsualGroup name="СведенияОТелефоне" id="56">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа комментарий</v8:content>
+					<v8:content>Сведения о телефоне</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа комментарий</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
-			<Representation>NormalSeparation</Representation>
+			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаКомментарийРасширеннаяПодсказка" id="73"/>
+			<ExtendedTooltip name="СведенияОТелефонеРасширеннаяПодсказка" id="57"/>
 			<ChildItems>
+				<UsualGroup name="ГруппаПоляТелефона" id="24">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Телефона</v8:content>
+						</v8:item>
+					</Title>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПоляТелефонаРасширеннаяПодсказка" id="40"/>
+					<ChildItems>
+						<InputField name="КодСтраны" id="5">
+							<DataPath>КодСтраны</DataPath>
+							<TitleLocation>Top</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Код страны в телефонном номере</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>+7</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="КодСтраныКонтекстноеМеню" id="6"/>
+							<ExtendedTooltip name="КодСтраныExtendedTooltip" id="41"/>
+							<Events>
+								<Event name="OnChange">КодСтраныПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="КодГорода" id="3">
+							<DataPath>КодГорода</DataPath>
+							<TitleLocation>Top</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Код города в телефонном номере</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<DropListButton>true</DropListButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>123</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="КодГородаКонтекстноеМеню" id="4"/>
+							<ExtendedTooltip name="КодГородаExtendedTooltip" id="42"/>
+							<Events>
+								<Event name="OnChange">КодГородаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="НомерТелефона" id="9">
+							<DataPath>НомерТелефона</DataPath>
+							<TitleLocation>Top</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер телефона в телефонном номере</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>13</Width>
+							<HorizontalStretch>true</HorizontalStretch>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>123-45-67</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="НомерТелефонаКонтекстноеМеню" id="10"/>
+							<ExtendedTooltip name="НомерТелефонаExtendedTooltip" id="43"/>
+							<Events>
+								<Event name="OnChange">НомерТелефонаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="Добавочный" id="1">
+							<DataPath>Добавочный</DataPath>
+							<TitleLocation>Top</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Добавочный номер</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ДобавочныйКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="ДобавочныйExtendedTooltip" id="44"/>
+							<Events>
+								<Event name="OnChange">ДобавочныйПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 				<InputField name="Комментарий" id="7">
 					<DataPath>Комментарий</DataPath>
-					<TitleLocation>Left</TitleLocation>
+					<TitleLocation>Top</TitleLocation>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -234,9 +151,62 @@
 					<MultiLine>true</MultiLine>
 					<ContextMenu name="КомментарийКонтекстноеМеню" id="8"/>
 					<ExtendedTooltip name="КомментарийExtendedTooltip" id="47"/>
+					<Events>
+						<Event name="OnChange">КомментарийПриИзменении</Event>
+					</Events>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
+		<InputField name="Представление" id="11" DisplayImportance="VeryLow">
+			<DataPath>Представление</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<TitleLocation>None</TitleLocation>
+			<BackColor>style:ButtonBackColor</BackColor>
+			<BorderColor>style:FormBackColor</BorderColor>
+			<ContextMenu name="ПредставлениеКонтекстноеМеню" id="12"/>
+			<ExtendedTooltip name="ПредставлениеExtendedTooltip" id="45"/>
+		</InputField>
+		<CommandBar name="ПанельКоманд" id="58">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель команд</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalLocation>Right</HorizontalLocation>
+			<ExtendedTooltip name="ПанельКомандРасширеннаяПодсказка" id="59"/>
+			<ChildItems>
+				<Button name="КомандаОК" id="32">
+					<Type>CommandBarButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.КомандаОК</CommandName>
+					<ExtendedTooltip name="КомандаОКExtendedTooltip" id="49"/>
+				</Button>
+				<Button name="Отмена" id="30">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.КомандаОтмена</CommandName>
+					<ExtendedTooltip name="ОтменаExtendedTooltip" id="50"/>
+				</Button>
+				<Button name="ОчиститьТелефон" id="34">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.ОчиститьТелефон</CommandName>
+					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+					<ExtendedTooltip name="ОчиститьТелефонExtendedTooltip" id="53"/>
+				</Button>
+				<Button name="ИзменитьФорму" id="35">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+					<ExtendedTooltip name="ИзменитьФормуExtendedTooltip" id="55"/>
+				</Button>
+				<Button name="Справка" id="31">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.Help</CommandName>
+					<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+					<ExtendedTooltip name="СправкаExtendedTooltip" id="51"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -347,34 +317,16 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ПроверятьКорректность" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Проверять корректность</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ВидКонтактнойИнформации" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вид контактной информации</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.ВидыКонтактнойИнформации</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="КопияКомментария" id="11">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Копия комментария</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -384,34 +336,16 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ТипКонтактнойИнформации" id="12">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Тип контактной информации</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.ТипыКонтактнойИнформации</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ВозвращатьСписокЗначений" id="13">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Возвращать список значений</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ТекстПредупрежденияПриОткрытии" id="14">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Текст предупреждения при открытии</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -421,32 +355,14 @@
 			</Type>
 		</Attribute>
 		<Attribute name="СписокКодовГорода" id="15">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список кодов города</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="КонтактнаяИнформацияОписаниеДополнительныхРеквизитов" id="16">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Контактная информация описание дополнительных реквизитов</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
 			<Columns>
 				<Column name="ИмяРеквизита" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Имя реквизита</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -456,34 +372,16 @@
 					</Type>
 				</Column>
 				<Column name="Вид" id="2">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Вид</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ВидыКонтактнойИнформации</v8:Type>
 					</Type>
 				</Column>
 				<Column name="Тип" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Тип</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>cfg:EnumRef.ТипыКонтактнойИнформации</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ЗначенияПолей" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Значения полей</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>v8:ValueListType</v8:Type>
 						<v8:Type>xs:string</v8:Type>
@@ -494,12 +392,6 @@
 					</Type>
 				</Column>
 				<Column name="Представление" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Представление</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -509,12 +401,6 @@
 					</Type>
 				</Column>
 				<Column name="Комментарий" id="6">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Комментарий</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -524,23 +410,11 @@
 					</Type>
 				</Column>
 				<Column name="ЭтоРеквизитТабличнойЧасти" id="7">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это реквизит табличной части</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ДействуетС" id="8">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Действует С</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:dateTime</v8:Type>
 						<v8:DateQualifiers>
@@ -549,23 +423,11 @@
 					</Type>
 				</Column>
 				<Column name="ЭтоИсторическаяКонтактнаяИнформация" id="9">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это историческая контактная информация</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ХранитьИсториюИзменений" id="11">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Хранить историю изменений</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -650,6 +512,9 @@
 			</Type>
 		</Parameter>
 		<Parameter name="Комментарий">
+			<Type/>
+		</Parameter>
+		<Parameter name="ВидКонтактнойИнформации">
 			<Type/>
 		</Parameter>
 	</Parameters>

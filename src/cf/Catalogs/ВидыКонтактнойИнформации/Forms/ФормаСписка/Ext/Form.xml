@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<CommandBarLocation>Top</CommandBarLocation>
 	<CommandSet>
 		<ExcludedCommand>CreateFolder</ExcludedCommand>
 	</CommandSet>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<Autofill>false</Autofill>
-	</AutoCommandBar>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -18,51 +15,11 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа пользовательских настроек</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="43"/>
 		</UsualGroup>
-		<CommandBar name="КоманднаяПанель" id="44">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
-				</v8:item>
-			</ToolTip>
-			<CommandSource>Form</CommandSource>
-			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="45"/>
-			<ChildItems>
-				<Button name="ПереместитьВверх" id="17">
-					<Type>CommandBarButton</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.ПереместитьЭлементВверх</CommandName>
-					<TextColor>style:ButtonTextColor</TextColor>
-					<BackColor>style:ButtonBackColor</BackColor>
-					<ExtendedTooltip name="ПереместитьВверхExtendedTooltip" id="32"/>
-				</Button>
-				<Button name="ПереместитьВниз" id="18">
-					<Type>CommandBarButton</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.ПереместитьЭлементВниз</CommandName>
-					<TextColor>style:ButtonTextColor</TextColor>
-					<BackColor>style:ButtonBackColor</BackColor>
-					<ExtendedTooltip name="ПереместитьВнизExtendedTooltip" id="33"/>
-				</Button>
-			</ChildItems>
-		</CommandBar>
 		<Table name="Список" id="1">
 			<Representation>Tree</Representation>
 			<CommandBarLocation>None</CommandBarLocation>
@@ -74,14 +31,22 @@
 			<InitialTreeView>ExpandAllLevels</InitialTreeView>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
+			<RowPictureDataPath>Список.ИндексПиктограммы</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.ВидыКонтактнойИнформации</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</RowsPicture>
 			<BorderColor>style:BorderColor</BorderColor>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>CreateFolder</ExcludedCommand>
 				<ExcludedCommand>MoveItem</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -127,53 +92,18 @@
 				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
 			</Events>
 			<ChildItems>
-				<ColumnGroup name="Представление" id="40">
+				<LabelField name="Наименование" id="37" DisplayImportance="VeryHigh">
+					<DataPath>Список.Наименование</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Представление</v8:content>
+							<v8:content>Вид контактной информации</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Представление</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>InCell</Group>
-					<ExtendedTooltip name="ПредставлениеРасширеннаяПодсказка" id="41"/>
-					<ChildItems>
-						<PictureField name="Пиктограмма" id="28">
-							<DataPath>Список.ИндексПиктограммы</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Пиктограмма</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>None</TitleLocation>
-							<Width>2</Width>
-							<ValuesPicture>
-								<xr:Ref>CommonPicture.ВидыКонтактнойИнформации</xr:Ref>
-								<xr:LoadTransparent>false</xr:LoadTransparent>
-							</ValuesPicture>
-							<FileDragMode>AsFile</FileDragMode>
-							<ContextMenu name="ПиктограммаКонтекстноеМеню" id="29"/>
-							<ExtendedTooltip name="ПиктограммаРасширеннаяПодсказка" id="35"/>
-						</PictureField>
-						<LabelField name="Наименование" id="37">
-							<DataPath>Список.Description</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Вид контактной информации</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="НаименованиеКонтекстноеМеню" id="38"/>
-							<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="39"/>
-						</LabelField>
-					</ChildItems>
-				</ColumnGroup>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="39"/>
+				</LabelField>
 				<InputField name="Ссылка" id="30">
 					<DataPath>Список.Ref</DataPath>
 					<UserVisible>
@@ -253,15 +183,22 @@
 	СправочникВидыКонтактнойИнформации.Предопределенный,
 	СправочникВидыКонтактнойИнформации.Родитель,
 	СправочникВидыКонтактнойИнформации.ЭтоГруппа,
-	СправочникВидыКонтактнойИнформации.Наименование,
+	ВЫБОР
+		КОГДА &amp;ЭтоОсновнойЯзык
+		ТОГДА СправочникВидыКонтактнойИнформации.Наименование
+		ИНАЧЕ ВЫРАЗИТЬ(ЕСТЬNULL(ВидыКонтактнойИнформацииПредставления.Наименование, СправочникВидыКонтактнойИнформации.Наименование) КАК СТРОКА(150))
+	КОНЕЦ КАК Наименование,
 	СправочникВидыКонтактнойИнформации.Тип,
 	СправочникВидыКонтактнойИнформации.РеквизитДопУпорядочивания,
 	СправочникВидыКонтактнойИнформации.РедактированиеТолькоВДиалоге,
 	СправочникВидыКонтактнойИнформации.МожноИзменятьСпособРедактирования,
-	СправочникВидыКонтактнойИнформации.АдресТолькоРоссийский,
+	СправочникВидыКонтактнойИнформации.ТолькоНациональныйАдрес,
 	СправочникВидыКонтактнойИнформации.Используется
 ИЗ
 	Справочник.ВидыКонтактнойИнформации КАК СправочникВидыКонтактнойИнформации
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ВидыКонтактнойИнформации.Представления КАК ВидыКонтактнойИнформацииПредставления
+		ПО (ВидыКонтактнойИнформацииПредставления.Ссылка = СправочникВидыКонтактнойИнформации.Ссылка)
+		И ВидыКонтактнойИнформацииПредставления.КодЯзыка = &amp;КодЯзыка
 ГДЕ
 	СправочникВидыКонтактнойИнформации.Используется И ЕстьNULL(СправочникВидыКонтактнойИнформации.Родитель.Используется, Истина)
 </QueryText>
@@ -289,46 +226,4 @@
 			</Settings>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="ПереместитьЭлементВверх" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить элемент вверх</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить элемент вверх</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.MoveUp</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ПереместитьЭлементВверх</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
-		<Command name="ПереместитьЭлементВниз" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить элемент вниз</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить элемент вниз</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.MoveDown</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ПереместитьЭлементВниз</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
-	</Commands>
 </Form>

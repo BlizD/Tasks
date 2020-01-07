@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>50</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:string">ГруппаКоманднаяПанель</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<CommandSet>
 		<ExcludedCommand>Abort</ExcludedCommand>
 		<ExcludedCommand>Cancel</ExcludedCommand>
@@ -17,14 +24,11 @@
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<Events>
-		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<InputField name="ВидПочтовогоАдресаПолучателей" id="41">
 			<DataPath>ВидПочтовогоАдресаПолучателей</DataPath>
-			<Width>30</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<CreateButton>false</CreateButton>
 			<QuickChoice>true</QuickChoice>
 			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
@@ -54,169 +58,173 @@
 				<Event name="OnChange">ВидПочтовогоАдресаПолучателейПриИзменении</Event>
 			</Events>
 		</InputField>
-		<UsualGroup name="НастройкаСпискаПолучателей" id="1">
+		<Table name="Получатели" id="64">
+			<Representation>List</Representation>
+			<DefaultItem>true</DefaultItem>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Получатели</DataPath>
+			<RowPictureDataPath>Получатели.ИндексКартинки</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.СостоянияПользователей</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</RowsPicture>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Получатели</v8:content>
 				</v8:item>
 			</Title>
-			<Width>20</Width>
-			<Group>Vertical</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="НастройкаСпискаПолучателейРасширеннаяПодсказка" id="2"/>
-			<ChildItems>
-				<Table name="Получатели" id="64">
-					<Representation>List</Representation>
-					<DefaultItem>true</DefaultItem>
-					<AutoInsertNewRow>true</AutoInsertNewRow>
-					<EnableStartDrag>true</EnableStartDrag>
-					<EnableDrag>true</EnableDrag>
-					<FileDragMode>AsFile</FileDragMode>
-					<DataPath>Получатели</DataPath>
-					<RowPictureDataPath>Получатели.ИндексКартинки</RowPictureDataPath>
-					<RowsPicture>
-						<xr:Ref>CommonPicture.СостоянияПользователей</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</RowsPicture>
-					<CommandSet>
-						<ExcludedCommand>Change</ExcludedCommand>
-						<ExcludedCommand>Copy</ExcludedCommand>
-						<ExcludedCommand>EndEdit</ExcludedCommand>
-					</CommandSet>
-					<SearchStringLocation>None</SearchStringLocation>
-					<ViewStatusLocation>None</ViewStatusLocation>
-					<SearchControlLocation>None</SearchControlLocation>
-					<RowFilter xsi:nil="true"/>
-					<ContextMenu name="ПолучателиКонтекстноеМеню" id="65"/>
-					<AutoCommandBar name="ПолучателиКоманднаяПанель" id="66">
-						<Autofill>false</Autofill>
+			<CommandSet>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ПолучателиКонтекстноеМеню" id="65"/>
+			<AutoCommandBar name="ПолучателиКоманднаяПанель" id="66">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="Подобрать" id="74">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПолучателиПодобрать</CommandName>
+						<ExtendedTooltip name="ПодобратьРасширеннаяПодсказка" id="75"/>
+					</Button>
+					<Button name="ВставитьИзБуфераОбмена" id="95">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ВставитьИзБуфераОбмена</CommandName>
+						<ExtendedTooltip name="ВставитьИзБуфераОбменаРасширеннаяПодсказка" id="96"/>
+					</Button>
+					<ButtonGroup name="ПолучателиГруппаПометки" id="106">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Получатели группа пометки</v8:content>
+							</v8:item>
+						</Title>
+						<Representation>Compact</Representation>
+						<ExtendedTooltip name="ПолучателиГруппаПометкиРасширеннаяПодсказка" id="107"/>
 						<ChildItems>
-							<Button name="Подобрать" id="74">
+							<Button name="ПолучателиУстановитьПометки" id="108">
 								<Type>CommandBarButton</Type>
-								<CommandName>Form.Command.ПолучателиПодобрать</CommandName>
-								<ExtendedTooltip name="ПодобратьРасширеннаяПодсказка" id="75"/>
+								<CommandName>Form.Command.УстановитьПометки</CommandName>
+								<ExtendedTooltip name="ПолучателиУстановитьПометкиРасширеннаяПодсказка" id="109"/>
 							</Button>
-							<Button name="ВставитьИзБуфераОбмена" id="95">
+							<Button name="ПолучателиСнятьПометки" id="110">
 								<Type>CommandBarButton</Type>
-								<CommandName>Form.Command.ВставитьИзБуфераОбмена</CommandName>
-								<ExtendedTooltip name="ВставитьИзБуфераОбменаРасширеннаяПодсказка" id="96"/>
+								<CommandName>Form.Command.СнятьПометки</CommandName>
+								<ExtendedTooltip name="ПолучателиСнятьПометкиРасширеннаяПодсказка" id="111"/>
 							</Button>
-							<Button name="ПолучателиДобавить" id="97">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Item.Получатели.StandardCommand.Add</CommandName>
-								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-								<ExtendedTooltip name="ПолучателиДобавитьРасширеннаяПодсказка" id="98"/>
-							</Button>
-							<ButtonGroup name="ГруппаКоманднаяПанельПолучатели" id="99">
-								<ToolTip>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Группа командная панель получатели</v8:content>
-									</v8:item>
-								</ToolTip>
-								<CommandSource>Item.Получатели</CommandSource>
-								<ExtendedTooltip name="ГруппаКоманднаяПанельПолучателиРасширеннаяПодсказка" id="100"/>
-							</ButtonGroup>
-							<ButtonGroup name="ГруппаКоманднаяПанельФормы" id="104">
-								<Title>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Группа командная панель формы</v8:content>
-									</v8:item>
-								</Title>
-								<ToolTip>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Группа командная панель получатели</v8:content>
-									</v8:item>
-								</ToolTip>
-								<CommandSource>Form</CommandSource>
-								<ExtendedTooltip name="ГруппаКоманднаяПанельФормыРасширеннаяПодсказка" id="105"/>
-							</ButtonGroup>
 						</ChildItems>
-					</AutoCommandBar>
-					<ExtendedTooltip name="ПолучателиРасширеннаяПодсказка" id="67"/>
-					<SearchStringAddition name="ПолучателиСтрокаПоиска" id="86">
-						<AdditionSource>
-							<Item>Получатели</Item>
-							<Type>SearchStringRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ПолучателиСтрокаПоискаКонтекстноеМеню" id="87"/>
-						<ExtendedTooltip name="ПолучателиСтрокаПоискаРасширеннаяПодсказка" id="88"/>
-					</SearchStringAddition>
-					<ViewStatusAddition name="ПолучателиСостояниеПросмотра" id="89">
-						<AdditionSource>
-							<Item>Получатели</Item>
-							<Type>ViewStatusRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ПолучателиСостояниеПросмотраКонтекстноеМеню" id="90"/>
-						<ExtendedTooltip name="ПолучателиСостояниеПросмотраРасширеннаяПодсказка" id="91"/>
-					</ViewStatusAddition>
-					<SearchControlAddition name="ПолучателиУправлениеПоиском" id="92">
-						<AdditionSource>
-							<Item>Получатели</Item>
-							<Type>SearchControl</Type>
-						</AdditionSource>
-						<ContextMenu name="ПолучателиУправлениеПоискомКонтекстноеМеню" id="93"/>
-						<ExtendedTooltip name="ПолучателиУправлениеПоискомРасширеннаяПодсказка" id="94"/>
-					</SearchControlAddition>
-					<Events>
-						<Event name="BeforeAddRow">ПолучателиПередНачаломДобавления</Event>
-						<Event name="ChoiceProcessing">ПолучателиОбработкаВыбора</Event>
-					</Events>
+					</ButtonGroup>
+					<Button name="ПолучателиДобавить" id="97">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Получатели.StandardCommand.Add</CommandName>
+						<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+						<ExtendedTooltip name="ПолучателиДобавитьРасширеннаяПодсказка" id="98"/>
+					</Button>
+					<ButtonGroup name="ГруппаКоманднаяПанельПолучатели" id="99">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Командная панель получатели</v8:content>
+							</v8:item>
+						</Title>
+						<CommandSource>Item.Получатели</CommandSource>
+						<ExtendedTooltip name="ГруппаКоманднаяПанельПолучателиРасширеннаяПодсказка" id="100"/>
+					</ButtonGroup>
+					<ButtonGroup name="ГруппаКоманднаяПанельФормы" id="104">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Командная панель формы</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа командная панель получатели</v8:content>
+							</v8:item>
+						</ToolTip>
+						<CommandSource>Form</CommandSource>
+						<ExtendedTooltip name="ГруппаКоманднаяПанельФормыРасширеннаяПодсказка" id="105"/>
+					</ButtonGroup>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ПолучателиРасширеннаяПодсказка" id="67"/>
+			<SearchStringAddition name="ПолучателиСтрокаПоиска" id="86">
+				<AdditionSource>
+					<Item>Получатели</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПолучателиСтрокаПоискаКонтекстноеМеню" id="87"/>
+				<ExtendedTooltip name="ПолучателиСтрокаПоискаРасширеннаяПодсказка" id="88"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ПолучателиСостояниеПросмотра" id="89">
+				<AdditionSource>
+					<Item>Получатели</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПолучателиСостояниеПросмотраКонтекстноеМеню" id="90"/>
+				<ExtendedTooltip name="ПолучателиСостояниеПросмотраРасширеннаяПодсказка" id="91"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ПолучателиУправлениеПоиском" id="92">
+				<AdditionSource>
+					<Item>Получатели</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ПолучателиУправлениеПоискомКонтекстноеМеню" id="93"/>
+				<ExtendedTooltip name="ПолучателиУправлениеПоискомРасширеннаяПодсказка" id="94"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">ПолучателиПередНачаломДобавления</Event>
+				<Event name="ChoiceProcessing">ПолучателиОбработкаВыбора</Event>
+			</Events>
+			<ChildItems>
+				<ColumnGroup name="ПолучательНаименованиеИПочта" id="78">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Получатель наименование и почта</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ПолучательНаименованиеИПочтаРасширеннаяПодсказка" id="79"/>
 					<ChildItems>
-						<ColumnGroup name="ПолучательНаименованиеИПочта" id="78">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Получатель наименование и почта</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Получатель наименование и почта</v8:content>
-								</v8:item>
-							</ToolTip>
-							<HorizontalStretch>false</HorizontalStretch>
-							<Group>InCell</Group>
-							<ExtendedTooltip name="ПолучательНаименованиеИПочтаРасширеннаяПодсказка" id="79"/>
-							<ChildItems>
-								<InputField name="ПолучателиПолучатель" id="68">
-									<DataPath>Получатели.Получатель</DataPath>
-									<EditMode>Directly</EditMode>
-									<Width>19</Width>
-									<ContextMenu name="ПолучателиПолучательКонтекстноеМеню" id="69"/>
-									<ExtendedTooltip name="ПолучателиПолучательРасширеннаяПодсказка" id="70"/>
-								</InputField>
-								<InputField name="ПолучателиТЗАдрес" id="80">
-									<DataPath>Получатели.Адрес</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ShowInHeader>false</ShowInHeader>
-									<Width>20</Width>
-									<ContextMenu name="ПолучателиТЗАдресКонтекстноеМеню" id="81"/>
-									<ExtendedTooltip name="ПолучателиТЗАдресРасширеннаяПодсказка" id="82"/>
-								</InputField>
-							</ChildItems>
-						</ColumnGroup>
-						<CheckBoxField name="ПолучателиИсключен" id="71">
-							<DataPath>Получатели.Исключен</DataPath>
+						<InputField name="ПолучателиПолучатель" id="68">
+							<DataPath>Получатели.Получатель</DataPath>
 							<EditMode>EnterOnInput</EditMode>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ПолучателиИсключенКонтекстноеМеню" id="72"/>
-							<ExtendedTooltip name="ПолучателиИсключенРасширеннаяПодсказка" id="73"/>
-						</CheckBoxField>
+							<Width>10</Width>
+							<ContextMenu name="ПолучателиПолучательКонтекстноеМеню" id="69"/>
+							<ExtendedTooltip name="ПолучателиПолучательРасширеннаяПодсказка" id="70"/>
+						</InputField>
+						<InputField name="ПолучателиТЗАдрес" id="80">
+							<DataPath>Получатели.Адрес</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>20</Width>
+							<ContextMenu name="ПолучателиТЗАдресКонтекстноеМеню" id="81"/>
+							<ExtendedTooltip name="ПолучателиТЗАдресРасширеннаяПодсказка" id="82"/>
+						</InputField>
 					</ChildItems>
-				</Table>
+				</ColumnGroup>
+				<CheckBoxField name="ПолучателиИсключен" id="71">
+					<DataPath>Получатели.Исключен</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ПолучателиИсключенКонтекстноеМеню" id="72"/>
+					<ExtendedTooltip name="ПолучателиИсключенРасширеннаяПодсказка" id="73"/>
+				</CheckBoxField>
 			</ChildItems>
-		</UsualGroup>
+		</Table>
 		<CommandBar name="ГруппаКоманднаяПанель" id="47">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа командная панель</v8:content>
+					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
 			<HorizontalLocation>Right</HorizontalLocation>
@@ -256,23 +264,11 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ТипПолучателейРассылки" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Получатели</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:TypeDescription</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПутьФормыВыбора" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Путь формы выбора</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -330,12 +326,6 @@
 					</Type>
 				</Column>
 				<Column name="ИндексКартинки" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Индекс картинки</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -347,48 +337,14 @@
 				</Column>
 			</Columns>
 		</Attribute>
-		<Attribute name="ИОМД" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>ИОМД</v8:content>
-				</v8:item>
-			</Title>
+		<Attribute name="ИдентификаторОбъектаМетаданных" id="4">
 			<Type/>
 		</Attribute>
 		<Attribute name="ГруппаКонтактнойИнформацииТипаПолучателей" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа контактной информации типа получателей</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.ВидыКонтактнойИнформации</v8:Type>
 			</Type>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ПолучателиПредставление</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">ПолучателиCP.Пометка</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветТекста</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:РольБезИсполнителей</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="ПолучателиПодобрать" id="1">
@@ -443,6 +399,46 @@
 			<Action>ВставитьИзБуфераОбмена</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
+		<Command name="УстановитьПометки" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьПометки</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СнятьПометки" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять пометки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять пометки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СнятьПометки</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
 	</Commands>
 	<Parameters>
 		<Parameter name="ТипПолучателейРассылки">
@@ -469,6 +465,11 @@
 			</Type>
 		</Parameter>
 		<Parameter name="ВидПочтовогоАдресаПолучателей">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВидыКонтактнойИнформации</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ГруппаКонтактнойИнформацииТипаПолучателей">
 			<Type>
 				<v8:Type>cfg:CatalogRef.ВидыКонтактнойИнформации</v8:Type>
 			</Type>

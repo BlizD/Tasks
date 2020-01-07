@@ -1,152 +1,153 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html>
+
 <head>
-    <meta http-equiv="Content-Language" content="ru-ru">
-    <meta http-equiv="Content-Type" content="text/html; charset=unicode">
-    <title>Резервное копирование информационной базы...</title>
-    <hta:application id="oHTA" border="none" caption="no" contextmenu="no" icon="splash.ico"
-        innerborder="no" navigable="yes" showintaskbar="yes" scroll="no" version="1.0.0.0" />
-    <script language="javascript" src="helpers.js"></script>
-    <script language="javascript" src="main.js"></script>
-    <script language="javascript">
+  <meta http-equiv="Content-Type" content="application/hta; charset=UTF-16">
+  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE7">
+  <hta:application id="oHTA" border="none" caption="no" contextmenu="no" selection="no" icon="splash.ico" innerborder="no"
+    navigable="yes" showintaskbar="yes" scroll="no" version="1.0.0.0" />
+  <title>Резервное копирование информационной базы...</title>
+  <script language="javascript" src="helpers.js"></script>
+  <script language="javascript" src="main.js"></script>
+  <script language="javascript">
+    var windowWidth = 604
+    var windowHeight = 324
+    var windowLeft = 200
+    var windowTop = 100
+    if (window.screen) {
+      windowLeft = (window.screen.availWidth - windowWidth) / 2
+      windowTop = (window.screen.availHeight - windowHeight) / 2
+    }
+    window.moveTo(windowLeft, windowTop)
+    window.resizeTo(windowWidth, windowHeight)
 
-        // Размер и положение окна по умолчанию.
-        var splashWindowWidth = 604;
-        var splashWindowHeight = 324;
-        var splashWindowLeft = 200;
-        var splashWindowTop = 100;
+    // Переменные состояния
+    var step = 0 // Текущий шаг процедуры резервного копирования.
+    var ret = 0 // Код возврата предыдущего шага.
+    var finish = false
+    var errStep = 0
 
-        // Инициализация окна
-        if (window.screen) {
-            splashWindowLeft = (window.screen.availWidth - splashWindowWidth) / 2;
-            splashWindowTop = (window.screen.availHeight - splashWindowHeight) / 2;
+    // Вывести сообщение о ходе резервного копирования
+    function setProgress (statusText) {
+      statusText += '...'
+      document.getElementById('progressText').innerHTML = statusText
+      log(statusText)
+    }
+
+    // Конечный автомат для выполнения шагов процедуры резервного копирования.
+    function doStep (step) {
+      switch (step) {
+        case 0:
+          setProgress('Инициализация')
+          break
+        case 1:
+          ret = initialize()
+          break
+        case 2:
+          setProgress('Создание резервной копии информационной базы')
+          break
+        case 3:
+          ret = backupDB()
+          break
+        case 4:
+          setProgress('Ожидание завершения резервного копирования')
+          break
+        case 5:
+          ret = WaitUntilFinish()
+          break
+        case 6:
+          setProgress('Разрешение подключений новых соединений')
+          break
+        case 7:
+          ret = allowConnections()
+          break
+        case 8:
+          setProgress('Завершение')
+          break
+        case 9:
+          // Все готово.
+          finalize(true)
+          runEnterprise()
+          self.close()
+          ClearTempFiles()
+          finish = true
+          break
+        default:
+      }
+      return ret
+    }
+
+    // Выполнить процедуру резервного копирования
+    function main () {
+      if (finish) {
+        return
+      }
+      // Если предыдущий шаг завершился неудачно...
+      if (ret !== 0 && ret !== -1) {
+        if (errStep === 0) {
+          log(format('Завершение с ошибкой. Код ошибки: {0}. Подробности см. в предыдущей записи.', ret), true)
+          finalize()
+          runEnterprise()
+          self.close()
+          return
         }
-        window.moveTo(splashWindowLeft, splashWindowTop);
-        window.resizeTo(splashWindowWidth, splashWindowHeight);
+        finalize()
+        runEnterprise()
+        self.close()
+        ClearTempFiles()
+        finish = true
+        return
+      }
 
-        // Переменные состояния
-        var step = 0;   // Текущий шаг процедуры резервного копирования.
-        var ret = 0;    // Код возврата предыдущего шага.
-        var finish = false;
-        var errStep = 0;
+      // Последовательное выполнение шагов процедуры резервного копирования.
+      if (ret !== -1) {
+        step++
+      }
+      doStep(step)
 
-        // Вывести сообщение о ходе резервного копирования
-        function setProgress(statusText) {
-            statusText += "...";
-            progressText.innerHTML = statusText;
-            log(statusText);
+      // Передача управления IE и повторный вызов main через 1 секунду (достаточно для завершения COM-соединения).
+      // Если еще не все сеансы завершены, то ret = -1 и ждем 5 секунд до следующей проверки.
+      if (!finish) {
+        setTimeout('main()', ret !== -1 ? 1000 : 5 * 1000)
+      }
+    }
+
+    function checkClose () {
+      if (!finish) {
+        event.returnValue = format('Внимание: процесс резервного копирования был прерван, и информационная база осталась заблокированной!\n' +
+              'Для разблокирования информационной базы воспользуйтесь консолью кластера серверов или запустите "1С:Предприятие".')
         }
+    }
 
-        // Конечный автомат для выполнения шагов процедуры резервного копирования.
-        function doStep(step) {
-            switch (step) {
-                case 0:
-                    setProgress("Инициализация");
-                    break;
-                case 1:
-                    ret = initialize();
-                    break;
-                case 2:
-                    setProgress("Cоздание резервной копии информационной базы");
-                    break;
-                case 3:
-                    ret = backupDB();
-                    break;
-                case 4:
-                    setProgress("Ожидание завершения резервного копирования");
-                    break;
-                case 5:
-                    ret = WaitUntilFinish();
-                    break;
-                case 6:
-                    setProgress("Разрешение подключений новых соединений");
-                    break;
-                case 7:
-                    ret = allowConnections();
-                    break;
-                case 8:
-                    setProgress("Завершение");
-                    break;
-                case 9:
-                    // Все готово.
-                    finalize(true);
-                    runEnterprise();
-                    self.close();
-                    ClearTempFiles();
-                    finish = true;
-                    break;
-                default:
-            }
-            return ret;
-        }
-
-        // Выпонить процедуру резервного копирования
-        function main() {
-            if (finish)
-                return;
-
-            if (ret > 0)   // Если предыдущий шаг завершился неудачно...
-            {
-                if (errStep == 0) {
-
-                    log(format("Завершение с ошибкой. Код ошибки: {0}. Подробности см. в предыдущей записи.", ret), true);
-                    finalize();
-                    runEnterprise();
-                    self.close();
-                    return;
-                }
-                finalize();
-                runEnterprise();
-                self.close();
-                ClearTempFiles();
-                finish = true;
-                return;
-            }
-
-            // Последовательное выполнение шагов процедуры резервного копирования.
-            if (ret != -1)
-                step++;
-            doStep(step);
-
-            // Передача управления IE и повторный вызов main через 1 секунду (достаточно для завершения COM-соединения).
-            // Если еще не все сеансы завершены, то ret = -1 и ждем 18 секунд до следующей проверки.
-            if (!finish)
-                setTimeout("main()", ret != -1 ? 1000 : 5 * 1000);
-        }
-
-        function checkClose() {
-            if (!finish)
-                event.returnValue = format('Внимание: процесс резервного копирования был прерван, и информационная база осталась заблокированной!\n' +
-            'Для разблокирования информационной базы воспользуйтесь консолью кластера серверов или запустите "1С:Предприятие".');
-        }
-
-        function ClearTempFiles() {
-            // Удаляем временные файлы
-            try {
-                oFileSystemObject.DeleteFile(thisFileDir + '\\main.js');
-                oFileSystemObject.DeleteFile(thisFileDir + '\\helpers.js');
-                oFileSystemObject.DeleteFile(thisFileDir + '\\splash.png');
-                oFileSystemObject.DeleteFile(thisFileDir + '\\splash.ico');
-                oFileSystemObject.DeleteFile(thisFileDir + '\\progress.gif');
-                oFileSystemObject.DeleteFile(thisFileDir + '\\splash.hta');
-            }
-            catch (e) { }
-        }
-
-    </script>
+    function ClearTempFiles () {
+      // Удаляем временные файлы
+      try {
+        oFileSystemObject.DeleteFile(thisFileDir + '\\main.js')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\helpers.js')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\splash.png')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\splash.ico')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\progress.gif')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\splash.hta')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\templog.txt')
+      } catch (e) { }
+    }
+  </script>
 </head>
+
 <body onload="window.setTimeout('main()',10);" style="border: 2px; background-image:url(splash.png); background-repeat: no-repeat; background-position: center center; background-attachment: fixed; background-color: #B3B3B3;">
-    <div id="progressIcon" style="position: absolute; left: 10px; top: 65px;">
-        <img src="progress.gif" border="0" />
-    </div>
-    <div id="captionText" style="font-size: 9pt; font-family: verdana,arial; font-weight: bold;
+  <div id="progressIcon" style="position: absolute; left: 10px; top: 65px;">
+    <img src="progress.gif" border="0" />
+  </div>
+  <div id="captionText" style="font-size: 9pt; font-family: verdana,arial; font-weight: bold;
         color: #606060; position: absolute; left: 80px; top: 70px;">
-        Пожалуйста, подождите.<br />
-        Выполняется резервное копирование базы.<br />
-        Не рекомендуется останавливать процесс.
-    </div>
-    <div id="progressText" style="font-size: 8pt; font-family: verdana,arial; color: #000000;
+    Пожалуйста, подождите.
+    <br /> Выполняется резервное копирование базы.
+    <br /> Не рекомендуется останавливать процесс.
+  </div>
+  <div id="progressText" style="font-size: 8pt; font-family: verdana,arial; color: #000000;
         position: absolute; left: 10px; top: 240px;">
-        &nbsp;
-    </div>
+    &nbsp;
+  </div>
 </body>
+
 </html>

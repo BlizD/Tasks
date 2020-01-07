@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>60</Width>
 	<CommandBarLocation>Top</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -12,54 +11,184 @@
 				<CommandName>Form.Command.ОтправитьПисьмо</CommandName>
 				<ExtendedTooltip name="ОтправитьПисьмоExtendedTooltip" id="49"/>
 			</Button>
+			<Button name="ФормаСформироватьПоШаблону" id="106">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СформироватьПоШаблону</CommandName>
+				<ExtendedTooltip name="ФормаСформироватьПоШаблонуРасширеннаяПодсказка" id="107"/>
+			</Button>
 			<Button name="Справка" id="27">
 				<Type>CommandBarButton</Type>
 				<SkipOnInput>false</SkipOnInput>
 				<CommandName>Form.StandardCommand.Help</CommandName>
 				<ExtendedTooltip name="СправкаExtendedTooltip" id="50"/>
 			</Button>
+			<Button name="ФормаСохранитьКакШаблон" id="108">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СохранитьКакШаблон</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаСохранитьКакШаблонРасширеннаяПодсказка" id="109"/>
+			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ОсновнаяГруппаТелаПисьма" id="10">
-			<ToolTip>
+		<InputField name="УчетнаяЗапись" id="76">
+			<DataPath>УчетнаяЗапись</DataPath>
+			<ChoiceParameters>
+				<app:item name="Отбор.ИспользоватьДляОтправки">
+					<app:value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xs:boolean">true</Value>
+					</app:value>
+				</app:item>
+				<app:item name="Отбор.ПометкаУдаления">
+					<app:value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xs:boolean">false</Value>
+					</app:value>
+				</app:item>
+			</ChoiceParameters>
+			<ContextMenu name="УчетнаяЗаписьКонтекстноеМеню" id="77"/>
+			<ExtendedTooltip name="УчетнаяЗаписьРасширеннаяПодсказка" id="78"/>
+			<Events>
+				<Event name="OnChange">УстановитьПризнакМодифицированностиФормы</Event>
+				<Event name="ChoiceProcessing">УчетнаяЗаписьОбработкаВыбора</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ОсновнаяГруппаТелаПисьма" id="10" DisplayImportance="VeryHigh">
+			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Основная группа тела письма</v8:content>
 				</v8:item>
-			</ToolTip>
+			</Title>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ОсновнаяГруппаТелаПисьмаExtendedTooltip" id="51"/>
 			<ChildItems>
-				<InputField name="ЭлектронныйАдресКому" id="4">
-					<DataPath>ПочтовыйАдресПолучателя</DataPath>
+				<Table name="ПочтовыеАдресаПолучателей" id="87" DisplayImportance="VeryHigh">
+					<Representation>List</Representation>
+					<HeightInTableRows>3</HeightInTableRows>
+					<Header>false</Header>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>ПочтовыеАдресаПолучателей</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Кому</v8:content>
+							<v8:content>Почтовый адреса получателей</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Адреса электронной почты получателей сообщения</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Wrap>false</Wrap>
-					<AutoMarkIncomplete>true</AutoMarkIncomplete>
-					<ContextMenu name="ЭлектронныйАдресКомуКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ЭлектронныйАдресКомуExtendedTooltip" id="52"/>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ПочтовыеАдресаПолучателейКонтекстноеМеню" id="88"/>
+					<AutoCommandBar name="ПочтовыеАдресаПолучателейКоманднаяПанель" id="89">
+						<Autofill>false</Autofill>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ПочтовыеАдресаПолучателейРасширеннаяПодсказка" id="90"/>
+					<SearchStringAddition name="ПочтовыеАдресаПолучателейСтрокаПоиска" id="91">
+						<AdditionSource>
+							<Item>ПочтовыеАдресаПолучателей</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ПочтовыеАдресаПолучателейСтрокаПоискаКонтекстноеМеню" id="92"/>
+						<ExtendedTooltip name="ПочтовыеАдресаПолучателейСтрокаПоискаРасширеннаяПодсказка" id="93"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ПочтовыеАдресаПолучателейСостояниеПросмотра" id="94">
+						<AdditionSource>
+							<Item>ПочтовыеАдресаПолучателей</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ПочтовыеАдресаПолучателейСостояниеПросмотраКонтекстноеМеню" id="95"/>
+						<ExtendedTooltip name="ПочтовыеАдресаПолучателейСостояниеПросмотраРасширеннаяПодсказка" id="96"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ПочтовыеАдресаПолучателейУправлениеПоиском" id="97">
+						<AdditionSource>
+							<Item>ПочтовыеАдресаПолучателей</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ПочтовыеАдресаПолучателейУправлениеПоискомКонтекстноеМеню" id="98"/>
+						<ExtendedTooltip name="ПочтовыеАдресаПолучателейУправлениеПоискомРасширеннаяПодсказка" id="99"/>
+					</SearchControlAddition>
 					<Events>
-						<Event name="StartChoice">ЭлектронныйАдресКомуНачалоВыбора</Event>
+						<Event name="BeforeDeleteRow">ПочтовыйАдресаПолучателейПередУдалением</Event>
+						<Event name="BeforeEditEnd">ПочтовыйАдресаПолучателейПередОкончаниемРедактирования</Event>
+						<Event name="OnStartEdit">ПочтовыйАдресаПолучателейПриНачалеРедактирования</Event>
 					</Events>
-				</InputField>
+					<ChildItems>
+						<InputField name="ПочтовыйАдресПолучателейВариантОтправки" id="100">
+							<DataPath>ПочтовыеАдресаПолучателей.ВариантОтправки</DataPath>
+							<EditMode>Directly</EditMode>
+							<Width>12</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
+							<ChooseType>false</ChooseType>
+							<IncompleteChoiceMode>OnActivate</IncompleteChoiceMode>
+							<TextEdit>false</TextEdit>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Кому:</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Кому:</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Копия:</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Копия:</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Скрытая копия:</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Скрытая копия:</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ПочтовыйАдресПолучателейВариантОтправкиКонтекстноеМеню" id="101"/>
+							<ExtendedTooltip name="ПочтовыйАдресПолучателейВариантОтправкиРасширеннаяПодсказка" id="102"/>
+						</InputField>
+						<InputField name="ПочтовыйАдресПолучателейПредставление" id="110">
+							<DataPath>ПочтовыеАдресаПолучателей.Представление</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>40</Width>
+							<ChooseType>false</ChooseType>
+							<ContextMenu name="ПочтовыйАдресПолучателейПредставлениеКонтекстноеМеню" id="111"/>
+							<ExtendedTooltip name="ПочтовыйАдресПолучателейПредставлениеРасширеннаяПодсказка" id="112"/>
+							<Events>
+								<Event name="AutoComplete">ПочтовыйАдресПолучателейПредставлениеАвтоПодбор</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Table>
 				<InputField name="ТемаПисьма" id="11">
 					<DataPath>ТемаПисьма</DataPath>
 					<ToolTip>
@@ -68,9 +197,13 @@
 							<v8:content>Тема отправляемого сообщения</v8:content>
 						</v8:item>
 					</ToolTip>
+					<Width>60</Width>
 					<Wrap>false</Wrap>
 					<ContextMenu name="ТемаПисьмаКонтекстноеМеню" id="12"/>
 					<ExtendedTooltip name="ТемаПисьмаExtendedTooltip" id="53"/>
+					<Events>
+						<Event name="OnChange">УстановитьПризнакМодифицированностиФормы</Event>
+					</Events>
 				</InputField>
 				<CommandBar name="КоманднаяПанельФорматирование" id="79">
 					<Title>
@@ -79,12 +212,6 @@
 							<v8:content>Командная панель форматирование</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Командная панель форматирование</v8:content>
-						</v8:item>
-					</ToolTip>
 					<CommandSource>Item.ТелоПисьма</CommandSource>
 					<ExtendedTooltip name="КоманднаяПанельФорматированиеРасширеннаяПодсказка" id="80"/>
 				</CommandBar>
@@ -100,6 +227,9 @@
 					<AutoMaxHeight>false</AutoMaxHeight>
 					<ContextMenu name="ТелоПисьмаКонтекстноеМеню" id="23"/>
 					<ExtendedTooltip name="ТелоПисьмаExtendedTooltip" id="54"/>
+					<Events>
+						<Event name="OnChange">УстановитьПризнакМодифицированностиФормы</Event>
+					</Events>
 				</FormattedDocumentField>
 				<UsualGroup name="ГруппаВложения" id="21">
 					<Title>
@@ -116,7 +246,6 @@
 						<Table name="Вложения" id="13">
 							<Representation>List</Representation>
 							<SkipOnInput>false</SkipOnInput>
-							<Width>1</Width>
 							<HeightInTableRows>2</HeightInTableRows>
 							<SelectionMode>SingleRow</SelectionMode>
 							<Header>false</Header>
@@ -140,9 +269,6 @@
 								<ExcludedCommand>SortListAsc</ExcludedCommand>
 								<ExcludedCommand>SortListDesc</ExcludedCommand>
 							</CommandSet>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ВложенияКонтекстноеМеню" id="14">
 								<Autofill>false</Autofill>
@@ -151,15 +277,9 @@
 										<Title>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
-												<v8:content>Группа приложить файл</v8:content>
+												<v8:content>Приложить файл</v8:content>
 											</v8:item>
 										</Title>
-										<ToolTip>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Группа приложить файл</v8:content>
-											</v8:item>
-										</ToolTip>
 										<ExtendedTooltip name="ГруппаПриложитьФайлExtendedTooltip" id="56"/>
 										<ChildItems>
 											<Button name="КонтекстноеМенюВложенияПриложитьФайл" id="44">
@@ -226,6 +346,7 @@
 								<Event name="BeforeAddRow">ВложенияПередНачаломДобавления</Event>
 								<Event name="BeforeDeleteRow">ВложенияПередУдалением</Event>
 								<Event name="Drag">ВложенияПеретаскивание</Event>
+								<Event name="OnChange">УстановитьПризнакМодифицированностиФормы</Event>
 							</Events>
 							<ChildItems>
 								<InputField name="Вложение1" id="34">
@@ -250,48 +371,6 @@
 						</Table>
 					</ChildItems>
 				</UsualGroup>
-			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="ГруппаУчетнаяЗапись" id="30">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Учетная запись</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа учетная запись</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>NormalSeparation</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаУчетнаяЗаписьExtendedTooltip" id="64"/>
-			<ChildItems>
-				<InputField name="УчетнаяЗапись" id="76">
-					<DataPath>УчетнаяЗапись</DataPath>
-					<ChoiceParameters>
-						<app:item name="Отбор.ИспользоватьДляОтправки">
-							<app:value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation/>
-								<Value xsi:type="xs:boolean">true</Value>
-							</app:value>
-						</app:item>
-						<app:item name="Отбор.ПометкаУдаления">
-							<app:value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation/>
-								<Value xsi:type="xs:boolean">false</Value>
-							</app:value>
-						</app:item>
-					</ChoiceParameters>
-					<ContextMenu name="УчетнаяЗаписьКонтекстноеМеню" id="77"/>
-					<ExtendedTooltip name="УчетнаяЗаписьРасширеннаяПодсказка" id="78"/>
-					<Events>
-						<Event name="ChoiceProcessing">УчетнаяЗаписьОбработкаВыбора</Event>
-					</Events>
-				</InputField>
 				<InputField name="АдресОтвета" id="47">
 					<DataPath>АдресОтвета</DataPath>
 					<ToolTip>
@@ -304,6 +383,7 @@
 					<ContextMenu name="АдресОтветаКонтекстноеМеню" id="48"/>
 					<ExtendedTooltip name="АдресОтветаExtendedTooltip" id="66"/>
 					<Events>
+						<Event name="OnChange">УстановитьПризнакМодифицированностиФормы</Event>
 						<Event name="Clearing">АдресОтветаОчистка</Event>
 						<Event name="TextEditEnd">АдресОтветаОкончаниеВводаТекста</Event>
 						<Event name="ChoiceProcessing">АдресОтветаОбработкаВыбора</Event>
@@ -314,12 +394,6 @@
 	</ChildItems>
 	<Attributes>
 		<Attribute name="ПочтовыйАдресПолучателя" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Адрес получателя</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -349,12 +423,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ВложенияВПисьмо" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вложения в письмо</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
@@ -364,7 +432,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Учетная запись</v8:content>
+					<v8:content>От</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -387,12 +455,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="АвтоматическаяПодстановкаАдресаОтвета" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Автоматическая подстановка адреса ответа</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -441,32 +503,14 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="ВоВложенияхПрисутствуютСсылки" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Во вложениях присутствуют ссылки</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПарольЗадан" id="11">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пароль задан</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="АдресаОтветаПоУчетнымЗаписям" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Адреса ответа по учетным записям</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
@@ -475,17 +519,90 @@
 			</Settings>
 		</Attribute>
 		<Attribute name="Вложения" id="13">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вложения</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
 			<Columns>
 				<Column name="Представление" id="1">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="АдресВоВременномХранилище" id="2">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Кодировка" id="3">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПутьКФайлу" id="4">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Идентификатор" id="5">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТребуетсяПодтверждениеЗакрытияФормы" id="15">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПочтовыеАдресаПолучателей" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Почтовые адреса получателей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="ВариантОтправки" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вариант отправки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Представление" id="3">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -500,81 +617,16 @@
 						</v8:StringQualifiers>
 					</Type>
 				</Column>
-				<Column name="АдресВоВременномХранилище" id="2">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Адрес во временном хранилище</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
-					</Type>
-				</Column>
-				<Column name="Кодировка" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Кодировка</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
-					</Type>
-				</Column>
-				<Column name="ПутьКФайлу" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Путь к файлу</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
-					</Type>
-				</Column>
-				<Column name="Идентификатор" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Идентификатор</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
-					</Type>
-				</Column>
 			</Columns>
 		</Attribute>
-		<Attribute name="ПолучателиСообщения" id="14">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Получатели сообщения</v8:content>
-				</v8:item>
-			</Title>
+		<Attribute name="ПолучателиСообщения" id="20">
 			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РезультатУспехЦвет" id="21">
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
@@ -636,15 +688,47 @@
 			<Action>ОткрытьФайл</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
+		<Command name="СформироватьПоШаблону" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать по шаблону</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать по шаблону</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СформироватьПоШаблону</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СохранитьКакШаблон" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить как шаблон...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить как шаблон</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьКакШаблон</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
 	</Commands>
 	<Parameters>
-		<Parameter name="УчетнаяЗапись">
+		<Parameter name="Отправитель">
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 				<v8:Type>cfg:CatalogRef.УчетныеЗаписиЭлектроннойПочты</v8:Type>
 			</Type>
 		</Parameter>
-		<Parameter name="Кому">
+		<Parameter name="Получатель">
 			<Type/>
 		</Parameter>
 		<Parameter name="Тема">
@@ -656,7 +740,7 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Parameter>
-		<Parameter name="Тело">
+		<Parameter name="Текст">
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -681,6 +765,12 @@
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
+		</Parameter>
+		<Parameter name="Копии">
+			<Type/>
+		</Parameter>
+		<Parameter name="СкрытыеКопии">
+			<Type/>
 		</Parameter>
 	</Parameters>
 </Form>

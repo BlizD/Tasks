@@ -1,19 +1,30 @@
 ﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/SSL/Exchange/Message">
 	<valueType name="Ref" base="xs:string" variety="Atomic"/>
-	<objectType name="Confirmation">
-		<property name="ExchangePlan" type="xs:string"/>
-		<property name="To" type="xs:string"/>
+	<objectType name="Confirmation" open="true">
+		<property name="ExchangePlan" type="xs:string" lowerBound="0"/>
+		<property name="To" type="xs:string" lowerBound="0"/>
 		<property name="From" type="xs:string"/>
-		<property name="MessageNo" type="xs:integer"/>
-		<property name="ReceivedNo" type="xs:integer"/>
+		<property name="MessageNo" type="xs:integer" lowerBound="0"/>
+		<property name="ReceivedNo" type="xs:integer" lowerBound="0"/>
 	</objectType>
-	<objectType name="Header">
+	<objectType name="Header" open="true">
 		<property name="Format" type="xs:string"/>
 		<property name="CreationDate" type="xs:dateTime"/>
 		<property xmlns:d3p1="http://www.1c.ru/SSL/Exchange/Message" name="Confirmation" type="d3p1:Confirmation" lowerBound="0"/>
 		<property name="AvailableVersion" type="xs:string" upperBound="100"/>
+		<property name="NewFrom" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.1c.ru/SSL/Exchange/Message" name="AvailableObjectTypes" type="d3p1:AvailableObjectTypes" lowerBound="0" nillable="true"/>
+		<property name="Prefix" type="xs:string" lowerBound="0"/>
 	</objectType>
-	<objectType name="Object" abstract="true">
+	<objectType name="Object" open="false" abstract="true">
 		<property name="AdditionalInfo" type="xs:anyType" lowerBound="0"/>
+	</objectType>
+	<objectType name="AvailableObjectTypes">
+		<property xmlns:d3p1="http://www.1c.ru/SSL/Exchange/Message" name="ObjectType" type="d3p1:ObjectType" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="ObjectType">
+		<property name="Name" type="xs:string"/>
+		<property name="Sending" type="xs:string" lowerBound="0"/>
+		<property name="Receiving" type="xs:string" lowerBound="0"/>
 	</objectType>
 </package>

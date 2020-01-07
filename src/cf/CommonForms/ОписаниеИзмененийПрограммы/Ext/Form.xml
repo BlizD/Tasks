@@ -7,11 +7,89 @@
 		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
-	<CommandBarLocation>None</CommandBarLocation>
+	<CommandBarLocation>Top</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<HorizontalAlign>Right</HorizontalAlign>
 		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Найти" id="14">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.Find</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Найти...</v8:content>
+					</v8:item>
+				</Title>
+				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="НайтиExtendedTooltip" id="32"/>
+			</Button>
+			<Button name="РазвернутьВсеГруппы" id="21">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.ExpandAllGroups</CommandName>
+				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="РазвернутьВсеГруппыExtendedTooltip" id="35"/>
+			</Button>
+			<Button name="ОписаниеОбновленийСвернутьВсеГруппы" id="45">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.CollapseAllGroups</CommandName>
+				<ExtendedTooltip name="ОписаниеОбновленийСвернутьВсеГруппыРасширеннаяПодсказка" id="46"/>
+			</Button>
+			<ButtonGroup name="ОписаниеОбновленийГруппа" id="51">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Описание обновлений группа</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ОписаниеОбновленийГруппаРасширеннаяПодсказка" id="52"/>
+				<ChildItems>
+					<Button name="Сохранить" id="7">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.Save</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сохранить как...</v8:content>
+							</v8:item>
+						</Title>
+						<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+						<ExtendedTooltip name="СохранитьExtendedTooltip" id="34"/>
+					</Button>
+					<Button name="Печать" id="15">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.Print</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.Print</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+						<ExtendedTooltip name="ПечатьExtendedTooltip" id="36"/>
+					</Button>
+					<Button name="ОписаниеОбновленийПредварительныйПросмотр" id="47">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.Preview</CommandName>
+						<ExtendedTooltip name="ОписаниеОбновленийПредварительныйПросмотрРасширеннаяПодсказка" id="48"/>
+					</Button>
+					<Button name="ОписаниеОбновленийПараметрыСтраницы" id="49">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.PageSetup</CommandName>
+						<ExtendedTooltip name="ОписаниеОбновленийПараметрыСтраницыРасширеннаяПодсказка" id="50"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="Справка" id="4">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="СправкаExtendedTooltip" id="37"/>
+			</Button>
+			<Button name="ИзменитьФорму" id="19">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="ИзменитьФормуExtendedTooltip" id="33"/>
+			</Button>
+		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -25,7 +103,6 @@
 					<v8:content>Отложенное обновление</v8:content>
 				</v8:item>
 			</Title>
-			<HorizontalStretch>true</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -33,6 +110,7 @@
 			<ChildItems>
 				<Button name="ОтложенноеОбновлениеДанных" id="25">
 					<Type>Hyperlink</Type>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<CommandName>Form.Command.ОтложенноеОбновлениеДанных</CommandName>
 					<Picture>
 						<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
@@ -44,30 +122,31 @@
 							<v8:content>Выполняются дополнительные процедуры обработки данных</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="ОтложенноеОбновлениеДанныхExtendedTooltip" id="29"/>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="ОтложенноеОбновлениеДанныхExtendedTooltip" id="29">
+						<AutoMaxWidth>false</AutoMaxWidth>
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Работа в программе временно ограничена, так как еще не завершен переход на новую версию.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
 				</Button>
-				<LabelDecoration name="ОтложенноеОбновлениеДанныхПояснение" id="26">
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Работа в программе временно ограничена, так как еще не завершен переход на новую версию.</v8:content>
-						</v8:item>
-					</Title>
-					<HorizontalAlign>Right</HorizontalAlign>
-					<ContextMenu name="ОтложенноеОбновлениеДанныхПояснениеКонтекстноеМеню" id="27"/>
-					<ExtendedTooltip name="ОтложенноеОбновлениеДанныхПояснениеExtendedTooltip" id="30"/>
-				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаОтключеныРегламентныеЗадания" id="53">
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключены регламентные задания</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаОтключеныРегламентныеЗаданияРасширеннаяПодсказка" id="54"/>
 			<ChildItems>
 				<PictureDecoration name="КартинкаОтключеныРегламентныеЗадания" id="58">
-					<Width>2</Width>
-					<Height>1</Height>
 					<Picture>
 						<xr:Ref>CommonPicture.Информация</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
@@ -77,6 +156,7 @@
 					<ExtendedTooltip name="КартинкаОтключеныРегламентныеЗаданияРасширеннаяПодсказка" id="60"/>
 				</PictureDecoration>
 				<LabelDecoration name="ОтключеныРегламентныеЗадания" id="55">
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Title formatted="true">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -92,108 +172,9 @@
 				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
-		<CommandBar name="КоманднаяПанельСписка" id="13">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель списка</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель списка</v8:content>
-				</v8:item>
-			</ToolTip>
-			<CommandSource>Item.ОписаниеОбновлений</CommandSource>
-			<ExtendedTooltip name="КоманднаяПанельСпискаExtendedTooltip" id="31"/>
-			<ChildItems>
-				<Button name="Найти" id="14">
-					<Type>CommandBarButton</Type>
-					<Representation>PictureAndText</Representation>
-					<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.Find</CommandName>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Найти...</v8:content>
-						</v8:item>
-					</Title>
-					<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-					<ExtendedTooltip name="НайтиExtendedTooltip" id="32"/>
-				</Button>
-				<Button name="РазвернутьВсеГруппы" id="21">
-					<Type>CommandBarButton</Type>
-					<Representation>Picture</Representation>
-					<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.ExpandAllGroups</CommandName>
-					<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-					<ExtendedTooltip name="РазвернутьВсеГруппыExtendedTooltip" id="35"/>
-				</Button>
-				<Button name="ОписаниеОбновленийСвернутьВсеГруппы" id="45">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.CollapseAllGroups</CommandName>
-					<ExtendedTooltip name="ОписаниеОбновленийСвернутьВсеГруппыРасширеннаяПодсказка" id="46"/>
-				</Button>
-				<ButtonGroup name="ОписаниеОбновленийГруппа" id="51">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Описание обновлений группа</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Описание обновлений группа</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="ОписаниеОбновленийГруппаРасширеннаяПодсказка" id="52"/>
-					<ChildItems>
-						<Button name="Сохранить" id="7">
-							<Type>CommandBarButton</Type>
-							<Representation>PictureAndText</Representation>
-							<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.Save</CommandName>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Сохранить как...</v8:content>
-								</v8:item>
-							</Title>
-							<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-							<ExtendedTooltip name="СохранитьExtendedTooltip" id="34"/>
-						</Button>
-						<Button name="Печать" id="15">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.Print</CommandName>
-							<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-							<ExtendedTooltip name="ПечатьExtendedTooltip" id="36"/>
-						</Button>
-						<Button name="ОписаниеОбновленийПредварительныйПросмотр" id="47">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.Preview</CommandName>
-							<ExtendedTooltip name="ОписаниеОбновленийПредварительныйПросмотрРасширеннаяПодсказка" id="48"/>
-						</Button>
-						<Button name="ОписаниеОбновленийПараметрыСтраницы" id="49">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Item.ОписаниеОбновлений.StandardCommand.PageSetup</CommandName>
-							<ExtendedTooltip name="ОписаниеОбновленийПараметрыСтраницыРасширеннаяПодсказка" id="50"/>
-						</Button>
-					</ChildItems>
-				</ButtonGroup>
-				<Button name="ИзменитьФорму" id="19">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-					<ExtendedTooltip name="ИзменитьФормуExtendedTooltip" id="33"/>
-				</Button>
-				<Button name="Справка" id="4">
-					<Type>CommandBarButton</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.StandardCommand.Help</CommandName>
-					<ExtendedTooltip name="СправкаExtendedTooltip" id="37"/>
-				</Button>
-			</ChildItems>
-		</CommandBar>
 		<SpreadSheetDocumentField name="ОписаниеОбновлений" id="1">
 			<DataPath>ОписаниеОбновлений</DataPath>
+			<DefaultItem>true</DefaultItem>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -206,6 +187,8 @@
 			<VerticalScrollBar>true</VerticalScrollBar>
 			<HorizontalScrollBar>true</HorizontalScrollBar>
 			<SelectionShowMode>WhenActive</SelectionShowMode>
+			<EnableStartDrag>false</EnableStartDrag>
+			<EnableDrag>false</EnableDrag>
 			<ContextMenu name="ОписаниеОбновленийКонтекстноеМеню" id="2"/>
 			<ExtendedTooltip name="ОписаниеОбновленийExtendedTooltip" id="38"/>
 			<Events>
@@ -219,24 +202,18 @@
 					<v8:content>Группа</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа</v8:content>
-				</v8:item>
-			</ToolTip>
-			<HorizontalStretch>true</HorizontalStretch>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаExtendedTooltip" id="39"/>
 			<ChildItems>
 				<LabelDecoration name="АдресФормыВПрограмме" id="11">
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<HorizontalStretch>true</HorizontalStretch>
+					<TextColor>style:ПоясняющийТекст</TextColor>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Описание изменений также можно открыть из панели "Информация" на рабочем столе. </v8:content>
+							<v8:content>Описание изменений также можно открыть из группы "Информация" раздела "Главное".</v8:content>
 						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
@@ -247,30 +224,27 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа техническая информация и закрыть</v8:content>
+							<v8:content>Техническая информация и закрыть</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа техническая информация и закрыть</v8:content>
-						</v8:item>
-					</ToolTip>
 					<VerticalStretch>false</VerticalStretch>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаТехническаяИнформацияИЗакрытьExtendedTooltip" id="41"/>
 					<ChildItems>
 						<LabelDecoration name="ТехническаяИнформацияОРезультатахОбновления" id="8">
-							<HorizontalStretch>true</HorizontalStretch>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Техническая информация о результатах обновления</v8:content>
+									<v8:content>Техническая информация об обновлении</v8:content>
 								</v8:item>
 							</Title>
 							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 							<Hyperlink>true</Hyperlink>
 							<HorizontalAlign>Right</HorizontalAlign>
 							<ContextMenu name="ТехническаяИнформацияОРезультатахОбновленияКонтекстноеМеню" id="9"/>
@@ -293,13 +267,6 @@
 									<v8:content>Командная панель формы</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Командная панель формы</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Width>5</Width>
 							<HorizontalLocation>Right</HorizontalLocation>
 							<ExtendedTooltip name="КоманднаяПанельФормыExtendedTooltip" id="43"/>
 							<ChildItems>
@@ -308,7 +275,6 @@
 									<Representation>Text</Representation>
 									<DefaultButton>true</DefaultButton>
 									<SkipOnInput>false</SkipOnInput>
-									<DefaultItem>true</DefaultItem>
 									<CommandName>Form.StandardCommand.Close</CommandName>
 									<ExtendedTooltip name="ЗакрытьExtendedTooltip" id="44"/>
 								</Button>
@@ -332,12 +298,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ВремяНачалаОбновления" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Время начала обновления</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>
@@ -346,12 +306,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ВремяОкончанияОбновления" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Время окончания обновления</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>
@@ -360,12 +314,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="КлиентСервернаяБаза" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Клиент серверная база</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>

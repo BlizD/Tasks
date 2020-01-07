@@ -295,6 +295,19 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</valueType>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Многопоточный</dataPath>
+			<field>Многопоточный</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Многопоточный</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<objectName>Обработчики</objectName>
 	</dataSet>
@@ -518,6 +531,20 @@
 		<value xsi:type="xs:boolean">false</value>
 		<useRestriction>true</useRestriction>
 	</parameter>
+	<parameter>
+		<name>ЭтоРИБСФильтром</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Это РИБСФильтром</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -576,6 +603,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ЗапускатьИВПодчиненномУзлеРИБСФильтрами</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Многопоточный</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
@@ -829,10 +859,18 @@
 							<dcsset:comparisonType>Equal</dcsset:comparisonType>
 							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">ЗапускатьТолькоВГлавномУзле</dcsset:left>
-							<dcsset:comparisonType>Equal</dcsset:comparisonType>
-							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						<dcsset:item xsi:type="dcsset:FilterItemGroup">
+							<dcsset:groupType>OrGroup</dcsset:groupType>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">ЗапускатьТолькоВГлавномУзле</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">ПараметрыДанных.ЭтоРИБСФильтром</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+							</dcsset:item>
 						</dcsset:item>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:FilterItemGroup">
