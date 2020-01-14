@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
 			<Button name="ПоказыватьНеиспользуемыеВидыДоступа" id="334">
 				<Type>CommandBarButton</Type>
-				<OnlyInAllActions>false</OnlyInAllActions>
 				<CommandName>Form.Command.ПоказыватьНеиспользуемыеВидыДоступа</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 				<ExtendedTooltip name="ПоказыватьНеиспользуемыеВидыДоступаExtendedTooltip" id="335"/>
 			</Button>
 		</ChildItems>
@@ -128,6 +128,7 @@
 							<InitialTreeView>ExpandAllLevels</InitialTreeView>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ПользователиГруппы</DataPath>
 							<RowPictureDataPath>ПользователиГруппы.НомерКартинки</RowPictureDataPath>
 							<RowsPicture>
@@ -141,14 +142,15 @@
 								</v8:item>
 							</Title>
 							<CommandSet>
-								<ExcludedCommand>HierarchicalList</ExcludedCommand>
-								<ExcludedCommand>Tree</ExcludedCommand>
 								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>HierarchicalList</ExcludedCommand>
 								<ExcludedCommand>List</ExcludedCommand>
+								<ExcludedCommand>Tree</ExcludedCommand>
 							</CommandSet>
 							<SearchStringLocation>None</SearchStringLocation>
 							<ViewStatusLocation>None</ViewStatusLocation>
 							<SearchControlLocation>None</SearchControlLocation>
+							<TreeSpecialSearch>false</TreeSpecialSearch>
 							<ContextMenu name="ПользователиКонтекстноеМеню" id="299">
 								<Autofill>false</Autofill>
 								<ChildItems>
@@ -182,14 +184,14 @@
 									<Button name="ПользователиПодобрать" id="226">
 										<Type>CommandBarButton</Type>
 										<SkipOnInput>false</SkipOnInput>
-										<OnlyInAllActions>true</OnlyInAllActions>
 										<CommandName>Form.Command.Подобрать</CommandName>
+										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="ПользователиПодобратьExtendedTooltip" id="352"/>
 									</Button>
 									<Button name="ПользователиДобавить" id="409">
 										<Type>CommandBarButton</Type>
-										<OnlyInAllActions>false</OnlyInAllActions>
 										<CommandName>Form.Item.Пользователи.StandardCommand.Add</CommandName>
+										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="ПользователиДобавитьРасширеннаяПодсказка" id="410"/>
 									</Button>
 									<ButtonGroup name="ПользователиСтандартныеКоманды" id="405">
@@ -296,6 +298,7 @@
 							<HorizontalLines>false</HorizontalLines>
 							<VerticalLines>false</VerticalLines>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Объект.ВидыДоступа</DataPath>
 							<Title>
 								<v8:item>
@@ -304,15 +307,15 @@
 								</v8:item>
 							</Title>
 							<CommandSet>
-								<ExcludedCommand>Copy</ExcludedCommand>
-								<ExcludedCommand>SortListAsc</ExcludedCommand>
-								<ExcludedCommand>MoveUp</ExcludedCommand>
-								<ExcludedCommand>CancelSearch</ExcludedCommand>
-								<ExcludedCommand>SortListDesc</ExcludedCommand>
-								<ExcludedCommand>Delete</ExcludedCommand>
 								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>CancelSearch</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
 								<ExcludedCommand>Find</ExcludedCommand>
 								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
 							</CommandSet>
 							<SearchStringLocation>None</SearchStringLocation>
 							<ViewStatusLocation>None</ViewStatusLocation>
@@ -451,6 +454,7 @@
 									<AutoInsertNewRow>true</AutoInsertNewRow>
 									<EnableStartDrag>true</EnableStartDrag>
 									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>Объект.ЗначенияДоступа</DataPath>
 									<CommandSet>
 										<ExcludedCommand>Copy</ExcludedCommand>
@@ -882,6 +886,7 @@
 			<Action>Подобрать</Action>
 			<Representation>Picture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ПоказыватьНеиспользуемыеВидыДоступа" id="2">
 			<Title>
@@ -897,6 +902,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПоказыватьНеиспользуемыеВидыДоступа</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
 </Form>

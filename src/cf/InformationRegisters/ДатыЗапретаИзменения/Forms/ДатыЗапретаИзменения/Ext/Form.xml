@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -17,8 +17,8 @@
 			</Button>
 			<Button name="Обновить" id="200">
 				<Type>CommandBarButton</Type>
-				<OnlyInAllActions>false</OnlyInAllActions>
 				<CommandName>Form.Command.Обновить</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 				<ExtendedTooltip name="ОбновитьExtendedTooltip" id="321"/>
 			</Button>
 		</ChildItems>
@@ -57,6 +57,7 @@
 						<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</Picture>
+					<FileDragMode>AsFile</FileDragMode>
 					<ContextMenu name="ИспользованиеДатЗапретаВыключеноКартинкаКонтекстноеМеню" id="434"/>
 					<ExtendedTooltip name="ИспользованиеДатЗапретаВыключеноКартинкаРасширеннаяПодсказка" id="435"/>
 				</PictureDecoration>
@@ -171,6 +172,7 @@
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ПользователиДатЗапрета</DataPath>
 							<RowPictureDataPath>ПользователиДатЗапрета.НомерКартинки</RowPictureDataPath>
 							<RowsPicture>
@@ -178,15 +180,15 @@
 								<xr:LoadTransparent>false</xr:LoadTransparent>
 							</RowsPicture>
 							<CommandSet>
-								<ExcludedCommand>Copy</ExcludedCommand>
-								<ExcludedCommand>SortListAsc</ExcludedCommand>
-								<ExcludedCommand>MoveUp</ExcludedCommand>
 								<ExcludedCommand>CancelSearch</ExcludedCommand>
-								<ExcludedCommand>OutputList</ExcludedCommand>
-								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
 								<ExcludedCommand>EndEdit</ExcludedCommand>
 								<ExcludedCommand>Find</ExcludedCommand>
 								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>OutputList</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
 							</CommandSet>
 							<SearchStringLocation>None</SearchStringLocation>
 							<ViewStatusLocation>None</ViewStatusLocation>
@@ -203,8 +205,8 @@
 									</Button>
 									<Button name="ПользователиДобавить" id="397">
 										<Type>CommandBarButton</Type>
-										<OnlyInAllActions>false</OnlyInAllActions>
 										<CommandName>Form.Item.Пользователи.StandardCommand.Add</CommandName>
+										<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 										<ExtendedTooltip name="ПользователиДобавитьРасширеннаяПодсказка" id="398"/>
 									</Button>
 									<ButtonGroup name="ПользователиСтандартныеКоманды" id="177">
@@ -828,22 +830,24 @@
 															<InitialTreeView>ExpandAllLevels</InitialTreeView>
 															<EnableStartDrag>true</EnableStartDrag>
 															<EnableDrag>true</EnableDrag>
+															<FileDragMode>AsFile</FileDragMode>
 															<DataPath>ДатыЗапрета</DataPath>
 															<CommandSet>
-																<ExcludedCommand>HierarchicalList</ExcludedCommand>
-																<ExcludedCommand>Tree</ExcludedCommand>
 																<ExcludedCommand>Copy</ExcludedCommand>
+																<ExcludedCommand>EndEdit</ExcludedCommand>
+																<ExcludedCommand>HierarchicalList</ExcludedCommand>
 																<ExcludedCommand>List</ExcludedCommand>
-																<ExcludedCommand>SortListAsc</ExcludedCommand>
+																<ExcludedCommand>MoveDown</ExcludedCommand>
 																<ExcludedCommand>MoveUp</ExcludedCommand>
 																<ExcludedCommand>OutputList</ExcludedCommand>
+																<ExcludedCommand>SortListAsc</ExcludedCommand>
 																<ExcludedCommand>SortListDesc</ExcludedCommand>
-																<ExcludedCommand>EndEdit</ExcludedCommand>
-																<ExcludedCommand>MoveDown</ExcludedCommand>
+																<ExcludedCommand>Tree</ExcludedCommand>
 															</CommandSet>
 															<SearchStringLocation>None</SearchStringLocation>
 															<ViewStatusLocation>None</ViewStatusLocation>
 															<SearchControlLocation>None</SearchControlLocation>
+															<TreeSpecialSearch>false</TreeSpecialSearch>
 															<ContextMenu name="ДатыЗапретаКонтекстноеМеню" id="133">
 																<Autofill>false</Autofill>
 																<ChildItems>
@@ -889,8 +893,8 @@
 																	</Button>
 																	<Button name="ДатыЗапретаДобавить" id="405">
 																		<Type>CommandBarButton</Type>
-																		<OnlyInAllActions>false</OnlyInAllActions>
 																		<CommandName>Form.Item.ДатыЗапрета.StandardCommand.Add</CommandName>
+																		<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 																		<ExtendedTooltip name="ДатыЗапретаДобавитьРасширеннаяПодсказка" id="406"/>
 																	</Button>
 																	<Button name="ДатыЗапретаИзменить" id="407">
@@ -1643,6 +1647,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПодобратьОбъекты</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Обновить" id="3">
 			<Title>
@@ -1663,6 +1668,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>Обновить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ПодобратьПользователей" id="4">
 			<Title>
@@ -1678,6 +1684,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПодобратьПользователей</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Разделы" id="6">
 			<Title>
@@ -1693,6 +1700,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Разделы</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ПоказатьОтчет" id="9">
 			<Title>
@@ -1713,6 +1721,7 @@
 			</Picture>
 			<Action>ПоказатьОтчет</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
 	<Parameters>

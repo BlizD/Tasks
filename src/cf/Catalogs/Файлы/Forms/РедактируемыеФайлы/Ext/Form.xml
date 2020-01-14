@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -56,7 +56,6 @@
 					<Type>CommandBarButton</Type>
 					<Representation>Text</Representation>
 					<SkipOnInput>false</SkipOnInput>
-					<OnlyInAllActions>true</OnlyInAllActions>
 					<CommandName>Form.Item.Список.StandardCommand.Change</CommandName>
 					<TextColor>style:ButtonTextColor</TextColor>
 					<BackColor>style:ButtonBackColor</BackColor>
@@ -67,6 +66,7 @@
 							<v8:content>Открыть карточку</v8:content>
 						</v8:item>
 					</Title>
+					<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 					<ExtendedTooltip name="ФормаИзменитьРасширеннаяПодсказка" id="76"/>
 				</Button>
 			</ChildItems>
@@ -79,6 +79,7 @@
 			<Width>40</Width>
 			<HeightInTableRows>10</HeightInTableRows>
 			<RowSelectionMode>Row</RowSelectionMode>
+			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<BorderColor>style:BorderColor</BorderColor>
 			<CommandSet>
@@ -108,7 +109,6 @@
 						<Type>CommandBarButton</Type>
 						<Representation>PictureAndText</Representation>
 						<SkipOnInput>false</SkipOnInput>
-						<OnlyInAllActions>true</OnlyInAllActions>
 						<CommandName>Form.Item.Список.StandardCommand.Change</CommandName>
 						<TextColor>style:ButtonTextColor</TextColor>
 						<BackColor>style:ButtonBackColor</BackColor>
@@ -119,6 +119,7 @@
 								<v8:content>Открыть карточку</v8:content>
 							</v8:item>
 						</Title>
+						<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 						<ExtendedTooltip name="СписокКонтекстноеМенюИзменитьРасширеннаяПодсказка" id="110"/>
 					</Button>
 					<ButtonGroup name="СписокКонтекстноеМенюГруппаКомандОсновные" id="111">
@@ -248,11 +249,11 @@
 							<Button name="СписокКонтекстноеМенюВывестиСписок" id="24">
 								<Type>CommandBarButton</Type>
 								<SkipOnInput>false</SkipOnInput>
-								<OnlyInAllActions>false</OnlyInAllActions>
 								<CommandName>Form.Item.Список.StandardCommand.OutputList</CommandName>
 								<TextColor>style:ButtonTextColor</TextColor>
 								<BackColor>style:ButtonBackColor</BackColor>
 								<BorderColor>style:BorderColor</BorderColor>
+								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 								<ExtendedTooltip name="СписокКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="85"/>
 							</Button>
 							<Button name="СписокКонтекстноеМенюИзменитьФорму" id="103">
@@ -326,6 +327,7 @@
 							<Border width="1">
 								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
 							</Border>
+							<FileDragMode>AsFile</FileDragMode>
 							<ContextMenu name="СписокИндексКартинкиКонтекстноеМеню" id="3"/>
 							<ExtendedTooltip name="СписокИндексКартинкиРасширеннаяПодсказка" id="89"/>
 						</PictureField>
@@ -462,12 +464,11 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>Список.ХранитьВерсии</Field>
-				<Field>Список.ТекущаяВерсияАвтор</Field>
-				<Field>Список.Редактирует</Field>
-				<Field>Список.Расширение</Field>
 				<Field>Список.Ref</Field>
-				<Field>1/25</Field>
+				<Field>Список.Расширение</Field>
+				<Field>Список.Редактирует</Field>
+				<Field>Список.ТекущаяВерсияАвтор</Field>
+				<Field>Список.ХранитьВерсии</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
@@ -566,6 +567,7 @@
 			</Picture>
 			<Action>ОткрытьФайл</Action>
 			<Representation>Text</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ЗакончитьРедактирование" id="2">
 			<Title>
@@ -586,6 +588,7 @@
 			</Picture>
 			<Action>ЗакончитьРедактирование</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Освободить" id="3">
 			<Title>
@@ -606,6 +609,7 @@
 			</Picture>
 			<Action>Освободить</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СохранитьИзменения" id="4">
 			<Title>
@@ -625,6 +629,7 @@
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>СохранитьИзменения</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОткрытьКаталогФайла" id="5">
 			<Title>
@@ -645,6 +650,7 @@
 			</Picture>
 			<Action>ОткрытьКаталогФайла</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СохранитьКак" id="6">
 			<Title>
@@ -665,6 +671,7 @@
 			</Picture>
 			<Action>СохранитьКак</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОбновитьИзФайлаНаДиске" id="7">
 			<Title>
@@ -680,6 +687,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ОбновитьИзФайлаНаДиске</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ЗаписатьИЗакрыть" id="8">
 			<Title>
@@ -695,6 +703,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗаписатьИЗакрыть</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Обновить" id="9">
 			<Title>
@@ -715,6 +724,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>Обновить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
 </Form>
