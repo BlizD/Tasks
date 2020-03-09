@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>50</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
@@ -60,12 +59,15 @@
 				<xr:Ref>CommonPicture.ДополнительныеРеквизитыСведения</xr:Ref>
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</RowsPicture>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Delete</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -185,44 +187,44 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	Свойства.Ссылка,
-	Свойства.ВерсияДанных,
-	Свойства.ПометкаУдаления,
-	Свойства.Предопределенный,
-	Свойства.Заголовок,
+	СвойстваПереопределяемый.Ссылка,
+	СвойстваПереопределяемый.ВерсияДанных,
+	СвойстваПереопределяемый.ПометкаУдаления,
+	СвойстваПереопределяемый.Предопределенный,
+	СвойстваПереопределяемый.Заголовок,
 	ВЫБОР
-		КОГДА Свойства.НаборСвойств = ЗНАЧЕНИЕ(Справочник.НаборыДополнительныхРеквизитовИСведений.ПустаяСсылка)
+		КОГДА СвойстваПереопределяемый.НаборСвойств = ЗНАЧЕНИЕ(Справочник.НаборыДополнительныхРеквизитовИСведений.ПустаяСсылка)
 			ТОГДА &amp;ПредставлениеГруппировкиОбщихСвойств
-		КОГДА Свойства.НаборСвойств.Родитель = ЗНАЧЕНИЕ(Справочник.НаборыДополнительныхРеквизитовИСведений.ПустаяСсылка)
-			ТОГДА Свойства.НаборСвойств
-		ИНАЧЕ Свойства.НаборСвойств.Родитель.Наименование + " (" + Свойства.НаборСвойств.Наименование + ")"
+		КОГДА СвойстваПереопределяемый.НаборСвойств.Родитель = ЗНАЧЕНИЕ(Справочник.НаборыДополнительныхРеквизитовИСведений.ПустаяСсылка)
+			ТОГДА СвойстваПереопределяемый.НаборСвойств
+		ИНАЧЕ СвойстваПереопределяемый.НаборСвойств.Родитель.Наименование + " (" + СвойстваПереопределяемый.НаборСвойств.Наименование + ")"
 	КОНЕЦ КАК НаборСвойствГруппировка,
-	Свойства.НаборСвойств,
-	Свойства.ДополнительныеЗначенияИспользуются,
-	Свойства.ВладелецДополнительныхЗначений,
-	Свойства.Наименование,
-	Свойства.ТипЗначения,
-	Свойства.ЭтоДополнительноеСведение,
-	Свойства.МногострочноеПолеВвода,
-	Свойства.ЗаполнятьОбязательно,
-	Свойства.ЗаголовокФормыЗначения,
-	Свойства.ЗаголовокФормыВыбораЗначения,
-	Свойства.ФорматСвойства,
-	Свойства.Комментарий,
-	Свойства.Подсказка,
+	СвойстваПереопределяемый.НаборСвойств,
+	СвойстваПереопределяемый.ДополнительныеЗначенияИспользуются,
+	СвойстваПереопределяемый.ВладелецДополнительныхЗначений,
+	СвойстваПереопределяемый.Наименование,
+	СвойстваПереопределяемый.ТипЗначения,
+	СвойстваПереопределяемый.ЭтоДополнительноеСведение,
+	СвойстваПереопределяемый.МногострочноеПолеВвода,
+	СвойстваПереопределяемый.ЗаполнятьОбязательно,
+	СвойстваПереопределяемый.ЗаголовокФормыЗначения,
+	СвойстваПереопределяемый.ЗаголовокФормыВыбораЗначения,
+	СвойстваПереопределяемый.ФорматСвойства,
+	СвойстваПереопределяемый.Комментарий,
+	СвойстваПереопределяемый.Подсказка,
 	ВЫБОР
-		КОГДА Свойства.ЭтоДополнительноеСведение
+		КОГДА СвойстваПереопределяемый.ЭтоДополнительноеСведение
 			ТОГДА 2
 		ИНАЧЕ 1
 	КОНЕЦ + ВЫБОР
-		КОГДА Свойства.Предопределенный
+		КОГДА СвойстваПереопределяемый.Предопределенный
 			ТОГДА 6
-		КОГДА Свойства.ПометкаУдаления
+		КОГДА СвойстваПереопределяемый.ПометкаУдаления
 			ТОГДА 3
 		ИНАЧЕ 0
 	КОНЕЦ КАК НомерКартинки
 ИЗ
-	ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения КАК Свойства</QueryText>
+	ПланВидовХарактеристик.ДополнительныеРеквизитыИСведения КАК СвойстваПереопределяемый</QueryText>
 				<MainTable>ChartOfCharacteristicTypes.ДополнительныеРеквизитыИСведения</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -243,21 +245,9 @@
 			</Settings>
 		</Attribute>
 		<Attribute name="ЭтоДополнительноеСведение" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Это дополнительное сведение</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ВидВыбора" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вид выбора</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -267,14 +257,13 @@
 			</Type>
 		</Attribute>
 		<Attribute name="СписокВыбранных" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список выбранных</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НаборСвойствОтбор" id="5">
+			<Type>
+				<v8:Type>cfg:CatalogRef.НаборыДополнительныхРеквизитовИСведений</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
@@ -290,6 +279,9 @@
 			</Type>
 		</Parameter>
 		<Parameter name="ЭтоДополнительноеСведение">
+			<Type/>
+		</Parameter>
+		<Parameter name="ОтображаемыеНаборыСвойств">
 			<Type/>
 		</Parameter>
 	</Parameters>

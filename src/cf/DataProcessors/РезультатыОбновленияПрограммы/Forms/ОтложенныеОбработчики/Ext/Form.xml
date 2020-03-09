@@ -6,15 +6,20 @@
 			<v8:content>Дополнительные процедуры обработки данных</v8:content>
 		</v8:item>
 	</Title>
-	<Width>100</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Bottom</CommandBarLocation>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:string">ГруппаКоманднаяПанель</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<CommandSet>
 		<ExcludedCommand>Abort</ExcludedCommand>
 		<ExcludedCommand>Cancel</ExcludedCommand>
 		<ExcludedCommand>Close</ExcludedCommand>
-		<ExcludedCommand>Help</ExcludedCommand>
 		<ExcludedCommand>Ignore</ExcludedCommand>
 		<ExcludedCommand>No</ExcludedCommand>
 		<ExcludedCommand>OK</ExcludedCommand>
@@ -44,10 +49,9 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа отбор командная панель</v8:content>
+					<v8:content>Отбор командная панель</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаОтборКоманднаяПанельРасширеннаяПодсказка" id="92"/>
@@ -59,7 +63,6 @@
 							<v8:content>Отбор по статусу и поиск</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ОтборПоСтатусуИПоискРасширеннаяПодсказка" id="53"/>
@@ -69,10 +72,10 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Отбор</v8:content>
+									<v8:content>Показывать</v8:content>
 								</v8:item>
 							</Title>
-							<Width>15</Width>
+							<Width>20</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<DropListButton>true</DropListButton>
 							<ListChoiceMode>true</ListChoiceMode>
@@ -142,6 +145,19 @@
 										<Value xsi:type="xs:string">ЖелательноБыстрее</Value>
 									</xr:Value>
 								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Остановлено</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Приостановлен</Value>
+									</xr:Value>
+								</xr:Item>
 							</ChoiceList>
 							<ContextMenu name="СтатусКонтекстноеМеню" id="55"/>
 							<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="56"/>
@@ -157,6 +173,7 @@
 									<v8:content>Найти</v8:content>
 								</v8:item>
 							</Title>
+							<Width>20</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ClearButton>true</ClearButton>
 							<InputHint>
@@ -177,9 +194,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа командная панель</v8:content>
+							<v8:content>Командная панель</v8:content>
 						</v8:item>
 					</Title>
+					<CommandSource>Form</CommandSource>
 					<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="90"/>
 					<ChildItems>
 						<Button name="Обновить" id="97">
@@ -187,6 +205,11 @@
 							<CommandName>Form.Command.Обновить</CommandName>
 							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 							<ExtendedTooltip name="ОбновитьРасширеннаяПодсказка" id="98"/>
+						</Button>
+						<Button name="ЗапуститьВыделенный" id="123">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ЗапуститьВыделенный</CommandName>
+							<ExtendedTooltip name="ЗапуститьВыделенныйРасширеннаяПодсказка" id="124"/>
 						</Button>
 						<Button name="Запустить" id="93">
 							<Type>CommandBarButton</Type>
@@ -202,282 +225,346 @@
 							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 							<ExtendedTooltip name="ПриостановитьРасширеннаяПодсказка" id="96"/>
 						</Button>
-						<Button name="ВПлановомПорядке" id="106">
+						<ButtonGroup name="ГруппаПорядок" id="110">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Порядок</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаПорядокРасширеннаяПодсказка" id="111"/>
+							<ChildItems>
+								<Button name="ВПлановомПорядке" id="106">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.ВПлановомПорядке</CommandName>
+									<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+									<ExtendedTooltip name="ВПлановомПорядкеРасширеннаяПодсказка" id="107"/>
+								</Button>
+								<Button name="ЖелательноБыстрее" id="108">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.ЖелательноБыстрее</CommandName>
+									<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+									<ExtendedTooltip name="ЖелательноБыстрееРасширеннаяПодсказка" id="109"/>
+								</Button>
+							</ChildItems>
+						</ButtonGroup>
+						<Button name="ВывестиСписок" id="118">
 							<Type>CommandBarButton</Type>
-							<CommandName>Form.Command.ВПлановомПорядке</CommandName>
-							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-							<ExtendedTooltip name="ВПлановомПорядкеРасширеннаяПодсказка" id="107"/>
-						</Button>
-						<Button name="ЖелательноБыстрее" id="108">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Command.ЖелательноБыстрее</CommandName>
-							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-							<ExtendedTooltip name="ЖелательноБыстрееРасширеннаяПодсказка" id="109"/>
+							<CommandName>Form.Item.ОтложенныеОбработчики.StandardCommand.OutputList</CommandName>
+							<ExtendedTooltip name="ВывестиСписокРасширеннаяПодсказка" id="119"/>
 						</Button>
 					</ChildItems>
 				</CommandBar>
 			</ChildItems>
 		</UsualGroup>
-		<Table name="ОтложенныеОбработчики" id="34">
-			<Representation>List</Representation>
-			<ReadOnly>true</ReadOnly>
-			<UseAlternationRowColor>true</UseAlternationRowColor>
-			<AutoInsertNewRow>true</AutoInsertNewRow>
-			<EnableStartDrag>true</EnableStartDrag>
-			<EnableDrag>true</EnableDrag>
-			<FileDragMode>AsFile</FileDragMode>
-			<DataPath>ОтложенныеОбработчики</DataPath>
-			<CommandSet>
-				<ExcludedCommand>Add</ExcludedCommand>
-				<ExcludedCommand>CancelSearch</ExcludedCommand>
-				<ExcludedCommand>Change</ExcludedCommand>
-				<ExcludedCommand>Copy</ExcludedCommand>
-				<ExcludedCommand>Delete</ExcludedCommand>
-				<ExcludedCommand>EndEdit</ExcludedCommand>
-				<ExcludedCommand>Find</ExcludedCommand>
-				<ExcludedCommand>MoveDown</ExcludedCommand>
-				<ExcludedCommand>MoveUp</ExcludedCommand>
-				<ExcludedCommand>SortListAsc</ExcludedCommand>
-				<ExcludedCommand>SortListDesc</ExcludedCommand>
-			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
-			<RowFilter xsi:nil="true"/>
-			<ContextMenu name="ОтложенныеОбработчикиКонтекстноеМеню" id="35">
-				<ChildItems>
-					<Button name="КонтекстноеМенюПриостановить" id="85">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.Приостановить</CommandName>
-						<ExtendedTooltip name="КонтекстноеМенюПриостановитьРасширеннаяПодсказка" id="86"/>
-					</Button>
-					<Button name="КонтекстноеМенюЗапустить" id="87">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.Запустить</CommandName>
-						<ExtendedTooltip name="КонтекстноеМенюЗапуститьРасширеннаяПодсказка" id="88"/>
-					</Button>
-					<Button name="ВПлановомПорядкеКонтекстноеМеню" id="104">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.ВПлановомПорядке</CommandName>
-						<ExtendedTooltip name="ВПлановомПорядкеКонтекстноеМенюРасширеннаяПодсказка" id="105"/>
-					</Button>
-					<Button name="ЖелательноБыстрееКонтекстноеМеню" id="102">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.ЖелательноБыстрее</CommandName>
-						<ExtendedTooltip name="ЖелательноБыстрееКонтекстноеМенюРасширеннаяПодсказка" id="103"/>
-					</Button>
-				</ChildItems>
-			</ContextMenu>
-			<AutoCommandBar name="ОтложенныеОбработчикиКоманднаяПанель" id="36">
-				<Autofill>false</Autofill>
-			</AutoCommandBar>
-			<ExtendedTooltip name="ОтложенныеОбработчикиРасширеннаяПодсказка" id="37"/>
-			<SearchStringAddition name="ОтложенныеОбработчикиСтрокаПоиска" id="60">
-				<AdditionSource>
-					<Item>ОтложенныеОбработчики</Item>
-					<Type>SearchStringRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ОтложенныеОбработчикиСтрокаПоискаКонтекстноеМеню" id="61"/>
-				<ExtendedTooltip name="ОтложенныеОбработчикиСтрокаПоискаРасширеннаяПодсказка" id="62"/>
-			</SearchStringAddition>
-			<ViewStatusAddition name="ОтложенныеОбработчикиСостояниеПросмотра" id="63">
-				<AdditionSource>
-					<Item>ОтложенныеОбработчики</Item>
-					<Type>ViewStatusRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ОтложенныеОбработчикиСостояниеПросмотраКонтекстноеМеню" id="64"/>
-				<ExtendedTooltip name="ОтложенныеОбработчикиСостояниеПросмотраРасширеннаяПодсказка" id="65"/>
-			</ViewStatusAddition>
-			<SearchControlAddition name="ОтложенныеОбработчикиУправлениеПоиском" id="66">
-				<AdditionSource>
-					<Item>ОтложенныеОбработчики</Item>
-					<Type>SearchControl</Type>
-				</AdditionSource>
-				<ContextMenu name="ОтложенныеОбработчикиУправлениеПоискомКонтекстноеМеню" id="67"/>
-				<ExtendedTooltip name="ОтложенныеОбработчикиУправлениеПоискомРасширеннаяПодсказка" id="68"/>
-			</SearchControlAddition>
-			<Events>
-				<Event name="OnActivateRow">ОтложенныеОбработчикиПриАктивизацииСтроки</Event>
-			</Events>
-			<ChildItems>
-				<PictureField name="Приоритет" id="99">
-					<DataPath>ОтложенныеОбработчики.КартинкаПриоритет</DataPath>
-					<TitleLocation>None</TitleLocation>
-					<EditMode>EnterOnInput</EditMode>
-					<HeaderPicture>
-						<xr:Ref>CommonPicture.ВосклицательныйЗнакСерый</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</HeaderPicture>
-					<Width>2</Width>
-					<FileDragMode>AsFile</FileDragMode>
-					<ContextMenu name="ПриоритетКонтекстноеМеню" id="100"/>
-					<ExtendedTooltip name="ПриоритетРасширеннаяПодсказка" id="101"/>
-				</PictureField>
-				<InputField name="Номер" id="38">
-					<DataPath>ОтложенныеОбработчики.Номер</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>№</v8:content>
-						</v8:item>
-					</Title>
-					<HorizontalAlign>Left</HorizontalAlign>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>4</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="НомерКонтекстноеМеню" id="39"/>
-					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="40"/>
-				</InputField>
-				<InputField name="ОтложенныеОбработчикиОбработчик" id="41">
-					<DataPath>ОтложенныеОбработчики.Обработчик</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>36</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<MultiLine>false</MultiLine>
-					<ContextMenu name="ОтложенныеОбработчикиОбработчикКонтекстноеМеню" id="42"/>
-					<ExtendedTooltip name="ОтложенныеОбработчикиОбработчикExtendedTooltip" id="43"/>
-				</InputField>
-				<ColumnGroup name="ГруппаСтатусКартинка" id="44">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа статус картинка</v8:content>
-						</v8:item>
-					</Title>
-					<Width>10</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Group>InCell</Group>
-					<ExtendedTooltip name="ГруппаСтатусКартинкаExtendedTooltip" id="45"/>
-					<ChildItems>
-						<PictureField name="ОтложенныеОбработчикиСтатусКартинка" id="46">
-							<DataPath>ОтложенныеОбработчики.СтатусКартинка</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<EditMode>EnterOnInput</EditMode>
-							<Width>9</Width>
-							<HorizontalStretch>false</HorizontalStretch>
-							<FileDragMode>AsFile</FileDragMode>
-							<ContextMenu name="ОтложенныеОбработчикиСтатусКартинкаКонтекстноеМеню" id="47"/>
-							<ExtendedTooltip name="ОтложенныеОбработчикиСтатусКартинкаExtendedTooltip" id="48"/>
-						</PictureField>
-						<InputField name="ОтложенныеОбработчикиСтатусОбработчика" id="49">
-							<DataPath>ОтложенныеОбработчики.СтатусПредставление</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<Width>1</Width>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ОтложенныеОбработчикиСтатусОбработчикаКонтекстноеМеню" id="50"/>
-							<ExtendedTooltip name="ОтложенныеОбработчикиСтатусОбработчикаExtendedTooltip" id="51"/>
-						</InputField>
-					</ChildItems>
-				</ColumnGroup>
-				<InputField name="ОтложенныеОбработчикиИнтервалВыполнения" id="80">
-					<DataPath>ОтложенныеОбработчики.ИнтервалВыполнения</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>15</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<MultiLine>true</MultiLine>
-					<ContextMenu name="ОтложенныеОбработчикиИнтервалВыполненияКонтекстноеМеню" id="81"/>
-					<ExtendedTooltip name="ОтложенныеОбработчикиИнтервалВыполненияРасширеннаяПодсказка" id="82"/>
-				</InputField>
-				<InputField name="ОтложенныеОбработчикиДлительностьВыполнения" id="77">
-					<DataPath>ОтложенныеОбработчики.ДлительностьВыполнения</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>15</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ОтложенныеОбработчикиДлительностьВыполненияКонтекстноеМеню" id="78"/>
-					<ExtendedTooltip name="ОтложенныеОбработчикиДлительностьВыполненияРасширеннаяПодсказка" id="79"/>
-				</InputField>
-			</ChildItems>
-		</Table>
-		<InputField name="ОтложенныеОбработчикиИнформацияОПроцедуреОбновления" id="15">
-			<DataPath>Items.ОтложенныеОбработчики.CurrentData.ИнформацияОПроцедуреОбновления</DataPath>
-			<ReadOnly>true</ReadOnly>
-			<TitleLocation>None</TitleLocation>
-			<Height>4</Height>
-			<VerticalStretch>false</VerticalStretch>
-			<MultiLine>true</MultiLine>
-			<ContextMenu name="ОтложенныеОбработчикиИнформацияОПроцедуреОбновленияКонтекстноеМеню" id="16"/>
-			<ExtendedTooltip name="ОтложенныеОбработчикиИнформацияОПроцедуреОбновленияExtendedTooltip" id="28"/>
-		</InputField>
-		<LabelDecoration name="ГиперссылкаПрогрессОбновления" id="110">
-			<Title formatted="false">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отчет по прогрессу отложенного обновления</v8:content>
-				</v8:item>
-			</Title>
-			<Hyperlink>true</Hyperlink>
-			<ContextMenu name="ГиперссылкаПрогрессОбновленияКонтекстноеМеню" id="111"/>
-			<ExtendedTooltip name="ГиперссылкаПрогрессОбновленияРасширеннаяПодсказка" id="112"/>
-			<Events>
-				<Event name="Click">ГиперссылкаПрогрессОбновленияНажатие</Event>
-			</Events>
-		</LabelDecoration>
-		<LabelDecoration name="ГиперссылкаОтложенноеОбновление" id="13">
-			<HorizontalStretch>false</HorizontalStretch>
-			<Title formatted="false">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Техническая информация о результатах обработки данных</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTipRepresentation>Button</ToolTipRepresentation>
-			<Hyperlink>true</Hyperlink>
-			<ContextMenu name="ГиперссылкаОтложенноеОбновлениеКонтекстноеМеню" id="14"/>
-			<ExtendedTooltip name="ГиперссылкаОтложенноеОбновлениеExtendedTooltip" id="29">
-				<Title formatted="false">
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Техническая информация из журнала регистрации для обращения в службу технической поддержки.</v8:content>
-					</v8:item>
-				</Title>
-			</ExtendedTooltip>
-			<Events>
-				<Event name="Click">ГиперссылкаОтложенноеОбновлениеНажатие</Event>
-			</Events>
-		</LabelDecoration>
-		<LabelDecoration name="ОбновлениеВыполняется" id="20">
-			<Visible>false</Visible>
-			<Height>2</Height>
-			<HorizontalStretch>true</HorizontalStretch>
-			<TextColor>style:ПоясняющийТекст</TextColor>
-			<Title formatted="false">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>В данный момент выполняются дополнительные процедуры обработки данных</v8:content>
-				</v8:item>
-			</Title>
-			<VerticalAlign>Bottom</VerticalAlign>
-			<ContextMenu name="ОбновлениеВыполняетсяКонтекстноеМеню" id="21"/>
-			<ExtendedTooltip name="ОбновлениеВыполняетсяExtendedTooltip" id="30"/>
-		</LabelDecoration>
-		<UsualGroup name="ГруппаПовторныйЗапуск" id="10">
+		<UsualGroup name="ГруппаСодержимое" id="127">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа повторный запуск</v8:content>
+					<v8:content>Содержимое</v8:content>
 				</v8:item>
 			</Title>
 			<Group>Vertical</Group>
-			<Representation>NormalSeparation</Representation>
+			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаПовторныйЗапускExtendedTooltip" id="31"/>
+			<ExtendedTooltip name="ГруппаСодержимоеРасширеннаяПодсказка" id="128"/>
 			<ChildItems>
-				<LabelDecoration name="ТекстПояснения" id="11">
+				<Table name="ОтложенныеОбработчики" id="34">
+					<Representation>List</Representation>
+					<ReadOnly>true</ReadOnly>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>ОтложенныеОбработчики</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отложенные обработчики</v8:content>
+						</v8:item>
+					</Title>
+					<CommandSet>
+						<ExcludedCommand>Add</ExcludedCommand>
+						<ExcludedCommand>CancelSearch</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>Delete</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>Find</ExcludedCommand>
+						<ExcludedCommand>MoveDown</ExcludedCommand>
+						<ExcludedCommand>MoveUp</ExcludedCommand>
+						<ExcludedCommand>SortListAsc</ExcludedCommand>
+						<ExcludedCommand>SortListDesc</ExcludedCommand>
+					</CommandSet>
+					<CurrentRowUse>Choice</CurrentRowUse>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ОтложенныеОбработчикиКонтекстноеМеню" id="35">
+						<ChildItems>
+							<Button name="КонтекстноеМенюЗапуститьВыделенный" id="125">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗапуститьВыделенный</CommandName>
+								<ExtendedTooltip name="КонтекстноеМенюЗапуститьВыделенныйРасширеннаяПодсказка" id="126"/>
+							</Button>
+							<Button name="КонтекстноеМенюПриостановить" id="85">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Приостановить</CommandName>
+								<ExtendedTooltip name="КонтекстноеМенюПриостановитьРасширеннаяПодсказка" id="86"/>
+							</Button>
+							<Button name="КонтекстноеМенюЗапустить" id="87">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Запустить</CommandName>
+								<ExtendedTooltip name="КонтекстноеМенюЗапуститьРасширеннаяПодсказка" id="88"/>
+							</Button>
+							<ButtonGroup name="ОтложенныеОбработчикиКонтекстноеМенюПорядок" id="112">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Отложенные обработчики контекстное меню порядок</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ОтложенныеОбработчикиКонтекстноеМенюПорядокРасширеннаяПодсказка" id="113"/>
+								<ChildItems>
+									<Button name="ВПлановомПорядкеКонтекстноеМеню" id="104">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ВПлановомПорядке</CommandName>
+										<ExtendedTooltip name="ВПлановомПорядкеКонтекстноеМенюРасширеннаяПодсказка" id="105"/>
+									</Button>
+									<Button name="ЖелательноБыстрееКонтекстноеМеню" id="102">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ЖелательноБыстрее</CommandName>
+										<ExtendedTooltip name="ЖелательноБыстрееКонтекстноеМенюРасширеннаяПодсказка" id="103"/>
+									</Button>
+								</ChildItems>
+							</ButtonGroup>
+							<Button name="ОтложенныеОбработчикиКонтекстноеМенюКопироватьВБуферОбмена" id="114">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ОтложенныеОбработчики.StandardCommand.CopyToClipboard</CommandName>
+								<ExtendedTooltip name="ОтложенныеОбработчикиКонтекстноеМенюКопироватьВБуферОбменаРасширеннаяПодсказка" id="115"/>
+							</Button>
+							<Button name="ОтложенныеОбработчикиКонтекстноеМенюВыделитьВсе" id="116">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.ОтложенныеОбработчики.StandardCommand.SelectAll</CommandName>
+								<ExtendedTooltip name="ОтложенныеОбработчикиКонтекстноеМенюВыделитьВсеРасширеннаяПодсказка" id="117"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
+					<AutoCommandBar name="ОтложенныеОбработчикиКоманднаяПанель" id="36">
+						<Autofill>false</Autofill>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ОтложенныеОбработчикиРасширеннаяПодсказка" id="37"/>
+					<SearchStringAddition name="ОтложенныеОбработчикиСтрокаПоиска" id="60">
+						<AdditionSource>
+							<Item>ОтложенныеОбработчики</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ОтложенныеОбработчикиСтрокаПоискаКонтекстноеМеню" id="61"/>
+						<ExtendedTooltip name="ОтложенныеОбработчикиСтрокаПоискаРасширеннаяПодсказка" id="62"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ОтложенныеОбработчикиСостояниеПросмотра" id="63">
+						<AdditionSource>
+							<Item>ОтложенныеОбработчики</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ОтложенныеОбработчикиСостояниеПросмотраКонтекстноеМеню" id="64"/>
+						<ExtendedTooltip name="ОтложенныеОбработчикиСостояниеПросмотраРасширеннаяПодсказка" id="65"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ОтложенныеОбработчикиУправлениеПоиском" id="66">
+						<AdditionSource>
+							<Item>ОтложенныеОбработчики</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ОтложенныеОбработчикиУправлениеПоискомКонтекстноеМеню" id="67"/>
+						<ExtendedTooltip name="ОтложенныеОбработчикиУправлениеПоискомРасширеннаяПодсказка" id="68"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">ОтложенныеОбработчикиПриАктивизацииСтроки</Event>
+					</Events>
+					<ChildItems>
+						<PictureField name="Приоритет" id="99">
+							<DataPath>ОтложенныеОбработчики.КартинкаПриоритет</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<HeaderPicture>
+								<xr:Ref>CommonPicture.ВосклицательныйЗнакСерый</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</HeaderPicture>
+							<Width>2</Width>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="ПриоритетКонтекстноеМеню" id="100"/>
+							<ExtendedTooltip name="ПриоритетРасширеннаяПодсказка" id="101"/>
+						</PictureField>
+						<InputField name="Номер" id="38">
+							<DataPath>ОтложенныеОбработчики.Номер</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>№</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Left</HorizontalAlign>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>4</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="НомерКонтекстноеМеню" id="39"/>
+							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="40"/>
+						</InputField>
+						<InputField name="ОтложенныеОбработчикиОбработчик" id="41">
+							<DataPath>ОтложенныеОбработчики.Обработчик</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>36</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ОтложенныеОбработчикиОбработчикКонтекстноеМеню" id="42"/>
+							<ExtendedTooltip name="ОтложенныеОбработчикиОбработчикExtendedTooltip" id="43"/>
+						</InputField>
+						<ColumnGroup name="ГруппаСтатусКартинка" id="44">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Статус картинка</v8:content>
+								</v8:item>
+							</Title>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="ГруппаСтатусКартинкаExtendedTooltip" id="45"/>
+							<ChildItems>
+								<PictureField name="ОтложенныеОбработчикиСтатусКартинка" id="46">
+									<DataPath>ОтложенныеОбработчики.СтатусКартинка</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>9</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="ОтложенныеОбработчикиСтатусКартинкаКонтекстноеМеню" id="47"/>
+									<ExtendedTooltip name="ОтложенныеОбработчикиСтатусКартинкаExtendedTooltip" id="48"/>
+								</PictureField>
+								<InputField name="ОтложенныеОбработчикиСтатусОбработчика" id="49">
+									<DataPath>ОтложенныеОбработчики.СтатусПредставление</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>1</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ОтложенныеОбработчикиСтатусОбработчикаКонтекстноеМеню" id="50"/>
+									<ExtendedTooltip name="ОтложенныеОбработчикиСтатусОбработчикаExtendedTooltip" id="51"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+						<InputField name="ОтложенныеОбработчикиИнтервалВыполнения" id="80">
+							<DataPath>ОтложенныеОбработчики.ИнтервалВыполнения</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ОтложенныеОбработчикиИнтервалВыполненияКонтекстноеМеню" id="81"/>
+							<ExtendedTooltip name="ОтложенныеОбработчикиИнтервалВыполненияРасширеннаяПодсказка" id="82"/>
+						</InputField>
+						<InputField name="ОтложенныеОбработчикиДлительностьВыполнения" id="77">
+							<DataPath>ОтложенныеОбработчики.ДлительностьВыполнения</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ОтложенныеОбработчикиДлительностьВыполненияКонтекстноеМеню" id="78"/>
+							<ExtendedTooltip name="ОтложенныеОбработчикиДлительностьВыполненияРасширеннаяПодсказка" id="79"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+				<InputField name="ОтложенныеОбработчикиИнформацияОПроцедуреОбновления" id="15">
+					<DataPath>Items.ОтложенныеОбработчики.CurrentData.ИнформацияОПроцедуреОбновления</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>None</TitleLocation>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Height>4</Height>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<VerticalStretch>false</VerticalStretch>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="ОтложенныеОбработчикиИнформацияОПроцедуреОбновленияКонтекстноеМеню" id="16"/>
+					<ExtendedTooltip name="ОтложенныеОбработчикиИнформацияОПроцедуреОбновленияExtendedTooltip" id="28"/>
+				</InputField>
+				<LabelDecoration name="ГиперссылкаПрогрессОбновления" id="120">
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Невыполненные процедуры рекомендуется запустить повторно.</v8:content>
+							<v8:content>Отчет по прогрессу отложенного обновления</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="ТекстПоясненияКонтекстноеМеню" id="12"/>
-					<ExtendedTooltip name="ТекстПоясненияExtendedTooltip" id="32"/>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="ГиперссылкаПрогрессОбновленияКонтекстноеМеню" id="121"/>
+					<ExtendedTooltip name="ГиперссылкаПрогрессОбновленияРасширеннаяПодсказка" id="122"/>
+					<Events>
+						<Event name="Click">ГиперссылкаПрогрессОбновленияНажатие</Event>
+					</Events>
 				</LabelDecoration>
-				<Button name="ЗапуститьПовторно" id="9">
-					<Type>UsualButton</Type>
-					<Representation>PictureAndText</Representation>
-					<CommandName>Form.Command.ЗапуститьПовторно</CommandName>
-					<ExtendedTooltip name="ЗапуститьПовторноExtendedTooltip" id="33"/>
-				</Button>
+				<LabelDecoration name="ГиперссылкаОтложенноеОбновление" id="13">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Техническая информация о результатах обработки данных</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="ГиперссылкаОтложенноеОбновлениеКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ГиперссылкаОтложенноеОбновлениеExtendedTooltip" id="29">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Техническая информация из журнала регистрации для обращения в службу технической поддержки.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="Click">ГиперссылкаОтложенноеОбновлениеНажатие</Event>
+					</Events>
+				</LabelDecoration>
+				<LabelDecoration name="ОбновлениеВыполняется" id="20">
+					<Visible>false</Visible>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Height>2</Height>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>В данный момент выполняются дополнительные процедуры обработки данных</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Bottom</VerticalAlign>
+					<ContextMenu name="ОбновлениеВыполняетсяКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ОбновлениеВыполняетсяExtendedTooltip" id="30"/>
+				</LabelDecoration>
+				<UsualGroup name="ГруппаПовторныйЗапуск" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Повторный запуск</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>NormalSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПовторныйЗапускExtendedTooltip" id="31"/>
+					<ChildItems>
+						<LabelDecoration name="ТекстПояснения" id="11">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Невыполненные процедуры рекомендуется запустить повторно.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ТекстПоясненияКонтекстноеМеню" id="12"/>
+							<ExtendedTooltip name="ТекстПоясненияExtendedTooltip" id="32"/>
+						</LabelDecoration>
+						<Button name="ЗапуститьПовторно" id="9">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.ЗапуститьПовторно</CommandName>
+							<ExtendedTooltip name="ЗапуститьПовторноExtendedTooltip" id="33"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
@@ -566,12 +653,6 @@
 					</Type>
 				</Column>
 				<Column name="Идентификатор" id="7">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Идентификатор</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -611,12 +692,6 @@
 					</Type>
 				</Column>
 				<Column name="Статус" id="8">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Статус</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -637,12 +712,6 @@
 					</Type>
 				</Column>
 				<Column name="Приоритет" id="11">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Приоритет</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -651,15 +720,19 @@
 						</v8:StringQualifiers>
 					</Type>
 				</Column>
+				<Column name="Очередь" id="12">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="ВремяНачалаОтложенногоОбновления" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Время начала отложенного обновления</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>
@@ -668,12 +741,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ВремяОкончанияОтложенногоОбновления" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Время окончания отложенного обновления</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>
@@ -682,34 +749,16 @@
 			</Type>
 		</Attribute>
 		<Attribute name="НомерТекущегоСеанса" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Номер текущего сеанса</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ОбновлениеВыполняется" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Обновление выполняется</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ИБФайловая" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>ИБФайловая</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -745,26 +794,58 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ПолноправныйПользователь" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Полноправный пользователь</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПараллельныйРежимИспользуется" id="11">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Параллельный режим используется</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
+		</Attribute>
+		<Attribute name="ОбъектыОбработчикаАдрес" id="12">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбрабатываемыеДанные" id="13">
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ИмяОбъекта" id="1">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>255</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Обработчик" id="2">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>255</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Очередь" id="3">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
 		</Attribute>
 	</Attributes>
 	<Commands>
@@ -889,6 +970,22 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ВПлановомПорядке</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗапуститьВыделенный" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запустить процедуру</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запустить выделенную процедуру</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗапуститьВыделенный</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>

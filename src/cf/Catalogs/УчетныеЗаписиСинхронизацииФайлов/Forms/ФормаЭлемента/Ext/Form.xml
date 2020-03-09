@@ -12,57 +12,52 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<InputField name="Наименование" id="4">
-			<DataPath>Объект.Description</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<Width>30</Width>
-			<HorizontalStretch>true</HorizontalStretch>
-			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
-			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
-		</InputField>
-		<UsualGroup name="ГруппаНастройки" id="40">
+		<UsualGroup name="ГруппаНаименованиеИНастройки" id="65">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа настройки</v8:content>
+					<v8:content>Наименование и настройки</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа настройки</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
+			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаНастройкиРасширеннаяПодсказка" id="41"/>
+			<ExtendedTooltip name="ГруппаНаименованиеИНастройкиРасширеннаяПодсказка" id="66"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаСервисЛогин" id="42">
+				<InputField name="Наименование" id="4">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Синхронизация файлов с облачным сервисом</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+					<Events>
+						<Event name="OnChange">НаименованиеПриИзменении</Event>
+					</Events>
+				</InputField>
+				<UsualGroup name="ГруппаНастройки" id="40">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа сервис логин</v8:content>
+							<v8:content>Настройки</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа сервис логин</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаСервисЛогинРасширеннаяПодсказка" id="43"/>
+					<ExtendedTooltip name="ГруппаНастройкиРасширеннаяПодсказка" id="41"/>
 					<ChildItems>
-						<InputField name="СервисПредставление" id="60">
-							<DataPath>СервисПредставление</DataPath>
+						<InputField name="Сервис" id="60">
+							<DataPath>Сервис</DataPath>
+							<DefaultItem>true</DefaultItem>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -70,8 +65,8 @@
 								</v8:item>
 							</Title>
 							<EditMode>EnterOnInput</EditMode>
-							<Width>30</Width>
 							<DropListButton>true</DropListButton>
+							<ListChoiceMode>true</ListChoiceMode>
 							<TextEdit>false</TextEdit>
 							<ChoiceList>
 								<xr:Item>
@@ -120,70 +115,60 @@
 										<Presentation>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
-												<v8:content>iCloud</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">iCloud</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>DrobBox (через dropdav.com)</v8:content>
+												<v8:content>DropBox (через dropdav.com)</v8:content>
 											</v8:item>
 										</Presentation>
 										<Value xsi:type="xs:string">Dropbox</Value>
 									</xr:Value>
 								</xr:Item>
 							</ChoiceList>
-							<ContextMenu name="СервисПредставлениеКонтекстноеМеню" id="61"/>
-							<ExtendedTooltip name="СервисПредставлениеРасширеннаяПодсказка" id="62"/>
+							<ContextMenu name="СервисКонтекстноеМеню" id="61"/>
+							<ExtendedTooltip name="СервисРасширеннаяПодсказка" id="62"/>
 							<Events>
 								<Event name="OnChange">СервисПредставлениеПриИзменении</Event>
 							</Events>
 						</InputField>
-						<InputField name="Логин" id="31">
-							<DataPath>Логин</DataPath>
-							<HorizontalStretch>true</HorizontalStretch>
-							<ContextMenu name="ЛогинКонтекстноеМеню" id="32"/>
-							<ExtendedTooltip name="ЛогинРасширеннаяПодсказка" id="33"/>
-						</InputField>
-					</ChildItems>
-				</UsualGroup>
-				<UsualGroup name="ГруппаПапкаПароль" id="29">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Логин и пароль</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа папка пароль</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаПапкаПарольРасширеннаяПодсказка" id="30"/>
-					<ChildItems>
 						<InputField name="КорневаяПапка" id="37">
 							<DataPath>Объект.КорневаяПапка</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Имя папки, в которой хранятся синхронизированные файлы. Должна быть создана в облаке до выполнения синхронизации.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
 							<ContextMenu name="КорневаяПапкаКонтекстноеМеню" id="38"/>
 							<ExtendedTooltip name="КорневаяПапкаРасширеннаяПодсказка" id="39"/>
 						</InputField>
-						<InputField name="Пароль" id="34">
-							<DataPath>Пароль</DataPath>
-							<HorizontalStretch>true</HorizontalStretch>
-							<PasswordMode>true</PasswordMode>
-							<ContextMenu name="ПарольКонтекстноеМеню" id="35"/>
-							<ExtendedTooltip name="ПарольРасширеннаяПодсказка" id="36"/>
-						</InputField>
+						<UsualGroup name="ГруппаЛогинПароль" id="67">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Логин, пароль</v8:content>
+								</v8:item>
+							</Title>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЛогинПарольРасширеннаяПодсказка" id="68"/>
+							<ChildItems>
+								<InputField name="Логин" id="31">
+									<DataPath>Логин</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ЛогинКонтекстноеМеню" id="32"/>
+									<ExtendedTooltip name="ЛогинРасширеннаяПодсказка" id="33"/>
+								</InputField>
+								<InputField name="Пароль" id="34">
+									<DataPath>Пароль</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<PasswordMode>true</PasswordMode>
+									<ContextMenu name="ПарольКонтекстноеМеню" id="35"/>
+									<ExtendedTooltip name="ПарольРасширеннаяПодсказка" id="36"/>
+									<Events>
+										<Event name="OnChange">ПарольПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -192,16 +177,12 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Автор файлов</v8:content>
+					<v8:content>Автор новых и отредактированных файлов</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа автор файлов</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаАвторФайловРасширеннаяПодсказка" id="51"/>
 			<ChildItems>
 				<RadioButtonField name="ВКачествеАвтораФайлов" id="52">
@@ -209,10 +190,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Эта учетная запись %1</v8:content>
+							<v8:content>Автор новых и отредактированных файлов</v8:content>
 						</v8:item>
 					</Title>
-					<TitleLocation>None</TitleLocation>
+					<TitleLocation>Top</TitleLocation>
 					<RadioButtonType>Auto</RadioButtonType>
 					<ColumnsCount>1</ColumnsCount>
 					<ChoiceList>
@@ -240,16 +221,9 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа автор пользователь</v8:content>
+							<v8:content>Автор пользователь</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа автор пользователь</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаАвторПользовательРасширеннаяПодсказка" id="56"/>
@@ -289,25 +263,19 @@
 						<InputField name="АвторФайлов" id="44">
 							<DataPath>Объект.АвторФайлов</DataPath>
 							<TitleLocation>None</TitleLocation>
-							<Width>35</Width>
-							<HorizontalStretch>false</HorizontalStretch>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Если файлы в облаке редактирует только один пользователь, то рекомендуется указать его в качестве автора новых и измененных файлов.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<OpenButton>false</OpenButton>
 							<ContextMenu name="АвторФайловКонтекстноеМеню" id="45"/>
 							<ExtendedTooltip name="АвторФайловРасширеннаяПодсказка" id="46"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
-				<LabelDecoration name="ДекорацияПояснениеАвтораФайлов" id="47">
-					<Width>90</Width>
-					<TextColor>style:ПоясняющийТекст</TextColor>
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Если файлы в облаке редактирует только один пользователь, то рекомендуется указать его в качестве автора новых и измененных файлов.</v8:content>
-						</v8:item>
-					</Title>
-					<ContextMenu name="ДекорацияПояснениеАвтораФайловКонтекстноеМеню" id="48"/>
-					<ExtendedTooltip name="ДекорацияПояснениеАвтораФайловРасширеннаяПодсказка" id="49"/>
-				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
@@ -367,12 +335,13 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
-		<Attribute name="СервисПредставление" id="6">
+		<Attribute name="Сервис" id="6">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сервис представление</v8:content>
+					<v8:content>Сервис</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -382,7 +351,18 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="АвтоНаименование" id="7">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПарольИзменен" id="8">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>

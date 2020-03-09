@@ -6,7 +6,6 @@
 			<v8:content>Группы доступа</v8:content>
 		</v8:item>
 	</Title>
-	<Width>50</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -44,6 +43,12 @@
 				<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</RowsPicture>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группы доступа</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Add</ExcludedCommand>
 				<ExcludedCommand>Change</ExcludedCommand>
@@ -58,9 +63,6 @@
 				<ExcludedCommand>SortListDesc</ExcludedCommand>
 				<ExcludedCommand>Tree</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<ContextMenu name="ГруппыДоступаКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="ГруппыДоступаКоманднаяПанель" id="3">
 				<Autofill>false</Autofill>
@@ -100,8 +102,25 @@
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
 					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="9"/>
 				</LabelField>
+				<InputField name="ГруппыДоступаСсылка" id="22">
+					<DataPath>ГруппыДоступа.Ссылка</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ГруппыДоступаСсылкаКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ГруппыДоступаСсылкаРасширеннаяПодсказка" id="24"/>
+				</InputField>
 			</ChildItems>
 		</Table>
+		<InputField name="ГруппыДоступаКомментарий" id="19">
+			<DataPath>Items.ГруппыДоступа.CurrentData.Комментарий</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="ГруппыДоступаКомментарийКонтекстноеМеню" id="20"/>
+			<ExtendedTooltip name="ГруппыДоступаКомментарийРасширеннаяПодсказка" id="21"/>
+		</InputField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="ГруппыДоступа" id="1">
@@ -142,23 +161,11 @@
 					</Type>
 				</Column>
 				<Column name="ЭтоГруппа" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это группа</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="НомерКартинки" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер картинки</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -166,6 +173,21 @@
 							<v8:FractionDigits>0</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Комментарий" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
 					</Type>
 				</Column>
 			</Columns>

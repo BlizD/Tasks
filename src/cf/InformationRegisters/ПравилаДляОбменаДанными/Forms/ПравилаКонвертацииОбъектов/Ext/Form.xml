@@ -6,7 +6,6 @@
 			<v8:content>Правила конвертации данных</v8:content>
 		</v8:item>
 	</Title>
-	<Width>77</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandSet>
@@ -57,15 +56,9 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа плана обмена</v8:content>
+					<v8:content>Плана обмена</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа плана обмена</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -79,6 +72,7 @@
 							<v8:content>Синхронизация с программой</v8:content>
 						</v8:item>
 					</Title>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<ListChoiceMode>true</ListChoiceMode>
 					<ContextMenu name="ИмяПланаОбменаКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="ИмяПланаОбменаExtendedTooltip" id="54"/>
@@ -95,67 +89,48 @@
 					<v8:content>Правила конвертации для программы "%1":</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа основная</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
+			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ExtendedTooltip name="ГруппаОсновнаяExtendedTooltip" id="55"/>
 			<ChildItems>
-				<RadioButtonField name="ИсточникПравил" id="29">
-					<DataPath>ИсточникПравил</DataPath>
-					<TitleLocation>None</TitleLocation>
-					<RadioButtonType>Auto</RadioButtonType>
-					<ColumnsCount>1</ColumnsCount>
-					<ChoiceList>
-						<xr:Item>
-							<xr:Presentation/>
-							<xr:CheckState>0</xr:CheckState>
-							<xr:Value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Использовать типовые правила</v8:content>
-									</v8:item>
-								</Presentation>
-								<Value xsi:type="xs:string">ТиповыеИзКонфигурации</Value>
-							</xr:Value>
-						</xr:Item>
-						<xr:Item>
-							<xr:Presentation/>
-							<xr:CheckState>0</xr:CheckState>
-							<xr:Value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Загрузить из файла на компьютере:</v8:content>
-									</v8:item>
-								</Presentation>
-								<Value xsi:type="xs:string">ЗагруженныеИзФайла</Value>
-							</xr:Value>
-						</xr:Item>
-					</ChoiceList>
-					<ContextMenu name="ИсточникПравилКонтекстноеМеню" id="30"/>
-					<ExtendedTooltip name="ИсточникПравилExtendedTooltip" id="56"/>
-					<Events>
-						<Event name="OnChange">ИсточникПравилПриИзменении</Event>
-					</Events>
-				</RadioButtonField>
-				<UsualGroup name="ГруппаИсточникиПравил" id="15">
+				<UsualGroup name="ГруппаПравилаТиповые" id="109">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа источники правил</v8:content>
+							<v8:content>Правила типовые</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Vertical</Group>
 					<Representation>None</Representation>
+					<United>false</United>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаИсточникиПравилExtendedTooltip" id="57"/>
+					<ExtendedTooltip name="ГруппаПравилаТиповыеРасширеннаяПодсказка" id="110"/>
 					<ChildItems>
+						<RadioButtonField name="ИсточникПравилТиповые" id="29">
+							<DataPath>ИсточникПравил</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Использовать типовые правила</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ТиповыеИзКонфигурации</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ИсточникПравилТиповыеКонтекстноеМеню" id="30"/>
+							<ExtendedTooltip name="ИсточникПравилТиповыеРасширеннаяПодсказка" id="56"/>
+							<Events>
+								<Event name="OnChange">ИсточникПравилПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
 						<Pages name="ИсточникМакетКонфигурации" id="16">
 							<Title>
 								<v8:item>
@@ -163,22 +138,16 @@
 									<v8:content>Источник макет конфигурации</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Источник макет конфигурации</v8:content>
-								</v8:item>
-							</ToolTip>
 							<PagesRepresentation>None</PagesRepresentation>
 							<ExtendedTooltip name="ИсточникМакетКонфигурацииExtendedTooltip" id="58"/>
 							<ChildItems>
 								<Page name="СтраницаНесколькоМакетов" id="95">
-									<ToolTip>
+									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Страница несколько макетов</v8:content>
 										</v8:item>
-									</ToolTip>
+									</Title>
 									<ExtendedTooltip name="СтраницаНесколькоМакетовРасширеннаяПодсказка" id="96"/>
 									<ChildItems>
 										<InputField name="ИмяМакетаПравил" id="7">
@@ -190,6 +159,7 @@
 												</v8:item>
 											</Title>
 											<TitleLocation>None</TitleLocation>
+											<AutoMaxWidth>false</AutoMaxWidth>
 											<ListChoiceMode>true</ListChoiceMode>
 											<TextEdit>false</TextEdit>
 											<ChoiceListButton>false</ChoiceListButton>
@@ -202,15 +172,16 @@
 									</ChildItems>
 								</Page>
 								<Page name="СтраницаОдинМакет" id="97">
-									<ToolTip>
+									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Страница один макет</v8:content>
 										</v8:item>
-									</ToolTip>
+									</Title>
 									<ExtendedTooltip name="СтраницаОдинМакетРасширеннаяПодсказка" id="98"/>
 									<ChildItems>
 										<LabelDecoration name="ПустаяДекорация" id="99">
+											<AutoMaxWidth>false</AutoMaxWidth>
 											<ContextMenu name="ПустаяДекорацияКонтекстноеМеню" id="100"/>
 											<ExtendedTooltip name="ПустаяДекорацияРасширеннаяПодсказка" id="101"/>
 										</LabelDecoration>
@@ -218,6 +189,45 @@
 								</Page>
 							</ChildItems>
 						</Pages>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПравилаИзФайла" id="111">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правила из файла</v8:content>
+						</v8:item>
+					</Title>
+					<Representation>None</Representation>
+					<United>false</United>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПравилаИзФайлаРасширеннаяПодсказка" id="112"/>
+					<ChildItems>
+						<RadioButtonField name="ИсточникПравилИзФайла" id="113">
+							<DataPath>ИсточникПравил</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Загрузить из файла на компьютере:</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ЗагруженныеИзФайла</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ИсточникПравилИзФайлаКонтекстноеМеню" id="114"/>
+							<ExtendedTooltip name="ИсточникПравилИзФайлаРасширеннаяПодсказка" id="115"/>
+							<Events>
+								<Event name="OnChange">ИсточникПравилПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
 						<UsualGroup name="ИсточникФайл" id="17">
 							<Title>
 								<v8:item>
@@ -225,13 +235,6 @@
 									<v8:content>Источник файл</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Источник файл</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ИсточникФайлExtendedTooltip" id="63"/>
@@ -240,7 +243,6 @@
 									<DataPath>Запись.ИмяФайлаПравил</DataPath>
 									<ReadOnly>true</ReadOnly>
 									<TitleLocation>None</TitleLocation>
-									<Height>1</Height>
 									<ContextMenu name="ИмяФайлаПравилКонтекстноеМеню" id="6"/>
 									<ExtendedTooltip name="ИмяФайлаПравилExtendedTooltip" id="64"/>
 								</InputField>
@@ -260,6 +262,7 @@
 		<InputField name="ИнформацияОПравилах" id="11">
 			<DataPath>ИнформацияОПравилах</DataPath>
 			<ReadOnly>true</ReadOnly>
+			<AutoMaxWidth>false</AutoMaxWidth>
 			<Height>6</Height>
 			<MultiLine>true</MultiLine>
 			<ContextMenu name="ИнформацияОПравилахКонтекстноеМеню" id="12"/>
@@ -272,12 +275,6 @@
 					<v8:content>Настройка режима отладки</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа отладки</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Behavior>Collapsible</Behavior>
 			<Collapsed>true</Collapsed>
@@ -300,11 +297,16 @@
 						<Event name="OnChange">ВключитьРежимОтладкиПриИзменении</Event>
 					</Events>
 				</CheckBoxField>
-				<UsualGroup name="Группа1" id="104">
-					<Group>Horizontal</Group>
+				<UsualGroup name="ГруппаНастройкиОтладкиОбщая" id="104">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки отладки</v8:content>
+						</v8:item>
+					</Title>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="105"/>
+					<ExtendedTooltip name="ГруппаНастройкиОтладкиОбщаяРасширеннаяПодсказка" id="105"/>
 					<ChildItems>
 						<LabelDecoration name="Декорация1" id="106">
 							<Width>1</Width>
@@ -312,6 +314,12 @@
 							<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="108"/>
 						</LabelDecoration>
 						<UsualGroup name="ГруппаНастройкиОтладки" id="102">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки отладки</v8:content>
+								</v8:item>
+							</Title>
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -321,15 +329,9 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа отладки выгрузки</v8:content>
+											<v8:content>Отладки выгрузки</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа отладки выгрузки</v8:content>
-										</v8:item>
-									</ToolTip>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
@@ -355,6 +357,7 @@
 											<DataPath>Запись.ИмяФайлаОбработкиДляОтладкиВыгрузки</DataPath>
 											<Enabled>false</Enabled>
 											<TitleLocation>None</TitleLocation>
+											<AutoMaxWidth>false</AutoMaxWidth>
 											<ChoiceButton>true</ChoiceButton>
 											<ContextMenu name="ВнешняяОбработкаДляОтладкиВыгрузкиКонтекстноеМеню" id="41"/>
 											<ExtendedTooltip name="ВнешняяОбработкаДляОтладкиВыгрузкиExtendedTooltip" id="71"/>
@@ -368,15 +371,9 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа отладки загрузки</v8:content>
+											<v8:content>Отладки загрузки</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа отладки загрузки</v8:content>
-										</v8:item>
-									</ToolTip>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
@@ -402,6 +399,7 @@
 											<DataPath>Запись.ИмяФайлаОбработкиДляОтладкиЗагрузки</DataPath>
 											<Enabled>false</Enabled>
 											<TitleLocation>None</TitleLocation>
+											<AutoMaxWidth>false</AutoMaxWidth>
 											<ChoiceButton>true</ChoiceButton>
 											<ContextMenu name="ВнешняяОбработкаДляОтладкиЗагрузкиКонтекстноеМеню" id="37"/>
 											<ExtendedTooltip name="ВнешняяОбработкаДляОтладкиЗагрузкиExtendedTooltip" id="74"/>
@@ -415,15 +413,9 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа протокол</v8:content>
+											<v8:content>Протокол</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа протокол</v8:content>
-										</v8:item>
-									</ToolTip>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
@@ -443,6 +435,7 @@
 											<DataPath>Запись.ИмяФайлаПротоколаОбмена</DataPath>
 											<Enabled>false</Enabled>
 											<TitleLocation>None</TitleLocation>
+											<AutoMaxWidth>false</AutoMaxWidth>
 											<ChoiceButton>true</ChoiceButton>
 											<OpenButton>true</OpenButton>
 											<ContextMenu name="ФайлПротоколаОбменаКонтекстноеМеню" id="46"/>
@@ -483,8 +476,6 @@
 					<v8:content>Дополнительно</v8:content>
 				</v8:item>
 			</Title>
-			<HorizontalStretch>true</HorizontalStretch>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ChildItemsWidth>LeftWidest</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
@@ -540,12 +531,6 @@
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="СобытиеЖурналаРегистрацииЗагрузкаПравилДляОбменаДанными" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Событие журнала регистрации загрузка правил для обмена данными</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>

@@ -38,33 +38,57 @@
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
-		<LabelDecoration name="Сообщение" id="1">
-			<Title formatted="false">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пользователи, которым копируются настройки внешнего вида программы,
-должны завершить свои сеансы работы.
-В противном случае настройки могут не примениться.</v8:content>
-				</v8:item>
-			</Title>
-			<ContextMenu name="СообщениеКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="СообщениеExtendedTooltip" id="20"/>
-		</LabelDecoration>
-		<UsualGroup name="ГруппаАктивныеПользователи" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа активные пользователи</v8:content>
-				</v8:item>
-			</Title>
-			<Group>Horizontal</Group>
+		<UsualGroup name="ГруппаОткрытыеКопируемыеФормы" id="23">
 			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОткрытыеКопируемыеФормыРасширеннаяПодсказка" id="24"/>
+			<ChildItems>
+				<LabelDecoration name="СообщениеОткрытыеФормы" id="25">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>В программе есть &lt;link ОткрытыеОкна&gt;открытые окна&lt;/&gt;, настройки которых копируются другому пользователю, 
+если в них были внесены изменения, то новые настройки могут быть не скопированы.
+Рекомендуется закрыть перечисленные окна и повторить копирование.
+</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СообщениеОткрытыеФормыКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="СообщениеОткрытыеФормыРасширеннаяПодсказка" id="27"/>
+					<Events>
+						<Event name="URLProcessing">СообщениеОткрытыеФормыОбработкаНавигационнойСсылки</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаАктивныеПользователи" id="7">
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаАктивныеПользователиExtendedTooltip" id="21"/>
 			<ChildItems>
+				<LabelDecoration name="Сообщение" id="1">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователи, которым копируются настройки внешнего вида программы,
+должны завершить свои сеансы работы.
+В противном случае настройки могут не примениться.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СообщениеКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="СообщениеExtendedTooltip" id="20"/>
+				</LabelDecoration>
 				<LabelDecoration name="СписокАктивныхПользователей" id="8">
-					<Width>25</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -83,12 +107,15 @@
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Действие" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Действие</v8:content>
-				</v8:item>
-			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОткрытыеКопируемыеФормы" id="2">
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -126,6 +153,20 @@
 				</v8:StringQualifiers>
 			</Type>
 			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ОткрытыеКопируемыеФормы">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ЕстьАктивныеПользователиПолучатели">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
 		</Parameter>
 	</Parameters>
 </Form>

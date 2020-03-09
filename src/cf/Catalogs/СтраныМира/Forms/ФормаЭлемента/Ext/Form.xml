@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>50</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="Форма_КоманднаяПанель" id="-1"/>
@@ -9,11 +8,17 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="Группа" id="11">
-			<Group>Horizontal</Group>
+		<UsualGroup name="ГруппаНаименование" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование</v8:content>
+				</v8:item>
+			</Title>
 			<Representation>None</Representation>
+			<United>false</United>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаExtendedTooltip" id="13"/>
+			<ExtendedTooltip name="ГруппаНаименованиеРасширеннаяПодсказка" id="13"/>
 			<ChildItems>
 				<InputField name="Наименование" id="3">
 					<DataPath>Объект.Description</DataPath>
@@ -41,20 +46,18 @@
 			<ContextMenu name="НаименованиеПолное_КонтекстноеМеню" id="6"/>
 			<ExtendedTooltip name="НаименованиеПолноеExtendedTooltip" id="16"/>
 		</InputField>
+		<InputField name="МеждународноеНаименование" id="23">
+			<DataPath>Объект.МеждународноеНаименование</DataPath>
+			<ContextMenu name="МеждународноеНаименованиеКонтекстноеМеню" id="24"/>
+			<ExtendedTooltip name="МеждународноеНаименованиеРасширеннаяПодсказка" id="25"/>
+		</InputField>
 		<UsualGroup name="ГруппаАльфаКодов" id="12">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа альфа кодов</v8:content>
+					<v8:content>Альфа кодов</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа альфа кодов</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаАльфаКодовExtendedTooltip" id="17"/>
@@ -77,6 +80,19 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
+		<CheckBoxField name="УчастникЕАЭС" id="20">
+			<DataPath>Объект.УчастникЕАЭС</DataPath>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страна является участником Евразийского экономического союза.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="УчастникЕАЭСКонтекстноеМеню" id="21"/>
+			<ExtendedTooltip name="УчастникЕАЭСРасширеннаяПодсказка" id="22"/>
+		</CheckBoxField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">

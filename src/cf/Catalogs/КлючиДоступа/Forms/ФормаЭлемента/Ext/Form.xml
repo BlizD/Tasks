@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаВключитьВозможностьРедактирования" id="202">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ВключитьВозможностьРедактирования</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаВключитьВозможностьРедактированияExtendedTooltip" id="203"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Наименование" id="1">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<UsualGroup name="ГруппаСписок" id="200">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСписокРасширеннаяПодсказка" id="201"/>
+			<ChildItems>
+				<InputField name="Список" id="4">
+					<DataPath>Объект.Список</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="6"/>
+				</InputField>
+				<CheckBoxField name="ДляВнешнихПользователей" id="7">
+					<DataPath>Объект.ДляВнешнихПользователей</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ДляВнешнихПользователейКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="ДляВнешнихПользователейРасширеннаяПодсказка" id="9"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаХешИНеИспользуетсяС" id="212">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Хеш и Не используется с</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаХешИНеИспользуетсяСРасширеннаяПодсказка" id="213"/>
+			<ChildItems>
+				<InputField name="Хеш" id="13">
+					<DataPath>Объект.Хеш</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ХешКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ХешРасширеннаяПодсказка" id="15"/>
+				</InputField>
+				<InputField name="НеИспользуетсяС" id="209">
+					<DataPath>Объект.НеИспользуетсяС</DataPath>
+					<ContextMenu name="НеИспользуетсяСКонтекстноеМеню" id="210"/>
+					<ExtendedTooltip name="НеИспользуетсяСРасширеннаяПодсказка" id="211"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСоставПолей" id="204">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состав полей</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalAlign>Center</VerticalAlign>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСоставПолейРасширеннаяПодсказка" id="205"/>
+			<ChildItems>
+				<InputField name="СоставПолей" id="10">
+					<DataPath>Объект.СоставПолей</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СоставПолейКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="СоставПолейРасширеннаяПодсказка" id="12"/>
+				</InputField>
+				<LabelField name="РасшифровкаСоставаПолей" id="206">
+					<DataPath>РасшифровкаСоставаПолей</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<VerticalAlign>Center</VerticalAlign>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Height>2</Height>
+					<ContextMenu name="РасшифровкаСоставаПолейКонтекстноеМеню" id="207"/>
+					<ExtendedTooltip name="РасшифровкаСоставаПолейРасширеннаяПодсказка" id="208"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Страницы" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="32"/>
+			<ChildItems>
+				<Page name="ГруппаШапка" id="198">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="199"/>
+					<ChildItems>
+						<InputField name="Значение1" id="16">
+							<DataPath>Объект.Значение1</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="Значение1КонтекстноеМеню" id="17"/>
+							<ExtendedTooltip name="Значение1РасширеннаяПодсказка" id="18"/>
+						</InputField>
+						<InputField name="Значение2" id="19">
+							<DataPath>Объект.Значение2</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="Значение2КонтекстноеМеню" id="20"/>
+							<ExtendedTooltip name="Значение2РасширеннаяПодсказка" id="21"/>
+						</InputField>
+						<InputField name="Значение3" id="22">
+							<DataPath>Объект.Значение3</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="Значение3КонтекстноеМеню" id="23"/>
+							<ExtendedTooltip name="Значение3РасширеннаяПодсказка" id="24"/>
+						</InputField>
+						<InputField name="Значение4" id="25">
+							<DataPath>Объект.Значение4</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="Значение4КонтекстноеМеню" id="26"/>
+							<ExtendedTooltip name="Значение4РасширеннаяПодсказка" id="27"/>
+						</InputField>
+						<InputField name="Значение5" id="28">
+							<DataPath>Объект.Значение5</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="Значение5КонтекстноеМеню" id="29"/>
+							<ExtendedTooltip name="Значение5РасширеннаяПодсказка" id="30"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаШапкаДополнительно" id="33">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка (дополнительно)</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаШапкаДополнительноРасширеннаяПодсказка" id="34"/>
+					<ChildItems>
+						<Table name="Шапка" id="35">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.Шапка</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Шапка</v8:content>
+								</v8:item>
+							</Title>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ШапкаКонтекстноеМеню" id="36"/>
+							<AutoCommandBar name="ШапкаКоманднаяПанель" id="37"/>
+							<ExtendedTooltip name="ШапкаРасширеннаяПодсказка" id="38"/>
+							<SearchStringAddition name="ШапкаСтрокаПоиска" id="39">
+								<AdditionSource>
+									<Item>Шапка</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ШапкаСтрокаПоискаКонтекстноеМеню" id="40"/>
+								<ExtendedTooltip name="ШапкаСтрокаПоискаРасширеннаяПодсказка" id="41"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ШапкаСостояниеПросмотра" id="42">
+								<AdditionSource>
+									<Item>Шапка</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ШапкаСостояниеПросмотраКонтекстноеМеню" id="43"/>
+								<ExtendedTooltip name="ШапкаСостояниеПросмотраРасширеннаяПодсказка" id="44"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ШапкаУправлениеПоиском" id="45">
+								<AdditionSource>
+									<Item>Шапка</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ШапкаУправлениеПоискомКонтекстноеМеню" id="46"/>
+								<ExtendedTooltip name="ШапкаУправлениеПоискомРасширеннаяПодсказка" id="47"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ШапкаНомерСтроки" id="48">
+									<DataPath>Объект.Шапка.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ШапкаНомерСтрокиКонтекстноеМеню" id="49"/>
+									<ExtendedTooltip name="ШапкаНомерСтрокиРасширеннаяПодсказка" id="50"/>
+								</LabelField>
+								<InputField name="ШапкаЗначение6" id="51">
+									<DataPath>Объект.Шапка.Значение6</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ШапкаЗначение6КонтекстноеМеню" id="52"/>
+									<ExtendedTooltip name="ШапкаЗначение6РасширеннаяПодсказка" id="53"/>
+								</InputField>
+								<InputField name="ШапкаЗначение7" id="54">
+									<DataPath>Объект.Шапка.Значение7</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ШапкаЗначение7КонтекстноеМеню" id="55"/>
+									<ExtendedTooltip name="ШапкаЗначение7РасширеннаяПодсказка" id="56"/>
+								</InputField>
+								<InputField name="ШапкаЗначение8" id="57">
+									<DataPath>Объект.Шапка.Значение8</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ШапкаЗначение8КонтекстноеМеню" id="58"/>
+									<ExtendedTooltip name="ШапкаЗначение8РасширеннаяПодсказка" id="59"/>
+								</InputField>
+								<InputField name="ШапкаЗначение9" id="60">
+									<DataPath>Объект.Шапка.Значение9</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ШапкаЗначение9КонтекстноеМеню" id="61"/>
+									<ExtendedTooltip name="ШапкаЗначение9РасширеннаяПодсказка" id="62"/>
+								</InputField>
+								<InputField name="ШапкаЗначение10" id="63">
+									<DataPath>Объект.Шапка.Значение10</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ШапкаЗначение10КонтекстноеМеню" id="64"/>
+									<ExtendedTooltip name="ШапкаЗначение10РасширеннаяПодсказка" id="65"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаТабличнаяЧасть1" id="66">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Табличная часть 1</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаТабличнаяЧасть1РасширеннаяПодсказка" id="67"/>
+					<ChildItems>
+						<Table name="ТабличнаяЧасть1" id="68">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ТабличнаяЧасть1</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Табличная часть 1</v8:content>
+								</v8:item>
+							</Title>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТабличнаяЧасть1КонтекстноеМеню" id="69"/>
+							<AutoCommandBar name="ТабличнаяЧасть1КоманднаяПанель" id="70"/>
+							<ExtendedTooltip name="ТабличнаяЧасть1РасширеннаяПодсказка" id="71"/>
+							<SearchStringAddition name="ТабличнаяЧасть1СтрокаПоиска" id="72">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть1</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть1СтрокаПоискаКонтекстноеМеню" id="73"/>
+								<ExtendedTooltip name="ТабличнаяЧасть1СтрокаПоискаРасширеннаяПодсказка" id="74"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТабличнаяЧасть1СостояниеПросмотра" id="75">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть1</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть1СостояниеПросмотраКонтекстноеМеню" id="76"/>
+								<ExtendedTooltip name="ТабличнаяЧасть1СостояниеПросмотраРасширеннаяПодсказка" id="77"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТабличнаяЧасть1УправлениеПоиском" id="78">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть1</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть1УправлениеПоискомКонтекстноеМеню" id="79"/>
+								<ExtendedTooltip name="ТабличнаяЧасть1УправлениеПоискомРасширеннаяПодсказка" id="80"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ТабличнаяЧасть1НомерСтроки" id="81">
+									<DataPath>Объект.ТабличнаяЧасть1.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть1НомерСтрокиКонтекстноеМеню" id="82"/>
+									<ExtendedTooltip name="ТабличнаяЧасть1НомерСтрокиРасширеннаяПодсказка" id="83"/>
+								</LabelField>
+								<InputField name="ТабличнаяЧасть1Значение1" id="84">
+									<DataPath>Объект.ТабличнаяЧасть1.Значение1</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть1Значение1КонтекстноеМеню" id="85"/>
+									<ExtendedTooltip name="ТабличнаяЧасть1Значение1РасширеннаяПодсказка" id="86"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть1Значение2" id="87">
+									<DataPath>Объект.ТабличнаяЧасть1.Значение2</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть1Значение2КонтекстноеМеню" id="88"/>
+									<ExtendedTooltip name="ТабличнаяЧасть1Значение2РасширеннаяПодсказка" id="89"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть1Значение3" id="90">
+									<DataPath>Объект.ТабличнаяЧасть1.Значение3</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть1Значение3КонтекстноеМеню" id="91"/>
+									<ExtendedTooltip name="ТабличнаяЧасть1Значение3РасширеннаяПодсказка" id="92"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть1Значение4" id="93">
+									<DataPath>Объект.ТабличнаяЧасть1.Значение4</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть1Значение4КонтекстноеМеню" id="94"/>
+									<ExtendedTooltip name="ТабличнаяЧасть1Значение4РасширеннаяПодсказка" id="95"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть1Значение5" id="96">
+									<DataPath>Объект.ТабличнаяЧасть1.Значение5</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть1Значение5КонтекстноеМеню" id="97"/>
+									<ExtendedTooltip name="ТабличнаяЧасть1Значение5РасширеннаяПодсказка" id="98"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаТабличнаяЧасть2" id="99">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Табличная часть 2</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаТабличнаяЧасть2РасширеннаяПодсказка" id="100"/>
+					<ChildItems>
+						<Table name="ТабличнаяЧасть2" id="101">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ТабличнаяЧасть2</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Табличная часть 2</v8:content>
+								</v8:item>
+							</Title>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТабличнаяЧасть2КонтекстноеМеню" id="102"/>
+							<AutoCommandBar name="ТабличнаяЧасть2КоманднаяПанель" id="103"/>
+							<ExtendedTooltip name="ТабличнаяЧасть2РасширеннаяПодсказка" id="104"/>
+							<SearchStringAddition name="ТабличнаяЧасть2СтрокаПоиска" id="105">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть2</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть2СтрокаПоискаКонтекстноеМеню" id="106"/>
+								<ExtendedTooltip name="ТабличнаяЧасть2СтрокаПоискаРасширеннаяПодсказка" id="107"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТабличнаяЧасть2СостояниеПросмотра" id="108">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть2</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть2СостояниеПросмотраКонтекстноеМеню" id="109"/>
+								<ExtendedTooltip name="ТабличнаяЧасть2СостояниеПросмотраРасширеннаяПодсказка" id="110"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТабличнаяЧасть2УправлениеПоиском" id="111">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть2</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть2УправлениеПоискомКонтекстноеМеню" id="112"/>
+								<ExtendedTooltip name="ТабличнаяЧасть2УправлениеПоискомРасширеннаяПодсказка" id="113"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ТабличнаяЧасть2НомерСтроки" id="114">
+									<DataPath>Объект.ТабличнаяЧасть2.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть2НомерСтрокиКонтекстноеМеню" id="115"/>
+									<ExtendedTooltip name="ТабличнаяЧасть2НомерСтрокиРасширеннаяПодсказка" id="116"/>
+								</LabelField>
+								<InputField name="ТабличнаяЧасть2Значение1" id="117">
+									<DataPath>Объект.ТабличнаяЧасть2.Значение1</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть2Значение1КонтекстноеМеню" id="118"/>
+									<ExtendedTooltip name="ТабличнаяЧасть2Значение1РасширеннаяПодсказка" id="119"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть2Значение2" id="120">
+									<DataPath>Объект.ТабличнаяЧасть2.Значение2</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть2Значение2КонтекстноеМеню" id="121"/>
+									<ExtendedTooltip name="ТабличнаяЧасть2Значение2РасширеннаяПодсказка" id="122"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть2Значение3" id="123">
+									<DataPath>Объект.ТабличнаяЧасть2.Значение3</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть2Значение3КонтекстноеМеню" id="124"/>
+									<ExtendedTooltip name="ТабличнаяЧасть2Значение3РасширеннаяПодсказка" id="125"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть2Значение4" id="126">
+									<DataPath>Объект.ТабличнаяЧасть2.Значение4</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть2Значение4КонтекстноеМеню" id="127"/>
+									<ExtendedTooltip name="ТабличнаяЧасть2Значение4РасширеннаяПодсказка" id="128"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть2Значение5" id="129">
+									<DataPath>Объект.ТабличнаяЧасть2.Значение5</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть2Значение5КонтекстноеМеню" id="130"/>
+									<ExtendedTooltip name="ТабличнаяЧасть2Значение5РасширеннаяПодсказка" id="131"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаТабличнаяЧасть3" id="132">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Табличная часть 3</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаТабличнаяЧасть3РасширеннаяПодсказка" id="133"/>
+					<ChildItems>
+						<Table name="ТабличнаяЧасть3" id="134">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ТабличнаяЧасть3</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Табличная часть 3</v8:content>
+								</v8:item>
+							</Title>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТабличнаяЧасть3КонтекстноеМеню" id="135"/>
+							<AutoCommandBar name="ТабличнаяЧасть3КоманднаяПанель" id="136"/>
+							<ExtendedTooltip name="ТабличнаяЧасть3РасширеннаяПодсказка" id="137"/>
+							<SearchStringAddition name="ТабличнаяЧасть3СтрокаПоиска" id="138">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть3</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть3СтрокаПоискаКонтекстноеМеню" id="139"/>
+								<ExtendedTooltip name="ТабличнаяЧасть3СтрокаПоискаРасширеннаяПодсказка" id="140"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТабличнаяЧасть3СостояниеПросмотра" id="141">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть3</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть3СостояниеПросмотраКонтекстноеМеню" id="142"/>
+								<ExtendedTooltip name="ТабличнаяЧасть3СостояниеПросмотраРасширеннаяПодсказка" id="143"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТабличнаяЧасть3УправлениеПоиском" id="144">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть3</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть3УправлениеПоискомКонтекстноеМеню" id="145"/>
+								<ExtendedTooltip name="ТабличнаяЧасть3УправлениеПоискомРасширеннаяПодсказка" id="146"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ТабличнаяЧасть3НомерСтроки" id="147">
+									<DataPath>Объект.ТабличнаяЧасть3.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть3НомерСтрокиКонтекстноеМеню" id="148"/>
+									<ExtendedTooltip name="ТабличнаяЧасть3НомерСтрокиРасширеннаяПодсказка" id="149"/>
+								</LabelField>
+								<InputField name="ТабличнаяЧасть3Значение1" id="150">
+									<DataPath>Объект.ТабличнаяЧасть3.Значение1</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть3Значение1КонтекстноеМеню" id="151"/>
+									<ExtendedTooltip name="ТабличнаяЧасть3Значение1РасширеннаяПодсказка" id="152"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть3Значение2" id="153">
+									<DataPath>Объект.ТабличнаяЧасть3.Значение2</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть3Значение2КонтекстноеМеню" id="154"/>
+									<ExtendedTooltip name="ТабличнаяЧасть3Значение2РасширеннаяПодсказка" id="155"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть3Значение3" id="156">
+									<DataPath>Объект.ТабличнаяЧасть3.Значение3</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть3Значение3КонтекстноеМеню" id="157"/>
+									<ExtendedTooltip name="ТабличнаяЧасть3Значение3РасширеннаяПодсказка" id="158"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть3Значение4" id="159">
+									<DataPath>Объект.ТабличнаяЧасть3.Значение4</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть3Значение4КонтекстноеМеню" id="160"/>
+									<ExtendedTooltip name="ТабличнаяЧасть3Значение4РасширеннаяПодсказка" id="161"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть3Значение5" id="162">
+									<DataPath>Объект.ТабличнаяЧасть3.Значение5</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть3Значение5КонтекстноеМеню" id="163"/>
+									<ExtendedTooltip name="ТабличнаяЧасть3Значение5РасширеннаяПодсказка" id="164"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаТабличнаяЧасть4" id="165">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Табличная часть 4</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаТабличнаяЧасть4РасширеннаяПодсказка" id="166"/>
+					<ChildItems>
+						<Table name="ТабличнаяЧасть4" id="167">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ТабличнаяЧасть4</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Табличная часть 4</v8:content>
+								</v8:item>
+							</Title>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТабличнаяЧасть4КонтекстноеМеню" id="168"/>
+							<AutoCommandBar name="ТабличнаяЧасть4КоманднаяПанель" id="169"/>
+							<ExtendedTooltip name="ТабличнаяЧасть4РасширеннаяПодсказка" id="170"/>
+							<SearchStringAddition name="ТабличнаяЧасть4СтрокаПоиска" id="171">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть4</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть4СтрокаПоискаКонтекстноеМеню" id="172"/>
+								<ExtendedTooltip name="ТабличнаяЧасть4СтрокаПоискаРасширеннаяПодсказка" id="173"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТабличнаяЧасть4СостояниеПросмотра" id="174">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть4</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть4СостояниеПросмотраКонтекстноеМеню" id="175"/>
+								<ExtendedTooltip name="ТабличнаяЧасть4СостояниеПросмотраРасширеннаяПодсказка" id="176"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТабличнаяЧасть4УправлениеПоиском" id="177">
+								<AdditionSource>
+									<Item>ТабличнаяЧасть4</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабличнаяЧасть4УправлениеПоискомКонтекстноеМеню" id="178"/>
+								<ExtendedTooltip name="ТабличнаяЧасть4УправлениеПоискомРасширеннаяПодсказка" id="179"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ТабличнаяЧасть4НомерСтроки" id="180">
+									<DataPath>Объект.ТабличнаяЧасть4.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть4НомерСтрокиКонтекстноеМеню" id="181"/>
+									<ExtendedTooltip name="ТабличнаяЧасть4НомерСтрокиРасширеннаяПодсказка" id="182"/>
+								</LabelField>
+								<InputField name="ТабличнаяЧасть4Значение1" id="183">
+									<DataPath>Объект.ТабличнаяЧасть4.Значение1</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть4Значение1КонтекстноеМеню" id="184"/>
+									<ExtendedTooltip name="ТабличнаяЧасть4Значение1РасширеннаяПодсказка" id="185"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть4Значение2" id="186">
+									<DataPath>Объект.ТабличнаяЧасть4.Значение2</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть4Значение2КонтекстноеМеню" id="187"/>
+									<ExtendedTooltip name="ТабличнаяЧасть4Значение2РасширеннаяПодсказка" id="188"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть4Значение3" id="189">
+									<DataPath>Объект.ТабличнаяЧасть4.Значение3</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть4Значение3КонтекстноеМеню" id="190"/>
+									<ExtendedTooltip name="ТабличнаяЧасть4Значение3РасширеннаяПодсказка" id="191"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть4Значение4" id="192">
+									<DataPath>Объект.ТабличнаяЧасть4.Значение4</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть4Значение4КонтекстноеМеню" id="193"/>
+									<ExtendedTooltip name="ТабличнаяЧасть4Значение4РасширеннаяПодсказка" id="194"/>
+								</InputField>
+								<InputField name="ТабличнаяЧасть4Значение5" id="195">
+									<DataPath>Объект.ТабличнаяЧасть4.Значение5</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТабличнаяЧасть4Значение5КонтекстноеМеню" id="196"/>
+									<ExtendedTooltip name="ТабличнаяЧасть4Значение5РасширеннаяПодсказка" id="197"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.КлючиДоступа</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="РасшифровкаСоставаПолей" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расшифровка состава полей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВключитьВозможностьРедактирования" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования только для целей поиска неисправности (требуется углубленное понимание работы механизма)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВключитьВозможностьРедактирования</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

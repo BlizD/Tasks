@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
-	<Width>70</Width>
-	<Height>14</Height>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
@@ -18,42 +16,16 @@
 				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 				<ExtendedTooltip name="ДеревоПодсистемСнятьФлажкиExtendedTooltip" id="80"/>
 			</Button>
-			<Button name="ДеревоПодсистемПеречитать" id="75">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.Перечитать</CommandName>
-				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-				<ExtendedTooltip name="ДеревоПодсистемПеречитатьExtendedTooltip" id="81"/>
-			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="047d4d09-961c-4bdc-8519-eef10674c35b">ПослеЗаписи</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
-		<Event name="bf0ac0e1-bcbb-4dfe-8fc4-0b1923b461a6">ПередЗаписьюНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<InputField name="ИзменяемыеВарианты" id="56">
-			<DataPath>ИзменяемыеВарианты</DataPath>
-			<TitleLocation>Left</TitleLocation>
-			<Height>2</Height>
-			<VerticalStretch>false</VerticalStretch>
-			<MultiLine>true</MultiLine>
-			<ChoiceButton>true</ChoiceButton>
-			<ClearButton>false</ClearButton>
-			<SpinButton>false</SpinButton>
-			<OpenButton>false</OpenButton>
-			<AutoMarkIncomplete>true</AutoMarkIncomplete>
-			<ChoiceListButton>false</ChoiceListButton>
-			<BackColor>style:ФонУправляющегоПоля</BackColor>
-			<ContextMenu name="ИзменяемыеВариантыКонтекстноеМеню" id="57"/>
-			<ExtendedTooltip name="ИзменяемыеВариантыExtendedTooltip" id="82"/>
-			<Events>
-				<Event name="OnChange">ИзменяемыеВариантыПриИзменении</Event>
-			</Events>
-		</InputField>
 		<Table name="ДеревоПодсистем" id="7">
 			<Representation>Tree</Representation>
+			<DefaultItem>true</DefaultItem>
 			<ChangeRowOrder>false</ChangeRowOrder>
 			<SelectionMode>SingleRow</SelectionMode>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
@@ -62,6 +34,12 @@
 			<EnableDrag>true</EnableDrag>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>ДеревоПодсистем</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево подсистем</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Add</ExcludedCommand>
 				<ExcludedCommand>Copy</ExcludedCommand>
@@ -74,20 +52,12 @@
 				<ExcludedCommand>SortListDesc</ExcludedCommand>
 				<ExcludedCommand>Tree</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<ContextMenu name="ДеревоПодсистемКонтекстноеМеню" id="8">
 				<ChildItems>
 					<Button name="ДеревоПодсистемКонтекстноеМенюСнятьФлажки" id="78">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Command.СнятьФлажки</CommandName>
 						<ExtendedTooltip name="ДеревоПодсистемКонтекстноеМенюСнятьФлажкиExtendedTooltip" id="83"/>
-					</Button>
-					<Button name="ДеревоПодсистемКонтекстноеМенюПеречитать" id="77">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.Перечитать</CommandName>
-						<ExtendedTooltip name="ДеревоПодсистемКонтекстноеМенюПеречитатьExtendedTooltip" id="84"/>
 					</Button>
 				</ChildItems>
 			</ContextMenu>
@@ -120,23 +90,17 @@
 				<ExtendedTooltip name="ДеревоПодсистемУправлениеПоискомРасширеннаяПодсказка" id="98"/>
 			</SearchControlAddition>
 			<ChildItems>
-				<ColumnGroup name="ГруппаКолонок" id="73">
+				<ColumnGroup name="ГруппаКолонок" id="73" DisplayImportance="VeryHigh">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа колонок</v8:content>
+							<v8:content>Колонок</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа колонок</v8:content>
-						</v8:item>
-					</ToolTip>
 					<Group>InCell</Group>
 					<ExtendedTooltip name="ГруппаКолонокExtendedTooltip" id="86"/>
 					<ChildItems>
-						<CheckBoxField name="ДеревоПодсистемИспользование" id="69">
+						<CheckBoxField name="ДеревоПодсистемИспользование" id="69" DisplayImportance="VeryHigh">
 							<DataPath>ДеревоПодсистем.Использование</DataPath>
 							<TitleLocation>None</TitleLocation>
 							<HorizontalAlign>Left</HorizontalAlign>
@@ -148,7 +112,7 @@
 								<Event name="OnChange">ДеревоПодсистемИспользованиеПриИзменении</Event>
 							</Events>
 						</CheckBoxField>
-						<InputField name="ДеревоПодсистемПредставление" id="61">
+						<InputField name="ДеревоПодсистемПредставление" id="61" DisplayImportance="VeryHigh">
 							<DataPath>ДеревоПодсистем.Представление</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<HorizontalAlign>Left</HorizontalAlign>
@@ -179,36 +143,7 @@
 		</Table>
 	</ChildItems>
 	<Attributes>
-		<Attribute name="ТолькоДляАвтора" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Только для автора</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="Автор" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Автор</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.ВнешниеПользователи</v8:Type>
-				<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
-			</Type>
-		</Attribute>
 		<Attribute name="ИзменяемыеВарианты" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Варианты отчетов</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
@@ -217,12 +152,6 @@
 			</Settings>
 		</Attribute>
 		<Attribute name="КоличествоВариантов" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Количество вариантов</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
 				<v8:NumberQualifiers>
@@ -233,12 +162,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="СмешаннаяВажность" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Смешанная важность</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -247,13 +170,7 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="РезультатВыполнения" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Результат выполнения</v8:content>
-				</v8:item>
-			</Title>
+		<Attribute name="СообщенияОбОшибках" id="4">
 			<Type/>
 		</Attribute>
 		<Attribute name="ДеревоПодсистем" id="3">
@@ -268,12 +185,6 @@
 			</Type>
 			<Columns>
 				<Column name="Ссылка" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Ссылка</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовРасширений</v8:Type>
 						<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовМетаданных</v8:Type>
@@ -295,12 +206,6 @@
 					</Type>
 				</Column>
 				<Column name="Имя" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Имя</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -310,12 +215,6 @@
 					</Type>
 				</Column>
 				<Column name="ПолноеИмя" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Полное имя</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -325,12 +224,6 @@
 					</Type>
 				</Column>
 				<Column name="Приоритет" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Приоритет</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -371,12 +264,6 @@
 					</Type>
 				</Column>
 				<Column name="Модифицированность" id="10">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Модифицированность</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -426,26 +313,10 @@
 			<Representation>TextPicture</Representation>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
-		<Command name="Перечитать" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Перечитать</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Перечитать</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.Reread</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>Перечитать</Action>
-			<Representation>TextPicture</Representation>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
 	</Commands>
+	<Parameters>
+		<Parameter name="Варианты">
+			<Type/>
+		</Parameter>
+	</Parameters>
 </Form>

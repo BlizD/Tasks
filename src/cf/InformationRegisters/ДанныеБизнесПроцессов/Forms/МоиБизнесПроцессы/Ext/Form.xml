@@ -36,12 +36,6 @@
 					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
-				</v8:item>
-			</ToolTip>
 			<CommandSource>Form</CommandSource>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="75"/>
 			<ChildItems>
@@ -98,18 +92,15 @@
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.КартинкаСтроки</RowPictureDataPath>
 			<RowsPicture>
-				<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
+				<xr:Ref>CommonPicture.СостоянияПроцессов</xr:Ref>
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</RowsPicture>
-			<CommandSet>
-				<ExcludedCommand>Choose</ExcludedCommand>
-				<ExcludedCommand>Copy</ExcludedCommand>
-				<ExcludedCommand>Create</ExcludedCommand>
-				<ExcludedCommand>Delete</ExcludedCommand>
-			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -137,6 +128,12 @@
 						<ExtendedTooltip name="СписокКонтекстноеМенюПометкаУдаленияExtendedTooltip" id="53"/>
 					</Button>
 					<ButtonGroup name="СписокКонтекстноеМенюГруппа" id="38">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Список контекстное меню группа</v8:content>
+							</v8:item>
+						</Title>
 						<ExtendedTooltip name="СписокКонтекстноеМенюГруппаExtendedTooltip" id="54"/>
 						<ChildItems>
 							<Button name="СписокКонтекстноеМенюНайти" id="43">
@@ -215,42 +212,6 @@
 					<ContextMenu name="ДатаКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="ДатаExtendedTooltip" id="62"/>
 				</InputField>
-				<CheckBoxField name="Стартован" id="12">
-					<DataPath>Список.Стартован</DataPath>
-					<DefaultItem>true</DefaultItem>
-					<TitleLocation>None</TitleLocation>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Стартован</v8:content>
-						</v8:item>
-					</ToolTip>
-					<HeaderPicture>
-						<xr:Ref>StdPicture.BusinessProcessStart</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</HeaderPicture>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="СтартованКонтекстноеМеню" id="13"/>
-					<ExtendedTooltip name="СтартованExtendedTooltip" id="63"/>
-				</CheckBoxField>
-				<CheckBoxField name="Завершен" id="10">
-					<DataPath>Список.Завершен</DataPath>
-					<DefaultItem>true</DefaultItem>
-					<TitleLocation>None</TitleLocation>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Завершен</v8:content>
-						</v8:item>
-					</ToolTip>
-					<HeaderPicture>
-						<xr:Ref>CommonPicture.Успешно</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</HeaderPicture>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ЗавершенКонтекстноеМеню" id="11"/>
-					<ExtendedTooltip name="ЗавершенExtendedTooltip" id="64"/>
-				</CheckBoxField>
 				<InputField name="ДатаЗавершения" id="16">
 					<DataPath>Список.ДатаЗавершения</DataPath>
 					<DefaultItem>true</DefaultItem>
@@ -272,6 +233,11 @@
 					</UserVisible>
 					<ContextMenu name="БизнесПроцессКонтекстноеМеню" id="70"/>
 					<ExtendedTooltip name="БизнесПроцессРасширеннаяПодсказка" id="71"/>
+				</LabelField>
+				<LabelField name="БизнесПроцессСостояние" id="85">
+					<DataPath>Список.БизнесПроцесс.Состояние</DataPath>
+					<ContextMenu name="БизнесПроцессСостояниеКонтекстноеМеню" id="86"/>
+					<ExtendedTooltip name="БизнесПроцессСостояниеРасширеннаяПодсказка" id="87"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -312,11 +278,31 @@
 	РегистрСведенийДанныеБизнесПроцессов.ПометкаУдаления,
 	ВЫБОР
 		КОГДА РегистрСведенийДанныеБизнесПроцессов.ПометкаУдаления
-			ТОГДА 20
-		ИНАЧЕ 19
-	КОНЕЦ КАК КартинкаСтроки
+			ТОГДА 6
+		КОГДА РегистрСведенийДанныеБизнесПроцессов.Завершен = ИСТИНА
+			ТОГДА 5
+		КОГДА РегистрСведенийДанныеБизнесПроцессов.БизнесПроцесс.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияБизнесПроцессов.Остановлен)
+			ТОГДА 0
+		КОГДА РегистрСведенийДанныеБизнесПроцессов.Стартован = ИСТИНА
+			ТОГДА 3
+		КОГДА ПроцессыДляЗапуска.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияПроцессовДляЗапуска.ГотовКСтарту)
+				И ПроцессыДляЗапуска.ДатаОтложенногоСтарта &lt;&gt; ДАТАВРЕМЯ(1, 1, 1)
+			ТОГДА 1
+		КОГДА ПроцессыДляЗапуска.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияПроцессовДляЗапуска.СтартОтменен)
+			ТОГДА 2
+		ИНАЧЕ 0
+	КОНЕЦ КАК КартинкаСтроки,
+	ВЫБОР
+		КОГДА ПроцессыДляЗапуска.Состояние ЕСТЬ NULL 
+			ТОГДА ЛОЖЬ
+		КОГДА ПроцессыДляЗапуска.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияПроцессовДляЗапуска.ГотовКСтарту)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК Отложен
 ИЗ
-	РегистрСведений.ДанныеБизнесПроцессов КАК РегистрСведенийДанныеБизнесПроцессов</QueryText>
+	РегистрСведений.ДанныеБизнесПроцессов КАК РегистрСведенийДанныеБизнесПроцессов
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПроцессыДляЗапуска КАК ПроцессыДляЗапуска
+		ПО РегистрСведенийДанныеБизнесПроцессов.БизнесПроцесс = ПроцессыДляЗапуска.БизнесПроцесс</QueryText>
 				<MainTable>InformationRegister.ДанныеБизнесПроцессов</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -340,27 +326,6 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
-						<dcsset:item>
-							<dcsset:selection/>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">Завершен</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:use>false</dcscor:use>
-									<dcscor:parameter>ЦветФона</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">auto</dcscor:value>
-								</dcscor:item>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветТекста</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">style:ЗавершенныйБизнесПроцесс</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>

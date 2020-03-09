@@ -16,13 +16,21 @@
 	<ChildItems>
 		<Table name="СписокКолонок" id="1">
 			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<SelectionMode>SingleRow</SelectionMode>
 			<Header>false</Header>
 			<HorizontalLines>false</HorizontalLines>
 			<VerticalLines>false</VerticalLines>
-			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>СписокКолонок</DataPath>
 			<RowPictureDataPath>СписокКолонок.Picture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список колонок</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>Add</ExcludedCommand>
 				<ExcludedCommand>Change</ExcludedCommand>
@@ -33,13 +41,9 @@
 				<ExcludedCommand>MoveDown</ExcludedCommand>
 				<ExcludedCommand>MoveUp</ExcludedCommand>
 				<ExcludedCommand>Pickup</ExcludedCommand>
-				<ExcludedCommand>SelectAll</ExcludedCommand>
 				<ExcludedCommand>SortListAsc</ExcludedCommand>
 				<ExcludedCommand>SortListDesc</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<ContextMenu name="СписокКолонокКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="СписокКолонокКоманднаяПанель" id="3">
 				<ChildItems>
@@ -90,11 +94,18 @@
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокКолонокВыбор</Event>
+				<Event name="OnStartEdit">СписокКолонокПриНачалеРедактирования</Event>
 			</Events>
 			<ChildItems>
-				<ColumnGroup name="СписокКолонокГруппа1" id="17">
+				<ColumnGroup name="СписокКолонокГруппа" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список колонок группа</v8:content>
+						</v8:item>
+					</Title>
 					<Group>InCell</Group>
-					<ExtendedTooltip name="СписокКолонокГруппа1РасширеннаяПодсказка" id="18"/>
+					<ExtendedTooltip name="СписокКолонокГруппаРасширеннаяПодсказка" id="18"/>
 					<ChildItems>
 						<CheckBoxField name="СписокКолонокПометка" id="8">
 							<DataPath>СписокКолонок.Check</DataPath>
@@ -132,6 +143,13 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Settings>
 		</Attribute>
 	</Attributes>
 	<Commands>

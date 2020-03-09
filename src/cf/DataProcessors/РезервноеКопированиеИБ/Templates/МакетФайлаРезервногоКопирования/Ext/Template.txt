@@ -1,451 +1,452 @@
 ﻿#Область ОбластьПараметров
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018, ООО 1С-Софт
+// Все права защищены. Эта программа и сопроводительные материалы предоставляются 
+// в соответствии с условиями лицензии Attribution 4.0 International (CC BY 4.0)
+// Текст лицензии доступен по ссылке:
+// https://creativecommons.org/licenses/by/4.0/legalcode
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 // Параметры процедуры обновления
-var now = new Date();
-var outFileName = "log" + now.valueOf() + ".txt"; // Путь к log-файлу
-var v8exe = [ИмяИсполняемогоФайлаПрограммы]; // Путь к исполняемому файлу 1С:Предприятия 8
-var infoBasePath = [ПараметрПутиКИнформационнойБазе]; 
-var BaseFileName = [СтрокаПутиКФайлуИнформационнойБазы];
-var connectionString = [СтрокаСоединенияИнформационнойБазы] +';UC=РезервноеКопирование';
-var adminName = [ИмяАдминистратораОбновления];  // имя администратора, инициировавшего обновление
-var backupFileName = [КаталогРезервнойКопии]+'.zip';  // Файл резервной копии
-var UseRestore = [ВосстанавливатьИнформационнуюБазу];  // Использовать восстановление ИБ в случае падения
-var createBackup = [СоздаватьРезервнуюКопию]; // создавать резервную копию
-var eventLogID = [СобытиеЖурналаРегистрации];
-var comConnectorName = [ИмяCOMСоединителя];  // имя COM-класса для работы с 1С:Предприятием 8 через COM-соединение
-var useComConnector = [ИспользоватьCOMСоединитель];  // флаг использования COM-соединения для работы с 1С:Предприятием 8
-var OnExit = [ВыполнитьПриЗавершенииРаботы];  // "true" - при завершении работы, "false" - прямо сейчас.
-var tempLogFileName = "templog.txt";
+var now = new Date()
+var outFileName = 'log' + now.valueOf() + '.txt' // Путь к log-файлу
+var v8exe = [ИмяИсполняемогоФайлаПрограммы] // Путь к исполняемому файлу 1С:Предприятия 8
+var infoBasePath = [ПараметрПутиКИнформационнойБазе]
+var BaseFileName = [СтрокаПутиКФайлуИнформационнойБазы]
+var connectionString = [СтрокаСоединенияИнформационнойБазы] + ';UC=РезервноеКопирование'
+var adminName = [ИмяАдминистратораОбновления] // имя администратора, инициировавшего обновление
+var backupFileName = [КаталогРезервнойКопии] + '.zip' // Файл резервной копии
+var UseRestore = [ВосстанавливатьИнформационнуюБазу] // Использовать восстановление ИБ в случае падения
+var createBackup = [СоздаватьРезервнуюКопию] // создавать резервную копию
+var eventLogID = [СобытиеЖурналаРегистрации]
+var comConnectorName = [ИмяCOMСоединителя] // имя COM-класса для работы с 1С:Предприятием 8 через COM-соединение
+var useComConnector = [ИспользоватьCOMСоединитель] // флаг использования COM-соединения для работы с 1С:Предприятием 8
+var OnExit = [ВыполнитьПриЗавершенииРаботы] // "true" - при завершении работы, "false" - прямо сейчас.
+var tempLogFileName = 'templog.txt'
+var runAppAdditionalParams = [ПараметрыЗапускаПредприятия] // Аргументы командной строки, которые следует добавить к запуску 1С:Предприятия в режиме клиента.
 #КонецОбласти
 
 #Область ОбластьРезервногоКопирования
-var oFileSystemObject = new ActiveXObject("Scripting.FileSystemObject");
 
-var thisFileName;
-var thisFileDir;
-var InfoBasePassword;
-
-thisFileName = eval("oHTA.commandLine");
-thisFileDir = thisFileName.substr(1, thisFileName.lastIndexOf("\\") - 1);
-InfoBasePassword = thisFileName.substr(thisFileName.indexOf("[p1]") + 4, thisFileName.indexOf("[/p1]") - thisFileName.indexOf("[p1]") - 4);
-InfoBasePassword = fromUnicode(InfoBasePassword);
-thisFileName = thisFileName.substr(1, thisFileName.indexOf("[p1]") - 3);
-
-var infoBaseAuthorization = format('/N\"{0}\" /P\"{1}\" /WA-', adminName, InfoBasePassword);
-connectionString = format(connectionString, adminName, InfoBasePassword);
-
-var oShell = new ActiveXObject("WScript.Shell");
-var oShellApplication = new ActiveXObject("Shell.Application");
-oShell.CurrentDirectory = thisFileDir;
-
-var errorMarker = "{ERR}";
-var successMarker = "{OK }";
-
-var FileSize = 0;
-
-// Переменные состояния
-var backupCreated = false;
-var logging1C = false;
-var ComConnection = null;
-
-// Открыть файл sFilePath.
-function runApp(sFilePath, sFileArgs, show, bWaitOnReturn) 
-{ 
-	if (bWaitOnReturn == undefined)
-	    bWaitOnReturn = false;
-	if (show == undefined)
-	    show = SW_SHOW;
-	if (sFileArgs == undefined)
-	    sFileArgs = "";
-	var ret = 1;
-	log(format("Запускается: {0}; параметры: {1}; окно: {2}; ожидание: {3}", 
-	    sFilePath, sFileArgs, SWtoString(show), bWaitOnReturn));
-	if (oFileSystemObject.FileExists(sFilePath))
-	{
-        try
-        {
-	        ret = oShell.Run(format('"{0}" {1}', sFilePath, sFileArgs), show, bWaitOnReturn); 
-	    }
-        catch(e) 
-        { 
-            log(format("Исключение в runApp: {0}, {1}.", e.name, e.message), true);
-            return 1;
-        }
-   		log(format("Код возврата: {0}", ret), ret != 0);
-   		return ret;
-    }
-    else
-		log(format("Запускаемый файл не существует: {0}", sFilePath), true);
-	return ret;
+if (useComConnector) {
+  var comConnectorCached = new ActiveXObject(comConnectorName) // для защиты от перерегистрации comConnector из других сеансов
 }
 
-function clearLogFile()
-{
-    var outFile = oFileSystemObject.OpenTextFile(outFileName, ForWriting, true, TristateTrue);
-    outFile.Close();
+var oFileSystemObject = new ActiveXObject('Scripting.FileSystemObject')
+
+var thisFileName
+var thisFileDir
+var InfoBasePassword
+
+thisFileName = eval('oHTA.commandLine')
+thisFileDir = thisFileName.substr(1, thisFileName.lastIndexOf('\\') - 1)
+InfoBasePassword = thisFileName.substr(thisFileName.indexOf('[p1]') + 4, thisFileName.indexOf('[/p1]') - thisFileName.indexOf('[p1]') - 4)
+thisFileName = thisFileName.substr(1, thisFileName.indexOf('[p1]') - 3)
+
+adminName = adminName.replace(/"/g, '""')
+InfoBasePassword = fromUnicode(InfoBasePassword)
+var infoBaseAuthorization = format('/N"{0}" /P"{1}" /WA-', adminName, InfoBasePassword)
+connectionString = format(connectionString, adminName, InfoBasePassword)
+
+var oShell = new ActiveXObject('WScript.Shell')
+var oShellApplication = new ActiveXObject('Shell.Application')
+oShell.CurrentDirectory = thisFileDir
+
+var errorMarker = '{ERR}'
+var successMarker = '{OK }'
+
+var FileSize = 0
+var CheckCount = 0
+
+// Переменные состояния
+var logging1C = false
+var ComConnection = null
+
+// Открыть файл sFilePath.
+function runApp (sFilePath, sFileArgs, show, bWaitOnReturn) {
+  if (bWaitOnReturn === undefined) {
+    bWaitOnReturn = false
+  }
+  if (show === undefined) {
+    show = SW_SHOW
+  }
+  if (sFileArgs === undefined) {
+    sFileArgs = ''
+  }
+  var ret = 1
+  log(format('Запускается: {0}; параметры: {1}; окно: {2}; ожидание: {3}',
+    sFilePath, sFileArgs, SWtoString(show), bWaitOnReturn))
+  if (oFileSystemObject.FileExists(sFilePath)) {
+    try {
+      ret = oShell.Run(format('"{0}" {1}', sFilePath, sFileArgs), show, bWaitOnReturn)
+    } catch (e) {
+      log(format('Исключение в runApp: {0}, {1}.', e.name, e.message), true)
+      return 1
+    }
+    log(format('Код возврата: {0}', ret), ret !== 0)
+    return ret
+  } else {
+    log(format('Запускаемый файл не существует: {0}', sFilePath), true)
+  }
+  return ret
+}
+
+function clearLogFile () {
+  var outFile = oFileSystemObject.OpenTextFile(outFileName, ForWriting, true, TristateTrue)
+  outFile.Close()
 }
 
 // Записать текст в лог
-function log(text, failed)
-{
-	if (failed == undefined)
-	    failed = false;
-	logFile(text, failed);
+function log (text, failed) {
+  if (failed === undefined) {
+    failed = false
+  }
+  logFile(text, failed)
 }
 
 // Записать текст в лог-файл
-function logFile(text, failed)
-{
-	var now = new Date();
-    var f;
-    try
-    {
-        f = oFileSystemObject.OpenTextFile(outFileName, ForAppending, true, TristateTrue);
-    }
-    catch(e) { return; }    
-	try
-	{
-    	var status = (failed == false ? successMarker : errorMarker);
-	    f.WriteLine(format("{0} {1} {2}", now, status, text));
-	}
-	finally
-	{
-	    try
-	    {
-	        f.Close();
-	    }
-	    catch(e) { return; }
-	}
+function logFile (text, failed) {
+  var now = new Date()
+  var f
+  try {
+    f = oFileSystemObject.OpenTextFile(outFileName, ForAppending, true, TristateTrue)
+  } catch (e) { return }
+  try {
+    var status = (failed === false ? successMarker : errorMarker)
+    f.WriteLine(format('{0} {1} {2}', now, status, text))
+  } finally {
+    try {
+      f.Close()
+    } catch (e) { }
+  }
 }
 
 // Записать текст из временного лог-файла
-function appendLog()
-{
-	var f;
-	var outf;
-	var text;
-	try
-	{
-		f = oFileSystemObject.OpenTextFile(tempLogFileName, ForReading, false, TristateFalse);
-		outf = oFileSystemObject.OpenTextFile(outFileName, ForAppending, true, TristateTrue);
-	}
-    catch(e) { return; }    
-    try
-    {
-    	var oldAtEndOfStream = f.AtEndOfStream;
-		if (!oldAtEndOfStream)
-		{
-			text = f.ReadAll();   	
-			outf.WriteLine(text);   
-		}
-	}
-	finally
-	{
-		try
-		{
-			f.Close();
-			outf.Close();
-		}
-	    catch(e) { return; }
+function appendLog () {
+  var f
+  var outf
+  var text
+  try {
+    f = oFileSystemObject.OpenTextFile(tempLogFileName, ForReading, false, TristateFalse)
+    outf = oFileSystemObject.OpenTextFile(outFileName, ForAppending, true, TristateTrue)
+  } catch (e) { return }
+  try {
+    var oldAtEndOfStream = f.AtEndOfStream
+    if (!oldAtEndOfStream) {
+      text = f.ReadAll()
+      outf.WriteLine(text)
     }
+  } finally {
+    try {
+      f.Close()
+      outf.Close()
+    } catch (e) { }
+  }
 }
 
 // Записать текст в журнал регистрации
-function log1C(text, failed)
-{
-    if (logging1C)
-        return;
-    var connection = createConnection();
-    if (connection == null)
-        return;
-    try
-    {
-        log1CInternal(connection, text, failed);
-    }
-    finally
-    {
-        connection = null;
-    }
+function log1C (text, failed) {
+  if (logging1C) {
+    return
+  }
+  var connection = createConnection()
+  if (connection == null) {
+    return
+  }
+  try {
+    log1CInternal(connection, text, failed)
+  } finally {
+    connection = null
+  }
 }
 
 // Записать текст в журнал регистрации
-function log1CInternal(connection, text, failed)
-{
-    if (logging1C)
-        return;
-    logging1C = true;
-    try
-    {
-        try
-        {
-            var eventLogLevel = failed ? connection.EventLogLevel.Error : connection.EventLogLevel.Information;
-            connection.WriteLogEvent(eventLogID, eventLogLevel, null, null, text, 
-                connection.EventLogEntryTransactionMode.Independent);
-        }
-        catch(e) 
-        { 
-            log(format("Исключение в log1CInternal: {0}, {1}.", e.name, e.message), true);
-            return;
-        }
+function log1CInternal (connection, text, failed) {
+  if (logging1C) {
+    return
+  }
+  logging1C = true
+  try {
+    try {
+      var eventLogLevel = failed ? connection.EventLogLevel.Error : connection.EventLogLevel.Information
+      connection.WriteLogEvent(eventLogID, eventLogLevel, null, null, text,
+        connection.EventLogEntryTransactionMode.Independent)
+    } catch (e) {
+      log(format('Исключение в log1CInternal: {0}, {1}.', e.name, e.message), true)
+      return
     }
-    finally
-    {
-        logging1C = false;
-    }
+  } finally {
+    logging1C = false
+  }
 }
 
 // Инициализация
-function initialize()
-{
-    clearLogFile();
-    log(format("Файл скрипта: {0}", thisFileName));
-    log(format("Файл резервной копии: {0}", backupFileName));
-     return 0; 
+function initialize () {
+  clearLogFile()
+  appendLog()
+  log(format('Файл скрипта: {0}', thisFileName))
+  log(format('Файл резервной копии: {0}', backupFileName))
+  return 0
 }
 
 // Финализация
-function finalize(success)
-{
-    var TestFolder = oShellApplication.NameSpace(backupFileName);
-    
-    if (success == undefined)
-        success = false;
-    
-    if (!(oFileSystemObject.FileExists(backupFileName)))
-        log("Произошла ошибка при создании резервной копии ИБ. Для диагностики запустите резервное копирование вручную");
-    
-    if (TestFolder!= null)
-       log("Резервная копия успешно создана");
-    if (TestFolder== null){
-        log("Произошла ошибка при создании резервной копии ИБ. Для диагностики запустите резервное копирование вручную");
-        success = false;}
-    
-    // Запись результата обновления в Event Log
-    writeEventLog(success);
+function finalize (success) {
+  if (success === undefined) {
+    success = false
+  }
 
-    if (!success)
-        allowConnections(false); // Разрешение подключений
-    
-    write1CEventLog(); // Запись всей информации из log-файла в журнал регистрации
-    setResult(success);
-    
-    // очистка глобального COM-соединения
-    ComConnection = null;
+  if (!(oFileSystemObject.FileExists(backupFileName))) {
+    log('Не удалось создать резервную копию базы.')
+    success = false
+  } else {
+    var FileArchive = oFileSystemObject.GetFile(backupFileName)
+    if (FileArchive.size / 1024 < 5) {
+      log('Не удалось создать резервную копию базы.')
+      success = false
+    } else {
+      log('Резервная копия успешно создана')
+    }
+  }
+
+  // Запись результата обновления в Event Log
+  writeEventLog(success)
+
+  if (!success) {
+    allowConnections(false) // Разрешение подключений
+  }
+
+  write1CEventLog() // Запись всей информации из log-файла в журнал регистрации
+  setResult(success)
+
+  // очистка глобального COM-соединения
+  ComConnection = null
 }
 
-function createConnection()
-{
-    if (!useComConnector)
-    	return null;
-    
-    if (!ComConnection == null)	
-    	return ComConnection;
-    		
-    try
-    {
-        var ComConnector = new ActiveXObject(comConnectorName);
-        ComConnection = ComConnector.Connect(connectionString);
-        return ComConnection;
+function createConnection () {
+  if (!useComConnector) {
+    return null
+  }
+
+  if (ComConnection != null) {
+    return ComConnection
+  }
+
+  try {
+    log('Начат сеанс внешнего соединения с ИБ', false)
+    var logstep = 'new ActiveXObject COMConnector'
+    var ComConnector = new ActiveXObject(comConnectorName)
+    logstep = 'comConnector.Connect'
+    ComConnection = ComConnector.Connect(connectionString)
+    logstep = 'new SystemInfo'
+    var systemInfo = ComConnection.NewObject('SystemInfo')
+    logstep = 'SystemInfo.AppVersion'
+    var appVersion = systemInfo.AppVersion
+    logstep = 'SystemInfo.PlatformType'
+    var platformType = systemInfo.PlatformType
+    logstep = 'Проверка ComConnection.PlatformType'
+    var platformTypeString = '<Неопределена>'
+    if (platformType === ComConnection.PlatformType.Windows_x86) {
+      platformTypeString = '32 bit'
     }
-    catch(e)
-    {
-        log(format("Исключение в createConnection: {0}, {1}", e.name, e.message), true);
-        return null;
+    if (platformType === ComConnection.PlatformType.Windows_x86_64) {
+      platformTypeString = '64 bit'
     }
-    
+    log(format('Версия comcntr: {0} {1}', appVersion, platformTypeString), false)
+    return ComConnection
+  } catch (e) {
+    log(format('Исключение в createConnection на шаге: {0}, {1}, {2}', logstep, e.name, e.message), true)
+    return null
+  }
 }
 
 // Записать весь log-файл в журнал регистрации
-function write1CEventLog()
-{
-    if (!oFileSystemObject.FileExists(outFileName))
-        return;
-        
-    var connection = createConnection();
-    if (connection == null)
-        return;
-    try
-    {
-        var f = oFileSystemObject.OpenTextFile(outFileName, ForReading, false, TristateTrue);
-        
-        var text;
-        while (!f.AtEndOfStream)
-        {
-            text = f.ReadLine();
-            while ((text.indexOf(successMarker) < 0) && (text.indexOf(errorMarker) < 0) && !f.AtEndOfStream)
-               text += "\n" + f.ReadLine();
+function write1CEventLog () {
+  if (!oFileSystemObject.FileExists(outFileName)) {
+    return
+  }
 
-            var failed = text.indexOf(errorMarker) > 0;
-            log1CInternal(connection, text, failed);
-        }
+  var connection = createConnection()
+  if (connection == null) {
+    return
+  }
+  try {
+    var f = oFileSystemObject.OpenTextFile(outFileName, ForReading, false, TristateTrue)
+
+    var text
+    while (!f.AtEndOfStream) {
+      text = f.ReadLine()
+      while ((text.indexOf(successMarker) < 0) && (text.indexOf(errorMarker) < 0) && !f.AtEndOfStream) {
+        text += '\n' + f.ReadLine()
+      }
+
+      var failed = text.indexOf(errorMarker) > 0
+      log1CInternal(connection, text, failed)
     }
-    catch(e) 
-    { 
-        log(format("Исключение в write1CEventLog: {0}, {1}.", e.name, e.message), true);
-        return;
-    }
-    finally
-    {
-        connection = null;
-    }
+  } catch (e) {
+    log(format('Исключение в write1CEventLog: {0}, {1}.', e.name, e.message), true)
+    return
+  } finally {
+    connection = null
+  }
 }
 
-function doSetResult(success)
-{
-    var connection = createConnection();
-    if (connection == null)
-        return (useComConnector ? 1 : 0);
-    var res = 0;
-    try
-    {
-        connection.РезервноеКопированиеИБСервер.ЗавершитьРезервноеКопирование(success,backupFileName);
-    }
-    catch(e)
-    {
-        log(format("Исключение при вызове РезервноеКопированиеИБСервер.ЗавершитьРезервноеКопирование: {0}, {1}.", e.name, e.message), true);
-        res = 2;
-    }
-    return res;
+function doSetResult (success) {
+  var connection = createConnection()
+  if (connection == null) {
+    return (useComConnector ? 1 : 0)
+  }
+  var res = 0
+  try {
+    connection.РезервноеКопированиеИБСервер.ЗавершитьРезервноеКопирование(success, backupFileName)
+  } catch (e) {
+    log(format('Исключение при вызове РезервноеКопированиеИБСервер.ЗавершитьРезервноеКопирование: {0}, {1}.', e.name, e.message), true)
+    res = 2
+  }
+  return res
 }
 
-
-// Передать в приложение результат выполнения 
-function setResult(success)
-{
-    var result = doSetResult(success);
-    CollectGarbage();   // освобождает соединения с COM-объектом
-    return result;
+// Передать в приложение результат выполнения
+function setResult (success) {
+  var result = doSetResult(success)
+  CollectGarbage() // освобождает соединения с COM-объектом
+  return result
 }
 
 // Записать результат выполнения процедуры обновления в Event Log
-function writeEventLog(success)
-{
-    try
-    {
-        var eventKind = success ? EVENT_SUCCESS : EVENT_CRITICAL;
-        var message;
-        if (success)
-            message = "Резервное копирование базы провелось успешно.";
-        else
-            message = "Ошибка при резервном копировании информационной базы.";
-        message += format(" Параметры информационной базы: {0}.", infoBasePath);
-        if (!success)
-            message += " Протокол резервного сохранен в журнал регистрации.";
-        oShell.LogEvent(eventKind, message);
+function writeEventLog (success) {
+  try {
+    var eventKind = success ? EVENT_SUCCESS : EVENT_CRITICAL
+    var message
+    if (success) {
+      message = 'Резервное копирование базы выполнено успешно.'
+    } else {
+      message = 'Ошибка при резервном копировании информационной базы.'
     }
-    catch(e)
-    {
-        log(format("Исключение в writeEventLog: {0}, {1}.", e.name, e.message), true);
+    message += format(' Параметры информационной базы: {0}.', infoBasePath)
+    if (!success) {
+      message += ' Протокол резервного сохранен в журнал регистрации.'
     }
+    oShell.LogEvent(eventKind, message)
+  } catch (e) {
+    log(format('Исключение в writeEventLog: {0}, {1}.', e.name, e.message), true)
+  }
 }
 
-// Cоздание резервной копии информационной базы
-function backupDB()
-{   
-	try
-	{
-		var NewTextFile = oFileSystemObject.CreateTextFile(backupFileName,false);
-		
-		NewTextFile.Write(String.fromCharCode(80,75,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
-		NewTextFile.Close();
-		
-		var ZIPFile = oFileSystemObject.GetAbsolutePathName(backupFileName);
-		var dFolder = oShellApplication.NameSpace(ZIPFile);
-		var file = oFileSystemObject.GetAbsolutePathName(BaseFileName + '1Cv8.1CD');
-		var FolderNameSpace = oFileSystemObject.GetParentFolderName(file);
-		var Folder = oShellApplication.Namespace(FolderNameSpace);
-		var FolderItemNameSpace = oFileSystemObject.GetFileName(file);
-		var FolderItem = Folder.ParseName(FolderItemNameSpace);
-		
-		if (!createBackup)
-			return 0;
-			
-		dFolder.CopyHere(file);
-		
-		ret = 0;
-	   	log(format("Попытка создания резервной копии", ret), ret != 0);
-	}
-	catch(e)
-	{
-		alert(e.message);
-		CollectGarbage();   // предотвращает исключение out of memory
-		log(format("Исключение при создании резервной копии базы", e.name, e.message), true);
-		ret = -1;
-	}
-	if (ret == 0)
-	    backupCreated = true;  
-	
-	return ret;
+// Создание резервной копии информационной базы
+function backupDB () {
+  var ret = 0
+  try {
+    var fileDBName = BaseFileName + '1Cv8.1CD'
+    var fileDB = oFileSystemObject.GetFile(fileDBName)
+    log(format('Размер файла 1Cv8.1CD: {0} Мб.', fileDB.size / 1024 / 1024))
+
+    var backupPath = oFileSystemObject.GetAbsolutePathName(backupFileName)
+    if (fileDB.size / 1024 / 1024 > 2000) {
+      log('Размер файла 1Cv8.1CD превышает 2 Гб, поэтому сжатие в zip не используется.')
+      backupFileName = backupFileName.replace('.zip', '')
+      backupPath = oFileSystemObject.GetAbsolutePathName(backupFileName)
+      oFileSystemObject.CreateFolder(backupPath)
+      backupFileName = backupPath + '\\1Cv8.1CD'
+    } else {
+      var NewTextFile = oFileSystemObject.CreateTextFile(backupFileName, false)
+      NewTextFile.Write(String.fromCharCode(80, 75, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+      NewTextFile.Close()
+    }
+
+    var destFolder = oShellApplication.NameSpace(backupPath)
+    var sourceFilePath = oFileSystemObject.GetAbsolutePathName(fileDBName)
+
+    if (!createBackup) {
+      return 0
+    }
+
+    destFolder.CopyHere(sourceFilePath)
+    log('Начато создание резервной копии...')
+  } catch (e) {
+    alert(e.message)
+    CollectGarbage() // предотвращает исключение out of memory
+    log(format('Исключение при создании резервной копии базы: {0}, {1}', e.name, e.message), true)
+    ret = 1
+  }
+
+  return ret
 }
 
 // Ожидать создания файла резервной копии, начатое в backupDB()
-function WaitUntilFinish()
-{
-	var FileArchiveObject = new ActiveXObject("Scripting.FileSystemObject");
-	try
-	{
-		FileArchive = FileArchiveObject.GetFile(backupFileName);
-	}
-	catch(e)
-	{
-		// файл резервной копии не найден, ожидаем далее
-		return -1;
-	}
-	var nowSize = FileArchive.size;
-	
-	// файл все еще не начал создаваться, возможно выполняется интерактив, ожидаем далее
-	if (nowSize/1024 < 5){
-		FileSize = nowSize;
-		return -1;}
-		
-	if (FileSize != nowSize){
-		FileSize = nowSize;
-		return -1;}
-		
-	return 0;
-}
+function WaitUntilFinish () {
+  try {
+    var FileArchive = oFileSystemObject.GetFile(backupFileName)
+  } catch (e) {
+    // файл резервной копии не найден, ожидаем далее
+    return -1
+  }
+  var nowSize = FileArchive.size
+  if (FileSize !== nowSize) {
+    FileSize = nowSize
+    return -1
+  }
 
-function doAllowConnections()
-{
-	var BlockFilePath = BaseFileName + '1Cv8.cdn';
-	if (oFileSystemObject.FileExists(BlockFilePath))
-	{
-		try
-		{
-			oFileSystemObject.DeleteFile(BaseFileName + '1Cv8.cdn');
-		}
-		catch(e)
-		{
-			log(format("Ошибка при удалении файла блокировок 1Cv8.cdn: {0}, {1}.", e.name, e.message), true);
-			return 3;
-		}
-	}
-	return 0;
-}
+  // Файл все еще не начал создаваться, возможно выполняется интерактивное действие, ожидаем далее.
+  if (nowSize / 1024 < 5) {
 
-// Первоначальное заполнение информационной базы, разрешение подключений новых соединений, 
-// и оповещение о результате обновления
-function allowConnections()
-{
-    var result = doAllowConnections();
-    CollectGarbage();   // освобождает соединения с COM-объектом
-    return result;
-}
-
-function fromUnicode(text){
-    var str = "";
-    for(var i=0; i<text.length/4; i++ ){
-        str = str + String.fromCharCode(text.slice(4*i, 4*i+4));
+    // Если за 15 минут файл все еще не начал создаваться, то отменяем резервное копирование.
+    if (CheckCount > 60 * 3) {
+      log(format('За 15 минут файл резервной копии все еще не начал создаваться (размер {0} байт), предположительно, из-за возникшей ошибки. Резервное копирование прервано.', nowSize), true)
+      return 1
     }
-    str = str.replace(/"/g, '""');
-    return str;
+
+    CheckCount = CheckCount + 1
+    return -1
+  }
+
+  return 0
+}
+
+function doAllowConnections () {
+  var BlockFilePath = BaseFileName + '1Cv8.cdn'
+  if (oFileSystemObject.FileExists(BlockFilePath)) {
+    try {
+      oFileSystemObject.DeleteFile(BaseFileName + '1Cv8.cdn')
+    } catch (e) {
+      log(format('Ошибка при удалении файла блокировок 1Cv8.cdn: {0}, {1}.', e.name, e.message), true)
+      return 3
+    }
+  }
+  return 0
+}
+
+// Первоначальное заполнение информационной базы, разрешение подключений новых соединений,
+// и оповещение о результате обновления
+function allowConnections () {
+  var result = doAllowConnections()
+  CollectGarbage() // освобождает соединения с COM-объектом
+  return result
+}
+
+function fromUnicode (text) {
+  var str = ''
+  for (var i = 0; i < text.length / 4; i++) {
+    str = str + String.fromCharCode(text.slice(4 * i, 4 * i + 4))
+  }
+  str = str.replace(/"/g, '""')
+  return str
 }
 
 // Интерактивный запуск "1С:Предприятие"
-function runEnterprise()
-{
-	if (OnExit == false) {
-		return runApp(v8exe, format('ENTERPRISE {0} {1}', infoBasePath, infoBaseAuthorization ), SW_SHOW, false);
-	}
+function runEnterprise () {
+ if (OnExit === false) {
+    return runApp(
+      v8exe,
+      format(
+        'ENTERPRISE {0} {1} {2}',
+        infoBasePath,
+        infoBaseAuthorization,
+        runAppAdditionalParams),
+      SW_SHOW,
+      false)
+  }
+  return 0
 }
-#КонецОбласти
 
+#КонецОбласти

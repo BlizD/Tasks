@@ -58,45 +58,44 @@
 					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
-				</v8:item>
-			</ToolTip>
 			<CommandSource>Form</CommandSource>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="64"/>
 			<ChildItems>
-				<Button name="ОткрытьВерсиюОбъекта" id="19">
+				<ButtonGroup name="ДействияСВерсией" id="119">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Действия с версией</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ДействияСВерсиейРасширеннаяПодсказка" id="120"/>
+					<ChildItems>
+						<Button name="ОткрытьВерсию" id="19">
+							<Type>CommandBarButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.ОткрытьВерсиюОбъекта</CommandName>
+							<ExtendedTooltip name="ОткрытьВерсиюРасширеннаяПодсказка" id="39"/>
+						</Button>
+						<Button name="Сравнить" id="9">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.СформироватьОтчетПоИзменениям</CommandName>
+							<ExtendedTooltip name="СравнитьРасширеннаяПодсказка" id="40"/>
+						</Button>
+						<Button name="ПерейтиНаВерсию" id="34">
+							<Type>CommandBarButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.ПерейтиНаВерсию</CommandName>
+							<ExtendedTooltip name="ПерейтиНаВерсиюExtendedTooltip" id="41"/>
+						</Button>
+					</ChildItems>
+				</ButtonGroup>
+				<Button name="ФормаОбновить" id="117">
 					<Type>CommandBarButton</Type>
-					<DefaultButton>true</DefaultButton>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.ОткрытьВерсиюОбъекта</CommandName>
-					<ExtendedTooltip name="ОткрытьВерсиюОбъектаExtendedTooltip" id="39"/>
-				</Button>
-				<Button name="ОтчетПоИзменениям" id="9">
-					<Type>CommandBarButton</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.СформироватьОтчетПоИзменениям</CommandName>
-					<ExtendedTooltip name="ОтчетПоИзменениямExtendedTooltip" id="40"/>
-				</Button>
-				<Button name="ПерейтиНаВерсию" id="34">
-					<Type>CommandBarButton</Type>
-					<Representation>PictureAndText</Representation>
-					<CommandName>Form.Command.ПерейтиНаВерсию</CommandName>
-					<ExtendedTooltip name="ПерейтиНаВерсиюExtendedTooltip" id="41"/>
-				</Button>
-				<Button name="Найти" id="29">
-					<Type>CommandBarButton</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>10:c0519548-2a9a-44de-a25e-faf01e089d4d</CommandName>
-					<ExtendedTooltip name="НайтиExtendedTooltip" id="42"/>
-				</Button>
-				<Button name="ОтменитьПоиск" id="30">
-					<Type>CommandBarButton</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>10:44ad3ec9-f3c2-4913-9224-5f9fb6418743</CommandName>
-					<ExtendedTooltip name="ОтменитьПоискExtendedTooltip" id="43"/>
+					<CommandName>Form.Command.Обновить</CommandName>
+					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+					<ExtendedTooltip name="ФормаОбновитьРасширеннаяПодсказка" id="118"/>
 				</Button>
 			</ChildItems>
 		</CommandBar>
@@ -111,6 +110,12 @@
 			<ExtendedTooltip name="ОсновнаяСтраницаExtendedTooltip" id="44"/>
 			<ChildItems>
 				<Page name="ВыборВерсийДляСравнения" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбор версий для сравнения</v8:content>
+						</v8:item>
+					</Title>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ВыборВерсийДляСравненияExtendedTooltip" id="45"/>
 					<ChildItems>
@@ -123,6 +128,12 @@
 							<EnableDrag>true</EnableDrag>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ДеревоВерсий</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дерево версий</v8:content>
+								</v8:item>
+							</Title>
 							<CommandSet>
 								<ExcludedCommand>Add</ExcludedCommand>
 								<ExcludedCommand>Change</ExcludedCommand>
@@ -135,6 +146,8 @@
 								<ExcludedCommand>MoveUp</ExcludedCommand>
 								<ExcludedCommand>ShowMultipleSelection</ExcludedCommand>
 								<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
 								<ExcludedCommand>Tree</ExcludedCommand>
 							</CommandSet>
 							<ContextMenu name="ДеревоВерсийКонтекстноеМеню" id="75">
@@ -241,13 +254,17 @@
 					</ChildItems>
 				</Page>
 				<Page name="ВерсииДляСравненияОтсутствуют" id="23">
-					<Group>Horizontal</Group>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Версии для сравнения отсутствуют</v8:content>
+						</v8:item>
+					</Title>
+					<Group>HorizontalIfPossible</Group>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ВерсииДляСравненияОтсутствуютExtendedTooltip" id="54"/>
 					<ChildItems>
 						<PictureDecoration name="Картинка" id="37">
-							<Width>5</Width>
-							<Height>2</Height>
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -263,6 +280,7 @@
 							<ExtendedTooltip name="КартинкаExtendedTooltip" id="55"/>
 						</PictureDecoration>
 						<LabelDecoration name="НетВерсий" id="35">
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<Height>2</Height>
 							<Title formatted="false">
 								<v8:item>
@@ -278,6 +296,7 @@
 			</ChildItems>
 		</Pages>
 		<LabelDecoration name="ТехническиеСведенияОбИзмененииОбъекта" id="60">
+			<AutoMaxWidth>false</AutoMaxWidth>
 			<Title formatted="false">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -294,25 +313,11 @@
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Ссылка" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Ссылка</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
-				<v8:TypeSet>cfg:BusinessProcessRef</v8:TypeSet>
-				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
-				<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="ТекстСообщенияОбОшибке" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Текст сообщения об ошибке</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -337,15 +342,10 @@
 			</Type>
 		</Attribute>
 		<Attribute name="Отбор" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отбор</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="ДеревоВерсий" id="6">
 			<Title>
@@ -422,12 +422,6 @@
 					</Type>
 				</Column>
 				<Column name="НомерВерсии" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>№</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -441,12 +435,6 @@
 					</Edit>
 				</Column>
 				<Column name="Отклонена" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Отклонена</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -467,12 +455,6 @@
 					</Type>
 				</Column>
 				<Column name="ТекущаяВерсия" id="8">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Текущая версия</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -480,12 +462,6 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="НомерТекущейВерсии" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Номер текущей версии</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
 				<v8:NumberQualifiers>
@@ -501,7 +477,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сравнить версии</v8:content>
+					<v8:content>Сравнить</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -545,13 +521,32 @@
 			<Action>ПерейтиНаВерсию</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
+		<Command name="Обновить" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F5</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Обновить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
 	</Commands>
 	<Parameters>
 		<Parameter name="Ссылка">
 			<Type>
-				<v8:TypeSet>cfg:BusinessProcessRef</v8:TypeSet>
-				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
-				<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
 			</Type>
 		</Parameter>
 		<Parameter name="ЧислоВерсий">

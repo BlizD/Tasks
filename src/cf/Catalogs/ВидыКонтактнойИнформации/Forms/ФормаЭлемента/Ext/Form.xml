@@ -5,58 +5,82 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ГруппаТипНаименование" id="72">
-			<Group>Horizontal</Group>
+		<UsualGroup name="ГруппаОсновнаяИнформация" id="148">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основная информация</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаТипНаименованиеExtendedTooltip" id="85"/>
+			<ExtendedTooltip name="ГруппаОсновнаяИнформацияРасширеннаяПодсказка" id="149"/>
 			<ChildItems>
-				<InputField name="Тип" id="70">
-					<DataPath>Объект.Тип</DataPath>
-					<Width>19</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<TextEdit>false</TextEdit>
-					<BackColor>style:ФонУправляющегоПоля</BackColor>
-					<ContextMenu name="ТипКонтекстноеМеню" id="71"/>
-					<ExtendedTooltip name="ТипExtendedTooltip" id="86"/>
-					<Events>
-						<Event name="OnChange">ТипПриИзменении</Event>
-						<Event name="Clearing">ТипОчистка</Event>
-					</Events>
-				</InputField>
+				<UsualGroup name="ГруппаТипИНастройки" id="155">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип и настройки</v8:content>
+						</v8:item>
+					</Title>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаТипИНастройкиРасширеннаяПодсказка" id="156"/>
+					<ChildItems>
+						<InputField name="Тип" id="70">
+							<DataPath>Объект.Тип</DataPath>
+							<Width>19</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextEdit>false</TextEdit>
+							<BackColor>style:ФонУправляющегоПоля</BackColor>
+							<ContextMenu name="ТипКонтекстноеМеню" id="71"/>
+							<ExtendedTooltip name="ТипExtendedTooltip" id="86"/>
+							<Events>
+								<Event name="OnChange">ТипПриИзменении</Event>
+								<Event name="Clearing">ТипОчистка</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 				<InputField name="Наименование" id="1">
 					<DataPath>Объект.Description</DataPath>
 					<DefaultItem>true</DefaultItem>
-					<Width>20</Width>
 					<Wrap>false</Wrap>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="87"/>
+					<Events>
+						<Event name="Opening">НаименованиеОткрытие</Event>
+					</Events>
+				</InputField>
+				<InputField name="Родитель" id="11">
+					<DataPath>Объект.Parent</DataPath>
+					<Wrap>false</Wrap>
+					<OpenButton>false</OpenButton>
+					<ChooseType>false</ChooseType>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="РодительКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="РодительExtendedTooltip" id="89"/>
+					<Events>
+						<Event name="Clearing">РодительОчистка</Event>
+					</Events>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="Подсказка" id="73">
-			<DataPath>Объект.Подсказка</DataPath>
-			<TitleLocation>Left</TitleLocation>
-			<Height>2</Height>
-			<MultiLine>true</MultiLine>
-			<ContextMenu name="ПодсказкаКонтекстноеМеню" id="74"/>
-			<ExtendedTooltip name="ПодсказкаExtendedTooltip" id="88"/>
-		</InputField>
-		<InputField name="Родитель" id="11">
-			<DataPath>Объект.Parent</DataPath>
-			<Wrap>false</Wrap>
-			<OpenButton>false</OpenButton>
-			<ContextMenu name="РодительКонтекстноеМеню" id="12"/>
-			<ExtendedTooltip name="РодительExtendedTooltip" id="89"/>
-		</InputField>
 		<UsualGroup name="ГруппаТипКонтактнойИнформации" id="63">
-			<Group>Horizontal</Group>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип контактной информации</v8:content>
+				</v8:item>
+			</Title>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаТипКонтактнойИнформацииExtendedTooltip" id="90"/>
@@ -65,16 +89,9 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа тип общие для всех</v8:content>
+							<v8:content>Тип общие для всех</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа тип общие для всех</v8:content>
-						</v8:item>
-					</ToolTip>
-					<HorizontalStretch>true</HorizontalStretch>
 					<Group>Vertical</Group>
 					<Representation>NormalSeparation</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -93,7 +110,45 @@
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="РедактированиеТолькоВДиалогеКонтекстноеМеню" id="10"/>
 							<ExtendedTooltip name="РедактированиеТолькоВДиалогеExtendedTooltip" id="93"/>
+							<Events>
+								<Event name="OnChange">РедактированиеТолькоВДиалогеПриИзменении</Event>
+							</Events>
 						</CheckBoxField>
+						<UsualGroup name="ГруппаХранитьИсториюИзменений" id="157">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Хранить историю изменений</v8:content>
+								</v8:item>
+							</Title>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаХранитьИсториюИзмененийРасширеннаяПодсказка" id="158"/>
+							<ChildItems>
+								<LabelDecoration name="ОтступХранитьИсториюИзменений" id="159">
+									<Width>1</Width>
+									<ContextMenu name="ОтступХранитьИсториюИзмененийКонтекстноеМеню" id="160"/>
+									<ExtendedTooltip name="ОтступХранитьИсториюИзмененийРасширеннаяПодсказка" id="161"/>
+								</LabelDecoration>
+								<CheckBoxField name="ХранитьИсториюИзменений" id="162">
+									<DataPath>Объект.ХранитьИсториюИзменений</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Поле контактной информации хранит не только текущее значение, но и его историю изменений на указанную дату. Для просмотра истории необходимо в контекстном меню элемента контактной информации выбрать пункт «История изменений».</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ХранитьИсториюИзмененийКонтекстноеМеню" id="163"/>
+									<ExtendedTooltip name="ХранитьИсториюИзмененийРасширеннаяПодсказка" id="164"/>
+									<Events>
+										<Event name="OnChange">ХранитьИсториюИзмененийПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
 						<CheckBoxField name="РазрешитьВводНесколькихЗначений" id="80">
 							<DataPath>Объект.РазрешитьВводНесколькихЗначений</DataPath>
 							<TitleLocation>Right</TitleLocation>
@@ -106,351 +161,219 @@
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="РазрешитьВводНесколькихЗначенийКонтекстноеМеню" id="81"/>
 							<ExtendedTooltip name="РазрешитьВводНесколькихЗначенийExtendedTooltip" id="94"/>
+							<Events>
+								<Event name="OnChange">РазрешитьВводНесколькихЗначенийПриИзменении</Event>
+							</Events>
 						</CheckBoxField>
-						<LabelDecoration name="ХранитИсториюИзменений" id="145">
-							<TextColor>style:ПоясняющийТекст</TextColor>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Хранит историю изменений</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Поле контактной информации хранит не только текущее значение, но и его историю изменений на указанную дату. Для просмотра истории необходимо в контекстном меню элемента контактной информации выбрать пункт «История изменений».</v8:content>
-								</v8:item>
-							</ToolTip>
-							<ToolTipRepresentation>Button</ToolTipRepresentation>
-							<ContextMenu name="ХранитИсториюИзмененийКонтекстноеМеню" id="146"/>
-							<ExtendedTooltip name="ХранитИсториюИзмененийРасширеннаяПодсказка" id="147"/>
-						</LabelDecoration>
-					</ChildItems>
-				</UsualGroup>
-				<UsualGroup name="ГруппаРазделительКолонок" id="82">
-					<Group>Horizontal</Group>
-					<Representation>NormalSeparation</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаРазделительКолонокРасширеннаяПодсказка" id="95"/>
-					<ChildItems>
-						<LabelDecoration name="ДекорацияОтступВтораяКолонка" id="83">
-							<Width>1</Width>
-							<ContextMenu name="ДекорацияОтступВтораяКолонкаКонтекстноеМеню" id="84"/>
-							<ExtendedTooltip name="ДекорацияОтступВтораяКолонкаРасширеннаяПодсказка" id="96"/>
-						</LabelDecoration>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ГруппаНаименованиеНастройкиПоТипам" id="65">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа наименование настройки по типам</v8:content>
+							<v8:content>Наименование настройки по типам</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа наименование настройки по типам</v8:content>
-						</v8:item>
-					</ToolTip>
-					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Vertical</Group>
-					<Representation>None</Representation>
+					<Representation>NormalSeparation</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаНаименованиеНастройкиПоТипамExtendedTooltip" id="97"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаВыравниваниеПоТипам" id="66">
+						<Pages name="Проверки" id="27">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа выравнивание по типам</v8:content>
+									<v8:content>Проверки</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа выравнивание по типам</v8:content>
-								</v8:item>
-							</ToolTip>
-							<HorizontalStretch>false</HorizontalStretch>
-							<Group>Horizontal</Group>
-							<Representation>NormalSeparation</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаВыравниваниеПоТипамExtendedTooltip" id="98"/>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ПроверкиExtendedTooltip" id="99"/>
 							<ChildItems>
-								<Pages name="Проверки" id="27">
+								<Page name="Адрес" id="25">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Проверки</v8:content>
+											<v8:content>Адрес</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
+									<ExtendedTooltip name="АдресExtendedTooltip" id="100"/>
+									<ChildItems>
+										<CheckBoxField name="ВключатьСтрануВПредставление" id="16">
+											<DataPath>Объект.ВключатьСтрануВПредставление</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ВключатьСтрануВПредставлениеКонтекстноеМеню" id="17"/>
+											<ExtendedTooltip name="ВключатьСтрануВПредставлениеExtendedTooltip" id="107"/>
+										</CheckBoxField>
+										<CheckBoxField name="МеждународныйФорматАдреса" id="165">
+											<DataPath>Объект.МеждународныйФорматАдреса</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="МеждународныйФорматАдресаКонтекстноеМеню" id="166"/>
+											<ExtendedTooltip name="МеждународныйФорматАдресаРасширеннаяПодсказка" id="167"/>
+											<Events>
+												<Event name="OnChange">МеждународныйФорматАдресаПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<Button name="ДополнительныеНастройкиАдреса" id="153">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ДополнительныеНастройкиАдреса</CommandName>
+											<ExtendedTooltip name="ДополнительныеНастройкиАдресаРасширеннаяПодсказка" id="154"/>
+										</Button>
+									</ChildItems>
+								</Page>
+								<Page name="АдресЭлектроннойПочты" id="28">
+									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Проверки</v8:content>
+											<v8:content>Адрес электронной почты</v8:content>
 										</v8:item>
-									</ToolTip>
-									<PagesRepresentation>None</PagesRepresentation>
-									<ExtendedTooltip name="ПроверкиExtendedTooltip" id="99"/>
+									</Title>
+									<ExtendedTooltip name="АдресЭлектроннойПочтыExtendedTooltip" id="108"/>
 									<ChildItems>
-										<Page name="Адрес" id="25">
-											<ExtendedTooltip name="АдресExtendedTooltip" id="100"/>
-											<ChildItems>
-												<CheckBoxField name="АдресТолькоРоссийский" id="13">
-													<DataPath>Объект.АдресТолькоРоссийский</DataPath>
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Только российский</v8:content>
-														</v8:item>
-													</Title>
-													<TitleLocation>Right</TitleLocation>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="АдресТолькоРоссийскийКонтекстноеМеню" id="14"/>
-													<ExtendedTooltip name="АдресТолькоРоссийскийExtendedTooltip" id="101"/>
-													<Events>
-														<Event name="OnChange">АдресТолькоРоссийскийПриИзменении</Event>
-													</Events>
-												</CheckBoxField>
-												<UsualGroup name="ГруппаПроверкаАдреса" id="37">
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа проверка адреса</v8:content>
-														</v8:item>
-													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа проверка адреса</v8:content>
-														</v8:item>
-													</ToolTip>
-													<Group>Horizontal</Group>
-													<Representation>None</Representation>
-													<ShowTitle>false</ShowTitle>
-													<ExtendedTooltip name="ГруппаПроверкаАдресаРасширеннаяПодсказка" id="102"/>
-													<ChildItems>
-														<LabelDecoration name="ДекорацияОтступ" id="38">
-															<Width>1</Width>
-															<ContextMenu name="ДекорацияОтступКонтекстноеМеню" id="39"/>
-															<ExtendedTooltip name="ДекорацияОтступРасширеннаяПодсказка" id="103"/>
-														</LabelDecoration>
-														<UsualGroup name="ГруппаНастройкиПроверкаАдреса" id="34">
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Группа настройки проверка адреса</v8:content>
-																</v8:item>
-															</Title>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Группа настройки проверка адреса</v8:content>
-																</v8:item>
-															</ToolTip>
-															<Group>Vertical</Group>
-															<Representation>None</Representation>
-															<ShowTitle>false</ShowTitle>
-															<ExtendedTooltip name="ГруппаНастройкиПроверкаАдресаРасширеннаяПодсказка" id="104"/>
-															<ChildItems>
-																<CheckBoxField name="ПроверятьКорректностьАдреса" id="118">
-																	<DataPath>Объект.ПроверятьКорректность</DataPath>
-																	<TitleLocation>Right</TitleLocation>
-																	<CheckBoxType>Auto</CheckBoxType>
-																	<ContextMenu name="ПроверятьКорректностьАдресаКонтекстноеМеню" id="119"/>
-																	<ExtendedTooltip name="ПроверятьКорректностьАдресаРасширеннаяПодсказка" id="120"/>
-																	<Events>
-																		<Event name="OnChange">ПроверятьКорректностьАдресаПриИзменении</Event>
-																	</Events>
-																</CheckBoxField>
-																<RadioButtonField name="ПроверятьПоКлассификатору" id="121">
-																	<DataPath>ПроверятьПоКлассификатору</DataPath>
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Проверять по</v8:content>
-																		</v8:item>
-																	</Title>
-																	<TitleLocation>Left</TitleLocation>
-																	<ToolTipRepresentation>Button</ToolTipRepresentation>
-																	<RadioButtonType>Auto</RadioButtonType>
-																	<ChoiceList>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>ФИАС</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:decimal">0</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>КЛАДР</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:decimal">1</Value>
-																			</xr:Value>
-																		</xr:Item>
-																	</ChoiceList>
-																	<ContextMenu name="ПроверятьПоКлассификаторуКонтекстноеМеню" id="122"/>
-																	<ExtendedTooltip name="ПроверятьПоКлассификаторуРасширеннаяПодсказка" id="123">
-																		<Title formatted="false">
-																			<v8:item>
-																				<v8:lang>ru</v8:lang>
-																				<v8:content>При проверке адреса по классификатору ФИАС выполняются дополнительные проверки:
-- "Округ" (между уровнями "Регион" и "Район"). 
-- "Внутригородской район" (между уровнями "Город" и "Населенный пункт")
-- Уровни дополнительных территорий (между "Улица", и номером дома или владения)
-- Дома, владения, корпуса, строения и т.п.</v8:content>
-																			</v8:item>
-																		</Title>
-																	</ExtendedTooltip>
-																</RadioButtonField>
-																<CheckBoxField name="СкрыватьНеактуальныеАдреса" id="61">
-																	<DataPath>Объект.СкрыватьНеактуальныеАдреса</DataPath>
-																	<TitleLocation>Right</TitleLocation>
-																	<CheckBoxType>Auto</CheckBoxType>
-																	<ContextMenu name="СкрыватьНеактуальныеАдресаКонтекстноеМеню" id="62"/>
-																	<ExtendedTooltip name="СкрыватьНеактуальныеАдресаExtendedTooltip" id="106"/>
-																</CheckBoxField>
-																<CheckBoxField name="УказыватьОКТМОВручную" id="129">
-																	<DataPath>Объект.УказыватьОКТМО</DataPath>
-																	<TitleLocation>Right</TitleLocation>
-																	<CheckBoxType>Auto</CheckBoxType>
-																	<ContextMenu name="УказыватьОКТМОВручнуюКонтекстноеМеню" id="130"/>
-																	<ExtendedTooltip name="УказыватьОКТМОВручнуюРасширеннаяПодсказка" id="131"/>
-																</CheckBoxField>
-															</ChildItems>
-														</UsualGroup>
-													</ChildItems>
-												</UsualGroup>
-												<CheckBoxField name="ВключатьСтрануВПредставление" id="16">
-													<DataPath>Объект.ВключатьСтрануВПредставление</DataPath>
-													<TitleLocation>Right</TitleLocation>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="ВключатьСтрануВПредставлениеКонтекстноеМеню" id="17"/>
-													<ExtendedTooltip name="ВключатьСтрануВПредставлениеExtendedTooltip" id="107"/>
-												</CheckBoxField>
-											</ChildItems>
-										</Page>
-										<Page name="АдресЭлектроннойПочты" id="28">
-											<ExtendedTooltip name="АдресЭлектроннойПочтыExtendedTooltip" id="108"/>
-											<ChildItems>
-												<CheckBoxField name="ПроверятьКорректность" id="20">
-													<DataPath>Объект.ПроверятьКорректность</DataPath>
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Запрещать ввод некорректных адресов</v8:content>
-														</v8:item>
-													</Title>
-													<TitleLocation>Right</TitleLocation>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="ПроверятьКорректностьКонтекстноеМеню" id="21"/>
-													<ExtendedTooltip name="ПроверятьКорректностьExtendedTooltip" id="109"/>
-												</CheckBoxField>
-											</ChildItems>
-										</Page>
-										<Page name="Телефон" id="132">
+										<CheckBoxField name="ПроверятьКорректность" id="20">
+											<DataPath>Объект.ПроверятьКорректность</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Телефон</v8:content>
+													<v8:content>Запрещать ввод некорректных адресов</v8:content>
 												</v8:item>
 											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Телефон</v8:content>
-												</v8:item>
-											</ToolTip>
-											<ExtendedTooltip name="ТелефонРасширеннаяПодсказка" id="133"/>
-											<ChildItems>
-												<CheckBoxField name="ТелефонCДобавочнымНомером" id="134">
-													<DataPath>Объект.ТелефонCДобавочнымНомером</DataPath>
-													<TitleLocation>Right</TitleLocation>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="ТелефонCДобавочнымНомеромКонтекстноеМеню" id="135"/>
-													<ExtendedTooltip name="ТелефонCДобавочнымНомеромРасширеннаяПодсказка" id="136"/>
-												</CheckBoxField>
-												<CheckBoxField name="ПроверятьКорректность1" id="137">
-													<DataPath>Объект.ПроверятьКорректность</DataPath>
-													<TitleLocation>Right</TitleLocation>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="ПроверятьКорректность1КонтекстноеМеню" id="138"/>
-													<ExtendedTooltip name="ПроверятьКорректность1РасширеннаяПодсказка" id="139"/>
-												</CheckBoxField>
-											</ChildItems>
-										</Page>
-										<Page name="Skype" id="124">
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Skype</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Skype</v8:content>
-												</v8:item>
-											</ToolTip>
-											<ExtendedTooltip name="SkypeРасширеннаяПодсказка" id="125"/>
-											<ChildItems>
-												<LabelDecoration name="ДекорацияЗаглушкаSkype" id="126">
-													<ContextMenu name="ДекорацияЗаглушкаSkypeКонтекстноеМеню" id="127"/>
-													<ExtendedTooltip name="ДекорацияЗаглушкаSkypeРасширеннаяПодсказка" id="128"/>
-												</LabelDecoration>
-											</ChildItems>
-										</Page>
-										<Page name="Другое" id="51">
-											<ExtendedTooltip name="ДругоеExtendedTooltip" id="110"/>
-											<ChildItems>
-												<CheckBoxField name="МногострочноеПоле" id="142">
-													<DataPath>Объект.МногострочноеПоле</DataPath>
-													<TitleLocation>Right</TitleLocation>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="МногострочноеПолеКонтекстноеМеню" id="143"/>
-													<ExtendedTooltip name="МногострочноеПолеРасширеннаяПодсказка" id="144"/>
-												</CheckBoxField>
-											</ChildItems>
-										</Page>
-										<Page name="Прочие" id="140">
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Прочие</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Прочие</v8:content>
-												</v8:item>
-											</ToolTip>
-											<ExtendedTooltip name="ПрочиеРасширеннаяПодсказка" id="141"/>
-											<ChildItems>
-												<LabelDecoration name="ДекорацияЗаглушка" id="54">
-													<ContextMenu name="ДекорацияЗаглушкаКонтекстноеМеню" id="55"/>
-													<ExtendedTooltip name="ДекорацияЗаглушкаРасширеннаяПодсказка" id="111"/>
-												</LabelDecoration>
-											</ChildItems>
-										</Page>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ПроверятьКорректностьКонтекстноеМеню" id="21"/>
+											<ExtendedTooltip name="ПроверятьКорректностьExtendedTooltip" id="109"/>
+										</CheckBoxField>
 									</ChildItems>
-								</Pages>
+								</Page>
+								<Page name="Телефон" id="132">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Телефон</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ТелефонРасширеннаяПодсказка" id="133"/>
+									<ChildItems>
+										<CheckBoxField name="ТелефонCДобавочнымНомером" id="134">
+											<DataPath>Объект.ТелефонCДобавочнымНомером</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ТелефонCДобавочнымНомеромКонтекстноеМеню" id="135"/>
+											<ExtendedTooltip name="ТелефонCДобавочнымНомеромРасширеннаяПодсказка" id="136"/>
+										</CheckBoxField>
+										<CheckBoxField name="ПроверятьКорректностьТелефон" id="137">
+											<DataPath>Объект.ПроверятьКорректность</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Запрещать ввод некорректных номеров</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ПроверятьКорректностьТелефонКонтекстноеМеню" id="138"/>
+											<ExtendedTooltip name="ПроверятьКорректностьТелефонРасширеннаяПодсказка" id="139"/>
+										</CheckBoxField>
+									</ChildItems>
+								</Page>
+								<Page name="Skype" id="124">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Skype</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="SkypeРасширеннаяПодсказка" id="125"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияЗаглушкаSkype" id="126">
+											<ContextMenu name="ДекорацияЗаглушкаSkypeКонтекстноеМеню" id="127"/>
+											<ExtendedTooltip name="ДекорацияЗаглушкаSkypeРасширеннаяПодсказка" id="128"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="Другое" id="51">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Другое</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ДругоеExtendedTooltip" id="110"/>
+									<ChildItems>
+										<RadioButtonField name="ВидПоляДругое" id="150">
+											<DataPath>Объект.ВидПоляДругое</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Вид поля</v8:content>
+												</v8:item>
+											</Title>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ColumnsCount>1</ColumnsCount>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Многострочное широкое</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">МногострочноеШирокое</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Однострочное широкое</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">ОднострочноеШирокое</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Однострочное узкое</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">ОднострочноеУзкое</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="ВидПоляДругоеКонтекстноеМеню" id="151"/>
+											<ExtendedTooltip name="ВидПоляДругоеРасширеннаяПодсказка" id="152"/>
+										</RadioButtonField>
+									</ChildItems>
+								</Page>
+								<Page name="Прочие" id="140">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Прочие</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ПрочиеРасширеннаяПодсказка" id="141"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияЗаглушка" id="54">
+											<ContextMenu name="ДекорацияЗаглушкаКонтекстноеМеню" id="55"/>
+											<ExtendedTooltip name="ДекорацияЗаглушкаРасширеннаяПодсказка" id="111"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
 							</ChildItems>
-						</UsualGroup>
+						</Pages>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -465,12 +388,6 @@
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ПроверятьПоКлассификатору" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Проверять по классификатору</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
 				<v8:NumberQualifiers>
@@ -481,5 +398,28 @@
 			</Type>
 			<SavedData>true</SavedData>
 		</Attribute>
+		<Attribute name="ДоступныДополнительныеНастройкиАдреса" id="3">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ДополнительныеНастройкиАдреса" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные настройки адреса</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные настройки адреса</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДополнительныеНастройкиАдреса</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
 </Form>

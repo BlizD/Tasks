@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="application/hta; charset=UTF-16">
+  <meta http-equiv="x-ua-compatible" content="IE=EmulateIE7">
+  <hta:application id="oHTA" border="none" caption="no" contextmenu="no" selection="no" icon="splash.ico" innerborder="no"
+    navigable="yes" showintaskbar="yes" scroll="no" version="1.0.0.0" />
+  <title>Обновление конфигурации "1С:Предприятие"...</title>
+  <script language="javascript" src="helpers.js"></script>
+  <script language="javascript" src="main.js"></script>
+  <script language="javascript">
+
+    var windowWidth = 604
+    var windowHeight = 324
+    var windowLeft = 200
+    var windowTop = 100
+    if (window.screen) {
+      windowLeft = (window.screen.availWidth - windowWidth) / 2
+      windowTop = (window.screen.availHeight - windowHeight) / 2
+    }
+    window.moveTo(windowLeft, windowTop)
+    window.resizeTo(windowWidth, windowHeight)
+
+    // Переменные состояния
+    var step = 0 // Текущий шаг процедуры обновления.
+    var ret = 0 // Код возврата предыдущего шага.
+    var finish = false
+    var errStep = 0
+    var loadStep = 8 // шаг начала загрузки первого файла обновления
+
+    var endLoadStep = loadStep + cfgFileNames.length * 6 // следующий шаг после завершения загрузки файлов обновления
+    if (cfgFileNames.length === 0) {
+      endLoadStep = loadStep + 4
+    }
+    // Вывести сообщение о ходе обновления
+    function setProgress (statusText) {
+      statusText += '...'
+      progressText.innerHTML = statusText
+      log(statusText)
+    }
+
+    // Конечный автомат для выполнения шагов процедуры обновления конфигурации.
+    function doStep (step) {
+      switch (step) {
+        case 0:
+          setProgress('Инициализация')
+          alert('111')
+          break
+        case 1:
+          ret = initialize()
+          break
+        case 2:
+          setProgress('Завершение работы пользователей')
+          break
+        case 3:
+          ret = disconnectAndBlockUsersHTA()
+          CollectGarbage()
+          break
+        case 4:
+          if (createBackup) {
+            setProgress('Создание резервной копии информационной базы')
+          }
+          break
+        case 5:
+          ret = backupDB()
+          break
+        case 6:
+          if (executeDeferredHandlers) {
+            setProgress('Выполнение отложенных обработчиков обновления')
+          }
+          break
+        case 7:
+          ret = runDeferredHandlers()
+          break
+        case endLoadStep:
+          if (makeCompression) {
+            setProgress('Сжатие таблиц информационной базы')
+          }
+          break
+        case endLoadStep + 1:
+          ret = compressDB()
+          break
+        case endLoadStep + 2:
+          setProgress('Разрешение подключения новых соединений')
+          break
+        case endLoadStep + 3:
+          ret = allowConnections()
+          break
+        case endLoadStep + 4:
+          setProgress('Завершение')
+          break
+        case endLoadStep + 5:
+          // Все готово.
+          finalize(true)
+          runEnterprise()
+          self.close()
+          ClearTempFiles()
+          finish = true
+          break
+        default:
+        {
+          if ((step < loadStep) || (step >= endLoadStep)) {
+            break
+          }
+          if (cfgFileNames.length === 0) {
+            var internalStep = step - loadStep
+            switch (internalStep) {
+              case 0:
+                setProgress('Обновление конфигурации информационной базы')
+                break
+              case 1:
+                ret = updateDbCfg()
+                break
+              case 2:
+                setProgress('Выполнение обработчиков обновления')
+                break
+              case 3:
+                ret = executeUpdate(true)
+                break
+            }
+            break
+          }
+          var cfgFileIndex = Math.floor((step - loadStep) / 6) // 0, 1, 2, 3, ...
+          var internalStep = (step - loadStep) % 6
+          var fileProperties = GetRequired(cfgFileNames[cfgFileIndex])
+          var runHandlers = fileProperties.requiredVersion || (cfgFileIndex + 1 === cfgFileNames.length)
+          switch (internalStep) {
+            case 0:
+              setProgress(format('Загрузка файла обновления в основную базу ({0}/{1})', cfgFileIndex + 1, cfgFileNames.length))
+              break
+            case 1:
+              var fileName = fileProperties.filePath
+              ret = updateCfg(fileName)
+              if (ret !== 0) {
+                log('Не удалось обновить по файлу, возможно конфигурация не находится на поддержке, попытка загрузки конфигурации.')
+                ret = loadCfg(fileName)
+              }
+              break
+            case 2:
+              setProgress(format('Обновление конфигурации информационной базы ({0}/{1})', cfgFileIndex + 1, cfgFileNames.length))
+              break
+            case 3:
+              ret = updateDbCfg()
+              break;
+            case 4:
+              if (runHandlers) {
+                setProgress(format('Выполнение обработчиков обновления ({0}/{1})', cfgFileIndex + 1, cfgFileNames.length))
+              }
+              break
+            case 5:
+              if (runHandlers) {
+                ret = executeUpdate(cfgFileIndex + 1 === cfgFileNames.length)
+              }
+              break
+          }
+          break
+        }
+      }
+      return ret
+    }
+
+    // Выполнить процедуру обновления конфигурации
+    function main () {
+      if (finish) {
+        return
+      }
+      // Если предыдущий шаг завершился неудачно...
+      if (ret !== 0 && ret !== -1) {
+        if (errStep === 0) {
+          log(format('Завершение с ошибкой. Код ошибки: {0}. Подробности см. в предыдущей записи.', ret), true)
+
+          if (UseRestore) {
+            setProgress('Восстановление информационной базы')
+          } else {
+            setProgress('Завершение')
+          }
+
+          errStep++
+          setTimeout('main()', 5) // Передача управления IE и повторный вызов main.
+          return
+        }
+        finalize()
+        runEnterprise(false)
+        self.close()
+        ClearTempFiles()
+        finish = true
+        return
+      }
+
+      // Последовательное выполнение шагов процедуры обновления.
+      // При отключении пользователей необходимо возвращаться на тот же шаг
+      if (ret !== -1) {
+        step++
+      }
+      doStep(step)
+
+      // Передача управления IE и повторный вызов main через 1 секунду (достаточно для завершения COM-соединения).
+      // Если еще не все сеансы завершены, то ret = -1 и ждем 18 секунд до следующей проверки.
+      if (!finish) {
+        setTimeout('main()', ret !== -1 ? 1000 : 18 * 1000)
+      }
+    }
+
+    function checkClose () {
+      if (!finish) {
+        event.returnValue = format('Внимание: процесс обновления был прерван, и информационная база осталась заблокированной!\n' +
+              'Для разблокирования информационной базы воспользуйтесь консолью кластера серверов или запустите "1С:Предприятие".')
+      }
+    }
+
+    function ClearTempFiles () {
+      // Удаляем временные файлы
+      try {
+        oFileSystemObject.DeleteFile(thisFileDir + '\\main.js')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\helpers.js')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\add-delete-patches.js')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\splash.png')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\splash.ico')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\progress.gif')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\splash.hta')
+        oFileSystemObject.DeleteFile(thisFileDir + '\\templog.txt')
+      } catch (e) { }
+    }
+
+  </script>
+</head>
+
+<body onload="window.setTimeout('main()',10);" style="border: 2px; background-image:url(splash.png); background-repeat: no-repeat; background-position: center center; background-attachment: fixed; background-color: #B3B3B3;">
+  <div id="progressIcon" style="position: absolute; left: 10px; top: 65px;">
+    <img src="progress.gif" border="0" />
+  </div>
+  <div id="captionText" style="font-size: 9pt; font-family: verdana,arial; font-weight: bold;
+        color: #606060; position: absolute; left: 80px; top: 70px;">
+    Пожалуйста, подождите.
+    <br> Выполняется обновление конфигурации.
+  </div>
+  <div id="progressText" style="font-size: 8pt; font-family: verdana,arial; color: #000000;
+        position: absolute; left: 10px; top: 240px;">
+    &nbsp;
+  </div>
+</body>
+
+</html>

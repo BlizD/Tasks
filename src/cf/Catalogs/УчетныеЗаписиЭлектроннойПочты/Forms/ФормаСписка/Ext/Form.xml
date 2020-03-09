@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:string">КоманднаяПанель</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<AutoCommandBar name="Форма_КоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -14,12 +21,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа пользовательских настроек</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -32,23 +33,8 @@
 					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Командная панель</v8:content>
-				</v8:item>
-			</ToolTip>
 			<CommandSource>Form</CommandSource>
 			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="30"/>
-			<ChildItems>
-				<Button name="ФормаСправочникУчетныеЗаписиЭлектроннойПочтыПроверитьУчетнуюЗапись" id="22">
-					<Type>CommandBarButton</Type>
-					<CommandName>Catalog.УчетныеЗаписиЭлектроннойПочты.Command.ПроверитьУчетнуюЗапись</CommandName>
-					<DataPath>Items.Список.CurrentData.Ref</DataPath>
-					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-					<ExtendedTooltip name="ФормаСправочникУчетныеЗаписиЭлектроннойПочтыПроверитьУчетнуюЗаписьРасширеннаяПодсказка" id="23"/>
-				</Button>
-			</ChildItems>
 		</CommandBar>
 		<Table name="Список" id="1">
 			<Representation>List</Representation>
@@ -59,9 +45,12 @@
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -105,7 +94,7 @@
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="Наименование" id="4">
-					<DataPath>Список.Description</DataPath>
+					<DataPath>Список.Наименование</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<Title>
 						<v8:item>
@@ -142,8 +131,13 @@
 					<ContextMenu name="АдресЭлектроннойПочты_КонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="АдресЭлектроннойПочтыExtendedTooltip" id="13"/>
 				</LabelField>
+				<LabelField name="ВладелецУчетнойЗаписи" id="43">
+					<DataPath>Список.ВладелецУчетнойЗаписи</DataPath>
+					<ContextMenu name="ВладелецУчетнойЗаписиКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="ВладелецУчетнойЗаписиРасширеннаяПодсказка" id="45"/>
+				</LabelField>
 				<LabelField name="Ссылка" id="24">
-					<DataPath>Список.Ref</DataPath>
+					<DataPath>Список.Ссылка</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
@@ -152,6 +146,45 @@
 				</LabelField>
 			</ChildItems>
 		</Table>
+		<UsualGroup name="Отборы" id="49">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отборы</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ОтборыРасширеннаяПодсказка" id="50"/>
+			<ChildItems>
+				<CheckBoxField name="ПоказыватьПерсональныеУчетныеЗаписиПользователей" id="40">
+					<DataPath>ПоказыватьПерсональныеУчетныеЗаписиПользователей</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Показывать персональные</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ПоказыватьПерсональныеУчетныеЗаписиПользователейКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="ПоказыватьПерсональныеУчетныеЗаписиПользователейРасширеннаяПодсказка" id="42"/>
+					<Events>
+						<Event name="OnChange">ПоказыватьПерсональныеУчетныеЗаписиПользователейПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<CheckBoxField name="ПоказыватьНедействительные" id="46">
+					<DataPath>ПоказыватьНедействительные</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ПоказыватьНедействительныеКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="ПоказыватьНедействительныеРасширеннаяПодсказка" id="48"/>
+					<Events>
+						<Event name="OnChange">ПоказыватьНедействительныеПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Список" id="1">
@@ -160,11 +193,51 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>Список.Ref</Field>
+				<Field>~Список.Ref</Field>
+				<Field>Список.Ссылка</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникУчетныеЗаписиЭлектроннойПочты.Ссылка КАК Ссылка,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ПометкаУдаления КАК ПометкаУдаления,
+	СправочникУчетныеЗаписиЭлектроннойПочты.Наименование КАК Наименование,
+	СправочникУчетныеЗаписиЭлектроннойПочты.SMTPАутентификация КАК SMTPАутентификация,
+	СправочникУчетныеЗаписиЭлектроннойПочты.АдресЭлектроннойПочты КАК АдресЭлектроннойПочты,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ВремяОжидания КАК ВремяОжидания,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ИмяПользователя КАК ИмяПользователя,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ИспользоватьБезопасныйВходНаСерверВходящейПочты КАК ИспользоватьБезопасныйВходНаСерверВходящейПочты,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ИспользоватьБезопасныйВходНаСерверИсходящейПочты КАК ИспользоватьБезопасныйВходНаСерверИсходящейПочты,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ИспользоватьДляОтправки КАК ИспользоватьДляОтправки,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ИспользоватьДляПолучения КАК ИспользоватьДляПолучения,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ИспользоватьЗащищенноеСоединениеДляВходящейПочты КАК ИспользоватьЗащищенноеСоединениеДляВходящейПочты,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ИспользоватьЗащищенноеСоединениеДляИсходящейПочты КАК ИспользоватьЗащищенноеСоединениеДляИсходящейПочты,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ОставлятьКопииСообщенийНаСервере КАК ОставлятьКопииСообщенийНаСервере,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ПериодХраненияСообщенийНаСервере КАК ПериодХраненияСообщенийНаСервере,
+	СправочникУчетныеЗаписиЭлектроннойПочты.Пользователь КАК Пользователь,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ПользовательSMTP КАК ПользовательSMTP,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ПортСервераВходящейПочты КАК ПортСервераВходящейПочты,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ПортСервераИсходящейПочты КАК ПортСервераИсходящейПочты,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ПротоколВходящейПочты КАК ПротоколВходящейПочты,
+	СправочникУчетныеЗаписиЭлектроннойПочты.СерверВходящейПочты КАК СерверВходящейПочты,
+	СправочникУчетныеЗаписиЭлектроннойПочты.СерверИсходящейПочты КАК СерверИсходящейПочты,
+	СправочникУчетныеЗаписиЭлектроннойПочты.СпособPOP3Аутентификации КАК СпособPOP3Аутентификации,
+	СправочникУчетныеЗаписиЭлектроннойПочты.СпособSMTPАутентификации КАК СпособSMTPАутентификации,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ТребуетсяВходНаСерверПередОтправкой КАК ТребуетсяВходНаСерверПередОтправкой,
+	СправочникУчетныеЗаписиЭлектроннойПочты.УдалитьВПредставлениеВключатьИмяПользователя КАК УдалитьВПредставлениеВключатьИмяПользователя,
+	СправочникУчетныеЗаписиЭлектроннойПочты.УдалитьОтветственныйЗаОбработкуПисем КАК УдалитьОтветственныйЗаОбработкуПисем,
+	СправочникУчетныеЗаписиЭлектроннойПочты.УдалитьПароль КАК УдалитьПароль,
+	СправочникУчетныеЗаписиЭлектроннойПочты.УдалитьПарольSMTP КАК УдалитьПарольSMTP,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ОтправлятьСкрытыеКопииПисемНаЭтотАдрес КАК ОтправлятьСкрытыеКопииПисемНаЭтотАдрес,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ВладелецУчетнойЗаписи КАК ВладелецУчетнойЗаписи,
+	СправочникУчетныеЗаписиЭлектроннойПочты.Предопределенный КАК Предопределенный,
+	СправочникУчетныеЗаписиЭлектроннойПочты.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных,
+	ЕСТЬNULL(Пользователи.Недействителен, ЛОЖЬ) КАК ВладелецНедействителен
+ИЗ
+	Справочник.УчетныеЗаписиЭлектроннойПочты КАК СправочникУчетныеЗаписиЭлектроннойПочты
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Пользователи КАК Пользователи
+		ПО СправочникУчетныеЗаписиЭлектроннойПочты.ВладелецУчетнойЗаписи = Пользователи.Ссылка</QueryText>
 				<MainTable>Catalog.УчетныеЗаписиЭлектроннойПочты</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -183,6 +256,28 @@
 					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
 				</ListSettings>
 			</Settings>
+		</Attribute>
+		<Attribute name="ПоказыватьПерсональныеУчетныеЗаписиПользователей" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать персональные учетные записи пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказыватьНедействительные" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать недействительные</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 </Form>

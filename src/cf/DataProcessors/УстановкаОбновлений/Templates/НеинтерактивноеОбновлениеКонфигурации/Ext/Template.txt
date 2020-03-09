@@ -1,0 +1,113 @@
+﻿///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 2018, ООО 1С-Софт
+// Все права защищены. Эта программа и сопроводительные материалы предоставляются 
+// в соответствии с условиями лицензии Attribution 4.0 International (CC BY 4.0)
+// Текст лицензии доступен по ссылке:
+// https://creativecommons.org/licenses/by/4.0/legalcode
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// updater.js
+
+function include (fileName) {
+  var stream = new ActiveXObject('Adodb.Stream')
+  stream.CharSet = 'UTF-16'
+  stream.Type = 2 // adTypeText
+  stream.Open()
+  stream.LoadFromFile(fileName)
+  var code = stream.readText()
+  stream.Close()
+  return code
+}
+
+var oHTA
+var scriptFileName = WScript.ScriptFullName
+var scriptDir = scriptFileName.substr(0, scriptFileName.lastIndexOf('\\') + 1)
+
+eval(include(scriptDir + 'helpers.js'))
+eval(include(scriptDir + 'main.js'))
+
+// Вывести сообщение о ходе обновления
+function setProgress (statusText) {
+  statusText += '...'
+  log(statusText)
+}
+
+function checkResult (ret) {
+  if (ret === 0) {
+    return
+  }
+  log(format('Завершение с ошибкой. Код ошибки: {0}. Подробности см. в предыдущей записи.', ret), true)
+  
+  finalize()
+  ClearTempFiles()
+
+  WScript.Quit(ret)
+}
+
+function ClearTempFiles () {
+  // Удаляем временные файлы
+  try {
+    oFileSystemObject.DeleteFile(thisFileDir + '\\main.js')
+    oFileSystemObject.DeleteFile(thisFileDir + '\\helpers.js')
+    oFileSystemObject.DeleteFile(thisFileDir + '\\add-delete-patches.js')
+    oFileSystemObject.DeleteFile(thisFileDir + '\\addsheduletask.js')
+    oFileSystemObject.DeleteFile(thisFileDir + '\\templog.txt')
+    oFileSystemObject.DeleteFile(thisFileDir + '\\updater.js')
+  } catch (e) { }
+}
+
+setProgress('Инициализация')
+var ret = initialize()
+checkResult(ret)
+
+setProgress('Завершение работы пользователей')
+ret = disconnectAndBlockUsers()
+checkResult(ret)
+
+if (createBackup) {
+  setProgress('Создание резервной копии информационной базы')
+  ret = backupDB()
+  checkResult(ret)
+}
+
+if (executeDeferredHandlers) {
+  setProgress('Выполнение отложенных обработчиков обновления')
+  ret = runDeferredHandlers()
+  checkResult(ret)
+}
+
+if (cfgFileNames.length === 0) {
+  setProgress('Обновление конфигурации информационной базы')
+  ret = updateDbCfg()
+  checkResult(ret)
+} else {
+  for (var cfgFileIndex = 0; cfgFileIndex < cfgFileNames.length; cfgFileIndex++) {
+    var fileProperties = GetRequired(cfgFileNames[cfgFileIndex])
+
+    setProgress(format('Загрузка файла обновления в основную базу ({0}/{1})', cfgFileIndex + 1, cfgFileNames.length))
+    ret = updateCfg(fileProperties.filePath)
+    // Если не удалось загрузить файл, возможно конфигурация не находится на поддержке.
+    if (ret !== 0) {
+      ret = loadCfg(fileProperties.filePath)
+    }
+    checkResult(ret)
+
+    setProgress(format('Обновление конфигурации информационной базы ({0}/{1})', cfgFileIndex + 1, cfgFileNames.length))
+    ret = updateDbCfg()
+    checkResult(ret)
+
+    if (fileProperties.requiredVersion || (cfgFileIndex + 1 === cfgFileNames.length)) {
+      setProgress(format('Выполнение обработчиков обновления ({0}/{1})', cfgFileIndex + 1, cfgFileNames.length))
+      ret = executeUpdate(cfgFileIndex + 1 === cfgFileNames.length)
+      checkResult(ret)
+    }
+  }
+}
+
+setProgress('Разрешение подключений новых соединений')
+ret = allowConnections()
+checkResult(ret)
+
+setProgress('Завершение')
+finalize(true)
+ClearTempFiles()

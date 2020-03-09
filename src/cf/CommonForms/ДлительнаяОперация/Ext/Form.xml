@@ -2,13 +2,14 @@
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
-	<Group>Horizontal</Group>
+	<AutoURL>false</AutoURL>
+	<Group>HorizontalIfPossible</Group>
+	<AutoFillCheck>false</AutoFillCheck>
 	<Customizable>false</Customizable>
 	<CommandBarLocation>Bottom</CommandBarLocation>
 	<CommandSet>
 		<ExcludedCommand>Abort</ExcludedCommand>
 		<ExcludedCommand>Cancel</ExcludedCommand>
-		<ExcludedCommand>Close</ExcludedCommand>
 		<ExcludedCommand>Ignore</ExcludedCommand>
 		<ExcludedCommand>No</ExcludedCommand>
 		<ExcludedCommand>OK</ExcludedCommand>
@@ -21,10 +22,16 @@
 		<HorizontalAlign>Right</HorizontalAlign>
 		<Autofill>false</Autofill>
 		<ChildItems>
-			<Button name="ФормаОтмена" id="12">
+			<Button name="ФормаЗакрыть" id="16">
 				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.Отмена</CommandName>
-				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="13"/>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отмена</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="17"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -35,49 +42,52 @@
 		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
-		<PictureDecoration name="ДекорацияДлительнаяОперация" id="3">
-			<Width>7</Width>
-			<Height>3</Height>
-			<HorizontalStretch>false</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
-			<Title formatted="false">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Длительная операция</v8:content>
-				</v8:item>
-			</Title>
-			<Picture>
-				<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
-				<xr:LoadTransparent>false</xr:LoadTransparent>
-			</Picture>
-			<FileDragMode>AsFile</FileDragMode>
-			<ContextMenu name="ДекорацияДлительнаяОперацияКонтекстноеМеню" id="4"/>
-			<ExtendedTooltip name="ДекорацияДлительнаяОперацияExtendedTooltip" id="10"/>
-		</PictureDecoration>
-		<LabelDecoration name="ДекорацияПоясняющийТекстДлительнойОперации" id="1">
-			<Width>30</Width>
-			<Height>3</Height>
-			<HorizontalStretch>true</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
-			<Title formatted="false">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пожалуйста, подождите...</v8:content>
-				</v8:item>
-			</Title>
-			<VerticalAlign>Center</VerticalAlign>
-			<ContextMenu name="ДекорацияПоясняющийТекстДлительнойОперацииКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="ДекорацияПоясняющийТекстДлительнойОперацииExtendedTooltip" id="11"/>
-		</LabelDecoration>
-	</ChildItems>
-	<Attributes>
-		<Attribute name="ТекстСообщения" id="7">
+		<UsualGroup name="КартинкаИНадпись" id="14">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Текст сообщения</v8:content>
+					<v8:content>Картинка и надпись</v8:content>
 				</v8:item>
 			</Title>
+			<VerticalAlign>Center</VerticalAlign>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="КартинкаИНадписьРасширеннаяПодсказка" id="15"/>
+			<ChildItems>
+				<PictureDecoration name="ДекорацияДлительнаяОперация" id="3">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Длительная операция</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<FileDragMode>AsFile</FileDragMode>
+					<ContextMenu name="ДекорацияДлительнаяОперацияКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ДекорацияДлительнаяОперацияExtendedTooltip" id="10"/>
+				</PictureDecoration>
+				<LabelDecoration name="ДекорацияПоясняющийТекстДлительнойОперации" id="1">
+					<Width>30</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пожалуйста, подождите...</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Center</VerticalAlign>
+					<ContextMenu name="ДекорацияПоясняющийТекстДлительнойОперацииКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="ДекорацияПоясняющийТекстДлительнойОперацииExtendedTooltip" id="11"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ТекстСообщения" id="7">
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -87,12 +97,6 @@
 			</Type>
 		</Attribute>
 		<Attribute name="Статус" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Статус</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -102,35 +106,11 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ИдентификаторЗадания" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Идентификатор задания</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:UUID</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="Отмена" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отмена</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отмена</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>Отмена</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
-	</Commands>
 	<Parameters>
 		<Parameter name="ОжидатьЗавершение">
 			<Type>
@@ -206,6 +186,12 @@
 			<KeyParameter>true</KeyParameter>
 		</Parameter>
 		<Parameter name="ВыводитьСообщения">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ПолучатьРезультат">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>

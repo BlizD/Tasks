@@ -11,9 +11,71 @@
 	<AutoTitle>false</AutoTitle>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ИсторияВыбрать" id="50" DisplayImportance="VeryHigh">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.Выбрать</CommandName>
+				<ExtendedTooltip name="ИсторияВыбратьРасширеннаяПодсказка" id="51"/>
+			</Button>
+			<Button name="ИсторияДобавить" id="22" DisplayImportance="Usual">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.История.StandardCommand.Add</CommandName>
+				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ИсторияДобавитьРасширеннаяПодсказка" id="23"/>
+			</Button>
+			<Button name="ИсторияИзменить" id="20">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.История.StandardCommand.Change</CommandName>
+				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ИсторияИзменитьРасширеннаяПодсказка" id="21"/>
+			</Button>
+			<Button name="ИсторияУдалить" id="24">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.История.StandardCommand.Delete</CommandName>
+				<ExtendedTooltip name="ИсторияУдалитьРасширеннаяПодсказка" id="25"/>
+			</Button>
+			<ButtonGroup name="ИсторияГруппаДействия" id="32">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>История группа действия</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ИсторияГруппаДействияРасширеннаяПодсказка" id="33"/>
+				<ChildItems>
+					<Button name="ИсторияИзменитьФорму" id="28">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+						<ExtendedTooltip name="ИсторияИзменитьФормуРасширеннаяПодсказка" id="29"/>
+					</Button>
+					<Button name="ИсторияВывестиСписок" id="30">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.История.StandardCommand.OutputList</CommandName>
+						<ExtendedTooltip name="ИсторияВывестиСписокРасширеннаяПодсказка" id="31"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="ИсторияГруппаСправка" id="34">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>История группа справка</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ИсторияГруппаСправкаРасширеннаяПодсказка" id="35"/>
+				<ChildItems>
+					<Button name="ФормаСправка" id="26">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.Help</CommandName>
+						<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+						<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="27"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -25,6 +87,12 @@
 			<EnableDrag>true</EnableDrag>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>История</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История</v8:content>
+				</v8:item>
+			</Title>
 			<CommandSet>
 				<ExcludedCommand>CancelSearch</ExcludedCommand>
 				<ExcludedCommand>Copy</ExcludedCommand>
@@ -36,6 +104,7 @@
 				<ExcludedCommand>SortListAsc</ExcludedCommand>
 				<ExcludedCommand>SortListDesc</ExcludedCommand>
 			</CommandSet>
+			<CurrentRowUse>SelectionPresentationAndChoice</CurrentRowUse>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="ИсторияКонтекстноеМеню" id="2">
 				<ChildItems>
@@ -57,63 +126,7 @@
 				</ChildItems>
 			</ContextMenu>
 			<AutoCommandBar name="ИсторияКоманднаяПанель" id="3">
-				<ChildItems>
-					<Button name="ИсторияДобавить" id="22">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Item.История.StandardCommand.Add</CommandName>
-						<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-						<ExtendedTooltip name="ИсторияДобавитьРасширеннаяПодсказка" id="23"/>
-					</Button>
-					<Button name="ИсторияИзменить" id="20">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Item.История.StandardCommand.Change</CommandName>
-						<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-						<ExtendedTooltip name="ИсторияИзменитьРасширеннаяПодсказка" id="21"/>
-					</Button>
-					<Button name="ИсторияУдалить" id="24">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Item.История.StandardCommand.Delete</CommandName>
-						<ExtendedTooltip name="ИсторияУдалитьРасширеннаяПодсказка" id="25"/>
-					</Button>
-					<ButtonGroup name="ИсторияГруппаДействия" id="32">
-						<ExtendedTooltip name="ИсторияГруппаДействияРасширеннаяПодсказка" id="33"/>
-						<ChildItems>
-							<Button name="ИсторияИзменитьФорму" id="28">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-								<ExtendedTooltip name="ИсторияИзменитьФормуРасширеннаяПодсказка" id="29"/>
-							</Button>
-							<Button name="ИсторияВывестиСписок" id="30">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Item.История.StandardCommand.OutputList</CommandName>
-								<ExtendedTooltip name="ИсторияВывестиСписокРасширеннаяПодсказка" id="31"/>
-							</Button>
-						</ChildItems>
-					</ButtonGroup>
-					<ButtonGroup name="ИсторияГруппаСправка" id="34">
-						<Title>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>История группа справка</v8:content>
-							</v8:item>
-						</Title>
-						<ToolTip>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>История группа справка</v8:content>
-							</v8:item>
-						</ToolTip>
-						<ExtendedTooltip name="ИсторияГруппаСправкаРасширеннаяПодсказка" id="35"/>
-						<ChildItems>
-							<Button name="ФормаСправка" id="26">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.StandardCommand.Help</CommandName>
-								<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-								<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="27"/>
-							</Button>
-						</ChildItems>
-					</ButtonGroup>
-				</ChildItems>
+				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ИсторияРасширеннаяПодсказка" id="4"/>
 			<SearchStringAddition name="ИсторияСтрокаПоиска" id="5">
@@ -141,6 +154,7 @@
 				<ExtendedTooltip name="ИсторияУправлениеПоискомРасширеннаяПодсказка" id="13"/>
 			</SearchControlAddition>
 			<Events>
+				<Event name="Selection">ИсторияВыбор</Event>
 				<Event name="BeforeAddRow">ИсторияПередНачаломДобавления</Event>
 				<Event name="BeforeDeleteRow">ИсторияПередУдалением</Event>
 				<Event name="OnActivateRow">ИсторияПриАктивизацииСтроки</Event>
@@ -153,11 +167,15 @@
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="ИсторияДействуетСКонтекстноеМеню" id="15"/>
 					<ExtendedTooltip name="ИсторияДействуетСРасширеннаяПодсказка" id="16"/>
+					<Events>
+						<Event name="OnChange">ИсторияДействуетСПриИзменении</Event>
+					</Events>
 				</InputField>
 				<InputField name="ИсторияПредставление" id="17">
 					<DataPath>История.Представление</DataPath>
-					<EditMode>EnterOnInput</EditMode>
 					<ChoiceButton>true</ChoiceButton>
+					<ChooseType>false</ChooseType>
+					<TextEdit>false</TextEdit>
 					<ContextMenu name="ИсторияПредставлениеКонтекстноеМеню" id="18"/>
 					<ExtendedTooltip name="ИсторияПредставлениеРасширеннаяПодсказка" id="19"/>
 					<Events>
@@ -165,25 +183,30 @@
 						<Event name="StartChoice">ИсторияАдресНачалоВыбора</Event>
 					</Events>
 				</InputField>
+				<InputField name="ИсторияКомментарий" id="52">
+					<DataPath>История.Комментарий</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ИсторияКомментарийКонтекстноеМеню" id="53"/>
+					<ExtendedTooltip name="ИсторияКомментарийРасширеннаяПодсказка" id="54"/>
+				</InputField>
 			</ChildItems>
 		</Table>
 		<CommandBar name="ГруппаКоманднаяПанель" id="36">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа командная панель</v8:content>
+					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа командная панель</v8:content>
-				</v8:item>
-			</ToolTip>
 			<HorizontalLocation>Right</HorizontalLocation>
 			<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="37"/>
 			<ChildItems>
-				<Button name="ОК" id="40">
+				<Button name="ОК" id="40" DisplayImportance="VeryHigh">
 					<Type>CommandBarButton</Type>
 					<DefaultButton>true</DefaultButton>
 					<DefaultItem>true</DefaultItem>
@@ -246,12 +269,6 @@
 					</Type>
 				</Column>
 				<Column name="ЗначенияПолей" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Значения полей</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -261,45 +278,21 @@
 					</Type>
 				</Column>
 				<Column name="ХранитьИсториюИзменений" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Хранить историю изменений</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ЭтоИсторическаяКонтактнаяИнформация" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это историческая контактная информация</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="Вид" id="6">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Вид</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ВидыКонтактнойИнформации</v8:Type>
 					</Type>
 				</Column>
 				<Column name="Тип" id="7">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Тип</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>cfg:EnumRef.ТипыКонтактнойИнформации</v8:Type>
 					</Type>
@@ -319,15 +312,18 @@
 						</v8:StringQualifiers>
 					</Type>
 				</Column>
+				<Column name="Значение" id="9">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="ПредыдущаяДата" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Предыдущая дата</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>
@@ -336,23 +332,11 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ВидКонтактнойИнформации" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вид контактной информации</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.ВидыКонтактнойИнформации</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ИмяФормыРедактирования" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Имя формы редактирования</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -362,51 +346,37 @@
 			</Type>
 		</Attribute>
 		<Attribute name="ПроверятьКорректность" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Проверять корректность</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ЗакрытиеФормыБезСохранения" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Закрытие формы без сохранения</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ТипКонтактнойИнформации" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Тип контактной информации</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.ТипыКонтактнойИнформации</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПредставлениеКонтактнойИнформации" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Представление контактной информации</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
 					<v8:Length>0</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="РедактированиеТолькоВДиалоге" id="10">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РежимВыбора" id="11">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
@@ -441,6 +411,22 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Отмена</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Выбрать" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Выбрать</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>

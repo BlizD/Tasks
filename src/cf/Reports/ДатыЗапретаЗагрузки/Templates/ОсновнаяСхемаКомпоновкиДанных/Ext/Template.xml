@@ -4,127 +4,133 @@
 		<name>ИсточникДанных1</name>
 		<dataSourceType>Local</dataSourceType>
 	</dataSource>
-	<dataSet xsi:type="DataSetQuery">
+	<dataSet xsi:type="DataSetObject">
 		<name>НаборДанных</name>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ДатаЗапрета</dataPath>
 			<field>ДатаЗапрета</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата запрета</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДЛФ=D; ДП='Без запрета'</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Объект</dataPath>
 			<field>Объект</field>
-			<presentationExpression>Выбор Когда Объект = Раздел Тогда Выбор Когда Раздел = Значение(ПланВидовХарактеристик.РазделыДатЗапретаИзменения.ПустаяСсылка) Тогда "&lt;Для всех разделов и объектов, кроме указанных&gt;" Иначе "&lt;Для всех объектов, кроме указанных&gt;" Конец Иначе Объект Конец</presentationExpression>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Пользователь</dataPath>
-			<field>Пользователь</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Программа: информационная база</v8:content>
+					<v8:content>Объект</v8:content>
 				</v8:item>
 			</title>
-			<presentationExpression>Выбор
-    Когда Пользователь = Значение(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз)
-      Тогда "&lt;" + Представление(Значение(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз)) + ", кроме указанных&gt;"
-
-  Иначе Представление(ПользовательТип) + ": "
-        + Выбор
-            Когда ЗначениеЗаполнено(Пользователь)
-            Тогда Представление(ПользовательДубль)
-          Иначе "&lt;Все информационные базы&gt;"
-          Конец
-Конец</presentationExpression>
-			<orderExpression>
-				<dcscom:expression>Выбор
-    Когда Пользователь = Значение(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз)
-      Тогда "&lt;" + Представление(Значение(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз)) + ", кроме указанных&gt;"
-
-  Иначе Представление(ПользовательТип) + ": "
-        + Выбор
-            Когда ЗначениеЗаполнено(Пользователь)
-            Тогда Представление(ПользовательДубль)
-          Иначе "&lt;Все узлы&gt;"
-          Конец
-Конец</dcscom:expression>
-				<dcscom:orderType>Asc</dcscom:orderType>
-				<dcscom:autoOrder>false</dcscom:autoOrder>
-			</orderExpression>
+			<presentationExpression>ОбъектПредставление</presentationExpression>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АдресатНастройки</dataPath>
+			<field>АдресатНастройки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информационная база</v8:content>
+				</v8:item>
+			</title>
+			<presentationExpression>АдресатНастройкиПредставление</presentationExpression>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Раздел</dataPath>
 			<field>Раздел</field>
-			<presentationExpression>Выбор Когда Раздел = Значение(ПланВидовХарактеристик.РазделыДатЗапретаИзменения.ПустаяСсылка) Тогда "&lt;Общая дата&gt;" Иначе Раздел Конец</presentationExpression>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Раздел</v8:content>
+				</v8:item>
+			</title>
+			<presentationExpression>РазделПредставление</presentationExpression>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ВладелецНастройки</dataPath>
 			<field>ВладелецНастройки</field>
-			<presentationExpression>Выбор
-    Когда ВладелецНастройки = Значение(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз)
-      Тогда "&lt;" + Представление(Значение(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз)) + ", кроме указанных&gt;"
-
-  Иначе Представление(ВладелецНастройкиТип) + ": "
-        + Выбор
-            Когда ЗначениеЗаполнено(ВладелецНастройки)
-            Тогда Представление(ВладелецНастройкиДубль)
-          Иначе "&lt;Все информационные базы&gt;"
-          Конец
-Конец</presentationExpression>
-			<orderExpression>
-				<dcscom:expression>Выбор
-    Когда ВладелецНастройки = Значение(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз)
-      Тогда "&lt;" + Представление(Значение(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз)) + ", кроме указанных&gt;"
-
-  Иначе Представление(ВладелецНастройкиТип) + ": "
-        + Выбор
-            Когда ЗначениеЗаполнено(ВладелецНастройки)
-            Тогда Представление(ВладелецНастройкиДубль)
-          Иначе "&lt;Все информационные базы&gt;"
-          Конец
-Конец</dcscom:expression>
-				<dcscom:orderType>Asc</dcscom:orderType>
-				<dcscom:autoOrder>false</dcscom:autoOrder>
-			</orderExpression>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Владелец настройки</v8:content>
+				</v8:item>
+			</title>
+			<presentationExpression>ВладелецНастройкиПредставление</presentationExpression>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ДатаЗапретаНастройки</dataPath>
 			<field>ДатаЗапретаНастройки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата запрета настройки</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДЛФ=D; ДП='Без запрета'</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПриоритетНастройки</dataPath>
 			<field>ПриоритетНастройки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приоритет настройки</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Комментарий</dataPath>
 			<field>Комментарий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарий</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>КомментарийНастройки</dataPath>
 			<field>КомментарийНастройки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарий настройки</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ВладелецНастройкиТип</dataPath>
-			<field>ВладелецНастройкиТип</field>
-			<useRestriction>
-				<field>true</field>
-				<condition>true</condition>
-				<group>true</group>
-				<order>true</order>
-			</useRestriction>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ПользовательТип</dataPath>
-			<field>ПользовательТип</field>
-			<useRestriction>
-				<field>true</field>
-				<condition>true</condition>
-				<group>true</group>
-				<order>true</order>
-			</useRestriction>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ВладелецНастройкиДубль</dataPath>
-			<field>ВладелецНастройкиДубль</field>
+			<dataPath>ОбъектПредставление</dataPath>
+			<field>ОбъектПредставление</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект представление</v8:content>
+				</v8:item>
+			</title>
 			<useRestriction>
 				<field>true</field>
 				<condition>true</condition>
@@ -139,8 +145,14 @@
 			</attributeUseRestriction>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ПользовательДубль</dataPath>
-			<field>ПользовательДубль</field>
+			<dataPath>АдресатНастройкиПредставление</dataPath>
+			<field>АдресатНастройкиПредставление</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адресат настройки представление</v8:content>
+				</v8:item>
+			</title>
 			<useRestriction>
 				<field>true</field>
 				<condition>true</condition>
@@ -153,244 +165,90 @@
 				<group>true</group>
 				<order>true</order>
 			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РазделПредставление</dataPath>
+			<field>РазделПредставление</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Раздел представление</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВладелецНастройкиПредставление</dataPath>
+			<field>ВладелецНастройкиПредставление</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Владелец настройки представление</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НастройкаОбщаяДата</dataPath>
+			<field>НастройкаОбщаяДата</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка общая дата</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НастройкаДляРаздела</dataPath>
+			<field>НастройкаДляРаздела</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка для раздела</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НастройкаДляВсехАдресатов</dataPath>
+			<field>НастройкаДляВсехАдресатов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка для всех информационных баз</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ РАЗЛИЧНЫЕ
-	НастроенныеПользователиСГруппами.Пользователь КАК Пользователь,
-	ДатыЗапретаИзменения.Пользователь КАК ВладелецНастройки,
-	ДатыЗапретаИзменения.Раздел,
-	ДатыЗапретаИзменения.Объект,
-	ДатыЗапретаИзменения.ДатаЗапрета,
-	КодыПриоритетов.Значение КАК Приоритет
-ПОМЕСТИТЬ ДатыЗапрета
-ИЗ
-	РегистрСведений.ДатыЗапретаИзменения КАК ДатыЗапретаИзменения
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
-			0 КАК Код,
-			1 КАК Значение
-		
-		ОБЪЕДИНИТЬ
-		
-		ВЫБРАТЬ
-			1,
-			2
-		
-		ОБЪЕДИНИТЬ
-		
-		ВЫБРАТЬ
-			10,
-			3
-		
-		ОБЪЕДИНИТЬ
-		
-		ВЫБРАТЬ
-			1000,
-			4
-		
-		ОБЪЕДИНИТЬ
-		
-		ВЫБРАТЬ
-			1001,
-			5
-		
-		ОБЪЕДИНИТЬ
-		
-		ВЫБРАТЬ
-			1010,
-			6
-		
-		ОБЪЕДИНИТЬ
-		
-		ВЫБРАТЬ
-			1100,
-			7
-		
-		ОБЪЕДИНИТЬ
-		
-		ВЫБРАТЬ
-			1101,
-			8
-		
-		ОБЪЕДИНИТЬ
-		
-		ВЫБРАТЬ
-			1110,
-			9) КАК КодыПриоритетов
-		ПО (ВЫБОР
-				КОГДА ДатыЗапретаИзменения.Пользователь = ЗНАЧЕНИЕ(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз)
-					ТОГДА 0
-				ИНАЧЕ 10
-			КОНЕЦ + ВЫБОР
-				КОГДА ДатыЗапретаИзменения.Объект = ДатыЗапретаИзменения.Раздел
-					ТОГДА 0
-				ИНАЧЕ 100
-			КОНЕЦ + ВЫБОР
-				КОГДА ДатыЗапретаИзменения.Раздел = ЗНАЧЕНИЕ(ПланВидовХарактеристик.РазделыДатЗапретаИзменения.ПустаяСсылка)
-					ТОГДА 0
-				ИНАЧЕ 1000
-			КОНЕЦ = КодыПриоритетов.Код)
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
-			ДатыЗапретаИзменения.Пользователь КАК Пользователь,
-			ДатыЗапретаИзменения.Пользователь КАК ГруппаПользователей
-		ИЗ
-			РегистрСведений.ДатыЗапретаИзменения КАК ДатыЗапретаИзменения
-		ГДЕ
-			ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.Пользователи)
-			И ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.ГруппыПользователей)
-			И ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.ВнешниеПользователи)
-			И ТИПЗНАЧЕНИЯ(ДатыЗапретаИзменения.Пользователь) &lt;&gt; ТИП(Справочник.ГруппыВнешнихПользователей)
-			И ДатыЗапретаИзменения.Пользователь &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехПользователей)
-			И (ЛОЖЬ В (&amp;ЗаданныеПользователи)
-					ИЛИ ДатыЗапретаИзменения.Пользователь В (&amp;ЗаданныеПользователи))
-		
-		ОБЪЕДИНИТЬ
-		
-		ВЫБРАТЬ
-			ЗНАЧЕНИЕ(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз),
-			ЗНАЧЕНИЕ(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз)
-		ГДЕ
-			(ЛОЖЬ В (&amp;ЗаданныеПользователи)
-					ИЛИ ИСТИНА В (&amp;ЗаданныеПользователи))) КАК НастроенныеПользователиСГруппами
-		ПО (ДатыЗапретаИзменения.Пользователь В (ЗНАЧЕНИЕ(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз), НастроенныеПользователиСГруппами.ГруппаПользователей))
-			И (ДатыЗапретаИзменения.Объект &lt;&gt; НЕОПРЕДЕЛЕНО)
-			И ((НЕ(ДатыЗапретаИзменения.Объект &lt;&gt; ДатыЗапретаИзменения.Раздел
-					И ДатыЗапретаИзменения.Раздел = ЗНАЧЕНИЕ(ПланВидовХарактеристик.РазделыДатЗапретаИзменения.ПустаяСсылка))))
-;
-
-////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ РАЗЛИЧНЫЕ
-	ДатыЗапрета.Пользователь,
-	ДатыЗапрета.Пользователь КАК ПользовательДубль,
-	ТИПЗНАЧЕНИЯ(ДатыЗапрета.Пользователь) КАК ПользовательТип,
-	ДатыЗапрета.ВладелецНастройки,
-	ДатыЗапрета.ВладелецНастройки КАК ВладелецНастройкиДубль,
-	ТИПЗНАЧЕНИЯ(ДатыЗапрета.ВладелецНастройки) КАК ВладелецНастройкиТип,
-	ДатыЗапрета.Раздел,
-	ДатыЗапрета.Объект,
-	ПриоритетныеДатыСПричинамиИсключения.ДатаЗапрета,
-	ДатыЗапрета.ДатаЗапрета КАК ДатаЗапретаНастройки,
-	ДатыЗапрета.Приоритет КАК ПриоритетНастройки,
-	ДатыЗапретаИзменения.Комментарий КАК КомментарийНастройки,
-	ПриоритетныеДатыСПричинамиИсключения.Комментарий
-ИЗ
-	ДатыЗапрета КАК ДатыЗапрета
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
-			ПриоритетныеДаты.Пользователь КАК Пользователь,
-			ПриоритетныеДаты.Раздел КАК Раздел,
-			ПриоритетныеДаты.Объект КАК Объект,
-			ПриоритетныеДаты.ДатаЗапрета КАК ДатаЗапрета,
-			МАКСИМУМ(ДатыЗапретаИзменения.Комментарий) КАК Комментарий
-		ИЗ
-			(ВЫБРАТЬ
-				ДатыЗапрета.Пользователь КАК Пользователь,
-				ДатыЗапрета.Раздел КАК Раздел,
-				ДатыЗапрета.Объект КАК Объект,
-				МАКСИМУМ(ДатыЗапрета.ДатаЗапрета) КАК ДатаЗапрета,
-				МАКСИМУМ(ДатыЗапрета.Приоритет) КАК Приоритет
-			ИЗ
-				ДатыЗапрета КАК ДатыЗапрета
-					ВНУТРЕННЕЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
-						ДатыЗапрета.Пользователь КАК Пользователь,
-						ДатыЗапрета.Раздел КАК Раздел,
-						ДатыЗапрета.Объект КАК Объект,
-						МАКСИМУМ(ДатыЗапрета.Приоритет) КАК Приоритет
-					ИЗ
-						ДатыЗапрета КАК ДатыЗапрета
-					
-					СГРУППИРОВАТЬ ПО
-						ДатыЗапрета.Пользователь,
-						ДатыЗапрета.Раздел,
-						ДатыЗапрета.Объект) КАК МаксимальныйПриоритет
-					ПО ДатыЗапрета.Пользователь = МаксимальныйПриоритет.Пользователь
-						И ДатыЗапрета.Раздел = МаксимальныйПриоритет.Раздел
-						И ДатыЗапрета.Объект = МаксимальныйПриоритет.Объект
-						И ДатыЗапрета.Приоритет = МаксимальныйПриоритет.Приоритет
-			
-			СГРУППИРОВАТЬ ПО
-				ДатыЗапрета.Пользователь,
-				ДатыЗапрета.Раздел,
-				ДатыЗапрета.Объект) КАК ПриоритетныеДаты
-				ВНУТРЕННЕЕ СОЕДИНЕНИЕ ДатыЗапрета КАК ДатыЗапрета
-				ПО (ДатыЗапрета.Пользователь = ПриоритетныеДаты.Пользователь)
-					И (ДатыЗапрета.Раздел = ПриоритетныеДаты.Раздел)
-					И (ДатыЗапрета.Объект = ПриоритетныеДаты.Объект)
-					И (ДатыЗапрета.Приоритет = ПриоритетныеДаты.Приоритет)
-					И (ДатыЗапрета.ДатаЗапрета = ПриоритетныеДаты.ДатаЗапрета)
-				ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ДатыЗапретаИзменения КАК ДатыЗапретаИзменения
-				ПО (ДатыЗапрета.ВладелецНастройки = ДатыЗапретаИзменения.Пользователь)
-					И (ДатыЗапрета.Раздел = ДатыЗапретаИзменения.Раздел)
-					И (ДатыЗапрета.Объект = ДатыЗапретаИзменения.Объект)
-					И (ДатыЗапрета.ДатаЗапрета = ДатыЗапретаИзменения.ДатаЗапрета)
-		
-		СГРУППИРОВАТЬ ПО
-			ПриоритетныеДаты.Пользователь,
-			ПриоритетныеДаты.Раздел,
-			ПриоритетныеДаты.Объект,
-			ПриоритетныеДаты.Приоритет,
-			ПриоритетныеДаты.ДатаЗапрета) КАК ПриоритетныеДатыСПричинамиИсключения
-		ПО ДатыЗапрета.Пользователь = ПриоритетныеДатыСПричинамиИсключения.Пользователь
-			И ДатыЗапрета.Раздел = ПриоритетныеДатыСПричинамиИсключения.Раздел
-			И ДатыЗапрета.Объект = ПриоритетныеДатыСПричинамиИсключения.Объект
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ДатыЗапретаИзменения КАК ДатыЗапретаИзменения
-		ПО ДатыЗапрета.ВладелецНастройки = ДатыЗапретаИзменения.Пользователь
-			И ДатыЗапрета.Раздел = ДатыЗапретаИзменения.Раздел
-			И ДатыЗапрета.Объект = ДатыЗапретаИзменения.Объект
-ГДЕ
-	(НЕ((НЕ ЛОЖЬ В (&amp;ЗаданныеРазделы))
-				И ДатыЗапрета.Раздел &lt;&gt; ЗНАЧЕНИЕ(ПланВидовХарактеристик.РазделыДатЗапретаИзменения.ПустаяСсылка)
-				И (НЕ ДатыЗапрета.Раздел В (&amp;ЗаданныеРазделы))))
-	И (НЕ((НЕ ЛОЖЬ В (&amp;ЗаданныеОбъекты))
-				И ДатыЗапрета.Объект &lt;&gt; ДатыЗапрета.Раздел
-				И (НЕ ДатыЗапрета.Объект В (&amp;ЗаданныеОбъекты))))</query>
+		<objectName>НаборДанных</objectName>
 	</dataSet>
-	<calculatedField>
-		<dataPath>ЭтоПрочиеПользователи</dataPath>
-		<expression>Выбор Когда Пользователь = Значение(Перечисление.ВидыНазначенияДатЗапрета.ДляВсехПользователей) Тогда 1 Иначе 0 Конец</expression>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Это прочие пользователи</v8:content>
-			</v8:item>
-		</title>
-		<useRestriction>
-			<field>true</field>
-			<condition>true</condition>
-		</useRestriction>
-	</calculatedField>
-	<calculatedField>
-		<dataPath>ЭтоПрочиеРазделы</dataPath>
-		<expression>Выбор Когда Раздел = Значение(ПланВидовХарактеристик.РазделыДатЗапретаИзменения.ПустаяСсылка)  Тогда 1 Иначе 0 Конец</expression>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Это прочие разделы</v8:content>
-			</v8:item>
-		</title>
-		<useRestriction>
-			<field>true</field>
-			<condition>true</condition>
-		</useRestriction>
-	</calculatedField>
-	<calculatedField>
-		<dataPath>ЭтоПрочиеОбъекты</dataPath>
-		<expression>Выбор Когда Объект = Раздел Тогда 1 Иначе 0 Конец</expression>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Это прочие объекты</v8:content>
-			</v8:item>
-		</title>
-		<useRestriction>
-			<field>true</field>
-			<condition>true</condition>
-		</useRestriction>
-	</calculatedField>
 	<parameter>
-		<name>Пользователи</name>
+		<name>Адресаты</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Узлы планов обмена</v8:content>
+				<v8:content>Информационные базы</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -448,56 +306,8 @@
 			</dcscor:item>
 		</inputParameters>
 	</parameter>
-	<parameter>
-		<name>ЗаданныеПользователи</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Заданные пользователи</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-			<v8:TypeSet xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:AnyRef</v8:TypeSet>
-		</valueType>
-		<useRestriction>true</useRestriction>
-		<valueListAllowed>true</valueListAllowed>
-		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
-		<name>ЗаданныеОбъекты</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Заданные объекты</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-			<v8:TypeSet xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:AnyRef</v8:TypeSet>
-		</valueType>
-		<useRestriction>true</useRestriction>
-		<valueListAllowed>true</valueListAllowed>
-		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
-		<name>ЗаданныеРазделы</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Заданные разделы</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-			<v8:TypeSet xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:AnyRef</v8:TypeSet>
-		</valueType>
-		<useRestriction>true</useRestriction>
-		<valueListAllowed>true</valueListAllowed>
-		<availableAsField>false</availableAsField>
-	</parameter>
 	<settingsVariant>
-		<dcsset:name>ДатыЗапретаЗагрузкиПоПользователям</dcsset:name>
+		<dcsset:name>ДатыЗапретаЗагрузкиПоИнформационнымБазам</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -508,16 +318,10 @@
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Пользователи</dcscor:parameter>
+					<dcscor:parameter>Адресаты</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>62a81edd-bb62-4897-a958-ac4c1de13e62</dcsset:userSettingID>
-					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Информационные базы</v8:content>
-						</v8:item>
-					</dcsset:userSettingPresentation>
+					<dcsset:userSettingID>a9c08478-e461-4782-b031-f339d353082d</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
@@ -534,30 +338,6 @@
 					<dcsset:userSettingID>74b83a5f-2016-4522-9d1e-6fcd3dab8e63</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
-			<dcsset:conditionalAppearance>
-				<dcsset:item>
-					<dcsset:selection>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапрета</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапретаНастройки</dcsset:field>
-						</dcsset:item>
-					</dcsset:selection>
-					<dcsset:filter/>
-					<dcsset:appearance>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>Формат</dcscor:parameter>
-							<dcscor:value xsi:type="v8:LocalStringType">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>ДП='Без запрета'</v8:content>
-								</v8:item>
-							</dcscor:value>
-						</dcscor:item>
-					</dcsset:appearance>
-				</dcsset:item>
-			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
@@ -576,14 +356,14 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+						<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Пользователь</dcsset:field>
+						<dcsset:field>АдресатНастройки</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -592,20 +372,20 @@
 				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
-						<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+						<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 						<dcsset:orderType>Desc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Пользователь</dcsset:field>
+						<dcsset:field>АдресатНастройки</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+							<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -619,7 +399,7 @@
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+							<dcsset:field>НастройкаДляРаздела</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -649,7 +429,7 @@
 					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+							<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 							<dcsset:orderType>Desc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -657,7 +437,7 @@
 							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+							<dcsset:field>НастройкаДляРаздела</dcsset:field>
 							<dcsset:orderType>Desc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -730,7 +510,7 @@
 		</dcsset:settings>
 	</settingsVariant>
 	<settingsVariant>
-		<dcsset:name>ДатыЗапретаЗагрузкиПоПользователямБезРазделов</dcsset:name>
+		<dcsset:name>ДатыЗапретаЗагрузкиПоИнформационнымБазамБезРазделов</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -741,10 +521,10 @@
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Пользователи</dcscor:parameter>
+					<dcscor:parameter>Адресаты</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>217515d2-7dfe-4ba9-9daa-1c013370e39b</dcsset:userSettingID>
+					<dcsset:userSettingID>9828d279-89f3-40cb-b105-8621c841de39</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
@@ -759,36 +539,7 @@
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>9d9c1e2c-1702-46cf-9754-6f4fb6993446</dcsset:userSettingID>
 				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>ЗаданныеРазделы</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-				</dcscor:item>
 			</dcsset:dataParameters>
-			<dcsset:conditionalAppearance>
-				<dcsset:item>
-					<dcsset:selection>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапрета</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапретаНастройки</dcsset:field>
-						</dcsset:item>
-					</dcsset:selection>
-					<dcsset:filter/>
-					<dcsset:appearance>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>Формат</dcscor:parameter>
-							<dcscor:value xsi:type="v8:LocalStringType">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>ДП='Без запрета'</v8:content>
-								</v8:item>
-							</dcscor:value>
-						</dcscor:item>
-					</dcsset:appearance>
-				</dcsset:item>
-			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
@@ -807,14 +558,14 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+						<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Пользователь</dcsset:field>
+						<dcsset:field>АдресатНастройки</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -823,20 +574,20 @@
 				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
-						<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+						<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 						<dcsset:orderType>Desc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Пользователь</dcsset:field>
+						<dcsset:field>АдресатНастройки</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+							<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -850,7 +601,7 @@
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+							<dcsset:field>НастройкаДляРаздела</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -880,7 +631,7 @@
 					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+							<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 							<dcsset:orderType>Desc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -888,7 +639,7 @@
 							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+							<dcsset:field>НастройкаДляРаздела</dcsset:field>
 							<dcsset:orderType>Desc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -962,7 +713,7 @@
 		</dcsset:settings>
 	</settingsVariant>
 	<settingsVariant>
-		<dcsset:name>ДатыЗапретаЗагрузкиПоПользователямБезОбъектов</dcsset:name>
+		<dcsset:name>ДатыЗапретаЗагрузкиПоИнформационнымБазамБезОбъектов</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -973,10 +724,10 @@
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Пользователи</dcscor:parameter>
+					<dcscor:parameter>Адресаты</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>217515d2-7dfe-4ba9-9daa-1c013370e39b</dcsset:userSettingID>
+					<dcsset:userSettingID>c424f85e-8aa4-4ab7-b7a0-8860e0073a28</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
@@ -991,36 +742,7 @@
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:viewMode>Inaccessible</dcsset:viewMode>
 				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>ЗаданныеРазделы</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-				</dcscor:item>
 			</dcsset:dataParameters>
-			<dcsset:conditionalAppearance>
-				<dcsset:item>
-					<dcsset:selection>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапрета</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапретаНастройки</dcsset:field>
-						</dcsset:item>
-					</dcsset:selection>
-					<dcsset:filter/>
-					<dcsset:appearance>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>Формат</dcscor:parameter>
-							<dcscor:value xsi:type="v8:LocalStringType">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>ДП='Без запрета'</v8:content>
-								</v8:item>
-							</dcscor:value>
-						</dcscor:item>
-					</dcsset:appearance>
-				</dcsset:item>
-			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
@@ -1039,14 +761,14 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+						<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Пользователь</dcsset:field>
+						<dcsset:field>АдресатНастройки</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1055,20 +777,20 @@
 				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
-						<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+						<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 						<dcsset:orderType>Desc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Пользователь</dcsset:field>
+						<dcsset:field>АдресатНастройки</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+							<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1082,7 +804,7 @@
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+							<dcsset:field>НастройкаДляРаздела</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1112,7 +834,7 @@
 					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+							<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 							<dcsset:orderType>Desc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1120,7 +842,7 @@
 							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+							<dcsset:field>НастройкаДляРаздела</dcsset:field>
 							<dcsset:orderType>Desc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1194,7 +916,7 @@
 		</dcsset:settings>
 	</settingsVariant>
 	<settingsVariant>
-		<dcsset:name>ДатыЗапретаЗагрузкиПоРазделамОбъектамДляПользователей</dcsset:name>
+		<dcsset:name>ДатыЗапретаЗагрузкиПоРазделамОбъектамДляИнформационныхБаз</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -1205,10 +927,10 @@
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Пользователи</dcscor:parameter>
+					<dcscor:parameter>Адресаты</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>bd4616d0-c129-4811-82d9-4b31c53d59bb</dcsset:userSettingID>
+					<dcsset:userSettingID>71d4b20d-7740-4bbd-8fa7-c4156e9e698d</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
@@ -1225,30 +947,6 @@
 					<dcsset:userSettingID>6a426184-7fab-4727-99ec-f38c25b25aa0</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
-			<dcsset:conditionalAppearance>
-				<dcsset:item>
-					<dcsset:selection>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапрета</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапретаНастройки</dcsset:field>
-						</dcsset:item>
-					</dcsset:selection>
-					<dcsset:filter/>
-					<dcsset:appearance>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>Формат</dcscor:parameter>
-							<dcscor:value xsi:type="v8:LocalStringType">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>ДП='Без запрета'</v8:content>
-								</v8:item>
-							</dcscor:value>
-						</dcscor:item>
-					</dcsset:appearance>
-				</dcsset:item>
-			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
@@ -1267,7 +965,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+						<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1281,7 +979,7 @@
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+						<dcsset:field>НастройкаДляРаздела</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1297,7 +995,7 @@
 				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
-						<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+						<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 						<dcsset:orderType>Desc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1305,7 +1003,7 @@
 						<dcsset:orderType>Asc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
-						<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+						<dcsset:field>НастройкаДляРаздела</dcsset:field>
 						<dcsset:orderType>Desc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1327,14 +1025,14 @@
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+							<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Пользователь</dcsset:field>
+							<dcsset:field>АдресатНастройки</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1357,11 +1055,11 @@
 					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+							<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 							<dcsset:orderType>Desc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>Пользователь</dcsset:field>
+							<dcsset:field>АдресатНастройки</dcsset:field>
 							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1375,7 +1073,7 @@
 					</dcsset:order>
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>Пользователь</dcsset:field>
+							<dcsset:field>АдресатНастройки</dcsset:field>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>ДатаЗапрета</dcsset:field>
@@ -1431,7 +1129,7 @@
 		</dcsset:settings>
 	</settingsVariant>
 	<settingsVariant>
-		<dcsset:name>ДатыЗапретаЗагрузкиПоОбъектамДляПользователей</dcsset:name>
+		<dcsset:name>ДатыЗапретаЗагрузкиПоОбъектамДляИнформационныхБаз</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -1442,10 +1140,10 @@
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Пользователи</dcscor:parameter>
+					<dcscor:parameter>Адресаты</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>f75f64ca-ab45-45af-95df-7f0602ac0b3c</dcsset:userSettingID>
+					<dcsset:userSettingID>e6dc9534-d646-4363-9229-65ee2c68eac7</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
@@ -1461,30 +1159,6 @@
 					<dcsset:userSettingID>6a426184-7fab-4727-99ec-f38c25b25aa0</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
-			<dcsset:conditionalAppearance>
-				<dcsset:item>
-					<dcsset:selection>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапрета</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапретаНастройки</dcsset:field>
-						</dcsset:item>
-					</dcsset:selection>
-					<dcsset:filter/>
-					<dcsset:appearance>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>Формат</dcscor:parameter>
-							<dcscor:value xsi:type="v8:LocalStringType">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>ДП='Без запрета'</v8:content>
-								</v8:item>
-							</dcscor:value>
-						</dcscor:item>
-					</dcsset:appearance>
-				</dcsset:item>
-			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
@@ -1503,7 +1177,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+						<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1517,7 +1191,7 @@
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+						<dcsset:field>НастройкаДляРаздела</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1533,7 +1207,7 @@
 				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
-						<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+						<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 						<dcsset:orderType>Desc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1541,7 +1215,7 @@
 						<dcsset:orderType>Asc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
-						<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+						<dcsset:field>НастройкаДляРаздела</dcsset:field>
 						<dcsset:orderType>Desc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1564,14 +1238,14 @@
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+							<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Пользователь</dcsset:field>
+							<dcsset:field>АдресатНастройки</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1594,11 +1268,11 @@
 					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+							<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 							<dcsset:orderType>Desc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>Пользователь</dcsset:field>
+							<dcsset:field>АдресатНастройки</dcsset:field>
 							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1612,7 +1286,7 @@
 					</dcsset:order>
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>Пользователь</dcsset:field>
+							<dcsset:field>АдресатНастройки</dcsset:field>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>ДатаЗапрета</dcsset:field>
@@ -1668,7 +1342,7 @@
 		</dcsset:settings>
 	</settingsVariant>
 	<settingsVariant>
-		<dcsset:name>ДатыЗапретаЗагрузкиПоРазделамДляПользователей</dcsset:name>
+		<dcsset:name>ДатыЗапретаЗагрузкиПоРазделамДляИнформационныхБаз</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -1679,10 +1353,10 @@
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Пользователи</dcscor:parameter>
+					<dcscor:parameter>Адресаты</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>f75f64ca-ab45-45af-95df-7f0602ac0b3c</dcsset:userSettingID>
+					<dcsset:userSettingID>62ffe791-0a84-435d-8b26-7053f4642075</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
@@ -1698,30 +1372,6 @@
 					<dcsset:viewMode>Inaccessible</dcsset:viewMode>
 				</dcscor:item>
 			</dcsset:dataParameters>
-			<dcsset:conditionalAppearance>
-				<dcsset:item>
-					<dcsset:selection>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапрета</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ДатаЗапретаНастройки</dcsset:field>
-						</dcsset:item>
-					</dcsset:selection>
-					<dcsset:filter/>
-					<dcsset:appearance>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>Формат</dcscor:parameter>
-							<dcscor:value xsi:type="v8:LocalStringType">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>ДП='Без запрета'</v8:content>
-								</v8:item>
-							</dcscor:value>
-						</dcscor:item>
-					</dcsset:appearance>
-				</dcsset:item>
-			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
@@ -1740,7 +1390,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+						<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1754,7 +1404,7 @@
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+						<dcsset:field>НастройкаДляРаздела</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1770,7 +1420,7 @@
 				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
-						<dcsset:field>ЭтоПрочиеРазделы</dcsset:field>
+						<dcsset:field>НастройкаОбщаяДата</dcsset:field>
 						<dcsset:orderType>Desc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1778,7 +1428,7 @@
 						<dcsset:orderType>Asc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
-						<dcsset:field>ЭтоПрочиеОбъекты</dcsset:field>
+						<dcsset:field>НастройкаДляРаздела</dcsset:field>
 						<dcsset:orderType>Desc</dcsset:orderType>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1801,14 +1451,14 @@
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+							<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Пользователь</dcsset:field>
+							<dcsset:field>АдресатНастройки</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1831,11 +1481,11 @@
 					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ЭтоПрочиеПользователи</dcsset:field>
+							<dcsset:field>НастройкаДляВсехАдресатов</dcsset:field>
 							<dcsset:orderType>Desc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>Пользователь</dcsset:field>
+							<dcsset:field>АдресатНастройки</dcsset:field>
 							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1849,7 +1499,7 @@
 					</dcsset:order>
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>Пользователь</dcsset:field>
+							<dcsset:field>АдресатНастройки</dcsset:field>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>ДатаЗапрета</dcsset:field>

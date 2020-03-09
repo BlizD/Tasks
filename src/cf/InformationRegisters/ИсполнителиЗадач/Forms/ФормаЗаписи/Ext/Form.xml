@@ -3,65 +3,88 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<InputField name="Исполнитель" id="10">
-			<DataPath>Запись.Исполнитель</DataPath>
-			<Wrap>false</Wrap>
-			<ContextMenu name="ИсполнительКонтекстноеМеню" id="11"/>
-			<ExtendedTooltip name="ИсполнительExtendedTooltip" id="16"/>
-		</InputField>
-		<InputField name="РольИсполнителя" id="1">
-			<DataPath>Запись.РольИсполнителя</DataPath>
+		<UsualGroup name="Документ" id="27">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Выполняет роль</v8:content>
+					<v8:content>Документ</v8:content>
 				</v8:item>
 			</Title>
-			<Wrap>false</Wrap>
-			<ContextMenu name="РольИсполнителяКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="РольИсполнителяExtendedTooltip" id="17"/>
-			<Events>
-				<Event name="OnChange">РольИсполнителяПриИзменении</Event>
-			</Events>
-		</InputField>
-		<UsualGroup name="ГруппаУточнение" id="20">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Уточнение роли</v8:content>
-				</v8:item>
-			</Title>
-			<Group>Horizontal</Group>
+			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаУточнениеРасширеннаяПодсказка" id="21"/>
+			<ExtendedTooltip name="ДокументРасширеннаяПодсказка" id="28"/>
 			<ChildItems>
-				<LabelDecoration name="Декорация1" id="24">
-					<ContextMenu name="Декорация1КонтекстноеМеню" id="25"/>
-					<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="26"/>
-				</LabelDecoration>
-				<UsualGroup name="Группа1" id="22">
-					<Group>Vertical</Group>
+				<InputField name="Исполнитель" id="10">
+					<DataPath>Запись.Исполнитель</DataPath>
+					<Wrap>false</Wrap>
+					<ContextMenu name="ИсполнительКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="ИсполнительExtendedTooltip" id="16"/>
+				</InputField>
+				<InputField name="РольИсполнителя" id="1">
+					<DataPath>Запись.РольИсполнителя</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выполняет роль</v8:content>
+						</v8:item>
+					</Title>
+					<Wrap>false</Wrap>
+					<ContextMenu name="РольИсполнителяКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="РольИсполнителяExtendedTooltip" id="17"/>
+					<Events>
+						<Event name="OnChange">РольИсполнителяПриИзменении</Event>
+					</Events>
+				</InputField>
+				<UsualGroup name="ГруппаУточнение" id="20">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уточнение роли</v8:content>
+						</v8:item>
+					</Title>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="23"/>
+					<ExtendedTooltip name="ГруппаУточнениеРасширеннаяПодсказка" id="21"/>
 					<ChildItems>
-						<InputField name="ОсновнойОбъектАдресации" id="12">
-							<DataPath>Запись.ОсновнойОбъектАдресации</DataPath>
-							<Wrap>false</Wrap>
-							<ContextMenu name="ОсновнойОбъектАдресацииКонтекстноеМеню" id="13"/>
-							<ExtendedTooltip name="ОсновнойОбъектАдресацииExtendedTooltip" id="18"/>
-						</InputField>
-						<InputField name="ДополнительныйОбъектАдресации" id="14">
-							<DataPath>Запись.ДополнительныйОбъектАдресации</DataPath>
-							<Wrap>false</Wrap>
-							<ContextMenu name="ДополнительныйОбъектАдресацииКонтекстноеМеню" id="15"/>
-							<ExtendedTooltip name="ДополнительныйОбъектАдресацииExtendedTooltip" id="19"/>
-						</InputField>
+						<LabelDecoration name="Отступ" id="24">
+							<ContextMenu name="ОтступКонтекстноеМеню" id="25"/>
+							<ExtendedTooltip name="ОтступРасширеннаяПодсказка" id="26"/>
+						</LabelDecoration>
+						<UsualGroup name="ГруппаОбъектыАдресации" id="22">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Объекты адресации</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<United>false</United>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОбъектыАдресацииРасширеннаяПодсказка" id="23"/>
+							<ChildItems>
+								<InputField name="ОсновнойОбъектАдресации" id="12">
+									<DataPath>Запись.ОсновнойОбъектАдресации</DataPath>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ОсновнойОбъектАдресацииКонтекстноеМеню" id="13"/>
+									<ExtendedTooltip name="ОсновнойОбъектАдресацииExtendedTooltip" id="18"/>
+								</InputField>
+								<InputField name="ДополнительныйОбъектАдресации" id="14">
+									<DataPath>Запись.ДополнительныйОбъектАдресации</DataPath>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ДополнительныйОбъектАдресацииКонтекстноеМеню" id="15"/>
+									<ExtendedTooltip name="ДополнительныйОбъектАдресацииExtendedTooltip" id="19"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -74,6 +97,25 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВариантНазначения" id="2">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="РольДоступнаДляВнешнихПользователей" id="3">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РольДоступнаДляПользователей" id="4">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 </Form>

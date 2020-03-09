@@ -6,10 +6,16 @@
 			<v8:content>Выбор версии файла</v8:content>
 		</v8:item>
 	</Title>
-	<Width>80</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Top</CommandBarLocation>
+	<MobileDeviceCommandBarContent>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:string">КоманднаяПанель</xr:Value>
+		</xr:Item>
+	</MobileDeviceCommandBarContent>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -24,7 +30,6 @@
 					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</Title>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаПользовательскихНастроекРасширеннаяПодсказка" id="36"/>
@@ -43,13 +48,19 @@
 			<CommandBarLocation>None</CommandBarLocation>
 			<SkipOnInput>false</SkipOnInput>
 			<DefaultItem>true</DefaultItem>
-			<Width>40</Width>
-			<HeightInTableRows>10</HeightInTableRows>
+			<HeightInTableRows>7</HeightInTableRows>
 			<ChoiceMode>true</ChoiceMode>
 			<SelectionMode>SingleRow</SelectionMode>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<BorderColor>style:BorderColor</BorderColor>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список</v8:content>
+				</v8:item>
+			</Title>
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
 			<SearchControlLocation>None</SearchControlLocation>
@@ -95,41 +106,72 @@
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="50"/>
 			</SearchControlAddition>
 			<ChildItems>
-				<LabelField name="СписокВладелец" id="39">
-					<DataPath>Список.Владелец</DataPath>
-					<ContextMenu name="СписокВладелецКонтекстноеМеню" id="40"/>
-					<ExtendedTooltip name="СписокВладелецРасширеннаяПодсказка" id="41"/>
-				</LabelField>
-				<InputField name="СписокНомерВерсии" id="19">
-					<DataPath>Список.НомерВерсии</DataPath>
-					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-					<Width>11</Width>
-					<Wrap>false</Wrap>
-					<BorderColor>style:BorderColor</BorderColor>
-					<ContextMenu name="СписокНомерВерсииКонтекстноеМеню" id="20"/>
-					<ExtendedTooltip name="СписокНомерВерсииРасширеннаяПодсказка" id="28"/>
-				</InputField>
-				<InputField name="СписокАвтор" id="21">
-					<DataPath>Список.Автор</DataPath>
-					<Width>15</Width>
-					<Wrap>false</Wrap>
-					<ContextMenu name="СписокАвторКонтекстноеМеню" id="22"/>
-					<ExtendedTooltip name="СписокАвторРасширеннаяПодсказка" id="29"/>
-				</InputField>
-				<InputField name="СписокДатаСоздания" id="23">
-					<DataPath>Список.ДатаСоздания</DataPath>
-					<Width>15</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Wrap>false</Wrap>
-					<ContextMenu name="СписокДатаСозданияКонтекстноеМеню" id="24"/>
-					<ExtendedTooltip name="СписокДатаСозданияРасширеннаяПодсказка" id="30"/>
-				</InputField>
-				<InputField name="СписокРазмер" id="25">
-					<DataPath>Список.Размер</DataPath>
-					<Wrap>false</Wrap>
-					<ContextMenu name="СписокРазмерКонтекстноеМеню" id="26"/>
-					<ExtendedTooltip name="СписокРазмерРасширеннаяПодсказка" id="31"/>
-				</InputField>
+				<ColumnGroup name="ГруппаВертикально" id="51">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вертикально</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаВертикальноРасширеннаяПодсказка" id="52"/>
+					<ChildItems>
+						<ColumnGroup name="ГруппаОсновное" id="53">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Основное</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="ГруппаОсновноеРасширеннаяПодсказка" id="54"/>
+							<ChildItems>
+								<LabelField name="СписокВладелец" id="39" DisplayImportance="VeryHigh">
+									<DataPath>Список.Владелец</DataPath>
+									<ContextMenu name="СписокВладелецКонтекстноеМеню" id="40"/>
+									<ExtendedTooltip name="СписокВладелецРасширеннаяПодсказка" id="41"/>
+								</LabelField>
+								<InputField name="СписокНомерВерсии" id="19" DisplayImportance="VeryHigh">
+									<DataPath>Список.НомерВерсии</DataPath>
+									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<Width>11</Width>
+									<Wrap>false</Wrap>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="СписокНомерВерсииКонтекстноеМеню" id="20"/>
+									<ExtendedTooltip name="СписокНомерВерсииРасширеннаяПодсказка" id="28"/>
+								</InputField>
+								<InputField name="СписокАвтор" id="21">
+									<DataPath>Список.Автор</DataPath>
+									<Width>15</Width>
+									<Wrap>false</Wrap>
+									<ContextMenu name="СписокАвторКонтекстноеМеню" id="22"/>
+									<ExtendedTooltip name="СписокАвторРасширеннаяПодсказка" id="29"/>
+								</InputField>
+								<InputField name="СписокДатаСоздания" id="23">
+									<DataPath>Список.ДатаСоздания</DataPath>
+									<Width>15</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="СписокДатаСозданияКонтекстноеМеню" id="24"/>
+									<ExtendedTooltip name="СписокДатаСозданияРасширеннаяПодсказка" id="30"/>
+								</InputField>
+								<InputField name="СписокРазмер" id="25">
+									<DataPath>Список.Размер</DataPath>
+									<Wrap>false</Wrap>
+									<ContextMenu name="СписокРазмерКонтекстноеМеню" id="26"/>
+									<ExtendedTooltip name="СписокРазмерРасширеннаяПодсказка" id="31"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+						<LabelField name="Комментарий" id="55">
+							<DataPath>Список.Комментарий</DataPath>
+							<AutoCellHeight>true</AutoCellHeight>
+							<ShowInHeader>false</ShowInHeader>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<ContextMenu name="КомментарийКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="57"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
 				<LabelField name="СписокСсылка" id="32">
 					<DataPath>Список.Ссылка</DataPath>
 					<UserVisible>
@@ -158,10 +200,11 @@
 	ВерсииФайлов.Ссылка КАК Ссылка,
 	ВерсииФайлов.Владелец КАК Владелец,
 	ВерсииФайлов.ПометкаУдаления КАК ПометкаУдаления,
-	ВерсииФайлов.НомерВерсии,
-	ВерсииФайлов.Размер,
-	ВерсииФайлов.Автор,
-	ВерсииФайлов.ДатаСоздания
+	ВерсииФайлов.НомерВерсии КАК НомерВерсии,
+	ВерсииФайлов.Размер КАК Размер,
+	ВерсииФайлов.Автор КАК Автор,
+	ВерсииФайлов.ДатаСоздания КАК ДатаСоздания,
+	ВерсииФайлов.Комментарий КАК Комментарий
 ИЗ
 	Справочник.ВерсииФайлов КАК ВерсииФайлов</QueryText>
 				<MainTable>Catalog.ВерсииФайлов</MainTable>

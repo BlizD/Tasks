@@ -1,8 +1,41 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<CommandSet>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+	</CommandSet>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="345">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="346"/>
+			</Button>
+			<ButtonGroup name="КомандыФормы" id="347">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды формы</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>Form</CommandSource>
+				<ExtendedTooltip name="КомандыФормыРасширеннаяПодсказка" id="348"/>
+			</ButtonGroup>
+			<Button name="ФормаСправка" id="349">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="350"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
@@ -21,17 +54,14 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа служебный пользователь</v8:content>
+					<v8:content>Служебный пользователь</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаСлужебныйПользовательРасширеннаяПодсказка" id="339"/>
 			<ChildItems>
 				<PictureDecoration name="СлужебныйПользовательКартинка" id="340">
-					<Width>2</Width>
-					<Height>1</Height>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -47,6 +77,7 @@
 					<ExtendedTooltip name="СлужебныйПользовательКартинкаРасширеннаяПодсказка" id="342"/>
 				</PictureDecoration>
 				<LabelDecoration name="СлужебныйПользовательНадпись" id="335">
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<TextColor>style:ПоясняющийТекст</TextColor>
 					<Title formatted="false">
 						<v8:item>
@@ -72,30 +103,17 @@
 					<v8:lang>ru</v8:lang>
 					<v8:content>Свойства обработка несоответствия</v8:content>
 				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Properties mismatch processing</v8:content>
-				</v8:item>
 			</Title>
-			<HorizontalStretch>true</HorizontalStretch>
-			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СвойстваОбработкаНесоответствияРасширеннаяПодсказка" id="208"/>
 			<ChildItems>
 				<PictureDecoration name="СвойстваКартинкаПредупреждения" id="165">
-					<Width>5</Width>
-					<Height>2</Height>
-					<HorizontalStretch>false</HorizontalStretch>
 					<SkipOnInput>false</SkipOnInput>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Свойства картинка предупреждения</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Properties warning picture</v8:content>
 						</v8:item>
 					</Title>
 					<Picture>
@@ -112,18 +130,14 @@
 							<v8:lang>ru</v8:lang>
 							<v8:content>Свойства пояснение и команды</v8:content>
 						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Properties note and commands</v8:content>
-						</v8:item>
 					</Title>
-					<VerticalStretch>false</VerticalStretch>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="СвойстваПояснениеИКомандыРасширеннаяПодсказка" id="210"/>
 					<ChildItems>
 						<LabelDecoration name="СвойстваПояснениеНесоответствия" id="168">
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<SkipOnInput>false</SkipOnInput>
 							<Title formatted="false">
 								<v8:item>
@@ -138,10 +152,6 @@
 									<v8:lang>ru</v8:lang>
 									<v8:content>Некоторые свойства пользователя информационной базы сохраняются в карточке пользователя. Между значениями этих свойств найдены различия.</v8:content>
 								</v8:item>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Some properties of infobase user are saved in the user's card. Differences between the properties values are found.</v8:content>
-								</v8:item>
 							</ToolTip>
 							<VerticalAlign>Top</VerticalAlign>
 							<ContextMenu name="СвойстваПояснениеНесоответствияКонтекстноеМеню" id="169"/>
@@ -153,12 +163,7 @@
 									<v8:lang>ru</v8:lang>
 									<v8:content>Свойства команды устранения различий</v8:content>
 								</v8:item>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Resolve differences command properties</v8:content>
-								</v8:item>
 							</Title>
-							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="СвойстваКомандыУстраненияРазличийРасширеннаяПодсказка" id="264"/>
@@ -192,30 +197,17 @@
 					<v8:lang>ru</v8:lang>
 					<v8:content>Сопоставление обработка несоответствия</v8:content>
 				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Mapping mismatch processing</v8:content>
-				</v8:item>
 			</Title>
-			<HorizontalStretch>true</HorizontalStretch>
-			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СопоставлениеОбработкаНесоответствияРасширеннаяПодсказка" id="213"/>
 			<ChildItems>
 				<PictureDecoration name="СопоставлениеКартинкаПредупреждения" id="172">
-					<Width>5</Width>
-					<Height>2</Height>
-					<HorizontalStretch>false</HorizontalStretch>
 					<SkipOnInput>false</SkipOnInput>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Сопоставление картинка предупреждения</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Mapping warning picture</v8:content>
 						</v8:item>
 					</Title>
 					<Picture>
@@ -227,9 +219,8 @@
 					<ExtendedTooltip name="СопоставлениеКартинкаПредупрежденияРасширеннаяПодсказка" id="214"/>
 				</PictureDecoration>
 				<LabelDecoration name="СопоставлениеПояснениеНесоответствия" id="175">
-					<Width>20</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Height>2</Height>
-					<HorizontalStretch>true</HorizontalStretch>
 					<SkipOnInput>false</SkipOnInput>
 					<Title formatted="false">
 						<v8:item>
@@ -237,19 +228,7 @@
 							<v8:content>Пользователь информационной базы не найден.
 Нажмите "Записать", чтобы устранить проблему и не выводить это предупреждение.</v8:content>
 						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Infobase user is not found.
-Click "Write" to sort out the problem and not to show the warning message.</v8:content>
-						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Пользователь информационной базы сопоставлен с этим пользователем справочника,
-однако его не удается найти по сохраненному идентификатору.</v8:content>
-						</v8:item>
-					</ToolTip>
 					<VerticalAlign>Center</VerticalAlign>
 					<ContextMenu name="СопоставлениеПояснениеНесоответствияКонтекстноеМеню" id="176"/>
 					<ExtendedTooltip name="СопоставлениеПояснениеНесоответствияРасширеннаяПодсказка" id="215"/>
@@ -260,15 +239,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа шапка</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Group header</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Grupul antet</v8:content>
+					<v8:content>Шапка</v8:content>
 				</v8:item>
 			</Title>
 			<Group>Vertical</Group>
@@ -280,10 +251,9 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа наименование</v8:content>
+							<v8:content>Наименование</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаНаименованиеРасширеннаяПодсказка" id="330"/>
@@ -328,14 +298,9 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа вход в программу разрешен</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Can log on to application group</v8:content>
+					<v8:content>Вход в программу разрешен</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаВходВПрограммуРазрешенРасширеннаяПодсказка" id="266"/>
@@ -361,7 +326,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа изменить ограничение</v8:content>
+							<v8:content>Изменить ограничение</v8:content>
 						</v8:item>
 					</Title>
 					<Group>Vertical</Group>
@@ -377,15 +342,12 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					</ChildItems>
 				</UsualGroup>
 				<LabelDecoration name="РекомендуетсяПроверитьНастройкиДляВхода" id="267">
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<TextColor>style:ПоясняющийТекст</TextColor>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Рекомендуется проверить настройки для входа</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Consider reviewing settings after logging on</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
@@ -408,123 +370,11 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<v8:content>Страницы</v8:content>
 				</v8:item>
 			</Title>
-			<HorizontalStretch>true</HorizontalStretch>
-			<VerticalStretch>true</VerticalStretch>
 			<ExtendedTooltip name="СтраницыExtendedTooltip" id="219"/>
 			<Events>
 				<Event name="OnCurrentPageChange">СтраницыПриСменеСтраницы</Event>
 			</Events>
 			<ChildItems>
-				<Page name="узСтраницаНастройкиПодсистемыУправлениеЗадачами" id="360">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Настройки подсистемы управление задачами</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Уз страница настройки подсистемы управление задачами</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="узСтраницаНастройкиПодсистемыУправлениеЗадачамиРасширеннаяПодсказка" id="361"/>
-					<ChildItems>
-						<InputField name="узКороткоеИмя" id="343">
-							<DataPath>Объект.узКороткоеИмя</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="узКороткоеИмяКонтекстноеМеню" id="344"/>
-							<ExtendedTooltip name="узКороткоеИмяРасширеннаяПодсказка" id="345"/>
-						</InputField>
-						<CheckBoxField name="узНеОтправлятьУведомленияНаПочту" id="346">
-							<DataPath>Объект.узНеОтправлятьУведомленияНаПочту</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="узНеОтправлятьУведомленияНаПочтуКонтекстноеМеню" id="347"/>
-							<ExtendedTooltip name="узНеОтправлятьУведомленияНаПочтуРасширеннаяПодсказка" id="348"/>
-						</CheckBoxField>
-						<CheckBoxField name="узОткрыватьСправочникЗадачиПриНачалеРаботыСистемы" id="351">
-							<DataPath>Объект.узОткрыватьСправочникЗадачиПриНачалеРаботыСистемы</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="узОткрыватьСправочникЗадачиПриНачалеРаботыСистемыКонтекстноеМеню" id="352"/>
-							<ExtendedTooltip name="узОткрыватьСправочникЗадачиПриНачалеРаботыСистемыРасширеннаяПодсказка" id="353"/>
-						</CheckBoxField>
-						<CheckBoxField name="узОткрыватьКанбанДоскуПриНачалеРаботыСистемы" id="365">
-							<DataPath>Объект.узОткрыватьКанбанДоскуПриНачалеРаботыСистемы</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="узОткрыватьКанбанДоскуПриНачалеРаботыСистемыКонтекстноеМеню" id="366"/>
-							<ExtendedTooltip name="узОткрыватьКанбанДоскуПриНачалеРаботыСистемыРасширеннаяПодсказка" id="367"/>
-						</CheckBoxField>
-						<InputField name="узПользовательХранилища" id="354">
-							<DataPath>Объект.узПользовательХранилища</DataPath>
-							<ContextMenu name="узПользовательХранилищаКонтекстноеМеню" id="355"/>
-							<ExtendedTooltip name="узПользовательХранилищаРасширеннаяПодсказка" id="356"/>
-						</InputField>
-						<InputField name="узКаталогПользователя" id="357">
-							<DataPath>Объект.узКаталогПользователя</DataPath>
-							<ContextMenu name="узКаталогПользователяКонтекстноеМеню" id="358"/>
-							<ExtendedTooltip name="узКаталогПользователяРасширеннаяПодсказка" id="359"/>
-						</InputField>
-						<CheckBoxField name="узАвтоматическиСтановитьсяИсполнителемЕслиПрислалПисьмо" id="379">
-							<DataPath>Объект.узАвтоматическиСтановитьсяИсполнителемЕслиПрислалПисьмо</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Tumbler</CheckBoxType>
-							<EditFormat>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>БЛ=Нет; БИ=Да</v8:content>
-								</v8:item>
-							</EditFormat>
-							<ContextMenu name="узАвтоматическиСтановитьсяИсполнителемЕслиПрислалПисьмоКонтекстноеМеню" id="380"/>
-							<ExtendedTooltip name="узАвтоматическиСтановитьсяИсполнителемЕслиПрислалПисьмоРасширеннаяПодсказка" id="381"/>
-						</CheckBoxField>
-						<CheckBoxField name="узАвтоматическиСтановитсяНаблюдателемЗаЗадачейЕслиДобавилКомментарий" id="362">
-							<DataPath>Объект.узАвтоматическиСтановитсяНаблюдателемЗаЗадачейЕслиДобавилКомментарий</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="узАвтоматическиСтановитсяНаблюдателемЗаЗадачейЕслиДобавилКомментарийКонтекстноеМеню" id="363"/>
-							<ExtendedTooltip name="узАвтоматическиСтановитсяНаблюдателемЗаЗадачейЕслиДобавилКомментарийРасширеннаяПодсказка" id="364"/>
-						</CheckBoxField>
-						<UsualGroup name="ГруппаНастройкаТелеграмм" id="374">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Настройка телеграмм</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Настройка телеграмм</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<ExtendedTooltip name="ГруппаНастройкаТелеграммРасширеннаяПодсказка" id="375"/>
-							<ChildItems>
-								<CheckBoxField name="узИспользоватьРассылкуЧерезТелеграмм" id="376">
-									<DataPath>Объект.узИспользоватьРассылкуЧерезТелеграмм</DataPath>
-									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Tumbler</CheckBoxType>
-									<EditFormat>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>БЛ=Нет; БИ=Да</v8:content>
-										</v8:item>
-									</EditFormat>
-									<ContextMenu name="узИспользоватьРассылкуЧерезТелеграммКонтекстноеМеню" id="377"/>
-									<ExtendedTooltip name="узИспользоватьРассылкуЧерезТелеграммРасширеннаяПодсказка" id="378"/>
-								</CheckBoxField>
-								<InputField name="узИДПользователяТелеграмм" id="368">
-									<DataPath>Объект.узИДПользователяТелеграмм</DataPath>
-									<ContextMenu name="узИДПользователяТелеграммКонтекстноеМеню" id="369"/>
-									<ExtendedTooltip name="узИДПользователяТелеграммРасширеннаяПодсказка" id="370"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-					</ChildItems>
-				</Page>
 				<Page name="СвойстваПользователяИБ" id="65">
 					<Title>
 						<v8:item>
@@ -532,7 +382,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 							<v8:content>Главное</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Horizontal</Group>
+					<Group>HorizontalIfPossible</Group>
 					<ExtendedTooltip name="СвойстваПользователяИБExtendedTooltip" id="220"/>
 					<ChildItems>
 						<UsualGroup name="ОсновныеСвойства" id="75">
@@ -540,14 +390,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Основные свойства</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Main properties</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ro</v8:lang>
-									<v8:content>Proprietăți principale</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -561,10 +403,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 											<v8:lang>ru</v8:lang>
 											<v8:content>Имя (переключение отметки незаполненного)</v8:content>
 										</v8:item>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Name (mark incomplete switch)</v8:content>
-										</v8:item>
 									</Title>
 									<PagesRepresentation>None</PagesRepresentation>
 									<ExtendedTooltip name="ИмяПереключениеОтметкиНезаполненногоРасширеннаяПодсказка" id="250"/>
@@ -575,17 +413,11 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 													<v8:lang>ru</v8:lang>
 													<v8:content>Имя с отметкой незаполненного</v8:content>
 												</v8:item>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Name with mark incomplete</v8:content>
-												</v8:item>
 											</Title>
 											<ExtendedTooltip name="ИмяСОтметкойНезаполненногоРасширеннаяПодсказка" id="252"/>
 											<ChildItems>
 												<InputField name="ПользовательИБИмя1" id="95">
 													<DataPath>ПользовательИБИмя</DataPath>
-													<Width>28</Width>
-													<HorizontalStretch>false</HorizontalStretch>
 													<AutoMarkIncomplete>true</AutoMarkIncomplete>
 													<ContextMenu name="ПользовательИБИмя1КонтекстноеМеню" id="96"/>
 													<ExtendedTooltip name="ПользовательИБИмя1РасширеннаяПодсказка" id="222"/>
@@ -601,17 +433,11 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 													<v8:lang>ru</v8:lang>
 													<v8:content>Имя без отметки незаполненного</v8:content>
 												</v8:item>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Name without mark incomplete</v8:content>
-												</v8:item>
 											</Title>
 											<ExtendedTooltip name="ИмяБезОтметкиНезаполненногоРасширеннаяПодсказка" id="254"/>
 											<ChildItems>
 												<InputField name="ПользовательИБИмя2" id="255">
 													<DataPath>ПользовательИБИмя</DataPath>
-													<Width>28</Width>
-													<HorizontalStretch>false</HorizontalStretch>
 													<ContextMenu name="ПользовательИБИмя2КонтекстноеМеню" id="256"/>
 													<ExtendedTooltip name="ПользовательИБИмя2РасширеннаяПодсказка" id="257"/>
 													<Events>
@@ -623,8 +449,14 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 									</ChildItems>
 								</Pages>
 								<UsualGroup name="СвойстваАутентификации1СПредприятия" id="10">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Свойства аутентификации 1С предприятия</v8:content>
+										</v8:item>
+									</Title>
 									<Group>Vertical</Group>
-									<Representation>None</Representation>
+									<Representation>NormalSeparation</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="СвойстваАутентификации1СПредприятияExtendedTooltip" id="223"/>
 									<ChildItems>
@@ -650,18 +482,9 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа отступ</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Indent group</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ro</v8:lang>
-													<v8:content>Grup liniuță</v8:content>
+													<v8:content>Отступ</v8:content>
 												</v8:item>
 											</Title>
-											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
 											<ExtendedTooltip name="ГруппаОтступРасширеннаяПодсказка" id="271"/>
@@ -677,7 +500,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 															<v8:content>Параметры аутентификации 1С:Предприятия</v8:content>
 														</v8:item>
 													</Title>
-													<HorizontalStretch>true</HorizontalStretch>
 													<Group>Vertical</Group>
 													<Representation>None</Representation>
 													<ShowTitle>false</ShowTitle>
@@ -687,15 +509,15 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 															<Title>
 																<v8:item>
 																	<v8:lang>ru</v8:lang>
-																	<v8:content>Группа пароль</v8:content>
+																	<v8:content>Пароль</v8:content>
 																</v8:item>
 															</Title>
-															<Group>Horizontal</Group>
 															<Representation>None</Representation>
 															<ShowTitle>false</ShowTitle>
 															<ExtendedTooltip name="ГруппаПарольРасширеннаяПодсказка" id="320"/>
 															<ChildItems>
 																<LabelDecoration name="НадписьНаличиеПароля" id="321">
+																	<AutoMaxWidth>false</AutoMaxWidth>
 																	<TextColor>style:ПоясняющийТекст</TextColor>
 																	<Title formatted="false">
 																		<v8:item>
@@ -716,9 +538,15 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 														<CheckBoxField name="ПотребоватьСменуПароляПриВходе" id="316">
 															<DataPath>ПотребоватьСменуПароляПриВходе</DataPath>
 															<TitleLocation>Right</TitleLocation>
+															<ToolTipRepresentation>Button</ToolTipRepresentation>
 															<CheckBoxType>Auto</CheckBoxType>
 															<ContextMenu name="ПотребоватьСменуПароляПриВходеКонтекстноеМеню" id="317"/>
-															<ExtendedTooltip name="ПотребоватьСменуПароляПриВходеРасширеннаяПодсказка" id="318"/>
+															<ExtendedTooltip name="ПотребоватьСменуПароляПриВходеРасширеннаяПодсказка" id="318">
+																<Title formatted="true"/>
+																<Events>
+																	<Event name="URLProcessing">ПотребоватьСменуПароляПриВходеРасширеннаяПодсказкаОбработкаНавигационнойСсылки</Event>
+																</Events>
+															</ExtendedTooltip>
 															<Events>
 																<Event name="OnChange">ПотребоватьСменуПароляПриВходеПриИзменении</Event>
 															</Events>
@@ -764,10 +592,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 											<v8:lang>ru</v8:lang>
 											<v8:content>Свойства аутентификации open ID</v8:content>
 										</v8:item>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Open ID authentication properties</v8:content>
-										</v8:item>
 									</Title>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
@@ -800,14 +624,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 											<v8:lang>ru</v8:lang>
 											<v8:content>Аутентификация операционной системы</v8:content>
 										</v8:item>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Operating system authentication</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ro</v8:lang>
-											<v8:content>Autentificarea sistemului operațional</v8:content>
-										</v8:item>
 									</Title>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
@@ -839,21 +655,13 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 													<v8:lang>ru</v8:lang>
 													<v8:content>Свойства параметры аутентификации ОС</v8:content>
 												</v8:item>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>OS authentication parameters</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ro</v8:lang>
-													<v8:content>Parametrii de autentificare OS</v8:content>
-												</v8:item>
 											</Title>
-											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
 											<ExtendedTooltip name="СвойстваПараметрыАутентификацииОСExtendedTooltip" id="233"/>
 											<ChildItems>
 												<LabelDecoration name="ДекорацияОтступ" id="203">
+													<AutoMaxWidth>false</AutoMaxWidth>
 													<ContextMenu name="ДекорацияОтступКонтекстноеМеню" id="204"/>
 													<ExtendedTooltip name="ДекорацияОтступExtendedTooltip" id="234"/>
 												</LabelDecoration>
@@ -865,18 +673,8 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 															<v8:lang>ru</v8:lang>
 															<v8:content>Пользователь операционной системы</v8:content>
 														</v8:item>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>Operating system user</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ro</v8:lang>
-															<v8:content>Utilizatorul sistemului operațional</v8:content>
-														</v8:item>
 													</ToolTip>
 													<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-													<Width>28</Width>
-													<HorizontalStretch>false</HorizontalStretch>
 													<Wrap>false</Wrap>
 													<ChoiceButton>true</ChoiceButton>
 													<BorderColor>style:BorderColor</BorderColor>
@@ -897,14 +695,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 											<v8:lang>ru</v8:lang>
 											<v8:content>Свойства дополнительные</v8:content>
 										</v8:item>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Additional properties</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ro</v8:lang>
-											<v8:content>Proprietățile suplimentare</v8:content>
-										</v8:item>
 									</Title>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Group>Vertical</Group>
@@ -916,7 +706,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 										<InputField name="ПользовательИБЯзык" id="196">
 											<DataPath>ПользовательИБЯзык</DataPath>
 											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-											<Width>20</Width>
 											<Wrap>false</Wrap>
 											<ClearButton>true</ClearButton>
 											<ListChoiceMode>true</ListChoiceMode>
@@ -929,7 +718,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 										</InputField>
 										<InputField name="ПользовательИБРежимЗапуска" id="198">
 											<DataPath>ПользовательИБРежимЗапуска</DataPath>
-											<Width>20</Width>
 											<ListChoiceMode>true</ListChoiceMode>
 											<ContextMenu name="ПользовательИБРежимЗапускаКонтекстноеМеню" id="199"/>
 											<ExtendedTooltip name="ПользовательИБРежимЗапускаРасширеннаяПодсказка" id="238"/>
@@ -947,14 +735,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Разрешенные действия (роли)</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Allowed actions (roles)</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ro</v8:lang>
-									<v8:content>Acțiuni (roluri) permise</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -987,14 +767,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 											<v8:lang>ru</v8:lang>
 											<v8:content>Разрешенные действия (роли)</v8:content>
 										</v8:item>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Allowed actions (roles)</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ro</v8:lang>
-											<v8:content>Acțiuni (roluri) permise</v8:content>
-										</v8:item>
 									</Title>
 									<CommandSet>
 										<ExcludedCommand>Add</ExcludedCommand>
@@ -1010,9 +782,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 										<ExcludedCommand>SortListDesc</ExcludedCommand>
 										<ExcludedCommand>Tree</ExcludedCommand>
 									</CommandSet>
-									<SearchStringLocation>None</SearchStringLocation>
-									<ViewStatusLocation>None</ViewStatusLocation>
-									<SearchControlLocation>None</SearchControlLocation>
 									<ContextMenu name="РолиКонтекстноеМеню" id="178">
 										<Autofill>false</Autofill>
 									</ContextMenu>
@@ -1040,6 +809,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 											<Button name="РолиПоказатьПодсистемыРолей" id="193">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.ГруппировкаРолейПоПодсистемам</CommandName>
+												<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 												<ExtendedTooltip name="РолиПоказатьПодсистемыРолейExtendedTooltip" id="243"/>
 											</Button>
 											<ButtonGroup name="РолиСтандартныеКоманды" id="281">
@@ -1047,10 +817,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 													<v8:item>
 														<v8:lang>ru</v8:lang>
 														<v8:content>Роли стандартные команды</v8:content>
-													</v8:item>
-													<v8:item>
-														<v8:lang>en</v8:lang>
-														<v8:content>Roles standard commands</v8:content>
 													</v8:item>
 												</Title>
 												<CommandSource>Item.Роли</CommandSource>
@@ -1090,14 +856,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 													<v8:lang>ru</v8:lang>
 													<v8:content>Роли колонок</v8:content>
 												</v8:item>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Column roles</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ro</v8:lang>
-													<v8:content>Rolurile coloanelor</v8:content>
-												</v8:item>
 											</Title>
 											<Group>InCell</Group>
 											<ExtendedTooltip name="РолиКолонокExtendedTooltip" id="245"/>
@@ -1134,14 +892,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 							<v8:lang>ru</v8:lang>
 							<v8:content>Адреса, телефоны</v8:content>
 						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Addresses, phone numbers</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ro</v8:lang>
-							<v8:content>Adrese, numere de telefon</v8:content>
-						</v8:item>
 					</Title>
 					<ExtendedTooltip name="КонтактнаяИнформацияExtendedTooltip" id="248"/>
 				</Page>
@@ -1166,13 +916,9 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 						<InputField name="Комментарий" id="258">
 							<DataPath>Объект.Комментарий</DataPath>
 							<TitleLocation>None</TitleLocation>
-							<Height>2</Height>
-							<MultiLine>true</MultiLine>
+							<AutoMaxWidth>false</AutoMaxWidth>
 							<ContextMenu name="КомментарийКонтекстноеМеню" id="259"/>
 							<ExtendedTooltip name="КомментарийExtendedTooltip" id="260"/>
-							<Events>
-								<Event name="StartChoice">КомментарийНачалоВыбора</Event>
-							</Events>
 						</InputField>
 					</ChildItems>
 				</Page>
@@ -1193,10 +939,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<v8:lang>ru</v8:lang>
 					<v8:content>Аутентификация 1С:Предприятия</v8:content>
 				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Autentificarea 1C:Întreprindere</v8:content>
-				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1208,10 +950,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Показывать в списке выбора</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Afișare în lista selectării</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1225,14 +963,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<v8:lang>ru</v8:lang>
 					<v8:content>Аутентификация операционной системы</v8:content>
 				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Operating system authentication</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Autentificarea sistemului operațional</v8:content>
-				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1244,14 +974,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Пользователь</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>User</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Utilizator</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1269,10 +991,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<v8:lang>ru</v8:lang>
 					<v8:content>Пользователю запрещено изменять пароль</v8:content>
 				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Utilizatorul nu poate modifica parola</v8:content>
-				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1284,10 +1002,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Имя (для входа)</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Login (pentru intrare)</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1312,16 +1026,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ПользовательИБПолноеИмя" id="14">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пользователь ИБ полное имя</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>IB user full name</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -1332,72 +1036,20 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ПользовательИБСуществует" id="23">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пользователь ИБ существует</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Infobase user exists</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ГруппаНовогоПользователя" id="21">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа нового пользователя</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>New user group</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Grupul utilizatorului nou</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.ГруппыПользователей</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ДействияВФорме" id="22">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Действия в форме</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Actions in form</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Acțiuni pe formă</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ТекущееНаименование" id="20">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Текущее наименование</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Current description</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Denumirea curentă</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -1407,16 +1059,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			</Type>
 		</Attribute>
 		<Attribute name="ЕстьСопоставлениеСНесуществующимПользователемИБ" id="18">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Есть сопоставление с несуществующим пользователем ИБ</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>There is mapping to non-existing infobase user</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -1426,14 +1068,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Роли</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Roles</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Roluri</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1447,14 +1081,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 							<v8:lang>ru</v8:lang>
 							<v8:content>Пометка</v8:content>
 						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Check</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ro</v8:lang>
-							<v8:content>Marcaj</v8:content>
-						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1466,14 +1092,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 							<v8:lang>ru</v8:lang>
 							<v8:content>Разрешенное действие (роль)</v8:content>
 						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Allowed action (role)</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ro</v8:lang>
-							<v8:content>Acțiune permisă (rol)</v8:content>
-						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1484,20 +1102,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					</Type>
 				</Column>
 				<Column name="НомерКартинки" id="3">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер картинки</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Picture no</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ro</v8:lang>
-							<v8:content>Numărul picturii</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
@@ -1508,20 +1112,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					</Type>
 				</Column>
 				<Column name="Имя" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Имя</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Name</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ro</v8:lang>
-							<v8:content>Nume</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -1531,42 +1121,16 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					</Type>
 				</Column>
 				<Column name="ЭтоРоль" id="5">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это роль</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>This is role</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ro</v8:lang>
-							<v8:content>Acesta este rol</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ЭтоНедоступнаяРоль" id="6">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это недоступная роль</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ЭтоНесуществующаяРоль" id="7">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Это несуществующая роль</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -1574,35 +1138,11 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			</Columns>
 		</Attribute>
 		<Attribute name="ПользовательИБРоли" id="12">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пользователь ИБ роли</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Infobase user roles</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
 			<Columns>
 				<Column name="Роль" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Роль</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Role</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ro</v8:lang>
-							<v8:content>Rol</v8:content>
-						</v8:item>
-					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
@@ -1614,20 +1154,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			</Columns>
 		</Attribute>
 		<Attribute name="ПоказатьПодсистемыРолей" id="19">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показать подсистемы ролей</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Show roles subsystems</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Show roles subsystems</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -1655,15 +1181,8 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Язык интерфейса программы</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Application interface language</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Limba interfeței</v8:content>
+					<v8:content>Язык интерфейса
+программы</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1676,20 +1195,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ЗначениеКопирования" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Значение копирования</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Copying value</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Valoarea de copiere</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
 			</Type>
@@ -1700,14 +1205,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<v8:lang>ru</v8:lang>
 					<v8:content>Аутентификация по протоколу OpenID</v8:content>
 				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Authentication by protocol OpenID</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Autentificarea prin protocolul OpenID</v8:content>
-				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1715,148 +1212,38 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ПарольПользователяСервиса" id="26">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пароль пользователя сервиса</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Service user password</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Parola de utilizator de servicii</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ДействияСПользователемСервиса" id="27">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Действия с пользователем сервиса</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Actions with the service user</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Acțiuni cu utilizatorul serviciilor de</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ЗапретИзмененияАдминистративногоДоступа" id="28">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Запрет изменения административного доступа</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Administration access modification prohibition</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Modificarea acces administrare interdicție</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ТребуетсяСинхронизацияССервисом" id="29">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Требуется синхронизация с сервисом</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Synchronization with the service is required</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Este necesară Sincronizarea cu serviciul</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ЗапросПароляПередЗаписью" id="30">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Запрос пароля перед записью</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Query of password before write</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Interogare de parolă înainte de a scrie</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="НачальноеОписаниеПользователяИБ" id="31">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Начальное описание пользователя ИБ</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Initial infobase user details</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="УровеньДоступа" id="32">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Уровень доступа</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Access level</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Nivel de acces</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 		</Attribute>
 		<Attribute name="ПриЧтенииВходВПрограммуРазрешен" id="24">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>При чтении вход в программу разрешен</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ВходВПрограммуРазрешенЗначениеПрямогоИзменения" id="33">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вход в программу разрешен значение прямого изменения</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Can log on to application direct change value</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -1874,12 +1261,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="СрокДействия" id="36">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Срок действия</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>
@@ -1889,23 +1270,11 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="СрокДействияНеОграничен" id="37">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Срок действия не ограничен</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ПросрочкаРаботыВПрограммеДоЗапрещенияВхода" id="38">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Просрочка работы в программе до запрещения входа</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
 				<v8:NumberQualifiers>
@@ -1916,12 +1285,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			</Type>
 		</Attribute>
 		<Attribute name="ПользовательИБИмяЗначениеПрямогоИзменения" id="39">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Имя (для входа) - значение прямого изменения</v8:content>
-				</v8:item>
-			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -1931,27 +1294,35 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			</Type>
 		</Attribute>
 		<Attribute name="ПользовательИБПароль" id="40">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пользователь ИБ Пароль</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>IB user Password</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
 			<SavedData>true</SavedData>
 		</Attribute>
 		<Attribute name="ПользовательИБСтарыйПароль" id="41">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пользователь ИБСтарый пароль</v8:content>
-				</v8:item>
-			</Title>
 			<Type/>
+		</Attribute>
+		<Attribute name="ПользовательИБОсновнойИнтерфейс" id="42">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПредлагатьОбсуждения" id="43">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПредлагатьОбсужденияТекст" id="44">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>
@@ -1959,29 +1330,13 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Только выбранные роли</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Only selected roles</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Doar rolurile selectate</v8:content>
+					<v8:content>Только выбранные</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Показать только выбранные роли</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Show only selected roles</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Afișare doar rolurile selectate</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1998,27 +1353,11 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<v8:lang>ru</v8:lang>
 					<v8:content>Исключить роли</v8:content>
 				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Exclude roles</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Excludeți roluri</v8:content>
-				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Исключить роли</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Exclude roles</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Excludeți roluri</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -2035,27 +1374,11 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<v8:lang>ru</v8:lang>
 					<v8:content>Включить роли</v8:content>
 				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Enable roles</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Activați roluri</v8:content>
-				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Включить роли</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Enable roles</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Activați roluri</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -2072,19 +1395,11 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<v8:lang>ru</v8:lang>
 					<v8:content>Заполнить из пользователя ИБ</v8:content>
 				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Fill from infobase user</v8:content>
-				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Заполнить значения из свойств пользователя информационной базы</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Fill values from infobase user properties</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -2102,27 +1417,11 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<v8:lang>ru</v8:lang>
 					<v8:content>По подсистемам</v8:content>
 				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>By subsystems</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>De subsisteme</v8:content>
-				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Группировать список ролей по подсистемам</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Group role list by subsystems</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Grupa lista rol de subsisteme</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -2141,7 +1440,6 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 				</v8:item>
 			</Title>
 			<Action>СменитьПароль</Action>
-			<ModifiesSavedData>true</ModifiesSavedData>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ИзменитьОграничениеНаВходВПрограмму" id="7">
@@ -2152,7 +1450,22 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 				</v8:item>
 			</Title>
 			<Action>ИзменитьОграничениеНаВходВПрограмму</Action>
-			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаписатьИЗакрыть" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать объект и закрыть форму</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьИЗакрыть</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>

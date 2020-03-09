@@ -2,16 +2,6 @@
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.9">
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
-			<Button name="ФормаПереместитьВверх" id="55">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ПереместитьВверх</CommandName>
-				<ExtendedTooltip name="ФормаПереместитьВверхРасширеннаяПодсказка" id="56"/>
-			</Button>
-			<Button name="ФормаПереместитьВниз" id="57">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ПереместитьВниз</CommandName>
-				<ExtendedTooltip name="ФормаПереместитьВнизРасширеннаяПодсказка" id="58"/>
-			</Button>
 			<Button name="СписокСписок" id="59">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.Item.Список.StandardCommand.List</CommandName>
@@ -44,7 +34,6 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -163,6 +152,7 @@
 			</SearchControlAddition>
 			<Events>
 				<Event name="DragCheck">СписокПроверкаПеретаскивания</Event>
+				<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
 				<Event name="Drag">СписокПеретаскивание</Event>
 			</Events>
 			<ChildItems>
@@ -180,7 +170,7 @@
 						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</HeaderPicture>
 					<ValuesPicture>
-						<xr:Ref>CommonPicture.Скрепка</xr:Ref>
+						<xr:Ref>CommonPicture.КоллекцияСкрепка</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</ValuesPicture>
 					<FileDragMode>AsFile</FileDragMode>
@@ -322,7 +312,6 @@
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
 				<Field>Список.Ref</Field>
-				<Field>Список.РеквизитДопУпорядочивания</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
@@ -360,10 +349,13 @@
 	СправочникузЗадачи.РеквизитДопУпорядочивания,
 	СправочникузЗадачи.ПоказыватьВОтчетахИКанбанДоске,
 	ВЫБОР
-		КОГДА ЕСТЬNULL(ВложФайлы.ВладелецФайла, ЛОЖЬ) = ЛОЖЬ
-			ТОГДА -1
-		ИНАЧЕ 0
-	КОНЕЦ КАК ЕстьФайлы,
+        КОГДА НаличиеФайлов.ЕстьФайлы ЕСТЬ NULL ТОГДА
+            0
+        КОГДА НаличиеФайлов.ЕстьФайлы ТОГДА
+            1
+        ИНАЧЕ
+            0
+    КОНЕЦ КАК ЕстьФайлы,
 	СправочникузЗадачи.ВКакойСпринтПришла,
 	СправочникузЗадачи.ВКакойСпринтСделали
 ИЗ
@@ -371,11 +363,8 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.узНаличиеЗаметокПоПредмету КАК узНаличиеЗаметокПоПредмету
 		ПО СправочникузЗадачи.Ссылка = узНаличиеЗаметокПоПредмету.Предмет
 			И (узНаличиеЗаметокПоПредмету.Автор = &amp;Пользователь)
-		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ РАЗЛИЧНЫЕ
-			узЗадачиПрисоединенныеФайлы.ВладелецФайла КАК ВладелецФайла
-		ИЗ
-			Справочник.узЗадачиПрисоединенныеФайлы КАК узЗадачиПрисоединенныеФайлы) КАК ВложФайлы
-		ПО СправочникузЗадачи.Ссылка = ВложФайлы.ВладелецФайла
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НаличиеФайлов КАК НаличиеФайлов
+        ПО СправочникузЗадачи.Ссылка = НаличиеФайлов.ОбъектСФайлами
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.узСпринтыЗадач.СрезПоследних КАК узСпринтыЗадачСрезПоследних
 		ПО СправочникузЗадачи.Ссылка = узСпринтыЗадачСрезПоследних.Задача
 ГДЕ
@@ -465,80 +454,17 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ПараметрыПодключаемыхКоманд" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры подключаемых команд</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="ПереместитьВверх" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить вверх</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Move up</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Mutare în sus</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить вверх</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Move up</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Mutare în sus</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.MoveUp</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ПереместитьЭлементВверх</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
-		<Command name="ПереместитьВниз" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить вниз</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Move down</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Coborî</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переместить вниз</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Move down</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ro</v8:lang>
-					<v8:content>Coborî</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.MoveDown</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ПереместитьЭлементВниз</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
 		<Command name="ИзменитьВыделенные" id="3">
 			<Title>
 				<v8:item>

@@ -5,6 +5,7 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
 	</Events>
@@ -17,10 +18,11 @@
 					<v8:content>Провайдер</v8:content>
 				</v8:item>
 			</Title>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
 			<EditMode>EnterOnInput</EditMode>
 			<Width>30</Width>
 			<HorizontalStretch>false</HorizontalStretch>
-			<ClearButton>true</ClearButton>
+			<ClearButton>false</ClearButton>
 			<BackColor>style:ФонУправляющегоПоля</BackColor>
 			<ContextMenu name="ПровайдерSMSКонтекстноеМеню" id="6"/>
 			<ExtendedTooltip name="ПровайдерSMSExtendedTooltip" id="11"/>
@@ -28,7 +30,48 @@
 				<Event name="OnChange">ПровайдерSMSПриИзменении</Event>
 			</Events>
 		</InputField>
-		<InputField name="ЛогинДляОтправкиSMS" id="1">
+		<InputField name="СпособАвторизации" id="24">
+			<DataPath>СпособАвторизации</DataPath>
+			<Width>30</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ListChoiceMode>true</ListChoiceMode>
+			<TextEdit>false</TextEdit>
+			<ChoiceList>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>По ключу (рекомендуется)</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:string">ПоКлючу</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>По логину и паролю (устаревший способ)</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:string">ПоЛогинуИПаролю</Value>
+					</xr:Value>
+				</xr:Item>
+			</ChoiceList>
+			<BackColor>style:ФонУправляющегоПоля</BackColor>
+			<ContextMenu name="СпособАвторизацииКонтекстноеМеню" id="25"/>
+			<ExtendedTooltip name="СпособАвторизацииРасширеннаяПодсказка" id="26"/>
+			<Events>
+				<Event name="OnChange">СпособАвторизацииПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Логин" id="1">
 			<DataPath>ЛогинДляОтправкиSMS</DataPath>
 			<Title>
 				<v8:item>
@@ -39,10 +82,11 @@
 			<EditMode>EnterOnInput</EditMode>
 			<Width>30</Width>
 			<HorizontalStretch>false</HorizontalStretch>
-			<ContextMenu name="ЛогинДляОтправкиSMSКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="ЛогинДляОтправкиSMSExtendedTooltip" id="12"/>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ContextMenu name="ЛогинКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ЛогинРасширеннаяПодсказка" id="12"/>
 		</InputField>
-		<InputField name="ПарольДляОтправкиSMS" id="3">
+		<InputField name="Пароль" id="3">
 			<DataPath>ПарольДляОтправкиSMS</DataPath>
 			<Title>
 				<v8:item>
@@ -54,39 +98,36 @@
 			<Width>30</Width>
 			<HorizontalStretch>false</HorizontalStretch>
 			<PasswordMode>true</PasswordMode>
-			<ContextMenu name="ПарольДляОтправкиSMSКонтекстноеМеню" id="4"/>
-			<ExtendedTooltip name="ПарольДляОтправкиSMSExtendedTooltip" id="13"/>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ContextMenu name="ПарольКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="ПарольРасширеннаяПодсказка" id="13"/>
 		</InputField>
-		<LabelDecoration name="ОписаниеУслугиБилайн" id="7">
-			<HorizontalStretch>true</HorizontalStretch>
-			<Title formatted="false">
+		<InputField name="ИмяОтправителя" id="16">
+			<DataPath>ИмяОтправителя</DataPath>
+			<Width>30</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="ИмяОтправителяКонтекстноеМеню" id="17"/>
+			<ExtendedTooltip name="ИмяОтправителяРасширеннаяПодсказка" id="18"/>
+		</InputField>
+		<UsualGroup name="ГруппаНужнаПомощь" id="27">
+			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Описание услуги «Корпоративные SMS-сервисы» (Билайн)</v8:content>
+					<v8:content>Нужна помощь?</v8:content>
 				</v8:item>
 			</Title>
-			<Hyperlink>true</Hyperlink>
-			<ContextMenu name="ОписаниеУслугиБилайнКонтекстноеМеню" id="8"/>
-			<ExtendedTooltip name="ОписаниеУслугиБилайнExtendedTooltip" id="14"/>
-			<Events>
-				<Event name="Click">ОписаниеУслугиБилайнНажатие</Event>
-			</Events>
-		</LabelDecoration>
-		<LabelDecoration name="ОписаниеУслугиМТС" id="9">
-			<HorizontalStretch>true</HorizontalStretch>
-			<Title formatted="false">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Описание услуги «МТС Коммуникатор» (МТС)</v8:content>
-				</v8:item>
-			</Title>
-			<Hyperlink>true</Hyperlink>
-			<ContextMenu name="ОписаниеУслугиМТСКонтекстноеМеню" id="10"/>
-			<ExtendedTooltip name="ОписаниеУслугиМТСExtendedTooltip" id="15"/>
-			<Events>
-				<Event name="Click">ОписаниеУслугиМТСНажатие</Event>
-			</Events>
-		</LabelDecoration>
+			<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+			<Behavior>PopUp</Behavior>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаНужнаПомощьРасширеннаяПодсказка" id="28"/>
+			<ChildItems>
+				<LabelDecoration name="ИнструкцияПоПодключениюУслуги" id="29">
+					<Width>40</Width>
+					<ContextMenu name="ИнструкцияПоПодключениюУслугиКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ИнструкцияПоПодключениюУслугиРасширеннаяПодсказка" id="31"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="НаборКонстант" id="1">
@@ -125,6 +166,42 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="ИмяОтправителя" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя отправителя</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СпособАвторизации" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Способ авторизации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СпособыАвторизации" id="7">
+			<Type/>
+		</Attribute>
+		<Attribute name="НастройкиПровайдера" id="8">
+			<Type/>
 		</Attribute>
 	</Attributes>
 </Form>
