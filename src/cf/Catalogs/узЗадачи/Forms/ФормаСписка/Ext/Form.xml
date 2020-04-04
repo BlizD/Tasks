@@ -298,8 +298,14 @@
 				</LabelField>
 				<LabelField name="Ссылка" id="103">
 					<DataPath>Список.Ref</DataPath>
+					<Visible>false</Visible>
 					<ContextMenu name="СсылкаКонтекстноеМеню" id="104"/>
 					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="105"/>
+				</LabelField>
+				<LabelField name="ГруппаДоступаЗадач" id="112">
+					<DataPath>Список.ГруппаДоступаЗадач</DataPath>
+					<ContextMenu name="ГруппаДоступаЗадачКонтекстноеМеню" id="113"/>
+					<ExtendedTooltip name="ГруппаДоступаЗадачРасширеннаяПодсказка" id="114"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -315,8 +321,8 @@
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	СправочникузЗадачи.Ссылка,
 	СправочникузЗадачи.ПометкаУдаления,
 	СправочникузЗадачи.Родитель,
@@ -357,7 +363,8 @@
             0
     КОНЕЦ КАК ЕстьФайлы,
 	СправочникузЗадачи.ВКакойСпринтПришла,
-	СправочникузЗадачи.ВКакойСпринтСделали
+	СправочникузЗадачи.ВКакойСпринтСделали,
+	СправочникузЗадачи.ГруппаДоступаЗадач
 ИЗ
 	Справочник.узЗадачи КАК СправочникузЗадачи
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.узНаличиеЗаметокПоПредмету КАК узНаличиеЗаметокПоПредмету
