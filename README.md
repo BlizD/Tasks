@@ -10,6 +10,14 @@
 * https://github.com/BlizD/Tasks/releases/download/1.0.4.035/Tasks_1.0.4.035.zip - скачать последний релиз;
 * https://github.com/BlizD/Tasks/releases - все релизы.
 
+## Скачать последний ТЕСТОВЫЙ релиз ## 
+
+* [1.0.4.038.cfu](https://drive.google.com/open?id=1q1mWouoPvdyEgEK7KRnzzsEJwuQuCno7) - Новая версия БСП 3.0.3.184 режим совместимости 8.3.12.
+* [1.0.4.038.cf](https://drive.google.com/open?id=1yp0jHmPtzJx_wvXEblXpqhScysqEztGe) - Новая версия БСП 3.0.3.184 режим совместимости 8.3.12.
+
+## Расширения ## 
+* [Расширение: Рассылка уведомлений по ICQ](https://github.com/BlizD/Tasks/issues/194) - работает начиная с релиза 1.0.4.038 
+
 # Управление задачами: Канбан доска #
 
 Конфигурация "Управление задачами" с использованием библиотеки стандартных подсистем. Канбан доска
