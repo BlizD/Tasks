@@ -4,7 +4,6 @@
 [![Github Releases](https://img.shields.io/github/downloads/BlizD/Tasks/latest/total.svg)]()
 [+470 Инфостарт](https://infostart.ru/public/552480/) [+700 1clancer.ru](http://1clancer.ru/catalog/2764)
 
-
 ## Скачать последний релиз ## 
 
 * https://github.com/BlizD/Tasks/releases/download/1.0.4.035/Tasks_1.0.4.035.zip - скачать последний релиз;
@@ -18,6 +17,11 @@
 ## Расширения ## 
 * [Расширение: Рассылка уведомлений по ICQ](https://github.com/BlizD/Tasks/issues/194) - работает начиная с релиза 1.0.4.038 
 * [Все расширения](https://github.com/BlizD/Tasks/wiki/Расширения)
+
+## Цель проекта ## 
+
+Легкая, удобная и комфортная работа в первую очередь для исполнителя задачи. 
+
 
 # Управление задачами: Канбан доска #
 
