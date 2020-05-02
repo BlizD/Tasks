@@ -2,17 +2,13 @@
 [![Release](https://img.shields.io/github/tag/BlizD/Tasks.svg?label=Last%20release&a)](https://github.com/BlizD/Tasks/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/BlizD/Tasks/total.svg)]() 
 [![Github Releases](https://img.shields.io/github/downloads/BlizD/Tasks/latest/total.svg)]()
-[+470 Инфостарт](https://infostart.ru/public/552480/) [+700 1clancer.ru](http://1clancer.ru/catalog/2764)
+[+510 Инфостарт](https://infostart.ru/public/552480/) [+730 1clancer.ru](http://1clancer.ru/catalog/2764)
 
 ## Скачать последний релиз ## 
 
-* https://github.com/BlizD/Tasks/releases/download/1.0.4.035/Tasks_1.0.4.035.zip - скачать последний релиз;
-* https://github.com/BlizD/Tasks/releases - все релизы.
-
-## Скачать последний ТЕСТОВЫЙ релиз ## 
-
-* [1.0.4.038.cfu](https://drive.google.com/open?id=1q1mWouoPvdyEgEK7KRnzzsEJwuQuCno7) - Новая версия БСП 3.0.3.184 режим совместимости 8.3.12.
-* [1.0.4.038.cf](https://drive.google.com/open?id=1yp0jHmPtzJx_wvXEblXpqhScysqEztGe) - Новая версия БСП 3.0.3.184 режим совместимости 8.3.12.
+* [Скачать последний релиз 1.0.5.001](https://github.com/BlizD/Tasks/releases/download/1.0.5.001/Tasks_1.0.5.001.zip)
+* [Все релизы](https://github.com/BlizD/Tasks/releases)
+* [Промежуточные тестовые релизы](https://github.com/BlizD/Tasks/issues/129) 
 
 ## Расширения ## 
 * [Расширение: Рассылка уведомлений по ICQ](https://github.com/BlizD/Tasks/issues/194) - работает начиная с релиза 1.0.4.038 
