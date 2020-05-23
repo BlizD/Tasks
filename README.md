@@ -2,6 +2,8 @@
 [![Release](https://img.shields.io/github/tag/BlizD/Tasks.svg?label=Last%20release&a)](https://github.com/BlizD/Tasks/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/BlizD/Tasks/total.svg)]() 
 [![Github Releases](https://img.shields.io/github/downloads/BlizD/Tasks/latest/total.svg)]()
+[![telegram](https://img.shields.io/badge/telegram-channal-green.svg)](https://t.me/mtasks)
+[![telegram](https://img.shields.io/badge/telegram-chat-green.svg)](https://t.me/joinchat/KbD_hhM1tJGb3B3gz6QIvA)
 [+510 Инфостарт](https://infostart.ru/public/552480/) [+730 1clancer.ru](http://1clancer.ru/catalog/2764)
 
 ## Скачать последний релиз ## 
