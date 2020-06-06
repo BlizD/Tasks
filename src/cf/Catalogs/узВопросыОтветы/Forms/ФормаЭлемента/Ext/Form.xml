@@ -5,7 +5,10 @@
 	<Events>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="URLProcessing">ОбработкаНавигационнойСсылки</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="Группа1" id="38">
@@ -94,27 +97,148 @@
 					</ToolTip>
 					<ExtendedTooltip name="ГруппаСтраницаОсновноеРасширеннаяПодсказка" id="37"/>
 					<ChildItems>
-						<InputField name="Вопрос" id="16">
-							<DataPath>Объект.Вопрос</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<AutoMaxWidth>false</AutoMaxWidth>
-							<HorizontalStretch>true</HorizontalStretch>
-							<MultiLine>true</MultiLine>
-							<ContextMenu name="ВопросКонтекстноеМеню" id="17"/>
-							<ExtendedTooltip name="ВопросРасширеннаяПодсказка" id="18"/>
-							<Events>
-								<Event name="OnChange">ВопросПриИзменении</Event>
-							</Events>
-						</InputField>
-						<InputField name="Ответ" id="19">
-							<DataPath>Объект.Ответ</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<AutoMaxWidth>false</AutoMaxWidth>
-							<HorizontalStretch>true</HorizontalStretch>
-							<MultiLine>true</MultiLine>
-							<ContextMenu name="ОтветКонтекстноеМеню" id="20"/>
-							<ExtendedTooltip name="ОтветРасширеннаяПодсказка" id="21"/>
-						</InputField>
+						<UsualGroup name="ГруппаВопрос" id="52">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вопрос</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа вопрос</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="ГруппаВопросРасширеннаяПодсказка" id="53"/>
+							<ChildItems>
+								<CommandBar name="Группа2" id="56">
+									<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="57"/>
+									<ChildItems>
+										<Button name="ВключитьРедактированиеВопрос" id="58">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ВключитьРедактированиеВопрос</CommandName>
+											<Picture>
+												<xr:Ref>StdPicture.Change</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="ВключитьРедактированиеВопросРасширеннаяПодсказка" id="59"/>
+										</Button>
+										<Button name="ВставитьЗадачуВопрос" id="60">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ВставитьЗадачуВопрос</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>#</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ВставитьЗадачуВопросРасширеннаяПодсказка" id="61"/>
+										</Button>
+										<ButtonGroup name="КоманднаяПанельВопрос" id="48">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Командная панель вопрос</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Командная панель вопрос</v8:content>
+												</v8:item>
+											</ToolTip>
+											<CommandSource>Item.ФорматированныйВопрос</CommandSource>
+											<ExtendedTooltip name="КоманднаяПанельВопросРасширеннаяПодсказка" id="49"/>
+										</ButtonGroup>
+									</ChildItems>
+								</CommandBar>
+								<FormattedDocumentField name="ФорматированныйВопрос" id="42">
+									<DataPath>ФорматированныйВопрос</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вопрос</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<Height>8</Height>
+									<ContextMenu name="ФорматированныйВопросКонтекстноеМеню" id="43"/>
+									<ExtendedTooltip name="ФорматированныйВопросРасширеннаяПодсказка" id="44"/>
+								</FormattedDocumentField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаОтвет" id="54">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ответ</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа ответ</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="ГруппаОтветРасширеннаяПодсказка" id="55"/>
+							<ChildItems>
+								<CommandBar name="Группа3" id="62">
+									<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="63"/>
+									<ChildItems>
+										<Button name="ВключитьРедактированиеОтвет" id="66">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ВключитьРедактированиеОтвет</CommandName>
+											<ExtendedTooltip name="ВключитьРедактированиеОтветРасширеннаяПодсказка" id="67"/>
+										</Button>
+										<Button name="ВставитьЗадачуОтвет" id="64">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ВставитьЗадачуОтвет</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>#</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ВставитьЗадачуОтветРасширеннаяПодсказка" id="65"/>
+										</Button>
+										<ButtonGroup name="КоманднаяПанельОтвет" id="50">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Командная панель вопрос</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Командная панель вопрос</v8:content>
+												</v8:item>
+											</ToolTip>
+											<CommandSource>Item.ФорматированныйОтвет</CommandSource>
+											<ExtendedTooltip name="КоманднаяПанельОтветРасширеннаяПодсказка" id="51"/>
+										</ButtonGroup>
+									</ChildItems>
+								</CommandBar>
+								<FormattedDocumentField name="ФорматированныйОтвет" id="45">
+									<DataPath>ФорматированныйОтвет</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ответ</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<Height>8</Height>
+									<ContextMenu name="ФорматированныйОтветКонтекстноеМеню" id="46"/>
+									<ExtendedTooltip name="ФорматированныйОтветРасширеннаяПодсказка" id="47"/>
+								</FormattedDocumentField>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</Page>
 				<Page name="ГруппаСтраницаДополнительно" id="40">
@@ -189,5 +313,104 @@
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
 		</Attribute>
+		<Attribute name="ФорматированныйВопрос" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форматированный вопрос</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:fd="http://v8.1c.ru/8.2/data/formatted-document">fd:FormattedDocument</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ФорматированныйОтвет" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форматированный ответ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:fd="http://v8.1c.ru/8.2/data/formatted-document">fd:FormattedDocument</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ВключитьРедактированиеВопрос" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить редактирование вопрос</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить редактирование</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВключитьРедактирование</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ВставитьЗадачуВопрос" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить задачу вопрос</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить задачу вопрос</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВставитьЗадачу</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ВставитьЗадачуОтвет" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить задачу вопрос</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вставить задачу вопрос</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВставитьЗадачу</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ВключитьРедактированиеОтвет" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить редактирование вопрос</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить редактирование
+</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВключитьРедактирование</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+	</Commands>
 </Form>
