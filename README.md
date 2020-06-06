@@ -15,6 +15,7 @@
 * [Промежуточные тестовые релизы](https://github.com/BlizD/Tasks/issues/129) 
 
 ## Расширения ## 
+* [Расширение: Смена основного стиля на серый с синим (BAS)](https://github.com/BlizD/Tasks/issues/213) 
 * [Расширение: Рассылка уведомлений по ICQ](https://github.com/BlizD/Tasks/issues/194) - работает начиная с релиза 1.0.4.038 
 * [Все расширения](https://github.com/BlizD/Tasks/wiki/Расширения)
 
