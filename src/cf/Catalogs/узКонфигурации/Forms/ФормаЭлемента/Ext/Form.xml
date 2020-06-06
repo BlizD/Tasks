@@ -3,6 +3,7 @@
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -24,6 +25,24 @@
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
 				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Группа7" id="156">
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа7РасширеннаяПодсказка" id="157"/>
+			<ChildItems>
+				<CheckBoxField name="ФормироватьФайлЛистЗадачВКаталогеЛокальногоРепозитория" id="86">
+					<DataPath>Объект.ФормироватьФайлЛистЗадачВКаталогеЛокальногоРепозитория</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ФормироватьФайлЛистЗадачВКаталогеЛокальногоРепозиторияКонтекстноеМеню" id="87"/>
+					<ExtendedTooltip name="ФормироватьФайлЛистЗадачВКаталогеЛокальногоРепозиторияРасширеннаяПодсказка" id="88"/>
+					<Events>
+						<Event name="OnChange">ФормироватьФайлЛистЗадачВКаталогеЛокальногоРепозиторияПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаВыгрузкиФайлаЛистаЗадач" id="102">
@@ -58,24 +77,6 @@
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="узФормироватьФайлСОтборомПоКонфигурацииКонтекстноеМеню" id="100"/>
 					<ExtendedTooltip name="узФормироватьФайлСОтборомПоКонфигурацииРасширеннаяПодсказка" id="101"/>
-				</CheckBoxField>
-			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="Группа7" id="156">
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="Группа7РасширеннаяПодсказка" id="157"/>
-			<ChildItems>
-				<CheckBoxField name="ФормироватьФайлЛистЗадачВКаталогеЛокальногоРепозитория" id="86">
-					<DataPath>Объект.ФормироватьФайлЛистЗадачВКаталогеЛокальногоРепозитория</DataPath>
-					<TitleLocation>Right</TitleLocation>
-					<ToolTipRepresentation>Button</ToolTipRepresentation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ФормироватьФайлЛистЗадачВКаталогеЛокальногоРепозиторияКонтекстноеМеню" id="87"/>
-					<ExtendedTooltip name="ФормироватьФайлЛистЗадачВКаталогеЛокальногоРепозиторияРасширеннаяПодсказка" id="88"/>
-					<Events>
-						<Event name="OnChange">ФормироватьФайлЛистЗадачВКаталогеЛокальногоРепозиторияПриИзменении</Event>
-					</Events>
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
@@ -436,7 +437,6 @@
 			<Representation>List</Representation>
 			<HeightInTableRows>3</HeightInTableRows>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
-			<VerticalStretch>false</VerticalStretch>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
 			<DataPath>Расширения</DataPath>
@@ -525,7 +525,6 @@
 	Справочник.узКонфигурации КАК узКонфигурации
 ГДЕ
 	узКонфигурации.ЭтоРасширение
-	И узКонфигурации.РасширениеДляКонфигурации = &amp;РасширениеДляКонфигурации
 	И НЕ узКонфигурации.ЭтоГруппа</QueryText>
 				<MainTable>Catalog.узКонфигурации</MainTable>
 				<ListSettings>
