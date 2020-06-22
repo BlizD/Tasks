@@ -4,6 +4,7 @@
 [![Infostart](https://img.shields.io/badge/infostart-downloads%20500-blue.svg)](https://infostart.ru/public/552480/)
 [![1clancer.ru](https://img.shields.io/badge/1clancer.ru-downloads%20750-orange.svg)](http://1clancer.ru/catalog/2764)
 [![Github Releases](https://img.shields.io/github/downloads/BlizD/Tasks/latest/total.svg)]()
+[![Quality Gate Status](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=alert_status)](https://sonar.openbsl.ru/dashboard?id=tasks)
 [![telegram](https://img.shields.io/badge/telegram-channal-green.svg)](https://t.me/mtasks)
 [![telegram](https://img.shields.io/badge/telegram-chat-green.svg)](https://t.me/joinchat/KbD_hhM1tJGb3B3gz6QIvA)
 
@@ -15,6 +16,7 @@
 * [Промежуточные тестовые релизы](https://github.com/BlizD/Tasks/issues/129) 
 
 ## Расширения ## 
+* [Расширение: Смена основного стиля на серый с синим (BAS)](https://github.com/BlizD/Tasks/issues/213) 
 * [Расширение: Рассылка уведомлений по ICQ](https://github.com/BlizD/Tasks/issues/194) - работает начиная с релиза 1.0.4.038 
 * [Все расширения](https://github.com/BlizD/Tasks/wiki/Расширения)
 
@@ -100,10 +102,10 @@
 
 Код необходимо обрамлять в следующем формате: 
 ```
-//+ #1014 Иванов А.Б. 2016-04-06
+// + #1014 Иванов А.Б. 2016-04-06
 //Старый код
 ....НовыйКод....
-//- #1014 Иванов А.Б. 2016-04-06
+// - #1014 Иванов А.Б. 2016-04-06
 ```
    
 
