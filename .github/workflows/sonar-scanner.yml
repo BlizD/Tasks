@@ -29,6 +29,7 @@ jobs:
     - name: Run SonarQube on push
       if: github.event_name == 'push'
       run: sonar-scanner
+        -X      
         -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         -Dsonar.host.url=https://sonar.openbsl.ru
         -Dsonar.branch.name=${GITHUB_REF#refs/heads/}
