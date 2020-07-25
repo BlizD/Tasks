@@ -95,7 +95,7 @@
 		
 		Ресурс 		= "bot" + ТокенБота + "/sendMessage?chat_id=" + Формат(элемПолучатель.ИД, "ЧГ=") + "&text=" + ТекстПисьма+"&parse_mode=Markdown&disable_web_page_preview=true";
 		//Ресурс 		= "bot" + ТокенБота + "/sendMessage?chat_id=" + Формат(элемПолучатель.ИД, "ЧГ=") + "&text=" + ТекстПисьма+"&disable_web_page_preview=true";
-		Соединение  = Новый HTTPСоединение("api.telegram.org", 443,,,,,Новый ЗащищенноеСоединениеOpenSSL());
+		Соединение  = Новый HTTPСоединение("api.telegram.org", 443,,,,30,Новый ЗащищенноеСоединениеOpenSSL());
 		ЗапросHTTP 	= Новый HTTPЗапрос(Ресурс);
 		Ответ 		= Соединение.Получить(ЗапросHTTP);
 		
