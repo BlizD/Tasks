@@ -26,14 +26,9 @@ jobs:
         java-version: 11
     - name: Setup SonarQube scanner
       uses: warchant/setup-sonar-scanner@v1
-      with:
-        version: 4.4.0.2170
     - name: Run SonarQube on push
       if: github.event_name == 'push'
       run: sonar-scanner
-        -X
-        -Dsonar.bsl.languageserver.overrideConfiguration=true
-        -Dsonar.bsl.languageserver.configurationPath=.bsl-language-server.json
         -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         -Dsonar.host.url=https://sonar.openbsl.ru
         -Dsonar.branch.name=${GITHUB_REF#refs/heads/}
