@@ -4,8 +4,6 @@
 [![Infostart](https://img.shields.io/badge/infostart-downloads%20500-blue.svg)](https://infostart.ru/public/552480/)
 [![1clancer.ru](https://img.shields.io/badge/1clancer.ru-downloads%20750-orange.svg)](http://1clancer.ru/catalog/2764)
 [![Github Releases](https://img.shields.io/github/downloads/BlizD/Tasks/latest/total.svg)]()
-[![Quality Gate Status](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=alert_status)](https://sonar.openbsl.ru/dashboard?id=tasks)
-[![Sonar bugs](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=bugs)](https://sonar.openbsl.ru/dashboard?id=tasks)
 [![telegram](https://img.shields.io/badge/telegram-channal-green.svg)](https://t.me/mtasks)
 [![telegram](https://img.shields.io/badge/telegram-chat-green.svg)](https://t.me/joinchat/KbD_hhM1tJGb3B3gz6QIvA)
 
