@@ -2,6 +2,9 @@
 **Выпущена версия 1.0.5.ххх (Обновление от хх.хх.хх)**
 
 
+* #238 Подключение механизма шаблонов к рассылке уведомлений. Спасибо @GenVP
+![ShablonMessage](https://user-images.githubusercontent.com/10989306/90880778-b72b3480-e3b1-11ea-8aa2-f37afa9d9e1e.gif)
+
 * Вставить инфу что теперь проект проверяется Sonar
 * Вставить инфу, что отработанны ошибки найденные по Sonar теперь ошибок равно 0
 ![Sonar0Issues](https://user-images.githubusercontent.com/10989306/87221808-8ea62880-c377-11ea-8238-79b39f3433df.png)
@@ -9,6 +12,8 @@
 [![Quality Gate Status](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=alert_status)](https://sonar.openbsl.ru/dashboard?id=tasks)
 [![Sonar bugs](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=bugs)](https://sonar.openbsl.ru/dashboard?id=tasks)
 
+Wiki:
+* [Как указать свой шаблон уведомления для задач](https://github.com/BlizD/Tasks/wiki/Как-указать-свой-шаблон-уведомления-для-задач)
  
 Что сделать дополнительно: 
 * Обновить в файле настроек сонара новую версию релиза sonar.projectVersion=1.0.5.001
