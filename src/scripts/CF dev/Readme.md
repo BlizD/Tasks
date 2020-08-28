@@ -11,3 +11,10 @@
 5. Переходишь по адресу https://oauth.yandex.ru/authorize?response_type=token&client_id=<ID приложения>, где подставляешь идентификатор своего приложения (не пароль).
 6. У тебя будет запрошен доступ к Я.Диску. Соглашаешься.
 7. Откроется страница с токеном. Сохраняешь его себе и используешь в настройках скрипта.
+
+
+
+Получение токена для Github:
+
+https://github.com/settings/tokens
+Settings / Developer settings / Personal access tokens
