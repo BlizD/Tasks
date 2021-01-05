@@ -3,6 +3,13 @@
 Что сделать дополнительно: 
 * Обновить в файле настроек сонара новую версию релиза sonar.projectVersion=1.0.5.001
 
+**Выпущена версия 1.0.5.010 (Обновление от 05.01.2020)**
+
+* Прочее
+    * Скорректировал отображение цвета задачи на канбан доске, если используются свои цвета. Использовать стиль цвета в некоторых случаях нельзя.
+    * #272 Убрать обязательность указания родителя при создании задачи из Канбан доски. Спасибо @7OH  
+    * #269 Получение представление пользователя телеграмм проблема, когда не задана фамилия. 
+
 **Выпущена версия 1.0.5.007 (Обновление от 29.12.2020)**
 
 [![Quality Gate Status](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=alert_status)](https://sonar.openbsl.ru/dashboard?id=tasks)[![Sonar bugs](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=bugs)](https://sonar.openbsl.ru/dashboard?id=tasks)
