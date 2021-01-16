@@ -21,8 +21,10 @@
 Легкая, удобная и комфортная работа в первую очередь для исполнителя задачи
 
 ## Расширения ## 
-* [Расширение: Смена основного стиля на серый с синим (BAS)](https://github.com/BlizD/Tasks/issues/213) 
-* [Расширение: Рассылка уведомлений по ICQ](https://github.com/BlizD/Tasks/issues/194) - работает начиная с релиза 1.0.4.038 
+* [Расширение: Смена основного стиля на серый с синим (BAS)](https://github.com/BlizD/Tasks/issues/213) Автор @79Vlad
+* [Расширение: Рассылка уведомлений по ICQ](https://github.com/BlizD/Tasks/issues/194) Автор @serg33rus - работает начиная с релиза 1.0.4.038 
+* [Расширение: АТС](https://github.com/BlizD/Tasks/issues/276) Автор @serg33rus
+* [Расширение: База знаний](https://github.com/BlizD/Tasks/issues/275) Автор @serg33rus
 * [Все расширения](https://github.com/BlizD/Tasks/wiki/Расширения)
 
 # Управление задачами: Канбан доска #
