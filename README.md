@@ -25,6 +25,7 @@
 * [Расширение: Рассылка уведомлений по ICQ](https://github.com/BlizD/Tasks/issues/194) Автор @serg33rus - работает начиная с релиза 1.0.4.038 
 * [Расширение: АТС](https://github.com/BlizD/Tasks/issues/276) Автор @serg33rus
 * [Расширение: База знаний](https://github.com/BlizD/Tasks/issues/275) Автор @serg33rus
+* [Расширение: Автоматизация рутины](https://github.com/hawkxtreme/Tasker1C_AutomationRoutine) Автор @hawkxtreme
 * [Все расширения](https://github.com/BlizD/Tasks/wiki/Расширения)
 
 # Управление задачами: Канбан доска #
