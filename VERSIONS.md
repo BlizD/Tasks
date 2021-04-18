@@ -11,7 +11,7 @@
 * Новое [Расширение: АТС](https://github.com/BlizD/Tasks/issues/276) Автор @serg33rus
 * Новое [Расширение: База знаний](https://github.com/BlizD/Tasks/issues/275) Автор @serg33rus
 * Новое [Расширение: Автоматизация рутины](https://github.com/hawkxtreme/Tasker1C_AutomationRoutine) Автор @hawkxtreme
-
+* Новое [Расширение: Авторегистрация ошибок из внешних баз по HTTP сервису](https://github.com/serg33rus/RegErr) Автор @serg33rus
 
 **Выпущена версия 1.0.5.010 (Обновление от 05.01.2021)**
 
