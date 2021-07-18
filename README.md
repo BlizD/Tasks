@@ -56,8 +56,7 @@
 https://www.youtube.com/watch?v=lUHduI60-H4 
 https://infostart.ru/1c/articles/1470366/
 
-## Отзывы пользователей ##
-[Отзывы пользователей](https://github.com/BlizD/Tasks/wiki/Отзывы-пользователей)
+* [Отзывы пользователей](https://github.com/BlizD/Tasks/wiki/Отзывы-пользователей)
 
 
 ## Видео инструкции (очень короткие самое длинное это 8 мин) ##
