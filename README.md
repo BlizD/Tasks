@@ -27,6 +27,7 @@
 * [Расширение: База знаний](https://github.com/BlizD/Tasks/issues/275) Автор @serg33rus
 * [Расширение: Автоматизация рутины](https://github.com/hawkxtreme/Tasker1C_AutomationRoutine) Автор @hawkxtreme
 * [Расширение: Авторегистрация ошибок из внешних баз по HTTP сервису](https://github.com/serg33rus/RegErr) Автор @serg33rus
+* [Расширение: Тайм-трекер](https://github.com/BlizD/Tasks/issues/294) Автор @dyuha07
 * [Все расширения](https://github.com/BlizD/Tasks/wiki/Расширения)
 
 # Управление задачами: Канбан доска #
