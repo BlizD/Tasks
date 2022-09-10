@@ -22,7 +22,7 @@
 
 [О проекте, истории, планах развития](https://github.com/BlizD/Tasks/wiki/AboutProject)
 
-## Спасибо всем разработчикам за вклад в проект: ## 
+## Спасибо всем разработчикам за вклад в проект ## 
 
 [79Vlad](https://github.com/79Vlad)
 [pallid](https://github.com/pallid)
@@ -46,6 +46,7 @@
 [capitoshko](https://github.com/capitoshko)
 [LakhnovAlexander](https://github.com/LakhnovAlexander)
 [RomanUpworksTeam](RomanUpworksTeam)
+[Badya67](https://github.com/Badya67)
 
 ## Расширения ## 
 * [Расширение: Смена основного стиля на серый с синим (BAS)](https://github.com/BlizD/Tasks/issues/213) Автор @79Vlad
