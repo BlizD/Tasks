@@ -22,6 +22,31 @@
 
 [О проекте, истории, планах развития](https://github.com/BlizD/Tasks/wiki/AboutProject)
 
+## Спасибо всем разработчикам за вклад в проект: ## 
+
+[79Vlad](https://github.com/79Vlad)
+[pallid](https://github.com/pallid)
+[BUDIVAL](https://github.com/BUDIVAL)
+[GenVP](https://github.com/GenVP)
+[etnety](https://github.com/etnety)
+[nixel2007](https://github.com/nixel2007)
+[zeegin](https://github.com/zeegin)
+[d-hurricane](https://github.com/d-hurricane)
+[Kim1C](https://github.com/Kim1C)
+[sldubinsky](https://github.com/sldubinsky)
+[xan333](https://github.com/xan333)
+[7OH](https://github.com/7OH)
+[hawkxtreme](https://github.com/hawkxtreme)
+[dyuha07](https://github.com/dyuha07)
+[pihy86](https://github.com/pihy86)
+[serg33rus](https://github.com/serg33rus)
+[milanse](https://github.com/milanse)
+[CptAFK](https://github.com/CptAFK)
+[zarius7](https://github.com/zarius7)
+[capitoshko](https://github.com/capitoshko)
+[LakhnovAlexander](https://github.com/LakhnovAlexander)
+[RomanUpworksTeam](RomanUpworksTeam)
+
 ## Расширения ## 
 * [Расширение: Смена основного стиля на серый с синим (BAS)](https://github.com/BlizD/Tasks/issues/213) Автор @79Vlad
 * [Расширение: Рассылка уведомлений по ICQ](https://github.com/BlizD/Tasks/issues/194) Автор @serg33rus - работает начиная с релиза 1.0.4.038 
