@@ -325,6 +325,22 @@
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ГруппаСвязанныеЗадачиРасширеннаяПодсказка" id="524"/>
 								</UsualGroup>
+								<Button name="КомандаМетки" id="774">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.КомандаМетки</CommandName>
+									<ExtendedTooltip name="КомандаМеткиРасширеннаяПодсказка" id="775"/>
+								</Button>
+								<LabelField name="МеткиФорматированнаяСтрока" id="771">
+									<DataPath>МеткиФорматированнаяСтрока</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="МеткиФорматированнаяСтрокаКонтекстноеМеню" id="772"/>
+									<ExtendedTooltip name="МеткиФорматированнаяСтрокаРасширеннаяПодсказка" id="773"/>
+									<Events>
+										<Event name="OnChange">МеткиФорматированнаяСтрокаПриИзменении</Event>
+										<Event name="URLProcessing">МеткиФорматированнаяСтрокаОбработкаНавигационнойСсылки</Event>
+										<Event name="Click">МеткиФорматированнаяСтрокаНажатие</Event>
+									</Events>
+								</LabelField>
 							</ChildItems>
 						</UsualGroup>
 						<Pages name="ГруппаСтраницыОформлениеСодержания" id="438">
@@ -1851,13 +1867,13 @@
 													<ContextMenu name="ОсновнаяЗадачаКонтекстноеМеню" id="50"/>
 													<ExtendedTooltip name="ОсновнаяЗадачаРасширеннаяПодсказка" id="51"/>
 												</InputField>
-												<InputField name="ОсновнаяЗадачаПроект" id="730">
-													<DataPath>Объект.ОсновнаяЗадача.Проект</DataPath>
-													<ContextMenu name="ОсновнаяЗадачаПроектКонтекстноеМеню" id="731"/>
-													<ExtendedTooltip name="ОсновнаяЗадачаПроектРасширеннаяПодсказка" id="732"/>
-												</InputField>
 											</ChildItems>
 										</UsualGroup>
+										<InputField name="ОсновнаяЗадачаПроект" id="730">
+											<DataPath>Объект.ОсновнаяЗадача.Проект</DataPath>
+											<ContextMenu name="ОсновнаяЗадачаПроектКонтекстноеМеню" id="731"/>
+											<ExtendedTooltip name="ОсновнаяЗадачаПроектРасширеннаяПодсказка" id="732"/>
+										</InputField>
 										<UsualGroup name="Группа8" id="191">
 											<Group>Horizontal</Group>
 											<Behavior>Usual</Behavior>
@@ -2866,6 +2882,83 @@
 						</Pages>
 					</ChildItems>
 				</Page>
+				<Page name="ГруппаСтраницаДопРеквизитыМножественные" id="744">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доп реквизиты (множественные)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа страница доп реквизиты множественные</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаСтраницаДопРеквизитыМножественныеРасширеннаяПодсказка" id="745"/>
+					<ChildItems>
+						<Table name="ДополнительныеРеквизитыМножественные" id="746">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.ДопРеквизитыМножественные</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ДополнительныеРеквизитыМножественныеКонтекстноеМеню" id="747"/>
+							<AutoCommandBar name="ДополнительныеРеквизитыМножественныеКоманднаяПанель" id="748"/>
+							<ExtendedTooltip name="ДополнительныеРеквизитыМножественныеРасширеннаяПодсказка" id="749"/>
+							<SearchStringAddition name="ДополнительныеРеквизитыМножественныеСтрокаПоиска" id="750">
+								<AdditionSource>
+									<Item>ДополнительныеРеквизитыМножественные</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДополнительныеРеквизитыМножественныеСтрокаПоискаКонтекстноеМеню" id="751"/>
+								<ExtendedTooltip name="ДополнительныеРеквизитыМножественныеСтрокаПоискаРасширеннаяПодсказка" id="752"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ДополнительныеРеквизитыМножественныеСостояниеПросмотра" id="753">
+								<AdditionSource>
+									<Item>ДополнительныеРеквизитыМножественные</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДополнительныеРеквизитыМножественныеСостояниеПросмотраКонтекстноеМеню" id="754"/>
+								<ExtendedTooltip name="ДополнительныеРеквизитыМножественныеСостояниеПросмотраРасширеннаяПодсказка" id="755"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ДополнительныеРеквизитыМножественныеУправлениеПоиском" id="756">
+								<AdditionSource>
+									<Item>ДополнительныеРеквизитыМножественные</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ДополнительныеРеквизитыМножественныеУправлениеПоискомКонтекстноеМеню" id="757"/>
+								<ExtendedTooltip name="ДополнительныеРеквизитыМножественныеУправлениеПоискомРасширеннаяПодсказка" id="758"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ДополнительныеРеквизитыМножественныеНомерСтроки" id="759">
+									<DataPath>Объект.ДопРеквизитыМножественные.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДополнительныеРеквизитыМножественныеНомерСтрокиКонтекстноеМеню" id="760"/>
+									<ExtendedTooltip name="ДополнительныеРеквизитыМножественныеНомерСтрокиРасширеннаяПодсказка" id="761"/>
+								</LabelField>
+								<InputField name="ДополнительныеРеквизитыМножественныеСвойство" id="762">
+									<DataPath>Объект.ДопРеквизитыМножественные.Свойство</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДополнительныеРеквизитыМножественныеСвойствоКонтекстноеМеню" id="763"/>
+									<ExtendedTooltip name="ДополнительныеРеквизитыМножественныеСвойствоРасширеннаяПодсказка" id="764"/>
+								</InputField>
+								<InputField name="ДополнительныеРеквизитыМножественныеКлючСтроки" id="765">
+									<DataPath>Объект.ДопРеквизитыМножественные.КлючСтроки</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДополнительныеРеквизитыМножественныеКлючСтрокиКонтекстноеМеню" id="766"/>
+									<ExtendedTooltip name="ДополнительныеРеквизитыМножественныеКлючСтрокиРасширеннаяПодсказка" id="767"/>
+								</InputField>
+								<InputField name="ДополнительныеРеквизитыМножественныеЗначение" id="768">
+									<DataPath>Объект.ДопРеквизитыМножественные.Значение</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДополнительныеРеквизитыМножественныеЗначениеКонтекстноеМеню" id="769"/>
+									<ExtendedTooltip name="ДополнительныеРеквизитыМножественныеЗначениеРасширеннаяПодсказка" id="770"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 			</ChildItems>
 		</Pages>
 		<InputField name="РеквизитДопУпорядочивания" id="34">
@@ -3348,6 +3441,11 @@
 				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="МеткиФорматированнаяСтрока" id="24">
+			<Type>
+				<v8:Type>v8ui:FormattedString</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="КомандаПоказатьСкрытьКомментарии" id="1">
@@ -3782,6 +3880,21 @@
 			<Representation>Picture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаМетки" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Метки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда метки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаМетки</Action>
 		</Command>
 	</Commands>
 	<CommandInterface>
