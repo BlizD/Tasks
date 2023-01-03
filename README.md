@@ -12,7 +12,7 @@
 
 ## Скачать последний релиз ## 
 
-* [Скачать последний релиз 1.0.5.015](https://github.com/BlizD/Tasks/releases/download/1.0.5.015/Tasks_1.0.5.015.zip)
+* [Скачать последний релиз 1.0.5.016](https://github.com/BlizD/Tasks/releases/download/1.0.5.016/Tasks_1.0.5.016.zip)
 * [Все релизы](https://github.com/BlizD/Tasks/releases)
 * [Промежуточные тестовые релизы](https://github.com/BlizD/Tasks/issues/129) 
 
