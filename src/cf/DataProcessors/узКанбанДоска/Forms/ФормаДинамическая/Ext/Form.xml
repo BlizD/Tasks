@@ -92,34 +92,78 @@
 					<VerticalStretch>true</VerticalStretch>
 					<ExtendedTooltip name="ГруппаНастройкиРасширеннаяПодсказка" id="457"/>
 					<ChildItems>
-						<CommandBar name="Группа2" id="513">
+						<CommandBar name="ГруппаВаринаты" id="575">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа варинаты</v8:content>
+								</v8:item>
+							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа2</v8:content>
+									<v8:content>Группа варинаты</v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="514"/>
+							<ExtendedTooltip name="ГруппаВаринатыРасширеннаяПодсказка" id="576"/>
 							<ChildItems>
 								<Button name="КомандаОбновить" id="507">
 									<Type>CommandBarButton</Type>
 									<CommandName>Form.Command.КомандаОбновить</CommandName>
 									<ExtendedTooltip name="КомандаОбновитьРасширеннаяПодсказка" id="508"/>
 								</Button>
-								<Button name="КомандаУстановитьСтандартныеНастройки" id="509">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.КомандаУстановитьСтандартныеНастройки</CommandName>
-									<ExtendedTooltip name="КомандаУстановитьСтандартныеНастройкиРасширеннаяПодсказка" id="510"/>
-								</Button>
-								<ButtonGroup name="Группа3" id="515">
-									<UserVisible>
-										<xr:Common>false</xr:Common>
-										<xr:Value name="Role.ПолныеПрава">true</xr:Value>
-										<xr:Value name="Role.узПолныеПрава">true</xr:Value>
-									</UserVisible>
-									<CommandSource>Form</CommandSource>
-									<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="516"/>
-								</ButtonGroup>
+								<Popup name="ПодменюВарианты" id="569">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сохранение (выбор) варианта отчета</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Выбрать другой вариант канбан доски или сохранить новый</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Picture>
+										<xr:Ref>CommonPicture.ВыбратьВариантОтчета</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<Representation>Picture</Representation>
+									<ExtendedTooltip name="ПодменюВариантыРасширеннаяПодсказка" id="570"/>
+									<ChildItems>
+										<Button name="ЗагрузитьВариантКоманда" id="567">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.КомандаЗагрузитьВариант</CommandName>
+											<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+											<ExtendedTooltip name="ЗагрузитьВариантКомандаРасширеннаяПодсказка" id="568"/>
+										</Button>
+										<Button name="СохранитьВариантКоманда" id="565">
+											<Type>CommandBarButton</Type>
+											<Visible>false</Visible>
+											<CommandName>Form.Command.КомандаСохранитьВариант</CommandName>
+											<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+											<ExtendedTooltip name="СохранитьВариантКомандаРасширеннаяПодсказка" id="566"/>
+										</Button>
+										<Button name="СохранитьВариантКакКоманда" id="571">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.КомандаСохранитьВариантКак</CommandName>
+											<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+											<ExtendedTooltip name="СохранитьВариантКакКомандаРасширеннаяПодсказка" id="572"/>
+										</Button>
+										<Button name="СохранитьТекущийВариантВсемКоманда" id="573">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.КомандаСохранитьТекущийВариантВсем</CommandName>
+											<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+											<ExtendedTooltip name="СохранитьТекущийВариантВсемКомандаРасширеннаяПодсказка" id="574"/>
+										</Button>
+										<Button name="КомандаУстановитьСтандартныеНастройки" id="509">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.КомандаУстановитьСтандартныеНастройки</CommandName>
+											<ExtendedTooltip name="КомандаУстановитьСтандартныеНастройкиРасширеннаяПодсказка" id="510"/>
+										</Button>
+									</ChildItems>
+								</Popup>
 							</ChildItems>
 						</CommandBar>
 						<UsualGroup name="Группа4" id="520">
@@ -623,6 +667,24 @@
 			</Title>
 			<Type/>
 		</Attribute>
+		<Attribute name="ТекущийКлючНастроек" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий ключ настроек</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ТекущийКлючНастроек</Field>
+			</Save>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="КомандаДобавитьВСпринт" id="1">
@@ -846,6 +908,84 @@
 			</ToolTip>
 			<Action>КомандаОтобразитьДополнительныеНастройки</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаСохранитьВариантКак" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить вариант как</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить вариант как</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveValues</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СохранитьВариантКакКомандаПеред</Action>
+		</Command>
+		<Command name="КомандаЗагрузитьВариант" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать вариант</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить вариант</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.RestoreValues</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗагрузитьВариантКомандаПеред</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="КомандаСохранитьВариант" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить вариант</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить вариант</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveValues</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СохранитьВариантКомандаПеред</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="КомандаСохранитьТекущийВариантВсем" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить вариант всем пользователям</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить текущую настройку всем</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveValues</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СохранитьТекущийВариантВсемКоманда</Action>
 		</Command>
 	</Commands>
 </Form>
