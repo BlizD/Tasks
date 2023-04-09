@@ -47,7 +47,7 @@
 [LakhnovAlexander](https://github.com/LakhnovAlexander)
 [RomanUpworksTeam](RomanUpworksTeam)
 [Badya67](https://github.com/Badya67)
-[KnightAlone (Владимир Полянкин)](https://github.com/KnightAlone)
+[KnightAlone](https://infostart.ru/profile/48625/)
 
 ## Расширения ## 
 * [Расширение: Смена основного стиля на серый с синим (BAS)](https://github.com/BlizD/Tasks/issues/213) Автор @79Vlad
