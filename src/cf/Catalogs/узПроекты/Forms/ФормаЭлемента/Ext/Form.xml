@@ -3,6 +3,9 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<Pages name="ГруппаСтраницы" id="44">
 			<Title>
@@ -129,6 +132,87 @@
 						</Table>
 					</ChildItems>
 				</Page>
+				<Page name="ГруппаСтраницаОсновныеЗадачи" id="52">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основные задачи (Эпики)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа страница основные задачи</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаСтраницаОсновныеЗадачиРасширеннаяПодсказка" id="53"/>
+					<ChildItems>
+						<Table name="СписокОсновныхЗадач" id="54">
+							<Representation>Tree</Representation>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<InitialTreeView>ExpandAllLevels</InitialTreeView>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>СписокОсновныхЗадач</DataPath>
+							<RowPictureDataPath>СписокОсновныхЗадач.DefaultPicture</RowPictureDataPath>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>false</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СписокОсновныхЗадачКонтекстноеМеню" id="55"/>
+							<AutoCommandBar name="СписокОсновныхЗадачКоманднаяПанель" id="56">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокОсновныхЗадачРасширеннаяПодсказка" id="57"/>
+							<SearchStringAddition name="СписокОсновныхЗадачСтрокаПоиска" id="58">
+								<AdditionSource>
+									<Item>СписокОсновныхЗадач</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОсновныхЗадачСтрокаПоискаКонтекстноеМеню" id="59"/>
+								<ExtendedTooltip name="СписокОсновныхЗадачСтрокаПоискаРасширеннаяПодсказка" id="60"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокОсновныхЗадачСостояниеПросмотра" id="61">
+								<AdditionSource>
+									<Item>СписокОсновныхЗадач</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОсновныхЗадачСостояниеПросмотраКонтекстноеМеню" id="62"/>
+								<ExtendedTooltip name="СписокОсновныхЗадачСостояниеПросмотраРасширеннаяПодсказка" id="63"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокОсновныхЗадачУправлениеПоиском" id="64">
+								<AdditionSource>
+									<Item>СписокОсновныхЗадач</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОсновныхЗадачУправлениеПоискомКонтекстноеМеню" id="65"/>
+								<ExtendedTooltip name="СписокОсновныхЗадачУправлениеПоискомРасширеннаяПодсказка" id="66"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="СписокОсновныхЗадачОсновнаяЗадача" id="73">
+									<DataPath>СписокОсновныхЗадач.ОсновнаяЗадача</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Основная задача (эпики)</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СписокОсновныхЗадачОсновнаяЗадачаКонтекстноеМеню" id="74"/>
+									<ExtendedTooltip name="СписокОсновныхЗадачОсновнаяЗадачаРасширеннаяПодсказка" id="75"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 				<Page name="ГруппаДополнительно" id="50">
 					<Title>
 						<v8:item>
@@ -175,6 +259,49 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СписокОсновныхЗадач" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список основных задач</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>СписокОсновныхЗадач.ОсновнаяЗадача</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	узЗадачи.Ссылка КАК ОсновнаяЗадача
+ИЗ
+	Справочник.узЗадачи КАК узЗадачи
+ГДЕ
+	узЗадачи.ЭтоОсновнаяЗадача
+	И узЗадачи.Проект = &amp;Проект
+</QueryText>
+				<MainTable>Catalog.узЗадачи</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
 		</Attribute>
 	</Attributes>
 </Form>
