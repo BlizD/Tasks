@@ -52,6 +52,7 @@
 ## Расширения ## 
 * [Расширение: Смена основного стиля на серый с синим (BAS)](https://github.com/BlizD/Tasks/issues/213) Автор @79Vlad
 * [Расширение: Рассылка уведомлений по ICQ](https://github.com/BlizD/Tasks/issues/194) Автор @serg33rus - работает начиная с релиза 1.0.4.038 
+* [Расширение: Рассылка уведомлений в rocket.chat](https://github.com/BlizD/Tasks/issues/317) Автор @serg33rus
 * [Расширение: АТС](https://github.com/BlizD/Tasks/issues/276) Автор @serg33rus
 * [Расширение: База знаний](https://github.com/BlizD/Tasks/issues/275) Автор @serg33rus
 * [Расширение: Автоматизация рутины](https://github.com/hawkxtreme/Tasker1C_AutomationRoutine) Автор @hawkxtreme
