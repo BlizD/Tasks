@@ -48,6 +48,7 @@
 [RomanUpworksTeam](RomanUpworksTeam)
 [Badya67](https://github.com/Badya67)
 [KnightAlone](https://infostart.ru/profile/48625/)
+[DenVortEP](https://github.com/DenVortEP)
 
 ## Расширения ## 
 * [Расширение: Смена основного стиля на серый с синим (BAS)](https://github.com/BlizD/Tasks/issues/213) Автор @79Vlad
@@ -58,6 +59,7 @@
 * [Расширение: Автоматизация рутины](https://github.com/hawkxtreme/Tasker1C_AutomationRoutine) Автор @hawkxtreme
 * [Расширение: Авторегистрация ошибок из внешних баз по HTTP сервису](https://github.com/serg33rus/RegErr) Автор @serg33rus
 * [Расширение: Тайм-трекер](https://github.com/BlizD/Tasks/issues/294) Автор @dyuha07
+* [Расширение: Процедуры и функции (документация)](https://github.com/BlizD/Tasks/issues/324) Автор @DenVortEP
 * [Все расширения](https://github.com/BlizD/Tasks/wiki/Расширения)
 
 # Управление задачами: Канбан доска #
