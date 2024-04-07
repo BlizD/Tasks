@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Подключение бота ВКонтакте</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Отключить" id="99">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.Отключить</CommandName>
+				<ExtendedTooltip name="ОтключитьРасширеннаяПодсказка" id="100"/>
+			</Button>
+			<Button name="Закрыть" id="28">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Активизировать</CommandName>
+				<ExtendedTooltip name="ЗакрытьРасширеннаяПодсказка" id="29"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОписание" id="68">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОписаниеРасширеннаяПодсказка" id="69"/>
+			<ChildItems>
+				<PictureDecoration name="Логотип" id="70">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Логотип</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.BotFatherВконтакте</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ЛоготипКонтекстноеМеню" id="71"/>
+					<ExtendedTooltip name="ЛоготипРасширеннаяПодсказка" id="72"/>
+				</PictureDecoration>
+				<LabelDecoration name="Инструкция" id="42">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для получения сообщений из социальной сети ВКонтакте, необходимо создать сообщество. Затем укажите его ключи:
+1. Перейти в настройки сообщества ВКонтакте.
+2. На вкладке &lt;b&gt;Работа с API&lt;/&gt; создать ключ и ввести его в поле &lt;b&gt;Ключ&lt;/&gt;.
+3. На вкладке &lt;b&gt;Callback API &lt;/&gt;найти строчку похожую на
+{"type":"Confirmation", "group_id": 346875149}
+и ввести цифры group_id в поле &lt;b&gt;Ключ группы&lt;/&gt;.</v8:content>
+						</v8:item>
+					</Title>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<ContextMenu name="ИнструкцияКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="ИнструкцияРасширеннаяПодсказка" id="44"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПараметры" id="97">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПараметрыРасширеннаяПодсказка" id="98"/>
+			<ChildItems>
+				<InputField name="Наименование" id="30">
+					<DataPath>Наименование</DataPath>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование бота в 1С</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="32"/>
+				</InputField>
+				<InputField name="Токен" id="33">
+					<DataPath>Токен</DataPath>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ, созданный на вкладке Работа с API</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ТокенКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="ТокенРасширеннаяПодсказка" id="35"/>
+				</InputField>
+				<InputField name="ИдГруппы" id="36">
+					<DataPath>ИдГруппы</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ группы</v8:content>
+						</v8:item>
+					</Title>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ, отображаемый на вкладке Callback API</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ИдГруппыКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="ИдГруппыРасширеннаяПодсказка" id="38"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="Участники" id="50">
+			<Representation>List</Representation>
+			<TitleLocation>Auto</TitleLocation>
+			<Header>false</Header>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<DataPath>Участники</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кто получает и отправляет сообщения от лица сообщества ВКонтакте</v8:content>
+				</v8:item>
+			</Title>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="УчастникиКонтекстноеМеню" id="52"/>
+			<AutoCommandBar name="УчастникиКоманднаяПанель" id="51">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ПользователиПодобрать" id="66">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Подобрать</CommandName>
+						<ExtendedTooltip name="ПользователиПодобратьРасширеннаяПодсказка" id="67"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="УчастникиРасширеннаяПодсказка" id="53"/>
+			<SearchStringAddition name="УчастникиСтрокаПоиска" id="54">
+				<AdditionSource>
+					<Item>Участники</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="УчастникиСтрокаПоискаКонтекстноеМеню" id="55"/>
+				<ExtendedTooltip name="УчастникиСтрокаПоискаРасширеннаяПодсказка" id="56"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="УчастникиСостояниеПросмотра" id="60">
+				<AdditionSource>
+					<Item>Участники</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="УчастникиСостояниеПросмотраКонтекстноеМеню" id="61"/>
+				<ExtendedTooltip name="УчастникиСостояниеПросмотраРасширеннаяПодсказка" id="62"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="УчастникиУправлениеПоиском" id="57">
+				<AdditionSource>
+					<Item>Участники</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="УчастникиУправлениеПоискомКонтекстноеМеню" id="58"/>
+				<ExtendedTooltip name="УчастникиУправлениеПоискомРасширеннаяПодсказка" id="59"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="ChoiceProcessing">УчастникиОбработкаВыбора</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="УчастникиПользователь" id="63">
+					<DataPath>Участники.Пользователь</DataPath>
+					<ContextMenu name="УчастникиПользовательКонтекстноеМеню" id="64"/>
+					<ExtendedTooltip name="УчастникиПользовательРасширеннаяПодсказка" id="65"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Наименование" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="Токен" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ИдГруппы" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ид группы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="Участники" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Участники</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<Columns>
+				<Column name="Пользователь" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Участники обсуждения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Активизировать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Активизировать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Активизировать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>АктивироватьБота</Action>
+		</Command>
+		<Command name="Подобрать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Подобрать</Action>
+		</Command>
+		<Command name="Отключить" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Отключить</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Идентификатор">
+			<Type/>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

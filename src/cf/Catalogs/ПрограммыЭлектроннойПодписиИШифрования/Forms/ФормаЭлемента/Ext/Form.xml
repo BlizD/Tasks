@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandSet>
+		<ExcludedCommand>Delete</ExcludedCommand>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+	</CommandSet>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаУстановитьПометкуУдаления" id="53">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.УстановитьПометкуУдаления</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаУстановитьПометкуУдаленияРасширеннаяПодсказка" id="54"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="НадписьНастройкаВЦентральномУзле" id="55">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка программы электронной подписи и шифрования выполнена в корневом узле</v8:content>
+				</v8:item>
+			</Title>
+			<BackColor>style:ToolTipBackColor</BackColor>
+			<ContextMenu name="НадписьНастройкаВЦентральномУзлеКонтекстноеМеню" id="56"/>
+			<ExtendedTooltip name="НадписьНастройкаВЦентральномУзлеРасширеннаяПодсказка" id="57"/>
+		</LabelDecoration>
+		<InputField name="Наименование" id="50">
+			<DataPath>Объект.Description</DataPath>
+			<DropListButton>true</DropListButton>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="51"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="52"/>
+			<Events>
+				<Event name="OnChange">НаименованиеПриИзменении</Event>
+				<Event name="ChoiceProcessing">НаименованиеОбработкаВыбора</Event>
+			</Events>
+		</InputField>
+		<InputField name="ИмяПрограммы" id="1">
+			<DataPath>Объект.ИмяПрограммы</DataPath>
+			<Width>50</Width>
+			<ChoiceListButton>true</ChoiceListButton>
+			<BackColor>style:ФонУправляющегоПоля</BackColor>
+			<ContextMenu name="ИмяПрограммыКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ИмяПрограммыРасширеннаяПодсказка" id="3"/>
+			<Events>
+				<Event name="OnChange">ИмяПрограммыПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="ТипПрограммы" id="4">
+			<DataPath>Объект.ТипПрограммы</DataPath>
+			<BackColor>style:ФонУправляющегоПоля</BackColor>
+			<ContextMenu name="ТипПрограммыКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ТипПрограммыРасширеннаяПодсказка" id="6"/>
+			<Events>
+				<Event name="OnChange">ТипПрограммыПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="АлгоритмПодписи" id="7">
+			<DataPath>Объект.АлгоритмПодписи</DataPath>
+			<DropListButton>true</DropListButton>
+			<ContextMenu name="АлгоритмПодписиКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="АлгоритмПодписиРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="АлгоритмХеширования" id="10">
+			<DataPath>Объект.АлгоритмХеширования</DataPath>
+			<DropListButton>true</DropListButton>
+			<ContextMenu name="АлгоритмХешированияКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="АлгоритмХешированияExtendedTooltip" id="12"/>
+		</InputField>
+		<InputField name="АлгоритмШифрования" id="13">
+			<DataPath>Объект.АлгоритмШифрования</DataPath>
+			<DropListButton>true</DropListButton>
+			<ContextMenu name="АлгоритмШифрованияКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="АлгоритмШифрованияExtendedTooltip" id="15"/>
+		</InputField>
+		<InputField name="РежимИспользования" id="78">
+			<DataPath>Объект.РежимИспользования</DataPath>
+			<ContextMenu name="РежимИспользованияКонтекстноеМеню" id="79"/>
+			<ExtendedTooltip name="РежимИспользованияРасширеннаяПодсказка" id="80"/>
+			<Events>
+				<Event name="OnChange">РежимИспользованияПриИзменении</Event>
+				<Event name="ChoiceProcessing">РежимИспользованияОбработкаВыбора</Event>
+			</Events>
+		</InputField>
+		<LabelDecoration name="ДекорацияНадписьАвтоматическиеНастройки" id="83">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Автоматические настройки:</v8:content>
+				</v8:item>
+			</Title>
+			<BackColor>style:ToolTipBackColor</BackColor>
+			<ContextMenu name="ДекорацияНадписьАвтоматическиеНастройкиКонтекстноеМеню" id="84"/>
+			<ExtendedTooltip name="ДекорацияНадписьАвтоматическиеНастройкиРасширеннаяПодсказка" id="85"/>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ПрограммыЭлектроннойПодписиИШифрования</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СпискиАлгоритмовУспешноЗаполнены" id="4">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АлгоритмыПодписиПоставляемые" id="2">
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="АлгоритмыХешированияПоставляемые" id="3">
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="АлгоритмыШифрованияПоставляемые" id="6">
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="УстановитьПометкуУдаления" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометить на удаление / Снять пометку</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.MarkToDelete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьПометкуУдаления</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ИдентификаторПоставляемойНастройки">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Программа">
+			<Type/>
+		</Parameter>
+		<Parameter name="РежимИспользования">
+			<Type>
+				<v8:Type>cfg:EnumRef.РежимыИспользованияПрограммыЭлектроннойПодписи</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

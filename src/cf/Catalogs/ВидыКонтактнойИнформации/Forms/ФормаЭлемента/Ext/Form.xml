@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
@@ -59,7 +61,7 @@
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="87"/>
 					<Events>
-						<Event name="Opening">НаименованиеОткрытие</Event>
+						<Event name="OnChange">НаименованиеПриИзменении</Event>
 					</Events>
 				</InputField>
 				<InputField name="Родитель" id="11">
@@ -101,23 +103,83 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаТипОбщиеДляВсехExtendedTooltip" id="91"/>
 					<ChildItems>
+						<CheckBoxField name="ОтображатьВсегда" id="189">
+							<DataPath>Объект.ОтображатьВсегда</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ОтображатьВсегдаКонтекстноеМеню" id="190"/>
+							<ExtendedTooltip name="ОтображатьВсегдаРасширеннаяПодсказка" id="191"/>
+						</CheckBoxField>
 						<CheckBoxField name="ОбязательноеЗаполнение" id="18">
 							<DataPath>Объект.ОбязательноеЗаполнение</DataPath>
 							<TitleLocation>Right</TitleLocation>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="ОбязательноеЗаполнениеКонтекстноеМеню" id="19"/>
 							<ExtendedTooltip name="ОбязательноеЗаполнениеExtendedTooltip" id="92"/>
-						</CheckBoxField>
-						<CheckBoxField name="РедактированиеТолькоВДиалоге" id="9">
-							<DataPath>Объект.РедактированиеТолькоВДиалоге</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="РедактированиеТолькоВДиалогеКонтекстноеМеню" id="10"/>
-							<ExtendedTooltip name="РедактированиеТолькоВДиалогеExtendedTooltip" id="93"/>
 							<Events>
-								<Event name="OnChange">РедактированиеТолькоВДиалогеПриИзменении</Event>
+								<Event name="OnChange">ОбязательноеЗаполнениеПриИзменении</Event>
 							</Events>
 						</CheckBoxField>
+						<InputField name="ВидРедактирования" id="168">
+							<DataPath>Объект.ВидРедактирования</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Редактировать</v8:content>
+								</v8:item>
+							</Title>
+							<Width>15</Width>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ChooseType>false</ChooseType>
+							<TextEdit>false</TextEdit>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>В диалоге</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Диалог</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>В поле ввода</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ПолеВвода</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>В диалоге и поле ввода</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ПолеВводаИДиалог</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ВидРедактированияКонтекстноеМеню" id="169"/>
+							<ExtendedTooltip name="ВидРедактированияРасширеннаяПодсказка" id="170"/>
+							<Events>
+								<Event name="OnChange">ВидРедактированияПриИзменении</Event>
+							</Events>
+						</InputField>
 						<UsualGroup name="ГруппаХранитьИсториюИзменений" id="157">
 							<Title>
 								<v8:item>
@@ -141,7 +203,7 @@
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Поле контактной информации хранит не только текущее значение, но и его историю изменений на указанную дату. Для просмотра истории необходимо в контекстном меню элемента контактной информации выбрать пункт «История изменений».</v8:content>
+											<v8:content>Поле контактной информации хранит не только текущее значение, но и его историю изменений на указанную дату. Для просмотра истории выберите в контекстном меню пункт "История изменений".</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -261,12 +323,15 @@
 									</Title>
 									<ExtendedTooltip name="ТелефонРасширеннаяПодсказка" id="133"/>
 									<ChildItems>
-										<CheckBoxField name="ТелефонCДобавочнымНомером" id="134">
-											<DataPath>Объект.ТелефонCДобавочнымНомером</DataPath>
+										<CheckBoxField name="ТелефонСДобавочнымНомером" id="134">
+											<DataPath>Объект.ТелефонСДобавочнымНомером</DataPath>
 											<TitleLocation>Right</TitleLocation>
 											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="ТелефонCДобавочнымНомеромКонтекстноеМеню" id="135"/>
-											<ExtendedTooltip name="ТелефонCДобавочнымНомеромРасширеннаяПодсказка" id="136"/>
+											<ContextMenu name="ТелефонСДобавочнымНомеромКонтекстноеМеню" id="135"/>
+											<ExtendedTooltip name="ТелефонСДобавочнымНомеромРасширеннаяПодсказка" id="136"/>
+											<Events>
+												<Event name="OnChange">ТелефонСДобавочнымНомеромПриИзменении</Event>
+											</Events>
 										</CheckBoxField>
 										<CheckBoxField name="ПроверятьКорректностьТелефон" id="137">
 											<DataPath>Объект.ПроверятьКорректность</DataPath>
@@ -281,6 +346,71 @@
 											<ContextMenu name="ПроверятьКорректностьТелефонКонтекстноеМеню" id="138"/>
 											<ExtendedTooltip name="ПроверятьКорректностьТелефонРасширеннаяПодсказка" id="139"/>
 										</CheckBoxField>
+										<CheckBoxField name="МаскаПриВводеНомераТелефона" id="178">
+											<DataPath>Объект.ВводитьНомерПоМаске</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Вводить номер по маске:</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="МаскаПриВводеНомераТелефонаКонтекстноеМеню" id="179"/>
+											<ExtendedTooltip name="МаскаПриВводеНомераТелефонаРасширеннаяПодсказка" id="180"/>
+											<Events>
+												<Event name="OnChange">МаскаПриВводеНомераТелефонаПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<UsualGroup name="МаскаТелефона" id="184">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Маска телефона</v8:content>
+												</v8:item>
+											</Title>
+											<Behavior>Usual</Behavior>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="МаскаТелефонаРасширеннаяПодсказка" id="185"/>
+											<ChildItems>
+												<LabelDecoration name="ДекорацияОтступМаскаТелефона" id="186">
+													<Width>1</Width>
+													<ContextMenu name="ДекорацияОтступМаскаТелефонаКонтекстноеМеню" id="187"/>
+													<ExtendedTooltip name="ДекорацияОтступМаскаТелефонаРасширеннаяПодсказка" id="188"/>
+												</LabelDecoration>
+												<InputField name="ШаблонМаскиНомераТелефона" id="181">
+													<DataPath>Объект.МаскаНомераТелефона</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<ToolTipRepresentation>Button</ToolTipRepresentation>
+													<Width>20</Width>
+													<DropListButton>true</DropListButton>
+													<ChooseType>false</ChooseType>
+													<InputHint>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>+9 (999) 999-99-99</v8:content>
+														</v8:item>
+													</InputHint>
+													<ContextMenu name="ШаблонМаскиНомераТелефонаКонтекстноеМеню" id="182"/>
+													<ExtendedTooltip name="ШаблонМаскиНомераТелефонаРасширеннаяПодсказка" id="183">
+														<Title formatted="true">
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>&lt;font Arial&gt;&lt;fontsize 8&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;В строке маски допустимо использование следующих специальных символов:&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 8&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;! - любой введенный символ преобразуется в верхний регистр;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 8&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;9 - допустимо ввести произвольный символ цифры;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 8&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;# - допустимо ввести произвольный символ цифры или - (знак минус) или + (знак плюс) или пробел;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 8&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;N - допустимо ввести любой алфавитно-цифровой символ (буква или цифра);&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 8&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;U - допустимо ввести любой алфавитно-цифровой символ (буква или цифра) и любой введенный символ преобразуется в верхний регистр;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 8&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;X (латинского алфавита) - допустимо ввести произвольный символ;&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;
+&lt;font Arial&gt;&lt;fontsize 8&gt;&lt;bgcolor #ffffff&gt;&lt;color #333333&gt;@ – допустимо ввести любой алфавитно-цифровой символ (буква или цифра) в верхнем регистре или пробел.&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;</v8:content>
+															</v8:item>
+														</Title>
+													</ExtendedTooltip>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
 									</ChildItems>
 								</Page>
 								<Page name="Skype" id="124">
@@ -384,6 +514,32 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
+		<UsualGroup name="ГруппаИдентификаторДляФормул" id="171">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор для формул</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаИдентификаторДляФормулРасширеннаяПодсказка" id="172"/>
+			<ChildItems>
+				<InputField name="ИдентификаторДляФормул" id="173">
+					<DataPath>Объект.ИдентификаторДляФормул</DataPath>
+					<TitleHeight>2</TitleHeight>
+					<ContextMenu name="ИдентификаторДляФормулКонтекстноеМеню" id="174"/>
+					<ExtendedTooltip name="ИдентификаторДляФормулРасширеннаяПодсказка" id="175"/>
+				</InputField>
+				<Button name="ЗаполнитьИдентификаторДляФормул" id="176">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ЗаполнитьИдентификаторДляФормул</CommandName>
+					<ExtendedTooltip name="ЗаполнитьИдентификаторДляФормулРасширеннаяПодсказка" id="177"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -409,6 +565,11 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ХранитИсториюИзменений" id="4">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ДополнительныеНастройкиАдреса" id="1">
@@ -426,6 +587,26 @@
 			</ToolTip>
 			<Action>ДополнительныеНастройкиАдреса</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьИдентификаторДляФормул" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить идентификатор для формул</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить идентификатор для формул</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ЗаполнитьФорму</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаполнитьИдентификаторДляФормул</Action>
+			<Representation>Picture</Representation>
 		</Command>
 	</Commands>
 </Form>

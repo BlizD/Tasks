@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>None</CommandBarLocation>
@@ -9,6 +9,11 @@
 			<xr:Presentation/>
 			<xr:CheckState>0</xr:CheckState>
 			<xr:Value xsi:type="xs:string">КоманднаяПанельЕще</xr:Value>
+		</xr:Item>
+		<xr:Item>
+			<xr:Presentation/>
+			<xr:CheckState>0</xr:CheckState>
+			<xr:Value xsi:type="xs:string">Язык</xr:Value>
 		</xr:Item>
 	</MobileDeviceCommandBarContent>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
@@ -142,6 +147,15 @@
 									<CommandName>Form.Command.ПереключитьРедактирование</CommandName>
 									<ExtendedTooltip name="КнопкаРедактированиеExtendedTooltip" id="157"/>
 								</Button>
+								<Popup name="Язык" id="284">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Язык</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ЯзыкРасширеннаяПодсказка" id="285"/>
+								</Popup>
 							</ChildItems>
 						</ButtonGroup>
 						<ButtonGroup name="ГруппаСохранитьОтправить" id="108">
@@ -223,6 +237,103 @@
 								</v8:item>
 							</ToolTip>
 							<ExtendedTooltip name="КомандыПоказателейРасширеннаяПодсказка" id="258"/>
+							<ChildItems>
+								<Popup name="КомандыВидовПоказателей" id="259">
+									<EnableContentChange>true</EnableContentChange>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Виды показателей</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.Сумма</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<Representation>Picture</Representation>
+									<ExtendedTooltip name="КомандыВидовПоказателейРасширеннаяПодсказка" id="260"/>
+									<ChildItems>
+										<Button name="РассчитатьСумму" id="261">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.РассчитатьСумму</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сумма</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="РассчитатьСуммуРасширеннаяПодсказка" id="262"/>
+										</Button>
+										<Button name="РассчитатьКоличество" id="263">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.РассчитатьКоличество</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Количество</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="РассчитатьКоличествоРасширеннаяПодсказка" id="264"/>
+										</Button>
+										<Button name="РассчитатьСреднее" id="265">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.РассчитатьСреднее</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Среднее</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="РассчитатьСреднееРасширеннаяПодсказка" id="266"/>
+										</Button>
+										<Button name="РассчитатьМинимум" id="267">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.РассчитатьМинимум</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Минимум</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="РассчитатьМинимумРасширеннаяПодсказка" id="268"/>
+										</Button>
+										<Button name="РассчитатьМаксимум" id="269">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.РассчитатьМаксимум</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Максимум</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="РассчитатьМаксимумРасширеннаяПодсказка" id="270"/>
+										</Button>
+										<ButtonGroup name="ВсеПоказатели" id="271">
+											<EnableContentChange>true</EnableContentChange>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Все показатели</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ВсеПоказателиРасширеннаяПодсказка" id="272"/>
+											<ChildItems>
+												<Button name="РассчитатьВсеПоказатели" id="273">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.РассчитатьВсеПоказатели</CommandName>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Все показатели</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="РассчитатьВсеПоказателиРасширеннаяПодсказка" id="274"/>
+												</Button>
+											</ChildItems>
+										</ButtonGroup>
+									</ChildItems>
+								</Popup>
+							</ChildItems>
 						</CommandBar>
 					</ChildItems>
 				</UsualGroup>
@@ -236,107 +347,6 @@
 					<CommandSource>Form</CommandSource>
 					<ExtendedTooltip name="КоманднаяПанельЕщеРасширеннаяПодсказка" id="193"/>
 					<ChildItems>
-						<Popup name="КомандыВидовПоказателей" id="259">
-							<EnableContentChange>true</EnableContentChange>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Виды показателей</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Расчет выбранного, либо всех доступных показателей</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Picture>
-								<xr:Ref>CommonPicture.Сумма</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
-							</Picture>
-							<Representation>Picture</Representation>
-							<ExtendedTooltip name="КомандыВидовПоказателейРасширеннаяПодсказка" id="260"/>
-							<ChildItems>
-								<Button name="РассчитатьСумму" id="261">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.РассчитатьСумму</CommandName>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Сумма</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="РассчитатьСуммуРасширеннаяПодсказка" id="262"/>
-								</Button>
-								<Button name="РассчитатьКоличество" id="263">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.РассчитатьКоличество</CommandName>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Количество</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="РассчитатьКоличествоРасширеннаяПодсказка" id="264"/>
-								</Button>
-								<Button name="РассчитатьСреднее" id="265">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.РассчитатьСреднее</CommandName>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Среднее</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="РассчитатьСреднееРасширеннаяПодсказка" id="266"/>
-								</Button>
-								<Button name="РассчитатьМинимум" id="267">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.РассчитатьМинимум</CommandName>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Минимум</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="РассчитатьМинимумРасширеннаяПодсказка" id="268"/>
-								</Button>
-								<Button name="РассчитатьМаксимум" id="269">
-									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.РассчитатьМаксимум</CommandName>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Максимум</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="РассчитатьМаксимумРасширеннаяПодсказка" id="270"/>
-								</Button>
-								<ButtonGroup name="ВсеПоказатели" id="271">
-									<EnableContentChange>true</EnableContentChange>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Все показатели</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="ВсеПоказателиРасширеннаяПодсказка" id="272"/>
-									<ChildItems>
-										<Button name="РассчитатьВсеПоказатели" id="273">
-											<Type>CommandBarButton</Type>
-											<CommandName>Form.Command.РассчитатьВсеПоказатели</CommandName>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Все показатели</v8:content>
-												</v8:item>
-											</Title>
-											<ExtendedTooltip name="РассчитатьВсеПоказателиРасширеннаяПодсказка" id="274"/>
-										</Button>
-									</ChildItems>
-								</ButtonGroup>
-							</ChildItems>
-						</Popup>
 						<Button name="КнопкаПечатьВсеДействия" id="120">
 							<Type>CommandBarButton</Type>
 							<SkipOnInput>false</SkipOnInput>
@@ -431,8 +441,8 @@
 						</v8:item>
 					</Title>
 					<Picture>
-						<xr:Ref>CommonPicture.Информация</xr:Ref>
-						<xr:LoadTransparent>false</xr:LoadTransparent>
+						<xr:Ref>StdPicture.Information</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</Picture>
 					<FileDragMode>AsFile</FileDragMode>
 					<ContextMenu name="КартинкаИнформацииКонтекстноеМеню" id="224"/>
@@ -560,32 +570,55 @@
 										<v8:content>Настройка комплекта</v8:content>
 									</v8:item>
 								</Title>
+								<Representation>Compact</Representation>
 								<ExtendedTooltip name="ГруппаНастройкаКомплектаКоманднаяПанельРасширеннаяПодсказка" id="150"/>
 								<ChildItems>
-									<Button name="КнопкаУстановитьФлажкиПодменю" id="122">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.УстановитьФлажки</CommandName>
-										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-										<ExtendedTooltip name="КнопкаУстановитьФлажкиПодменюExtendedTooltip" id="151"/>
-									</Button>
-									<Button name="КнопкаСнятьФлажкиПодменю" id="123">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.СнятьФлажки</CommandName>
-										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-										<ExtendedTooltip name="КнопкаСнятьФлажкиПодменюExtendedTooltip" id="152"/>
-									</Button>
-									<Button name="КнопкаПереместитьВверхПодменю" id="124">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Item.НастройкиПечатныхФорм.StandardCommand.MoveUp</CommandName>
-										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-										<ExtendedTooltip name="КнопкаПереместитьВверхПодменюExtendedTooltip" id="153"/>
-									</Button>
-									<Button name="КнопкаПереместитьВнизПодменю" id="125">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Item.НастройкиПечатныхФорм.StandardCommand.MoveDown</CommandName>
-										<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-										<ExtendedTooltip name="КнопкаПереместитьВнизПодменюExtendedTooltip" id="154"/>
-									</Button>
+									<ButtonGroup name="УправлениеФлажками" id="286">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Управление флажками</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="УправлениеФлажкамиРасширеннаяПодсказка" id="287"/>
+										<ChildItems>
+											<Button name="КнопкаУстановитьФлажкиПодменю" id="122">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.УстановитьФлажки</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="КнопкаУстановитьФлажкиПодменюExtendedTooltip" id="151"/>
+											</Button>
+											<Button name="КнопкаСнятьФлажкиПодменю" id="123">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.СнятьФлажки</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="КнопкаСнятьФлажкиПодменюExtendedTooltip" id="152"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="УправлениеСтроками" id="288">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Управление строками</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="УправлениеСтрокамиРасширеннаяПодсказка" id="289"/>
+										<ChildItems>
+											<Button name="КнопкаПереместитьВверхПодменю" id="124">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.НастройкиПечатныхФорм.StandardCommand.MoveUp</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="КнопкаПереместитьВверхПодменюExtendedTooltip" id="153"/>
+											</Button>
+											<Button name="КнопкаПереместитьВнизПодменю" id="125">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.НастройкиПечатныхФорм.StandardCommand.MoveDown</CommandName>
+												<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+												<ExtendedTooltip name="КнопкаПереместитьВнизПодменюExtendedTooltip" id="154"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
 									<Button name="КнопкаСброситьНастройкиПодменю" id="126">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.СброситьНастройки</CommandName>
@@ -594,6 +627,20 @@
 									</Button>
 								</ChildItems>
 							</ButtonGroup>
+							<SearchStringAddition name="СтрокаПоиск" id="290">
+								<AdditionSource>
+									<Item>НастройкиПечатныхФорм</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Поиск</v8:content>
+									</v8:item>
+								</Title>
+								<ContextMenu name="СтрокаПоискКонтекстноеМеню" id="291"/>
+								<ExtendedTooltip name="СтрокаПоискРасширеннаяПодсказка" id="292"/>
+							</SearchStringAddition>
 						</ChildItems>
 					</AutoCommandBar>
 					<ExtendedTooltip name="НастройкиПечатныхФормExtendedTooltip" id="174"/>
@@ -693,7 +740,8 @@
 									<ContextMenu name="ТекущаяПечатнаяФормаКонтекстноеМеню" id="212"/>
 									<ExtendedTooltip name="ТекущаяПечатнаяФормаРасширеннаяПодсказка" id="213"/>
 									<Events>
-										<Event name="OnActivate">ТекущаяПечатнаяФормаПриАктивизацииОбласти</Event>
+										<Event name="OnActivate">ТекущаяПечатнаяФормаПриАктивизации</Event>
+										<Event name="Selection">ТекущаяПечатнаяФормаВыбор</Event>
 									</Events>
 								</SpreadSheetDocumentField>
 							</ChildItems>
@@ -859,6 +907,7 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="КлючНастроек" id="17">
 			<Type>
@@ -912,6 +961,12 @@
 					</Type>
 				</Column>
 				<Column name="Печатать" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Печатать</v8:content>
+						</v8:item>
+					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
@@ -992,6 +1047,38 @@
 				<Column name="ПодписьИПечать" id="12">
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДоступенВыводНаДругихЯзыках" id="13">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ТекущийЯзык" id="14">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДоступныеЯзыки" id="15">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТекстОшибкиФормирования" id="32">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
 					</Type>
 				</Column>
 			</Columns>
@@ -1190,7 +1277,59 @@
 				<v8:Type>v8:UUID</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="АдресХранилищаРисунков" id="28">
+		<Attribute name="АдресХранилищаРисунков" id="7">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОсновнойПоказатель" id="8">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ОсновнойПоказатель</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="РазвернутьОбластьПоказателей" id="9">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>РазвернутьОбластьПоказателей</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ТекущийЯзык" id="10">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="РасширениеДляРаботыСФайламиПодключено" id="11">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяВременногоКаталога" id="28">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИменаМакетов" id="30">
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -1353,7 +1492,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сохранить на диске или в качестве присоединенного файла к объекту</v8:content>
+					<v8:content>Сохранить на компьютере или в качестве присоединенного файла к объекту</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1526,7 +1665,7 @@
 			</ToolTip>
 			<Picture>
 				<xr:Ref>CommonPicture.СтрелкаВнизЗеленая</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>СвернутьПоказатели</Action>
 			<Representation>Picture</Representation>
@@ -1566,6 +1705,12 @@
 			<Type/>
 		</Parameter>
 		<Parameter name="ОбъектыПечати">
+			<Type/>
+		</Parameter>
+		<Parameter name="ПараметрыВывода">
+			<Type/>
+		</Parameter>
+		<Parameter name="Сообщения">
 			<Type/>
 		</Parameter>
 	</Parameters>

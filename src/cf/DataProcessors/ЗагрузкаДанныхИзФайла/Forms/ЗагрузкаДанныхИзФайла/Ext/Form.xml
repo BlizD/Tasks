@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -89,7 +89,7 @@
 										<ExcludedCommand>Add</ExcludedCommand>
 										<ExcludedCommand>Change</ExcludedCommand>
 										<ExcludedCommand>CheckAll</ExcludedCommand>
-										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>Choose</ExcludedCommand>
 										<ExcludedCommand>CopyToClipboard</ExcludedCommand>
 										<ExcludedCommand>Delete</ExcludedCommand>
 										<ExcludedCommand>EndEdit</ExcludedCommand>
@@ -102,7 +102,24 @@
 									</CommandSet>
 									<ContextMenu name="ВидЗагрузкиДанныхКонтекстноеМеню" id="18"/>
 									<AutoCommandBar name="ВидЗагрузкиДанныхКоманднаяПанель" id="19">
+										<HorizontalAlign>Auto</HorizontalAlign>
 										<Autofill>false</Autofill>
+										<ChildItems>
+											<SearchStringAddition name="СтрокаПоиска" id="687">
+												<AdditionSource>
+													<Item>ВидЗагрузкиДанных</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Поиск</v8:content>
+													</v8:item>
+												</Title>
+												<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="688"/>
+												<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="689"/>
+											</SearchStringAddition>
+										</ChildItems>
 									</AutoCommandBar>
 									<ExtendedTooltip name="ВидЗагрузкиДанныхРасширеннаяПодсказка" id="20"/>
 									<SearchStringAddition name="ВидЗагрузкиДанныхСтрокаПоиска" id="661">
@@ -136,6 +153,12 @@
 									<ChildItems>
 										<InputField name="ВидЗагрузкиДанныхЗначение" id="29">
 											<DataPath>СписокВариантовЗагрузки.Value</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Значение</v8:content>
+												</v8:item>
+											</Title>
 											<EditMode>EnterOnInput</EditMode>
 											<VerticalStretch>true</VerticalStretch>
 											<ContextMenu name="ВидЗагрузкиДанныхЗначениеКонтекстноеМеню" id="30"/>
@@ -294,7 +317,8 @@
 											<ExtendedTooltip name="ШаблонСДаннымиРасширеннаяПодсказка" id="49"/>
 											<Events>
 												<Event name="OnChange">ШаблонСДаннымиПриИзменении</Event>
-												<Event name="OnActivate">ШаблонСДаннымиПриАктивизацииОбласти</Event>
+												<Event name="OnActivate">ШаблонСДаннымиПриАктивизации</Event>
+												<Event name="Selection">ШаблонСДаннымиВыбор</Event>
 											</Events>
 										</SpreadSheetDocumentField>
 										<Button name="ИзменитьБланкЗаполнениеТаблицы" id="657">
@@ -804,6 +828,7 @@
 									<v8:content>Итого не сопоставленных</v8:content>
 								</v8:item>
 							</Title>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Behavior>Usual</Behavior>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -849,6 +874,11 @@
 									<ContextMenu name="ОбновлятьСуществующиеКонтекстноеМеню" id="429"/>
 									<ExtendedTooltip name="ОбновлятьСуществующиеРасширеннаяПодсказка" id="430"/>
 								</RadioButtonField>
+								<LabelDecoration name="ОтступСопоставление" id="684">
+									<Width>2</Width>
+									<ContextMenu name="ОтступСопоставлениеКонтекстноеМеню" id="685"/>
+									<ExtendedTooltip name="ОтступСопоставлениеРасширеннаяПодсказка" id="686"/>
+								</LabelDecoration>
 								<RadioButtonField name="СоздаватьЕслиНеСопоставлено" id="423">
 									<DataPath>СоздаватьЕслиНеСопоставлено</DataPath>
 									<Title>
@@ -857,6 +887,7 @@
 											<v8:content>Несопоставленные (%1)</v8:content>
 										</v8:item>
 									</Title>
+									<Shortcut>F5</Shortcut>
 									<RadioButtonType>Auto</RadioButtonType>
 									<ChoiceList>
 										<xr:Item>
@@ -958,7 +989,6 @@
 															<v8:content>ЧН=0</v8:content>
 														</v8:item>
 													</Format>
-													<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 													<ContextMenu name="ИтогоОтчетСозданоКонтекстноеМеню" id="476"/>
 													<ExtendedTooltip name="ИтогоОтчетСозданоРасширеннаяПодсказка" id="477"/>
 												</LabelField>
@@ -970,7 +1000,6 @@
 															<v8:content>ЧН=0</v8:content>
 														</v8:item>
 													</Format>
-													<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 													<ContextMenu name="ИтогоОтчетПропущеноКонтекстноеМеню" id="482"/>
 													<ExtendedTooltip name="ИтогоОтчетПропущеноРасширеннаяПодсказка" id="483"/>
 												</LabelField>
@@ -997,7 +1026,6 @@
 															<v8:content>ЧН=0</v8:content>
 														</v8:item>
 													</Format>
-													<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 													<ContextMenu name="ИтогоОтчетОбновленоКонтекстноеМеню" id="479"/>
 													<ExtendedTooltip name="ИтогоОтчетОбновленоРасширеннаяПодсказка" id="480"/>
 												</LabelField>
@@ -1009,7 +1037,6 @@
 															<v8:content>ЧН=0</v8:content>
 														</v8:item>
 													</Format>
-													<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 													<ContextMenu name="ИтогоОтчетНекорректныхКонтекстноеМеню" id="485"/>
 													<ExtendedTooltip name="ИтогоОтчетНекорректныхРасширеннаяПодсказка" id="486"/>
 												</LabelField>
@@ -1189,7 +1216,7 @@
 							<ContextMenu name="ТаблицаОтчетКонтекстноеМеню" id="158"/>
 							<ExtendedTooltip name="ТаблицаОтчетРасширеннаяПодсказка" id="159"/>
 							<Events>
-								<Event name="OnActivate">ТаблицаОтчетПриАктивизацииОбласти</Event>
+								<Event name="OnActivate">ТаблицаОтчетПриАктивизации</Event>
 							</Events>
 						</SpreadSheetDocumentField>
 					</ChildItems>
@@ -1364,6 +1391,12 @@
 				<mxl:columns>
 					<mxl:size>0</mxl:size>
 				</mxl:columns>
+				<mxl:rowsItem>
+					<mxl:index>0</mxl:index>
+					<mxl:row>
+						<mxl:empty>true</mxl:empty>
+					</mxl:row>
+				</mxl:rowsItem>
 				<mxl:vgRows>0</mxl:vgRows>
 			</Settings>
 		</Attribute>
@@ -1419,6 +1452,12 @@
 				<mxl:columns>
 					<mxl:size>0</mxl:size>
 				</mxl:columns>
+				<mxl:rowsItem>
+					<mxl:index>0</mxl:index>
+					<mxl:row>
+						<mxl:empty>true</mxl:empty>
+					</mxl:row>
+				</mxl:rowsItem>
 				<mxl:vgRows>0</mxl:vgRows>
 			</Settings>
 		</Attribute>
@@ -1565,6 +1604,15 @@
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
 							<v8:Length>150</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Использование" id="32">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>30</v8:Length>
 							<v8:AllowedLength>Variable</v8:AllowedLength>
 						</v8:StringQualifiers>
 					</Type>

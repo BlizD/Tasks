@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -160,19 +160,24 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Список элемент</v8:content>
+											<v8:content>Элемент</v8:content>
 										</v8:item>
 									</Title>
 									<Group>InCell</Group>
 									<ExtendedTooltip name="СписокЭлементРасширеннаяПодсказка" id="196"/>
 									<ChildItems>
-										<PictureField name="СписокСтандартнаяКартинка" id="192">
+										<InputField name="СписокСтандартнаяКартинка" id="192">
 											<DataPath>Список.DefaultPicture</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Картинка</v8:content>
+												</v8:item>
+											</Title>
 											<TitleLocation>None</TitleLocation>
-											<FileDragMode>AsFile</FileDragMode>
 											<ContextMenu name="СписокСтандартнаяКартинкаКонтекстноеМеню" id="193"/>
 											<ExtendedTooltip name="СписокСтандартнаяКартинкаРасширеннаяПодсказка" id="194"/>
-										</PictureField>
+										</InputField>
 										<LabelField name="СписокСсылка" id="189">
 											<DataPath>Список.Ссылка</DataPath>
 											<Title>
@@ -201,6 +206,21 @@
 								</LabelField>
 							</ChildItems>
 						</Table>
+						<LabelDecoration name="ПодсказкаОтбораСписка" id="244">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подсказка отбора списка</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПодсказкаОтбораСпискаКонтекстноеМеню" id="245"/>
+							<ExtendedTooltip name="ПодсказкаОтбораСпискаРасширеннаяПодсказка" id="246"/>
+							<Events>
+								<Event name="URLProcessing">ПодсказкаВыбораЦелевогоЭлементаОбработкаНавигационнойСсылки</Event>
+							</Events>
+						</LabelDecoration>
 						<LabelDecoration name="ПодсказкаВыбораЦелевогоЭлемента" id="227">
 							<AutoMaxWidth>false</AutoMaxWidth>
 							<TextColor>style:ПоясняющийТекст</TextColor>
@@ -334,6 +354,20 @@
 										</Button>
 									</ChildItems>
 								</ButtonGroup>
+								<SearchStringAddition name="СтрокаПоиска" id="241">
+									<AdditionSource>
+										<Item>НеудачныеЗамены</Item>
+										<Type>SearchStringRepresentation</Type>
+									</AdditionSource>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Поиск</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="242"/>
+									<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="243"/>
+								</SearchStringAddition>
 							</ChildItems>
 						</CommandBar>
 						<Table name="НеудачныеЗамены" id="112">
@@ -400,15 +434,15 @@
 									<Group>Horizontal</Group>
 									<ExtendedTooltip name="НеудачныеЗаменыДанныеКодРасширеннаяПодсказка" id="151"/>
 									<ChildItems>
-										<ColumnGroup name="НеудачныеЗаменыГруппа1" id="178">
+										<ColumnGroup name="НеудачныеЗаменыГруппа" id="178">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Неудачные замены группа 1</v8:content>
+													<v8:content>Неудачные замены группа</v8:content>
 												</v8:item>
 											</Title>
 											<Group>InCell</Group>
-											<ExtendedTooltip name="НеудачныеЗаменыГруппа1РасширеннаяПодсказка" id="179"/>
+											<ExtendedTooltip name="НеудачныеЗаменыГруппаРасширеннаяПодсказка" id="179"/>
 											<ChildItems>
 												<PictureField name="НеудачныеЗаменыПиктограмма" id="175">
 													<DataPath>НеудачныеЗамены.Пиктограмма</DataPath>
@@ -721,13 +755,110 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	NULL КАК Ссылка,
 	NULL КАК Владелец,
 	NULL КАК Код,
-	ЛОЖЬ КАК ПометкаУдаления,
 	ЛОЖЬ КАК ЭтоГруппа
-
-</QueryText>
+ИЗ
+	Справочник.Пользователи КАК ПользователиПереопределяемый</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Код</dcssch:dataPath>
+					<dcssch:field>Код</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЭтоГруппа</dcssch:dataPath>
+					<dcssch:field>ЭтоГруппа</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это группа</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Владелец</dcssch:dataPath>
+					<dcssch:field>Владелец</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Владелец</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Наименование</dcssch:dataPath>
+					<dcssch:field>Наименование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Недействителен</dcssch:dataPath>
+					<dcssch:field>Недействителен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Подразделение</dcssch:dataPath>
+					<dcssch:field>Подразделение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ФизическоеЛицо</dcssch:dataPath>
+					<dcssch:field>ФизическоеЛицо</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Служебный</dcssch:dataPath>
+					<dcssch:field>Служебный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Подготовлен</dcssch:dataPath>
+					<dcssch:field>Подготовлен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИдентификаторПользователяИБ</dcssch:dataPath>
+					<dcssch:field>ИдентификаторПользователяИБ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИдентификаторПользователяСервиса</dcssch:dataPath>
+					<dcssch:field>ИдентификаторПользователяСервиса</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УдалитьСвойстваПользователяИБ</dcssch:dataPath>
+					<dcssch:field>УдалитьСвойстваПользователяИБ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Фотография</dcssch:dataPath>
+					<dcssch:field>Фотография</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДополнительныеРеквизиты</dcssch:dataPath>
+					<dcssch:field>ДополнительныеРеквизиты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КонтактнаяИнформация</dcssch:dataPath>
+					<dcssch:field>КонтактнаяИнформация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Предопределенный</dcssch:dataPath>
+					<dcssch:field>Предопределенный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяПредопределенныхДанных</dcssch:dataPath>
+					<dcssch:field>ИмяПредопределенныхДанных</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<MainTable>Catalog.Пользователи</MainTable>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -759,15 +890,6 @@
 			</Columns>
 		</Attribute>
 		<Attribute name="СобытиеОповещенияОЗамене" id="10">
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="ТекстОшибкиПараметров" id="12">
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -924,6 +1046,11 @@
 					<v8:Length>0</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ОткрытаПоСценарию">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Parameter>
 	</Parameters>

@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><style>TABLE {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 98%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; cellSpacing: 4; cellPadding: 0
+}
+TD {
+	VERTICAL-ALIGN: top
+}
+</style><meta content="text/html;charset=utf-8" http-equiv="content-type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 9.00.8112.16563"></meta></head><body>
+<p>В данной панели осуществляется настройка синхронизации данных для информационной базы.</p>
+<table><tbody><tr><td width="30%">
+<li><strong>Каталог временных файлов Windows</strong></li></td>
+<td>Путь к единому каталогу временных файлов всех серверов кластера, который будет использоваться для серверов, работающих под управлением ОС Windows.</td></tr><tr><td>
+<li><strong>Каталог временных файлов Linux</strong></li></td>
+<td>Путь к единому каталогу временных файлов всех серверов кластера, который будет использоваться для серверов, работающих под управлением ОС Linux.</td></tr><tr><td colspan="2">
+<p>Каталоги временных файлов можно <strong>не заполнять</strong>, когда в кластере 1С:Предприятия работает только <strong>один сервер</strong> или программа работает в <strong>файловом режиме</strong>.<br>Если все сервера кластера работают под управлением операционных систем одного семейства (Windows/Linux), то второе поле заполнять не обязательно.</p>
+<p>Каталог должен быть <strong>доступен на чтение и запись</strong> для всех серверов кластера. В том числе - для всех пользователей операционных систем, от имени которых запускаются сервера 1С:Предприятия. Так же UNC путь к нему должен быть одинаковым для всех серверов одного семейства - для этого каталог необходимо подключать к серверам под одним именем.</p>
+<p>В поле <strong>Каталог временных файлов Linux</strong> можно указать только локальный путь, например /home/path.</p>
+<p>Чтобы использовать UNC путь, нужно сделать на него ссылку. Для этого под правами администратора (root) сделайте следующее:</p>
+<p><strong>mkdir folder<br></strong>--- вместо folder напишите имя каталога. например в каталоге /home делаем mkdir shared - создаст каталог shared с полным путем /home/shared.</p>
+<p><strong>mount -t cifs //server/share folder -o //domain/user, password=pwd</strong><br>- где //server/share - UNC путь к другому компьютеру , folder - путь каталога на Linux компьютере, например \home\shared, //domain/user - имя домена/пользователя, если нужно, pwd - пароль пользователя (если нужно).</p>
+<p>Если имя и пароль не нужны, команда выглядит так:<br><strong>mount -t cifs //server/share folder</strong></p>
+<p>После этого в пути к тому указываем folder, например /home/shared</p>
+<p>Подробнее об администрировании сервера 1С:Предприятия см. документацию к платформе 1С:Предприятие</p></td></tr></tbody></table><p> </p></body></html>

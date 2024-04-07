@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<MobileDeviceCommandBarContent>
 		<xr:Item>
 			<xr:Presentation/>
@@ -117,6 +117,28 @@
 					<CommandName>Form.StandardCommand.Help</CommandName>
 					<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="49"/>
 				</Button>
+				<SearchStringAddition name="СписокПоиск" id="64">
+					<AdditionSource>
+						<Item>Список</Item>
+						<Type>SearchStringRepresentation</Type>
+					</AdditionSource>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список поиск</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СписокПоискКонтекстноеМеню" id="65"/>
+					<ExtendedTooltip name="СписокПоискРасширеннаяПодсказка" id="66"/>
+				</SearchStringAddition>
+				<SearchControlAddition name="СписокПоискУправление" id="67">
+					<AdditionSource>
+						<Item>Список</Item>
+						<Type>SearchControl</Type>
+					</AdditionSource>
+					<ContextMenu name="СписокПоискУправлениеКонтекстноеМеню" id="68"/>
+					<ExtendedTooltip name="СписокПоискУправлениеРасширеннаяПодсказка" id="69"/>
+				</SearchControlAddition>
 			</ChildItems>
 		</CommandBar>
 		<Table name="Список" id="3">
@@ -128,7 +150,6 @@
 			<EnableStartDrag>true</EnableStartDrag>
 			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
-			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -183,26 +204,57 @@
 				<Event name="OnGetDataAtServer">СписокПриПолученииДанныхНаСервере</Event>
 			</Events>
 			<ChildItems>
-				<PictureField name="ЕстьФайлы" id="59">
-					<DataPath>Список.ЕстьФайлы</DataPath>
-					<TitleLocation>None</TitleLocation>
-					<HeaderPicture>
-						<xr:Ref>CommonPicture.Скрепка</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</HeaderPicture>
-					<ValuesPicture>
-						<xr:Ref>CommonPicture.КоллекцияСкрепка</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</ValuesPicture>
-					<ContextMenu name="ЕстьФайлыКонтекстноеМеню" id="60"/>
-					<ExtendedTooltip name="ЕстьФайлыРасширеннаяПодсказка" id="61"/>
-				</PictureField>
-				<LabelField name="Наименование" id="16">
-					<DataPath>Список.Description</DataPath>
-					<DefaultItem>true</DefaultItem>
-					<ContextMenu name="НаименованиеКонтекстноеМеню" id="17"/>
-					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="18"/>
-				</LabelField>
+				<ColumnGroup name="ГруппаНаименованиеИФайлы" id="62">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование и файлы</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="ГруппаНаименованиеИФайлыРасширеннаяПодсказка" id="63"/>
+					<ChildItems>
+						<PictureField name="ЕстьФайлы" id="59">
+							<DataPath>Список.ЕстьФайлы</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<HeaderPicture>
+								<xr:Ref>CommonPicture.Скрепка</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</HeaderPicture>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.КоллекцияСкрепка</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</ValuesPicture>
+							<ContextMenu name="ЕстьФайлыКонтекстноеМеню" id="60"/>
+							<ExtendedTooltip name="ЕстьФайлыРасширеннаяПодсказка" id="61"/>
+						</PictureField>
+						<ColumnGroup name="ГруппаНаименование" id="73">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Наименование</v8:content>
+								</v8:item>
+							</Title>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="ГруппаНаименованиеРасширеннаяПодсказка" id="74"/>
+							<ChildItems>
+								<PictureField name="СтандартнаяКартинка" id="70">
+									<DataPath>Список.DefaultPicture</DataPath>
+									<ShowInHeader>false</ShowInHeader>
+									<ShowInFooter>false</ShowInFooter>
+									<ContextMenu name="СтандартнаяКартинкаКонтекстноеМеню" id="71"/>
+									<ExtendedTooltip name="СтандартнаяКартинкаРасширеннаяПодсказка" id="72"/>
+								</PictureField>
+								<LabelField name="Наименование" id="16">
+									<DataPath>Список.Description</DataPath>
+									<DefaultItem>true</DefaultItem>
+									<ContextMenu name="НаименованиеКонтекстноеМеню" id="17"/>
+									<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="18"/>
+								</LabelField>
+							</ChildItems>
+						</ColumnGroup>
+					</ChildItems>
+				</ColumnGroup>
 				<LabelField name="ШаблонДля" id="30">
 					<DataPath>Список.ШаблонДля</DataPath>
 					<Title>
@@ -265,9 +317,9 @@
 		ИНАЧЕ &amp;ЭлектроннаяПочта
 	КОНЕЦ КАК ШаблонДля,
 	ВЫБОР
-		КОГДА СправочникШаблоныСообщений.Назначение = ""
+		КОГДА СправочникШаблоныСообщений.ПолноеИмяТипаПараметраВводаНаОсновании = ""
 			ТОГДА &amp;Общий
-		ИНАЧЕ СправочникШаблоныСообщений.Назначение
+		ИНАЧЕ СправочникШаблоныСообщений.ПолноеИмяТипаПараметраВводаНаОсновании
 	КОНЕЦ КАК Назначение,
 	СправочникШаблоныСообщений.ВладелецШаблона Как ВладелецШаблона,
 	0 ЕстьФайлы

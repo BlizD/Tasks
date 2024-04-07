@@ -1,0 +1,37 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/1cFresh/ApplicationExtensions/Management/1.0.1.2">
+	<import namespace="http://www.1c.ru/SaaS/Messages"/>
+	<import namespace="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.1"/>
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<valueType name="DisableReason" base="xs:string">
+		<enumeration xsi:type="xs:string">LockByOwner</enumeration>
+		<enumeration xsi:type="xs:string">LockByProvider</enumeration>
+	</valueType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="InstallExtension" base="d2p1:AuthenticatedZoneBody">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Extension" type="d3p1:UUID"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Installation" type="d3p1:UUID"/>
+		<property name="Representation" type="xs:string"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.1" name="CommandSettings" type="d3p1:ExtensionCommandSettingsContainer" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.1" name="Assignments" type="d3p1:ExtensionAssignmentBase" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.1" name="ReportVariants" type="d3p1:ExtensionReportVariant" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="InitiatorServiceID" type="d3p1:UUID"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="DeleteExtension" base="d2p1:AuthenticatedZoneBody">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Extension" type="d3p1:UUID"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Installation" type="d3p1:UUID"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="DisableExtension" base="d2p1:Body">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Extension" type="d3p1:UUID"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Management/1.0.1.2" name="Reason" type="d3p1:DisableReason"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="EnableExtension" base="d2p1:Body">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Extension" type="d3p1:UUID"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="DropExtension" base="d2p1:Body">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Extension" type="d3p1:UUID"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="SetExtensionSecurityProfile" base="d2p1:AuthenticatedZoneBody">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Extension" type="d3p1:UUID"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Installation" type="d3p1:UUID"/>
+		<property name="SecurityProfile" type="xs:string"/>
+	</objectType>
+</package>

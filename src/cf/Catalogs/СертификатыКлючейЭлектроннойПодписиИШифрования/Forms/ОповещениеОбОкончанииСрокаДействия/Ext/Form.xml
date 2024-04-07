@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Необходима замена сертификата</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Закрыть" id="9">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<DefaultButton>true</DefaultButton>
+				<DefaultItem>true</DefaultItem>
+				<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="ЗакрытьExtendedTooltip" id="22"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<LabelField name="Сертификат" id="1">
+			<DataPath>Сертификат</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<TitleLocation>None</TitleLocation>
+			<Width>50</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Hiperlink>true</Hiperlink>
+			<ContextMenu name="СертификатКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="СертификатExtendedTooltip" id="16"/>
+		</LabelField>
+		<LabelDecoration name="ДекорацияСертификат" id="33">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Title formatted="true">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заканчивается срок действия сертификата</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДекорацияСертификатКонтекстноеМеню" id="34"/>
+			<ExtendedTooltip name="ДекорацияСертификатРасширеннаяПодсказка" id="35"/>
+		</LabelDecoration>
+		<LabelDecoration name="ДекорацияПричина" id="36">
+			<Visible>false</Visible>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Title formatted="true">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Причина</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДекорацияПричинаКонтекстноеМеню" id="37"/>
+			<ExtendedTooltip name="ДекорацияПричинаРасширеннаяПодсказка" id="38"/>
+			<Events>
+				<Event name="URLProcessing">ДекорацияРешениеОбработкаНавигационнойСсылки</Event>
+			</Events>
+		</LabelDecoration>
+		<LabelDecoration name="ДекорацияРешение" id="39">
+			<Visible>false</Visible>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Title formatted="true">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Решение</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДекорацияРешениеКонтекстноеМеню" id="40"/>
+			<ExtendedTooltip name="ДекорацияРешениеРасширеннаяПодсказка" id="41"/>
+			<Events>
+				<Event name="URLProcessing">ДекорацияРешениеОбработкаНавигационнойСсылки</Event>
+			</Events>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаОкончаниеСрокаДействия" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Окончание срока действия</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОкончаниеСрокаДействияРасширеннаяПодсказка" id="32"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияПеревыпущен" id="28">
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;link СертификатПеревыпущен&gt;Перевыпущен&lt;/&gt;</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalAlign>Auto</HorizontalAlign>
+					<ContextMenu name="ДекорацияПеревыпущенКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="ДекорацияПеревыпущенРасширеннаяПодсказка" id="30"/>
+					<Events>
+						<Event name="URLProcessing">ДекорацияПеревыпущенОбработкаНавигационнойСсылки</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<CheckBoxField name="БольшеНеНапоминать" id="7">
+			<DataPath>БольшеНеНапоминать</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="БольшеНеНапоминатьКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="БольшеНеНапоминатьExtendedTooltip" id="19"/>
+			<Events>
+				<Event name="OnChange">БольшеНеНапоминатьПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Сертификат" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.СертификатыКлючейЭлектроннойПодписиИШифрования</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="БольшеНеНапоминать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Больше не напоминать</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОписаниеСертификата" id="3">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВыпущенныеСертификаты" id="4">
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+	</Attributes>
+	<Parameters>
+		<Parameter name="Сертификат">
+			<Type>
+				<v8:Type>cfg:CatalogRef.СертификатыКлючейЭлектроннойПодписиИШифрования</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ДополнительныеДанныеПроверки">
+			<Type/>
+		</Parameter>
+	</Parameters>
+</Form>

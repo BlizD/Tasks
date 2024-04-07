@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<ChildItems>
+			<Button name="ФормаОК" id="33">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Сохранить</CommandName>
+				<ExtendedTooltip name="ФормаОКExtendedTooltip" id="64"/>
+			</Button>
+			<Button name="ФормаОтмена" id="61">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="ФормаОтменаExtendedTooltip" id="65"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПредставлениеДанных" id="86">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление данных</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПредставлениеДанныхРасширеннаяПодсказка" id="87"/>
+			<ChildItems>
+				<LabelField name="ПредставлениеДанных" id="74">
+					<DataPath>ПредставлениеДанных</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные</v8:content>
+						</v8:item>
+					</Title>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="ПредставлениеДанныхКонтекстноеМеню" id="75"/>
+					<ExtendedTooltip name="ПредставлениеДанныхРасширеннаяПодсказка" id="76"/>
+					<Events>
+						<Event name="Click">ПредставлениеДанныхНажатие</Event>
+					</Events>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСохраняемыеПодписи" id="72">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выберите подписи для сохранения:</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="ГруппаСохраняемыеПодписиРасширеннаяПодсказка" id="73"/>
+			<ChildItems>
+				<Table name="ТаблицаПодписей" id="34">
+					<Representation>List</Representation>
+					<CommandBarLocation>None</CommandBarLocation>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>ТаблицаПодписей</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица подписей</v8:content>
+						</v8:item>
+					</Title>
+					<CommandSet>
+						<ExcludedCommand>Add</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>Delete</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>MoveDown</ExcludedCommand>
+						<ExcludedCommand>MoveUp</ExcludedCommand>
+					</CommandSet>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ТаблицаПодписейКонтекстноеМеню" id="35"/>
+					<AutoCommandBar name="ТаблицаПодписейКоманднаяПанель" id="36"/>
+					<ExtendedTooltip name="ТаблицаПодписейExtendedTooltip" id="66"/>
+					<SearchStringAddition name="ТаблицаПодписейСтрокаПоиска" id="77">
+						<AdditionSource>
+							<Item>ТаблицаПодписей</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ТаблицаПодписейСтрокаПоискаКонтекстноеМеню" id="78"/>
+						<ExtendedTooltip name="ТаблицаПодписейСтрокаПоискаРасширеннаяПодсказка" id="79"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ТаблицаПодписейСостояниеПросмотра" id="80">
+						<AdditionSource>
+							<Item>ТаблицаПодписей</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ТаблицаПодписейСостояниеПросмотраКонтекстноеМеню" id="81"/>
+						<ExtendedTooltip name="ТаблицаПодписейСостояниеПросмотраРасширеннаяПодсказка" id="82"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ТаблицаПодписейУправлениеПоиском" id="83">
+						<AdditionSource>
+							<Item>ТаблицаПодписей</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ТаблицаПодписейУправлениеПоискомКонтекстноеМеню" id="84"/>
+						<ExtendedTooltip name="ТаблицаПодписейУправлениеПоискомРасширеннаяПодсказка" id="85"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<CheckBoxField name="ТаблицаПодписейПометка" id="59">
+							<DataPath>ТаблицаПодписей.Пометка</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ТаблицаПодписейПометкаКонтекстноеМеню" id="60"/>
+							<ExtendedTooltip name="ТаблицаПодписейПометкаExtendedTooltip" id="67"/>
+						</CheckBoxField>
+						<InputField name="ТаблицаПодписейАвторПодписи" id="37">
+							<DataPath>ТаблицаПодписей.КомуВыданСертификат</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Автор подписи</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>25</Width>
+							<TextEdit>false</TextEdit>
+							<ContextMenu name="ТаблицаПодписейАвторПодписиКонтекстноеМеню" id="38"/>
+							<ExtendedTooltip name="ТаблицаПодписейАвторПодписиExtendedTooltip" id="68"/>
+						</InputField>
+						<InputField name="ТаблицаПодписейДатаПодписи" id="39">
+							<DataPath>ТаблицаПодписей.ДатаПодписи</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<TextEdit>false</TextEdit>
+							<ContextMenu name="ТаблицаПодписейДатаПодписиКонтекстноеМеню" id="40"/>
+							<ExtendedTooltip name="ТаблицаПодписейДатаПодписиExtendedTooltip" id="69"/>
+						</InputField>
+						<InputField name="ТаблицаПодписейКомментарий" id="41">
+							<DataPath>ТаблицаПодписей.Комментарий</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+							<TextEdit>false</TextEdit>
+							<ContextMenu name="ТаблицаПодписейКомментарийКонтекстноеМеню" id="42"/>
+							<ExtendedTooltip name="ТаблицаПодписейКомментарийExtendedTooltip" id="70"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<CheckBoxField name="СохранятьСертификатВместеСПодписью" id="88">
+			<DataPath>СохранятьСертификатВместеСПодписью</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранять сертификат</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="СохранятьСертификатВместеСПодписьюКонтекстноеМеню" id="89"/>
+			<ExtendedTooltip name="СохранятьСертификатВместеСПодписьюРасширеннаяПодсказка" id="90"/>
+		</CheckBoxField>
+		<CheckBoxField name="БольшеНеСпрашивать" id="62">
+			<DataPath>БольшеНеСпрашивать</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Больше не спрашивать (сохранять все)</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Right</TitleLocation>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить режим сохранения всех подписей, который в дальнейшем можно изменить
+в настройках электронной подписи и шифрования на странице Дополнительно.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="БольшеНеСпрашиватьКонтекстноеМеню" id="63"/>
+			<ExtendedTooltip name="БольшеНеСпрашиватьExtendedTooltip" id="71"/>
+		</CheckBoxField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ТаблицаПодписей" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица подписей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="КомуВыданСертификат" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кому выдан сертификат</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаПодписи" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата подписи</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Комментарий" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Пометка" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="АдресПодписи" id="5">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИмяФайлаПодписи" id="4">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПодписьВерна" id="6">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="АдресСертификата" id="7">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="РасширениеСертификата" id="8">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>3</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="БольшеНеСпрашивать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Больше не спрашивать</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СохранятьВсеПодписи" id="4">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПредставлениеДанных" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление данных</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СохранятьСертификатВместеСПодписью" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранять сертификат вместе с подписью</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СохранятьСертификатВместеСПодписьюИсходноеЗначение" id="6">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Сохранить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать подпись</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьПодпись</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ПоказатьКомментарий">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ПредставлениеДанных">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ЗаголовокДанных">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Объект">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="СохранятьВсеПодписи">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ПредставлениеДанныхОткрывается">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 		<ChildItems>
@@ -56,6 +56,28 @@
 				<CommandName>Form.StandardCommand.Help</CommandName>
 				<ExtendedTooltip name="ФормаСправкаExtendedTooltip" id="30"/>
 			</Button>
+			<SearchStringAddition name="СписокПоиск" id="58">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Список поиск</v8:content>
+					</v8:item>
+				</Title>
+				<ContextMenu name="СписокПоискКонтекстноеМеню" id="59"/>
+				<ExtendedTooltip name="СписокПоискРасширеннаяПодсказка" id="60"/>
+			</SearchStringAddition>
+			<SearchControlAddition name="СписокПоискУправление" id="61">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокПоискУправлениеКонтекстноеМеню" id="62"/>
+				<ExtendedTooltip name="СписокПоискУправлениеРасширеннаяПодсказка" id="63"/>
+			</SearchControlAddition>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -207,24 +229,17 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	Значения.Ссылка,
-	Значения.ВерсияДанных,
-	Значения.ПометкаУдаления,
-	Значения.Предопределенный,
-	Значения.Владелец,
-	Значения.Родитель,
-	Значения.ЭтоГруппа,
-	ВЫБОР
-		КОГДА &amp;ЭтоОсновнойЯзык
-		ТОГДА Значения.Наименование
-		ИНАЧЕ ВЫРАЗИТЬ(ЕСТЬNULL(ЗначенияПредставления.Наименование, Значения.Наименование) КАК СТРОКА(150))
-	КОНЕЦ КАК Наименование,
-	Значения.Вес
+	ЗначенияПереопределяемый.Ссылка,
+	ЗначенияПереопределяемый.ВерсияДанных,
+	ЗначенияПереопределяемый.ПометкаУдаления,
+	ЗначенияПереопределяемый.Предопределенный,
+	ЗначенияПереопределяемый.Владелец,
+	ЗначенияПереопределяемый.Родитель,
+	ЗначенияПереопределяемый.ЭтоГруппа,
+	ЗначенияПереопределяемый.Наименование КАК Наименование,
+	ЗначенияПереопределяемый.Вес
 ИЗ
-	Справочник.ЗначенияСвойствОбъектов КАК Значения
-	ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ЗначенияСвойствОбъектов.Представления КАК ЗначенияПредставления
-		ПО (ЗначенияПредставления.Ссылка = Значения.Ссылка)
-		И ЗначенияПредставления.КодЯзыка = &amp;КодЯзыка</QueryText>
+	Справочник.ЗначенияСвойствОбъектов КАК ЗначенияПереопределяемый</QueryText>
 				<MainTable>Catalog.ЗначенияСвойствОбъектов</MainTable>
 				<ListSettings>
 					<dcsset:filter>

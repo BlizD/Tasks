@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -8,12 +8,11 @@
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
-	<CommandBarLocation>None</CommandBarLocation>
 	<MobileDeviceCommandBarContent>
 		<xr:Item>
 			<xr:Presentation/>
 			<xr:CheckState>0</xr:CheckState>
-			<xr:Value xsi:type="xs:string">ГруппаКоманднаяПанель</xr:Value>
+			<xr:Value xsi:type="xs:string"/>
 		</xr:Item>
 	</MobileDeviceCommandBarContent>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -21,104 +20,65 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ГруппаКоманднаяПанель" id="66">
+		<UsualGroup name="ГруппаКоманднаяПанельСПоиском" id="98">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
-			<GroupHorizontalAlign>Right</GroupHorizontalAlign>
-			<Group>Horizontal</Group>
-			<Behavior>Usual</Behavior>
+			<Shortcut>Ctrl+F</Shortcut>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="67"/>
+			<ExtendedTooltip name="ГруппаКоманднаяПанельСПоискомРасширеннаяПодсказка" id="99"/>
 			<ChildItems>
-				<CommandBar name="ГруппаВыбрать" id="68">
+				<Button name="Выбрать" id="70">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Item.ВариантыАдреса.StandardCommand.Choose</CommandName>
+					<ExtendedTooltip name="ВыбратьРасширеннаяПодсказка" id="71"/>
+				</Button>
+				<SearchStringAddition name="ДополнениеПоиск" id="92">
+					<AdditionSource>
+						<Item>ВариантыАдреса</Item>
+						<Type>SearchStringRepresentation</Type>
+					</AdditionSource>
+					<ContextMenu name="ДополнениеПоискКонтекстноеМеню" id="93"/>
+					<ExtendedTooltip name="ДополнениеПоискРасширеннаяПодсказка" id="94"/>
+				</SearchStringAddition>
+				<InputField name="ПоискВВебСервисе" id="95">
+					<DataPath>ПоискВВебСервисе</DataPath>
+					<Visible>false</Visible>
+					<TitleLocation>None</TitleLocation>
+					<Shortcut>Ctrl+F</Shortcut>
+					<ClearButton>true</ClearButton>
+					<EditTextUpdate>DontUse</EditTextUpdate>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поиск (Ctrl+F)</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ПоискВВебСервисеКонтекстноеМеню" id="96"/>
+					<ExtendedTooltip name="ПоискВВебСервисеРасширеннаяПодсказка" id="97"/>
+					<Events>
+						<Event name="AutoComplete">ПоискВВебСервисеАвтоПодбор</Event>
+						<Event name="Clearing">ПоискВВебСервисеОчистка</Event>
+					</Events>
+				</InputField>
+				<CommandBar name="ГруппаЕще" id="100">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Выбрать</v8:content>
+							<v8:content>Еще</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="ГруппаВыбратьРасширеннаяПодсказка" id="69"/>
-					<ChildItems>
-						<Button name="Выбрать" id="70">
-							<Type>CommandBarButton</Type>
-							<DefaultButton>true</DefaultButton>
-							<CommandName>Form.Item.ВариантыАдреса.StandardCommand.Choose</CommandName>
-							<ExtendedTooltip name="ВыбратьРасширеннаяПодсказка" id="71"/>
-						</Button>
-					</ChildItems>
-				</CommandBar>
-				<UsualGroup name="ГруппаНайти" id="72">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Найти</v8:content>
-						</v8:item>
-					</Title>
-					<Group>Horizontal</Group>
-					<Behavior>Usual</Behavior>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаНайтиРасширеннаяПодсказка" id="73"/>
-					<ChildItems>
-						<InputField name="Найти" id="63">
-							<DataPath>Найти</DataPath>
-							<ClearButton>true</ClearButton>
-							<ChooseType>false</ChooseType>
-							<ContextMenu name="НайтиКонтекстноеМеню" id="64"/>
-							<ExtendedTooltip name="НайтиРасширеннаяПодсказка" id="65"/>
-							<Events>
-								<Event name="AutoComplete">НайтиАвтоПодбор</Event>
-								<Event name="Clearing">НайтиОчистка</Event>
-							</Events>
-						</InputField>
-					</ChildItems>
-				</UsualGroup>
-				<CommandBar name="ВариантыАдресаКонтекстноеМенюГруппаНайти" id="49">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Варианты адреса контекстное меню группа найти</v8:content>
-						</v8:item>
-					</Title>
-					<Width>7</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<HorizontalLocation>Right</HorizontalLocation>
-					<CommandSource>Item.ВариантыАдреса</CommandSource>
-					<ExtendedTooltip name="ВариантыАдресаКонтекстноеМенюГруппаНайтиРасширеннаяПодсказка" id="50"/>
-					<ChildItems>
-						<Button name="ВариантыАдресаОбновить" id="81">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Command.Обновить</CommandName>
-							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-							<ExtendedTooltip name="ВариантыАдресаОбновитьРасширеннаяПодсказка" id="82"/>
-						</Button>
-						<Button name="ВариантыАдресаКонтекстноеМенюНайти" id="41">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Item.ВариантыАдреса.StandardCommand.Find</CommandName>
-							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-							<ExtendedTooltip name="ВариантыАдресаКонтекстноеМенюНайтиРасширеннаяПодсказка" id="42"/>
-						</Button>
-						<Button name="ВариантыАдресаКонтекстноеМенюОтменитьПоиск" id="43">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Item.ВариантыАдреса.StandardCommand.CancelSearch</CommandName>
-							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-							<ExtendedTooltip name="ВариантыАдресаКонтекстноеМенюОтменитьПоискРасширеннаяПодсказка" id="44"/>
-						</Button>
-						<Button name="ВариантыАдресаСправка" id="79">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.StandardCommand.Help</CommandName>
-							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-							<ExtendedTooltip name="ВариантыАдресаСправкаРасширеннаяПодсказка" id="80"/>
-						</Button>
-					</ChildItems>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="ГруппаЕщеРасширеннаяПодсказка" id="101"/>
 				</CommandBar>
 			</ChildItems>
 		</UsualGroup>
@@ -200,6 +160,35 @@
 				</InputField>
 			</ChildItems>
 		</Table>
+		<UsualGroup name="НавигацияВебСервис" id="83">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Навигация веб сервис</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="НавигацияВебСервисРасширеннаяПодсказка" id="84"/>
+			<ChildItems>
+				<Button name="Предыдущие" id="85">
+					<Type>UsualButton</Type>
+					<Width>3</Width>
+					<CommandName>Form.Command.Предыдущие</CommandName>
+					<ExtendedTooltip name="ПредыдущиеРасширеннаяПодсказка" id="86"/>
+				</Button>
+				<Button name="Следующие" id="87">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.Следующие</CommandName>
+					<ExtendedTooltip name="СледующиеРасширеннаяПодсказка" id="88"/>
+				</Button>
+				<LabelDecoration name="Информация" id="89">
+					<ContextMenu name="ИнформацияКонтекстноеМеню" id="90"/>
+					<ExtendedTooltip name="ИнформацияРасширеннаяПодсказка" id="91"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -262,6 +251,25 @@
 						</v8:StringQualifiers>
 					</Type>
 				</Column>
+				<Column name="ТипОбъекта" id="12">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>20</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Уровень" id="13">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="ТипАдреса" id="5">
@@ -303,10 +311,39 @@
 			</Type>
 		</Attribute>
 		<Attribute name="Найти" id="8">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Позиция" id="9">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользуетсяВебСервис" id="10">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗакрытьФорму" id="11">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоискВВебСервисе" id="14">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Найти</v8:content>
+					<v8:content>Поиск в веб сервисе</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -338,6 +375,46 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Предыдущие" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предыдущие</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предыдущие</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveLeft</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Предыдущие</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="Следующие" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Следующие</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Следующие</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveRight</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Следующие</Action>
+			<Representation>TextPicture</Representation>
 		</Command>
 	</Commands>
 	<Parameters>

@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ПолучитьОписание" id="51">
+				<Type>CommandBarHyperlink</Type>
+				<CommandName>Form.Command.ПолучитьОписание</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Заполнить возможные значения по информации с сервера</v8:content>
+					</v8:item>
+				</Title>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ПолучитьОписаниеРасширеннаяПодсказка" id="52"/>
+			</Button>
+			<Button name="ЗаполнитьИзФайла" id="114">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ЗаполнитьИзФайла</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ЗаполнитьИзФайлаРасширеннаяПодсказка" id="115"/>
+			</Button>
+			<Button name="ФормаРасширенныеНастройки" id="160">
+				<Type>CommandBarHyperlink</Type>
+				<CommandName>Form.Command.РасширенныеНастройки</CommandName>
+				<ExtendedTooltip name="ФормаРасширенныеНастройкиРасширеннаяПодсказка" id="161"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основное</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаАдресСервера" id="41">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адрес сервера</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаАдресСервераРасширеннаяПодсказка" id="42"/>
+					<ChildItems>
+						<InputField name="АдресСервера" id="11">
+							<DataPath>Объект.АдресСервера</DataPath>
+							<Width>40</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChooseType>false</ChooseType>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес сервера, например https://dss.cryptopro.ru</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="АдресСервераКонтекстноеМеню" id="12"/>
+							<ExtendedTooltip name="АдресСервераРасширеннаяПодсказка" id="13"/>
+							<Events>
+								<Event name="OnChange">АдресСервераПриИзменении</Event>
+								<Event name="AutoComplete">АдресСервераАвтоПодбор</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="ГруппаДлительнаяОперация" id="132">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Длительная операция</v8:content>
+								</v8:item>
+							</Title>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДлительнаяОперацияРасширеннаяПодсказка" id="133"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияПояснение" id="137">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>запрос информации с сервера</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДекорацияПояснениеКонтекстноеМеню" id="138"/>
+									<ExtendedTooltip name="ДекорацияПояснениеРасширеннаяПодсказка" id="139"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЦИ" id="126">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сервис центра идентификации</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаЦИРасширеннаяПодсказка" id="127"/>
+					<ChildItems>
+						<InputField name="СервисИдентификации" id="30">
+							<DataPath>Объект.СервисИдентификации</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<Width>40</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Полный или относительный адрес, например "STS"</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="СервисИдентификацииКонтекстноеМеню" id="31"/>
+							<ExtendedTooltip name="СервисИдентификацииРасширеннаяПодсказка" id="32"/>
+							<Events>
+								<Event name="AutoComplete">СервисИдентификацииАвтоПодбор</Event>
+								<Event name="ChoiceProcessing">СервисИдентификацииОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="ИдентификаторЦИ" id="14">
+							<DataPath>Объект.ИдентификаторЦИ</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Идентификатор клиента</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<ContextMenu name="ИдентификаторЦИКонтекстноеМеню" id="15"/>
+							<ExtendedTooltip name="ИдентификаторЦИРасширеннаяПодсказка" id="16"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСЭП" id="128">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сервис электронной подписи</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаСЭПРасширеннаяПодсказка" id="129"/>
+					<ChildItems>
+						<InputField name="СервисПодписи" id="33">
+							<DataPath>Объект.СервисПодписи</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<Width>40</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Полный или относительный адрес, например "SignServer"</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="СервисПодписиКонтекстноеМеню" id="34"/>
+							<ExtendedTooltip name="СервисПодписиРасширеннаяПодсказка" id="35"/>
+							<Events>
+								<Event name="OnChange">СервисПодписиПриИзменении</Event>
+								<Event name="AutoComplete">СервисПодписиАвтоПодбор</Event>
+								<Event name="ChoiceProcessing">СервисПодписиОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="ИдентификаторСЭП" id="27">
+							<DataPath>Объект.ИдентификаторСЭП</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Идентификатор сервиса</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Идентификатор, например: "urn:cryptopro:dss:signserver:signserver"</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="ИдентификаторСЭПКонтекстноеМеню" id="28"/>
+							<ExtendedTooltip name="ИдентификаторСЭПРасширеннаяПодсказка" id="29"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПроверки" id="130">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сервис проверки подписи и сертификатов</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаПроверкиРасширеннаяПодсказка" id="131"/>
+					<ChildItems>
+						<InputField name="СервисПроверки" id="36">
+							<DataPath>Объект.СервисПроверки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<Width>40</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Относительный или полный адрес.</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="СервисПроверкиКонтекстноеМеню" id="37"/>
+							<ExtendedTooltip name="СервисПроверкиРасширеннаяПодсказка" id="38">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Адрес службы проверки подписи и сертификатов "КриптоПро SVS 2.0". 
+Данная служба может быть развернута на этом же сервере или может быть сторонним сервером.
+Если служба развернута вместе сервером DSS, обычно назначено имя "Verify"
+</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="AutoComplete">СервисПроверкиАвтоПодбор</Event>
+								<Event name="ChoiceProcessing">СервисПроверкиОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОбработкиДокументов" id="150">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сервис обработки документов</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаОбработкиДокументовРасширеннаяПодсказка" id="151"/>
+					<ChildItems>
+						<InputField name="СервисОбработкиДокументов" id="152">
+							<DataPath>Объект.СервисОбработкиДокументов</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес сервиса обработки документов, например "DocumentStore"</v8:content>
+								</v8:item>
+							</ToolTip>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Полный или относительный адрес, например "DocumentStore"</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="СервисОбработкиДокументовКонтекстноеМеню" id="153"/>
+							<ExtendedTooltip name="СервисОбработкиДокументовРасширеннаяПодсказка" id="154"/>
+							<Events>
+								<Event name="AutoComplete">СервисОбработкиДокументовАвтоПодбор</Event>
+								<Event name="ChoiceProcessing">СервисОбработкиДокументовОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаАудита" id="155">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сервис аудита</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаАудитаРасширеннаяПодсказка" id="156"/>
+					<ChildItems>
+						<InputField name="СервисАудита" id="157">
+							<DataPath>Объект.СервисАудита</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес</v8:content>
+								</v8:item>
+							</Title>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Полный или относительный адрес, например "AnalyticsService"</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="СервисАудитаКонтекстноеМеню" id="158"/>
+							<ExtendedTooltip name="СервисАудитаРасширеннаяПодсказка" id="159"/>
+							<Events>
+								<Event name="AutoComplete">СервисАудитаАвтоПодбор</Event>
+								<Event name="ChoiceProcessing">СервисАудитаОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЛичныйКабинет" id="143">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Личный кабинет</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаЛичныйКабинетРасширеннаяПодсказка" id="144"/>
+					<ChildItems>
+						<InputField name="АдресЛичногоКабинета" id="145">
+							<DataPath>Объект.АдресЛичногоКабинета</DataPath>
+							<ContextMenu name="АдресЛичногоКабинетаКонтекстноеМеню" id="146"/>
+							<ExtendedTooltip name="АдресЛичногоКабинетаРасширеннаяПодсказка" id="147">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Адрес личного кабинета пользователя сервера DSS</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="AutoComplete">АдресЛичногоКабинетаАвтоПодбор</Event>
+								<Event name="ChoiceProcessing">АдресЛичногоКабинетаОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<LabelDecoration name="ДекорацияПустая" id="140">
+					<ContextMenu name="ДекорацияПустаяКонтекстноеМеню" id="141"/>
+					<ExtendedTooltip name="ДекорацияПустаяРасширеннаяПодсказка" id="142"/>
+				</LabelDecoration>
+				<InputField name="Комментарий" id="53">
+					<DataPath>Объект.Комментарий</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Height>1</Height>
+					<VerticalStretch>false</VerticalStretch>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="54"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="55"/>
+					<Events>
+						<Event name="StartChoice">КомментарийНачалоВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ОбъектОбработки" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.УправлениеПодключениемDSS</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Объект" id="2">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ЭкземплярыСервераDSS</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Изменен" id="4">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкиПользователя" id="5">
+			<Type/>
+		</Attribute>
+		<Attribute name="ПрежнийСервер" id="3">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтказОтПроверки" id="6">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Администратор" id="7">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдВерсии" id="8">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПолучитьОписание" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получить описание</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получить описание</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПолучитьОписание</Action>
+		</Command>
+		<Command name="ЗаполнитьИзФайла" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить данные из файла</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить из файла</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьИзФайла</Action>
+		</Command>
+		<Command name="РасширенныеНастройки" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расширенные настройки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расширенные настройки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>РасширенныеНастройки</Action>
+		</Command>
+	</Commands>
+</Form>

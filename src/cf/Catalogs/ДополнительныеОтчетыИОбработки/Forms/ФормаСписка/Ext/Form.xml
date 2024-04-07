@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<CommandBarLocation>None</CommandBarLocation>
 	<CommandSet>
@@ -96,7 +96,7 @@
 				<PictureDecoration name="КартинкаПояснения" id="132">
 					<Picture>
 						<xr:Ref>CommonPicture.Информация32</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</Picture>
 					<FileDragMode>AsFile</FileDragMode>
 					<ContextMenu name="КартинкаПоясненияКонтекстноеМеню" id="133"/>
@@ -147,7 +147,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>ru</v8:lang>
-										<v8:content>Добавить из файла на диске...</v8:content>
+										<v8:content>Добавить из файла на компьютере...</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -193,12 +193,6 @@
 							<Type>CommandBarButton</Type>
 							<CommandName>Form.Item.Список.StandardCommand.SetDeletionMark</CommandName>
 							<ExtendedTooltip name="ИзменитьПометкуУдаленияБезПрофилейРасширеннаяПодсказка" id="106"/>
-						</Button>
-						<Button name="ИзменитьПометкуУдаленияСПрофилями" id="95">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Command.ИзменитьПометкуУдаленияСПрофилями</CommandName>
-							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-							<ExtendedTooltip name="ИзменитьПометкуУдаленияСПрофилямиРасширеннаяПодсказка" id="96"/>
 						</Button>
 						<Button name="ИзменитьВыделенные" id="62">
 							<Type>CommandBarButton</Type>
@@ -251,6 +245,34 @@
 					<CommandName>Form.StandardCommand.Help</CommandName>
 					<ExtendedTooltip name="СправкаExtendedTooltip" id="41"/>
 				</Button>
+				<SearchStringAddition name="СписокПоиск" id="135">
+					<AdditionSource>
+						<Item>Список</Item>
+						<Type>SearchStringRepresentation</Type>
+					</AdditionSource>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список поиск</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СписокПоискКонтекстноеМеню" id="136"/>
+					<ExtendedTooltip name="СписокПоискРасширеннаяПодсказка" id="137"/>
+				</SearchStringAddition>
+				<SearchControlAddition name="СписокПоискУправление" id="138">
+					<AdditionSource>
+						<Item>Список</Item>
+						<Type>SearchControl</Type>
+					</AdditionSource>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список поиск управление</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СписокПоискУправлениеКонтекстноеМеню" id="139"/>
+					<ExtendedTooltip name="СписокПоискУправлениеРасширеннаяПодсказка" id="140"/>
+				</SearchControlAddition>
 			</ChildItems>
 		</CommandBar>
 		<Table name="Список" id="1">
@@ -355,11 +377,6 @@
 								<CommandName>Form.Item.Список.StandardCommand.SetDeletionMark</CommandName>
 								<ExtendedTooltip name="ИзменитьПометкуУдаленияБезПрофилейМенюРасширеннаяПодсказка" id="110"/>
 							</Button>
-							<Button name="ИзменитьПометкуУдаленияСПрофилямиМеню" id="93">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Command.ИзменитьПометкуУдаленияСПрофилями</CommandName>
-								<ExtendedTooltip name="ИзменитьПометкуУдаленияСПрофилямиМенюРасширеннаяПодсказка" id="94"/>
-							</Button>
 							<Button name="ИзменитьВыделенныеМеню" id="60">
 								<Type>CommandBarButton</Type>
 								<CommandName>Form.Command.ИзменитьВыделенные</CommandName>
@@ -420,7 +437,6 @@
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
-				<Event name="BeforeDeleteRow">СписокПередУдалением</Event>
 			</Events>
 			<ChildItems>
 				<LabelField name="Наименование" id="4">
@@ -603,7 +619,7 @@
 			</ToolTip>
 			<Picture>
 				<xr:Ref>CommonPicture.СохранитьФайлКак</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>ВыгрузитьВФайл</Action>
 			<FunctionalOptions>
@@ -627,7 +643,7 @@
 			</ToolTip>
 			<Picture>
 				<xr:Ref>CommonPicture.ОбновитьФайлИзФайлаНаДиске</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>ЗагрузитьФайлОбработкиОтчета</Action>
 			<FunctionalOptions>
@@ -685,31 +701,22 @@
 			<Action>ПубликацияИспользуется</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
-		<Command name="ИзменитьПометкуУдаленияСПрофилями" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пометить на удаление / Снять пометку</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пометить на удаление / Снять пометку</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.MarkToDelete</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ИзменитьПометкуУдаленияСПрофилями</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
 	</Commands>
+	<Parameters>
+		<Parameter name="Заголовок">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
 	<CommandInterface>
 		<CommandBar>
 			<Item>
-				<Command>0:4ef362ee-0350-49fe-b40a-3ffa1576aa36</Command>
+				<Command>0</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormCommandBarImportant</CommandGroup>
 				<DefaultVisible>false</DefaultVisible>
@@ -718,7 +725,7 @@
 				</Visible>
 			</Item>
 			<Item>
-				<Command>0:4769b1a9-c88a-4d5e-9520-ea46da1ac861</Command>
+				<Command>0</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormCommandBarImportant</CommandGroup>
 				<Index>2</Index>
@@ -728,7 +735,7 @@
 				</Visible>
 			</Item>
 			<Item>
-				<Command>0:1ea304f6-8e8f-4479-aceb-086cf9709ce7</Command>
+				<Command>0</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormCommandBarImportant</CommandGroup>
 				<Index>1</Index>

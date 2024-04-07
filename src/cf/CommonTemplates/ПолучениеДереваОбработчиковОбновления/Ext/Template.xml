@@ -308,6 +308,53 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</valueType>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИзменяемыеОбъекты</dataPath>
+			<field>ИзменяемыеОбъекты</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменяемые объекты</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Порядок</dataPath>
+			<field>Порядок</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.ПорядокОбработчиковОбновления</v8:Type>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЧитаемыеОбъекты</dataPath>
+			<field>ЧитаемыеОбъекты</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ЧитаемыеОбъекты</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</valueType>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<objectName>Обработчики</objectName>
 	</dataSet>
@@ -316,7 +363,7 @@
 		<expression>ВЫРАЗИТЬ(ВЫБОР 
 	КОГДА Версия = "*" ТОГДА -1
 	ИНАЧЕ ОбновлениеИнформационнойБазыСлужебный.ВесВерсии(Версия)
-КОНЕЦ, "Число(12, 0)")</expression>
+КОНЕЦ, "Число(13, 0)")</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -326,7 +373,7 @@
 		<valueType>
 			<v8:Type>xs:decimal</v8:Type>
 			<v8:NumberQualifiers>
-				<v8:Digits>12</v8:Digits>
+				<v8:Digits>13</v8:Digits>
 				<v8:FractionDigits>0</v8:FractionDigits>
 				<v8:AllowedSign>Any</v8:AllowedSign>
 			</v8:NumberQualifiers>
@@ -348,7 +395,7 @@
 			<dcscom:expression>ВЫРАЗИТЬ(ВЫБОР 
 	КОГДА Версия = "*" ИЛИ ВыполнятьВГруппеОбязательных ТОГДА -1
 	ИНАЧЕ ОбновлениеИнформационнойБазыСлужебный.ВесВерсии(Версия)
-КОНЕЦ, "Число(12, 0)") возр</dcscom:expression>
+КОНЕЦ, "Число(13, 0)")</dcscom:expression>
 			<dcscom:orderType>Asc</dcscom:orderType>
 			<dcscom:autoOrder>false</dcscom:autoOrder>
 		</orderExpression>
@@ -607,6 +654,15 @@
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Многопоточный</dcsset:field>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Порядок</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ИзменяемыеОбъекты</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЧитаемыеОбъекты</dcsset:field>
+				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemGroup">
@@ -668,6 +724,17 @@
 							<v8:item>
 								<v8:lang>ru</v8:lang>
 								<v8:content>// Обязательные (*)</v8:content>
+							</v8:item>
+						</dcsset:presentation>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Версия</dcsset:left>
+						<dcsset:comparisonType>BeginsWith</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string">ОтладкаОбработчика</dcsset:right>
+						<dcsset:presentation xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>// Версия еще не известна, вызываются при каждом обновлении</v8:content>
 							</v8:item>
 						</dcsset:presentation>
 					</dcsset:item>

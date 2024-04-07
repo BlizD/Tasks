@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<MobileDeviceCommandBarContent>
 		<xr:Item>
 			<xr:Presentation/>
 			<xr:CheckState>0</xr:CheckState>
-			<xr:Value xsi:type="xs:string">ОсновнаяКоманднаяПанель</xr:Value>
+			<xr:Value xsi:type="xs:string"/>
 		</xr:Item>
 	</MobileDeviceCommandBarContent>
 	<CommandSet>
@@ -34,7 +34,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Быстрые отборы</v8:content>
+					<v8:content>Быстрые фильтры</v8:content>
 				</v8:item>
 			</Title>
 			<Behavior>Usual</Behavior>
@@ -87,7 +87,6 @@
 							<v8:content>Пометить на удаление / Снять пометку</v8:content>
 						</v8:item>
 					</Title>
-					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 					<ExtendedTooltip name="УдалитьExtendedTooltip" id="36"/>
 				</Button>
 				<Button name="ПоказыватьЛичныеВариантыОтчетовДругихАвторов" id="13">
@@ -99,7 +98,6 @@
 				<Button name="ФормаОбновить" id="28">
 					<Type>CommandBarButton</Type>
 					<CommandName>Form.Command.Обновить</CommandName>
-					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 					<ExtendedTooltip name="ФормаОбновитьExtendedTooltip" id="38"/>
 				</Button>
 				<ButtonGroup name="КоманднаяПанельДерева" id="8">
@@ -111,6 +109,16 @@
 					</Title>
 					<CommandSource>Item.ДеревоВариантовОтчета</CommandSource>
 					<ExtendedTooltip name="КоманднаяПанельДереваExtendedTooltip" id="39"/>
+					<ChildItems>
+						<SearchStringAddition name="СтрокаПоиска" id="59">
+							<AdditionSource>
+								<Item>ДеревоВариантовОтчета</Item>
+								<Type>SearchStringRepresentation</Type>
+							</AdditionSource>
+							<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="60"/>
+							<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="61"/>
+						</SearchStringAddition>
+					</ChildItems>
 				</ButtonGroup>
 			</ChildItems>
 		</CommandBar>
@@ -163,13 +171,11 @@
 								<v8:content>Пометить на удаление / Снять пометку</v8:content>
 							</v8:item>
 						</Title>
-						<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 						<ExtendedTooltip name="УдалитьКМExtendedTooltip" id="40"/>
 					</Button>
 					<Button name="ПоказыватьЛичныеВариантыОтчетовДругихАвторовКМ" id="14">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Command.ПоказыватьЛичныеВариантыОтчетовДругихАвторов</CommandName>
-						<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 						<ExtendedTooltip name="ПоказыватьЛичныеВариантыОтчетовДругихАвторовКМExtendedTooltip" id="41"/>
 					</Button>
 				</ChildItems>
@@ -249,6 +255,17 @@
 					<ContextMenu name="ДеревоВариантовОтчетаАвторКонтекстноеМеню" id="19"/>
 					<ExtendedTooltip name="ДеревоВариантовОтчетаАвторExtendedTooltip" id="45"/>
 				</InputField>
+				<PictureField name="ДеревоВариантовОтчетаКартинкаНазначение" id="62">
+					<DataPath>ДеревоВариантовОтчета.КартинкаНазначение</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.НазначенияВариантовОтчетов</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ДеревоВариантовОтчетаКартинкаНазначениеКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="ДеревоВариантовОтчетаКартинкаНазначениеРасширеннаяПодсказка" id="64"/>
+				</PictureField>
 			</ChildItems>
 		</Table>
 		<InputField name="ВариантОписание" id="11">
@@ -398,6 +415,22 @@
 				<Column name="ТолькоДляАвтора" id="15">
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КартинкаНазначение" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка назначение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 				</Column>
 			</Columns>

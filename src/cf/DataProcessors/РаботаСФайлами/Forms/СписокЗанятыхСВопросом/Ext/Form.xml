@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>None</CommandBarLocation>
@@ -15,7 +15,6 @@
 			<xr:Value xsi:type="xs:string">КоманднаяПанель</xr:Value>
 		</xr:Item>
 	</MobileDeviceCommandBarContent>
-	<GroupList>СписокКонтекстноеМеню</GroupList>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
@@ -72,6 +71,20 @@
 					</Title>
 					<ExtendedTooltip name="ФормаИзменитьРасширеннаяПодсказка" id="77"/>
 				</Button>
+				<SearchStringAddition name="СтрокаПоиска" id="124">
+					<AdditionSource>
+						<Item>Список</Item>
+						<Type>SearchStringRepresentation</Type>
+					</AdditionSource>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поиск</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="125"/>
+					<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="126"/>
+				</SearchStringAddition>
 			</ChildItems>
 		</CommandBar>
 		<LabelField name="СообщениеЗаголовок" id="64">
@@ -125,7 +138,7 @@
 						<Title>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Список контекстное меню группа команд основные</v8:content>
+								<v8:content>Контекстное меню группа команд основные</v8:content>
 							</v8:item>
 						</Title>
 						<ExtendedTooltip name="СписокКонтекстноеМенюГруппаКомандОсновныеРасширеннаяПодсказка" id="106"/>
@@ -157,7 +170,7 @@
 						<Title>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Список контекстное меню группа команд дополнительные</v8:content>
+								<v8:content>Контекстное меню группа команд дополнительные</v8:content>
 							</v8:item>
 						</Title>
 						<ExtendedTooltip name="СписокКонтекстноеМенюГруппаКомандДополнительныеРасширеннаяПодсказка" id="104"/>
@@ -198,7 +211,7 @@
 						<Title>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Список контекстное меню группа команд дополнительно</v8:content>
+								<v8:content>Контекстное меню группа команд дополнительно</v8:content>
 							</v8:item>
 						</Title>
 						<ExtendedTooltip name="СписокКонтекстноеМенюГруппаКомандДополнительноРасширеннаяПодсказка" id="86"/>
@@ -272,8 +285,7 @@
 							<Height>1</Height>
 							<ValuesPicture>
 								<xr:Ref>CommonPicture.КоллекцияПиктограммФайлов</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
-								<xr:TransparentPixel x="10" y="10"/>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
 							</ValuesPicture>
 							<Border width="1">
 								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
@@ -597,7 +609,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сохранить файл на диск или другое устройство</v8:content>
+					<v8:content>Сохранить файл на компьютер или другое устройство</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -612,13 +624,13 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Обновить из файла на диске...</v8:content>
+					<v8:content>Обновить из файла на компьютере...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Обновить из файла на диске</v8:content>
+					<v8:content>Обновить из файла на компьютере</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ОбновитьИзФайлаНаДиске</Action>

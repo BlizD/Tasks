@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<CommandBarLocation>Bottom</CommandBarLocation>
 	<CommandSet>
@@ -35,6 +35,12 @@
 	</Events>
 	<ChildItems>
 		<Pages name="ГруппаРежимыРаботы" id="79">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режимы работы</v8:content>
+				</v8:item>
+			</Title>
 			<PagesRepresentation>None</PagesRepresentation>
 			<ExtendedTooltip name="ГруппаРежимыРаботыРасширеннаяПодсказка" id="80"/>
 			<ChildItems>
@@ -68,8 +74,17 @@
 							</ChoiceList>
 							<ContextMenu name="ЗапретИзмененияДанныхНеУстановленКонтекстноеМеню" id="86"/>
 							<ExtendedTooltip name="ЗапретИзмененияДанныхНеУстановленРасширеннаяПодсказка" id="87"/>
+							<Events>
+								<Event name="OnChange">ОписаниеДатыЗапретаПриИзменении</Event>
+							</Events>
 						</RadioButtonField>
 						<UsualGroup name="ГруппаПроизвольнаяДата" id="88">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Произвольная дата</v8:content>
+								</v8:item>
+							</Title>
 							<Behavior>Usual</Behavior>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -96,6 +111,9 @@
 									</ChoiceList>
 									<ContextMenu name="ПроизвольнаяДатаЗапретаКонтекстноеМеню" id="91"/>
 									<ExtendedTooltip name="ПроизвольнаяДатаЗапретаРасширеннаяПодсказка" id="92"/>
+									<Events>
+										<Event name="OnChange">ПроизвольнаяДатаЗапретаПриИзменении</Event>
+									</Events>
 								</RadioButtonField>
 								<InputField name="ДатаЗапретаПростойРежим" id="93">
 									<DataPath>ДатаЗапрета</DataPath>
@@ -109,6 +127,12 @@
 							</ChildItems>
 						</UsualGroup>
 						<UsualGroup name="ГруппаБольшеВозможностей" id="99">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Больше возможностей</v8:content>
+								</v8:item>
+							</Title>
 							<Behavior>Usual</Behavior>
 							<Representation>NormalSeparation</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -149,6 +173,12 @@
 					<ExtendedTooltip name="РасширенныйРежимРасширеннаяПодсказка" id="84"/>
 					<ChildItems>
 						<UsualGroup name="ДатаЗапретаСОписанием" id="19">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата запрета с описанием</v8:content>
+								</v8:item>
+							</Title>
 							<Behavior>Usual</Behavior>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -268,6 +298,12 @@
 									</Events>
 								</InputField>
 								<Pages name="ПроизвольнаяДата" id="22">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Произвольная дата</v8:content>
+										</v8:item>
+									</Title>
 									<PagesRepresentation>None</PagesRepresentation>
 									<ExtendedTooltip name="ПроизвольнаяДатаExtendedTooltip" id="52"/>
 									<ChildItems>
@@ -318,14 +354,32 @@
 							</ChildItems>
 						</UsualGroup>
 						<Pages name="СвойстваДатыЗапрета" id="1">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Свойства даты запрета</v8:content>
+								</v8:item>
+							</Title>
 							<PagesRepresentation>None</PagesRepresentation>
 							<ExtendedTooltip name="СвойстваДатыЗапретаРасширеннаяПодсказка" id="57"/>
 							<ChildItems>
 								<Page name="ОтносительнаяДата" id="2">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Относительная дата</v8:content>
+										</v8:item>
+									</Title>
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ОтносительнаяДатаРасширеннаяПодсказка" id="58"/>
 									<ChildItems>
 										<UsualGroup name="ГруппаКоличествоДнейРазрешения" id="106">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Количество дней разрешения</v8:content>
+												</v8:item>
+											</Title>
 											<Behavior>Usual</Behavior>
 											<Representation>NormalSeparation</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -412,6 +466,12 @@
 			</ChildItems>
 		</Pages>
 		<UsualGroup name="ГруппаПояснение" id="69">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пояснение</v8:content>
+				</v8:item>
+			</Title>
 			<Group>Vertical</Group>
 			<Behavior>Usual</Behavior>
 			<Representation>None</Representation>
@@ -570,6 +630,11 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ЗаписьСуществует" id="12">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ОК" id="1">
@@ -650,6 +715,11 @@
 					<v8:Length>0</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ЗаписьСуществует">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Parameter>
 	</Parameters>

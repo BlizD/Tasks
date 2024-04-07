@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -42,6 +42,7 @@
 					<v8:content>Фильтры</v8:content>
 				</v8:item>
 			</Title>
+			<Group>AlwaysHorizontal</Group>
 			<Behavior>Usual</Behavior>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -472,6 +473,7 @@
 												<v8:content>Команды взаимодействий</v8:content>
 											</v8:item>
 										</Title>
+										<Representation>Compact</Representation>
 										<ExtendedTooltip name="ГруппаКомандыВзаимодействийExtendedTooltip" id="165"/>
 										<ChildItems>
 											<Button name="КомандаРассмотрено" id="45">
@@ -511,7 +513,7 @@
 										<Title>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
-												<v8:content>Список тип взаимодействия</v8:content>
+												<v8:content>Показывать</v8:content>
 											</v8:item>
 										</Title>
 										<ExtendedTooltip name="СписокТипВзаимодействияРасширеннаяПодсказка" id="233"/>
@@ -688,7 +690,6 @@
 												<InputField name="Участники" id="66">
 													<DataPath>Список.Участники</DataPath>
 													<Width>20</Width>
-													<HorizontalStretch>false</HorizontalStretch>
 													<Wrap>false</Wrap>
 													<ContextMenu name="УчастникиКонтекстноеМеню" id="67"/>
 													<ExtendedTooltip name="УчастникиExtendedTooltip" id="188"/>
@@ -706,6 +707,29 @@
 													<ContextMenu name="ДатаКонтекстноеМеню" id="69"/>
 													<ExtendedTooltip name="ДатаExtendedTooltip" id="187"/>
 												</InputField>
+												<PictureField name="ЕстьВложения" id="254">
+													<DataPath>Список.ЕстьВложения</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Есть вложения</v8:content>
+														</v8:item>
+													</ToolTip>
+													<HeaderPicture>
+														<xr:Ref>CommonPicture.Скрепка</xr:Ref>
+														<xr:LoadTransparent>false</xr:LoadTransparent>
+													</HeaderPicture>
+													<ShowInFooter>false</ShowInFooter>
+													<Width>2</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ValuesPicture>
+														<xr:Ref>CommonPicture.Скрепка</xr:Ref>
+														<xr:LoadTransparent>false</xr:LoadTransparent>
+													</ValuesPicture>
+													<ContextMenu name="ЕстьВложенияКонтекстноеМеню" id="255"/>
+													<ExtendedTooltip name="ЕстьВложенияРасширеннаяПодсказка" id="256"/>
+												</PictureField>
 											</ChildItems>
 										</ColumnGroup>
 										<InputField name="Тема" id="20">
@@ -917,7 +941,7 @@
 												<Title>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
-														<v8:content>Пометить на удаление / Снять пометку</v8:content>
+														<v8:content>Пометить на удаление /  Снять пометку</v8:content>
 													</v8:item>
 												</Title>
 												<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
@@ -1155,7 +1179,8 @@
 	ТИПЗНАЧЕНИЯ(ПредметыВзаимодействий.Предмет) КАК ТипПредмета,
 	ПредметыВзаимодействий.ПапкаЭлектронногоПисьма,
 	ЖурналДокументовВзаимодействия.Размер,
-	ЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма
+	ЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма,
+	ЖурналДокументовВзаимодействия.ЕстьВложения
 ИЗ
 	ЖурналДокументов.Взаимодействия КАК ЖурналДокументовВзаимодействия
 		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыВзаимодействий
@@ -1399,7 +1424,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить признак рассмотрено</v8:content>
+					<v8:content>Установить признак "Рассмотрено"</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1417,7 +1442,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Ответственный</v8:content>
+					<v8:content>Ответственный...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -1437,7 +1462,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Предмет</v8:content>
+					<v8:content>Предмет...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -1457,15 +1482,9 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Отложить рассмотрение</v8:content>
+					<v8:content>Отложить рассмотрение...</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отложить рассмотрение</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Picture>
 				<xr:Ref>CommonPicture.ОтложитьРассмотрениеВзаимодействия</xr:Ref>
 				<xr:LoadTransparent>false</xr:LoadTransparent>
@@ -1590,15 +1609,9 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить интервал</v8:content>
+					<v8:content>Установить интервал...</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Установить интервал</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Picture>
 				<xr:Ref>StdPicture.SetDateInterval</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
@@ -1610,7 +1623,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Снять признак рассмотрено</v8:content>
+					<v8:content>Снять признак "Рассмотрено"</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -1649,4 +1662,12 @@
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
+	<Parameters>
+		<Parameter name="ДополнительныеПараметры">
+			<Type/>
+		</Parameter>
+		<Parameter name="Отбор">
+			<Type/>
+		</Parameter>
+	</Parameters>
 </Form>

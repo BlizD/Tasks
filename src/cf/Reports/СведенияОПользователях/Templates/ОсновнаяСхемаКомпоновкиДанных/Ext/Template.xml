@@ -208,7 +208,53 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Аутентификация open ID</v8:content>
+					<v8:content>Аутентификация OpenID</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ=; БИ=Да</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АутентификацияOpenIDConnect</dataPath>
+			<field>АутентификацияOpenIDConnect</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аутентификация OpenID-Connect</v8:content>
+				</v8:item>
+			</title>
+			<valueType>
+				<v8:Type>xs:boolean</v8:Type>
+			</valueType>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ=; БИ=Да</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>АутентификацияТокеномДоступа</dataPath>
+			<field>АутентификацияТокеномДоступа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аутентификация токеном доступа</v8:content>
 				</v8:item>
 			</title>
 			<valueType>
@@ -409,6 +455,66 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СрокДействияНеОграничен</dataPath>
+			<field>СрокДействияНеОграничен</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Срок действия не ограничен</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПросрочкаРаботыВПрограммеДоЗапрещенияВхода</dataPath>
+			<field>ПросрочкаРаботыВПрограммеДоЗапрещенияВхода</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просрочка работы в программе до запрещения входа</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаРазрешенияВходаВПрограмму</dataPath>
+			<field>ДатаРазрешенияВходаВПрограмму</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата разрешения входа в программу</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаПоследнейАктивности</dataPath>
+			<field>ДатаПоследнейАктивности</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата последней активности</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаАвтоматическогоЗапрещенияВхода</dataPath>
+			<field>ДатаАвтоматическогоЗапрещенияВхода</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата автоматического запрещения входа</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПоследнийИспользуемыйКлиент</dataPath>
+			<field>ПоследнийИспользуемыйКлиент</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Последний используемый клиент</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	Пользователи.Ссылка,
@@ -425,7 +531,15 @@
 	Пользователи.Комментарий,
 	Пользователи.Предопределенный,
 	ЕСТЬNULL(СведенияОПользователях.ПотребоватьСменуПароляПриВходе, ЛОЖЬ) КАК ПотребоватьСменуПароляПриВходе,
-	ЕСТЬNULL(СведенияОПользователях.СрокДействия, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)) КАК СрокДействия
+	ЕСТЬNULL(СведенияОПользователях.СрокДействияНеОграничен, ЛОЖЬ) КАК СрокДействияНеОграничен,
+	ЕСТЬNULL(СведенияОПользователях.СрокДействия, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)) КАК СрокДействия,
+	ЕСТЬNULL(СведенияОПользователях.ПросрочкаРаботыВПрограммеДоЗапрещенияВхода, 0)  КАК ПросрочкаРаботыВПрограммеДоЗапрещенияВхода,
+	ЕСТЬNULL(СведенияОПользователях.ДатаРазрешенияВходаВПрограмму, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)) КАК ДатаРазрешенияВходаВПрограмму,
+	ЕСТЬNULL(СведенияОПользователях.ДатаПоследнейАктивности, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)) КАК ДатаПоследнейАктивности,
+	ЕСТЬNULL(СведенияОПользователях.ДатаАвтоматическогоЗапрещенияВхода, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)) КАК ДатаАвтоматическогоЗапрещенияВхода,
+	ЕСТЬNULL(СведенияОПользователях.ПоследнийИспользуемыйКлиент, """") КАК ПоследнийИспользуемыйКлиент
+	
+	
 ИЗ
 	Справочник.Пользователи КАК Пользователи
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОПользователях КАК СведенияОПользователях
@@ -451,7 +565,13 @@
 	ВнешниеПользователи.Комментарий,
 	ВнешниеПользователи.Предопределенный,
 	ЕСТЬNULL(СведенияОПользователях.ПотребоватьСменуПароляПриВходе, ЛОЖЬ),
-	ЕСТЬNULL(СведенияОПользователях.СрокДействия, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0))
+	ЕСТЬNULL(СведенияОПользователях.СрокДействияНеОграничен, ЛОЖЬ) КАК СрокДействияНеОграничен,
+	ЕСТЬNULL(СведенияОПользователях.СрокДействия, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)),
+	ЕСТЬNULL(СведенияОПользователях.ПросрочкаРаботыВПрограммеДоЗапрещенияВхода, 0)  КАК ПросрочкаРаботыВПрограммеДоЗапрещенияВхода,
+	ЕСТЬNULL(СведенияОПользователях.ДатаРазрешенияВходаВПрограмму, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)) КАК ДатаРазрешенияВходаВПрограмму,
+	ЕСТЬNULL(СведенияОПользователях.ДатаПоследнейАктивности, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)) КАК ДатаПоследнейАктивности,
+	ЕСТЬNULL(СведенияОПользователях.ДатаАвтоматическогоЗапрещенияВхода, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)) КАК ДатаАвтоматическогоЗапрещенияВхода,
+	ЕСТЬNULL(СведенияОПользователях.ПоследнийИспользуемыйКлиент, """") КАК ПоследнийИспользуемыйКлиент
 ИЗ
 	Справочник.ВнешниеПользователи КАК ВнешниеПользователи
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОПользователях КАК СведенияОПользователях
@@ -618,19 +738,26 @@
 					<dcsset:field>ЗапрещеноИзменятьПароль</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>АутентификацияOpenID</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>АутентификацияOpenIDConnect</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>АутентификацияТокеномДоступа</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>АутентификацияОС</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ПользовательОС</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>АутентификацияOpenID</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:field>Язык</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>РежимЗапуска</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -651,7 +778,31 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:use>false</dcsset:use>
+					<dcsset:field>СрокДействияНеОграничен</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>СрокДействия</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ПросрочкаРаботыВПрограммеДоЗапрещенияВхода</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ДатаРазрешенияВходаВПрограмму</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ДатаПоследнейАктивности</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ДатаАвтоматическогоЗапрещенияВхода</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ПоследнийИспользуемыйКлиент</dcsset:field>
 				</dcsset:item>
 				<dcsset:viewMode>Normal</dcsset:viewMode>
 				<dcsset:userSettingID>7139addb-6cc1-4f4b-ada6-47ed96031db6</dcsset:userSettingID>
@@ -662,12 +813,6 @@
 					<dcsset:left xsi:type="dcscor:Field">Недействителен</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Недействительные</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>2fc6f1d8-ce85-45c1-8fc8-29b3e299b5f7</dcsset:userSettingID>
 				</dcsset:item>
@@ -676,12 +821,6 @@
 					<dcsset:left xsi:type="dcscor:Field">ПометкаУдаления</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Помеченные на удаление</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>9800e27b-27de-4259-86c0-8d4595eb319a</dcsset:userSettingID>
 				</dcsset:item>
@@ -690,12 +829,6 @@
 					<dcsset:left xsi:type="dcscor:Field">БезПользователяИнформационнойБазы</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Без пользователя информационной базы</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>cb47e2ce-6928-43e4-b904-cbe4b2952e49</dcsset:userSettingID>
 				</dcsset:item>
@@ -704,12 +837,6 @@
 					<dcsset:left xsi:type="dcscor:Field">ВходВПрограммуРазрешен</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Вход в программу разрешен</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>8809ba69-2ea3-40bf-8e8b-82ab129baec6</dcsset:userSettingID>
 				</dcsset:item>
@@ -718,77 +845,40 @@
 					<dcsset:left xsi:type="dcscor:Field">АутентификацияСтандартная</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Аутентификация стандартная</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>6590234e-cc10-4899-9e2d-f86867903a54</dcsset:userSettingID>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">АутентификацияОС</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Аутентификация ОС</v8:content>
-						</v8:item>
-					</dcsset:presentation>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>19e3a1bb-4c84-420b-8a05-d3f78014fc1c</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">АутентификацияOpenID</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Аутентификация OpenID</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>2b314b78-4b9a-41e9-bba0-bafdc8042eba</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Недействителен</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">АутентификацияOpenIDConnect</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>640d606f-7f72-4287-a36e-2826e90d2802</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">ПометкаУдаления</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">АутентификацияТокеномДоступа</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>7599b1d4-ea1b-4129-ac91-2b2850ba7e50</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">БезПользователяИнформационнойБазы</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">АутентификацияОС</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">ВходВПрограммуРазрешен</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">АутентификацияСтандартная</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>19e3a1bb-4c84-420b-8a05-d3f78014fc1c</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
@@ -800,20 +890,6 @@
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">ЗапрещеноИзменятьПароль</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">АутентификацияОС</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">АутентификацияOpenID</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -917,19 +993,26 @@
 					<dcsset:field>ЗапрещеноИзменятьПароль</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>АутентификацияOpenID</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>АутентификацияOpenIDConnect</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>АутентификацияТокеномДоступа</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>АутентификацияОС</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ПользовательОС</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>АутентификацияOpenID</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:field>Язык</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>РежимЗапуска</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -950,7 +1033,31 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:use>false</dcsset:use>
+					<dcsset:field>СрокДействияНеОграничен</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>СрокДействия</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ПросрочкаРаботыВПрограммеДоЗапрещенияВхода</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ДатаРазрешенияВходаВПрограмму</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ДатаПоследнейАктивности</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ДатаАвтоматическогоЗапрещенияВхода</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ПоследнийИспользуемыйКлиент</dcsset:field>
 				</dcsset:item>
 				<dcsset:viewMode>Normal</dcsset:viewMode>
 				<dcsset:userSettingID>7139addb-6cc1-4f4b-ada6-47ed96031db6</dcsset:userSettingID>
@@ -961,12 +1068,6 @@
 					<dcsset:left xsi:type="dcscor:Field">Недействителен</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Недействительные</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>2fc6f1d8-ce85-45c1-8fc8-29b3e299b5f7</dcsset:userSettingID>
 				</dcsset:item>
@@ -975,12 +1076,6 @@
 					<dcsset:left xsi:type="dcscor:Field">ПометкаУдаления</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Помеченные на удаление</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>9800e27b-27de-4259-86c0-8d4595eb319a</dcsset:userSettingID>
 				</dcsset:item>
@@ -989,12 +1084,6 @@
 					<dcsset:left xsi:type="dcscor:Field">БезПользователяИнформационнойБазы</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Без пользователя информационной базы</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>cb47e2ce-6928-43e4-b904-cbe4b2952e49</dcsset:userSettingID>
 				</dcsset:item>
@@ -1003,12 +1092,6 @@
 					<dcsset:left xsi:type="dcscor:Field">ВходВПрограммуРазрешен</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Вход в программу разрешен</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>8809ba69-2ea3-40bf-8e8b-82ab129baec6</dcsset:userSettingID>
 				</dcsset:item>
@@ -1017,77 +1100,40 @@
 					<dcsset:left xsi:type="dcscor:Field">АутентификацияСтандартная</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Аутентификация стандартная</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>6590234e-cc10-4899-9e2d-f86867903a54</dcsset:userSettingID>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">АутентификацияОС</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Аутентификация ОС</v8:content>
-						</v8:item>
-					</dcsset:presentation>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>19e3a1bb-4c84-420b-8a05-d3f78014fc1c</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">АутентификацияOpenID</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Аутентификация OpenID</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>2b314b78-4b9a-41e9-bba0-bafdc8042eba</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Недействителен</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">АутентификацияOpenIDConnect</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>b6c24579-0658-47c8-b418-cb31b0fec464</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">ПометкаУдаления</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">АутентификацияТокеномДоступа</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>475cd62f-af94-46ad-9ee8-acc3846bc277</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">БезПользователяИнформационнойБазы</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">АутентификацияОС</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">ВходВПрограммуРазрешен</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">АутентификацияСтандартная</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>19e3a1bb-4c84-420b-8a05-d3f78014fc1c</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
@@ -1099,20 +1145,6 @@
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">ЗапрещеноИзменятьПароль</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">АутентификацияОС</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">АутентификацияOpenID</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -1215,6 +1247,12 @@
 					<dcsset:field>АутентификацияOpenID</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>АутентификацияOpenIDConnect</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>АутентификацияТокеномДоступа</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:field>Язык</dcsset:field>
 				</dcsset:item>
@@ -1224,11 +1262,35 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ПотребоватьСменуПароляПриВходе</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>СрокДействияНеОграничен</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>СрокДействия</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:field>ПотребоватьСменуПароляПриВходе</dcsset:field>
+					<dcsset:field>ПросрочкаРаботыВПрограммеДоЗапрещенияВхода</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ДатаРазрешенияВходаВПрограмму</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ДатаПоследнейАктивности</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ДатаАвтоматическогоЗапрещенияВхода</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ПоследнийИспользуемыйКлиент</dcsset:field>
 				</dcsset:item>
 				<dcsset:viewMode>Normal</dcsset:viewMode>
 				<dcsset:userSettingID>7139addb-6cc1-4f4b-ada6-47ed96031db6</dcsset:userSettingID>
@@ -1239,12 +1301,6 @@
 					<dcsset:left xsi:type="dcscor:Field">Недействителен</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Недействительные</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>2fc6f1d8-ce85-45c1-8fc8-29b3e299b5f7</dcsset:userSettingID>
 				</dcsset:item>
@@ -1253,12 +1309,6 @@
 					<dcsset:left xsi:type="dcscor:Field">ПометкаУдаления</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Помеченные на удаление</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>9800e27b-27de-4259-86c0-8d4595eb319a</dcsset:userSettingID>
 				</dcsset:item>
@@ -1267,12 +1317,6 @@
 					<dcsset:left xsi:type="dcscor:Field">БезПользователяИнформационнойБазы</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Без пользователя информационной базы</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>cb47e2ce-6928-43e4-b904-cbe4b2952e49</dcsset:userSettingID>
 				</dcsset:item>
@@ -1281,12 +1325,6 @@
 					<dcsset:left xsi:type="dcscor:Field">ВходВПрограммуРазрешен</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Вход в программу разрешен</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>8809ba69-2ea3-40bf-8e8b-82ab129baec6</dcsset:userSettingID>
 				</dcsset:item>
@@ -1295,12 +1333,6 @@
 					<dcsset:left xsi:type="dcscor:Field">АутентификацияСтандартная</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Аутентификация стандартная</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>6590234e-cc10-4899-9e2d-f86867903a54</dcsset:userSettingID>
 				</dcsset:item>
@@ -1309,60 +1341,28 @@
 					<dcsset:left xsi:type="dcscor:Field">АутентификацияOpenID</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Аутентификация OpenID</v8:content>
-						</v8:item>
-					</dcsset:presentation>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>2b314b78-4b9a-41e9-bba0-bafdc8042eba</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Недействителен</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">АутентификацияOpenIDConnect</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>7ecbe289-b30b-4552-900b-0c09719878c1</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">ПометкаУдаления</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">АутентификацияТокеномДоступа</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">БезПользователяИнформационнойБазы</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">ВходВПрограммуРазрешен</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">АутентификацияСтандартная</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>1baf1968-7387-4415-9819-cf2b75ae7ff4</dcsset:userSettingID>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">ЗапрещеноИзменятьПароль</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">АутентификацияOpenID</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 					<dcsset:viewMode>Normal</dcsset:viewMode>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -28,6 +28,7 @@
 		</LabelDecoration>
 		<Table name="СписокКолонок" id="1">
 			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -36,7 +37,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Список колонок</v8:content>
+					<v8:content>Колонок</v8:content>
 				</v8:item>
 			</Title>
 			<CommandSet>
@@ -55,28 +56,52 @@
 			<ContextMenu name="СписокКолонокКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="СписокКолонокКоманднаяПанель" id="3">
 				<ChildItems>
-					<Button name="СписокКолонокУстановитьФлажки" id="25">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.УстановитьФлажки</CommandName>
-						<ExtendedTooltip name="СписокКолонокУстановитьФлажкиРасширеннаяПодсказка" id="26"/>
-					</Button>
-					<Button name="СписокКолонокСнятьФлажки" id="27">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.СнятьФлажки</CommandName>
-						<ExtendedTooltip name="СписокКолонокСнятьФлажкиРасширеннаяПодсказка" id="28"/>
-					</Button>
-					<Button name="СписокКолонокПереместитьВверх" id="33">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Item.СписокКолонок.StandardCommand.MoveUp</CommandName>
-						<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-						<ExtendedTooltip name="СписокКолонокПереместитьВверхРасширеннаяПодсказка" id="34"/>
-					</Button>
-					<Button name="СписокКолонокПереместитьВниз" id="35">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Item.СписокКолонок.StandardCommand.MoveDown</CommandName>
-						<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
-						<ExtendedTooltip name="СписокКолонокПереместитьВнизРасширеннаяПодсказка" id="36"/>
-					</Button>
+					<ButtonGroup name="СписокКолонокФлаги" id="58">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Колонок флаги</v8:content>
+							</v8:item>
+						</Title>
+						<Representation>Compact</Representation>
+						<ExtendedTooltip name="СписокКолонокФлагиРасширеннаяПодсказка" id="59"/>
+						<ChildItems>
+							<Button name="СписокКолонокУстановитьФлажки" id="25">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.УстановитьФлажки</CommandName>
+								<ExtendedTooltip name="СписокКолонокУстановитьФлажкиРасширеннаяПодсказка" id="26"/>
+							</Button>
+							<Button name="СписокКолонокСнятьФлажки" id="27">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.СнятьФлажки</CommandName>
+								<ExtendedTooltip name="СписокКолонокСнятьФлажкиРасширеннаяПодсказка" id="28"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="СписокКолонокПеремещение" id="60">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Колонок перемещение</v8:content>
+							</v8:item>
+						</Title>
+						<Representation>Compact</Representation>
+						<ExtendedTooltip name="СписокКолонокПеремещениеРасширеннаяПодсказка" id="61"/>
+						<ChildItems>
+							<Button name="СписокКолонокПереместитьВверх" id="33">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.СписокКолонок.StandardCommand.MoveUp</CommandName>
+								<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="СписокКолонокПереместитьВверхРасширеннаяПодсказка" id="34"/>
+							</Button>
+							<Button name="СписокКолонокПереместитьВниз" id="35">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.СписокКолонок.StandardCommand.MoveDown</CommandName>
+								<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="СписокКолонокПереместитьВнизРасширеннаяПодсказка" id="36"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
 					<Button name="ФормаСброситьВсеНастройки" id="29">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Command.СброситьНастройки</CommandName>
@@ -118,7 +143,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Список колонок группа наименование</v8:content>
+							<v8:content>Колонок группа наименование</v8:content>
 						</v8:item>
 					</Title>
 					<Group>InCell</Group>
@@ -311,6 +336,15 @@
 							<v8:FractionDigits>0</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Использование" id="12">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>30</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
 					</Type>
 				</Column>
 			</Columns>

@@ -16,24 +16,105 @@ var ForWriting = 2 // Open a file for writing.
 var OpenAsASCII = 0
 var outf = null
 
+var ConnectionString
+var ConnectionStringArray
+var hiddenCS
+var COMConnectorName
+var fixFileNames
+var removeFixNames
+var Action
+var outFileName
+
+var COMConnector
+var connection
+
+var mainEvent = '[СообщениеОсновноеСобытие]'
+
 try {
 
-  var ConnectionString = WScript.Arguments.Named.Item('ConnectionString')
-  var COMConnectorName = WScript.Arguments.Named.Item('COMConnectorName')
-  var fixFileNames = WScript.Arguments.Named.Item('FixFileNames')
-  var removeFixNames = WScript.Arguments.Named.Item('RemoveFixNames')
-  var outFileName = WScript.Arguments.Named.Item('Out')
+  ConnectionString = WScript.Arguments.Named.Item('ConnectionString')
+  COMConnectorName = WScript.Arguments.Named.Item('COMConnectorName')
+  fixFileNames = WScript.Arguments.Named.Item('FixFileNames')
+  removeFixNames = WScript.Arguments.Named.Item('RemoveFixNames')
+  Action = WScript.Arguments.Named.Item('Action')
+  outFileName = WScript.Arguments.Named.Item('Out')
 
-  var outf = fso.OpenTextFile(outFileName, ForWriting, true, OpenAsASCII)
-
-  var COMConnector = new ActiveXObject(COMConnectorName)
-  var connection = COMConnector.Connect(ConnectionString)
-
-  connection.ОбновлениеКонфигурацииВызовСервера.ОбновитьИсправленияИзСкрипта(fixFileNames, removeFixNames)
+  outf = fso.OpenTextFile(outFileName, ForWriting, true, OpenAsASCII)
 
 } catch (ex) {
+
   if (outf != null) {
-    outf.WriteLine(ex.message)
+    outf.WriteLine(mainEvent + ": [СообщениеОтказИнициализации]: " + ex.message)
   }
   WScript.Quit(1)
+
+}
+
+try {
+
+  if (outf != null) {
+    outf.WriteLine(mainEvent + ": [СообщениеСозданиеОбъектаCOMСоединителя]")
+  }
+  COMConnector = new ActiveXObject(COMConnectorName)
+  
+} catch (ex) {
+
+  if (outf != null) {
+   outf.WriteLine(mainEvent + ": [СообщениеОтказСозданияОбъектаCOMСоединителя]: " + ex.message)
+  }
+  WScript.Quit(1)
+
+}
+
+try {
+    
+  ConnectionStringArray = ConnectionString.split(';')
+  
+  for (var i = 0; i < ConnectionStringArray.length; i++) {
+    if (ConnectionStringArray[i].slice(0,4) == "Pwd=") {
+      ConnectionStringArray[i] = "Pwd='******'"
+    }
+  }
+  
+  hiddenCS = ConnectionStringArray.join(';')
+
+  if (outf != null) {
+    outf.WriteLine(mainEvent + ": [СообщениеУстановкаСоединенияСБазой]: " + hiddenCS)
+  }  
+  connection = COMConnector.Connect(ConnectionString)
+
+} catch (ex) {
+
+  if (outf != null) {
+    outf.WriteLine(mainEvent + ": [СообщениеОтказСоединенияСБазойОбщее] " + hiddenCS + ": " + ex.message)
+  }
+  WScript.Quit(1)
+
+}
+
+try {
+
+  if (Action == 'RemoveAll') {
+
+    if (outf != null) {
+      outf.WriteLine(mainEvent + ": [СообщениеВызовУдалитьИсправленияИзСкрипта]")
+    }
+    connection.ОбновлениеКонфигурацииВызовСервера.УдалитьИсправленияИзСкрипта();
+
+  } else {
+
+    if (outf != null) {
+      outf.WriteLine(mainEvent + ": [СообщениеВызовОбновитьИсправленияИзСкрипта]")
+    }
+    connection.ОбновлениеКонфигурацииВызовСервера.ОбновитьИсправленияИзСкрипта(fixFileNames, removeFixNames)
+
+  }
+
+} catch (ex) {
+
+  if (outf != null) {    
+    outf.WriteLine(mainEvent + ": [СообщениеОшибка]" + ex.message)
+  }
+  WScript.Quit(1)
+
 }

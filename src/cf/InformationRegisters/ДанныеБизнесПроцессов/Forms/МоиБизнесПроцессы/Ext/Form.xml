@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -12,6 +12,7 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
 	</Events>
@@ -73,9 +74,14 @@
 						</Button>
 					</ChildItems>
 				</ButtonGroup>
-				<Button name="ФормаКартаМаршрута" id="35">
+				<Button name="ФормаЗадачиБизнесПроцесса" id="88">
 					<Type>CommandBarButton</Type>
 					<Representation>PictureAndText</Representation>
+					<CommandName>Form.Command.ЗадачиБизнесПроцесса</CommandName>
+					<ExtendedTooltip name="ФормаЗадачиБизнесПроцессаРасширеннаяПодсказка" id="89"/>
+				</Button>
+				<Button name="ФормаКартаМаршрута" id="35">
+					<Type>CommandBarButton</Type>
 					<CommandName>Form.Command.КартаМаршрута</CommandName>
 					<ExtendedTooltip name="ФормаКартаМаршрутаExtendedTooltip" id="51"/>
 				</Button>
@@ -133,7 +139,7 @@
 						<Title>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Список контекстное меню группа</v8:content>
+								<v8:content>Контекстное меню группа</v8:content>
 							</v8:item>
 						</Title>
 						<ExtendedTooltip name="СписокКонтекстноеМенюГруппаExtendedTooltip" id="54"/>
@@ -233,11 +239,17 @@
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бизнес-процесс</v8:content>
+						</v8:item>
+					</Title>
 					<ContextMenu name="БизнесПроцессКонтекстноеМеню" id="70"/>
 					<ExtendedTooltip name="БизнесПроцессРасширеннаяПодсказка" id="71"/>
 				</LabelField>
 				<LabelField name="БизнесПроцессСостояние" id="85">
-					<DataPath>Список.БизнесПроцесс.Состояние</DataPath>
+					<DataPath>Список.Состояние</DataPath>
 					<ContextMenu name="БизнесПроцессСостояниеКонтекстноеМеню" id="86"/>
 					<ExtendedTooltip name="БизнесПроцессСостояниеРасширеннаяПодсказка" id="87"/>
 				</LabelField>
@@ -269,7 +281,7 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	РегистрСведенийДанныеБизнесПроцессов.БизнесПроцесс,
+	РегистрСведенийДанныеБизнесПроцессов.Владелец КАК БизнесПроцесс,
 	РегистрСведенийДанныеБизнесПроцессов.Номер,
 	РегистрСведенийДанныеБизнесПроцессов.Дата,
 	РегистрСведенийДанныеБизнесПроцессов.Завершен,
@@ -278,12 +290,13 @@
 	РегистрСведенийДанныеБизнесПроцессов.ДатаЗавершения,
 	РегистрСведенийДанныеБизнесПроцессов.Наименование,
 	РегистрСведенийДанныеБизнесПроцессов.ПометкаУдаления,
+	РегистрСведенийДанныеБизнесПроцессов.Состояние,
 	ВЫБОР
 		КОГДА РегистрСведенийДанныеБизнесПроцессов.ПометкаУдаления
 			ТОГДА 6
 		КОГДА РегистрСведенийДанныеБизнесПроцессов.Завершен = ИСТИНА
 			ТОГДА 5
-		КОГДА РегистрСведенийДанныеБизнесПроцессов.БизнесПроцесс.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияБизнесПроцессов.Остановлен)
+		КОГДА РегистрСведенийДанныеБизнесПроцессов.Состояние = ЗНАЧЕНИЕ(Перечисление.СостоянияБизнесПроцессов.Остановлен)
 			ТОГДА 0
 		КОГДА РегистрСведенийДанныеБизнесПроцессов.Стартован = ИСТИНА
 			ТОГДА 3
@@ -304,7 +317,73 @@
 ИЗ
 	РегистрСведений.ДанныеБизнесПроцессов КАК РегистрСведенийДанныеБизнесПроцессов
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПроцессыДляЗапуска КАК ПроцессыДляЗапуска
-		ПО РегистрСведенийДанныеБизнесПроцессов.БизнесПроцесс = ПроцессыДляЗапуска.БизнесПроцесс</QueryText>
+		ПО РегистрСведенийДанныеБизнесПроцессов.Владелец = ПроцессыДляЗапуска.Владелец</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Состояние</dcssch:dataPath>
+					<dcssch:field>Состояние</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>БизнесПроцесс</dcssch:dataPath>
+					<dcssch:field>БизнесПроцесс</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бизнес процесс</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Завершен</dcssch:dataPath>
+					<dcssch:field>Завершен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Стартован</dcssch:dataPath>
+					<dcssch:field>Стартован</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Автор</dcssch:dataPath>
+					<dcssch:field>Автор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаЗавершения</dcssch:dataPath>
+					<dcssch:field>ДатаЗавершения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Наименование</dcssch:dataPath>
+					<dcssch:field>Наименование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КартинкаСтроки</dcssch:dataPath>
+					<dcssch:field>КартинкаСтроки</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка строки</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Отложен</dcssch:dataPath>
+					<dcssch:field>Отложен</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отложен</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
 				<MainTable>InformationRegister.ДанныеБизнесПроцессов</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -391,6 +470,25 @@
 			</Picture>
 			<Action>КартаМаршрута</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗадачиБизнесПроцесса" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Задачи</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть задачи бизнес-процесса</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Task</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗадачиБизнесПроцесса</Action>
 		</Command>
 	</Commands>
 </Form>

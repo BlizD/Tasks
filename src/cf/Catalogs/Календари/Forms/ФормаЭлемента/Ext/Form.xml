@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
-		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
@@ -101,7 +100,7 @@
 													<ToolTip>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Если дата «по» не заполнена, график будет заполняться
+															<v8:content>Если дата "по" не заполнена, график будет заполняться
 по указанному шаблону до конца года производственного календаря</v8:content>
 														</v8:item>
 													</ToolTip>
@@ -162,6 +161,9 @@
 																	<Width>8</Width>
 																	<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="220"/>
 																	<ExtendedTooltip name="ДатаОкончанияExtendedTooltip" id="307"/>
+																	<Events>
+																		<Event name="OnChange">ДатаОкончанияПриИзменении</Event>
+																	</Events>
 																</InputField>
 															</ChildItems>
 														</UsualGroup>
@@ -366,7 +368,6 @@
 																					<v8:content>начиная с</v8:content>
 																				</v8:item>
 																			</Title>
-																			<Width>8</Width>
 																			<AutoMarkIncomplete>true</AutoMarkIncomplete>
 																			<ContextMenu name="ДатаОтсчетаКонтекстноеМеню" id="230"/>
 																			<ExtendedTooltip name="ДатаОтсчетаExtendedTooltip" id="321"/>
@@ -380,20 +381,19 @@
 														</UsualGroup>
 													</ChildItems>
 												</UsualGroup>
-												<UsualGroup name="УчитыватьПраздникиГруппа" id="177">
+												<UsualGroup name="УчитыватьПраздникиГруппа" id="404">
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Учитывать праздники группа</v8:content>
+															<v8:content>Учитывать праздники</v8:content>
 														</v8:item>
 													</Title>
-													<Group>Vertical</Group>
 													<Behavior>Usual</Behavior>
-													<Representation>NormalSeparation</Representation>
+													<Representation>None</Representation>
 													<ShowTitle>false</ShowTitle>
-													<ExtendedTooltip name="УчитыватьПраздникиГруппаExtendedTooltip" id="323"/>
+													<ExtendedTooltip name="УчитыватьПраздникиГруппаРасширеннаяПодсказка" id="405"/>
 													<ChildItems>
-														<CheckBoxField name="УчитыватьПраздники" id="173">
+														<CheckBoxField name="УчитыватьПраздники" id="406">
 															<DataPath>Объект.УчитыватьПраздники</DataPath>
 															<TitleLocation>Right</TitleLocation>
 															<ToolTip>
@@ -405,22 +405,84 @@
 															</ToolTip>
 															<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 															<CheckBoxType>Auto</CheckBoxType>
-															<ContextMenu name="УчитыватьПраздникиКонтекстноеМеню" id="174"/>
-															<ExtendedTooltip name="УчитыватьПраздникиExtendedTooltip" id="324"/>
+															<ContextMenu name="УчитыватьПраздникиКонтекстноеМеню" id="407"/>
+															<ExtendedTooltip name="УчитыватьПраздникиРасширеннаяПодсказка" id="408">
+																<AutoMaxWidth>false</AutoMaxWidth>
+															</ExtendedTooltip>
 															<Events>
 																<Event name="OnChange">УчитыватьПраздникиПриИзменении</Event>
 															</Events>
 														</CheckBoxField>
-														<LabelField name="РасписаниеПредпраздничногоДня" id="287">
-															<DataPath>РасписаниеПредпраздничногоДня</DataPath>
-															<HorizontalStretch>false</HorizontalStretch>
-															<Hiperlink>true</Hiperlink>
-															<ContextMenu name="РасписаниеПредпраздничногоДняКонтекстноеМеню" id="288"/>
-															<ExtendedTooltip name="РасписаниеПредпраздничногоДняExtendedTooltip" id="326"/>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="УчитыватьНерабочиеПериодыГруппа" id="409">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Учитывать нерабочие периоды</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Vertical</Group>
+													<Behavior>Usual</Behavior>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="УчитыватьНерабочиеПериодыГруппаРасширеннаяПодсказка" id="410"/>
+													<ChildItems>
+														<CheckBoxField name="УчитыватьНерабочиеПериоды" id="411">
+															<DataPath>Объект.УчитыватьНерабочиеПериоды</DataPath>
+															<TitleLocation>Right</TitleLocation>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Если установлено, то из состава рабочих дней будут исключаться дни нерабочих периодов производственного календаря</v8:content>
+																</v8:item>
+															</ToolTip>
+															<CheckBoxType>Auto</CheckBoxType>
+															<ContextMenu name="УчитыватьНерабочиеПериодыКонтекстноеМеню" id="412"/>
+															<ExtendedTooltip name="УчитыватьНерабочиеПериодыРасширеннаяПодсказка" id="413"/>
 															<Events>
-																<Event name="Click">РасписаниеПредпраздничногоДняНажатие</Event>
+																<Event name="OnChange">УчитыватьНерабочиеПериодыПриИзменении</Event>
 															</Events>
-														</LabelField>
+														</CheckBoxField>
+														<UsualGroup name="НерабочиеПериодыГруппа" id="396">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Нерабочие периоды</v8:content>
+																</v8:item>
+															</Title>
+															<Behavior>Usual</Behavior>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="НерабочиеПериодыГруппаРасширеннаяПодсказка" id="397"/>
+															<ChildItems>
+																<PictureDecoration name="НерабочиеПериодыКартинка" id="398">
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Нерабочие периоды картинка</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>StdPicture.Information</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="НерабочиеПериодыКартинкаКонтекстноеМеню" id="399"/>
+																	<ExtendedTooltip name="НерабочиеПериодыКартинкаРасширеннаяПодсказка" id="400"/>
+																</PictureDecoration>
+																<LabelDecoration name="НерабочиеПериодыИнформация" id="401">
+																	<AutoMaxWidth>false</AutoMaxWidth>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Нерабочие периоды информация</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ContextMenu name="НерабочиеПериодыИнформацияКонтекстноеМеню" id="402"/>
+																	<ExtendedTooltip name="НерабочиеПериодыИнформацияРасширеннаяПодсказка" id="403"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
 													</ChildItems>
 												</UsualGroup>
 											</ChildItems>
@@ -556,6 +618,16 @@
 														</ColumnGroup>
 													</ChildItems>
 												</Table>
+												<LabelField name="РасписаниеПредпраздничногоДня" id="287">
+													<DataPath>РасписаниеПредпраздничногоДня</DataPath>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Hiperlink>true</Hiperlink>
+													<ContextMenu name="РасписаниеПредпраздничногоДняКонтекстноеМеню" id="288"/>
+													<ExtendedTooltip name="РасписаниеПредпраздничногоДняExtendedTooltip" id="326"/>
+													<Events>
+														<Event name="Click">РасписаниеПредпраздничногоДняНажатие</Event>
+													</Events>
+												</LabelField>
 											</ChildItems>
 										</UsualGroup>
 									</ChildItems>
@@ -680,7 +752,6 @@
 								<InputField name="Описание" id="162">
 									<DataPath>Объект.Описание</DataPath>
 									<AutoMaxWidth>false</AutoMaxWidth>
-									<AutoMaxHeight>false</AutoMaxHeight>
 									<ChoiceButton>true</ChoiceButton>
 									<ContextMenu name="ОписаниеКонтекстноеМеню" id="163"/>
 									<ExtendedTooltip name="ОписаниеExtendedTooltip" id="345"/>
@@ -748,7 +819,6 @@
 									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 									<GroupVerticalAlign>Bottom</GroupVerticalAlign>
 									<CommandName>Form.Command.РезультатЗаполнения</CommandName>
-									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 									<ExtendedTooltip name="РезультатЗаполненияExtendedTooltip" id="350"/>
 								</Button>
 							</ChildItems>
@@ -916,7 +986,6 @@
 						<Button name="НастройкаЗаполнения" id="293">
 							<Type>UsualButton</Type>
 							<CommandName>Form.Command.НастройкаЗаполнения</CommandName>
-							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							<ExtendedTooltip name="НастройкаЗаполненияExtendedTooltip" id="363"/>
 						</Button>
 					</ChildItems>
@@ -1137,6 +1206,11 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ДвенадцатиЧасовойФорматВремени" id="19">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ЗаполнитьПоШаблону" id="1">
@@ -1158,6 +1232,7 @@
 			</Picture>
 			<Action>ЗаполнитьПоШаблону</Action>
 			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="РезультатЗаполнения" id="2">
@@ -1193,16 +1268,4 @@
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
-	<CommandInterface>
-		<NavigationPanel>
-			<Item>
-				<Command>2:17aadd5f-cda2-4785-a07f-3ab4b04434a6</Command>
-				<Type>Auto</Type>
-				<DefaultVisible>false</DefaultVisible>
-				<Visible>
-					<xr:Common>false</xr:Common>
-				</Visible>
-			</Item>
-		</NavigationPanel>
-	</CommandInterface>
 </Form>

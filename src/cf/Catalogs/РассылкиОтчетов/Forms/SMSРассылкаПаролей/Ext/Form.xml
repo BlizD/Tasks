@@ -1,0 +1,819 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="Страницы" id="66">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="67"/>
+			<ChildItems>
+				<Page name="СтраницаОтправить" id="68">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отправить</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаОтправитьРасширеннаяПодсказка" id="69"/>
+					<ChildItems>
+						<LabelDecoration name="ДекорацияПодсказка" id="35">
+							<Width>50</Width>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нажмите на кнопку &lt;b&gt;Отправить&lt;/&gt; для отправки SMS с паролями архивов получателям рассылки отчетов.</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>гг</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДекорацияПодсказкаКонтекстноеМеню" id="36"/>
+							<ExtendedTooltip name="ДекорацияПодсказкаРасширеннаяПодсказка" id="37"/>
+						</LabelDecoration>
+						<UsualGroup name="ШапкаСтраницаОтправить" id="152">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Шапка </v8:content>
+								</v8:item>
+							</Title>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ШапкаСтраницаОтправитьРасширеннаяПодсказка" id="153"/>
+							<ChildItems>
+								<InputField name="ВидТелефонаПолучателей" id="26">
+									<DataPath>ВидТелефонаПолучателей</DataPath>
+									<OpenButton>false</OpenButton>
+									<CreateButton>false</CreateButton>
+									<ChoiceParameters>
+										<app:item name="Отбор.Тип">
+											<app:value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ТипыКонтактнойИнформации.EnumValue.Телефон</Value>
+											</app:value>
+										</app:item>
+									</ChoiceParameters>
+									<ContextMenu name="ВидТелефонаПолучателейКонтекстноеМеню" id="27"/>
+									<ExtendedTooltip name="ВидТелефонаПолучателейРасширеннаяПодсказка" id="28"/>
+									<Events>
+										<Event name="OnChange">ВидТелефонаПолучателейПриИзменении</Event>
+									</Events>
+								</InputField>
+								<CommandBar name="ГруппаКоманднаяПанель" id="42">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Командная панель</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="43"/>
+									<ChildItems>
+										<Button name="ВывестиСписок" id="50">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.Получатели.StandardCommand.OutputList</CommandName>
+											<ExtendedTooltip name="ВывестиСписокРасширеннаяПодсказка" id="51"/>
+										</Button>
+										<Button name="КопироватьВБуферОбмена" id="52">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.Получатели.StandardCommand.CopyToClipboard</CommandName>
+											<ExtendedTooltip name="КопироватьВБуферОбменаРасширеннаяПодсказка" id="53"/>
+										</Button>
+										<Button name="ВыделитьВсе" id="54">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.Получатели.StandardCommand.SelectAll</CommandName>
+											<ExtendedTooltip name="ВыделитьВсеРасширеннаяПодсказка" id="55"/>
+										</Button>
+										<Button name="ПоказатьМножественноеВыделение" id="56">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.Получатели.StandardCommand.ShowMultipleSelection</CommandName>
+											<ExtendedTooltip name="ПоказатьМножественноеВыделениеРасширеннаяПодсказка" id="57"/>
+										</Button>
+										<Button name="SearchEverywhere" id="58">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.Получатели.StandardCommand.SearchEverywhere</CommandName>
+											<ExtendedTooltip name="SearchEverywhereРасширеннаяПодсказка" id="59"/>
+										</Button>
+										<Button name="Найти" id="60">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.Получатели.StandardCommand.Find</CommandName>
+											<ExtendedTooltip name="НайтиРасширеннаяПодсказка" id="61"/>
+										</Button>
+										<Button name="ОтменитьПоиск" id="62">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.Получатели.StandardCommand.CancelSearch</CommandName>
+											<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+											<ExtendedTooltip name="ОтменитьПоискРасширеннаяПодсказка" id="63"/>
+										</Button>
+										<Button name="Справка" id="170">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.StandardCommand.Help</CommandName>
+											<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="171"/>
+										</Button>
+										<Button name="ПоискПоТекущемуЗначению" id="64">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.Получатели.StandardCommand.FindByCurrentValue</CommandName>
+											<ExtendedTooltip name="ПоискПоТекущемуЗначениюРасширеннаяПодсказка" id="65"/>
+										</Button>
+										<SearchStringAddition name="СтрокаПоискаПолучатели" id="156">
+											<AdditionSource>
+												<Item>Получатели</Item>
+												<Type>SearchStringRepresentation</Type>
+											</AdditionSource>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Поиск</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="СтрокаПоискаПолучателиКонтекстноеМеню" id="157"/>
+											<ExtendedTooltip name="СтрокаПоискаПолучателиРасширеннаяПодсказка" id="158"/>
+										</SearchStringAddition>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="Получатели" id="1">
+							<Representation>List</Representation>
+							<Header>false</Header>
+							<DataPath>Получатели</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Получатели</v8:content>
+								</v8:item>
+							</Title>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ПолучателиКонтекстноеМеню" id="3"/>
+							<AutoCommandBar name="ПолучателиКоманднаяПанель" id="2">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ПолучателиРасширеннаяПодсказка" id="4"/>
+							<SearchStringAddition name="ПолучателиСтрокаПоиска" id="5">
+								<AdditionSource>
+									<Item>Получатели</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПолучателиСтрокаПоискаКонтекстноеМеню" id="6"/>
+								<ExtendedTooltip name="ПолучателиСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ПолучателиСостояниеПросмотра" id="11">
+								<AdditionSource>
+									<Item>Получатели</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПолучателиСостояниеПросмотраКонтекстноеМеню" id="12"/>
+								<ExtendedTooltip name="ПолучателиСостояниеПросмотраРасширеннаяПодсказка" id="13"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ПолучателиУправлениеПоиском" id="8">
+								<AdditionSource>
+									<Item>Получатели</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ПолучателиУправлениеПоискомКонтекстноеМеню" id="9"/>
+								<ExtendedTooltip name="ПолучателиУправлениеПоискомРасширеннаяПодсказка" id="10"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ПолучателиВыбор</Event>
+								<Event name="BeforeAddRow">ПолучателиПередНачаломДобавления</Event>
+								<Event name="BeforeDeleteRow">ПолучателиПередУдалением</Event>
+							</Events>
+							<ChildItems>
+								<ColumnGroup name="ПолучательНаименованиеИТелефон" id="29">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Получатель наименование и телефон</v8:content>
+										</v8:item>
+									</Title>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="ПолучательНаименованиеИТелефонРасширеннаяПодсказка" id="30"/>
+									<ChildItems>
+										<InputField name="ПолучателиПолучатель" id="14">
+											<DataPath>Получатели.Получатель</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ContextMenu name="ПолучателиПолучательКонтекстноеМеню" id="15"/>
+											<ExtendedTooltip name="ПолучателиПолучательРасширеннаяПодсказка" id="16"/>
+										</InputField>
+										<InputField name="ПолучателиНомерТелефона" id="17">
+											<DataPath>Получатели.Телефон</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ПолучателиНомерТелефонаКонтекстноеМеню" id="18"/>
+											<ExtendedTooltip name="ПолучателиНомерТелефонаРасширеннаяПодсказка" id="19"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+						<CommandBar name="ГруппаКоманднаяПанельПодвал" id="20">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Командная панель</v8:content>
+								</v8:item>
+							</Title>
+							<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+							<HorizontalLocation>Right</HorizontalLocation>
+							<ExtendedTooltip name="ГруппаКоманднаяПанельПодвалРасширеннаяПодсказка" id="21"/>
+							<ChildItems>
+								<Button name="Отправить" id="38">
+									<Type>CommandBarButton</Type>
+									<DefaultButton>true</DefaultButton>
+									<CommandName>Form.Command.Отправить</CommandName>
+									<ExtendedTooltip name="ОтправитьРасширеннаяПодсказка" id="39"/>
+								</Button>
+								<Button name="Отмена" id="31">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.StandardCommand.Close</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отмена</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОтменаРасширеннаяПодсказка" id="32"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаСостояниеВыполнения" id="70">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отображение состояния</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<ExtendedTooltip name="СтраницаСостояниеВыполненияРасширеннаяПодсказка" id="71"/>
+					<ChildItems>
+						<PictureDecoration name="ДекорацияЗначокДлительнойОперации" id="74">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Декорация значок длительной операции</v8:content>
+								</v8:item>
+							</Title>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
+							<Picture>
+								<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="ДекорацияЗначокДлительнойОперацииКонтекстноеМеню" id="75"/>
+							<ExtendedTooltip name="ДекорацияЗначокДлительнойОперацииРасширеннаяПодсказка" id="76"/>
+						</PictureDecoration>
+						<LabelDecoration name="ДекорацияПредставлениеДлительнойОперации" id="77">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выполняется рассылка SMS с паролями архивов.</v8:content>
+								</v8:item>
+							</Title>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
+							<ContextMenu name="ДекорацияПредставлениеДлительнойОперацииКонтекстноеМеню" id="78"/>
+							<ExtendedTooltip name="ДекорацияПредставлениеДлительнойОперацииРасширеннаяПодсказка" id="79"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаИнформация" id="72">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Информация</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаИнформацияРасширеннаяПодсказка" id="73"/>
+					<ChildItems>
+						<UsualGroup name="ШапкаСтраницаИнформация" id="154">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Шапка</v8:content>
+								</v8:item>
+							</Title>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ШапкаСтраницаИнформацияРасширеннаяПодсказка" id="155"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаОтборОтправлено" id="109">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отправлено</v8:content>
+										</v8:item>
+									</Title>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаОтборОтправленоРасширеннаяПодсказка" id="110"/>
+									<ChildItems>
+										<InputField name="ОтборОтправлено" id="117">
+											<DataPath>ОтборОтправлено</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Показать</v8:content>
+												</v8:item>
+											</Title>
+											<DropListButton>true</DropListButton>
+											<ListChoiceMode>true</ListChoiceMode>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Все</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">Все</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Отправленные</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">Отправленные</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Неотправленные</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:nil="true"/>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="ОтборОтправленоКонтекстноеМеню" id="118"/>
+											<ExtendedTooltip name="ОтборОтправленоРасширеннаяПодсказка" id="119"/>
+											<Events>
+												<Event name="OnChange">ОтборОтправленоПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<CommandBar name="ГруппаКоманднаяПанельРезультатРассылки" id="120">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Командная панель</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ГруппаКоманднаяПанельРезультатРассылкиРасширеннаяПодсказка" id="121"/>
+									<ChildItems>
+										<Button name="ВывестиСписок1" id="136">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.РезультатРассылкиSMS.StandardCommand.OutputList</CommandName>
+											<ExtendedTooltip name="ВывестиСписок1РасширеннаяПодсказка" id="137"/>
+										</Button>
+										<Button name="КопироватьВБуферОбмена1" id="138">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.РезультатРассылкиSMS.StandardCommand.CopyToClipboard</CommandName>
+											<ExtendedTooltip name="КопироватьВБуферОбмена1РасширеннаяПодсказка" id="139"/>
+										</Button>
+										<Button name="ВыделитьВсе1" id="140">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.РезультатРассылкиSMS.StandardCommand.SelectAll</CommandName>
+											<ExtendedTooltip name="ВыделитьВсе1РасширеннаяПодсказка" id="141"/>
+										</Button>
+										<Button name="ПоказатьМножественноеВыделение1" id="142">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.РезультатРассылкиSMS.StandardCommand.ShowMultipleSelection</CommandName>
+											<ExtendedTooltip name="ПоказатьМножественноеВыделение1РасширеннаяПодсказка" id="143"/>
+										</Button>
+										<Button name="SearchEverywhere1" id="144">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.РезультатРассылкиSMS.StandardCommand.SearchEverywhere</CommandName>
+											<ExtendedTooltip name="SearchEverywhere1РасширеннаяПодсказка" id="145"/>
+										</Button>
+										<Button name="Найти1" id="146">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.РезультатРассылкиSMS.StandardCommand.Find</CommandName>
+											<ExtendedTooltip name="Найти1РасширеннаяПодсказка" id="147"/>
+										</Button>
+										<Button name="ОтменитьПоиск1" id="148">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.РезультатРассылкиSMS.StandardCommand.CancelSearch</CommandName>
+											<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+											<ExtendedTooltip name="ОтменитьПоиск1РасширеннаяПодсказка" id="149"/>
+										</Button>
+										<Button name="ПоискПоТекущемуЗначению1" id="150">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.РезультатРассылкиSMS.StandardCommand.FindByCurrentValue</CommandName>
+											<ExtendedTooltip name="ПоискПоТекущемуЗначению1РасширеннаяПодсказка" id="151"/>
+										</Button>
+										<Button name="Справка1" id="172">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.StandardCommand.Help</CommandName>
+											<ExtendedTooltip name="Справка1РасширеннаяПодсказка" id="173"/>
+										</Button>
+										<SearchStringAddition name="СтрокаПоискаРезультатРассылкиSMS" id="159">
+											<AdditionSource>
+												<Item>РезультатРассылкиSMS</Item>
+												<Type>SearchStringRepresentation</Type>
+											</AdditionSource>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Поиск</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="СтрокаПоискаРезультатРассылкиSMSКонтекстноеМеню" id="160"/>
+											<ExtendedTooltip name="СтрокаПоискаРезультатРассылкиSMSРасширеннаяПодсказка" id="161"/>
+										</SearchStringAddition>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="РезультатРассылкиSMS" id="82">
+							<Representation>List</Representation>
+							<ReadOnly>true</ReadOnly>
+							<DataPath>РезультатРассылкиSMS</DataPath>
+							<RowPictureDataPath>РезультатРассылкиSMS.НеОтправлено</RowPictureDataPath>
+							<RowsPicture>
+								<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</RowsPicture>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Результат рассылки SMS</v8:content>
+								</v8:item>
+							</Title>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="РезультатРассылкиSMSКонтекстноеМеню" id="84"/>
+							<AutoCommandBar name="РезультатРассылкиSMSКоманднаяПанель" id="83">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="РезультатРассылкиSMSРасширеннаяПодсказка" id="85"/>
+							<SearchStringAddition name="РезультатРассылкиSMSСтрокаПоиска" id="86">
+								<AdditionSource>
+									<Item>РезультатРассылкиSMS</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="РезультатРассылкиSMSСтрокаПоискаКонтекстноеМеню" id="87"/>
+								<ExtendedTooltip name="РезультатРассылкиSMSСтрокаПоискаРасширеннаяПодсказка" id="88"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="РезультатРассылкиSMSСостояниеПросмотра" id="92">
+								<AdditionSource>
+									<Item>РезультатРассылкиSMS</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="РезультатРассылкиSMSСостояниеПросмотраКонтекстноеМеню" id="93"/>
+								<ExtendedTooltip name="РезультатРассылкиSMSСостояниеПросмотраРасширеннаяПодсказка" id="94"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="РезультатРассылкиSMSУправлениеПоиском" id="89">
+								<AdditionSource>
+									<Item>РезультатРассылкиSMS</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="РезультатРассылкиSMSУправлениеПоискомКонтекстноеМеню" id="90"/>
+								<ExtendedTooltip name="РезультатРассылкиSMSУправлениеПоискомРасширеннаяПодсказка" id="91"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">РезультатРассылкиSMSВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="РезультатРассылкиSMSПолучатель" id="95">
+									<DataPath>РезультатРассылкиSMS.Получатель</DataPath>
+									<ContextMenu name="РезультатРассылкиSMSПолучательКонтекстноеМеню" id="96"/>
+									<ExtendedTooltip name="РезультатРассылкиSMSПолучательРасширеннаяПодсказка" id="97"/>
+								</InputField>
+								<InputField name="РезультатРассылкиSMSКомментарий" id="98">
+									<DataPath>РезультатРассылкиSMS.Комментарий</DataPath>
+									<MultiLine>true</MultiLine>
+									<HeightControlVariant>UseContentHeight</HeightControlVariant>
+									<ContextMenu name="РезультатРассылкиSMSКомментарийКонтекстноеМеню" id="99"/>
+									<ExtendedTooltip name="РезультатРассылкиSMSКомментарийРасширеннаяПодсказка" id="100"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="ГруппаПодвал" id="104">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подвал</v8:content>
+								</v8:item>
+							</Title>
+							<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаПодвалРасширеннаяПодсказка" id="105"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаИтоги" id="162">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Итоги</v8:content>
+										</v8:item>
+									</Title>
+									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+									<GroupVerticalAlign>Bottom</GroupVerticalAlign>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<VerticalAlign>Bottom</VerticalAlign>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<BackColor>style:ИтогиФонГруппы</BackColor>
+									<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="163"/>
+									<ChildItems>
+										<InputField name="КоличествоОтправлено" id="164">
+											<DataPath>КоличествоОтправлено</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<TitleLocation>Left</TitleLocation>
+											<ContextMenu name="КоличествоОтправленоКонтекстноеМеню" id="165"/>
+											<ExtendedTooltip name="КоличествоОтправленоРасширеннаяПодсказка" id="166"/>
+										</InputField>
+										<InputField name="КоличествоНеОтправлено" id="167">
+											<DataPath>КоличествоНеОтправлено</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<TitleLocation>Left</TitleLocation>
+											<ContextMenu name="КоличествоНеОтправленоКонтекстноеМеню" id="168"/>
+											<ExtendedTooltip name="КоличествоНеОтправленоРасширеннаяПодсказка" id="169"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<Button name="Закрыть" id="80">
+									<Type>UsualButton</Type>
+									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+									<CommandName>Form.StandardCommand.Close</CommandName>
+									<ExtendedTooltip name="ЗакрытьРасширеннаяПодсказка" id="81"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Получатели" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получатели</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Получатель" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Получатель</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.ПолучательРассылки</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Телефон" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Телефон</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПарольАрхива" id="8">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ВидТелефонаПолучателей" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Телефон</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВидыКонтактнойИнформации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТипПолучателейРассылки" id="5">
+			<Type>
+				<v8:Type>v8:TypeDescription</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторОбъектаМетаданных" id="6">
+			<Type/>
+		</Attribute>
+		<Attribute name="НаименованиеРассылки" id="7">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="РезультатРассылкиSMS" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат рассылки SMS</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Получатель" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Получатель</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.ПолучательРассылки</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Комментарий" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НеОтправлено" id="13">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ОтборОтправлено" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправлено</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>15</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="РезультатРассылкиSMSБезОтборов" id="16">
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Получатель" id="11">
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.ПолучательРассылки</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Комментарий" id="12">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НеОтправлено" id="13">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="КоличествоОтправлено" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправлено</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>7</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КоличествоНеОтправлено" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не отправлено</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>7</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Отправить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Отправить</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="НаименованиеРассылки">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="АдресПолучателей">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Ссылка">
+			<Type>
+				<v8:Type>cfg:CatalogRef.РассылкиОтчетов</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ТипПолучателейРассылки">
+			<Type>
+				<v8:Type>v8:TypeDescription</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИдентификаторОбъектаМетаданных">
+			<Type/>
+		</Parameter>
+	</Parameters>
+</Form>

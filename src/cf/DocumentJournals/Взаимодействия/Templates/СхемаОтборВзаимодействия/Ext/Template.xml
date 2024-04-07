@@ -175,46 +175,8 @@
 			ПО ПредметыВзаимодействий.Предмет = СостоянияПредметовВзаимодействий.Предмет
 		ПО ЖурналДокументовВзаимодействия.Ссылка = ПредметыВзаимодействий.Взаимодействие}
 {ГДЕ
-	(ЖурналДокументовВзаимодействия.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания)}</query>
+	(ЖурналДокументовВзаимодействия.Дата МЕЖДУ &amp;НачалоПериодаОтбора И &amp;КонецПериодаОтбора)}</query>
 	</dataSet>
-	<parameter>
-		<name>ДатаНачала</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата начала</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;Интервал.ДатаНачала</expression>
-		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
-		<name>ДатаОкончания</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата окончания</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;Интервал.ДатаОкончания</expression>
-		<availableAsField>false</availableAsField>
-	</parameter>
 	<parameter>
 		<name>Интервал</name>
 		<title xsi:type="v8:LocalStringType">
@@ -232,6 +194,32 @@
 			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 		</value>
 		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>КонецПериодаОтбора</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода отбора</v8:content>
+			</v8:item>
+		</title>
+		<value xsi:type="xs:string">1/1/0001, 12:00:00 AM</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Интервал.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НачалоПериодаОтбора</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода отбора</v8:content>
+			</v8:item>
+		</title>
+		<value xsi:type="xs:string">1/1/0001, 12:00:00 AM</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Интервал.ДатаНачала</expression>
 		<availableAsField>false</availableAsField>
 	</parameter>
 	<settingsVariant>

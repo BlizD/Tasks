@@ -36,7 +36,7 @@ function checkResult (ret) {
   if (ret === 0) {
     return
   }
-  log(format('Завершение с ошибкой. Код ошибки: {0}. Подробности см. в предыдущей записи.', ret), true)
+  log(format('[СообщениеЗаставкиОшибкаШага]', ret), true)
   
   finalize()
   ClearTempFiles()
@@ -44,47 +44,42 @@ function checkResult (ret) {
   WScript.Quit(ret)
 }
 
-function ClearTempFiles () {
-  // Удаляем временные файлы
-  try {
-    oFileSystemObject.DeleteFile(thisFileDir + '\\main.js')
-    oFileSystemObject.DeleteFile(thisFileDir + '\\helpers.js')
-    oFileSystemObject.DeleteFile(thisFileDir + '\\add-delete-patches.js')
-    oFileSystemObject.DeleteFile(thisFileDir + '\\addsheduletask.js')
-    oFileSystemObject.DeleteFile(thisFileDir + '\\templog.txt')
-    oFileSystemObject.DeleteFile(thisFileDir + '\\updater.js')
-  } catch (e) { }
-}
-
-setProgress('Инициализация')
+setProgress('[СообщениеИнициализация]')
 var ret = initialize()
 checkResult(ret)
 
-setProgress('Завершение работы пользователей')
+setProgress('[СообщениеЗавершениеРаботыПользователей]')
 ret = disconnectAndBlockUsers()
 checkResult(ret)
 
 if (createBackup) {
-  setProgress('Создание резервной копии информационной базы')
+  setProgress('[СообщениеСозданиеРезервнойКопииБазы]')
   ret = backupDB()
   checkResult(ret)
 }
 
 if (executeDeferredHandlers) {
-  setProgress('Выполнение отложенных обработчиков обновления')
+  setProgress('[СообщениеВыполнениеОтложенныхОбработчиковОбновления]')
   ret = runDeferredHandlers()
   checkResult(ret)
 }
 
 if (cfgFileNames.length === 0) {
-  setProgress('Обновление конфигурации информационной базы')
-  ret = updateDbCfg()
-  checkResult(ret)
+  if (updateConfiguration){
+    setProgress('[СообщениеОбновлениеКонфигурации]')
+    ret = updateDbCfg()
+    checkResult(ret)
+  } 
+  if (loadExtentions){
+    setProgress('[СообщениеЗагрузкаРасширений]')
+    ret = executeLoadExt()
+    checkResult(ret)
+  }
 } else {
   for (var cfgFileIndex = 0; cfgFileIndex < cfgFileNames.length; cfgFileIndex++) {
     var fileProperties = GetRequired(cfgFileNames[cfgFileIndex])
 
-    setProgress(format('Загрузка файла обновления в основную базу ({0}/{1})', cfgFileIndex + 1, cfgFileNames.length))
+    setProgress(format('[СообщениеЗагрузкаФайлаОбновлений]', cfgFileIndex + 1, cfgFileNames.length))
     ret = updateCfg(fileProperties.filePath)
     // Если не удалось загрузить файл, возможно конфигурация не находится на поддержке.
     if (ret !== 0) {
@@ -92,22 +87,22 @@ if (cfgFileNames.length === 0) {
     }
     checkResult(ret)
 
-    setProgress(format('Обновление конфигурации информационной базы ({0}/{1})', cfgFileIndex + 1, cfgFileNames.length))
+    setProgress(format('[СообщениеПараметрыОбновленияКонфигурации]', cfgFileIndex + 1, cfgFileNames.length))
     ret = updateDbCfg()
     checkResult(ret)
 
     if (fileProperties.requiredVersion || (cfgFileIndex + 1 === cfgFileNames.length)) {
-      setProgress(format('Выполнение обработчиков обновления ({0}/{1})', cfgFileIndex + 1, cfgFileNames.length))
+      setProgress(format('[СообщениеВыполнениеОбработчиковОбновления]', cfgFileIndex + 1, cfgFileNames.length))
       ret = executeUpdate(cfgFileIndex + 1 === cfgFileNames.length)
       checkResult(ret)
     }
   }
 }
 
-setProgress('Разрешение подключений новых соединений')
+setProgress('[СообщениеРазрешениеПодключений]')
 ret = allowConnections()
 checkResult(ret)
 
-setProgress('Завершение')
+setProgress('[СообщениеЗавершениеОбновления]')
 finalize(true)
 ClearTempFiles()

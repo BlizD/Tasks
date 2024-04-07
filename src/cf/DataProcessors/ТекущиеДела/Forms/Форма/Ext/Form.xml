@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -61,7 +61,7 @@
 				<PictureDecoration name="КартинкаДлительнаяОперация" id="11">
 					<Picture>
 						<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</Picture>
 					<FileDragMode>AsFile</FileDragMode>
 					<ContextMenu name="КартинкаДлительнаяОперацияКонтекстноеМеню" id="12"/>
@@ -85,7 +85,7 @@
 				<PictureDecoration name="КартинкаИнформация" id="18">
 					<Picture>
 						<xr:Ref>CommonPicture.Информация32</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</Picture>
 					<FileDragMode>AsFile</FileDragMode>
 					<ContextMenu name="КартинкаИнформацияКонтекстноеМеню" id="19"/>
@@ -127,7 +127,7 @@
 					</Title>
 					<Picture>
 						<xr:Ref>CommonPicture.Ошибка32</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</Picture>
 					<ContextMenu name="ДекорацияОшибкаКонтекстноеМеню" id="27"/>
 					<ExtendedTooltip name="ДекорацияОшибкаРасширеннаяПодсказка" id="28"/>
@@ -179,11 +179,6 @@
 		<Attribute name="НастройкиАвтообновления" id="3">
 			<Type/>
 		</Attribute>
-		<Attribute name="ИнтерфейсТакси" id="4">
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
 		<Attribute name="ТолькоОбновлениеДел" id="6">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -219,6 +214,31 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ДелаСОповещением" id="4">
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Идентификатор" id="1">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Описание" id="2">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="Настроить" id="1">
@@ -236,7 +256,7 @@
 			</ToolTip>
 			<Picture>
 				<xr:Ref>CommonPicture.ПрочиеПользовательскиеНастройки</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>Настроить</Action>
 			<Representation>Text</Representation>

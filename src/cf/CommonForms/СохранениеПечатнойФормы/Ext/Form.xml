@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<CommandBarLocation>Bottom</CommandBarLocation>
@@ -45,12 +45,19 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="OnSaveDataInSettingsAtServer">ПриСохраненииДанныхВНастройкахНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeLoadDataFromSettingsAtServer">ПередЗагрузкойДанныхИзНастроекНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ВыборМестаСохраненияФайла" id="50" DisplayImportance="VeryHigh">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбор места сохранения файла</v8:content>
+				</v8:item>
+			</Title>
 			<Group>Vertical</Group>
 			<Behavior>Usual</Behavior>
 			<Representation>NormalSeparation</Representation>
@@ -95,60 +102,19 @@
 						<Event name="OnChange">ВариантСохраненияПриИзменении</Event>
 					</Events>
 				</RadioButtonField>
-				<Pages name="ГруппаМестаСохранения" id="69" DisplayImportance="VeryHigh">
-					<PagesRepresentation>None</PagesRepresentation>
-					<ExtendedTooltip name="ГруппаМестаСохраненияExtendedTooltip" id="84"/>
-					<ChildItems>
-						<Page name="СтраницаСохранениеВПапку" id="70">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страница сохранение в папку</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="СтраницаСохранениеВПапкуExtendedTooltip" id="85"/>
-							<ChildItems>
-								<InputField name="ПапкаДляСохраненияФайлов" id="42">
-									<DataPath>ВыбраннаяПапка</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<Width>40</Width>
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<ChoiceButton>true</ChoiceButton>
-									<AutoMarkIncomplete>true</AutoMarkIncomplete>
-									<ContextMenu name="ПапкаДляСохраненияФайловКонтекстноеМеню" id="43"/>
-									<ExtendedTooltip name="ПапкаДляСохраненияФайловExtendedTooltip" id="86"/>
-									<Events>
-										<Event name="StartChoice">ПапкаДляСохраненияФайловНачалоВыбора</Event>
-									</Events>
-								</InputField>
-							</ChildItems>
-						</Page>
-						<Page name="СтраницаПрисоединениеКОбъекту" id="71">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страница присоединение к объекту</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="СтраницаПрисоединениеКОбъектуExtendedTooltip" id="87"/>
-							<ChildItems>
-								<InputField name="ВыбранныйОбъект" id="48">
-									<DataPath>ВыбранныйОбъект</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<ClearButton>false</ClearButton>
-									<CreateButton>false</CreateButton>
-									<ListChoiceMode>true</ListChoiceMode>
-									<TextEdit>false</TextEdit>
-									<ContextMenu name="ВыбранныйОбъектКонтекстноеМеню" id="49"/>
-									<ExtendedTooltip name="ВыбранныйОбъектExtendedTooltip" id="88"/>
-									<Events>
-										<Event name="Clearing">ВыбранныйОбъектОчистка</Event>
-									</Events>
-								</InputField>
-							</ChildItems>
-						</Page>
-					</ChildItems>
-				</Pages>
+				<InputField name="ПапкаДляСохраненияФайлов" id="42">
+					<DataPath>ВыбраннаяПапка</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Width>40</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ChoiceButton>true</ChoiceButton>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ПапкаДляСохраненияФайловКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="ПапкаДляСохраненияФайловExtendedTooltip" id="86"/>
+					<Events>
+						<Event name="StartChoice">ПапкаДляСохраненияФайловНачалоВыбора</Event>
+					</Events>
+				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаВыборФорматов" id="77" DisplayImportance="VeryHigh">
@@ -172,6 +138,12 @@
 					<FileDragMode>AsFile</FileDragMode>
 					<DataPath>ВыбранныеФорматыСохранения</DataPath>
 					<RowPictureDataPath>ВыбранныеФорматыСохранения.Picture</RowPictureDataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбранные форматы сохранения</v8:content>
+						</v8:item>
+					</Title>
 					<CommandSet>
 						<ExcludedCommand>Add</ExcludedCommand>
 						<ExcludedCommand>Change</ExcludedCommand>
@@ -185,6 +157,7 @@
 						<ExcludedCommand>SortListAsc</ExcludedCommand>
 						<ExcludedCommand>SortListDesc</ExcludedCommand>
 					</CommandSet>
+					<SearchStringLocation>Top</SearchStringLocation>
 					<ContextMenu name="ВыбранныеФорматыСохраненияКонтекстноеМеню" id="73"/>
 					<AutoCommandBar name="ВыбранныеФорматыСохраненияКоманднаяПанель" id="74">
 						<Autofill>false</Autofill>
@@ -217,6 +190,12 @@
 					<ChildItems>
 						<CheckBoxField name="ВыбранныеФорматыСохраненияПометка" id="78">
 							<DataPath>ВыбранныеФорматыСохранения.Check</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Пометка</v8:content>
+								</v8:item>
+							</Title>
 							<EditMode>EnterOnInput</EditMode>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="ВыбранныеФорматыСохраненияПометкаКонтекстноеМеню" id="79"/>
@@ -225,6 +204,12 @@
 						<InputField name="ВыбранныеФорматыСохраненияЗначение" id="75">
 							<DataPath>ВыбранныеФорматыСохранения.Value</DataPath>
 							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Значение</v8:content>
+								</v8:item>
+							</Title>
 							<EditMode>EnterOnInput</EditMode>
 							<ContextMenu name="ВыбранныеФорматыСохраненияЗначениеКонтекстноеМеню" id="76"/>
 							<ExtendedTooltip name="ВыбранныеФорматыСохраненияЗначениеExtendedTooltip" id="92"/>
@@ -234,6 +219,12 @@
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаДополнительныеПараметры" id="63" DisplayImportance="VeryHigh">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные параметры</v8:content>
+				</v8:item>
+			</Title>
 			<Group>Vertical</Group>
 			<Behavior>Usual</Behavior>
 			<Representation>NormalSeparation</Representation>
@@ -266,6 +257,13 @@
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ПереводитьИменаФайловВТранслитКонтекстноеМеню" id="105"/>
 					<ExtendedTooltip name="ПереводитьИменаФайловВТранслитРасширеннаяПодсказка" id="106"/>
+				</CheckBoxField>
+				<CheckBoxField name="Подписать" id="107">
+					<DataPath>Подписать</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ПодписатьКонтекстноеМеню" id="108"/>
+					<ExtendedTooltip name="ПодписатьРасширеннаяПодсказка" id="109"/>
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
@@ -321,17 +319,6 @@
 				<Field>ВариантСохранения</Field>
 			</Save>
 		</Attribute>
-		<Attribute name="ВыбранныйОбъект" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Выбранный объект</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
-			</Type>
-		</Attribute>
 		<Attribute name="ВыбранныеФорматыСохранения" id="12">
 			<Title>
 				<v8:item>
@@ -361,6 +348,29 @@
 				<Field>ПереводитьИменаФайловВТранслит</Field>
 			</Save>
 		</Attribute>
+		<Attribute name="Подписать" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подписать</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>Подписать</Field>
+			</Save>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьЭлектронныеПодписи</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ОбъектыПрикрепления" id="14">
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="Сохранить" id="1">
@@ -384,6 +394,20 @@
 		<Parameter name="ОбъектыПечати">
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="РасширениеДляРаботыСФайламиПодключено">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ОграничениеФорматовСохранения">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
 			</Type>
 		</Parameter>
 	</Parameters>

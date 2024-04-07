@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Bottom</CommandBarLocation>
@@ -7,17 +7,29 @@
 		<HorizontalAlign>Right</HorizontalAlign>
 		<Autofill>false</Autofill>
 		<ChildItems>
-			<Button name="ЗавершитьРедактирование" id="12">
-				<Type>CommandBarButton</Type>
-				<DefaultButton>true</DefaultButton>
-				<CommandName>Form.Command.ЗавершитьРедактирование</CommandName>
-				<ExtendedTooltip name="ЗавершитьРедактированиеРасширеннаяПодсказка" id="13"/>
-			</Button>
-			<Button name="ФормаОтмена" id="16">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.Cancel</CommandName>
-				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="17"/>
-			</Button>
+			<ButtonGroup name="ГруппаСкрытоНаМобильномКлиенте" id="51">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Скрыто на мобильном клиенте</v8:content>
+					</v8:item>
+				</Title>
+				<Representation>Usual</Representation>
+				<ExtendedTooltip name="ГруппаСкрытоНаМобильномКлиентеРасширеннаяПодсказка" id="52"/>
+				<ChildItems>
+					<Button name="ЗавершитьРедактирование" id="12">
+						<Type>CommandBarButton</Type>
+						<DefaultButton>true</DefaultButton>
+						<CommandName>Form.Command.ЗавершитьРедактирование</CommandName>
+						<ExtendedTooltip name="ЗавершитьРедактированиеРасширеннаяПодсказка" id="13"/>
+					</Button>
+					<Button name="ФормаОтмена" id="16">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.Cancel</CommandName>
+						<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="17"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
 			<ButtonGroup name="ФормаГруппаСправка" id="14">
 				<Title>
 					<v8:item>
@@ -37,7 +49,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -61,6 +73,7 @@
 					<v8:content>Правила поиска</v8:content>
 				</v8:item>
 			</Title>
+			<SearchStringLocation>Top</SearchStringLocation>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="ПравилаПоискаКонтекстноеМеню" id="21"/>
 			<AutoCommandBar name="ПравилаПоискаКоманднаяПанель" id="22"/>
@@ -93,15 +106,15 @@
 				<Event name="Selection">ПравилаПоискаВыбор</Event>
 			</Events>
 			<ChildItems>
-				<ColumnGroup name="ПравилаПоискаГруппа1" id="46">
+				<ColumnGroup name="ПравилаПоискаГруппаОсновное" id="46">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Правила поиска группа 1</v8:content>
+							<v8:content>Основное</v8:content>
 						</v8:item>
 					</Title>
 					<Group>InCell</Group>
-					<ExtendedTooltip name="ПравилаПоискаГруппа1РасширеннаяПодсказка" id="47"/>
+					<ExtendedTooltip name="ПравилаПоискаГруппаОсновноеРасширеннаяПодсказка" id="47"/>
 					<ChildItems>
 						<CheckBoxField name="ПравилаПоискаИспользовать" id="30">
 							<DataPath>ПравилаПоиска.Использовать</DataPath>
@@ -148,6 +161,13 @@
 				</InputField>
 			</ChildItems>
 		</Table>
+		<CheckBoxField name="СкрыватьНезначимыеДубли" id="48">
+			<DataPath>СкрыватьНезначимыеДубли</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="СкрыватьНезначимыеДублиКонтекстноеМеню" id="49"/>
+			<ExtendedTooltip name="СкрыватьНезначимыеДублиРасширеннаяПодсказка" id="50"/>
+		</CheckBoxField>
 		<UsualGroup name="ГруппаПрикладныхОграничений" id="35">
 			<Title>
 				<v8:item>
@@ -301,6 +321,23 @@
 		<Attribute name="ВсеВидыСравненияПравилПоиска" id="7">
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
+		</Attribute>
+		<Attribute name="СкрыватьНезначимыеДубли" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скрывать дубли, помеченные на удаление и без мест использования</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоМобильныйКлиент" id="9">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>

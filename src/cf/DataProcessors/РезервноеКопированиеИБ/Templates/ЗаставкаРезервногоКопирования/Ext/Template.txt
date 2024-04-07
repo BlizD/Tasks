@@ -2,11 +2,11 @@
 <html>
 
 <head>
-  <meta http-equiv="Content-Type" content="application/hta; charset=UTF-16">
+  <meta http-equiv="Content-Type" content="application/hta; charset=UTF-8">
   <meta http-equiv="x-ua-compatible" content="IE=EmulateIE7">
   <hta:application id="oHTA" border="none" caption="no" contextmenu="no" selection="no" icon="splash.ico" innerborder="no"
     navigable="yes" showintaskbar="yes" scroll="no" version="1.0.0.0" />
-  <title>Резервное копирование информационной базы...</title>
+  <title>[ЗаголовокЗаставки]</title>
   <script language="javascript" src="helpers.js"></script>
   <script language="javascript" src="main.js"></script>
   <script language="javascript">
@@ -38,31 +38,31 @@
     function doStep (step) {
       switch (step) {
         case 0:
-          setProgress('Инициализация')
+          setProgress('[Шаг1Инициализация]')
           break
         case 1:
           ret = initialize()
           break
         case 2:
-          setProgress('Создание резервной копии информационной базы')
+          setProgress('[Шаг2СозданиеРезервнойКопии]')
           break
         case 3:
           ret = backupDB()
           break
         case 4:
-          setProgress('Ожидание завершения резервного копирования')
+          setProgress('[Шаг3ОжиданиеЗавершения]')
           break
         case 5:
           ret = WaitUntilFinish()
           break
         case 6:
-          setProgress('Разрешение подключений новых соединений')
+          setProgress('[Шаг4РазрешениеПодключений]')
           break
         case 7:
           ret = allowConnections()
           break
         case 8:
-          setProgress('Завершение')
+          setProgress('[Шаг5Завершение]')
           break
         case 9:
           // Все готово.
@@ -82,10 +82,14 @@
       if (finish) {
         return
       }
+      
+      document.getElementById('ProductNameText').innerHTML = '[НаименованиеПродукта]'
+      document.getElementById('copyrightText').innerHTML = '[Копирайт]'
+      
       // Если предыдущий шаг завершился неудачно...
       if (ret !== 0 && ret !== -1) {
         if (errStep === 0) {
-          log(format('Завершение с ошибкой. Код ошибки: {0}. Подробности см. в предыдущей записи.', ret), true)
+          log(format('[СообщениеЗаставкиОшибкаШага]', ret), true)
           finalize()
           runEnterprise()
           self.close()
@@ -114,9 +118,9 @@
 
     function checkClose () {
       if (!finish) {
-        event.returnValue = format('Внимание: процесс резервного копирования был прерван, и информационная база осталась заблокированной!\n' +
-              'Для разблокирования информационной базы воспользуйтесь консолью кластера серверов или запустите "1С:Предприятие".')
-        }
+        event.returnValue = format('[ПроцессПрерван]\n' +
+              '[ПроцессПрерванПодсказка]')
+      }
     }
 
     function ClearTempFiles () {
@@ -140,12 +144,18 @@
   </div>
   <div id="captionText" style="font-size: 9pt; font-family: verdana,arial; font-weight: bold;
         color: #606060; position: absolute; left: 80px; top: 70px;">
-    Пожалуйста, подождите.
-    <br /> Выполняется резервное копирование базы.
-    <br /> Не рекомендуется останавливать процесс.
+    [ТекстЗаставки]
   </div>
   <div id="progressText" style="font-size: 8pt; font-family: verdana,arial; color: #000000;
         position: absolute; left: 10px; top: 240px;">
+    &nbsp;
+  </div>
+  <div id="productNameText" style="font-size: 12pt; font-family: sans,sans-serif; color: #50525b; font-weight: bold;
+        position: absolute; left: 20px; top: 270px;">
+    &nbsp;
+  </div>
+  <div id="copyrightText" style="font-size: 8pt; font-family: sans,sans-serif; color: #9b9b9b; font-weight: bold;
+        position: absolute; left: 20px; top: 290px;">
     &nbsp;
   </div>
 </body>

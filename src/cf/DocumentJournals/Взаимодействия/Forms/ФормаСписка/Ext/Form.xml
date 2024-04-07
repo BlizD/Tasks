@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -20,12 +20,58 @@
 		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
 		<Event name="NavigationProcessing">ОбработкаПерехода</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeLoadDataFromSettingsAtServer">ПередЗагрузкойДанныхИзНастроекНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<UsualGroup name="ПредупреждениеОНеотправленныхПисьмах" id="926">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа предупреждение</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ПредупреждениеБезопасностиРасширеннаяПодсказка1" id="927"/>
+			<ChildItems>
+				<PictureDecoration name="ПредупреждениеОНеотправленныхПисьмахКартинка" id="928">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка предупреждение</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="КартинкаПредупреждениеКонтекстноеМеню1" id="929"/>
+					<ExtendedTooltip name="КартинкаПредупреждениеРасширеннаяПодсказка1" id="930"/>
+				</PictureDecoration>
+				<LabelDecoration name="ПредупреждениеОНеотправленныхПисьмахНадпись" id="931">
+					<Width>33</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регламентное задание &lt;b&gt;Получение&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;и&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;отправка&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;писем&lt;/&gt; отключено, доставка писем не выполняется. &lt;link ВключитьПолучениеИОтправкуПисем&gt;Включить&lt;/&gt;</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<ContextMenu name="ПредупреждениеОНебезопасномСодержимомКонтекстноеМеню1" id="932"/>
+					<ExtendedTooltip name="ПредупреждениеОНебезопасномСодержимомРасширеннаяПодсказка1" id="933"/>
+					<Events>
+						<Event name="URLProcessing">ПредупреждениеОНеотправленныхПисьмахНадписьОбработкаНавигационнойСсылки</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
 		<UsualGroup name="ГруппаПользовательскихНастроек" id="832">
 			<UserVisible>
 				<xr:Common>false</xr:Common>
@@ -499,34 +545,60 @@
 									</Title>
 									<ExtendedTooltip name="СписокСоздатьЭлектронноеПисьмоОтдельнаяКнопкаExtendedTooltip" id="561"/>
 								</Button>
-								<Button name="СписокОтветить" id="342">
-									<Type>CommandBarButton</Type>
-									<Representation>Text</Representation>
-									<CommandName>Form.Command.Ответить</CommandName>
-									<Picture>
-										<xr:Ref>CommonPicture.ОтветитьНаЭлектронноеПисьмо</xr:Ref>
-										<xr:LoadTransparent>false</xr:LoadTransparent>
-									</Picture>
-									<ExtendedTooltip name="СписокОтветитьРасширеннаяПодсказка" id="606"/>
-								</Button>
-								<Button name="СписокОтветитьВсем" id="343">
-									<Type>CommandBarButton</Type>
-									<Representation>Picture</Representation>
-									<CommandName>Form.Command.ОтветитьВсем</CommandName>
-									<ExtendedTooltip name="СписокОтветитьВсемРасширеннаяПодсказка" id="607"/>
-								</Button>
-								<Button name="СписокПереслать" id="344">
-									<Type>CommandBarButton</Type>
-									<Representation>Picture</Representation>
-									<CommandName>Form.Command.Переслать</CommandName>
-									<ExtendedTooltip name="СписокПереслатьРасширеннаяПодсказка" id="608"/>
-								</Button>
+								<ButtonGroup name="ГруппаОтветитьПереслать" id="919">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ответить переслать</v8:content>
+										</v8:item>
+									</Title>
+									<Representation>Compact</Representation>
+									<ExtendedTooltip name="ГруппаОтветитьПереслатьРасширеннаяПодсказка" id="920"/>
+									<ChildItems>
+										<Button name="СписокОтветить" id="342">
+											<Type>CommandBarButton</Type>
+											<Representation>Text</Representation>
+											<CommandName>Form.Command.Ответить</CommandName>
+											<Picture>
+												<xr:Ref>CommonPicture.ОтветитьНаЭлектронноеПисьмо</xr:Ref>
+												<xr:LoadTransparent>false</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="СписокОтветитьРасширеннаяПодсказка" id="606"/>
+										</Button>
+										<Button name="СписокОтветитьВсем" id="343">
+											<Type>CommandBarButton</Type>
+											<Representation>Picture</Representation>
+											<CommandName>Form.Command.ОтветитьВсем</CommandName>
+											<ExtendedTooltip name="СписокОтветитьВсемРасширеннаяПодсказка" id="607"/>
+										</Button>
+										<Button name="СписокПереслать" id="344">
+											<Type>CommandBarButton</Type>
+											<Representation>Picture</Representation>
+											<CommandName>Form.Command.Переслать</CommandName>
+											<ExtendedTooltip name="СписокПереслатьРасширеннаяПодсказка" id="608"/>
+										</Button>
+									</ChildItems>
+								</ButtonGroup>
 								<Button name="СписокОтправитьПолучитьПочту" id="59">
 									<Type>CommandBarButton</Type>
 									<Representation>Picture</Representation>
 									<CommandName>Form.Command.ОтправитьПолучитьПочту</CommandName>
 									<ExtendedTooltip name="СписокОтправитьПолучитьПочтуExtendedTooltip" id="562"/>
 								</Button>
+								<Popup name="ПодменюСоздатьНаОсновании" id="917">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Создать на основании</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>StdPicture.InputOnBasis</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<Representation>Picture</Representation>
+									<ExtendedTooltip name="ПодменюСоздатьНаОснованииРасширеннаяПодсказка" id="918"/>
+								</Popup>
 								<ButtonGroup name="ГруппаРассмотрено" id="410">
 									<Title>
 										<v8:item>
@@ -534,6 +606,7 @@
 											<v8:content>Рассмотрено</v8:content>
 										</v8:item>
 									</Title>
+									<Representation>Compact</Representation>
 									<ExtendedTooltip name="ГруппаРассмотреноExtendedTooltip" id="563"/>
 									<ChildItems>
 										<Button name="СписокРассмотрено" id="40">
@@ -569,7 +642,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Список тип взаимодействия</v8:content>
+											<v8:content>Показывать</v8:content>
 										</v8:item>
 									</Title>
 									<ExtendedTooltip name="СписокТипВзаимодействияРасширеннаяПодсказка" id="825"/>
@@ -709,6 +782,7 @@
 							<v8:content>Основное</v8:content>
 						</v8:item>
 					</Title>
+					<Group>AlwaysHorizontal</Group>
 					<Behavior>Usual</Behavior>
 					<Representation>None</Representation>
 					<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
@@ -836,11 +910,6 @@
 																		<CommandName>Form.Item.КонтактыПанелиНавигации.StandardCommand.CancelSearch</CommandName>
 																		<ExtendedTooltip name="КонтактыПанелиНавигацииКонтекстноеМенюОтменитьПоискРасширеннаяПодсказка" id="819"/>
 																	</Button>
-																	<Button name="КонтактыПанелиНавигацииКонтекстноеМенюТолькоЗначимыеКонтакты" id="782">
-																		<Type>CommandBarButton</Type>
-																		<CommandName>Form.Command.ТолькоЗначимыеКонтакты</CommandName>
-																		<ExtendedTooltip name="КонтактыПанелиНавигацииКонтекстноеМенюТолькоЗначимыеКонтактыРасширеннаяПодсказка" id="783"/>
-																	</Button>
 																</ChildItems>
 															</ButtonGroup>
 															<ButtonGroup name="КонтактыКонтекстноеМенюГруппаНастроитьСписок" id="202">
@@ -866,7 +935,7 @@
 															</Button>
 															<Button name="КонтактыКонтекстноеМенюВывестиСписок" id="392">
 																<Type>CommandBarButton</Type>
-																<CommandName>31:49602716-fea6-497f-8047-726404038857</CommandName>
+																<CommandName>Form.Item.КонтактыПанелиНавигации.StandardCommand.OutputList</CommandName>
 																<ExtendedTooltip name="КонтактыКонтекстноеМенюВывестиСписокExtendedTooltip" id="442"/>
 															</Button>
 														</ChildItems>
@@ -947,6 +1016,8 @@
 																				<xr:LoadTransparent>false</xr:LoadTransparent>
 																			</HeaderPicture>
 																			<Width>3</Width>
+																			<AutoMaxWidth>false</AutoMaxWidth>
+																			<MaxWidth>3</MaxWidth>
 																			<HorizontalStretch>false</HorizontalStretch>
 																			<ContextMenu name="НеРассмотреноКонтекстноеМеню" id="729"/>
 																			<ExtendedTooltip name="НеРассмотреноРасширеннаяПодсказка" id="730"/>
@@ -967,6 +1038,7 @@
 																				</v8:item>
 																			</ToolTip>
 																			<HorizontalAlign>Left</HorizontalAlign>
+																			<HorizontalStretch>true</HorizontalStretch>
 																			<ContextMenu name="КонтактыДатаПоследнегоВзаимодействияКонтекстноеМеню" id="726"/>
 																			<ExtendedTooltip name="КонтактыДатаПоследнегоВзаимодействияРасширеннаяПодсказка" id="727"/>
 																		</LabelField>
@@ -976,6 +1048,13 @@
 														</ColumnGroup>
 													</ChildItems>
 												</Table>
+												<LabelDecoration name="ДекорацияТолькоЗначимыеКонтакты" id="937">
+													<ContextMenu name="ДекорацияТолькоЗначимыеКонтактыКонтекстноеМеню" id="938"/>
+													<ExtendedTooltip name="ДекорацияТолькоЗначимыеКонтактыРасширеннаяПодсказка" id="939"/>
+													<Events>
+														<Event name="URLProcessing">ДекорацияТолькоЗначимыеКонтактыОбработкаНавигационнойСсылки</Event>
+													</Events>
+												</LabelDecoration>
 											</ChildItems>
 										</Page>
 										<Page name="СтраницаПредмет" id="73">
@@ -1069,11 +1148,6 @@
 																		<Type>CommandBarButton</Type>
 																		<CommandName>Form.Command.ТолькоАктивныеПредметы</CommandName>
 																		<ExtendedTooltip name="ПредметыПанельНавигацииКонтекстноеМенюТолькоАктивныеПредметыРасширеннаяПодсказка" id="791"/>
-																	</Button>
-																	<Button name="ПредметыПанельНавигацииКонтекстноеМенюТолькоЗначимыеПредметы" id="788">
-																		<Type>CommandBarButton</Type>
-																		<CommandName>Form.Command.ТолькоЗначимыеПредметы</CommandName>
-																		<ExtendedTooltip name="ПредметыПанельНавигацииКонтекстноеМенюТолькоЗначимыеПредметыРасширеннаяПодсказка" id="789"/>
 																	</Button>
 																</ChildItems>
 															</ButtonGroup>
@@ -1210,6 +1284,7 @@
 																					<v8:content>Дата последнего взаимодействия</v8:content>
 																				</v8:item>
 																			</ToolTip>
+																			<HorizontalStretch>true</HorizontalStretch>
 																			<ContextMenu name="ДатаПоследнегоВзаимодействияКонтекстноеМеню" id="701"/>
 																			<ExtendedTooltip name="ДатаПоследнегоВзаимодействияРасширеннаяПодсказка" id="702"/>
 																		</LabelField>
@@ -1219,6 +1294,13 @@
 														</ColumnGroup>
 													</ChildItems>
 												</Table>
+												<LabelDecoration name="ДекорацияТолькоЗначимыеПредметы" id="934">
+													<ContextMenu name="ДекорацияТолькоЗначимыеПредметыКонтекстноеМеню" id="935"/>
+													<ExtendedTooltip name="ДекорацияТолькоЗначимыеПредметыРасширеннаяПодсказка" id="936"/>
+													<Events>
+														<Event name="URLProcessing">ДекорацияТолькоЗначимыеПредметыОбработкаНавигационнойСсылки</Event>
+													</Events>
+												</LabelDecoration>
 											</ChildItems>
 										</Page>
 										<Page name="СтраницаЗакладки" id="118">
@@ -1359,6 +1441,14 @@
 															<ContextMenu name="ЗакладкиНаименованиеКонтекстноеМеню" id="123"/>
 															<ExtendedTooltip name="ЗакладкиНаименованиеExtendedTooltip" id="473"/>
 														</LabelField>
+														<InputField name="ЗакладкиСсылка" id="940">
+															<DataPath>Закладки.Ref</DataPath>
+															<UserVisible>
+																<xr:Common>false</xr:Common>
+															</UserVisible>
+															<ContextMenu name="ЗакладкиСсылкаКонтекстноеМеню" id="941"/>
+															<ExtendedTooltip name="ЗакладкиСсылкаРасширеннаяПодсказка" id="942"/>
+														</InputField>
 													</ChildItems>
 												</Table>
 											</ChildItems>
@@ -1928,6 +2018,10 @@
 																	<DataPath>Категории.НомерКартинки</DataPath>
 																	<TitleLocation>None</TitleLocation>
 																	<EditMode>EnterOnInput</EditMode>
+																	<ValuesPicture>
+																		<xr:Ref>CommonPicture.КоллекцияДеревоАнкеты</xr:Ref>
+																		<xr:LoadTransparent>false</xr:LoadTransparent>
+																	</ValuesPicture>
 																	<FileDragMode>AsFile</FileDragMode>
 																	<ContextMenu name="КатегорииНомерКартинкиКонтекстноеМеню" id="313"/>
 																	<ExtendedTooltip name="КатегорииНомерКартинкиExtendedTooltip" id="539"/>
@@ -2030,7 +2124,7 @@
 												<Title>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
-														<v8:content>Список контекстное меню группа ответить переслать</v8:content>
+														<v8:content>Контекстное меню группа ответить переслать</v8:content>
 													</v8:item>
 												</Title>
 												<ExtendedTooltip name="СписокКонтекстноеМенюГруппаОтветитьПереслатьРасширеннаяПодсказка" id="900"/>
@@ -2081,7 +2175,7 @@
 												<Title>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
-														<v8:content>Список контекстное меню группа удалить копировать</v8:content>
+														<v8:content>Контекстное меню группа удалить копировать</v8:content>
 													</v8:item>
 												</Title>
 												<ExtendedTooltip name="СписокКонтекстноеМенюГруппаУдалитьКопироватьExtendedTooltip" id="552"/>
@@ -2237,7 +2331,7 @@
 															<ExtendedTooltip name="ПолученоОтправленоРасширеннаяПодсказка" id="778"/>
 														</LabelField>
 														<InputField name="Дата" id="8">
-															<DataPath>Список.Date</DataPath>
+															<DataPath>Список.Дата</DataPath>
 															<HorizontalAlign>Left</HorizontalAlign>
 															<ShowInFooter>false</ShowInFooter>
 															<Width>9</Width>
@@ -2247,11 +2341,17 @@
 														</InputField>
 														<PictureField name="ЕстьВложения" id="108">
 															<DataPath>Список.ЕстьВложения</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Есть вложения</v8:content>
+																</v8:item>
+															</Title>
 															<TitleLocation>None</TitleLocation>
 															<ToolTip>
 																<v8:item>
 																	<v8:lang>ru</v8:lang>
-																	<v8:content>Наличие вложений</v8:content>
+																	<v8:content>Есть вложения</v8:content>
 																</v8:item>
 															</ToolTip>
 															<HeaderPicture>
@@ -2305,7 +2405,7 @@
 											<ExtendedTooltip name="УчетнаяЗаписьРасширеннаяПодсказка" id="746"/>
 										</LabelField>
 										<LabelField name="Ссылка" id="761">
-											<DataPath>Список.Ref</DataPath>
+											<DataPath>Список.Ссылка</DataPath>
 											<UserVisible>
 												<xr:Common>false</xr:Common>
 											</UserVisible>
@@ -2374,7 +2474,7 @@
 															</Title>
 															<Picture>
 																<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
-																<xr:LoadTransparent>true</xr:LoadTransparent>
+																<xr:LoadTransparent>false</xr:LoadTransparent>
 															</Picture>
 															<ContextMenu name="КартинкаПредупреждениеКонтекстноеМеню" id="915"/>
 															<ExtendedTooltip name="КартинкаПредупреждениеРасширеннаяПодсказка" id="916"/>
@@ -2420,13 +2520,13 @@
 										</Page>
 									</ChildItems>
 								</Pages>
-								<LabelField name="ОписаниеНайденоПП" id="323">
-									<DataPath>ОписаниеНайденоПП</DataPath>
+								<LabelField name="ОписаниеНайденоПолнотекстовымПоиском" id="323">
+									<DataPath>ОписаниеНайденоПолнотекстовымПоиском</DataPath>
 									<Visible>false</Visible>
 									<TitleLocation>None</TitleLocation>
 									<TextColor>style:ПоясняющийТекст</TextColor>
-									<ContextMenu name="ОписаниеНайденоППКонтекстноеМеню" id="324"/>
-									<ExtendedTooltip name="ОписаниеНайденоППExtendedTooltip" id="689"/>
+									<ContextMenu name="ОписаниеНайденоПолнотекстовымПоискомКонтекстноеМеню" id="324"/>
+									<ExtendedTooltip name="ОписаниеНайденоПолнотекстовымПоискомРасширеннаяПодсказка" id="689"/>
 								</LabelField>
 							</ChildItems>
 						</UsualGroup>
@@ -2442,18 +2542,18 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>Список.Date</Field>
-				<Field>Список.DeletionMark</Field>
-				<Field>Список.Ref</Field>
-				<Field>Список.Type</Field>
 				<Field>Список.ВажностьНомерКартинки</Field>
+				<Field>Список.Дата</Field>
 				<Field>Список.ЕстьВложения</Field>
 				<Field>Список.НомерКартинки</Field>
 				<Field>Список.Ответственный</Field>
 				<Field>Список.Папка</Field>
+				<Field>Список.ПометкаУдаления</Field>
 				<Field>Список.Предмет</Field>
 				<Field>Список.Рассмотрено</Field>
+				<Field>Список.Ссылка</Field>
 				<Field>Список.СтатусИсходящегоПисьма</Field>
+				<Field>Список.Тип</Field>
 				<Field>Список.УчетнаяЗапись</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
@@ -2531,7 +2631,13 @@
 	ЖурналДокументовВзаимодействияПереопределяемый.Участники,
 	ЖурналДокументовВзаимодействияПереопределяемый.Тип,
 	ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма,
-	ЖурналДокументовВзаимодействияПереопределяемый.ЕстьВложения,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(ЖурналДокументовВзаимодействияПереопределяемый.ЕстьВложения, НаличиеФайловПереопределяемый.ЕстьФайлы) ЕСТЬ NULL
+			ТОГДА ЛОЖЬ
+		КОГДА ЕСТЬNULL(ЖурналДокументовВзаимодействияПереопределяемый.ЕстьВложения, НаличиеФайловПереопределяемый.ЕстьФайлы)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ЕстьВложения,
 	ЕСТЬNULL(ПредметыВзаимодействийПереопределяемый.Предмет, НЕОПРЕДЕЛЕНО) КАК Предмет,
 	ТИПЗНАЧЕНИЯ(ПредметыВзаимодействийПереопределяемый.Предмет) КАК ТипПредмета,
 	ЖурналДокументовВзаимодействияПереопределяемый.УчетнаяЗапись,
@@ -2550,8 +2656,174 @@
 	ЖурналДокументов.Взаимодействия КАК ЖурналДокументовВзаимодействияПереопределяемый
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыВзаимодействийПереопределяемый
 		ПО ЖурналДокументовВзаимодействияПереопределяемый.Ссылка = ПредметыВзаимодействийПереопределяемый.Взаимодействие
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НаличиеФайлов КАК НаличиеФайловПереопределяемый
+		ПО ЖурналДокументовВзаимодействияПереопределяемый.Ссылка = НаличиеФайловПереопределяемый.ОбъектСФайлами
 {ГДЕ
 	ЖурналДокументовВзаимодействияПереопределяемый.Ссылка КАК Поиск}</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Поиск</dcssch:dataPath>
+					<dcssch:field>Поиск</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поиск</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕстьВложения</dcssch:dataPath>
+					<dcssch:field>ЕстьВложения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВзаимодействиеОснование</dcssch:dataPath>
+					<dcssch:field>ВзаимодействиеОснование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Размер</dcssch:dataPath>
+					<dcssch:field>Размер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаКогдаОтправить</dcssch:dataPath>
+					<dcssch:field>ДатаКогдаОтправить</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаАктуальностиОтправки</dcssch:dataPath>
+					<dcssch:field>ДатаАктуальностиОтправки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИдентификаторСообщения</dcssch:dataPath>
+					<dcssch:field>ИдентификаторСообщения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерКартинки</dcssch:dataPath>
+					<dcssch:field>НомерКартинки</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер картинки</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Автор</dcssch:dataPath>
+					<dcssch:field>Автор</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Входящий</dcssch:dataPath>
+					<dcssch:field>Входящий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Тема</dcssch:dataPath>
+					<dcssch:field>Тема</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ответственный</dcssch:dataPath>
+					<dcssch:field>Ответственный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Рассмотрено</dcssch:dataPath>
+					<dcssch:field>Рассмотрено</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Рассмотрено</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РассмотретьПосле</dcssch:dataPath>
+					<dcssch:field>РассмотретьПосле</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Рассмотреть после</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Участники</dcssch:dataPath>
+					<dcssch:field>Участники</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Тип</dcssch:dataPath>
+					<dcssch:field>Тип</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатусИсходящегоПисьма</dcssch:dataPath>
+					<dcssch:field>СтатусИсходящегоПисьма</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Предмет</dcssch:dataPath>
+					<dcssch:field>Предмет</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предмет</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипПредмета</dcssch:dataPath>
+					<dcssch:field>ТипПредмета</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип предмета</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УчетнаяЗапись</dcssch:dataPath>
+					<dcssch:field>УчетнаяЗапись</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Папка</dcssch:dataPath>
+					<dcssch:field>Папка</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Папка</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПолученоОтправлено</dcssch:dataPath>
+					<dcssch:field>ПолученоОтправлено</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Важность</dcssch:dataPath>
+					<dcssch:field>Важность</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВажностьНомерКартинки</dcssch:dataPath>
+					<dcssch:field>ВажностьНомерКартинки</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Важность номер картинки</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проведен</dcssch:dataPath>
+					<dcssch:field>Проведен</dcssch:field>
+				</Field>
 				<MainTable>DocumentJournal.Взаимодействия</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -3068,7 +3340,7 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="ОписанияНайденоПП" id="28">
+		<Attribute name="ОписанияНайденоПолнотекстовымПоиском" id="28">
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
@@ -3098,11 +3370,11 @@
 				</Column>
 			</Columns>
 		</Attribute>
-		<Attribute name="ОписаниеНайденоПП" id="30">
+		<Attribute name="ОписаниеНайденоПолнотекстовымПоиском" id="30">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Описание найдено ПП</v8:content>
+					<v8:content>Описание найденного полнотекстовым поиском</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -3412,6 +3684,40 @@
 				<xr:Common>false</xr:Common>
 			</Edit>
 		</Attribute>
+		<Attribute name="ПравоПометкиУдаленияПапок" id="27">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ГиперссылкаЦвет" id="37">
+			<Type/>
+		</Attribute>
+		<Attribute name="ДатаПредыдущегоВыполненияКомандыОтправкиПолученияПочты" id="45">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаПредыдущегоПолученияОтправкиПочты" id="46">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтправкаПолучениеПисемВыполняется" id="47">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РазделениеВключено" id="48">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="УстановитьВариантНавигацииПоПредмету" id="1">
@@ -3450,7 +3756,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить ответственного</v8:content>
+					<v8:content>Установить ответственного...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -3476,7 +3782,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить признак рассмотрено</v8:content>
+					<v8:content>Установить признак "Рассмотрено"</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -3494,7 +3800,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить предмет взаимодействия</v8:content>
+					<v8:content>Установить предмет взаимодействия...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -3514,7 +3820,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Отложить рассмотрение</v8:content>
+					<v8:content>Отложить рассмотрение...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -3660,15 +3966,9 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Персональные настройки</v8:content>
+					<v8:content>Персональные настройки...</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Персональные настройки</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Action>ПерсональныеНастройки</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
@@ -3682,7 +3982,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить вариант навигации по закладкам</v8:content>
+					<v8:content>Установить вариант навигации по папкам</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>УстановитьВариантНавигацииПоПапкам</Action>
@@ -3692,13 +3992,13 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Применить правила обработки</v8:content>
+					<v8:content>Применить правила обработки...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Применить правила обработки</v8:content>
+					<v8:content>Применить правила обработки писем</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -3712,13 +4012,13 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Перенести в папку</v8:content>
+					<v8:content>Перенести в папку...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Перенести в папку</v8:content>
+					<v8:content>Перенести письма в папку</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -3801,15 +4101,9 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить предмет взаимодействия</v8:content>
+					<v8:content>Установить предмет взаимодействия...</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Установить предмет взаимодействия</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Shortcut>Ctrl+G</Shortcut>
 			<Picture>
 				<xr:Ref>CommonPicture.УстановитьПредметВзаимодействия</xr:Ref>
@@ -3822,7 +4116,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить ответственного</v8:content>
+					<v8:content>Установить ответственного...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -3843,7 +4137,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Отложить рассмотрение</v8:content>
+					<v8:content>Отложить рассмотрение...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -3867,7 +4161,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Изменить</v8:content>
+					<v8:content>Изменить...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -3977,38 +4271,6 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьПрочиеВзаимодействия</Item>
 			</FunctionalOptions>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
-		<Command name="ТолькоЗначимыеКонтакты" id="30">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Только значимые</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Только значимые контакты</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ТолькоЗначимыеКонтакты</Action>
-			<CurrentRowUse>DontUse</CurrentRowUse>
-		</Command>
-		<Command name="ТолькоЗначимыеПредметы" id="31">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Только значимые предметы</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Только значимые предметы</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ТолькоЗначимыеПредметы</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ТолькоАктивныеПредметы" id="32">

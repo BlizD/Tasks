@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -35,9 +35,73 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<UsualGroup name="ГруппаДиалога" id="90">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа диалога</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДиалогаРасширеннаяПодсказка" id="91"/>
+			<ChildItems>
+				<InputField name="ПоказыватьДиалогСканера" id="92">
+					<DataPath>ПоказыватьДиалогСканера</DataPath>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>37</MaxWidth>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChooseType>false</ChooseType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Основные в приложении</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:boolean">false</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Расширенные в диалоге сканера</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:boolean">true</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ПоказыватьДиалогСканераКонтекстноеМеню" id="93"/>
+					<ExtendedTooltip name="ПоказыватьДиалогСканераРасширеннаяПодсказка" id="94">
+						<Title formatted="true">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>&lt;b&gt;Основные&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;в&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;приложении&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;-&lt;/&gt; диалог сканера не открывается, а применяются настройки, заданные в приложении.
+&lt;b&gt;Расширенные&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;в&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;диалоге&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;сканера&lt;/&gt; - отображается диалог сканера, в котором можно задать другие дополнительные настройки, специфичные для конкретного устройства.
+</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">ПоказыватьДиалогСканераПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
 		<UsualGroup name="ГруппаНастройки" id="69">
 			<Title>
 				<v8:item>
@@ -63,10 +127,22 @@
 					<ChildItems>
 						<InputField name="Разрешение" id="14">
 							<DataPath>Разрешение</DataPath>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
 							<Width>13</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="РазрешениеКонтекстноеМеню" id="15"/>
-							<ExtendedTooltip name="РазрешениеExtendedTooltip" id="63"/>
+							<ExtendedTooltip name="РазрешениеExtendedTooltip" id="63">
+								<Title formatted="true">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>&lt;b&gt;200&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;dpi&lt;/&gt; достаточно для отправки изображений по электронной почте, факсу, размещения на сайте или просмотра на экране.
+&lt;b&gt;300&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;dpi&lt;/&gt; подходит для большинства документов и изображений, а также для распознавания текста.
+&lt;b&gt;600&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;dpi&lt;/&gt; подходит для сканирования цветных изображений типографского качества, которые потом можно вывести на высококачественном или широкоформатном принтере. Изображения занимают большой объем.
+&lt;b&gt;1200&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;dpi&lt;/&gt; для сканирования профессиональных фотографий типографского качества. Изображения занимают большой объем.
+</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
 						</InputField>
 						<InputField name="Цветность" id="16">
 							<DataPath>Цветность</DataPath>
@@ -102,13 +178,6 @@
 							<ContextMenu name="ДвустороннееСканированиеКонтекстноеМеню" id="29"/>
 							<ExtendedTooltip name="ДвустороннееСканированиеExtendedTooltip" id="67"/>
 						</CheckBoxField>
-						<CheckBoxField name="ПоказыватьДиалогСканера" id="1">
-							<DataPath>ПоказыватьДиалогСканера</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ПоказыватьДиалогСканераКонтекстноеМеню" id="2"/>
-							<ExtendedTooltip name="ПоказыватьДиалогСканераExtendedTooltip" id="68"/>
-						</CheckBoxField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ГруппаДополнительныеНастройки" id="71">
@@ -135,42 +204,6 @@
 							<Behavior>Usual</Behavior>
 							<ExtendedTooltip name="ГруппаФорматХраненияОдиночныйExtendedTooltip" id="51"/>
 							<ChildItems>
-								<UsualGroup name="ГруппаФорматаХранения" id="31">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Формата хранения</v8:content>
-										</v8:item>
-									</Title>
-									<Behavior>Usual</Behavior>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаФорматаХраненияExtendedTooltip" id="52"/>
-									<ChildItems>
-										<InputField name="ФорматХраненияОдностраничный" id="32">
-											<DataPath>ФорматХраненияОдностраничный</DataPath>
-											<Width>9</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<DropListWidth>9</DropListWidth>
-											<ContextMenu name="ФорматХраненияОдностраничныйКонтекстноеМеню" id="33"/>
-											<ExtendedTooltip name="ФорматХраненияОдностраничныйExtendedTooltip" id="53"/>
-											<Events>
-												<Event name="OnChange">ФорматХраненияОдностраничныйПриИзменении</Event>
-											</Events>
-										</InputField>
-										<LabelDecoration name="ДекорацияФорматХраненияОдностраничный" id="34">
-											<AutoMaxWidth>false</AutoMaxWidth>
-											<Title formatted="false">
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>(для хранения)</v8:content>
-												</v8:item>
-											</Title>
-											<ContextMenu name="ДекорацияФорматХраненияОдностраничныйКонтекстноеМеню" id="35"/>
-											<ExtendedTooltip name="ДекорацияФорматХраненияОдностраничныйExtendedTooltip" id="54"/>
-										</LabelDecoration>
-									</ChildItems>
-								</UsualGroup>
 								<UsualGroup name="ГруппаФорматаСканирования" id="36">
 									<Title>
 										<v8:item>
@@ -194,26 +227,82 @@
 												<Event name="OnChange">ФорматСканированногоИзображенияПриИзменении</Event>
 											</Events>
 										</InputField>
-										<LabelDecoration name="ДекорацияФорматСканированногоИзображения" id="39">
-											<AutoMaxWidth>false</AutoMaxWidth>
+										<CheckBoxField name="СохранятьВPDF" id="84">
+											<DataPath>СохранятьВPDF</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Преобразовать в PDF</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="СохранятьВPDFКонтекстноеМеню" id="85"/>
+											<ExtendedTooltip name="СохранятьВPDFРасширеннаяПодсказка" id="86">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>&lt;b&gt;JPG&lt;/&gt; подходит для большинства документов и изображений. Позволяет сжимать изображение с потерей качества. Можно настроить величину сжатия. 
+&lt;b&gt;PNG&lt;/&gt; подходит для большинства документов и изображений. Изображения без потери качества, файлы небольших размеров. 
+&lt;b&gt;TIF&lt;/&gt; позволяет сохранять изображение без потери качества, используется для хранения изображений для дальнейшей печати. Возможно хранение многостраничных изображений.
+&lt;b&gt;GIF&lt;/&gt; устаревший формат для хранения изображений в низком качестве. Файлы небольшого размера.
+&lt;b&gt;BMP&lt;/&gt; устаревший формат для хранения изображений без потери качества. Файлы больших размеров.
+
+&lt;b&gt;Преобразовать&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;в&lt;/&gt;&lt;b&gt; &lt;/&gt;&lt;b&gt;PDF&lt;/&gt; позволяет поместить отсканированное изображение в PDF-файл. Возможно хранение многостраничных изображений.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаКачествоJPG" id="73">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Качество</v8:content>
+										</v8:item>
+									</Title>
+									<Height>2</Height>
+									<Group>AlwaysHorizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаКачествоJPGРасширеннаяПодсказка" id="74"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияСжатиеJPG" id="75">
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>(для сканирования)</v8:content>
+													<v8:content>Лучше
+сжатие</v8:content>
 												</v8:item>
 											</Title>
-											<ContextMenu name="ДекорацияФорматСканированногоИзображенияКонтекстноеМеню" id="40"/>
-											<ExtendedTooltip name="ДекорацияФорматСканированногоИзображенияExtendedTooltip" id="57"/>
+											<ContextMenu name="ДекорацияСжатиеJPGКонтекстноеМеню" id="76"/>
+											<ExtendedTooltip name="ДекорацияСжатиеJPGРасширеннаяПодсказка" id="77"/>
+										</LabelDecoration>
+										<TrackBarField name="КачествоJPG" id="78">
+											<DataPath>КачествоJPG</DataPath>
+											<TitleLocation>Top</TitleLocation>
+											<Width>9</Width>
+											<ContextMenu name="КачествоJPGКонтекстноеМеню" id="79"/>
+											<ExtendedTooltip name="КачествоJPGРасширеннаяПодсказка" id="80"/>
+											<Events>
+												<Event name="OnChange">КачествоJPGПриИзменении</Event>
+											</Events>
+										</TrackBarField>
+										<LabelDecoration name="ДекорацияКачествоJPG" id="81">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Лучше
+качество</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ДекорацияКачествоJPGКонтекстноеМеню" id="82"/>
+											<ExtendedTooltip name="ДекорацияКачествоJPGРасширеннаяПодсказка" id="83"/>
 										</LabelDecoration>
 									</ChildItems>
 								</UsualGroup>
-								<InputField name="КачествоJPG" id="41">
-									<DataPath>КачествоJPG</DataPath>
-									<Width>9</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="КачествоJPGКонтекстноеМеню" id="42"/>
-									<ExtendedTooltip name="КачествоJPGExtendedTooltip" id="58"/>
-								</InputField>
 								<InputField name="СжатиеTIFF" id="43">
 									<DataPath>СжатиеTIFF</DataPath>
 									<Width>9</Width>
@@ -222,6 +311,19 @@
 									<ContextMenu name="СжатиеTIFFКонтекстноеМеню" id="44"/>
 									<ExtendedTooltip name="СжатиеTIFFExtendedTooltip" id="59"/>
 								</InputField>
+								<LabelDecoration name="ОписаниеФорматаОдностраничногоДокумента" id="87">
+									<HorizontalStretch>true</HorizontalStretch>
+									<TextColor>style:ПоясняющийТекст</TextColor>
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Подходит для большинства документов и изображений. Позволяет сжимать изображение с потерей качества. Можно настроить величину сжатия.
+</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОписаниеФорматаОдностраничногоДокументаКонтекстноеМеню" id="88"/>
+									<ExtendedTooltip name="ОписаниеФорматаОдностраничногоДокументаРасширеннаяПодсказка" id="89"/>
+								</LabelDecoration>
 							</ChildItems>
 						</UsualGroup>
 						<UsualGroup name="ГруппаФорматХраненияМногостраничный" id="45">
@@ -255,7 +357,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Показывать диалог сканера</v8:content>
+					<v8:content>Задать настройки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -364,7 +466,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Тип</v8:content>
+					<v8:content>Сохранить как</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -374,26 +476,6 @@
 		<Attribute name="ФорматМногостраничныйTIF" id="13">
 			<Type>
 				<v8:Type>cfg:EnumRef.ФорматыХраненияМногостраничныхФайлов</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ФорматОдностраничныйJPG" id="14">
-			<Type>
-				<v8:Type>cfg:EnumRef.ФорматыХраненияОдностраничныхФайлов</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ФорматОдностраничныйPDF" id="15">
-			<Type>
-				<v8:Type>cfg:EnumRef.ФорматыХраненияОдностраничныхФайлов</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ФорматОдностраничныйPNG" id="16">
-			<Type>
-				<v8:Type>cfg:EnumRef.ФорматыХраненияОдностраничныхФайлов</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ФорматОдностраничныйTIF" id="17">
-			<Type>
-				<v8:Type>cfg:EnumRef.ФорматыХраненияОдностраничныхФайлов</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ФорматХраненияМногостраничный" id="18">
@@ -407,20 +489,15 @@
 				<v8:Type>cfg:EnumRef.ФорматыХраненияМногостраничныхФайлов</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="ФорматХраненияОдностраничный" id="19">
+		<Attribute name="СохранятьВPDF" id="19">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Формат</v8:content>
+					<v8:content>Сохранять ВPDF</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>cfg:EnumRef.ФорматыХраненияОдностраничныхФайлов</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ФорматХраненияОдностраничныйПредыдущее" id="20">
-			<Type>
-				<v8:Type>cfg:EnumRef.ФорматыХраненияОдностраничныхФайлов</v8:Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
@@ -442,4 +519,86 @@
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
+	<Parameters>
+		<Parameter name="Разрешение">
+			<Type>
+				<v8:Type>cfg:EnumRef.РазрешенияСканированногоИзображения</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Цветность">
+			<Type>
+				<v8:Type>cfg:EnumRef.ЦветностиИзображения</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Поворот">
+			<Type>
+				<v8:Type>cfg:EnumRef.СпособыПоворотаИзображения</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="РазмерБумаги">
+			<Type>
+				<v8:Type>cfg:EnumRef.РазмерыБумаги</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ДвустороннееСканирование">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИспользоватьImageMagickДляПреобразованияВPDF">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ПоказыватьДиалогСканера">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ФорматСканированногоИзображения">
+			<Type>
+				<v8:Type>cfg:EnumRef.ФорматыСканированногоИзображения</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="КачествоJPG">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="СжатиеTIFF">
+			<Type>
+				<v8:Type>cfg:EnumRef.ВариантыСжатияTIFF</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ФорматХраненияМногостраничный">
+			<Type>
+				<v8:Type>cfg:EnumRef.ФорматыХраненияМногостраничныхФайлов</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ДоступностьПоворот">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ДоступностьРазмерБумаги">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ДоступностьДвустороннееСканирование">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="СохранятьВPDF">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
 </Form>

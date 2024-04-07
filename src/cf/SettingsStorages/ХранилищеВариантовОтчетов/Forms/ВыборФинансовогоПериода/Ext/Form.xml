@@ -1,0 +1,896 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выбор периода</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<HorizontalAlign>Center</HorizontalAlign>
+	<CommandBarLocation>None</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаВыборГода" id="99">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбор года</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<HorizontalAlign>Center</HorizontalAlign>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаВыборГодаРасширеннаяПодсказка" id="100"/>
+			<ChildItems>
+				<UsualGroup name="ПерейтиНаГодНазадВарианты" id="187">
+					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Перейти на год назад (варианты)</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ПерейтиНаГодНазадВариантыРасширеннаяПодсказка" id="188"/>
+					<ChildItems>
+						<Button name="ПерейтиНаГодНазадДоступно" id="90">
+							<Type>UsualButton</Type>
+							<Width>6</Width>
+							<CommandName>Form.Command.ПерейтиНаГодНазад</CommandName>
+							<Font ref="style:LargeTextFont" kind="StyleItem"/>
+							<ShapeRepresentation>WhenActive</ShapeRepresentation>
+							<ExtendedTooltip name="ПерейтиНаГодНазадДоступноРасширеннаяПодсказка" id="91"/>
+						</Button>
+						<LabelDecoration name="ПерейтиНаГодНазадНедоступно" id="184">
+							<Visible>false</Visible>
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<Font ref="style:LargeTextFont" kind="StyleItem"/>
+							<ContextMenu name="ПерейтиНаГодНазадНедоступноКонтекстноеМеню" id="185"/>
+							<ExtendedTooltip name="ПерейтиНаГодНазадНедоступноРасширеннаяПодсказка" id="186"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<LabelField name="ДатаНачалаГода" id="92">
+					<DataPath>ДатаНачалаГода</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ='yyyy "год"'</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="ДатаНачалаГодаКонтекстноеМеню" id="93"/>
+					<ExtendedTooltip name="ДатаНачалаГодаРасширеннаяПодсказка" id="94"/>
+				</LabelField>
+				<Button name="ПерейтиНаГодВперед" id="95">
+					<Type>UsualButton</Type>
+					<Width>6</Width>
+					<CommandName>Form.Command.ПерейтиНаГодВперед</CommandName>
+					<Font ref="style:LargeTextFont" kind="StyleItem"/>
+					<ShapeRepresentation>WhenActive</ShapeRepresentation>
+					<ExtendedTooltip name="ПерейтиНаГодВпередРасширеннаяПодсказка" id="96"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаВыборПериода" id="176">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбор периода</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаВыборПериодаРасширеннаяПодсказка" id="177"/>
+			<ChildItems>
+				<UsualGroup name="Месяцы" id="178">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Месяцы</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="МесяцыРасширеннаяПодсказка" id="179"/>
+					<ChildItems>
+						<UsualGroup name="Квартал1" id="150">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Квартал 1</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<United>false</United>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Квартал1РасширеннаяПодсказка" id="151"/>
+							<ChildItems>
+								<Button name="ВыбратьМесяц1" id="101">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц1</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц1РасширеннаяПодсказка" id="102"/>
+								</Button>
+								<Button name="ВыбратьМесяц2" id="103">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц2</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц2РасширеннаяПодсказка" id="104"/>
+								</Button>
+								<Button name="ВыбратьМесяц3" id="105">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц3</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц3РасширеннаяПодсказка" id="106"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Квартал2" id="154">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Квартал 2</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<United>false</United>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Квартал2РасширеннаяПодсказка" id="155"/>
+							<ChildItems>
+								<Button name="ВыбратьМесяц4" id="109">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц4</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц4РасширеннаяПодсказка" id="110"/>
+								</Button>
+								<Button name="ВыбратьМесяц5" id="111">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц5</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц5РасширеннаяПодсказка" id="112"/>
+								</Button>
+								<Button name="ВыбратьМесяц6" id="113">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц6</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц6РасширеннаяПодсказка" id="114"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Квартал3" id="158">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Квартал 3</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<United>false</United>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Квартал3РасширеннаяПодсказка" id="159"/>
+							<ChildItems>
+								<Button name="ВыбратьМесяц7" id="117">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц7</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц7РасширеннаяПодсказка" id="118"/>
+								</Button>
+								<Button name="ВыбратьМесяц8" id="119">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц8</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц8РасширеннаяПодсказка" id="120"/>
+								</Button>
+								<Button name="ВыбратьМесяц9" id="121">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц9</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц9РасширеннаяПодсказка" id="122"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Квартал4" id="162">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Квартал 4</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<United>false</United>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Квартал4РасширеннаяПодсказка" id="163"/>
+							<ChildItems>
+								<Button name="ВыбратьМесяц10" id="125">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц10</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц10РасширеннаяПодсказка" id="126"/>
+								</Button>
+								<Button name="ВыбратьМесяц11" id="127">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц11</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц11РасширеннаяПодсказка" id="128"/>
+								</Button>
+								<Button name="ВыбратьМесяц12" id="129">
+									<Type>UsualButton</Type>
+									<HorizontalStretch>true</HorizontalStretch>
+									<CommandName>Form.Command.ВыбратьМесяц12</CommandName>
+									<ShapeRepresentation>WhenActive</ShapeRepresentation>
+									<ExtendedTooltip name="ВыбратьМесяц12РасширеннаяПодсказка" id="130"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Кварталы" id="180">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кварталы</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>StrongSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="КварталыРасширеннаяПодсказка" id="181"/>
+					<ChildItems>
+						<Button name="ВыбратьКвартал1" id="107">
+							<Type>UsualButton</Type>
+							<HorizontalStretch>true</HorizontalStretch>
+							<CommandName>Form.Command.ВыбратьКвартал1</CommandName>
+							<BackColor>style:ИтогиФонГруппы</BackColor>
+							<ShapeRepresentation>WhenActive</ShapeRepresentation>
+							<ExtendedTooltip name="ВыбратьКвартал1РасширеннаяПодсказка" id="108"/>
+						</Button>
+						<Button name="ВыбратьКвартал2" id="115">
+							<Type>UsualButton</Type>
+							<HorizontalStretch>true</HorizontalStretch>
+							<CommandName>Form.Command.ВыбратьКвартал2</CommandName>
+							<BackColor>style:ИтогиФонГруппы</BackColor>
+							<ShapeRepresentation>WhenActive</ShapeRepresentation>
+							<ExtendedTooltip name="ВыбратьКвартал2РасширеннаяПодсказка" id="116"/>
+						</Button>
+						<Button name="ВыбратьКвартал3" id="123">
+							<Type>UsualButton</Type>
+							<HorizontalStretch>true</HorizontalStretch>
+							<CommandName>Form.Command.ВыбратьКвартал3</CommandName>
+							<BackColor>style:ИтогиФонГруппы</BackColor>
+							<ShapeRepresentation>WhenActive</ShapeRepresentation>
+							<ExtendedTooltip name="ВыбратьКвартал3РасширеннаяПодсказка" id="124"/>
+						</Button>
+						<Button name="ВыбратьКвартал4" id="131">
+							<Type>UsualButton</Type>
+							<HorizontalStretch>true</HorizontalStretch>
+							<CommandName>Form.Command.ВыбратьКвартал4</CommandName>
+							<BackColor>style:ИтогиФонГруппы</BackColor>
+							<ShapeRepresentation>WhenActive</ShapeRepresentation>
+							<ExtendedTooltip name="ВыбратьКвартал4РасширеннаяПодсказка" id="132"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="НарастающимИтогом" id="182">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нарастающим итогом</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>StrongSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="НарастающимИтогомРасширеннаяПодсказка" id="183"/>
+					<ChildItems>
+						<Button name="ВыбратьДень" id="174">
+							<Type>UsualButton</Type>
+							<HorizontalStretch>true</HorizontalStretch>
+							<CommandName>Form.Command.ВыбратьДень</CommandName>
+							<ShapeRepresentation>WhenActive</ShapeRepresentation>
+							<ExtendedTooltip name="ВыбратьДеньРасширеннаяПодсказка" id="175"/>
+						</Button>
+						<Button name="ВыбратьПолугодие" id="133">
+							<Type>UsualButton</Type>
+							<HorizontalStretch>true</HorizontalStretch>
+							<CommandName>Form.Command.ВыбратьПолугодие</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>полугодие</v8:content>
+								</v8:item>
+							</Title>
+							<ShapeRepresentation>WhenActive</ShapeRepresentation>
+							<ExtendedTooltip name="ВыбратьПолугодиеРасширеннаяПодсказка" id="134"/>
+						</Button>
+						<Button name="Выбрать9Месяцев" id="137">
+							<Type>UsualButton</Type>
+							<HorizontalStretch>true</HorizontalStretch>
+							<CommandName>Form.Command.Выбрать9Месяцев</CommandName>
+							<ShapeRepresentation>WhenActive</ShapeRepresentation>
+							<ExtendedTooltip name="Выбрать9МесяцевРасширеннаяПодсказка" id="138"/>
+						</Button>
+						<Button name="ВыбратьГод" id="139">
+							<Type>UsualButton</Type>
+							<HorizontalStretch>true</HorizontalStretch>
+							<CommandName>Form.Command.ВыбратьГод</CommandName>
+							<ShapeRepresentation>WhenActive</ShapeRepresentation>
+							<ExtendedTooltip name="ВыбратьГодРасширеннаяПодсказка" id="140"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОчиститьПериод" id="193">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить период</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<HorizontalAlign>Center</HorizontalAlign>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОчиститьПериодРасширеннаяПодсказка" id="194"/>
+			<ChildItems>
+				<Button name="ОчиститьПериод" id="189">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ОчиститьПериод</CommandName>
+					<ShapeRepresentation>WhenActive</ShapeRepresentation>
+					<ExtendedTooltip name="ОчиститьПериодРасширеннаяПодсказка" id="190"/>
+				</Button>
+				<Button name="ПерейтиКСтандартномуВариантуПериода" id="195">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ПерейтиКСтандартномуВариантуПериода</CommandName>
+					<ShapeRepresentation>WhenActive</ShapeRepresentation>
+					<ExtendedTooltip name="ПерейтиКСтандартномуВариантуПериодаРасширеннаяПодсказка" id="196"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="НачалоПериода" id="2">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КонецПериода" id="3">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаНачалаГода" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата начала года</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяТекущегоЭлемента" id="5">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОграничениеСнизу" id="1">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВыбранныйГодОграничен" id="6">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Период" id="7">
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяКоманды" id="8">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПерейтиНаГодНазад" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt;</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти на год назад</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПерейтиНаГодНазад</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПерейтиНаГодВперед" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти на год вперед</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПерейтиНаГодВперед</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц1" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>январь</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать январь</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц1</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц2" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>февраль</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать февраль</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц2</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц3" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>март</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать март</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц3</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц4" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>апрель</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать апрель</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц4</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц5" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>май</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать май</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц5</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц6" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>июнь</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать июнь</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц6</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц7" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>июль</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать июль</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц7</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц8" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>август</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать август</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц8</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц9" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>сентябрь</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать сентябрь</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц9</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц10" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>октябрь</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать октябрь</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц10</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц11" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ноябрь</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать ноябрь</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц11</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьМесяц12" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>декабрь</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать декабрь</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьМесяц12</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьКвартал1" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>1 квартал</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать 1 квартал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьКвартал1</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьКвартал2" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>2 квартал</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать 2 квартал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьКвартал2</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьКвартал3" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>3 квартал</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать 3 квартал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьКвартал3</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьКвартал4" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>4 квартал</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать 4 квартал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьКвартал4</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьПолугодие" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>полугодие</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать полугодие</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьПолугодие</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Выбрать9Месяцев" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>9 месяцев</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать 9 месяцев</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Выбрать9Месяцев</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьГод" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>год</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать год</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьГод</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыбратьДень" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>день...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать день</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьДень</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОчиститьПериод" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>за все время</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить период</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОчиститьПериод</Action>
+		</Command>
+		<Command name="ПерейтиКСтандартномуВариантуПериода" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стандартный вариант</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти к стандартному варианту периода</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПерейтиКСтандартномуВариантуПериода</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="НачалоПериода">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="КонецПериода">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Кратность">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ОграничениеСнизу">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Период">
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИмяКоманды">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

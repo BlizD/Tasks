@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<CommandSet>
 		<ExcludedCommand>WriteAndClose</ExcludedCommand>
 	</CommandSet>
@@ -42,6 +42,7 @@
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnReopen">ПриПовторномОткрытии</Event>
 		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
@@ -100,7 +101,6 @@
 							<v8:content>Участники группы</v8:content>
 						</v8:item>
 					</Title>
-					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<ExtendedTooltip name="ПользователиГруппыExtendedTooltip" id="344"/>
 					<ChildItems>
 						<Table name="Пользователи" id="298">
@@ -189,6 +189,20 @@
 										<CommandSource>Item.Пользователи</CommandSource>
 										<ExtendedTooltip name="ПользователиСтандартныеКомандыРасширеннаяПодсказка" id="406"/>
 									</ButtonGroup>
+									<SearchStringAddition name="ПользователиСтрокаПоиск" id="451">
+										<AdditionSource>
+											<Item>Пользователи</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Поиск</v8:content>
+											</v8:item>
+										</Title>
+										<ContextMenu name="ПользователиСтрокаПоискКонтекстноеМеню" id="452"/>
+										<ExtendedTooltip name="ПользователиСтрокаПоискРасширеннаяПодсказка" id="453"/>
+									</SearchStringAddition>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ПользователиExtendedTooltip" id="359"/>
@@ -253,7 +267,6 @@
 							<v8:content>Ограничения доступа</v8:content>
 						</v8:item>
 					</Title>
-					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<ExtendedTooltip name="ДоступExtendedTooltip" id="362"/>
 					<ChildItems>
 						<Table name="ВидыДоступа" id="169">
@@ -428,7 +441,6 @@
 									<Representation>List</Representation>
 									<SkipOnInput>false</SkipOnInput>
 									<HeightInTableRows>2</HeightInTableRows>
-									<Header>false</Header>
 									<UseAlternationRowColor>true</UseAlternationRowColor>
 									<AutoInsertNewRow>true</AutoInsertNewRow>
 									<EnableStartDrag>true</EnableStartDrag>
@@ -482,6 +494,12 @@
 									<ChildItems>
 										<LabelField name="ЗначенияДоступаНомерСтрокиПоВиду" id="308">
 											<DataPath>Объект.ЗначенияДоступа.НомерСтрокиПоВиду</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>N</v8:content>
+												</v8:item>
+											</Title>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>3</Width>
 											<ContextMenu name="ЗначенияДоступаНомерСтрокиПоВидуКонтекстноеМеню" id="309"/>
@@ -500,6 +518,24 @@
 												<Event name="ChoiceProcessing">ЗначениеДоступаОбработкаВыбора</Event>
 											</Events>
 										</InputField>
+										<CheckBoxField name="ЗначенияДоступаВключаяНижестоящие" id="448">
+											<DataPath>Объект.ЗначенияДоступа.ВключаяНижестоящие</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Включая нижестоящие (с иерархией)</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<HeaderPicture>
+												<xr:Ref>CommonPicture.ИерархическийСписок</xr:Ref>
+												<xr:LoadTransparent>false</xr:LoadTransparent>
+											</HeaderPicture>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ЗначенияДоступаВключаяНижестоящиеКонтекстноеМеню" id="449"/>
+											<ExtendedTooltip name="ЗначенияДоступаВключаяНижестоящиеРасширеннаяПодсказка" id="450"/>
+										</CheckBoxField>
 									</ChildItems>
 								</Table>
 							</ChildItems>
@@ -676,6 +712,7 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="ПредставлениеТипаПользователей" id="19">
 			<Type>
@@ -734,7 +771,7 @@
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
-							<v8:Digits>1</v8:Digits>
+							<v8:Digits>2</v8:Digits>
 							<v8:FractionDigits>0</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
@@ -786,9 +823,30 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="ПравоРедактированияОбъекта" id="30">
 			<Type/>
+		</Attribute>
+		<Attribute name="ПрофильАдминистратор" id="9">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ПрофилиГруппДоступа</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ГруппаДоступаАдминистраторы" id="10">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ГруппыДоступа</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПерейтиКВидуДоступа" id="11">
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ПерейтиКЗначениюДоступа" id="12">
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>

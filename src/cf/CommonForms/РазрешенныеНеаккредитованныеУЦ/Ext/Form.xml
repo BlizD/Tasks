@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="ДекорацияНадпись" id="6">
+			<Visible>false</Visible>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>УЦ сертификата добавлен в список разрешенных УЦ</v8:content>
+				</v8:item>
+			</Title>
+			<BackColor>style:ToolTipBackColor</BackColor>
+			<ContextMenu name="ДекорацияНадписьКонтекстноеМеню" id="7"/>
+			<ExtendedTooltip name="ДекорацияНадписьРасширеннаяПодсказка" id="8"/>
+		</LabelDecoration>
+		<UsualGroup name="ГруппаРазрешенныеНеаккредитованныеУЦ" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Разрешенные неаккредитованные УЦ</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаРазрешенныеНеаккредитованныеУЦРасширеннаяПодсказка" id="5"/>
+			<ChildItems>
+				<InputField name="РазрешенныеНеаккредитованныеУЦ" id="1">
+					<DataPath>НаборКонстант.РазрешенныеНеаккредитованныеУЦ</DataPath>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<EditMode>EnterOnInput</EditMode>
+					<Height>5</Height>
+					<MultiLine>true</MultiLine>
+					<EditTextUpdate>OnValueChange</EditTextUpdate>
+					<ContextMenu name="РазрешенныеНеаккредитованныеУЦКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="РазрешенныеНеаккредитованныеУЦРасширеннаяПодсказка" id="3">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Список ОГРН (с новой строки или через запятую) удостоверяющих центров, потерявших аккредитацию, подписание сертификатами которых разрешено, подписи считаются верными.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="EditTextChange">РазрешенныеНеаккредитованныеУЦИзменениеТекстаРедактирования</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="НаборКонстант" id="1">
+			<Type>
+				<v8:Type>cfg:ConstantsSet</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ТекстПредупреждения" id="7">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Parameters>
+		<Parameter name="Сертификат">
+			<Type/>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

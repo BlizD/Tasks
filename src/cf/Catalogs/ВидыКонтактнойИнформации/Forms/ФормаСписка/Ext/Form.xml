@@ -1,9 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<CommandSet>
 		<ExcludedCommand>CreateFolder</ExcludedCommand>
+		<ExcludedCommand>MoveItem</ExcludedCommand>
 	</CommandSet>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаПерейтиКСписку" id="55">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПерейтиКСписку</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаПерейтиКСпискуРасширеннаяПодсказка" id="56"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -35,7 +45,7 @@
 			<RowPictureDataPath>Список.ИндексПиктограммы</RowPictureDataPath>
 			<RowsPicture>
 				<xr:Ref>CommonPicture.ВидыКонтактнойИнформации</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</RowsPicture>
 			<BorderColor>style:BorderColor</BorderColor>
 			<Title>
@@ -63,7 +73,15 @@
 			<UpdateOnDataChange>Auto</UpdateOnDataChange>
 			<UserSettingsGroup>ГруппаПользовательскихНастроек</UserSettingsGroup>
 			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
-			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
+			<ContextMenu name="СписокКонтекстноеМеню" id="2">
+				<ChildItems>
+					<Button name="СписокКонтекстноеМенюПерейтиКСписку" id="57">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПерейтиКСписку</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюПерейтиКСпискуРасширеннаяПодсказка" id="58"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
 			<ExtendedTooltip name="СписокExtendedTooltip" id="34"/>
 			<SearchStringAddition name="СписокСтрокаПоиска" id="46">
@@ -91,6 +109,7 @@
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="54"/>
 			</SearchControlAddition>
 			<Events>
+				<Event name="Selection">СписокВыбор</Event>
 				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
 			</Events>
 			<ChildItems>
@@ -107,7 +126,7 @@
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="39"/>
 				</LabelField>
 				<InputField name="Ссылка" id="30">
-					<DataPath>Список.Ref</DataPath>
+					<DataPath>Список.Ссылка</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
@@ -125,85 +144,226 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>Список.Ref</Field>
 				<Field>Список.ИндексПиктограммы</Field>
 				<Field>Список.РеквизитДопУпорядочивания</Field>
+				<Field>Список.Ссылка</Field>
+				<Field>Список.ЭтоГруппа</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	ВЫБОР
-		КОГДА СправочникВидыКонтактнойИнформации.ЭтоГруппа
+		КОГДА СправочникВидыКонтактнойИнформацииПереопределяемый.ЭтоГруппа
 			ТОГДА ВЫБОР
-					КОГДА СправочникВидыКонтактнойИнформации.ПометкаУдаления
-						ТОГДА 1
-					КОГДА СправочникВидыКонтактнойИнформации.Предопределенный
-						ТОГДА 2
-					ИНАЧЕ 0
-				КОНЕЦ
-		КОГДА СправочникВидыКонтактнойИнформации.ПометкаУдаления
+				КОГДА СправочникВидыКонтактнойИнформацииПереопределяемый.ПометкаУдаления
+					ТОГДА 1
+				КОГДА СправочникВидыКонтактнойИнформацииПереопределяемый.Предопределенный
+					ТОГДА 2
+				ИНАЧЕ 0
+			КОНЕЦ
+		КОГДА СправочникВидыКонтактнойИнформацииПереопределяемый.ПометкаУдаления
 			ТОГДА 4
-		КОГДА СправочникВидыКонтактнойИнформации.Предопределенный
-			ТОГДА ВЫБОР СправочникВидыКонтактнойИнформации.Тип
-					КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Телефон)
-						ТОГДА 14
-					КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.АдресЭлектроннойПочты)
-						ТОГДА 15
-					КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.ВебСтраница)
-						ТОГДА 16
-					КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Факс)
-						ТОГДА 17
-					КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Другое)
-						ТОГДА 18
-					КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Адрес)
-						ТОГДА 19
-					КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Skype)
-						ТОГДА 21
-					ИНАЧЕ 3
-				КОНЕЦ
-		ИНАЧЕ ВЫБОР СправочникВидыКонтактнойИнформации.Тип
+		КОГДА СправочникВидыКонтактнойИнформацииПереопределяемый.Предопределенный
+			ТОГДА ВЫБОР СправочникВидыКонтактнойИнформацииПереопределяемый.Тип
 				КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Телефон)
-					ТОГДА 7
+					ТОГДА 14
 				КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.АдресЭлектроннойПочты)
-					ТОГДА 8
+					ТОГДА 15
 				КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.ВебСтраница)
-					ТОГДА 9
+					ТОГДА 16
 				КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Факс)
-					ТОГДА 10
+					ТОГДА 17
 				КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Другое)
-					ТОГДА 11
+					ТОГДА 18
 				КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Адрес)
-					ТОГДА 12
+					ТОГДА 19
 				КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Skype)
-					ТОГДА 20
+					ТОГДА 21
 				ИНАЧЕ 3
 			КОНЕЦ
+		ИНАЧЕ ВЫБОР СправочникВидыКонтактнойИнформацииПереопределяемый.Тип
+			КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Телефон)
+				ТОГДА 7
+			КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.АдресЭлектроннойПочты)
+				ТОГДА 8
+			КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.ВебСтраница)
+				ТОГДА 9
+			КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Факс)
+				ТОГДА 10
+			КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Другое)
+				ТОГДА 11
+			КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Адрес)
+				ТОГДА 12
+			КОГДА ЗНАЧЕНИЕ(Перечисление.ТипыКонтактнойИнформации.Skype)
+				ТОГДА 20
+			ИНАЧЕ 3
+		КОНЕЦ
 	КОНЕЦ КАК ИндексПиктограммы,
-	СправочникВидыКонтактнойИнформации.Ссылка,
-	СправочникВидыКонтактнойИнформации.ПометкаУдаления,
-	СправочникВидыКонтактнойИнформации.Предопределенный,
-	СправочникВидыКонтактнойИнформации.Родитель,
-	СправочникВидыКонтактнойИнформации.ЭтоГруппа,
-	ВЫБОР
-		КОГДА &amp;ЭтоОсновнойЯзык
-		ТОГДА СправочникВидыКонтактнойИнформации.Наименование
-		ИНАЧЕ ВЫРАЗИТЬ(ЕСТЬNULL(ВидыКонтактнойИнформацииПредставления.Наименование, СправочникВидыКонтактнойИнформации.Наименование) КАК СТРОКА(150))
-	КОНЕЦ КАК Наименование,
-	СправочникВидыКонтактнойИнформации.Тип,
-	СправочникВидыКонтактнойИнформации.РеквизитДопУпорядочивания,
-	СправочникВидыКонтактнойИнформации.РедактированиеТолькоВДиалоге,
-	СправочникВидыКонтактнойИнформации.МожноИзменятьСпособРедактирования,
-	СправочникВидыКонтактнойИнформации.ТолькоНациональныйАдрес,
-	СправочникВидыКонтактнойИнформации.Используется
+	СправочникВидыКонтактнойИнформацииПереопределяемый.Ссылка КАК Ссылка,
+	СправочникВидыКонтактнойИнформацииПереопределяемый.Наименование КАК Наименование,
+	СправочникВидыКонтактнойИнформацииПереопределяемый.РеквизитДопУпорядочивания КАК РеквизитДопУпорядочивания,
+	СправочникВидыКонтактнойИнформацииПереопределяемый.Используется КАК Используется,
+	СправочникВидыКонтактнойИнформацииПереопределяемый.ЭтоГруппа КАК ЭтоГруппа
 ИЗ
-	Справочник.ВидыКонтактнойИнформации КАК СправочникВидыКонтактнойИнформации
-		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ВидыКонтактнойИнформации.Представления КАК ВидыКонтактнойИнформацииПредставления
-		ПО (ВидыКонтактнойИнформацииПредставления.Ссылка = СправочникВидыКонтактнойИнформации.Ссылка)
-		И ВидыКонтактнойИнформацииПредставления.КодЯзыка = &amp;КодЯзыка
+	Справочник.ВидыКонтактнойИнформации КАК СправочникВидыКонтактнойИнформацииПереопределяемый
 ГДЕ
-	СправочникВидыКонтактнойИнформации.Используется И ЕстьNULL(СправочникВидыКонтактнойИнформации.Родитель.Используется, Истина)
-</QueryText>
+	СправочникВидыКонтактнойИнформацииПереопределяемый.Используется
+	И ЕСТЬNULL(СправочникВидыКонтактнойИнформацииПереопределяемый.Родитель.Используется, ИСТИНА)</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИндексПиктограммы</dcssch:dataPath>
+					<dcssch:field>ИндексПиктограммы</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс пиктограммы</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Наименование</dcssch:dataPath>
+					<dcssch:field>Наименование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РеквизитДопУпорядочивания</dcssch:dataPath>
+					<dcssch:field>РеквизитДопУпорядочивания</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Используется</dcssch:dataPath>
+					<dcssch:field>Используется</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЭтоГруппа</dcssch:dataPath>
+					<dcssch:field>ЭтоГруппа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВводитьНомерПоМаске</dcssch:dataPath>
+					<dcssch:field>ВводитьНомерПоМаске</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВключатьСтрануВПредставление</dcssch:dataPath>
+					<dcssch:field>ВключатьСтрануВПредставление</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидПоляДругое</dcssch:dataPath>
+					<dcssch:field>ВидПоляДругое</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидРедактирования</dcssch:dataPath>
+					<dcssch:field>ВидРедактирования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЗапретитьРедактированиеПользователем</dcssch:dataPath>
+					<dcssch:field>ЗапретитьРедактированиеПользователем</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИдентификаторДляФормул</dcssch:dataPath>
+					<dcssch:field>ИдентификаторДляФормул</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяГруппы</dcssch:dataPath>
+					<dcssch:field>ИмяГруппы</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяПредопределенногоВида</dcssch:dataPath>
+					<dcssch:field>ИмяПредопределенногоВида</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИсправлятьУстаревшиеАдреса</dcssch:dataPath>
+					<dcssch:field>ИсправлятьУстаревшиеАдреса</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МаскаНомераТелефона</dcssch:dataPath>
+					<dcssch:field>МаскаНомераТелефона</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МеждународныйФорматАдреса</dcssch:dataPath>
+					<dcssch:field>МеждународныйФорматАдреса</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МожноИзменятьСпособРедактирования</dcssch:dataPath>
+					<dcssch:field>МожноИзменятьСпособРедактирования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОбязательноеЗаполнение</dcssch:dataPath>
+					<dcssch:field>ОбязательноеЗаполнение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПроверятьКорректность</dcssch:dataPath>
+					<dcssch:field>ПроверятьКорректность</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УдалитьПроверятьПоФИАС</dcssch:dataPath>
+					<dcssch:field>УдалитьПроверятьПоФИАС</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РазрешитьВводНесколькихЗначений</dcssch:dataPath>
+					<dcssch:field>РазрешитьВводНесколькихЗначений</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СкрыватьНеактуальныеАдреса</dcssch:dataPath>
+					<dcssch:field>СкрыватьНеактуальныеАдреса</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Тип</dcssch:dataPath>
+					<dcssch:field>Тип</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТолькоНациональныйАдрес</dcssch:dataPath>
+					<dcssch:field>ТолькоНациональныйАдрес</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УдалитьРедактированиеТолькоВДиалоге</dcssch:dataPath>
+					<dcssch:field>УдалитьРедактированиеТолькоВДиалоге</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УказыватьОКТМО</dcssch:dataPath>
+					<dcssch:field>УказыватьОКТМО</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ХранитьИсториюИзменений</dcssch:dataPath>
+					<dcssch:field>ХранитьИсториюИзменений</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОтображатьВсегда</dcssch:dataPath>
+					<dcssch:field>ОтображатьВсегда</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаименованиеЯзык1</dcssch:dataPath>
+					<dcssch:field>НаименованиеЯзык1</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаименованиеЯзык2</dcssch:dataPath>
+					<dcssch:field>НаименованиеЯзык2</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Представления</dcssch:dataPath>
+					<dcssch:field>Представления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Предопределенный</dcssch:dataPath>
+					<dcssch:field>Предопределенный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяПредопределенныхДанных</dcssch:dataPath>
+					<dcssch:field>ИмяПредопределенныхДанных</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Родитель</dcssch:dataPath>
+					<dcssch:field>Родитель</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТелефонСДобавочнымНомером</dcssch:dataPath>
+					<dcssch:field>ТелефонСДобавочнымНомером</dcssch:field>
+				</Field>
 				<MainTable>Catalog.ВидыКонтактнойИнформации</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -228,4 +388,28 @@
 			</Settings>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ПерейтиКСписку" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти к списку...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти к списку с контактной информацией</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПерейтиКСписку</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ВладелецКонтактнойИнформации">
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
+		</Parameter>
+	</Parameters>
 </Form>

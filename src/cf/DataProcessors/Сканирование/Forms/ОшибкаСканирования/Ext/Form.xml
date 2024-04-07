@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Не удалось отсканировать документ</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОшибки" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибка</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОшибкиРасширеннаяПодсказка" id="11"/>
+			<ChildItems>
+				<PictureDecoration name="КартинкаОшибки" id="7">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декорация1</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.Предупреждение32</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="КартинкаОшибкиКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="КартинкаОшибкиРасширеннаяПодсказка" id="9"/>
+				</PictureDecoration>
+				<LabelDecoration name="ТекстОшибки" id="4">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сканер %1 не обнаружен или не подключен.
+Попробуйте выполнить одно из следующих действий:
+ • Проверьте подключение сканера и повторите попытку сканирования.
+ • Укажите в &lt;link Настройки&gt;настройках сканирования&lt;/&gt; доступный сканер.
+ • Если проблема повторится, обратитесь к техническому специалисту.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ТекстОшибкиКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ТекстОшибкиРасширеннаяПодсказка" id="6"/>
+					<Events>
+						<Event name="URLProcessing">ТекстОшибкиОбработкаНавигационнойСсылки</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКоманд" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команды</v8:content>
+				</v8:item>
+			</Title>
+			<Height>3</Height>
+			<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+			<VerticalSpacing>Double</VerticalSpacing>
+			<VerticalAlign>Bottom</VerticalAlign>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКомандРасширеннаяПодсказка" id="17"/>
+			<ChildItems>
+				<Button name="ПовторитьСканирование" id="20">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<DefaultItem>true</DefaultItem>
+					<CommandName>Form.Command.ПовторитьСканирование</CommandName>
+					<ExtendedTooltip name="ПовторитьСканированиеРасширеннаяПодсказка" id="21"/>
+				</Button>
+				<Button name="Отмена" id="14">
+					<Type>UsualButton</Type>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+					<CommandName>Form.StandardCommand.Cancel</CommandName>
+					<ExtendedTooltip name="ОтменаРасширеннаяПодсказка" id="15"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ИмяУстройстваСканирования" id="1">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодробноеПредставлениеОшибки" id="4">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекстОшибки" id="2">
+			<Type>
+				<v8:Type>v8ui:FormattedString</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПовторитьСканирование" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Повторить сканирование</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПовторитьСканирование</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ТекстОшибки">
+			<Type>
+				<v8:Type>v8ui:FormattedString</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ИмяУстройстваСканирования">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Заголовок">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ПодробноеПредставлениеОшибки">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

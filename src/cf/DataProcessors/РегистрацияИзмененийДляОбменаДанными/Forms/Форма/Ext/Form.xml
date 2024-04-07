@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -927,7 +927,7 @@
 															<Title>
 																<v8:item>
 																	<v8:lang>ru</v8:lang>
-																	<v8:content>Список констант</v8:content>
+																	<v8:content>Констант</v8:content>
 																</v8:item>
 															</Title>
 															<AutoRefresh>false</AutoRefresh>
@@ -1096,6 +1096,7 @@
 																<ExtendedTooltip name="СписокКонстантУправлениеПоискомРасширеннаяПодсказка" id="343"/>
 															</SearchControlAddition>
 															<Events>
+																<Event name="OnActivateRow">СписокКонстантПриАктивизацииСтроки</Event>
 																<Event name="ChoiceProcessing">СписокКонстантОбработкаВыбора</Event>
 															</Events>
 															<ChildItems>
@@ -1198,7 +1199,6 @@
 														</UsualGroup>
 														<Table name="СписокСсылок" id="18">
 															<Representation>List</Representation>
-															<TitleLocation>Auto</TitleLocation>
 															<ReadOnly>true</ReadOnly>
 															<ChangeRowSet>false</ChangeRowSet>
 															<ChangeRowOrder>false</ChangeRowOrder>
@@ -1207,11 +1207,10 @@
 															<EnableStartDrag>true</EnableStartDrag>
 															<FileDragMode>AsFile</FileDragMode>
 															<DataPath>СписокСсылок</DataPath>
-															<RowPictureDataPath>СписокСсылок.DefaultPicture</RowPictureDataPath>
 															<Title>
 																<v8:item>
 																	<v8:lang>ru</v8:lang>
-																	<v8:content>Список ссылок</v8:content>
+																	<v8:content>Ссылок</v8:content>
 																</v8:item>
 															</Title>
 															<AutoRefresh>false</AutoRefresh>
@@ -1431,6 +1430,7 @@
 															</SearchControlAddition>
 															<Events>
 																<Event name="Selection">СписокСсылокВыбор</Event>
+																<Event name="OnActivateRow">СписокСсылокПриАктивизацииСтроки</Event>
 																<Event name="ChoiceProcessing">СписокСсылокОбработкаВыбора</Event>
 															</Events>
 															<ChildItems>
@@ -1531,7 +1531,7 @@
 																		<Title>
 																			<v8:item>
 																				<v8:lang>ru</v8:lang>
-																				<v8:content>Список наборов записей контекстное меню группа 1</v8:content>
+																				<v8:content>Наборов записей контекстное меню группа 1</v8:content>
 																			</v8:item>
 																		</Title>
 																		<ExtendedTooltip name="СписокНаборовЗаписейКонтекстноеМенюГруппа1ExtendedTooltip" id="291"/>
@@ -1557,7 +1557,7 @@
 																		<Title>
 																			<v8:item>
 																				<v8:lang>ru</v8:lang>
-																				<v8:content>Список наборов записей контекстное меню группа 2</v8:content>
+																				<v8:content>Наборов записей контекстное меню группа 2</v8:content>
 																			</v8:item>
 																		</Title>
 																		<ExtendedTooltip name="СписокНаборовЗаписейКонтекстноеМенюГруппа2ExtendedTooltip" id="293"/>
@@ -1594,7 +1594,7 @@
 																		<Title>
 																			<v8:item>
 																				<v8:lang>ru</v8:lang>
-																				<v8:content>Список наборов записей контекстное меню группа 4</v8:content>
+																				<v8:content>Наборов записей контекстное меню группа 4</v8:content>
 																			</v8:item>
 																		</Title>
 																		<ExtendedTooltip name="СписокНаборовЗаписейКонтекстноеМенюГруппа4ExtendedTooltip" id="296"/>
@@ -1634,7 +1634,7 @@
 																		<Title>
 																			<v8:item>
 																				<v8:lang>ru</v8:lang>
-																				<v8:content>Список наборов записей контекстное меню группа 3</v8:content>
+																				<v8:content>Наборов записей контекстное меню группа 3</v8:content>
 																			</v8:item>
 																		</Title>
 																		<ExtendedTooltip name="СписокНаборовЗаписейКонтекстноеМенюГруппа3ExtendedTooltip" id="300"/>
@@ -1698,6 +1698,7 @@
 															</SearchControlAddition>
 															<Events>
 																<Event name="Selection">СписокНаборовЗаписейВыбор</Event>
+																<Event name="OnActivateRow">СписокНаборовЗаписейПриАктивизацииСтроки</Event>
 																<Event name="ChoiceProcessing">СписокНаборовЗаписейОбработкаВыбора</Event>
 															</Events>
 															<ChildItems>
@@ -1815,7 +1816,7 @@
 							</Title>
 							<Picture>
 								<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
 							</Picture>
 							<FileDragMode>AsFile</FileDragMode>
 							<ContextMenu name="ДлительнаяОперацияКонтекстноеМеню" id="369"/>
@@ -1841,14 +1842,12 @@
 				</Page>
 			</ChildItems>
 		</Pages>
-		<UsualGroup name="ГруппаСкрытыхДанных" id="174">
-			<Visible>false</Visible>
-			<Enabled>false</Enabled>
+		<UsualGroup name="ГруппаДополнительнаяИнформация" id="174">
 			<EnableContentChange>true</EnableContentChange>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Скрытых данных</v8:content>
+					<v8:content>Дополнительная информация</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -1857,10 +1856,11 @@
 					<v8:content>Группа скрытые данные</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Group>Vertical</Group>
-			<Behavior>Usual</Behavior>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
 			<Representation>None</Representation>
-			<ExtendedTooltip name="ГруппаСкрытыхДанныхExtendedTooltip" id="312"/>
+			<ExtendedTooltip name="ГруппаДополнительнаяИнформацияРасширеннаяПодсказка" id="312"/>
 			<ChildItems>
 				<PictureDecoration name="СкрытаяКартинкаИнформация32" id="175">
 					<Title formatted="false">
@@ -1870,13 +1870,35 @@
 						</v8:item>
 					</Title>
 					<Picture>
-						<xr:Abs>Picture.png</xr:Abs>
-						<xr:LoadTransparent>false</xr:LoadTransparent>
+						<xr:Ref>StdPicture.Information</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</Picture>
 					<FileDragMode>AsFile</FileDragMode>
 					<ContextMenu name="СкрытаяКартинкаИнформация32КонтекстноеМеню" id="176"/>
 					<ExtendedTooltip name="СкрытаяКартинкаИнформация32ExtendedTooltip" id="313"/>
 				</PictureDecoration>
+				<LabelDecoration name="ДекорацияРежимВыборочнойРегистрации" id="380">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Режим выборочной регистрации: информация доступна после выбора настройки синхронизации.</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<ContextMenu name="ДекорацияРежимВыборочнойРегистрацииКонтекстноеМеню" id="381"/>
+					<ExtendedTooltip name="ДекорацияРежимВыборочнойРегистрацииРасширеннаяПодсказка" id="382">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Выборочная регистрация объектов – это режим дополнительной проверки, который используется при регистрации объектов (настраивается разработчиками программы).
+Режим "Отключен" – все записываемые объекты считаются измененными и будут зарегистрированы к обмену;
+Режим "Модифицированность" – регистрируем к обмену объекты, у которых были изменения в данных;
+Режим "Согласно правилам xml" – к обменам регистрируем объекты, у которых есть изменения в реквизитах. Список реквизитов получается из правил конвертаций.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
@@ -2202,6 +2224,7 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="СписокСсылокИмяТаблицы" id="16">
 			<Type>

@@ -1,0 +1,59 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/SaaS/ExchangeAdministration/Manage/3.0.1.1">
+	<import namespace="http://www.1c.ru/SaaS/Messages"/>
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="SessionMessage" base="d2p1:AuthenticatedZoneBody">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="SessionId" type="d3p1:UUID"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="ConnectCorrespondent" base="d2p1:Body">
+		<property name="RecipientId" type="xs:string"/>
+		<property name="RecipientURL" type="xs:string"/>
+		<property name="RecipientUser" type="xs:string"/>
+		<property name="RecipientPassword" type="xs:string"/>
+		<property name="RecipientName" type="xs:string"/>
+		<property name="SenderId" type="xs:string"/>
+		<property name="SenderURL" type="xs:string"/>
+		<property name="SenderUser" type="xs:string"/>
+		<property name="SenderPassword" type="xs:string"/>
+		<property name="SenderName" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="SetTransportParams" base="d2p1:Body">
+		<property name="RecipientId" type="xs:string"/>
+		<property name="ExchangeTransport" type="xs:string"/>
+		<property name="ExchangeMessagePassword" type="xs:string"/>
+		<property name="ExportTransactionQuantity" type="xs:int"/>
+		<property name="ImportTransactionQuantity" type="xs:int"/>
+		<property name="FILE_ExchangeFolder" type="xs:string"/>
+		<property name="FILE_CompressExchangeMessage" type="xs:boolean"/>
+		<property name="FTP_ExchangeFolder" type="xs:string"/>
+		<property name="FTP_Port" type="xs:int"/>
+		<property name="FTP_User" type="xs:string"/>
+		<property name="FTP_Password" type="xs:string"/>
+		<property name="FTP_PassiveMode" type="xs:boolean"/>
+		<property name="FTP_MaxExchangeMessageSize" type="xs:int"/>
+		<property name="FTP_CompressExchangeMessage" type="xs:boolean"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="ExecuteSync" base="d2p1:ZoneBody">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Scenario" type="d3p1:ValueTable"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="DeleteSync" base="d2p1:ZoneBody">
+		<property name="ExchangePlan" type="xs:string"/>
+		<property name="CorrespondentZone" type="xs:integer"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage/3.0.1.1" name="GetSyncSettings" base="d2p1:SessionMessage"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage/3.0.1.1" name="EnableSync" base="d2p1:SessionMessage">
+		<property name="ExchangePlan" type="xs:string"/>
+		<property name="CorrespondentZone" type="xs:integer"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage/3.0.1.1" name="DisableSync" base="d2p1:SessionMessage">
+		<property name="ExchangePlan" type="xs:string"/>
+		<property name="CorrespondentZone" type="xs:integer"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage/3.0.1.1" name="PushSync" base="d2p1:SessionMessage"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage/3.0.1.1" name="PushTwoApplicationSync" base="d2p1:SessionMessage">
+		<property name="CorrespondentZone" type="xs:integer"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage/3.0.1.1" name="DisableSyncInSM" base="d2p1:SessionMessage">
+		<property name="ExchangePlan" type="xs:string"/>
+		<property name="CorrespondentZone" type="xs:integer"/>
+	</objectType>
+</package>

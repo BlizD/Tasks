@@ -1,0 +1,88 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2">
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<import namespace="http://v8.1c.ru/8.1/data/enterprise"/>
+	<import namespace="http://www.1c.ru/1cFresh/Application/Permissions/1.0.0.2"/>
+	<valueType name="ExtensionStartupType" base="xs:string">
+		<enumeration xsi:type="xs:string">ClientCall</enumeration>
+		<enumeration xsi:type="xs:string">ServerCall</enumeration>
+		<enumeration xsi:type="xs:string">FormOpen</enumeration>
+		<enumeration xsi:type="xs:string">FormFill</enumeration>
+		<enumeration xsi:type="xs:string">SafeModeExtension</enumeration>
+	</valueType>
+	<valueType name="ExtensionReportVariantImportance" base="xs:string">
+		<enumeration xsi:type="xs:string">High</enumeration>
+		<enumeration xsi:type="xs:string">Ordinary</enumeration>
+		<enumeration xsi:type="xs:string">Low</enumeration>
+	</valueType>
+	<valueType name="ExtensionCategory" base="xs:string">
+		<enumeration xsi:type="xs:string">AdditionalProcessor</enumeration>
+		<enumeration xsi:type="xs:string">AdditionalReport</enumeration>
+		<enumeration xsi:type="xs:string">ObjectFilling</enumeration>
+		<enumeration xsi:type="xs:string">Report</enumeration>
+		<enumeration xsi:type="xs:string">PrintedForm</enumeration>
+		<enumeration xsi:type="xs:string">LinkedObjectCreation</enumeration>
+		<enumeration xsi:type="xs:string">TemplatesMessages</enumeration>
+	</valueType>
+	<valueType name="MetadaTypes" base="xs:string">
+		<enumeration xsi:type="xs:string">Catalog</enumeration>
+		<enumeration xsi:type="xs:string">Document</enumeration>
+		<enumeration xsi:type="xs:string">BusinessProcess</enumeration>
+		<enumeration xsi:type="xs:string">Task</enumeration>
+		<enumeration xsi:type="xs:string">SubSystem</enumeration>
+	</valueType>
+	<objectType name="ExtensionAssignmentObject">
+		<property name="ObjectName"/>
+		<property name="Representation" type="xs:string"/>
+		<property name="Enabled" type="xs:boolean"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="ObjectType" type="d3p1:MetadaTypes" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="ExtensionAssignmentBase">
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="Objects" type="d3p1:ExtensionAssignmentObject" lowerBound="1" upperBound="-1" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="ExtensionSubsystemsAssignment" base="d2p1:ExtensionAssignmentBase"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="ExtensionCatalogsAndDocumentsAssignment" base="d2p1:ExtensionAssignmentBase">
+		<property name="UseInListsForms" type="xs:boolean"/>
+		<property name="UseInObjectsForms" type="xs:boolean"/>
+	</objectType>
+	<objectType name="ExtensionCommand">
+		<property name="Id" type="xs:string"/>
+		<property name="Representation" type="xs:string"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="StartupType" type="d3p1:ExtensionStartupType"/>
+		<property name="ShowNotification" type="xs:boolean"/>
+		<property name="Modifier"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="DefaultSettings" type="d3p1:ExtensionCommandSettings" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="ExtensionCommandSettings">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="UsersFastAccess" type="d3p1:UUID" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/enterprise" name="Schedule" type="d3p1:JobSchedule" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="ExtensionCommandSettingsContainer">
+		<property name="Id" type="xs:string"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="Settings" type="d3p1:ExtensionCommandSettings"/>
+	</objectType>
+	<objectType name="ExtensionReportVariantAssignment">
+		<property name="ObjectName" type="xs:string"/>
+		<property name="Representation" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Parent" type="xs:string" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="Importance" type="d3p1:ExtensionReportVariantImportance"/>
+		<property name="Enabled" type="xs:boolean"/>
+	</objectType>
+	<objectType name="ExtensionReportVariant">
+		<property name="VariantKey" type="xs:string"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="Assignments" type="d3p1:ExtensionReportVariantAssignment" lowerBound="0" upperBound="-1"/>
+		<property name="Representation" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="ExtensionManifest">
+		<property name="Name" type="xs:string"/>
+		<property name="ObjectName" type="xs:string"/>
+		<property name="Version" type="xs:string"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="Category" type="d3p1:ExtensionCategory"/>
+		<property name="Description" type="xs:string"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="Assignment" type="d3p1:ExtensionAssignmentBase" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="Commands" type="d3p1:ExtensionCommand" lowerBound="0" upperBound="-1" nillable="true"/>
+		<property name="FileName" type="xs:string"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/ApplicationExtensions/Manifest/1.0.0.2" name="ReportVariants" type="d3p1:ExtensionReportVariant" lowerBound="0" upperBound="-1" nillable="true"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/Application/Permissions/1.0.0.2" name="Permissions" type="d3p1:PermissionBase" lowerBound="0" upperBound="-1"/>
+		<property name="UseReportVariantsStorage" type="xs:boolean"/>
+	</objectType>
+</package>

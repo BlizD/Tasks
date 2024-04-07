@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаСохранитьЗакрыть" id="17">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.СохранитьЗакрыть</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Записать и закрыть</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаСохранитьЗакрытьExtendedTooltip" id="25"/>
+			</Button>
+			<Button name="ФормаСохранитьНастройки" id="16">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СохранитьНастройки</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Записать</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаСохранитьНастройкиExtendedTooltip" id="26"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="НастройкиВыполненияЗамеров" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки выполнения замеров</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="НастройкиВыполненияЗамеровРасширеннаяПодсказка" id="41"/>
+			<ChildItems>
+				<UsualGroup name="НастройкиВыполненияЗамеровФлаги" id="45">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки выполнения замеров флаги</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="НастройкиВыполненияЗамеровФлагиРасширеннаяПодсказка" id="46"/>
+					<ChildItems>
+						<CheckBoxField name="ВыполнятьЗамерыПроизводительностиВыполнятьЗамерыПроизводительности" id="37">
+							<DataPath>КонстантыНабор.ВыполнятьЗамерыПроизводительности</DataPath>
+							<Visible>false</Visible>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ВыполнятьЗамерыПроизводительностиВыполнятьЗамерыПроизводительностиКонтекстноеМеню" id="38"/>
+							<ExtendedTooltip name="ВыполнятьЗамерыПроизводительностиВыполнятьЗамерыПроизводительностиРасширеннаяПодсказка" id="39"/>
+						</CheckBoxField>
+						<CheckBoxField name="ВыполнятьЭкспорт" id="14">
+							<DataPath>ВыполнятьЭкспорт</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ВыполнятьЭкспортКонтекстноеМеню" id="15"/>
+							<ExtendedTooltip name="ВыполнятьЭкспортExtendedTooltip" id="29"/>
+							<Events>
+								<Event name="OnChange">ВыполнятьЭкспортПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="НастройкиВыполненияЗамеровИнфо" id="47">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки выполнения замеров инфо</v8:content>
+						</v8:item>
+					</Title>
+					<ChildrenAlign>None</ChildrenAlign>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="НастройкиВыполненияЗамеровИнфоРасширеннаяПодсказка" id="48"/>
+					<ChildItems>
+						<InputField name="КонстантыНаборОценкаПроизводительностиПериодЗаписи" id="58">
+							<DataPath>КонстантыНабор.ОценкаПроизводительностиПериодЗаписи</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Период записи</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="КонстантыНаборОценкаПроизводительностиПериодЗаписиКонтекстноеМеню" id="59"/>
+							<ExtendedTooltip name="КонстантыНаборОценкаПроизводительностиПериодЗаписиРасширеннаяПодсказка" id="60"/>
+							<Events>
+								<Event name="OnChange">КонстантыНаборОценкаПроизводительностиПериодЗаписиПриИзменении</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="ДекорацияПериодЗаписи" id="55">
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>сек.      </v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияПериодЗаписиКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="ДекорацияПериодЗаписиРасширеннаяПодсказка" id="57"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДекорацияПередЗамеровВПакете" id="64">
+							<Width>1</Width>
+							<ContextMenu name="ДекорацияПередЗамеровВПакетеКонтекстноеМеню" id="65"/>
+							<ExtendedTooltip name="ДекорацияПередЗамеровВПакетеРасширеннаяПодсказка" id="66"/>
+						</LabelDecoration>
+						<InputField name="КонстантыНаборКоличествоЗамеровВПакетеЭкспорта" id="61">
+							<DataPath>КонстантыНабор.КоличествоЗамеровВПакетеЭкспорта</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Замеров в пакете</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="КонстантыНаборКоличествоЗамеровВПакетеЭкспортаКонтекстноеМеню" id="62"/>
+							<ExtendedTooltip name="КонстантыНаборКоличествоЗамеровВПакетеЭкспортаРасширеннаяПодсказка" id="63"/>
+							<Events>
+								<Event name="OnChange">КонстантыНаборКоличествоЗамеровВПакетеЭкспортаПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="КонстантыНаборДатаПоследнейВыгрузкиЗамеровПроизводительностиUTC" id="42">
+					<DataPath>КонстантыНабор.ДатаПоследнейВыгрузкиЗамеровПроизводительностиUTC</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата последнего выгруженного замера в UTC</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="КонстантыНаборДатаПоследнейВыгрузкиЗамеровПроизводительностиUTCКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="КонстантыНаборДатаПоследнейВыгрузкиЗамеровПроизводительностиUTCРасширеннаяПодсказка" id="44"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="НастройкиУдаленияЗамеров" id="67">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки удаления замеров</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<ExtendedTooltip name="НастройкиУдаленияЗамеровРасширеннаяПодсказка" id="68"/>
+			<ChildItems>
+				<UsualGroup name="НастройкиУдаленияЗамеровПериод" id="72">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки удаления замеров период</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="НастройкиУдаленияЗамеровПериодРасширеннаяПодсказка" id="73"/>
+					<ChildItems>
+						<InputField name="КонстантыНаборПериодХраненияЗамеров" id="69">
+							<DataPath>КонстантыНабор.ПериодХраненияЗамеров</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Удалять через</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="КонстантыНаборПериодХраненияЗамеровКонтекстноеМеню" id="70"/>
+							<ExtendedTooltip name="КонстантыНаборПериодХраненияЗамеровРасширеннаяПодсказка" id="71"/>
+							<Events>
+								<Event name="OnChange">КонстантыНаборПериодХраненияЗамеровПриИзменении</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="ДекорацияДней" id="74">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>дн.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияДнейКонтекстноеМеню" id="75"/>
+							<ExtendedTooltip name="ДекорацияДнейРасширеннаяПодсказка" id="76"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="НастройкиЭкспортаВЛокальныйКаталог" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки экспорта в локальный каталог</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ThroughAlign>Use</ThroughAlign>
+			<ExtendedTooltip name="НастройкиЭкспортаВЛокальныйКаталогExtendedTooltip" id="30"/>
+			<ChildItems>
+				<CheckBoxField name="ВыполнятьЭкспортВЛокальныйКаталог" id="20">
+					<DataPath>ВыполнятьЭкспортВЛокальныйКаталог</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВыполнятьЭкспортВЛокальныйКаталогКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ВыполнятьЭкспортВЛокальныйКаталогExtendedTooltip" id="31"/>
+					<Events>
+						<Event name="OnChange">ВыполнятьЭкспортВКаталогПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<InputField name="ЛокальныйКаталогЭкспорта" id="9">
+					<DataPath>ЛокальныйКаталогЭкспорта</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Локальный каталог экспорта</v8:content>
+						</v8:item>
+					</Title>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="ЛокальныйКаталогЭкспортаКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="ЛокальныйКаталогЭкспортаExtendedTooltip" id="32"/>
+					<Events>
+						<Event name="OnChange">ЛокальныйКаталогЭкспортаПриИзменении</Event>
+						<Event name="StartChoice">ЛокальныйКаталогФайловЭкспортаНачалоВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="НастройкиЭкспортаНаFTP" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки экспорта на FTP</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<ThroughAlign>Use</ThroughAlign>
+			<ExtendedTooltip name="НастройкиЭкспортаНаFTPExtendedTooltip" id="33"/>
+			<ChildItems>
+				<CheckBoxField name="ВыполнятьЭкспортНаFTP" id="18">
+					<DataPath>ВыполнятьЭкспортНаFTP</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ВыполнятьЭкспортНаFTPКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="ВыполнятьЭкспортНаFTPExtendedTooltip" id="34"/>
+					<Events>
+						<Event name="OnChange">ВыполнятьЭкспортВКаталогПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<InputField name="FTPКаталогЭкспорта" id="22">
+					<DataPath>FTPКаталогЭкспорта</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адрес ftp-сервера</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="FTPКаталогЭкспортаКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="FTPКаталогЭкспортаExtendedTooltip" id="35"/>
+					<Events>
+						<Event name="OnChange">FTPКаталогЭкспортаПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Button name="НастроитьРасписаниеЭкспорта" id="11">
+			<Type>Hyperlink</Type>
+			<CommandName>Form.Command.НастроитьРасписаниеЭкспорта</CommandName>
+			<ExtendedTooltip name="НастроитьРасписаниеЭкспортаExtendedTooltip" id="36"/>
+		</Button>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ЛокальныйКаталогЭкспорта" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Локальный каталог экспорта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>255</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВыполнятьЭкспорт" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнять экспорт</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВыполнятьЭкспортВЛокальныйКаталог" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнять экспорт в локальный каталог</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ВыполнятьЭкспортНаFTP" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнять экспорт на FTP</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="FTPКаталогЭкспорта" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес ftp-сервера</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>255</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="КонстантыНабор" id="6">
+			<Type>
+				<v8:Type>cfg:ConstantsSet</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЕстьБСП" id="7">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЕстьПрофилиБезопасности" id="8">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Объект" id="9">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ОценкаПроизводительности</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="НастроитьРасписаниеЭкспорта" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить расписание экспорта</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить расписание экспорта</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НастроитьРасписаниеЭкспорта</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СохранитьНастройки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить настройки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить настройки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьНастройки</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СохранитьЗакрыть" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьЗакрыть</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
-			<v8:content>Выбранные элементы</v8:content>
+			<v8:content>Выбор элементов для изменения</v8:content>
 		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<SaveDataInSettings>UseList</SaveDataInSettings>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Bottom</CommandBarLocation>
 	<CommandSet>
@@ -15,9 +16,7 @@
 		<ExcludedCommand>Ignore</ExcludedCommand>
 		<ExcludedCommand>No</ExcludedCommand>
 		<ExcludedCommand>OK</ExcludedCommand>
-		<ExcludedCommand>RestoreValues</ExcludedCommand>
 		<ExcludedCommand>Retry</ExcludedCommand>
-		<ExcludedCommand>SaveValues</ExcludedCommand>
 		<ExcludedCommand>Yes</ExcludedCommand>
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -38,6 +37,8 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="OnSaveDataInSettingsAtServer">ПриСохраненииДанныхВНастройкахНаСервере</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -50,6 +51,7 @@
 			</Title>
 			<Group>Vertical</Group>
 			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="ГруппаУсловияОтбораРасширеннаяПодсказка" id="28"/>
 			<ChildItems>
 				<Table name="КомпоновщикНастроекНастройкиОтбор" id="23">
@@ -67,19 +69,49 @@
 							<v8:content>Компоновщик настроек настройки отбор</v8:content>
 						</v8:item>
 					</Title>
+					<CommandSet>
+						<ExcludedCommand>SetPresentation</ExcludedCommand>
+						<ExcludedCommand>UserSettingItemProperties</ExcludedCommand>
+					</CommandSet>
 					<ViewMode>All</ViewMode>
 					<SettingsNamedItemDetailedRepresentation>false</SettingsNamedItemDetailedRepresentation>
 					<ContextMenu name="КомпоновщикНастроекНастройкиОтборКонтекстноеМеню" id="24"/>
 					<AutoCommandBar name="КомпоновщикНастроекНастройкиОтборКоманднаяПанель" id="25">
 						<Autofill>false</Autofill>
 						<ChildItems>
+							<Button name="СписокВосстановитьЗначения" id="112">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<CommandName>Form.StandardCommand.RestoreValues</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Загрузить отбор...</v8:content>
+									</v8:item>
+								</Title>
+								<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="СписокВосстановитьЗначенияРасширеннаяПодсказка" id="113"/>
+							</Button>
+							<Button name="СписокСохранитьЗначения" id="110">
+								<Type>CommandBarButton</Type>
+								<Representation>Picture</Representation>
+								<CommandName>Form.StandardCommand.SaveValues</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Сохранить отбор...</v8:content>
+									</v8:item>
+								</Title>
+								<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="СписокСохранитьЗначенияРасширеннаяПодсказка" id="111"/>
+							</Button>
 							<Button name="КомпоновщикНастроекНастройкиОтборДобавитьЭлементОтбора" id="49">
 								<Type>CommandBarButton</Type>
 								<CommandName>Form.Item.КомпоновщикНастроекНастройкиОтбор.StandardCommand.AddFilterItem</CommandName>
 								<Title>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
-										<v8:content>Добавить условие отбора</v8:content>
+										<v8:content>Добавить условие</v8:content>
 									</v8:item>
 								</Title>
 								<ExtendedTooltip name="КомпоновщикНастроекНастройкиОтборДобавитьЭлементОтбораРасширеннаяПодсказка" id="50"/>
@@ -98,12 +130,17 @@
 								<Title>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
-										<v8:content>Компоновщик настроек настройки отбор группа 1</v8:content>
+										<v8:content>Компоновщик настроек</v8:content>
 									</v8:item>
 								</Title>
 								<CommandSource>Form</CommandSource>
 								<ExtendedTooltip name="КомпоновщикНастроекНастройкиОтборГруппа1РасширеннаяПодсказка" id="97"/>
 							</ButtonGroup>
+							<Button name="КомпоновщикНастроекНастройкиОтборСправка" id="114">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.Help</CommandName>
+								<ExtendedTooltip name="КомпоновщикНастроекНастройкиОтборСправкаРасширеннаяПодсказка" id="115"/>
+							</Button>
 						</ChildItems>
 					</AutoCommandBar>
 					<ExtendedTooltip name="КомпоновщикНастроекНастройкиОтборРасширеннаяПодсказка" id="26"/>
@@ -134,7 +171,10 @@
 					<Events>
 						<Event name="OnEditEnd">КомпоновщикНастроекНастройкиОтборПриОкончанииРедактирования</Event>
 						<Event name="BeforeAddRow">КомпоновщикНастроекНастройкиОтборПередНачаломДобавления</Event>
+						<Event name="OnActivateRow">КомпоновщикНастроекНастройкиОтборПриАктивизацииСтроки</Event>
+						<Event name="OnStartEdit">КомпоновщикНастроекНастройкиОтборПриНачалеРедактирования</Event>
 						<Event name="AfterDeleteRow">КомпоновщикНастроекНастройкиОтборПослеУдаления</Event>
+						<Event name="OnChange">КомпоновщикНастроекНастройкиОтборПриИзменении</Event>
 					</Events>
 				</Table>
 			</ChildItems>
@@ -149,17 +189,19 @@
 			<Height>8</Height>
 			<Group>Vertical</Group>
 			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="ГруппаВыбранныеОбъектыРасширеннаяПодсказка" id="30"/>
 			<ChildItems>
 				<Table name="Список" id="74">
 					<Representation>List</Representation>
-					<Header>false</Header>
+					<CommandBarLocation>Bottom</CommandBarLocation>
 					<HorizontalLines>false</HorizontalLines>
-					<VerticalLines>false</VerticalLines>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<InitialTreeView>ExpandTopLevel</InitialTreeView>
 					<EnableStartDrag>true</EnableStartDrag>
 					<FileDragMode>AsFile</FileDragMode>
 					<DataPath>Список</DataPath>
-					<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+					<RowPictureDataPath>~Список.DefaultPicture</RowPictureDataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -175,6 +217,8 @@
 						<ExcludedCommand>LoadDynamicListSettings</ExcludedCommand>
 						<ExcludedCommand>SaveDynamicListSettings</ExcludedCommand>
 					</CommandSet>
+					<SearchStringLocation>Top</SearchStringLocation>
+					<SearchControlLocation>None</SearchControlLocation>
 					<AutoRefresh>false</AutoRefresh>
 					<AutoRefreshPeriod>60</AutoRefreshPeriod>
 					<Period>
@@ -196,20 +240,34 @@
 								<CommandName>Form.Command.ОткрытьЭлемент</CommandName>
 								<ExtendedTooltip name="СписокКонтекстноеМенюОткрытьЗначениеРасширеннаяПодсказка" id="99"/>
 							</Button>
-							<Button name="СписокКонтекстноеМенюОбновить1" id="90">
+							<Button name="СписокКонтекстноеМенюОбновить" id="90">
 								<Type>CommandBarButton</Type>
 								<CommandName>Form.Item.Список.StandardCommand.Refresh</CommandName>
-								<ExtendedTooltip name="СписокКонтекстноеМенюОбновить1РасширеннаяПодсказка" id="91"/>
+								<ExtendedTooltip name="СписокКонтекстноеМенюОбновитьРасширеннаяПодсказка" id="91"/>
 							</Button>
-							<Button name="СписокКонтекстноеМенюВывестиСписок1" id="92">
+							<Button name="СписокКонтекстноеМенюВывестиСписок" id="92">
 								<Type>CommandBarButton</Type>
 								<CommandName>Form.Item.Список.StandardCommand.OutputList</CommandName>
-								<ExtendedTooltip name="СписокКонтекстноеМенюВывестиСписок1РасширеннаяПодсказка" id="93"/>
+								<ExtendedTooltip name="СписокКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="93"/>
 							</Button>
 						</ChildItems>
 					</ContextMenu>
 					<AutoCommandBar name="СписокКоманднаяПанель" id="76">
 						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="СписокИзменитьФорму" id="102">
+								<Type>CommandBarHyperlink</Type>
+								<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Колонки списка...</v8:content>
+									</v8:item>
+								</Title>
+								<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+								<ExtendedTooltip name="СписокИзменитьФормуРасширеннаяПодсказка" id="103"/>
+							</Button>
+						</ChildItems>
 					</AutoCommandBar>
 					<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="77"/>
 					<SearchStringAddition name="СписокСтрокаПоиска" id="78">
@@ -217,6 +275,8 @@
 							<Item>Список</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
+						<Width>40</Width>
+						<HorizontalStretch>false</HorizontalStretch>
 						<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="79"/>
 						<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="80"/>
 					</SearchStringAddition>
@@ -266,11 +326,6 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 		</Attribute>
-		<Attribute name="ОбъектыДляОбработки" id="2">
-			<Type>
-				<v8:Type>v8:ValueListType</v8:Type>
-			</Type>
-		</Attribute>
 		<Attribute name="Список" id="3">
 			<Title>
 				<v8:item>
@@ -282,14 +337,17 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<UseAlways>
+				<Field>~Список.DefaultPicture</Field>
 				<Field>Список.Ссылка</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	"" КАК Ссылка
-</QueryText>
+	ТаблицаПереопределяемый.Ссылка КАК Ссылка
+ИЗ
+	Справочник.Пользователи КАК ТаблицаПереопределяемый</QueryText>
+				<KeyField>Ссылка</KeyField>
 				<AutoSaveUserSettings>false</AutoSaveUserSettings>
 				<ListSettings>
 					<dcsset:filter>
@@ -339,6 +397,31 @@
 					<v8:Length>0</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КоличествоВыбранных" id="5">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВыполняетсяРедактированиеОтборов" id="9">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КоличествоУсловий" id="10">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 	</Attributes>

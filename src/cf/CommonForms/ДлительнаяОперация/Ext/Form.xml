@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<AutoURL>false</AutoURL>
@@ -24,7 +24,7 @@
 		<ChildItems>
 			<Button name="ФормаЗакрыть" id="16">
 				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.Close</CommandName>
+				<CommandName>Form.Command.ОтменитьИЗакрыть</CommandName>
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
@@ -42,48 +42,95 @@
 		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="КартинкаИНадпись" id="14">
+		<UsualGroup name="СообщениеОперации" id="24">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Картинка и надпись</v8:content>
+					<v8:content>Сообщение операции</v8:content>
 				</v8:item>
 			</Title>
-			<VerticalAlign>Center</VerticalAlign>
+			<Group>Vertical</Group>
 			<Behavior>Usual</Behavior>
-			<Representation>None</Representation>
+			<Representation>NormalSeparation</Representation>
+			<United>false</United>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="КартинкаИНадписьРасширеннаяПодсказка" id="15"/>
+			<ExtendedTooltip name="СообщениеОперацииРасширеннаяПодсказка" id="25"/>
 			<ChildItems>
-				<PictureDecoration name="ДекорацияДлительнаяОперация" id="3">
-					<Title formatted="false">
+				<UsualGroup name="КартинкаИНадпись" id="14">
+					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Длительная операция</v8:content>
-						</v8:item>
-					</Title>
-					<Picture>
-						<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
-						<xr:LoadTransparent>false</xr:LoadTransparent>
-					</Picture>
-					<FileDragMode>AsFile</FileDragMode>
-					<ContextMenu name="ДекорацияДлительнаяОперацияКонтекстноеМеню" id="4"/>
-					<ExtendedTooltip name="ДекорацияДлительнаяОперацияExtendedTooltip" id="10"/>
-				</PictureDecoration>
-				<LabelDecoration name="ДекорацияПоясняющийТекстДлительнойОперации" id="1">
-					<Width>30</Width>
-					<AutoMaxWidth>false</AutoMaxWidth>
-					<HorizontalStretch>true</HorizontalStretch>
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Пожалуйста, подождите...</v8:content>
+							<v8:content>Картинка и надпись</v8:content>
 						</v8:item>
 					</Title>
 					<VerticalAlign>Center</VerticalAlign>
-					<ContextMenu name="ДекорацияПоясняющийТекстДлительнойОперацииКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="ДекорацияПоясняющийТекстДлительнойОперацииExtendedTooltip" id="11"/>
-				</LabelDecoration>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="КартинкаИНадписьРасширеннаяПодсказка" id="15"/>
+					<ChildItems>
+						<PictureDecoration name="ДекорацияДлительнаяОперация" id="3">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Длительная операция</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="ДекорацияДлительнаяОперацияКонтекстноеМеню" id="4"/>
+							<ExtendedTooltip name="ДекорацияДлительнаяОперацияExtendedTooltip" id="10"/>
+						</PictureDecoration>
+						<UsualGroup name="ПроцентИТекстСообщения" id="26">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Процент и текст сообщения</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ПроцентИТекстСообщенияРасширеннаяПодсказка" id="27"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияПроцент" id="1">
+									<Visible>false</Visible>
+									<Width>30</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Font ref="style:ВажнаяНадписьШрифт" kind="StyleItem"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>0%</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="ДекорацияПроцентКонтекстноеМеню" id="2"/>
+									<ExtendedTooltip name="ДекорацияПроцентРасширеннаяПодсказка" id="11"/>
+								</LabelDecoration>
+								<LabelDecoration name="ДекорацияПоясняющийТекстДлительнойОперации" id="21">
+									<Width>30</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пожалуйста, подождите...</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="ДекорацияПоясняющийТекстДлительнойОперацииКонтекстноеМеню" id="22"/>
+									<ExtendedTooltip name="ДекорацияПоясняющийТекстДлительнойОперацииРасширеннаяПодсказка" id="23"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
@@ -111,7 +158,29 @@
 				<v8:Type>v8:UUID</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ОтменятьПриЗакрытии" id="2">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ОтменитьИЗакрыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтменитьИЗакрыть</Action>
+		</Command>
+	</Commands>
 	<Parameters>
 		<Parameter name="ОжидатьЗавершение">
 			<Type>
@@ -197,6 +266,21 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="Заголовок">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="РежимОткрытияОкнаОжидания">
+			<Type/>
+		</Parameter>
+		<Parameter name="ОтменятьПриЗакрытииФормыВладельца">
+			<Type/>
 		</Parameter>
 	</Parameters>
 </Form>

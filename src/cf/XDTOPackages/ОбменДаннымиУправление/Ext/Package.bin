@@ -1,0 +1,36 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/SaaS/Exchange/Manage">
+	<import namespace="http://www.1c.ru/SaaS/Messages"/>
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="ManageMessage" base="d2p1:AuthenticatedZoneBody">
+		<property name="CorrespondentZone" type="xs:integer"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="SessionId" type="d3p1:UUID"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Exchange/Manage" name="SetupExchangeStep1" base="d2p1:ManageMessage">
+		<property name="ExchangePlan" type="xs:string"/>
+		<property name="CorrespondentCode" type="xs:string"/>
+		<property name="CorrespondentName" type="xs:string"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="FilterSettings" type="d3p1:Structure"/>
+		<property name="Code" type="xs:string"/>
+		<property name="EndPoint" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Exchange/Manage" name="SetupExchangeStep2" base="d2p1:ManageMessage">
+		<property name="ExchangePlan" type="xs:string"/>
+		<property name="CorrespondentCode" type="xs:string"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="AdditionalSettings" type="d3p1:Structure"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Exchange/Manage" name="DownloadMessage" base="d2p1:ManageMessage">
+		<property name="ExchangePlan" type="xs:string"/>
+		<property name="CorrespondentCode" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Exchange/Manage" name="GetData" base="d2p1:ManageMessage">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Tables" type="d3p1:FixedArray"/>
+		<property name="ExchangePlan" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Exchange/Manage" name="GetCommonNodsData" base="d2p1:ManageMessage">
+		<property name="ExchangePlan" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Exchange/Manage" name="GetCorrespondentParams" base="d2p1:ManageMessage">
+		<property name="ExchangePlan" type="xs:string"/>
+		<property name="CorrespondentCode" type="xs:string"/>
+	</objectType>
+</package>

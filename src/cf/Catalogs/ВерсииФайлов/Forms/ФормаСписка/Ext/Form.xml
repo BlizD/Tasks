@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<MobileDeviceCommandBarContent>
 		<xr:Item>
 			<xr:Presentation/>
@@ -53,6 +53,28 @@
 					</Title>
 					<ExtendedTooltip name="ФормаИзменитьExtendedTooltip" id="32"/>
 				</Button>
+				<ButtonGroup name="ГруппаУдаление" id="68">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Удаление</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ГруппаУдалениеРасширеннаяПодсказка" id="69"/>
+					<ChildItems>
+						<Button name="УстановитьПометкуУдаления" id="70">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.StandardCommand.SetDeletionMark</CommandName>
+							<ExtendedTooltip name="УстановитьПометкуУдаленияРасширеннаяПодсказка" id="71"/>
+						</Button>
+						<Button name="ФормаУдалить" id="72">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Удалить</CommandName>
+							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+							<ExtendedTooltip name="ФормаУдалитьРасширеннаяПодсказка" id="73"/>
+						</Button>
+					</ChildItems>
+				</ButtonGroup>
 				<ButtonGroup name="ФормаСтандартныеКоманды" id="15">
 					<Title>
 						<v8:item>
@@ -63,11 +85,31 @@
 					<CommandSource>Form</CommandSource>
 					<ExtendedTooltip name="ФормаСтандартныеКомандыExtendedTooltip" id="33"/>
 				</ButtonGroup>
+				<Button name="ПоказыватьПомеченныеФайлы" id="74">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.ПоказыватьПомеченныеФайлы</CommandName>
+					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+					<ExtendedTooltip name="ПоказыватьПомеченныеФайлыРасширеннаяПодсказка" id="75"/>
+				</Button>
 				<Button name="ФормаСправка" id="14">
 					<Type>CommandBarButton</Type>
 					<CommandName>Form.StandardCommand.Help</CommandName>
 					<ExtendedTooltip name="ФормаСправкаExtendedTooltip" id="34"/>
 				</Button>
+				<SearchStringAddition name="СтрокаПоиска" id="78">
+					<AdditionSource>
+						<Item>Список</Item>
+						<Type>SearchStringRepresentation</Type>
+					</AdditionSource>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поиск</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="79"/>
+					<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="80"/>
+				</SearchStringAddition>
 			</ChildItems>
 		</CommandBar>
 		<Table name="Список" id="1">
@@ -126,15 +168,20 @@
 						</Title>
 						<ExtendedTooltip name="СписокКонтекстноеМенюИзменитьExtendedTooltip" id="35"/>
 					</Button>
+					<Button name="СписокКонтекстноеМенюКопироватьВБуферОбмена" id="12">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Список.StandardCommand.CopyToClipboard</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюКопироватьВБуферОбменаExtendedTooltip" id="37"/>
+					</Button>
 					<Button name="СписокКонтекстноеМенюУстановитьПометкуУдаления" id="11">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.Список.StandardCommand.SetDeletionMark</CommandName>
 						<ExtendedTooltip name="СписокКонтекстноеМенюУстановитьПометкуУдаленияExtendedTooltip" id="36"/>
 					</Button>
-					<Button name="СписокКонтекстноеМенюКопироватьВБуферОбмена" id="12">
+					<Button name="СписокКонтекстноеМенюУдалить" id="76">
 						<Type>CommandBarButton</Type>
-						<CommandName>Form.Item.Список.StandardCommand.CopyToClipboard</CommandName>
-						<ExtendedTooltip name="СписокКонтекстноеМенюКопироватьВБуферОбменаExtendedTooltip" id="37"/>
+						<CommandName>Form.Command.Удалить</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюУдалитьРасширеннаяПодсказка" id="77"/>
 					</Button>
 				</ChildItems>
 			</ContextMenu>
@@ -170,6 +217,7 @@
 				<Event name="Selection">СписокВыбор</Event>
 				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
 				<Event name="BeforeDeleteRow">СписокПередУдалением</Event>
+				<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
 				<Event name="BeforeRowChange">СписокПередНачаломИзменения</Event>
 			</Events>
 			<ChildItems>
@@ -193,7 +241,7 @@
 							<ExtendedTooltip name="ГруппаОсновноеРасширеннаяПодсказка" id="67"/>
 							<ChildItems>
 								<LabelField name="СписокПолноеНаименование" id="8" DisplayImportance="VeryHigh">
-									<DataPath>Список.ПолноеНаименование</DataPath>
+									<DataPath>Список.Description</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -283,7 +331,7 @@
 	ВерсииФайлов.Комментарий,
 	ВерсииФайлов.Автор,
 	ВерсииФайлов.ДатаСоздания,
-	ВерсииФайлов.ПолноеНаименование,
+	ВерсииФайлов.Наименование,
 	ВерсииФайлов.ИндексКартинки,
 	ВерсииФайлов.ПометкаУдаления,
 	ВерсииФайлов.Расширение,
@@ -310,4 +358,42 @@
 			</Settings>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="Удалить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить данные версии файла</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DeleteDirectly</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Удалить</Action>
+			<CurrentRowUse>Use</CurrentRowUse>
+			<AssociatedTableElementId xsi:type="xs:string">Список</AssociatedTableElementId>
+		</Command>
+		<Command name="ПоказыватьПомеченныеФайлы" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать помеченные файлы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать помеченные файлы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоказыватьПомеченныеФайлы</Action>
+		</Command>
+	</Commands>
 </Form>

@@ -35,6 +35,7 @@
 					<v8:content>Статус проверки</v8:content>
 				</v8:item>
 			</title>
+			<presentationExpression>РаботаСФайламиВТомахСлужебный.ПредставлениеСтатусаПроверки(СтатусПроверки)</presentationExpression>
 			<valueType>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
@@ -116,6 +117,26 @@
 		<dataSource>ИсточникДанных1</dataSource>
 		<objectName>ТаблицаПроверкиТома</objectName>
 	</dataSet>
+	<calculatedField>
+		<dataPath>СсылкаНаФайл</dataPath>
+		<expression>Имя</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Наименование</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>СсылкаНаФайл.Расшифровка</dataPath>
+		<expression>Файл</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Наименование (расшифровка)</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
 	<totalField>
 		<dataPath>Файл</dataPath>
 		<expression>Количество(Файл)</expression>
@@ -134,7 +155,41 @@
 		<value xsi:nil="true"/>
 		<useRestriction>false</useRestriction>
 		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
 	</parameter>
+	<template>
+		<name>Макет1</name>
+		<template xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:AreaTemplate">
+			<dcsat:item xsi:type="dcsat:TableRow">
+				<dcsat:tableCell>
+					<dcsat:item xsi:type="dcsat:Field">
+						<dcsat:value xsi:type="dcscor:Parameter">СсылкаНаФайл</dcsat:value>
+					</dcsat:item>
+					<dcsat:appearance>
+						<dcscor:item>
+							<dcscor:parameter>Расшифровка</dcscor:parameter>
+							<dcscor:value xsi:type="dcscor:Parameter">Расшифровка</dcscor:value>
+						</dcscor:item>
+					</dcsat:appearance>
+				</dcsat:tableCell>
+			</dcsat:item>
+		</template>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>СсылкаНаФайл</dcsat:name>
+			<dcsat:expression>СсылкаНаФайл</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:DetailsAreaTemplateParameter">
+			<dcsat:name>Расшифровка</dcsat:name>
+			<dcsat:fieldExpression>
+				<dcsat:field>СсылкаНаФайл</dcsat:field>
+				<dcsat:expression>СсылкаНаФайл.Расшифровка</dcsat:expression>
+			</dcsat:fieldExpression>
+		</parameter>
+	</template>
+	<fieldTemplate>
+		<field>СсылкаНаФайл</field>
+		<template>Макет1</template>
+	</fieldTemplate>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
@@ -166,6 +221,7 @@
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Том</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>e7a1e7e5-697e-49c8-96b8-9a640b5b1ff2</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:outputParameters>
@@ -224,7 +280,7 @@
 							<dcsset:item xsi:type="dcsset:FilterItemComparison">
 								<dcsset:left xsi:type="dcscor:Field">СтатусПроверки</dcsset:left>
 								<dcsset:comparisonType>Contains</dcsset:comparisonType>
-								<dcsset:right xsi:type="xs:string">Целостные данные</dcsset:right>
+								<dcsset:right xsi:type="xs:string">ОК</dcsset:right>
 							</dcsset:item>
 						</dcsset:filter>
 						<dcsset:appearance>
@@ -240,7 +296,7 @@
 							<dcsset:item xsi:type="dcsset:FilterItemComparison">
 								<dcsset:left xsi:type="dcscor:Field">СтатусПроверки</dcsset:left>
 								<dcsset:comparisonType>Contains</dcsset:comparisonType>
-								<dcsset:right xsi:type="xs:string">Лишние файлы (есть на диске, но сведения о них отсутствуют)</dcsset:right>
+								<dcsset:right xsi:type="xs:string">ЛишнийФайлВТоме</dcsset:right>
 							</dcsset:item>
 						</dcsset:filter>
 						<dcsset:appearance>
@@ -256,7 +312,7 @@
 							<dcsset:item xsi:type="dcsset:FilterItemComparison">
 								<dcsset:left xsi:type="dcscor:Field">СтатусПроверки</dcsset:left>
 								<dcsset:comparisonType>Contains</dcsset:comparisonType>
-								<dcsset:right xsi:type="xs:string">Отсутствуют данные в томе на диске</dcsset:right>
+								<dcsset:right xsi:type="xs:string">НетФайлаВТоме</dcsset:right>
 							</dcsset:item>
 						</dcsset:filter>
 						<dcsset:appearance>
@@ -280,7 +336,7 @@
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
 						<dcsset:left xsi:type="dcscor:Field">СтатусПроверки</dcsset:left>
 						<dcsset:comparisonType>Contains</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:string">Отсутствуют данные в томе на диске</dcsset:right>
+						<dcsset:right xsi:type="xs:string">НетФайлаВТоме</dcsset:right>
 					</dcsset:item>
 				</dcsset:filter>
 				<dcsset:order>
@@ -288,7 +344,7 @@
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Имя</dcsset:field>
+						<dcsset:field>СсылкаНаФайл</dcsset:field>
 						<dcsset:lwsTitle>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -322,7 +378,7 @@
 						<dcscor:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Отсутствуют данные в томе на диске</v8:content>
+								<v8:content>Отсутствуют данные в томе</v8:content>
 							</v8:item>
 						</dcscor:value>
 					</dcscor:item>
@@ -338,7 +394,7 @@
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
 						<dcsset:left xsi:type="dcscor:Field">СтатусПроверки</dcsset:left>
 						<dcsset:comparisonType>Contains</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:string">Лишние файлы</dcsset:right>
+						<dcsset:right xsi:type="xs:string">ЛишнийФайлВТоме</dcsset:right>
 					</dcsset:item>
 				</dcsset:filter>
 				<dcsset:order>
@@ -368,7 +424,7 @@
 						<dcscor:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Лишние файлы (есть на диске, но сведения о них отсутствуют)</v8:content>
+								<v8:content>Удаленные файлы (есть в томе, но сведения о них отсутствуют)</v8:content>
 							</v8:item>
 						</dcscor:value>
 					</dcscor:item>

@@ -14,8 +14,8 @@ var outFileName = 'log' + now.valueOf() + '.txt' // Путь к log-файлу
 var v8exe = [ИмяИсполняемогоФайлаПрограммы] // Путь к исполняемому файлу 1С:Предприятия 8
 var infoBasePath = [ПараметрПутиКИнформационнойБазе]
 var BaseFileName = [СтрокаПутиКФайлуИнформационнойБазы]
-var connectionString = [СтрокаСоединенияИнформационнойБазы] + ';UC=РезервноеКопирование'
-var adminName = [ИмяАдминистратораОбновления] // имя администратора, инициировавшего обновление
+var connectionString = [СтрокаСоединенияИнформационнойБазы] + ';UC=[КодРазблокировки]'
+var adminName = [ИмяАдминистратора] // имя администратора, инициировавшего резервное копирование
 var backupFileName = [КаталогРезервнойКопии] + '.zip' // Файл резервной копии
 var UseRestore = [ВосстанавливатьИнформационнуюБазу] // Использовать восстановление ИБ в случае падения
 var createBackup = [СоздаватьРезервнуюКопию] // создавать резервную копию
@@ -75,19 +75,19 @@ function runApp (sFilePath, sFileArgs, show, bWaitOnReturn) {
     sFileArgs = ''
   }
   var ret = 1
-  log(format('Запускается: {0}; параметры: {1}; окно: {2}; ожидание: {3}',
+  log(format('[СообщениеНачалоЗапуска]',
     sFilePath, sFileArgs, SWtoString(show), bWaitOnReturn))
   if (oFileSystemObject.FileExists(sFilePath)) {
     try {
       ret = oShell.Run(format('"{0}" {1}', sFilePath, sFileArgs), show, bWaitOnReturn)
     } catch (e) {
-      log(format('Исключение в runApp: {0}, {1}.', e.name, e.message), true)
+      log(format('[СообщениеДеталиИсключения]', e.name, e.message), true)
       return 1
     }
-    log(format('Код возврата: {0}', ret), ret !== 0)
+    log(format('[СообщениеРезультатЗапуска]', ret), ret !== 0)
     return ret
   } else {
-    log(format('Запускаемый файл не существует: {0}', sFilePath), true)
+    log(format('[СообщениеОтказЗапуска]', sFilePath), true)
   }
   return ret
 }
@@ -173,7 +173,7 @@ function log1CInternal (connection, text, failed) {
       connection.WriteLogEvent(eventLogID, eventLogLevel, null, null, text,
         connection.EventLogEntryTransactionMode.Independent)
     } catch (e) {
-      log(format('Исключение в log1CInternal: {0}, {1}.', e.name, e.message), true)
+      log(format('[СообщениеЛогирование1С]', e.name, e.message), true)
       return
     }
   } finally {
@@ -185,8 +185,8 @@ function log1CInternal (connection, text, failed) {
 function initialize () {
   clearLogFile()
   appendLog()
-  log(format('Файл скрипта: {0}', thisFileName))
-  log(format('Файл резервной копии: {0}', backupFileName))
+  log(format('[СообщениеПутьКФайлуСкрипта]', thisFileName))
+  log(format('[СообщениеПутьКФайлуРезервнойКопии]', backupFileName))
   return 0
 }
 
@@ -197,15 +197,15 @@ function finalize (success) {
   }
 
   if (!(oFileSystemObject.FileExists(backupFileName))) {
-    log('Не удалось создать резервную копию базы.')
+    log('[СообщениеОтказСозданияРезервнойКопииБазы]')
     success = false
   } else {
     var FileArchive = oFileSystemObject.GetFile(backupFileName)
     if (FileArchive.size / 1024 < 5) {
-      log('Не удалось создать резервную копию базы.')
+      log('[СообщениеОтказСозданияРезервнойКопииБазы]')
       success = false
     } else {
-      log('Резервная копия успешно создана')
+      log('[СообщениеРезультатСозданияРезервнойКопииБазы]')
     }
   }
 
@@ -233,7 +233,7 @@ function createConnection () {
   }
 
   try {
-    log('Начат сеанс внешнего соединения с ИБ', false)
+    log('[СообщениеНачалоСеансаСоединенияСБазой]', false)
     var logstep = 'new ActiveXObject COMConnector'
     var ComConnector = new ActiveXObject(comConnectorName)
     logstep = 'comConnector.Connect'
@@ -244,18 +244,18 @@ function createConnection () {
     var appVersion = systemInfo.AppVersion
     logstep = 'SystemInfo.PlatformType'
     var platformType = systemInfo.PlatformType
-    logstep = 'Проверка ComConnection.PlatformType'
-    var platformTypeString = '<Неопределена>'
+    logstep = 'ComConnection.PlatformType'
+    var platformTypeString = '[СообщениеРазрядностьОСНеопределена]'
     if (platformType === ComConnection.PlatformType.Windows_x86) {
       platformTypeString = '32 bit'
     }
     if (platformType === ComConnection.PlatformType.Windows_x86_64) {
       platformTypeString = '64 bit'
     }
-    log(format('Версия comcntr: {0} {1}', appVersion, platformTypeString), false)
+    log(format('[СообщениеВерсияCOMСоединителя]', appVersion, platformTypeString), false)
     return ComConnection
   } catch (e) {
-    log(format('Исключение в createConnection на шаге: {0}, {1}, {2}', logstep, e.name, e.message), true)
+    log(format('[СообщениеОтказСоединенияСБазой]', logstep, e.name, e.message), true)
     return null
   }
 }
@@ -284,7 +284,7 @@ function write1CEventLog () {
       log1CInternal(connection, text, failed)
     }
   } catch (e) {
-    log(format('Исключение в write1CEventLog: {0}, {1}.', e.name, e.message), true)
+    log(format('[СообщениеОтказЛогирования1С]', e.name, e.message), true)
     return
   } finally {
     connection = null
@@ -300,7 +300,7 @@ function doSetResult (success) {
   try {
     connection.РезервноеКопированиеИБСервер.ЗавершитьРезервноеКопирование(success, backupFileName)
   } catch (e) {
-    log(format('Исключение при вызове РезервноеКопированиеИБСервер.ЗавершитьРезервноеКопирование: {0}, {1}.', e.name, e.message), true)
+    log(format('[СообщениеОтказПриВызовеЗавершитьРезервноеКопирование]', e.name, e.message), true)
     res = 2
   }
   return res
@@ -319,17 +319,17 @@ function writeEventLog (success) {
     var eventKind = success ? EVENT_SUCCESS : EVENT_CRITICAL
     var message
     if (success) {
-      message = 'Резервное копирование базы выполнено успешно.'
+      message = '[СообщениеРезультатРезервногоКопированияБазы]'
     } else {
-      message = 'Ошибка при резервном копировании информационной базы.'
+      message = '[СообщениеОтказРезервногоКопированияБазы]'
     }
-    message += format(' Параметры информационной базы: {0}.', infoBasePath)
+    message += format(' [СообщениеПараметрыБазы]', infoBasePath)
     if (!success) {
-      message += ' Протокол резервного сохранен в журнал регистрации.'
+      message += ' [СообщениеРезервноеКопированиеЛогирование1С]'
     }
     oShell.LogEvent(eventKind, message)
   } catch (e) {
-    log(format('Исключение в writeEventLog: {0}, {1}.', e.name, e.message), true)
+    log(format('[СообщениеОтказЛогирования]', e.name, e.message), true)
   }
 }
 
@@ -338,12 +338,30 @@ function backupDB () {
   var ret = 0
   try {
     var fileDBName = BaseFileName + '1Cv8.1CD'
+    
+    var waitBaseFile = true
+    while (waitBaseFile) {
+      try {
+        var oFile = oFileSystemObject.OpenTextFile(fileDBName, ForAppending, true, TristateFalse)
+      } catch (ex) {
+        if (oHTA != null) {
+          return -1
+        } else {
+          WScript.Echo(ex.message) 
+          WScript.Sleep(18 * 1000) // Ждем и повторяем проверку, освободился ли файл ИБ.
+        }
+        continue;
+      }
+      oFile.Close()
+      waitBaseFile = false
+    }
+    
     var fileDB = oFileSystemObject.GetFile(fileDBName)
-    log(format('Размер файла 1Cv8.1CD: {0} Мб.', fileDB.size / 1024 / 1024))
+    log(format('[СообщениеРазмерФайлаРезервнойКопииВМб]', fileDB.size / 1024 / 1024))
 
     var backupPath = oFileSystemObject.GetAbsolutePathName(backupFileName)
     if (fileDB.size / 1024 / 1024 > 2000) {
-      log('Размер файла 1Cv8.1CD превышает 2 Гб, поэтому сжатие в zip не используется.')
+      log('[СообщениеОтказСжатияФайлаРезервнойКопиВZIP]')
       backupFileName = backupFileName.replace('.zip', '')
       backupPath = oFileSystemObject.GetAbsolutePathName(backupFileName)
       oFileSystemObject.CreateFolder(backupPath)
@@ -362,11 +380,11 @@ function backupDB () {
     }
 
     destFolder.CopyHere(sourceFilePath)
-    log('Начато создание резервной копии...')
+    log('[СообщениеНачалоСозданияРезервнойКопииБазы]')
   } catch (e) {
     alert(e.message)
     CollectGarbage() // предотвращает исключение out of memory
-    log(format('Исключение при создании резервной копии базы: {0}, {1}', e.name, e.message), true)
+    log(format('[СообщениеОтказСозданияРезервнойКопииБазыПодробно]', e.name, e.message), true)
     ret = 1
   }
 
@@ -392,7 +410,7 @@ function WaitUntilFinish () {
 
     // Если за 15 минут файл все еще не начал создаваться, то отменяем резервное копирование.
     if (CheckCount > 60 * 3) {
-      log(format('За 15 минут файл резервной копии все еще не начал создаваться (размер {0} байт), предположительно, из-за возникшей ошибки. Резервное копирование прервано.', nowSize), true)
+      log(format('[СообщениеПредположениеОшибкиРезервногоКопированияБазы]', nowSize), true)
       return 1
     }
 
@@ -409,7 +427,7 @@ function doAllowConnections () {
     try {
       oFileSystemObject.DeleteFile(BaseFileName + '1Cv8.cdn')
     } catch (e) {
-      log(format('Ошибка при удалении файла блокировок 1Cv8.cdn: {0}, {1}.', e.name, e.message), true)
+      log(format('[СообщениеОшибкаУдаленияФайлаБлокировок]', e.name, e.message), true)
       return 3
     }
   }

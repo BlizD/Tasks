@@ -1,0 +1,29 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/SaaS/ExchangeAdministration/Control">
+	<import namespace="http://www.1c.ru/SaaS/Messages"/>
+	<import namespace="http://www.1c.ru/SaaS/ExchangeAdministration/Manage"/>
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="CorrespondentConnectionCompleted" base="d2p1:Body">
+		<property name="RecipientId" type="xs:string"/>
+		<property name="SenderId" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/Messages" name="CorrespondentConnectionFailed" base="d2p1:Body">
+		<property name="RecipientId" type="xs:string"/>
+		<property name="SenderId" type="xs:string"/>
+		<property name="ErrorDescription" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage" name="GettingSyncSettingsCompleted" base="d2p1:SessionMessage">
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="Data" type="d3p1:ValueStorage"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage" name="GettingSyncSettingsFailed" base="d2p1:SessionMessage">
+		<property name="ErrorDescription" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage" name="EnableSyncCompleted" base="d2p1:SessionMessage"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage" name="DisableSyncCompleted" base="d2p1:SessionMessage"/>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage" name="EnableSyncFailed" base="d2p1:SessionMessage">
+		<property name="ErrorDescription" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage" name="DisableSyncFailed" base="d2p1:SessionMessage">
+		<property name="ErrorDescription" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SaaS/ExchangeAdministration/Manage" name="SyncCompleted" base="d2p1:SessionMessage"/>
+</package>

@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Регистрационная информация</v8:content>
+		</v8:item>
+	</Title>
+	<Width>50</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗагрузить" id="32">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Загрузить</CommandName>
+				<ExtendedTooltip name="ФормаЗагрузитьРасширеннаяПодсказка" id="33"/>
+			</Button>
+			<Button name="ФормаОтмена" id="34">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="35"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="Пояснение" id="36">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Height>2</Height>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Укажите информацию для загрузки программы КриптоПро CSP.
+Данные будут переданы в ООО "КРИПТО-ПРО".
+</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalAlign>Top</VerticalAlign>
+			<ContextMenu name="ПояснениеКонтекстноеМеню" id="37"/>
+			<ExtendedTooltip name="ПояснениеРасширеннаяПодсказка" id="38"/>
+		</LabelDecoration>
+		<InputField name="ФИО" id="1">
+			<DataPath>КонтактноеЛицо</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ФИО полностью</v8:content>
+				</v8:item>
+			</Title>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ChoiceButton>false</ChoiceButton>
+			<ContextMenu name="ФИОКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ФИОРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="ЭлектроннаяПочта" id="4">
+			<DataPath>ЭлектроннаяПочта</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контактный e-mail</v8:content>
+				</v8:item>
+			</Title>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="ЭлектроннаяПочтаКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ЭлектроннаяПочтаРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="СерийныйНомер" id="45">
+			<DataPath>СерийныйНомер</DataPath>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Серийный номер обычно содержится в документе с лицензией на программу КриптоПро CSP</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+			<InputHint>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Например: 40XXX-XXXXX-XXXXX-XXXXX-XXXXX</v8:content>
+				</v8:item>
+			</InputHint>
+			<ContextMenu name="СерийныйНомерКонтекстноеМеню" id="46"/>
+			<ExtendedTooltip name="СерийныйНомерРасширеннаяПодсказка" id="47"/>
+			<Events>
+				<Event name="OnChange">СерийныйНомерПриИзменении</Event>
+			</Events>
+		</InputField>
+		<LabelDecoration name="Декорация2" id="48">
+			<ContextMenu name="Декорация2КонтекстноеМеню" id="49"/>
+			<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="50"/>
+		</LabelDecoration>
+		<LabelDecoration name="Декорация3" id="51">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Title formatted="true">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt;b&gt;Внимание&lt;/&gt;: программа КриптоПро CSP - платная. Подробнее о программе и условиях ее приобретения - на сайте компании &lt;link https://www.cryptopro.ru/buy&gt;ООО&lt;/&gt;&lt;link https://www.cryptopro.ru/buy&gt; &lt;/&gt;&lt;link https://www.cryptopro.ru/buy&gt;"&lt;/&gt;&lt;link https://www.cryptopro.ru/&gt;КРИПТО&lt;/&gt;&lt;link https://www.cryptopro.ru/buy&gt;-ПРО"&lt;/&gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="Декорация3КонтекстноеМеню" id="52"/>
+			<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="53"/>
+		</LabelDecoration>
+		<LabelDecoration name="Декорация1" id="42">
+			<ContextMenu name="Декорация1КонтекстноеМеню" id="43"/>
+			<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="44"/>
+		</LabelDecoration>
+		<CheckBoxField name="ВыполнятьКонтрольЦелостности" id="39">
+			<DataPath>ВыполнятьКонтрольЦелостности</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ВыполнятьКонтрольЦелостностиКонтекстноеМеню" id="40"/>
+			<ExtendedTooltip name="ВыполнятьКонтрольЦелостностиРасширеннаяПодсказка" id="41"/>
+		</CheckBoxField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="КонтактноеЛицо" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ФИО (полностью)</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ЭлектроннаяПочта" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Электронная почта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ВыполнятьКонтрольЦелостности" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Я хочу выполнить контроль целостности дистрибутива перед установкой.</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СерийныйНомер" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Серийный номер</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Продукт" id="6">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Загрузить" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Загрузить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

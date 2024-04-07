@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<MobileDeviceCommandBarContent>
 		<xr:Item>
 			<xr:Presentation/>
@@ -15,6 +15,55 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<UsualGroup name="ГруппаРассылкиМогутРаботатьБыстрее" id="176">
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа рассылки могут работать быстрее</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTipRepresentation>ShowLeft</ToolTipRepresentation>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаРассылкиМогутРаботатьБыстрееРасширеннаяПодсказка" id="177"/>
+			<ChildItems>
+				<PictureDecoration name="КартинкаПредупреждение" id="178">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка предупреждение</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="КартинкаПредупреждениеКонтекстноеМеню" id="179"/>
+					<ExtendedTooltip name="КартинкаПредупреждениеРасширеннаяПодсказка" id="180"/>
+				</PictureDecoration>
+				<LabelDecoration name="ЗаголовокУскорениеРассылок" id="181">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Рассылки отчетов могут работать быстрее</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для рассылки отчетов в несколько потоков, необходимо указать каталог временных файлов кластера серверов 1С:Предприятие.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+					<TitleHeight>1</TitleHeight>
+					<ContextMenu name="ЗаголовокУскорениеРассылокКонтекстноеМеню" id="182"/>
+					<ExtendedTooltip name="ЗаголовокУскорениеРассылокРасширеннаяПодсказка" id="183"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
 		<UsualGroup name="ГруппаОтборы" id="157">
 			<Title>
 				<v8:item>
@@ -30,7 +79,8 @@
 				<InputField name="СостояниеОтбор" id="165">
 					<DataPath>СостояниеОтбор</DataPath>
 					<TitleLocation>None</TitleLocation>
-					<Width>15</Width>
+					<Width>12</Width>
+					<MaxWidth>15</MaxWidth>
 					<ListChoiceMode>true</ListChoiceMode>
 					<ChoiceList>
 						<xr:Item>
@@ -87,7 +137,7 @@
 				</InputField>
 				<InputField name="ОтветственныйОтбор" id="159">
 					<DataPath>ОтветственныйОтбор</DataPath>
-					<Width>35</Width>
+					<Width>25</Width>
 					<ClearButton>true</ClearButton>
 					<OpenButton>false</OpenButton>
 					<InputHint>
@@ -104,7 +154,7 @@
 				</InputField>
 				<InputField name="ОтчетОтбор" id="162">
 					<DataPath>ОтчетОтбор</DataPath>
-					<Width>35</Width>
+					<Width>25</Width>
 					<ClearButton>true</ClearButton>
 					<OpenButton>false</OpenButton>
 					<InputHint>
@@ -154,7 +204,7 @@
 					<ChildItems>
 						<Button name="ФормаВыбрать" id="152">
 							<Type>CommandBarButton</Type>
-							<CommandName>1:8969c93a-23e5-4bef-941d-aaef315858d2</CommandName>
+							<CommandName>Form.StandardCommand.Choose</CommandName>
 							<ExtendedTooltip name="ФормаВыбратьРасширеннаяПодсказка" id="153"/>
 						</Button>
 						<Button name="ФормаСоздать" id="91">
@@ -216,12 +266,6 @@
 							<DataPath>Items.Список.CurrentData.Ref</DataPath>
 							<ExtendedTooltip name="ВыполнитьСейчасExtendedTooltip" id="57"/>
 						</Button>
-						<Button name="СобытияРассылки" id="30">
-							<Type>CommandBarButton</Type>
-							<CommandName>Catalog.РассылкиОтчетов.Command.СобытияРассылки</CommandName>
-							<DataPath>Items.Список.CurrentData.Ref</DataPath>
-							<ExtendedTooltip name="СобытияРассылкиExtendedTooltip" id="58"/>
-						</Button>
 						<Button name="ИзменитьВыделенные" id="79">
 							<Type>CommandBarButton</Type>
 							<CommandName>Form.Command.ИзменитьВыделенные</CommandName>
@@ -230,6 +274,28 @@
 						</Button>
 					</ChildItems>
 				</ButtonGroup>
+				<Popup name="ПодменюОтчеты" id="174">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отчеты</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.Отчеты</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<Representation>PictureAndText</Representation>
+					<ExtendedTooltip name="ПодменюОтчетыРасширеннаяПодсказка" id="175"/>
+					<ChildItems>
+						<Button name="СобытияРассылки" id="30">
+							<Type>CommandBarButton</Type>
+							<CommandName>Catalog.РассылкиОтчетов.Command.СобытияРассылки</CommandName>
+							<DataPath>Items.Список.CurrentData.Ref</DataPath>
+							<ExtendedTooltip name="СобытияРассылкиExtendedTooltip" id="58"/>
+						</Button>
+					</ChildItems>
+				</Popup>
 				<ButtonGroup name="ВторостепенныеКоманды" id="127">
 					<Title>
 						<v8:item>
@@ -359,9 +425,32 @@
 					<CommandName>Form.StandardCommand.Help</CommandName>
 					<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="59"/>
 				</Button>
+				<SearchStringAddition name="СписокПоиск" id="171">
+					<AdditionSource>
+						<Item>Список</Item>
+						<Type>SearchStringRepresentation</Type>
+					</AdditionSource>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список поиск</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СписокПоискКонтекстноеМеню" id="172"/>
+					<ExtendedTooltip name="СписокПоискРасширеннаяПодсказка" id="173"/>
+				</SearchStringAddition>
+				<SearchControlAddition name="СписокПоискУправление" id="168">
+					<AdditionSource>
+						<Item>Список</Item>
+						<Type>SearchControl</Type>
+					</AdditionSource>
+					<ContextMenu name="СписокПоискУправлениеКонтекстноеМеню" id="169"/>
+					<ExtendedTooltip name="СписокПоискУправлениеРасширеннаяПодсказка" id="170"/>
+				</SearchControlAddition>
 			</ChildItems>
 		</CommandBar>
 		<Table name="Список" id="1">
+			<ChoiceMode>true</ChoiceMode>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<InitialTreeView>ExpandAllLevels</InitialTreeView>
 			<EnableStartDrag>true</EnableStartDrag>
@@ -439,6 +528,10 @@
 				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="146"/>
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="147"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+				<Event name="Drag">СписокПеретаскивание</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="Наименование" id="6" DisplayImportance="Usual">
 					<DataPath>Список.Description</DataPath>
@@ -452,7 +545,7 @@
 					<TitleLocation>None</TitleLocation>
 					<HeaderPicture>
 						<xr:Ref>CommonPicture.Успешно</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</HeaderPicture>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ПодготовленаКонтекстноеМеню" id="15"/>
@@ -748,6 +841,7 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="ОтветственныйОтбор" id="4">
 			<Title>

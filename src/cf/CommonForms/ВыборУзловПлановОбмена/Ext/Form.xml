@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -50,6 +50,7 @@
 			<CommandBarLocation>None</CommandBarLocation>
 			<ReadOnly>true</ReadOnly>
 			<SelectionMode>SingleRow</SelectionMode>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -72,6 +73,7 @@
 				<ExcludedCommand>SortListAsc</ExcludedCommand>
 				<ExcludedCommand>SortListDesc</ExcludedCommand>
 			</CommandSet>
+			<SearchStringLocation>Top</SearchStringLocation>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="УзлыПлановОбменаКонтекстноеМеню" id="15"/>
 			<AutoCommandBar name="УзлыПлановОбменаКоманднаяПанель" id="16"/>
@@ -107,12 +109,14 @@
 				<InputField name="УзлыПлановОбменаПланОбменаПредставление" id="23">
 					<DataPath>УзлыПлановОбмена.ПланОбменаПредставление</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<Width>40</Width>
 					<ContextMenu name="УзлыПлановОбменаПланОбменаПредставлениеКонтекстноеМеню" id="24"/>
 					<ExtendedTooltip name="УзлыПлановОбменаПланОбменаПредставлениеExtendedTooltip" id="31"/>
 				</InputField>
 				<InputField name="УзлыПлановОбменаУзелПредставление" id="25">
 					<DataPath>УзлыПлановОбмена.УзелПредставление</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<Width>40</Width>
 					<ContextMenu name="УзлыПлановОбменаУзелПредставлениеКонтекстноеМеню" id="26"/>
 					<ExtendedTooltip name="УзлыПлановОбменаУзелПредставлениеExtendedTooltip" id="32"/>
 				</InputField>
@@ -198,12 +202,7 @@
 					<v8:content>Выбрать</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.ChooseValue</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
 			<Action>Выбрать</Action>
-			<Representation>TextPicture</Representation>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
@@ -215,6 +214,11 @@
 		</Parameter>
 		<Parameter name="ПланыОбменаДляВыбора">
 			<Type/>
+		</Parameter>
+		<Parameter name="ТекущаяСтрока">
+			<Type>
+				<v8:TypeSet>cfg:ExchangePlanRef</v8:TypeSet>
+			</Type>
 		</Parameter>
 	</Parameters>
 </Form>

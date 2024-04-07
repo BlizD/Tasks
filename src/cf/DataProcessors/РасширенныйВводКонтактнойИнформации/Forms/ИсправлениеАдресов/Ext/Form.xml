@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<VerticalAlign>Bottom</VerticalAlign>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<CommandSet>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<ChildItems>
+			<Button name="Исправить" id="1">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ИсправитьАдреса</CommandName>
+				<ExtendedTooltip name="ИсправитьРасширеннаяПодсказка" id="2"/>
+			</Button>
+			<Button name="Закрыть" id="3">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="ЗакрытьРасширеннаяПодсказка" id="4"/>
+			</Button>
+			<Button name="ФормаСправка" id="5">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="6"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="ПанельИндикаторов" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель индикаторов</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="ПанельИндикаторовРасширеннаяПодсказка" id="8"/>
+			<ChildItems>
+				<Page name="ГруппаИндикаторНачалаИсправления" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индикатор начала исправления</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа индикатор исправления</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>HorizontalIfPossible</Group>
+					<ExtendedTooltip name="ГруппаИндикаторНачалаИсправленияРасширеннаяПодсказка" id="10"/>
+					<ChildItems>
+						<LabelDecoration name="Пояснение" id="11">
+							<Height>2</Height>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Исправление адресов вида контактной информации "%1" может занять продолжительное время. Продолжить?</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="ПояснениеКонтекстноеМеню" id="12"/>
+							<ExtendedTooltip name="ПояснениеРасширеннаяПодсказка" id="13"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаИндикаторИсправления" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индикатор исправления</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<ExtendedTooltip name="ГруппаИндикаторИсправленияРасширеннаяПодсказка" id="15"/>
+					<ChildItems>
+						<PictureDecoration name="ДекорацияПрогресс" id="16">
+							<Width>5</Width>
+							<Height>2</Height>
+							<VerticalStretch>true</VerticalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Декорация прогресс</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.ДлительнаяОперация48</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="ДекорацияПрогрессКонтекстноеМеню" id="17"/>
+							<ExtendedTooltip name="ДекорацияПрогрессExtendedTooltip" id="18"/>
+						</PictureDecoration>
+						<LabelDecoration name="ДекорацияВыполнениеИсправления" id="19">
+							<MaxWidth>26</MaxWidth>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выполняется исправление адресов. 
+Пожалуйста, подождите...</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="ДекорацияВыполнениеИсправленияКонтекстноеМеню" id="20"/>
+							<ExtendedTooltip name="ДекорацияВыполнениеИсправленияРасширеннаяПодсказка" id="21"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаИндикаторУспешноеИсправление" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Успешное исправление</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа индикатор исправления</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаИндикаторУспешноеИсправлениеРасширеннаяПодсказка" id="23"/>
+					<ChildItems>
+						<LabelDecoration name="НадписьУспешноеИсправление" id="24">
+							<Height>2</Height>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Исправлено элементов: %1 из %2</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="НадписьУспешноеИсправлениеКонтекстноеМеню" id="25"/>
+							<ExtendedTooltip name="НадписьУспешноеИсправлениеРасширеннаяПодсказка" id="26"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДополнительнаяИнформацияУспешноеИсправление" id="38">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Если не удалось автоматически исправить адрес, то его следует скорректировать вручную, открыв форму ввода адреса.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДополнительнаяИнформацияУспешноеИсправлениеКонтекстноеМеню" id="39"/>
+							<ExtendedTooltip name="ДополнительнаяИнформацияУспешноеИсправлениеРасширеннаяПодсказка" id="40"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаИндикаторНеуспешноеИсправление" id="27">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Неуспешное исправление</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа индикатор исправления</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаИндикаторНеуспешноеИсправлениеРасширеннаяПодсказка" id="28"/>
+					<ChildItems>
+						<LabelDecoration name="НадписьНеуспешноеИсправление" id="29">
+							<Height>5</Height>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<Title formatted="true"/>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="НадписьНеуспешноеИсправлениеКонтекстноеМеню" id="30"/>
+							<ExtendedTooltip name="НадписьНеуспешноеИсправлениеРасширеннаяПодсказка" id="31"/>
+						</LabelDecoration>
+						<LabelDecoration name="ДополнительнаяИнформация" id="35">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Если не удалось автоматически исправить адрес, то его следует скорректировать вручную, открыв форму ввода адреса.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДополнительнаяИнформацияКонтекстноеМеню" id="36"/>
+							<ExtendedTooltip name="ДополнительнаяИнформацияРасширеннаяПодсказка" id="37"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ДлительнаяОперация" id="1">
+			<Type/>
+		</Attribute>
+		<Attribute name="Контрагент" id="3">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторПроверки" id="2">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ИсправитьАдреса" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исправить адреса</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исправить адреса</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИсправитьАдреса</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ВидПроверки">
+			<Type/>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ИдентификаторПроверки">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

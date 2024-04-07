@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Width>75</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<CommandSet>
@@ -97,7 +97,7 @@
 						</v8:item>
 					</Title>
 					<Picture>
-						<xr:Ref>CommonPicture.Информация</xr:Ref>
+						<xr:Ref>StdPicture.Information</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</Picture>
 					<FileDragMode>AsFile</FileDragMode>
@@ -150,7 +150,14 @@
 							<AutoMaxWidth>false</AutoMaxWidth>
 							<HorizontalStretch>true</HorizontalStretch>
 							<ContextMenu name="ИдентификаторКонтекстноеМеню" id="11"/>
-							<ExtendedTooltip name="ИдентификаторРасширеннаяПодсказка" id="12"/>
+							<ExtendedTooltip name="ИдентификаторРасширеннаяПодсказка" id="12">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Чтобы узнать внутренний идентификатор объекта и версию внешней компоненты, обратитесь к разработчику.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
 						</InputField>
 						<InputField name="Версия" id="7">
 							<DataPath>Объект.Версия</DataPath>
@@ -191,7 +198,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>ru</v8:lang>
-										<v8:content>Имя внешней компоненты для отображения пользователям.</v8:content>
+										<v8:content>Имя внешней компоненты для отображения в списке.</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -303,6 +310,9 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ЦелевыеПлатформы" id="4">
+			<Type/>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ОбновитьИзФайла" id="1">
@@ -315,7 +325,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Обновить из файла на диске...</v8:content>
+					<v8:content>Обновить из файла на компьютере...</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -335,7 +345,7 @@
 			</Title>
 			<Picture>
 				<xr:Ref>CommonPicture.ОбновлениеВнешнихКомпонентССайта</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>ОбновитьСПортала</Action>
 			<Representation>TextPicture</Representation>
@@ -373,6 +383,10 @@
 			<KeyParameter>true</KeyParameter>
 		</Parameter>
 		<Parameter name="ПараметрыПоискаДополнительнойИнформации">
+			<Type/>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ПомещенныйФайл">
 			<Type/>
 			<KeyParameter>true</KeyParameter>
 		</Parameter>

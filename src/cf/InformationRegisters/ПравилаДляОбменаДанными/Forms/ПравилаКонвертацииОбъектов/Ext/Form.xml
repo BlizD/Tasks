@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -12,6 +12,7 @@
 		<ExcludedCommand>Copy</ExcludedCommand>
 		<ExcludedCommand>Delete</ExcludedCommand>
 		<ExcludedCommand>Reread</ExcludedCommand>
+		<ExcludedCommand>Write</ExcludedCommand>
 		<ExcludedCommand>WriteAndClose</ExcludedCommand>
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -22,21 +23,21 @@
 				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
 				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="83"/>
 			</Button>
-			<Button name="ФормаЗаписать" id="84">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.Write</CommandName>
-				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="85"/>
-			</Button>
 			<Button name="ФормаПеречитать" id="50">
 				<Type>CommandBarButton</Type>
-				<CommandName>0:1f317795-c420-4a30-b594-c492abc55f7a</CommandName>
+				<CommandName>0</CommandName>
 				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 				<ExtendedTooltip name="ФормаПеречитатьExtendedTooltip" id="52"/>
 			</Button>
 			<Button name="ФормаУдалить" id="86">
 				<Type>CommandBarButton</Type>
-				<CommandName>0:c32d43de-b820-49d0-bf7a-d70829f48f40</CommandName>
+				<CommandName>0</CommandName>
 				<ExtendedTooltip name="ФормаУдалитьРасширеннаяПодсказка" id="87"/>
+			</Button>
+			<Button name="ФормаЗаписатьПравила" id="116">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ЗаписатьПравила</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьПравилаРасширеннаяПодсказка" id="117"/>
 			</Button>
 			<Button name="СохранитьПравилаВФайл" id="20">
 				<Type>CommandBarButton</Type>
@@ -48,7 +49,6 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
-		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -476,31 +476,6 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="ГруппаДополнительно" id="18">
-			<UserVisible>
-				<xr:Common>false</xr:Common>
-			</UserVisible>
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дополнительно</v8:content>
-				</v8:item>
-			</Title>
-			<Behavior>Usual</Behavior>
-			<Representation>None</Representation>
-			<ChildItemsWidth>LeftWidest</ChildItemsWidth>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаДополнительноExtendedTooltip" id="80"/>
-			<ChildItems>
-				<CheckBoxField name="ИспользоватьФильтрВыборочнойРегистрацииОбъектов" id="13">
-					<DataPath>Запись.ИспользоватьФильтрВыборочнойРегистрацииОбъектов</DataPath>
-					<TitleLocation>Right</TitleLocation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ИспользоватьФильтрВыборочнойРегистрацииОбъектовКонтекстноеМеню" id="14"/>
-					<ExtendedTooltip name="ИспользоватьФильтрВыборочнойРегистрацииОбъектовExtendedTooltip" id="81"/>
-				</CheckBoxField>
-			</ChildItems>
-		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Запись" id="1">
@@ -611,6 +586,21 @@
 			<Action>ЗаписатьИЗакрыть</Action>
 			<Representation>Text</Representation>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаписатьПравила" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать правила</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаписатьПравила</Action>
 		</Command>
 	</Commands>
 </Form>

@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Подключение бота Telegram</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Отключить" id="37">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.Отключить</CommandName>
+				<ExtendedTooltip name="ОтключитьРасширеннаяПодсказка" id="38"/>
+			</Button>
+			<Button name="Закрыть" id="35">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Активировать</CommandName>
+				<ExtendedTooltip name="ЗакрытьРасширеннаяПодсказка" id="36"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОписание" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание</v8:content>
+				</v8:item>
+			</Title>
+			<GroupVerticalAlign>Center</GroupVerticalAlign>
+			<VerticalAlign>Center</VerticalAlign>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОписаниеРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<PictureDecoration name="Логотип" id="5">
+					<Width>13</Width>
+					<Height>5</Height>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Логотип</v8:content>
+						</v8:item>
+					</Title>
+					<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<PictureSize>Proportionally</PictureSize>
+					<Picture>
+						<xr:Ref>CommonPicture.BotFather</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ЛоготипКонтекстноеМеню" id="6"/>
+					<ExtendedTooltip name="ЛоготипРасширеннаяПодсказка" id="7"/>
+				</PictureDecoration>
+				<LabelDecoration name="Инструкция" id="8">
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для получения сообщений из Telegram необходим бот, с которым будут общаться ваши контакты. Если у вас в Telegram еще нет бота, то создайте его: 
+1. Открыть Telegram в телефоне или на компьютере, найти с помощью поиска бота &lt;link https://telegram.me/BotFather&gt;BotFather&lt;/&gt;.
+2. Написать ему в сообщении &lt;b&gt;/newbot&lt;/&gt; и выбрать имя, которое будет отображаться в списке контактов.
+3. Если имя бота не занято и введено правильно, BotFather пришлет в ответ сообщение с токеном для доступа к созданному боту, который понадобится далее при настройке.
+
+Не забудьте задать описание бота и картинку, как описано &lt;link https://tlgrm.ru/docs/bots#edit-settings&gt;здесь&lt;/&gt;.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ИнструкцияКонтекстноеМеню" id="9"/>
+					<ExtendedTooltip name="ИнструкцияРасширеннаяПодсказка" id="10"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПараметры" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПараметрыРасширеннаяПодсказка" id="4"/>
+			<ChildItems>
+				<InputField name="ИмяБота" id="11">
+					<DataPath>Наименование</DataPath>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование бота в Telegram</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ИмяБотаКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="ИмяБотаРасширеннаяПодсказка" id="13"/>
+				</InputField>
+				<InputField name="Токен" id="14">
+					<DataPath>Токен</DataPath>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Токен, выданный BotFather при регистрации</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ТокенКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="ТокенРасширеннаяПодсказка" id="16"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="Участники" id="17">
+			<Representation>List</Representation>
+			<TitleLocation>Auto</TitleLocation>
+			<Header>false</Header>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<DataPath>Участники</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кто получает и отправляет сообщения от лица бота Telegram</v8:content>
+				</v8:item>
+			</Title>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="УчастникиКонтекстноеМеню" id="19"/>
+			<AutoCommandBar name="УчастникиКоманднаяПанель" id="18">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ОтветственныеПодобрать" id="33">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Подобрать</CommandName>
+						<ExtendedTooltip name="ОтветственныеПодобратьРасширеннаяПодсказка" id="34"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="УчастникиРасширеннаяПодсказка" id="20"/>
+			<SearchStringAddition name="УчастникиСтрокаПоиска" id="21">
+				<AdditionSource>
+					<Item>Участники</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="УчастникиСтрокаПоискаКонтекстноеМеню" id="22"/>
+				<ExtendedTooltip name="УчастникиСтрокаПоискаРасширеннаяПодсказка" id="23"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="УчастникиСостояниеПросмотра" id="27">
+				<AdditionSource>
+					<Item>Участники</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="УчастникиСостояниеПросмотраКонтекстноеМеню" id="28"/>
+				<ExtendedTooltip name="УчастникиСостояниеПросмотраРасширеннаяПодсказка" id="29"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="УчастникиУправлениеПоиском" id="24">
+				<AdditionSource>
+					<Item>Участники</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="УчастникиУправлениеПоискомКонтекстноеМеню" id="25"/>
+				<ExtendedTooltip name="УчастникиУправлениеПоискомРасширеннаяПодсказка" id="26"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="ChoiceProcessing">УчастникиОбработкаВыбора</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="УчастникиПользователь" id="30">
+					<DataPath>Участники.Пользователь</DataPath>
+					<ContextMenu name="УчастникиПользовательКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="УчастникиПользовательРасширеннаяПодсказка" id="32"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Наименование" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="Токен" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Токен</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="Участники" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Участники</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<Columns>
+				<Column name="Пользователь" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Участники обсуждения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Подобрать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Подобрать</Action>
+		</Command>
+		<Command name="Активировать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Активировать</v8:content>
+				</v8:item>
+			</Title>
+			<Action>АктивироватьБота</Action>
+		</Command>
+		<Command name="Отключить" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Отключить</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Идентификатор">
+			<Type/>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

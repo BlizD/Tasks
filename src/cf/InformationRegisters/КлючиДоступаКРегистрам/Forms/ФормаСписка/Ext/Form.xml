@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
@@ -101,56 +101,145 @@
 			<ChildItems>
 				<LabelField name="Регистр" id="16">
 					<DataPath>Список.Регистр</DataPath>
-					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="РегистрКонтекстноеМеню" id="17"/>
 					<ExtendedTooltip name="РегистрРасширеннаяПодсказка" id="18"/>
 				</LabelField>
-				<CheckBoxField name="ДляВнешнихПользователей" id="19">
-					<DataPath>Список.ДляВнешнихПользователей</DataPath>
-					<DefaultItem>true</DefaultItem>
+				<ColumnGroup name="ГруппаВариантДоступа" id="47">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ВП</v8:content>
+							<v8:content>Вариант доступа</v8:content>
 						</v8:item>
 					</Title>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ДляВнешнихПользователейКонтекстноеМеню" id="20"/>
-					<ExtendedTooltip name="ДляВнешнихПользователейРасширеннаяПодсказка" id="21"/>
-				</CheckBoxField>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ГруппаВариантДоступаРасширеннаяПодсказка" id="48"/>
+					<ChildItems>
+						<LabelField name="ДляВнешнихПользователей" id="19">
+							<DataPath>Список.ДляВнешнихПользователей</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ВП</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Для внешних пользователей</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>1</Width>
+							<ContextMenu name="ДляВнешнихПользователейКонтекстноеМеню" id="20"/>
+							<ExtendedTooltip name="ДляВнешнихПользователейРасширеннаяПодсказка" id="21"/>
+						</LabelField>
+						<LabelField name="КоличествоПолейВСоединении" id="49">
+							<DataPath>Список.КоличествоПолейВСоединении</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>КП</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Количество полей в соединении</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>1</Width>
+							<Format>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧН=0; ЧГ=</v8:content>
+								</v8:item>
+							</Format>
+							<ContextMenu name="КоличествоПолейВСоединенииКонтекстноеМеню" id="50"/>
+							<ExtendedTooltip name="КоличествоПолейВСоединенииРасширеннаяПодсказка" id="51"/>
+						</LabelField>
+						<LabelField name="НаборПолейВСоединении" id="52">
+							<DataPath>Список.НаборПолейВСоединении</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>НП</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Набор полей в соединении</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>1</Width>
+							<Format>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧЦ=2; ЧН=00; ЧВН=; ЧГ=</v8:content>
+								</v8:item>
+							</Format>
+							<ContextMenu name="НаборПолейВСоединенииКонтекстноеМеню" id="53"/>
+							<ExtendedTooltip name="НаборПолейВСоединенииРасширеннаяПодсказка" id="54"/>
+						</LabelField>
+						<LabelField name="ВариантДоступа" id="44">
+							<DataPath>Список.ВариантДоступа</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ВД</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вариант доступа:
+Бит 0 -  ключ доступа для внешних пользователей.
+Биты 1-5 - количество полей в соединении.
+Биты 6-9 - набор полей в соединении.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>2</Width>
+							<Format>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧЦ=4; ЧН=0000; ЧВН=; ЧГ=</v8:content>
+								</v8:item>
+							</Format>
+							<ContextMenu name="ВариантДоступаКонтекстноеМеню" id="45"/>
+							<ExtendedTooltip name="ВариантДоступаРасширеннаяПодсказка" id="46"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
 				<LabelField name="Поле1" id="22">
 					<DataPath>Список.Поле1</DataPath>
-					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="Поле1КонтекстноеМеню" id="23"/>
 					<ExtendedTooltip name="Поле1РасширеннаяПодсказка" id="24"/>
 				</LabelField>
 				<LabelField name="Поле2" id="25">
 					<DataPath>Список.Поле2</DataPath>
-					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="Поле2КонтекстноеМеню" id="26"/>
 					<ExtendedTooltip name="Поле2РасширеннаяПодсказка" id="27"/>
 				</LabelField>
 				<LabelField name="Поле3" id="28">
 					<DataPath>Список.Поле3</DataPath>
-					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="Поле3КонтекстноеМеню" id="29"/>
 					<ExtendedTooltip name="Поле3РасширеннаяПодсказка" id="30"/>
 				</LabelField>
 				<LabelField name="Поле4" id="31">
 					<DataPath>Список.Поле4</DataPath>
-					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="Поле4КонтекстноеМеню" id="32"/>
 					<ExtendedTooltip name="Поле4РасширеннаяПодсказка" id="33"/>
 				</LabelField>
 				<LabelField name="Поле5" id="34">
 					<DataPath>Список.Поле5</DataPath>
-					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="Поле5КонтекстноеМеню" id="35"/>
 					<ExtendedTooltip name="Поле5РасширеннаяПодсказка" id="36"/>
 				</LabelField>
 				<LabelField name="КлючДоступа" id="37">
 					<DataPath>Список.КлючДоступа</DataPath>
-					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="КлючДоступаКонтекстноеМеню" id="38"/>
 					<ExtendedTooltip name="КлючДоступаРасширеннаяПодсказка" id="39"/>
 				</LabelField>
@@ -164,8 +253,36 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	КлючиДоступаКРегистрам.Регистр КАК Регистр,
+	КлючиДоступаКРегистрам.ВариантДоступа КАК ВариантДоступа,
+	КлючиДоступаКРегистрам.Поле1 КАК Поле1,
+	КлючиДоступаКРегистрам.Поле2 КАК Поле2,
+	КлючиДоступаКРегистрам.Поле3 КАК Поле3,
+	КлючиДоступаКРегистрам.Поле4 КАК Поле4,
+	КлючиДоступаКРегистрам.Поле5 КАК Поле5,
+	КлючиДоступаКРегистрам.КлючДоступа КАК КлючДоступа,
+	ВЫБОР
+		КОГДА КлючиДоступаКРегистрам.ВариантДоступа = 0
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ КлючиДоступаКРегистрам.ВариантДоступа - (ВЫРАЗИТЬ(КлючиДоступаКРегистрам.ВариантДоступа / 2 - 0.5 КАК ЧИСЛО(15, 0))) * 2 = 1
+	КОНЕЦ КАК ДляВнешнихПользователей,
+	ВЫБОР
+		КОГДА КлючиДоступаКРегистрам.ВариантДоступа = 0
+			ТОГДА 0
+		КОГДА КлючиДоступаКРегистрам.ВариантДоступа / 64 &gt;= 1
+			ТОГДА (ВЫРАЗИТЬ(КлючиДоступаКРегистрам.ВариантДоступа / 2 - 0.5 КАК ЧИСЛО(15, 0))) - (ВЫРАЗИТЬ(КлючиДоступаКРегистрам.ВариантДоступа / 64 - 0.5 КАК ЧИСЛО(15, 0))) * 32
+		ИНАЧЕ ВЫРАЗИТЬ(КлючиДоступаКРегистрам.ВариантДоступа / 2 - 0.5 КАК ЧИСЛО(15, 0))
+	КОНЕЦ КАК КоличествоПолейВСоединении,
+	ВЫБОР
+		КОГДА КлючиДоступаКРегистрам.ВариантДоступа / 64 &gt;= 1
+			ТОГДА ВЫРАЗИТЬ(КлючиДоступаКРегистрам.ВариантДоступа / 64 - 0.5 КАК ЧИСЛО(15, 0))
+		ИНАЧЕ 0
+	КОНЕЦ КАК НаборПолейВСоединении
+ИЗ
+	РегистрСведений.КлючиДоступаКРегистрам КАК КлючиДоступаКРегистрам</QueryText>
 				<MainTable>InformationRegister.КлючиДоступаКРегистрам</MainTable>
 				<ListSettings>
 					<dcsset:filter>

@@ -1,29 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Top</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<CommandSet>
 		<ExcludedCommand>Change</ExcludedCommand>
+		<ExcludedCommand>Find</ExcludedCommand>
+		<ExcludedCommand>FindByCurrentValue</ExcludedCommand>
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 		<ChildItems>
-			<Button name="СвойстваТолькоСоздать" id="101">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.Создать</CommandName>
-				<Picture>
-					<xr:Ref>StdPicture.CreateListItem</xr:Ref>
-					<xr:LoadTransparent>true</xr:LoadTransparent>
-				</Picture>
-				<Title>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Создать</v8:content>
-					</v8:item>
-				</Title>
-				<ExtendedTooltip name="СвойстваТолькоСоздатьExtendedTooltip" id="105"/>
-			</Button>
 			<Popup name="СвойстваПодменюДобавить" id="80">
 				<Title>
 					<v8:item>
@@ -108,16 +95,6 @@
 				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 				<ExtendedTooltip name="ПоискИУдалениеДублейРасширеннаяПодсказка" id="170"/>
 			</Button>
-			<Button name="СписокНайти" id="36">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Item.НаборыСвойств.StandardCommand.Find</CommandName>
-				<ExtendedTooltip name="СписокНайтиExtendedTooltip" id="117"/>
-			</Button>
-			<Button name="СписокОтменитьПоиск" id="37">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Item.НаборыСвойств.StandardCommand.CancelSearch</CommandName>
-				<ExtendedTooltip name="СписокОтменитьПоискExtendedTooltip" id="118"/>
-			</Button>
 			<ButtonGroup name="ГруппаКнопокКопирование" id="177">
 				<Title>
 					<v8:item>
@@ -156,8 +133,9 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<InputField name="ЭтоНаборыДополнительныхСведений" id="71">
-			<DataPath>ЭтоНаборыДополнительныхСведений</DataPath>
+		<InputField name="ВидСвойств" id="71">
+			<DataPath>ВидСвойств</DataPath>
+			<Shortcut>Ctrl+S</Shortcut>
 			<Width>30</Width>
 			<ListChoiceMode>true</ListChoiceMode>
 			<ChoiceList>
@@ -171,7 +149,7 @@
 								<v8:content>Дополнительные реквизиты</v8:content>
 							</v8:item>
 						</Presentation>
-						<Value xsi:type="xs:boolean">false</Value>
+						<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСвойств.EnumValue.ДополнительныеРеквизиты</Value>
 					</xr:Value>
 				</xr:Item>
 				<xr:Item>
@@ -184,15 +162,28 @@
 								<v8:content>Дополнительные сведения</v8:content>
 							</v8:item>
 						</Presentation>
-						<Value xsi:type="xs:boolean">true</Value>
+						<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСвойств.EnumValue.ДополнительныеСведения</Value>
+					</xr:Value>
+				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Метки</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСвойств.EnumValue.Метки</Value>
 					</xr:Value>
 				</xr:Item>
 			</ChoiceList>
 			<BackColor>style:ФонУправляющегоПоля</BackColor>
-			<ContextMenu name="ЭтоНаборыДополнительныхСведенийКонтекстноеМеню" id="72"/>
-			<ExtendedTooltip name="ЭтоНаборыДополнительныхСведенийExtendedTooltip" id="103"/>
+			<ContextMenu name="ВидСвойствКонтекстноеМеню" id="72"/>
+			<ExtendedTooltip name="ВидСвойствРасширеннаяПодсказка" id="103"/>
 			<Events>
-				<Event name="OnChange">ЭтоНаборыДополнительныхСведенийПриИзменении</Event>
+				<Event name="OnChange">ВидСвойствПриИзменении</Event>
 			</Events>
 		</InputField>
 		<UsualGroup name="ГруппаПользовательскихНастроек" id="145">
@@ -221,110 +212,245 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаСвойстваРасширеннаяПодсказка" id="121"/>
 			<ChildItems>
-				<Table name="НаборыСвойств" id="1">
-					<Representation>Tree</Representation>
-					<ReadOnly>true</ReadOnly>
-					<SkipOnInput>false</SkipOnInput>
-					<DefaultItem>true</DefaultItem>
-					<ChangeRowSet>false</ChangeRowSet>
-					<ChangeRowOrder>false</ChangeRowOrder>
-					<Header>false</Header>
-					<HorizontalLines>false</HorizontalLines>
-					<EnableDrag>true</EnableDrag>
-					<FileDragMode>AsFile</FileDragMode>
-					<DataPath>НаборыСвойств</DataPath>
-					<RowPictureDataPath>НаборыСвойств.НомерКартинки</RowPictureDataPath>
-					<RowsPicture>
-						<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
-						<xr:LoadTransparent>false</xr:LoadTransparent>
-					</RowsPicture>
-					<BorderColor>style:BorderColor</BorderColor>
+				<Pages name="СтраницыНаборы" id="188">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Наборы свойств</v8:content>
+							<v8:content>Страницы наборы</v8:content>
 						</v8:item>
 					</Title>
-					<CommandSet>
-						<ExcludedCommand>Change</ExcludedCommand>
-					</CommandSet>
-					<CurrentRowUse>SelectionPresentation</CurrentRowUse>
-					<AutoRefresh>false</AutoRefresh>
-					<AutoRefreshPeriod>60</AutoRefreshPeriod>
-					<Period>
-						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-					</Period>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<RestoreCurrentRow>false</RestoreCurrentRow>
-					<TopLevelParent xsi:nil="true"/>
-					<ShowRoot>false</ShowRoot>
-					<AllowRootChoice>false</AllowRootChoice>
-					<UpdateOnDataChange>Auto</UpdateOnDataChange>
-					<UserSettingsGroup>ГруппаПользовательскихНастроек</UserSettingsGroup>
-					<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
-					<ContextMenu name="НаборыСвойствКонтекстноеМеню" id="2"/>
-					<AutoCommandBar name="НаборыСвойствКоманднаяПанель" id="3">
-						<Autofill>false</Autofill>
-					</AutoCommandBar>
-					<ExtendedTooltip name="НаборыСвойствExtendedTooltip" id="122"/>
-					<SearchStringAddition name="НаборыСвойствСтрокаПоиска" id="147">
-						<AdditionSource>
-							<Item>НаборыСвойств</Item>
-							<Type>SearchStringRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="НаборыСвойствСтрокаПоискаКонтекстноеМеню" id="148"/>
-						<ExtendedTooltip name="НаборыСвойствСтрокаПоискаРасширеннаяПодсказка" id="149"/>
-					</SearchStringAddition>
-					<ViewStatusAddition name="НаборыСвойствСостояниеПросмотра" id="150">
-						<AdditionSource>
-							<Item>НаборыСвойств</Item>
-							<Type>ViewStatusRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="НаборыСвойствСостояниеПросмотраКонтекстноеМеню" id="151"/>
-						<ExtendedTooltip name="НаборыСвойствСостояниеПросмотраРасширеннаяПодсказка" id="152"/>
-					</ViewStatusAddition>
-					<SearchControlAddition name="НаборыСвойствУправлениеПоиском" id="153">
-						<AdditionSource>
-							<Item>НаборыСвойств</Item>
-							<Type>SearchControl</Type>
-						</AdditionSource>
-						<ContextMenu name="НаборыСвойствУправлениеПоискомКонтекстноеМеню" id="154"/>
-						<ExtendedTooltip name="НаборыСвойствУправлениеПоискомРасширеннаяПодсказка" id="155"/>
-					</SearchControlAddition>
-					<Events>
-						<Event name="DragCheck">НаборыСвойствПроверкаПеретаскивания</Event>
-						<Event name="OnActivateRow">НаборыСвойствПриАктивизацииСтроки</Event>
-						<Event name="Drag">НаборыСвойствПеретаскивание</Event>
-						<Event name="BeforeRowChange">НаборыСвойствПередНачаломИзменения</Event>
-					</Events>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="СтраницыНаборыРасширеннаяПодсказка" id="189"/>
 					<ChildItems>
-						<InputField name="Представление" id="4">
-							<DataPath>НаборыСвойств.Представление</DataPath>
-							<DefaultItem>true</DefaultItem>
+						<Page name="Основная" id="190">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Набор</v8:content>
+									<v8:content>Основная</v8:content>
 								</v8:item>
 							</Title>
-							<Width>20</Width>
-							<Wrap>false</Wrap>
-							<BorderColor>style:BorderColor</BorderColor>
-							<ContextMenu name="ПредставлениеКонтекстноеМеню" id="5"/>
-							<ExtendedTooltip name="ПредставлениеExtendedTooltip" id="123"/>
-						</InputField>
-						<LabelField name="Ссылка" id="139">
-							<DataPath>НаборыСвойств.Ссылка</DataPath>
-							<UserVisible>
-								<xr:Common>false</xr:Common>
-							</UserVisible>
-							<ContextMenu name="СсылкаКонтекстноеМеню" id="140"/>
-							<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="141"/>
-						</LabelField>
+							<ExtendedTooltip name="ОсновнаяРасширеннаяПодсказка" id="191"/>
+							<ChildItems>
+								<InputField name="ПолеПоиска" id="213">
+									<DataPath>ПолеПоиска</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<ClearButton>true</ClearButton>
+									<InputHint>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Поле поиска</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="ПолеПоискаКонтекстноеМеню" id="214"/>
+									<ExtendedTooltip name="ПолеПоискаРасширеннаяПодсказка" id="215"/>
+								</InputField>
+								<Table name="НаборыСвойств" id="1">
+									<Representation>Tree</Representation>
+									<ReadOnly>true</ReadOnly>
+									<SkipOnInput>false</SkipOnInput>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<Header>false</Header>
+									<HorizontalLines>false</HorizontalLines>
+									<EnableDrag>true</EnableDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>НаборыСвойств</DataPath>
+									<RowPictureDataPath>НаборыСвойств.НомерКартинки</RowPictureDataPath>
+									<RowsPicture>
+										<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</RowsPicture>
+									<BorderColor>style:BorderColor</BorderColor>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Наборы свойств</v8:content>
+										</v8:item>
+									</Title>
+									<CommandSet>
+										<ExcludedCommand>CancelSearch</ExcludedCommand>
+										<ExcludedCommand>Change</ExcludedCommand>
+										<ExcludedCommand>Find</ExcludedCommand>
+										<ExcludedCommand>FindByCurrentValue</ExcludedCommand>
+									</CommandSet>
+									<CurrentRowUse>SelectionPresentation</CurrentRowUse>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>false</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<UserSettingsGroup>ГруппаПользовательскихНастроек</UserSettingsGroup>
+									<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+									<ContextMenu name="НаборыСвойствКонтекстноеМеню" id="2"/>
+									<AutoCommandBar name="НаборыСвойствКоманднаяПанель" id="3">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="НаборыСвойствExtendedTooltip" id="122"/>
+									<SearchStringAddition name="НаборыСвойствСтрокаПоиска" id="147">
+										<AdditionSource>
+											<Item>НаборыСвойств</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="НаборыСвойствСтрокаПоискаКонтекстноеМеню" id="148"/>
+										<ExtendedTooltip name="НаборыСвойствСтрокаПоискаРасширеннаяПодсказка" id="149"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="НаборыСвойствСостояниеПросмотра" id="150">
+										<AdditionSource>
+											<Item>НаборыСвойств</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="НаборыСвойствСостояниеПросмотраКонтекстноеМеню" id="151"/>
+										<ExtendedTooltip name="НаборыСвойствСостояниеПросмотраРасширеннаяПодсказка" id="152"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="НаборыСвойствУправлениеПоиском" id="153">
+										<AdditionSource>
+											<Item>НаборыСвойств</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="НаборыСвойствУправлениеПоискомКонтекстноеМеню" id="154"/>
+										<ExtendedTooltip name="НаборыСвойствУправлениеПоискомРасширеннаяПодсказка" id="155"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="DragCheck">НаборыСвойствПроверкаПеретаскивания</Event>
+										<Event name="OnActivateRow">НаборыСвойствПриАктивизацииСтроки</Event>
+										<Event name="Drag">НаборыСвойствПеретаскивание</Event>
+										<Event name="OnGetDataAtServer">НаборыСвойствПриПолученииДанныхНаСервере</Event>
+										<Event name="BeforeRowChange">НаборыСвойствПередНачаломИзменения</Event>
+									</Events>
+									<ChildItems>
+										<InputField name="Представление" id="4">
+											<DataPath>НаборыСвойств.Представление</DataPath>
+											<DefaultItem>true</DefaultItem>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Набор</v8:content>
+												</v8:item>
+											</Title>
+											<Width>20</Width>
+											<Wrap>false</Wrap>
+											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="ПредставлениеКонтекстноеМеню" id="5"/>
+											<ExtendedTooltip name="ПредставлениеExtendedTooltip" id="123"/>
+										</InputField>
+										<LabelField name="Ссылка" id="139">
+											<DataPath>НаборыСвойств.Ссылка</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ContextMenu name="СсылкаКонтекстноеМеню" id="140"/>
+											<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="141"/>
+										</LabelField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="Неиспользуемые" id="192">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Неиспользуемые</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="НеиспользуемыеРасширеннаяПодсказка" id="193"/>
+							<ChildItems>
+								<Table name="НеиспользуемыеНаборы" id="194">
+									<Representation>Tree</Representation>
+									<CommandBarLocation>None</CommandBarLocation>
+									<ReadOnly>true</ReadOnly>
+									<SkipOnInput>false</SkipOnInput>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<Header>false</Header>
+									<HorizontalLines>false</HorizontalLines>
+									<VerticalLines>false</VerticalLines>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<EnableStartDrag>true</EnableStartDrag>
+									<FileDragMode>AsFile</FileDragMode>
+									<DataPath>НеиспользуемыеНаборы</DataPath>
+									<RowPictureDataPath>НеиспользуемыеНаборы.НомерКартинки</RowPictureDataPath>
+									<RowsPicture>
+										<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</RowsPicture>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Неиспользуемые наборы</v8:content>
+										</v8:item>
+									</Title>
+									<CommandSet>
+										<ExcludedCommand>ListSettings</ExcludedCommand>
+									</CommandSet>
+									<CurrentRowUse>SelectionPresentation</CurrentRowUse>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>false</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+									<ContextMenu name="НеиспользуемыеНаборыКонтекстноеМеню" id="195"/>
+									<AutoCommandBar name="НеиспользуемыеНаборыКоманднаяПанель" id="196"/>
+									<ExtendedTooltip name="НеиспользуемыеНаборыРасширеннаяПодсказка" id="197"/>
+									<SearchStringAddition name="НеиспользуемыеНаборыСтрокаПоиска" id="198">
+										<AdditionSource>
+											<Item>НеиспользуемыеНаборы</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="НеиспользуемыеНаборыСтрокаПоискаКонтекстноеМеню" id="199"/>
+										<ExtendedTooltip name="НеиспользуемыеНаборыСтрокаПоискаРасширеннаяПодсказка" id="200"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="НеиспользуемыеНаборыСостояниеПросмотра" id="201">
+										<AdditionSource>
+											<Item>НеиспользуемыеНаборы</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="НеиспользуемыеНаборыСостояниеПросмотраКонтекстноеМеню" id="202"/>
+										<ExtendedTooltip name="НеиспользуемыеНаборыСостояниеПросмотраРасширеннаяПодсказка" id="203"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="НеиспользуемыеНаборыУправлениеПоиском" id="204">
+										<AdditionSource>
+											<Item>НеиспользуемыеНаборы</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="НеиспользуемыеНаборыУправлениеПоискомКонтекстноеМеню" id="205"/>
+										<ExtendedTooltip name="НеиспользуемыеНаборыУправлениеПоискомРасширеннаяПодсказка" id="206"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<LabelField name="НеиспользуемыеНаборыПредставление" id="210">
+											<DataPath>НеиспользуемыеНаборы.Представление</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Представление</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="НеиспользуемыеНаборыПредставлениеКонтекстноеМеню" id="211"/>
+											<ExtendedTooltip name="НеиспользуемыеНаборыПредставлениеРасширеннаяПодсказка" id="212"/>
+										</LabelField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
 					</ChildItems>
-				</Table>
+				</Pages>
 				<Table name="Свойства" id="38">
 					<Representation>List</Representation>
 					<SelectionMode>SingleRow</SelectionMode>
@@ -336,7 +462,7 @@
 					<DataPath>Свойства</DataPath>
 					<RowPictureDataPath>Свойства.НомерКартинки</RowPictureDataPath>
 					<RowsPicture>
-						<xr:Ref>CommonPicture.ПиктограммыЭлементов</xr:Ref>
+						<xr:Ref>CommonPicture.ПиктограммыСвойств</xr:Ref>
 						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</RowsPicture>
 					<BackColor>style:FormBackColor</BackColor>
@@ -353,25 +479,11 @@
 						<ExcludedCommand>SortListAsc</ExcludedCommand>
 						<ExcludedCommand>SortListDesc</ExcludedCommand>
 					</CommandSet>
+					<SearchStringLocation>Top</SearchStringLocation>
 					<RowFilter xsi:nil="true"/>
 					<ContextMenu name="СвойстваКонтекстноеМеню" id="39">
 						<Autofill>false</Autofill>
 						<ChildItems>
-							<Button name="СвойстваКонтекстноеМенюТолькоСоздать" id="102">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Command.Создать</CommandName>
-								<Picture>
-									<xr:Ref>StdPicture.CreateListItem</xr:Ref>
-									<xr:LoadTransparent>true</xr:LoadTransparent>
-								</Picture>
-								<Title>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Создать</v8:content>
-									</v8:item>
-								</Title>
-								<ExtendedTooltip name="СвойстваКонтекстноеМенюТолькоСоздатьExtendedTooltip" id="124"/>
-							</Button>
 							<Popup name="СвойстваКонтекстноеМенюПодменюДобавить" id="84">
 								<Title>
 									<v8:item>
@@ -561,6 +673,16 @@
 				</Table>
 			</ChildItems>
 		</UsualGroup>
+		<CheckBoxField name="ПоказатьНеиспользуемыеРеквизиты" id="185">
+			<DataPath>ПоказатьНеиспользуемыеРеквизиты</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ПоказатьНеиспользуемыеРеквизитыКонтекстноеМеню" id="186"/>
+			<ExtendedTooltip name="ПоказатьНеиспользуемыеРеквизитыРасширеннаяПодсказка" id="187"/>
+			<Events>
+				<Event name="OnChange">ПоказатьНеиспользуемыеРеквизитыПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="НаборыСвойств" id="1">
@@ -575,6 +697,11 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
+				<Field>~НаборыСвойств.ЭтоСведения</Field>
+				<Field>НаборыСвойств.ВидСвойств</Field>
+				<Field>НаборыСвойств.КоличествоМеток</Field>
+				<Field>НаборыСвойств.КоличествоРеквизитов</Field>
+				<Field>НаборыСвойств.КоличествоСведений</Field>
 				<Field>НаборыСвойств.Родитель</Field>
 				<Field>НаборыСвойств.Ссылка</Field>
 				<Field>НаборыСвойств.ЭтоГруппа</Field>
@@ -583,57 +710,157 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	Наборы.Ссылка КАК Ссылка,
-	Наборы.ВерсияДанных КАК ВерсияДанных,
-	Наборы.ПометкаУдаления КАК ПометкаУдаления,
-	Наборы.Предопределенный КАК Предопределенный,
-	Наборы.Родитель КАК Родитель,
-	Наборы.ЭтоГруппа КАК ЭтоГруппа,
-	Наборы.Наименование КАК Наименование,
-	Наборы.Используется КАК Используется,
+	НаборыПереопределяемый.Ссылка КАК Ссылка,
+	НаборыПереопределяемый.ВерсияДанных КАК ВерсияДанных,
+	НаборыПереопределяемый.ПометкаУдаления КАК ПометкаУдаления,
+	НаборыПереопределяемый.Предопределенный КАК Предопределенный,
+	НаборыПереопределяемый.Родитель КАК Родитель,
+	НаборыПереопределяемый.ЭтоГруппа КАК ЭтоГруппа,
+	НаборыПереопределяемый.Наименование КАК Наименование,
+	НаборыПереопределяемый.Используется КАК Используется,
+	ВЫРАЗИТЬ("" КАК СТРОКА(150)) КАК Представление,
+	&amp;ВидСвойств КАК ВидСвойств,
 	ВЫБОР
-		КОГДА Наборы.ЭтоГруппа
-			ТОГДА ПРЕДСТАВЛЕНИЕ(Наборы.Ссылка)
-		КОГДА &amp;ЭтоНаборыДополнительныхСведений
-			ТОГДА ВЫБОР
-					КОГДА Наборы.КоличествоСведений = ""
-						ТОГДА ПРЕДСТАВЛЕНИЕ(Наборы.Ссылка)
-					КОГДА Наборы.КоличествоСведений &lt;&gt; ""
-							И &amp;ЭтоОсновнойЯзык
-						ТОГДА Наборы.Наименование + " (" + Наборы.КоличествоСведений + ")"
-					ИНАЧЕ (ВЫРАЗИТЬ(ЕСТЬNULL(НаборыПредставления.Наименование, Наборы.Наименование) КАК СТРОКА(150))) + " (" + Наборы.КоличествоСведений + ")"
-				КОНЕЦ
-		ИНАЧЕ ВЫБОР
-				КОГДА Наборы.КоличествоРеквизитов = ""
-					ТОГДА ПРЕДСТАВЛЕНИЕ(Наборы.Ссылка)
-				КОГДА Наборы.КоличествоСведений &lt;&gt; ""
-						И &amp;ЭтоОсновнойЯзык
-					ТОГДА Наборы.Наименование + " (" + Наборы.КоличествоРеквизитов + ")"
-				ИНАЧЕ (ВЫРАЗИТЬ(ЕСТЬNULL(НаборыПредставления.Наименование, Наборы.Наименование) КАК СТРОКА(150))) + " (" + Наборы.КоличествоРеквизитов + ")"
-			КОНЕЦ
-	КОНЕЦ КАК Представление,
-	ВЫБОР
-		КОГДА Наборы.ПометкаУдаления
+		КОГДА НаборыПереопределяемый.ПометкаУдаления
 			ТОГДА 1
 		ИНАЧЕ 0
 	КОНЕЦ + ВЫБОР
-		КОГДА Наборы.Предопределенный
+		КОГДА НаборыПереопределяемый.Предопределенный
 			ТОГДА 2
 		ИНАЧЕ 0
-	КОНЕЦ КАК НомерКартинки
+	КОНЕЦ КАК НомерКартинки,
+	НаборыПереопределяемый.КоличествоРеквизитов КАК КоличествоРеквизитов,
+	НаборыПереопределяемый.КоличествоСведений КАК КоличествоСведений,
+	НаборыПереопределяемый.КоличествоМеток КАК КоличествоМеток
 ИЗ
-	Справочник.НаборыДополнительныхРеквизитовИСведений КАК Наборы
-		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.НаборыДополнительныхРеквизитовИСведений.Представления КАК НаборыПредставления
-		ПО (НаборыПредставления.Ссылка = Наборы.Ссылка)
-			И (НаборыПредставления.КодЯзыка = &amp;КодЯзыка)
+	Справочник.НаборыДополнительныхРеквизитовИСведений КАК НаборыПереопределяемый
 ГДЕ
 	ВЫБОР
-			КОГДА Наборы.Родитель = ЗНАЧЕНИЕ(Справочник.НаборыДополнительныхРеквизитовИСведений.ПустаяСсылка)
-				ТОГДА Наборы.Ссылка В (&amp;Наборы)
-			ИНАЧЕ Наборы.Родитель В (&amp;Наборы)
-		КОНЕЦ
-	И Наборы.Используется
-	И ЕСТЬNULL(Наборы.Родитель.Используется, ИСТИНА)</QueryText>
+		КОГДА НаборыПереопределяемый.Родитель = ЗНАЧЕНИЕ(Справочник.НаборыДополнительныхРеквизитовИСведений.ПустаяСсылка)
+			ТОГДА НаборыПереопределяемый.Ссылка В (&amp;Наборы)
+		ИНАЧЕ НаборыПереопределяемый.Родитель В (&amp;Наборы)
+	КОНЕЦ
+	И НаборыПереопределяемый.Используется
+	И ЕСТЬNULL(НаборыПереопределяемый.Родитель.Используется, ИСТИНА)
+	И НЕ НаборыПереопределяемый.ПометкаУдаления</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВерсияДанных</dcssch:dataPath>
+					<dcssch:field>ВерсияДанных</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Предопределенный</dcssch:dataPath>
+					<dcssch:field>Предопределенный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Родитель</dcssch:dataPath>
+					<dcssch:field>Родитель</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЭтоГруппа</dcssch:dataPath>
+					<dcssch:field>ЭтоГруппа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Наименование</dcssch:dataPath>
+					<dcssch:field>Наименование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Используется</dcssch:dataPath>
+					<dcssch:field>Используется</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Представление</dcssch:dataPath>
+					<dcssch:field>Представление</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерКартинки</dcssch:dataPath>
+					<dcssch:field>НомерКартинки</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер картинки</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КоличествоРеквизитов</dcssch:dataPath>
+					<dcssch:field>КоличествоРеквизитов</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КоличествоСведений</dcssch:dataPath>
+					<dcssch:field>КоличествоСведений</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КоличествоМеток</dcssch:dataPath>
+					<dcssch:field>КоличествоМеток</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяПредопределенногоНабора</dcssch:dataPath>
+					<dcssch:field>ИмяПредопределенногоНабора</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаименованиеЯзык1</dcssch:dataPath>
+					<dcssch:field>НаименованиеЯзык1</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаименованиеЯзык2</dcssch:dataPath>
+					<dcssch:field>НаименованиеЯзык2</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДополнительныеРеквизиты</dcssch:dataPath>
+					<dcssch:field>ДополнительныеРеквизиты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДополнительныеСведения</dcssch:dataPath>
+					<dcssch:field>ДополнительныеСведения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Представления</dcssch:dataPath>
+					<dcssch:field>Представления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяПредопределенныхДанных</dcssch:dataPath>
+					<dcssch:field>ИмяПредопределенныхДанных</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидСвойств</dcssch:dataPath>
+					<dcssch:field>ВидСвойств</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>Наборы</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наборы</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+					<dcssch:valueListAllowed>true</dcssch:valueListAllowed>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>ВидСвойств</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид свойств</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
 				<MainTable>Catalog.НаборыДополнительныхРеквизитовИСведений</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -689,9 +916,6 @@
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
-					<FunctionalOptions>
-						<Item>FunctionalOption.ИспользоватьОбщиеДополнительныеРеквизитыИСведения</Item>
-					</FunctionalOptions>
 				</Column>
 				<Column name="ПометкаУдаления" id="4">
 					<Type>
@@ -728,7 +952,7 @@
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
-							<v8:Digits>1</v8:Digits>
+							<v8:Digits>2</v8:Digits>
 							<v8:FractionDigits>0</v8:FractionDigits>
 							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
 						</v8:NumberQualifiers>
@@ -770,19 +994,21 @@
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
-					<FunctionalOptions>
-						<Item>FunctionalOption.ИспользоватьОбщиеДополнительныеЗначения</Item>
-					</FunctionalOptions>
 				</Column>
 			</Columns>
 		</Attribute>
-		<Attribute name="ЭтоНаборыДополнительныхСведений" id="3">
+		<Attribute name="ВидСвойств" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Показать</v8:content>
 				</v8:item>
 			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидыСвойств</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоНаборыДополнительныхСведений" id="16">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
@@ -813,6 +1039,7 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="КопируемыйРеквизит" id="9">
 			<Type/>
@@ -825,6 +1052,97 @@
 		<Attribute name="ВажностьУстановлена" id="11">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПоказатьНеиспользуемыеРеквизиты" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать неиспользуемые реквизиты</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НеиспользуемыеНаборы" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Неиспользуемые наборы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	&amp;ПредставлениеСписка КАК Представление,
+	0 КАК НомерКартинки</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Представление</dcssch:dataPath>
+					<dcssch:field>Представление</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерКартинки</dcssch:dataPath>
+					<dcssch:field>НомерКартинки</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер картинки</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Parameter>
+					<dcssch:name>ПредставлениеСписка</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление списка</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ПолеПоиска" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле поиска</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 	</Attributes>
@@ -943,8 +1261,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Создать уникальный реквизит
-(только для этого набора)</v8:content>
+					<v8:content>Создать уникальный реквизит</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Создать</Action>

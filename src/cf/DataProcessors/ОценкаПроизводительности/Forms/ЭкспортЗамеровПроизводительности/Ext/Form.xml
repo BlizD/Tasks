@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Экспорт замеров оценки производительности</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаВыполнитьЭкспорт" id="12">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ВыполнитьЭкспорт</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Экспорт</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаВыполнитьЭкспортРасширеннаяПодсказка" id="13"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПериод" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПериодРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<InputField name="ДатаНачалаПериодаЭкспорта" id="3">
+					<DataPath>ДатаНачалаПериодаЭкспорта</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата начала</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДатаНачалаПериодаЭкспортаКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ДатаНачалаПериодаЭкспортаРасширеннаяПодсказка" id="5"/>
+				</InputField>
+				<InputField name="ДатаОкончанияПериодаЭкспорта" id="6">
+					<DataPath>ДатаОкончанияПериодаЭкспорта</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата окончания</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДатаОкончанияПериодаЭкспортаКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="ДатаОкончанияПериодаЭкспортаРасширеннаяПодсказка" id="8"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Профиль" id="17">
+			<DataPath>Профиль</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="ПрофильКонтекстноеМеню" id="18"/>
+			<ExtendedTooltip name="ПрофильРасширеннаяПодсказка" id="19"/>
+		</InputField>
+		<InputField name="КаталогЭкспорта" id="9">
+			<DataPath>КаталогЭкспорта</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ChoiceButton>true</ChoiceButton>
+			<ContextMenu name="КаталогЭкспортаКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="КаталогЭкспортаРасширеннаяПодсказка" id="11"/>
+			<Events>
+				<Event name="StartChoice">КаталогЭкспортаНачалоВыбора</Event>
+			</Events>
+		</InputField>
+		<InputField name="ИмяАрхива" id="14">
+			<DataPath>ИмяАрхива</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="ИмяАрхиваКонтекстноеМеню" id="15"/>
+			<ExtendedTooltip name="ИмяАрхиваРасширеннаяПодсказка" id="16"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ОценкаПроизводительности</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ДатаНачалаПериодаЭкспорта" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата начала периода экспорта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<Save>
+				<Field>ДатаНачалаПериодаЭкспорта</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ДатаОкончанияПериодаЭкспорта" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата окончания периода экспорта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<Save>
+				<Field>ДатаОкончанияПериодаЭкспорта</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="КаталогЭкспорта" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Каталог экспорта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<Save>
+				<Field>КаталогЭкспорта</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ИмяАрхива" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя архива</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<Save>
+				<Field>ИмяАрхива</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ЕстьБСП" id="6">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Профиль" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Профиль</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ПрофилиКлючевыхОпераций</v8:Type>
+			</Type>
+			<Save>
+				<Field>Профиль</Field>
+			</Save>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыполнитьЭкспорт" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить экспорт</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить экспорт</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьЭкспорт</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

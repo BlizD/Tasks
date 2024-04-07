@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
 			<Popup name="ДействияСНастройками" id="86">
@@ -87,9 +87,25 @@
 				<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
 				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="106"/>
 			</Button>
+			<SearchStringAddition name="СтрокаПоиска" id="153">
+				<AdditionSource>
+					<Item>ДеревоОбъектовМетаданных</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Поиск</v8:content>
+					</v8:item>
+				</Title>
+				<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="154"/>
+				<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="155"/>
+			</SearchStringAddition>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -138,6 +154,13 @@
 			<CurrentRowUse>SelectionPresentationAndChoice</CurrentRowUse>
 			<ContextMenu name="ДеревоОбъектовМетаданныхКонтекстноеМеню" id="4">
 				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ДеревоОбъектовМетаданныхКонтекстноеМенюПерейтиКСписку" id="149">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПерейтиКСписку</CommandName>
+						<ExtendedTooltip name="ДеревоОбъектовМетаданныхКонтекстноеМенюПерейтиКСпискуРасширеннаяПодсказка" id="150"/>
+					</Button>
+				</ChildItems>
 			</ContextMenu>
 			<AutoCommandBar name="ДеревоОбъектовМетаданныхКоманднаяПанель" id="5">
 				<Autofill>false</Autofill>
@@ -236,75 +259,166 @@
 				</InputField>
 			</ChildItems>
 		</Table>
-		<UsualGroup name="ОчисткаНенужныхФайлов" id="57">
+		<Pages name="СтраницыИтогиУдаляемыеФайлы" id="114">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Очистка ненужных файлов</v8:content>
+					<v8:content>Страницы итоги удаляемые файлы</v8:content>
 				</v8:item>
 			</Title>
-			<VerticalAlign>Center</VerticalAlign>
-			<Behavior>Usual</Behavior>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ОчисткаНенужныхФайловРасширеннаяПодсказка" id="58"/>
+			<GroupVerticalAlign>Center</GroupVerticalAlign>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыИтогиУдаляемыеФайлыРасширеннаяПодсказка" id="115"/>
 			<ChildItems>
-				<Button name="ОбъемНенужныхФайлов" id="74">
-					<Type>Hyperlink</Type>
-					<CommandName>Form.Command.ОбъемНенужныхФайлов</CommandName>
-					<ExtendedTooltip name="ОбъемНенужныхФайловРасширеннаяПодсказка" id="75"/>
-				</Button>
-				<Pages name="ОчисткаФайлов" id="90">
+				<Page name="СтраницаПодсчетИтоговУдаляемыеФайлы" id="116">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Очистка файлов</v8:content>
+							<v8:content>Страница подсчет итогов удаляемые файлы</v8:content>
 						</v8:item>
 					</Title>
-					<PagesRepresentation>None</PagesRepresentation>
-					<ExtendedTooltip name="ОчисткаФайловРасширеннаяПодсказка" id="91"/>
+					<Group>AlwaysHorizontal</Group>
+					<VerticalAlign>Center</VerticalAlign>
+					<BackColor>style:ИтогиФонГруппы</BackColor>
+					<ExtendedTooltip name="СтраницаПодсчетИтоговУдаляемыеФайлыРасширеннаяПодсказка" id="117"/>
 					<ChildItems>
-						<Page name="Очистка" id="92">
+						<PictureDecoration name="КартинкаРасчетИтогов" id="120">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Картинка расчет итогов</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.НезавершившаясяПроверка</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="КартинкаРасчетИтоговКонтекстноеМеню" id="121"/>
+							<ExtendedTooltip name="КартинкаРасчетИтоговРасширеннаяПодсказка" id="122"/>
+						</PictureDecoration>
+						<LabelDecoration name="НадписьРасчетовИтогов" id="125">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вычисляется размер файлов для удаления...</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="НадписьРасчетовИтоговКонтекстноеМеню" id="126"/>
+							<ExtendedTooltip name="НадписьРасчетовИтоговРасширеннаяПодсказка" id="127"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаОтображениеИтоговУдаляемыеФайлы" id="118">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница отображение итогов удаляемые файлы</v8:content>
+						</v8:item>
+					</Title>
+					<BackColor>style:ИтогиФонГруппы</BackColor>
+					<ExtendedTooltip name="СтраницаОтображениеИтоговУдаляемыеФайлыРасширеннаяПодсказка" id="119"/>
+					<ChildItems>
+						<UsualGroup name="ОчисткаНенужныхФайлов" id="57">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Очистка</v8:content>
+									<v8:content>Очистка ненужных файлов</v8:content>
 								</v8:item>
 							</Title>
-							<ExtendedTooltip name="ОчисткаРасширеннаяПодсказка" id="93"/>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalAlign>Center</VerticalAlign>
+							<Behavior>Usual</Behavior>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ОчисткаНенужныхФайловРасширеннаяПодсказка" id="58"/>
 							<ChildItems>
-								<Button name="Очистить" id="69">
-									<Type>UsualButton</Type>
-									<CommandName>Form.Command.Очистить</CommandName>
-									<ExtendedTooltip name="ОчиститьРасширеннаяПодсказка" id="70"/>
-								</Button>
-							</ChildItems>
-						</Page>
-						<Page name="СтатусФоновогоЗадания" id="94">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Статус фонового задания</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="СтатусФоновогоЗаданияРасширеннаяПодсказка" id="95"/>
-							<ChildItems>
-								<LabelDecoration name="ИнформацияОФоновомЗадании" id="96">
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<Title formatted="false">
+								<Pages name="ОчисткаФайлов" id="90">
+									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Выполняется очистка ненужных файлов...</v8:content>
+											<v8:content>Очистка файлов</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="ИнформацияОФоновомЗаданииКонтекстноеМеню" id="97"/>
-									<ExtendedTooltip name="ИнформацияОФоновомЗаданииРасширеннаяПодсказка" id="98"/>
-								</LabelDecoration>
+									<HorizontalStretch>true</HorizontalStretch>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="ОчисткаФайловРасширеннаяПодсказка" id="91"/>
+									<ChildItems>
+										<Page name="Очистка" id="92">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Очистка</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ОчисткаРасширеннаяПодсказка" id="93"/>
+											<ChildItems>
+												<Button name="Очистить" id="69">
+													<Type>UsualButton</Type>
+													<Representation>PictureAndText</Representation>
+													<CommandName>Form.Command.Очистить</CommandName>
+													<ExtendedTooltip name="ОчиститьРасширеннаяПодсказка" id="70"/>
+												</Button>
+											</ChildItems>
+										</Page>
+										<Page name="СтатусФоновогоЗадания" id="94">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Статус фонового задания</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="СтатусФоновогоЗаданияРасширеннаяПодсказка" id="95"/>
+											<ChildItems>
+												<LabelDecoration name="ИнформацияОФоновомЗадании" id="96">
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Выполняется очистка ненужных файлов...</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ИнформацияОФоновомЗаданииКонтекстноеМеню" id="97"/>
+													<ExtendedTooltip name="ИнформацияОФоновомЗаданииРасширеннаяПодсказка" id="98"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<Button name="ОбновитьСведения" id="151">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ОбновитьСведения</CommandName>
+									<ExtendedTooltip name="ОбновитьСведенияРасширеннаяПодсказка" id="152"/>
+								</Button>
+								<UsualGroup name="ИнформацияОРазмереФайлов" id="130">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Информация о размере файлов</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ИнформацияОРазмереФайловРасширеннаяПодсказка" id="131"/>
+									<ChildItems>
+										<Button name="ОбъемУдаленныхФайлов" id="128">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ОбъемУдаленныхФайлов</CommandName>
+											<ExtendedTooltip name="ОбъемУдаленныхФайловРасширеннаяПодсказка" id="129"/>
+										</Button>
+										<Button name="ОбъемНенужныхФайлов" id="74">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ОбъемНенужныхФайлов</CommandName>
+											<ExtendedTooltip name="ОбъемНенужныхФайловРасширеннаяПодсказка" id="75"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
-						</Page>
+						</UsualGroup>
 					</ChildItems>
-				</Pages>
+				</Page>
 			</ChildItems>
-		</UsualGroup>
+		</Pages>
 		<UsualGroup name="ОчисткаПоРасписанию" id="62">
 			<Title>
 				<v8:item>
@@ -314,6 +428,7 @@
 			</Title>
 			<Group>Vertical</Group>
 			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ОчисткаПоРасписаниюРасширеннаяПодсказка" id="63"/>
 			<ChildItems>
@@ -339,6 +454,46 @@
 								<Event name="OnChange">АвтоматическиОчищатьНенужныеФайлыПриИзменении</Event>
 							</Events>
 						</CheckBoxField>
+						<InputField name="РежимОчисткиФайлов" id="143">
+							<DataPath>РежимОчисткиФайлов</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<Width>20</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Удаленные и ненужные файлы</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.РежимыОчисткиФайлов.EnumValue.ОчищатьУдаленныеИНенужные</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Только удаленные файлы</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.РежимыОчисткиФайлов.EnumValue.ОчищатьУдаленные</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="РежимОчисткиФайловКонтекстноеМеню" id="144"/>
+							<ExtendedTooltip name="РежимОчисткиФайловРасширеннаяПодсказка" id="145"/>
+							<Events>
+								<Event name="OnChange">РежимОчисткиФайловПриИзменении</Event>
+							</Events>
+						</InputField>
 						<Button name="НастроитьРасписание" id="76">
 							<Type>Hyperlink</Type>
 							<CommandName>Form.Command.НастроитьРасписание</CommandName>
@@ -458,17 +613,19 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="СписокВыбораБезВерсий" id="3">
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="АвтоматическиОчищатьНенужныеФайлы" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Автоматически очищать ненужные файлы</v8:content>
+					<v8:content>Автоматически очищать ненужные файлы:</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -498,6 +655,37 @@
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
+		</Attribute>
+		<Attribute name="ОписаниеРасчетаИтогов" id="9">
+			<Type/>
+		</Attribute>
+		<Attribute name="РежимОчисткиФайлов" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим очистки файлов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.РежимыОчисткиФайлов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьТома" id="11">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Список" id="12">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>InformationRegister.НастройкиОчисткиФайлов</MainTable>
+				<ListSettings/>
+			</Settings>
 		</Attribute>
 	</Attributes>
 	<Commands>
@@ -623,9 +811,13 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Очистить</v8:content>
+					<v8:content>Очистить ненужные файлы</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
 			<Action>Очистить</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
@@ -639,7 +831,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Объем ненужных файлов</v8:content>
+					<v8:content>Файлы, которые подлежат очистке согласно настройкам</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ОбъемНенужныхФайлов</Action>
@@ -649,7 +841,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Настроить расписание</v8:content>
+					<v8:content>настроить расписание</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -660,6 +852,56 @@
 			</ToolTip>
 			<Action>НастроитьРасписание</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОбъемУдаленныхФайлов" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объем удаленных файлов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Файлы, которых не существует в программе, но имеются в томе в сетевом каталоге</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОбъемУдаленныхФайлов</Action>
+		</Command>
+		<Command name="ПерейтиКСписку" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти к списку...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти к списку файлов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПерейтиКСписку</Action>
+		</Command>
+		<Command name="ОбновитьСведения" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить сведения об удаляемых файлах</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбновитьСведения</Action>
+			<Representation>Picture</Representation>
 		</Command>
 	</Commands>
 </Form>

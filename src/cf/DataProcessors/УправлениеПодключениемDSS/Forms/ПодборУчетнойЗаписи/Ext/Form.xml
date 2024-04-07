@@ -1,0 +1,611 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выбор учетной записи DSS</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="FillCheckProcessingAtServer">ОбработкаПроверкиЗаполненияНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаВыборСостояния" id="77">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбор состояния</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаВыборСостоянияРасширеннаяПодсказка" id="78"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаНоваяУчетнаяЗапись" id="79">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Новая учетная запись</v8:content>
+						</v8:item>
+					</Title>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНоваяУчетнаяЗаписьРасширеннаяПодсказка" id="80"/>
+					<ChildItems>
+						<RadioButtonField name="ИсточникВыбораНовая" id="83">
+							<DataPath>ИсточникВыбора</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Новая учетная запись DSS</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">НовыйЛогин</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ИсточникВыбораНоваяКонтекстноеМеню" id="84"/>
+							<ExtendedTooltip name="ИсточникВыбораНоваяРасширеннаяПодсказка" id="85"/>
+							<Events>
+								<Event name="OnChange">ИсточникВыбораПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаНастройкиУчетнойЗаписи" id="91">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки учетной записи</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНастройкиУчетнойЗаписиРасширеннаяПодсказка" id="92"/>
+					<ChildItems>
+						<RadioButtonField name="ИсточникВыбораСписок" id="86">
+							<DataPath>ИсточникВыбора</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Существующие учетные записи</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">УчетнаяЗапись</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ИсточникВыбораСписокКонтекстноеМеню" id="87"/>
+							<ExtendedTooltip name="ИсточникВыбораСписокРасширеннаяПодсказка" id="88"/>
+							<Events>
+								<Event name="OnChange">ИсточникВыбораПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="ВыборДействия" id="125">
+							<DataPath>ВыборДействия</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Tumbler</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Выбрать из списка</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Список</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Не найден в списке</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Восстановить</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ВыборДействияКонтекстноеМеню" id="126"/>
+							<ExtendedTooltip name="ВыборДействияРасширеннаяПодсказка" id="127"/>
+							<Events>
+								<Event name="OnChange">ВыборДействияПриИзменении</Event>
+							</Events>
+						</RadioButtonField>
+					</ChildItems>
+				</UsualGroup>
+				<Pages name="ГруппаДействия" id="123">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Действия</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>TabsOnTop</PagesRepresentation>
+					<ExtendedTooltip name="ГруппаДействияРасширеннаяПодсказка" id="124"/>
+					<ChildItems>
+						<Page name="ГруппаСписокВыбора" id="81">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выбор</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаСписокВыбораРасширеннаяПодсказка" id="82"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаСписокВыбораСодержимое" id="96">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Список выбора содержимое</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаСписокВыбораСодержимоеРасширеннаяПодсказка" id="97"/>
+									<ChildItems>
+										<CommandBar name="ГруппаКомандыСпискаВыбора" id="128">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Команды списка</v8:content>
+												</v8:item>
+											</Title>
+											<CommandSource>Item.СписокВыбор</CommandSource>
+											<ExtendedTooltip name="ГруппаКомандыСпискаВыбораРасширеннаяПодсказка" id="129"/>
+										</CommandBar>
+										<Table name="СписокВыбор" id="98">
+											<CommandBarLocation>None</CommandBarLocation>
+											<HeightInTableRows>10</HeightInTableRows>
+											<ChoiceMode>true</ChoiceMode>
+											<Header>false</Header>
+											<UseAlternationRowColor>true</UseAlternationRowColor>
+											<EnableStartDrag>true</EnableStartDrag>
+											<DataPath>СписокВыбор</DataPath>
+											<RowPictureDataPath>СписокВыбор.DefaultPicture</RowPictureDataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выбор</v8:content>
+												</v8:item>
+											</Title>
+											<AutoRefresh>false</AutoRefresh>
+											<AutoRefreshPeriod>60</AutoRefreshPeriod>
+											<Period>
+												<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+												<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+												<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+											</Period>
+											<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+											<RestoreCurrentRow>false</RestoreCurrentRow>
+											<TopLevelParent xsi:nil="true"/>
+											<ShowRoot>true</ShowRoot>
+											<AllowRootChoice>false</AllowRootChoice>
+											<UpdateOnDataChange>Auto</UpdateOnDataChange>
+											<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+											<ContextMenu name="СписокВыборКонтекстноеМеню" id="99"/>
+											<AutoCommandBar name="СписокВыборКоманднаяПанель" id="100"/>
+											<ExtendedTooltip name="СписокВыборРасширеннаяПодсказка" id="101"/>
+											<SearchStringAddition name="СписокВыборСтрокаПоиска" id="102">
+												<AdditionSource>
+													<Item>СписокВыбор</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="СписокВыборСтрокаПоискаКонтекстноеМеню" id="103"/>
+												<ExtendedTooltip name="СписокВыборСтрокаПоискаРасширеннаяПодсказка" id="104"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="СписокВыборСостояниеПросмотра" id="105">
+												<AdditionSource>
+													<Item>СписокВыбор</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="СписокВыборСостояниеПросмотраКонтекстноеМеню" id="106"/>
+												<ExtendedTooltip name="СписокВыборСостояниеПросмотраРасширеннаяПодсказка" id="107"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="СписокВыборУправлениеПоиском" id="108">
+												<AdditionSource>
+													<Item>СписокВыбор</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="СписокВыборУправлениеПоискомКонтекстноеМеню" id="109"/>
+												<ExtendedTooltip name="СписокВыборУправлениеПоискомРасширеннаяПодсказка" id="110"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="Selection">СписокВыборВыбор</Event>
+											</Events>
+											<ChildItems>
+												<LabelField name="СписокВыборНаименование" id="111">
+													<DataPath>СписокВыбор.Наименование</DataPath>
+													<ContextMenu name="СписокВыборНаименованиеКонтекстноеМеню" id="112"/>
+													<ExtendedTooltip name="СписокВыборНаименованиеРасширеннаяПодсказка" id="113"/>
+												</LabelField>
+												<InputField name="Ссылка" id="130">
+													<DataPath>СписокВыбор.Ссылка</DataPath>
+													<UserVisible>
+														<xr:Common>false</xr:Common>
+													</UserVisible>
+													<ContextMenu name="СсылкаКонтекстноеМеню" id="131"/>
+													<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="132"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="ГруппаСоздатьУчетнуюЗапись" id="89">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Создать новую учетную запись</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ГруппаСоздатьУчетнуюЗаписьРасширеннаяПодсказка" id="90"/>
+							<ChildItems>
+								<InputField name="Сервер" id="21">
+									<DataPath>Сервер</DataPath>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<DropListButton>true</DropListButton>
+									<ListChoiceMode>true</ListChoiceMode>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ChooseType>false</ChooseType>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="СерверКонтекстноеМеню" id="22"/>
+									<ExtendedTooltip name="СерверРасширеннаяПодсказка" id="23"/>
+								</InputField>
+								<UsualGroup name="ГруппаЛогин" id="73">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Логин</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаЛогинРасширеннаяПодсказка" id="74"/>
+									<ChildItems>
+										<InputField name="Логин" id="18">
+											<DataPath>ЛогинУчетнойЗаписи</DataPath>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<DropListButton>true</DropListButton>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="ЛогинКонтекстноеМеню" id="19"/>
+											<ExtendedTooltip name="ЛогинРасширеннаяПодсказка" id="20"/>
+											<Events>
+												<Event name="OnChange">ЛогинПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+		<CommandBar name="ГруппаКоманды" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команды</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalLocation>Right</HorizontalLocation>
+			<ExtendedTooltip name="ГруппаКомандыРасширеннаяПодсказка" id="41"/>
+			<ChildItems>
+				<Button name="Подтвердить" id="42">
+					<Type>CommandBarButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.Подтвердить</CommandName>
+					<ExtendedTooltip name="ПодтвердитьРасширеннаяПодсказка" id="43"/>
+				</Button>
+				<Button name="Отмена" id="44">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.Cancel</CommandName>
+					<ExtendedTooltip name="ОтменаРасширеннаяПодсказка" id="45"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ЛогинУчетнойЗаписи" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Логин учетной записи</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Сервер" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сервер</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТаблицаСервисов" id="5">
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ВнутреннийИдентификатор" id="2">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Представление" id="3">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДанныеСервиса" id="4">
+					<Type/>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ЛогинПараметр" id="8">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВосстановитьУчетнуюЗапись" id="2">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВосстановлениеНачато" id="6">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СостояниеЛогина" id="13">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВыборНовойУчетнойЗаписи" id="7">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИсточникВыбора" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Источник выбора</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СписокВыбор" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список выбор</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникУчетныеЗаписиDSS.Ссылка КАК Ссылка,
+	СправочникУчетныеЗаписиDSS.ПометкаУдаления КАК ПометкаУдаления,
+	СправочникУчетныеЗаписиDSS.Владелец КАК Владелец,
+	СправочникУчетныеЗаписиDSS.Наименование КАК Наименование,
+	СправочникУчетныеЗаписиDSS.Автор КАК Автор,
+	СправочникУчетныеЗаписиDSS.ВторичнаяАвторизация КАК ВторичнаяАвторизация,
+	СправочникУчетныеЗаписиDSS.ДополнительнаяИнформация КАК ДополнительнаяИнформация,
+	СправочникУчетныеЗаписиDSS.Комментарий КАК Комментарий,
+	СправочникУчетныеЗаписиDSS.Логин КАК Логин,
+	СправочникУчетныеЗаписиDSS.ПервичнаяАутентификация КАК ПервичнаяАутентификация,
+	СправочникУчетныеЗаписиDSS.СодержаниеЗаявления КАК СодержаниеЗаявления,
+	СправочникУчетныеЗаписиDSS.СостояниеЗаявления КАК СостояниеЗаявления,
+	СправочникУчетныеЗаписиDSS.Предопределенный КАК Предопределенный,
+	СправочникУчетныеЗаписиDSS.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных,
+	ЭкземплярыСервераDSS.ВнутреннийИдентификатор КАК ВнутреннийИдентификатор
+ИЗ
+	Справочник.УчетныеЗаписиDSS КАК СправочникУчетныеЗаписиDSS
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ЭкземплярыСервераDSS КАК ЭкземплярыСервераDSS
+		ПО СправочникУчетныеЗаписиDSS.Владелец = ЭкземплярыСервераDSS.Ссылка
+{ГДЕ
+	ЭкземплярыСервераDSS.ВнутреннийИдентификатор = &amp;ВнутреннийИдентификатор ИЛИ  &amp;ВнутреннийИдентификатор = ""}</QueryText>
+				<MainTable>Catalog.УчетныеЗаписиDSS</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="УчетнаяЗапись" id="11">
+			<Type>
+				<v8:Type>cfg:CatalogRef.УчетныеЗаписиDSS</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкиНовойУчетнойЗаписи" id="12">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВыборДействия" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбор действия</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДополнитьСервера" id="15">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Подтвердить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подтвердить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Подтвердить</Action>
+		</Command>
+		<Command name="Продолжить" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продолжить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продолжить</v8:content>
+				</v8:item>
+			</ToolTip>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Логин">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="СписокСерверов">
+			<Type/>
+		</Parameter>
+		<Parameter name="Сервер">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ВыборНовойУчетнойЗаписи">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="УчетнаяЗапись">
+			<Type>
+				<v8:Type>cfg:CatalogRef.УчетныеЗаписиDSS</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="НастройкиНовойУчетнойЗаписи">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

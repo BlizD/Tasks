@@ -1,0 +1,43 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/1cFresh/Application/Permissions/1.0.0.2">
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<valueType name="InternetProtocol" base="xs:string">
+		<enumeration xsi:type="xs:string">IMAP</enumeration>
+		<enumeration xsi:type="xs:string">POP3</enumeration>
+		<enumeration xsi:type="xs:string">SMTP</enumeration>
+		<enumeration xsi:type="xs:string">HTTP</enumeration>
+		<enumeration xsi:type="xs:string">HTTPS</enumeration>
+		<enumeration xsi:type="xs:string">FTP</enumeration>
+		<enumeration xsi:type="xs:string">FTPS</enumeration>
+		<enumeration xsi:type="xs:string">WS</enumeration>
+		<enumeration xsi:type="xs:string">WSS</enumeration>
+	</valueType>
+	<objectType name="PermissionBase" abstract="true">
+		<property name="Description" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/Application/Permissions/1.0.0.2" name="FileSystemAccess" base="d2p1:PermissionBase">
+		<property name="Path" type="xs:string"/>
+		<property name="AllowedRead" type="xs:boolean"/>
+		<property name="AllowedWrite" type="xs:boolean"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/Application/Permissions/1.0.0.2" name="CreateComObject" base="d2p1:PermissionBase">
+		<property name="ProgId" type="xs:string"/>
+		<property name="CLSID" type="xs:string" lowerBound="0"/>
+		<property name="ComputerName" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/Application/Permissions/1.0.0.2" name="AttachAddin" base="d2p1:PermissionBase">
+		<property name="TemplateName" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/Application/Permissions/1.0.0.2" name="ExternalModule" base="d2p1:PermissionBase">
+		<property name="Name" type="xs:string"/>
+		<property name="Hash" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/Application/Permissions/1.0.0.2" name="RunApplication" base="d2p1:PermissionBase">
+		<property name="CommandMask" type="xs:string"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/Application/Permissions/1.0.0.2" name="InternetResourceAccess" base="d2p1:PermissionBase">
+		<property name="Protocol" type="xs:string"/>
+		<property name="Host" type="xs:string"/>
+		<property name="Port" type="xs:decimal"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/1cFresh/Application/Permissions/1.0.0.2" name="ExternalModulePrivilegedModeAllowed" base="d2p1:PermissionBase"/>
+</package>

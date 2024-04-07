@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>None</CommandBarLocation>
 	<MobileDeviceCommandBarContent>
@@ -26,6 +26,7 @@
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
@@ -137,7 +138,7 @@
 					</ToolTip>
 					<Picture>
 						<xr:Ref>CommonPicture.ПодписанЗашифрованЗаголовок</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</Picture>
 					<Representation>Picture</Representation>
 					<ExtendedTooltip name="ФормаГруппаКомандЭлектроннаяПодписьИШифрованиеРасширеннаяПодсказка" id="70"/>
@@ -151,20 +152,20 @@
 							</Title>
 							<ExtendedTooltip name="ФормаГруппаКомандЭлектроннаяПодписьРасширеннаяПодсказка" id="130"/>
 							<ChildItems>
-								<Button name="ФормаПодписатьФайлЭП" id="19">
+								<Button name="ФормаПодписать" id="19">
 									<Type>CommandBarButton</Type>
 									<CommandName>Form.Command.Подписать</CommandName>
-									<ExtendedTooltip name="ФормаПодписатьФайлЭПРасширеннаяПодсказка" id="71"/>
+									<ExtendedTooltip name="ФормаПодписатьРасширеннаяПодсказка" id="71"/>
 								</Button>
-								<Button name="ФормаДобавитьЭПИзФайла" id="20">
+								<Button name="ФормаДобавитьПодписьИзФайла" id="20">
 									<Type>CommandBarButton</Type>
 									<CommandName>Form.Command.ДобавитьЭПИзФайла</CommandName>
-									<ExtendedTooltip name="ФормаДобавитьЭПИзФайлаРасширеннаяПодсказка" id="72"/>
+									<ExtendedTooltip name="ФормаДобавитьПодписьИзФайлаРасширеннаяПодсказка" id="72"/>
 								</Button>
-								<Button name="ФормаСохранитьВместеСЭП" id="21">
+								<Button name="ФормаСохранитьВместеСПодписью" id="21">
 									<Type>CommandBarButton</Type>
 									<CommandName>Form.Command.СохранитьВместеСЭП</CommandName>
-									<ExtendedTooltip name="ФормаСохранитьВместеСЭПРасширеннаяПодсказка" id="73"/>
+									<ExtendedTooltip name="ФормаСохранитьВместеСПодписьюРасширеннаяПодсказка" id="73"/>
 								</Button>
 							</ChildItems>
 						</ButtonGroup>
@@ -191,12 +192,29 @@
 						</ButtonGroup>
 					</ChildItems>
 				</Popup>
-				<Button name="ФормаСтандартныеУстановитьПометкуУдаления" id="5" DisplayImportance="High">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.Command.СтандартныеУстановитьПометкуУдаления</CommandName>
-					<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
-					<ExtendedTooltip name="ФормаСтандартныеУстановитьПометкуУдаленияExtendedTooltip" id="61"/>
-				</Button>
+				<ButtonGroup name="ФормаГруппаУдаление" id="283">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Форма группа удаление</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ФормаГруппаУдалениеРасширеннаяПодсказка" id="284"/>
+					<ChildItems>
+						<Button name="ФормаСтандартныеУстановитьПометкуУдаления" id="5" DisplayImportance="High">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.СтандартныеУстановитьПометкуУдаления</CommandName>
+							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+							<ExtendedTooltip name="ФормаСтандартныеУстановитьПометкуУдаленияExtendedTooltip" id="61"/>
+						</Button>
+						<Button name="ФормаУдалить" id="287">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Удалить</CommandName>
+							<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+							<ExtendedTooltip name="ФормаУдалитьРасширеннаяПодсказка" id="288"/>
+						</Button>
+					</ChildItems>
+				</ButtonGroup>
 				<ButtonGroup name="ФормаГруппаДополнительныеКоманды" id="100" DisplayImportance="VeryHigh">
 					<Title>
 						<v8:item>
@@ -298,7 +316,7 @@
 					</Title>
 					<Picture>
 						<xr:Ref>CommonPicture.Предупреждение</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</Picture>
 					<FileDragMode>AsFile</FileDragMode>
 					<ContextMenu name="ДекорацияКартинкаСтатусСинхронизацииКонтекстноеМеню" id="232"/>
@@ -333,6 +351,18 @@
 			<ContextMenu name="ДекорацияПояснениеСлужебныйКонтекстноеМеню" id="242"/>
 			<ExtendedTooltip name="ДекорацияПояснениеСлужебныйРасширеннаяПодсказка" id="243"/>
 		</LabelDecoration>
+		<InputField name="Наименование" id="102" DisplayImportance="VeryHigh">
+			<DataPath>Объект.Description</DataPath>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя файла (без расширения)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="103"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="104"/>
+		</InputField>
 		<UsualGroup name="ГруппаОбщаяИнформация" id="29">
 			<Title>
 				<v8:item>
@@ -346,11 +376,53 @@
 					<v8:content>Общая информация о файле</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
 			<Behavior>Usual</Behavior>
-			<Representation>None</Representation>
+			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаОбщаяИнформацияExtendedTooltip" id="77"/>
 			<ChildItems>
+				<UsualGroup name="ГруппаКоманды" id="158" DisplayImportance="VeryHigh">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Команды</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКомандыРасширеннаяПодсказка" id="159"/>
+					<ChildItems>
+						<Button name="ФормаОткрытьФайлДляПросмотра" id="11">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.ОткрытьФайлДляПросмотра</CommandName>
+							<ExtendedTooltip name="ФормаОткрытьФайлДляПросмотраExtendedTooltip" id="63"/>
+						</Button>
+						<Button name="Редактировать" id="160">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.Редактировать</CommandName>
+							<ExtendedTooltip name="РедактироватьРасширеннаяПодсказка" id="161"/>
+						</Button>
+						<Button name="ЗакончитьРедактирование" id="162">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ЗакончитьРедактирование</CommandName>
+							<ExtendedTooltip name="ЗакончитьРедактированиеРасширеннаяПодсказка" id="163"/>
+						</Button>
+						<Button name="СохранитьИзменения" id="164">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.СохранитьИзменения</CommandName>
+							<ExtendedTooltip name="СохранитьИзмененияРасширеннаяПодсказка" id="165"/>
+						</Button>
+						<Button name="СохранитьКак" id="166">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.СохранитьКак</CommandName>
+							<ExtendedTooltip name="СохранитьКакРасширеннаяПодсказка" id="167"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
 				<UsualGroup name="ГруппаОбщиеДанныеИХарактеристики" id="244">
 					<Title>
 						<v8:item>
@@ -364,59 +436,27 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаОбщиеДанныеИХарактеристикиРасширеннаяПодсказка" id="245"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаОбщиеДанные" id="156">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Общие данные</v8:content>
-								</v8:item>
-							</Title>
+						<InputField name="Описание" id="105" DisplayImportance="VeryLow">
+							<DataPath>Объект.Описание</DataPath>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Общие данные файла</v8:content>
+									<v8:content>Краткое описание файла</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>Vertical</Group>
-							<Behavior>Usual</Behavior>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаОбщиеДанныеРасширеннаяПодсказка" id="157"/>
-							<ChildItems>
-								<InputField name="Наименование" id="102" DisplayImportance="VeryHigh">
-									<DataPath>Объект.Description</DataPath>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Имя файла (без расширения)</v8:content>
-										</v8:item>
-									</ToolTip>
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<ContextMenu name="НаименованиеКонтекстноеМеню" id="103"/>
-									<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="104"/>
-								</InputField>
-								<InputField name="Описание" id="105" DisplayImportance="VeryLow">
-									<DataPath>Объект.Описание</DataPath>
-									<TitleLocation>Left</TitleLocation>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Краткое описание файла</v8:content>
-										</v8:item>
-									</ToolTip>
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<Height>2</Height>
-									<InputHint>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Краткое пояснение. Для редактирования содержимого файла нажмите кнопку Редактировать.</v8:content>
-										</v8:item>
-									</InputHint>
-									<ContextMenu name="ОписаниеКонтекстноеМеню" id="106"/>
-									<ExtendedTooltip name="ОписаниеРасширеннаяПодсказка" id="107"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Height>2</Height>
+							<AutoMaxHeight>false</AutoMaxHeight>
+							<MaxHeight>5</MaxHeight>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Краткое пояснение. Для редактирования содержимого файла нажмите кнопку Редактировать.</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="ОписаниеКонтекстноеМеню" id="106"/>
+							<ExtendedTooltip name="ОписаниеРасширеннаяПодсказка" id="107"/>
+						</InputField>
 						<UsualGroup name="ГруппаХарактеристикиФайла" id="254">
 							<Visible>false</Visible>
 							<Title>
@@ -543,7 +583,7 @@
 											<VerticalStretch>false</VerticalStretch>
 											<ValuesPicture>
 												<xr:Ref>CommonPicture.КоллекцияПиктограммФайлов</xr:Ref>
-												<xr:LoadTransparent>true</xr:LoadTransparent>
+												<xr:LoadTransparent>false</xr:LoadTransparent>
 											</ValuesPicture>
 											<Border width="1">
 												<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
@@ -561,47 +601,6 @@
 								</LabelField>
 							</ChildItems>
 						</UsualGroup>
-					</ChildItems>
-				</UsualGroup>
-				<UsualGroup name="ГруппаКоманды" id="158" DisplayImportance="VeryHigh">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Команды</v8:content>
-						</v8:item>
-					</Title>
-					<Group>Vertical</Group>
-					<Behavior>Usual</Behavior>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаКомандыРасширеннаяПодсказка" id="159"/>
-					<ChildItems>
-						<Button name="ФормаОткрытьФайлДляПросмотра" id="11">
-							<Type>UsualButton</Type>
-							<Representation>PictureAndText</Representation>
-							<CommandName>Form.Command.ОткрытьФайлДляПросмотра</CommandName>
-							<ExtendedTooltip name="ФормаОткрытьФайлДляПросмотраExtendedTooltip" id="63"/>
-						</Button>
-						<Button name="Редактировать" id="160">
-							<Type>UsualButton</Type>
-							<CommandName>Form.Command.Редактировать</CommandName>
-							<ExtendedTooltip name="РедактироватьРасширеннаяПодсказка" id="161"/>
-						</Button>
-						<Button name="ЗакончитьРедактирование" id="162">
-							<Type>UsualButton</Type>
-							<CommandName>Form.Command.ЗакончитьРедактирование</CommandName>
-							<ExtendedTooltip name="ЗакончитьРедактированиеРасширеннаяПодсказка" id="163"/>
-						</Button>
-						<Button name="СохранитьИзменения" id="164">
-							<Type>UsualButton</Type>
-							<CommandName>Form.Command.СохранитьИзменения</CommandName>
-							<ExtendedTooltip name="СохранитьИзмененияРасширеннаяПодсказка" id="165"/>
-						</Button>
-						<Button name="СохранитьКак" id="166">
-							<Type>UsualButton</Type>
-							<CommandName>Form.Command.СохранитьКак</CommandName>
-							<ExtendedTooltip name="СохранитьКакРасширеннаяПодсказка" id="167"/>
-						</Button>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -869,7 +868,7 @@
 											<VerticalStretch>false</VerticalStretch>
 											<ValuesPicture>
 												<xr:Ref>CommonPicture.КоллекцияПиктограммФайлов</xr:Ref>
-												<xr:LoadTransparent>true</xr:LoadTransparent>
+												<xr:LoadTransparent>false</xr:LoadTransparent>
 											</ValuesPicture>
 											<Border width="1">
 												<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
@@ -964,6 +963,25 @@
 										<CommandName>Form.Command.СохранитьПодпись</CommandName>
 										<ExtendedTooltip name="ЭлектронныеПодписиСохранитьРасширеннаяПодсказка" id="87"/>
 									</Button>
+									<Button name="ЭлектронныеПодписиПродлитьДействиеПодписей" id="298">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПродлитьДействиеПодписей</CommandName>
+										<ExtendedTooltip name="ЭлектронныеПодписиПродлитьДействиеПодписейРасширеннаяПодсказка" id="299"/>
+									</Button>
+									<SearchStringAddition name="СтрокаПоискаЭлектронныеПодписи" id="300">
+										<AdditionSource>
+											<Item>ЭлектронныеПодписи</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Поиск</v8:content>
+											</v8:item>
+										</Title>
+										<ContextMenu name="СтрокаПоискаЭлектронныеПодписиКонтекстноеМеню" id="301"/>
+										<ExtendedTooltip name="СтрокаПоискаЭлектронныеПодписиРасширеннаяПодсказка" id="302"/>
+									</SearchStringAddition>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ЭлектронныеПодписиРасширеннаяПодсказка" id="89"/>
@@ -998,6 +1016,7 @@
 								<InputField name="ЭлектронныеПодписиКомуВыданСертификат" id="35">
 									<DataPath>ЭлектронныеПодписи.КомуВыданСертификат</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<Height>2</Height>
 									<ContextMenu name="ЭлектронныеПодписиКомуВыданСертификатКонтекстноеМеню" id="36"/>
 									<ExtendedTooltip name="ЭлектронныеПодписиКомуВыданСертификатРасширеннаяПодсказка" id="90"/>
 								</InputField>
@@ -1007,11 +1026,11 @@
 									<ContextMenu name="ЭлектронныеПодписиДатаПодписиКонтекстноеМеню" id="38"/>
 									<ExtendedTooltip name="ЭлектронныеПодписиДатаПодписиРасширеннаяПодсказка" id="91"/>
 								</InputField>
-								<InputField name="ЭлектронныеПодписиКомментарий" id="39">
-									<DataPath>ЭлектронныеПодписи.Комментарий</DataPath>
+								<InputField name="ЭлектронныеПодписиТипПодписи" id="295">
+									<DataPath>ЭлектронныеПодписи.ТипПодписи</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ЭлектронныеПодписиКомментарийКонтекстноеМеню" id="40"/>
-									<ExtendedTooltip name="ЭлектронныеПодписиКомментарийРасширеннаяПодсказка" id="92"/>
+									<ContextMenu name="ЭлектронныеПодписиТипПодписиКонтекстноеМеню" id="296"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиТипПодписиРасширеннаяПодсказка" id="297"/>
 								</InputField>
 								<ColumnGroup name="ЭлектронныеПодписиПроверка" id="154">
 									<Title>
@@ -1027,6 +1046,7 @@
 											<DataPath>ЭлектронныеПодписи.Статус</DataPath>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>10</Width>
+											<Height>2</Height>
 											<ContextMenu name="ЭлектронныеПодписиСтатусКонтекстноеМеню" id="42"/>
 											<ExtendedTooltip name="ЭлектронныеПодписиСтатусРасширеннаяПодсказка" id="93"/>
 										</InputField>
@@ -1034,18 +1054,42 @@
 											<DataPath>ЭлектронныеПодписи.ОписаниеОшибки</DataPath>
 											<TitleLocation>None</TitleLocation>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoMaxHeight>false</AutoMaxHeight>
 											<ContextMenu name="ЭлектронныеПодписиОписаниеОшибкиКонтекстноеМеню" id="194"/>
 											<ExtendedTooltip name="ЭлектронныеПодписиОписаниеОшибкиРасширеннаяПодсказка" id="195"/>
 										</InputField>
 										<InputField name="ЭлектронныеПодписиДатаПроверкиПодписи" id="151">
 											<DataPath>ЭлектронныеПодписи.ДатаПроверкиПодписи</DataPath>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoCellHeight>true</AutoCellHeight>
 											<Width>10</Width>
 											<ContextMenu name="ЭлектронныеПодписиДатаПроверкиПодписиКонтекстноеМеню" id="152"/>
 											<ExtendedTooltip name="ЭлектронныеПодписиДатаПроверкиПодписиРасширеннаяПодсказка" id="153"/>
 										</InputField>
+										<InputField name="ЭлектронныеПодписиМашиночитаемаяДоверенность" id="315">
+											<DataPath>ЭлектронныеПодписи.МашиночитаемаяДоверенность</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ShowInHeader>false</ShowInHeader>
+											<AutoMaxHeight>false</AutoMaxHeight>
+											<ContextMenu name="ЭлектронныеПодписиМашиночитаемаяДоверенностьКонтекстноеМеню" id="316"/>
+											<ExtendedTooltip name="ЭлектронныеПодписиМашиночитаемаяДоверенностьРасширеннаяПодсказка" id="317"/>
+										</InputField>
 									</ChildItems>
 								</ColumnGroup>
+								<InputField name="ЭлектронныеПодписиКомментарий" id="39">
+									<DataPath>ЭлектронныеПодписи.Комментарий</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Height>2</Height>
+									<ContextMenu name="ЭлектронныеПодписиКомментарийКонтекстноеМеню" id="40"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиКомментарийРасширеннаяПодсказка" id="92"/>
+								</InputField>
+								<CheckBoxField name="ЭлектронныеПодписиТребуетсяПроверка" id="306">
+									<DataPath>ЭлектронныеПодписи.ТребуетсяПроверка</DataPath>
+									<Visible>false</Visible>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ЭлектронныеПодписиТребуетсяПроверкаКонтекстноеМеню" id="307"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиТребуетсяПроверкаРасширеннаяПодсказка" id="308"/>
+								</CheckBoxField>
 							</ChildItems>
 						</Table>
 						<LabelDecoration name="Инструкция" id="190">
@@ -1053,7 +1097,7 @@
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Типичные проблемы при работе с программами электронной подписи и их решение</v8:content>
+									<v8:content>Решение типовых проблем при работе с программами электронной подписи</v8:content>
 								</v8:item>
 							</Title>
 							<Hyperlink>true</Hyperlink>
@@ -1117,6 +1161,20 @@
 										<CommandName>Form.Command.ОткрытьСертификатШифрования</CommandName>
 										<ExtendedTooltip name="СертификатыШифрованияОткрытьРасширеннаяПодсказка" id="95"/>
 									</Button>
+									<SearchStringAddition name="СтрокаПоискаСертификатыШифрования" id="303">
+										<AdditionSource>
+											<Item>СертификатыШифрования</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Поиск</v8:content>
+											</v8:item>
+										</Title>
+										<ContextMenu name="СтрокаПоискаСертификатыШифрованияКонтекстноеМеню" id="304"/>
+										<ExtendedTooltip name="СтрокаПоискаСертификатыШифрованияРасширеннаяПодсказка" id="305"/>
+									</SearchStringAddition>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СертификатыШифрованияExtendedTooltip" id="96"/>
@@ -1357,6 +1415,59 @@
 						</v8:StringQualifiers>
 					</Type>
 				</Column>
+				<Column name="ТипПодписи" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип подписи</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ТипыПодписиКриптографии</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СрокДействияПоследнейМеткиВремени" id="15">
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТребуетсяПроверка" id="19">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Требуется проверка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="РезультатПроверкиПодписиПоМЧД" id="23">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="МашиночитаемаяДоверенность" id="24">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Машиночитаемая доверенность</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="МашиночитаемаяДоверенностьВерна" id="25">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="СертификатыШифрования" id="7">
@@ -1472,6 +1583,14 @@
 				<v8:Type>cfg:CatalogRef.УчетныеЗаписиСинхронизацииФайлов</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ИзменениеФайлов" id="5">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПараметрыСвойств" id="20">
+			<Type/>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="СтандартнаяЗаписатьИЗакрыть" id="1">
@@ -1584,7 +1703,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сохранить файл на диск или другое устройство</v8:content>
+					<v8:content>Сохранить файл на компьютер или другое устройство</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1737,7 +1856,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сохранить файл на диск или другое устройство вместе с электронной подписью</v8:content>
+					<v8:content>Сохранить файл на компьютер или другое устройство вместе с электронной подписью</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>СохранитьВместеСЭП</Action>
@@ -1747,13 +1866,13 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Обновить из файла на диске...</v8:content>
+					<v8:content>Обновить из файла на компьютере...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Обновить из файла на диске</v8:content>
+					<v8:content>Обновить из файла на компьютере или другого устройства</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ОбновитьИзФайлаНаДиске</Action>
@@ -1790,7 +1909,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПроверитьЭП</Action>
-			<ModifiesSavedData>true</ModifiesSavedData>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="УдалитьЭП" id="20">
@@ -1823,7 +1941,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПроверитьВсе</Action>
-			<ModifiesSavedData>true</ModifiesSavedData>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СохранитьПодпись" id="22">
@@ -1915,7 +2032,7 @@
 			</ToolTip>
 			<Picture>
 				<xr:Ref>CommonPicture.ОтправитьЭлектронноеПисьмо</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>Отправить</Action>
 			<Representation>TextPicture</Representation>
@@ -1980,6 +2097,40 @@
 			<ModifiesSavedData>true</ModifiesSavedData>
 			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
+		<Command name="Удалить" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить данные файла</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DeleteDirectly</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Удалить</Action>
+		</Command>
+		<Command name="ПродлитьДействиеПодписей" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продлить действие...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продлить действие подписей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПродлитьДействиеПодписей</Action>
+		</Command>
 	</Commands>
 	<Parameters>
 		<Parameter name="Ключ">
@@ -2035,7 +2186,7 @@
 	<CommandInterface>
 		<NavigationPanel>
 			<Item>
-				<Command>0:346cb8b7-a20e-4a06-823e-26dfb2e3e741</Command>
+				<Command>0</Command>
 				<Type>Added</Type>
 				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
 				<DefaultVisible>false</DefaultVisible>
@@ -2058,7 +2209,7 @@
 				</Visible>
 			</Item>
 			<Item>
-				<Command>0:52e0ede7-de57-4640-b432-96e56131f277</Command>
+				<Command>0</Command>
 				<Type>Added</Type>
 				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
 				<Index>3</Index>

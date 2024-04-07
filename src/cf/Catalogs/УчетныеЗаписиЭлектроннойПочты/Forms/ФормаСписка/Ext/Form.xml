@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<MobileDeviceCommandBarContent>
 		<xr:Item>
 			<xr:Presentation/>
@@ -94,6 +94,9 @@
 				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="38"/>
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="39"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="Наименование" id="4">
 					<DataPath>Список.Наименование</DataPath>
@@ -126,7 +129,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Адрес электронной почты</v8:content>
+							<v8:content>Адрес почты</v8:content>
 						</v8:item>
 					</Title>
 					<Width>20</Width>
@@ -196,7 +199,6 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>~Список.Ref</Field>
 				<Field>Список.Ссылка</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
@@ -206,12 +208,9 @@
 	СправочникУчетныеЗаписиЭлектроннойПочты.Ссылка КАК Ссылка,
 	СправочникУчетныеЗаписиЭлектроннойПочты.ПометкаУдаления КАК ПометкаУдаления,
 	СправочникУчетныеЗаписиЭлектроннойПочты.Наименование КАК Наименование,
-	СправочникУчетныеЗаписиЭлектроннойПочты.SMTPАутентификация КАК SMTPАутентификация,
 	СправочникУчетныеЗаписиЭлектроннойПочты.АдресЭлектроннойПочты КАК АдресЭлектроннойПочты,
 	СправочникУчетныеЗаписиЭлектроннойПочты.ВремяОжидания КАК ВремяОжидания,
 	СправочникУчетныеЗаписиЭлектроннойПочты.ИмяПользователя КАК ИмяПользователя,
-	СправочникУчетныеЗаписиЭлектроннойПочты.ИспользоватьБезопасныйВходНаСерверВходящейПочты КАК ИспользоватьБезопасныйВходНаСерверВходящейПочты,
-	СправочникУчетныеЗаписиЭлектроннойПочты.ИспользоватьБезопасныйВходНаСерверИсходящейПочты КАК ИспользоватьБезопасныйВходНаСерверИсходящейПочты,
 	СправочникУчетныеЗаписиЭлектроннойПочты.ИспользоватьДляОтправки КАК ИспользоватьДляОтправки,
 	СправочникУчетныеЗаписиЭлектроннойПочты.ИспользоватьДляПолучения КАК ИспользоватьДляПолучения,
 	СправочникУчетныеЗаписиЭлектроннойПочты.ИспользоватьЗащищенноеСоединениеДляВходящейПочты КАК ИспользоватьЗащищенноеСоединениеДляВходящейПочты,
@@ -225,13 +224,7 @@
 	СправочникУчетныеЗаписиЭлектроннойПочты.ПротоколВходящейПочты КАК ПротоколВходящейПочты,
 	СправочникУчетныеЗаписиЭлектроннойПочты.СерверВходящейПочты КАК СерверВходящейПочты,
 	СправочникУчетныеЗаписиЭлектроннойПочты.СерверИсходящейПочты КАК СерверИсходящейПочты,
-	СправочникУчетныеЗаписиЭлектроннойПочты.СпособPOP3Аутентификации КАК СпособPOP3Аутентификации,
-	СправочникУчетныеЗаписиЭлектроннойПочты.СпособSMTPАутентификации КАК СпособSMTPАутентификации,
 	СправочникУчетныеЗаписиЭлектроннойПочты.ТребуетсяВходНаСерверПередОтправкой КАК ТребуетсяВходНаСерверПередОтправкой,
-	СправочникУчетныеЗаписиЭлектроннойПочты.УдалитьВПредставлениеВключатьИмяПользователя КАК УдалитьВПредставлениеВключатьИмяПользователя,
-	СправочникУчетныеЗаписиЭлектроннойПочты.УдалитьОтветственныйЗаОбработкуПисем КАК УдалитьОтветственныйЗаОбработкуПисем,
-	СправочникУчетныеЗаписиЭлектроннойПочты.УдалитьПароль КАК УдалитьПароль,
-	СправочникУчетныеЗаписиЭлектроннойПочты.УдалитьПарольSMTP КАК УдалитьПарольSMTP,
 	СправочникУчетныеЗаписиЭлектроннойПочты.ОтправлятьСкрытыеКопииПисемНаЭтотАдрес КАК ОтправлятьСкрытыеКопииПисемНаЭтотАдрес,
 	СправочникУчетныеЗаписиЭлектроннойПочты.ВладелецУчетнойЗаписи КАК ВладелецУчетнойЗаписи,
 	СправочникУчетныеЗаписиЭлектроннойПочты.Предопределенный КАК Предопределенный,

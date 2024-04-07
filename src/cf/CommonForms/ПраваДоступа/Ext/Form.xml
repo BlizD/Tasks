@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<Group>HorizontalIfPossible</Group>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -23,16 +23,22 @@
 				<CommandName>Form.Command.ИзменитьГруппу</CommandName>
 				<ExtendedTooltip name="ФормаИзменитьГруппуExtendedTooltip" id="111"/>
 			</Button>
-			<Button name="ФормаОтчетПраваДоступа" id="76">
+			<Button name="ФормаОтчетПраваПользователя" id="158">
 				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ОтчетПоПравамДоступа</CommandName>
-				<ExtendedTooltip name="ФормаОтчетПраваДоступаExtendedTooltip" id="112"/>
+				<CommandName>Form.Command.ОтчетПраваПользователя</CommandName>
+				<ExtendedTooltip name="ФормаОтчетПраваПользователяРасширеннаяПодсказка" id="159"/>
 			</Button>
 			<Button name="ФормаОбновить" id="57">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.Command.Обновить</CommandName>
 				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 				<ExtendedTooltip name="ФормаОбновитьExtendedTooltip" id="115"/>
+			</Button>
+			<Button name="ФормаОтчетПраваДоступа" id="76">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОтчетПоПравамДоступа</CommandName>
+				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
+				<ExtendedTooltip name="ФормаОтчетПраваДоступаExtendedTooltip" id="112"/>
 			</Button>
 			<ButtonGroup name="ПанельФормы" id="28">
 				<Title>
@@ -53,6 +59,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
 	</Events>
@@ -159,6 +166,20 @@
 										<CommandName>Form.Command.ИзменитьГруппу</CommandName>
 										<ExtendedTooltip name="ГруппыДоступаИзменитьГруппуExtendedTooltip" id="123"/>
 									</Button>
+									<SearchStringAddition name="ГруппыДоступаСтрокаПоиск" id="160">
+										<AdditionSource>
+											<Item>ГруппыДоступа</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Поиск</v8:content>
+											</v8:item>
+										</Title>
+										<ContextMenu name="ГруппыДоступаСтрокаПоискКонтекстноеМеню" id="161"/>
+										<ExtendedTooltip name="ГруппыДоступаСтрокаПоискРасширеннаяПодсказка" id="162"/>
+									</SearchStringAddition>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ГруппыДоступаExtendedTooltip" id="124"/>
@@ -331,6 +352,20 @@
 										<CommandName>Form.Command.ГруппировкаРолейПоПодсистемам</CommandName>
 										<ExtendedTooltip name="РолиПоказатьПодсистемыРолейExtendedTooltip" id="133"/>
 									</Button>
+									<SearchStringAddition name="РолиСтрокаПоиск" id="163">
+										<AdditionSource>
+											<Item>Роли</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Поиск</v8:content>
+											</v8:item>
+										</Title>
+										<ContextMenu name="РолиСтрокаПоискКонтекстноеМеню" id="164"/>
+										<ExtendedTooltip name="РолиСтрокаПоискРасширеннаяПодсказка" id="165"/>
+									</SearchStringAddition>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="РолиExtendedTooltip" id="134"/>
@@ -579,6 +614,11 @@
 		<Attribute name="ПарольПользователяСервиса" id="3">
 			<Type/>
 		</Attribute>
+		<Attribute name="ГруппаДоступаАдминистраторы" id="7">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ГруппыДоступа</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ВключитьВГруппу" id="1">
@@ -654,7 +694,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Отчет по правам доступа</v8:content>
+					<v8:content>Отчет по правам доступа (старый)</v8:content>
 				</v8:item>
 			</Title>
 			<Picture>
@@ -685,6 +725,20 @@
 			<Action>ГруппировкаРолейПоПодсистемам</Action>
 			<Representation>TextPicture</Representation>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОтчетПраваПользователя" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчет Права пользователя</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.Report</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтчетПраваПользователя</Action>
+			<Representation>TextPicture</Representation>
 		</Command>
 	</Commands>
 	<Parameters>

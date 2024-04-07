@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -31,6 +31,22 @@
 				<LocationInCommandBar>InAdditionalSubmenu</LocationInCommandBar>
 				<ExtendedTooltip name="ИзменитьСоставДополнительныхСведенийExtendedTooltip" id="24"/>
 			</Button>
+			<SearchStringAddition name="СписокПоиск" id="42">
+				<AdditionSource>
+					<Item>ТаблицаЗначенийСвойств</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокПоискКонтекстноеМеню" id="43"/>
+				<ExtendedTooltip name="СписокПоискРасширеннаяПодсказка" id="44"/>
+			</SearchStringAddition>
+			<SearchControlAddition name="СписокПоискУправление" id="45">
+				<AdditionSource>
+					<Item>ТаблицаЗначенийСвойств</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокПоискУправлениеКонтекстноеМеню" id="46"/>
+				<ExtendedTooltip name="СписокПоискУправлениеРасширеннаяПодсказка" id="47"/>
+			</SearchControlAddition>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -87,6 +103,7 @@
 				<ExtendedTooltip name="ТаблицаЗначенийСвойствУправлениеПоискомРасширеннаяПодсказка" id="38"/>
 			</SearchControlAddition>
 			<Events>
+				<Event name="Selection">ТаблицаЗначенийСвойствВыбор</Event>
 				<Event name="BeforeAddRow">ТаблицаЗначенийСвойствПередНачаломДобавления</Event>
 				<Event name="BeforeDeleteRow">ТаблицаЗначенийСвойствПередУдалением</Event>
 				<Event name="BeforeRowChange">ТаблицаЗначенийСвойствПередНачаломИзменения</Event>
@@ -151,6 +168,26 @@
 					<ContextMenu name="ТаблицаЗначенийСвойствЗначениеКонтекстноеМеню" id="11"/>
 					<ExtendedTooltip name="ТаблицаЗначенийСвойствЗначениеExtendedTooltip" id="29"/>
 				</InputField>
+				<LabelField name="ТаблицаЗначенийСвойствКолонкаВопрос" id="39">
+					<DataPath>ТаблицаЗначенийСвойств.КолонкаВопрос</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>?</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подсказка</v8:content>
+						</v8:item>
+					</ToolTip>
+					<CellHyperlink>true</CellHyperlink>
+					<Width>2</Width>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="ТаблицаЗначенийСвойствКолонкаВопросКонтекстноеМеню" id="40"/>
+					<ExtendedTooltip name="ТаблицаЗначенийСвойствКолонкаВопросРасширеннаяПодсказка" id="41"/>
+				</LabelField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -242,12 +279,37 @@
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
+				<Column name="КолонкаВопрос" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Колонка вопрос</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Подсказка" id="11">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="ДоступныеНаборыСвойств" id="2">
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<Settings xsi:type="v8:TypeDescription"/>
 		</Attribute>
 		<Attribute name="СсылкаНаОбъект" id="5">
 			<Type>

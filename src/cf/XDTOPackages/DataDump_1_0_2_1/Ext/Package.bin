@@ -1,0 +1,59 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/1cFresh/Data/Dump/1.0.2.1">
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<valueType name="ClientRunMode" base="xs:string" variety="Atomic">
+		<enumeration>Auto</enumeration>
+		<enumeration>OrdinaryApplication</enumeration>
+		<enumeration>ManagedApplication</enumeration>
+	</valueType>
+	<valueType name="FileType" base="xs:string" variety="Atomic">
+		<enumeration>DumpInfo</enumeration>
+		<enumeration>ReferenceMapping</enumeration>
+		<enumeration>Users</enumeration>
+		<enumeration>CustomData</enumeration>
+		<enumeration>SequenceBoundary</enumeration>
+		<enumeration>UserSettings</enumeration>
+		<enumeration xsi:type="xs:string">InfobaseData</enumeration>
+		<enumeration xsi:type="xs:string">PackageContents</enumeration>
+		<enumeration xsi:type="xs:string">ReferenceRebuilding</enumeration>
+	</valueType>
+	<objectType name="Artefact" abstract="true"/>
+	<objectType name="ConfigurationInfo">
+		<property name="Name" type="xs:string" lowerBound="1"/>
+		<property name="Version" type="xs:string" lowerBound="1"/>
+		<property name="Presentation" type="xs:string" lowerBound="1"/>
+		<property name="Vendor" type="xs:string" lowerBound="1"/>
+	</objectType>
+	<objectType name="DumpInfo">
+		<property name="Created" type="xs:dateTime" lowerBound="1"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/Data/Dump/1.0.2.1" name="Configuration" type="d3p1:ConfigurationInfo"/>
+	</objectType>
+	<objectType name="File">
+		<property name="Name" type="xs:string"/>
+		<property name="Directory" type="xs:string" lowerBound="0"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/Data/Dump/1.0.2.1" name="Type" type="d3p1:FileType"/>
+		<property name="Size" type="xs:integer" lowerBound="0"/>
+		<property name="Hash" type="xs:string" lowerBound="0"/>
+		<property name="Count" type="xs:integer" lowerBound="0"/>
+		<property name="DataType" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="InfoBaseUser">
+		<property name="OSAuthentication" type="xs:boolean" lowerBound="1"/>
+		<property name="StandardAuthentication" type="xs:boolean" lowerBound="1"/>
+		<property name="CannotChangePassword" type="xs:boolean" lowerBound="1"/>
+		<property name="Name" type="xs:string" lowerBound="1"/>
+		<property name="DefaultInterface" type="xs:string" lowerBound="1"/>
+		<property name="PasswordIsSet" type="xs:boolean" lowerBound="1"/>
+		<property name="ShowInList" type="xs:boolean" lowerBound="1"/>
+		<property name="FullName" type="xs:string" lowerBound="1"/>
+		<property name="OSUser" type="xs:string" lowerBound="1"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/Data/Dump/1.0.2.1" name="RunMode" type="d3p1:ClientRunMode" lowerBound="1"/>
+		<property name="StoredPasswordValue" type="xs:string" lowerBound="0" nillable="true"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="UUID" type="d3p1:UUID" lowerBound="1"/>
+		<property name="Language" type="xs:string" lowerBound="1"/>
+		<property xmlns:d3p1="http://v8.1c.ru/8.1/data/core" name="DataSeparation" type="d3p1:Structure" nillable="true"/>
+		<property xmlns:d3p1="http://www.1c.ru/1cFresh/Data/Dump/1.0.2.1" name="Roles" type="d3p1:UserRoles"/>
+	</objectType>
+	<objectType name="UserRoles">
+		<property name="Role" type="xs:string" lowerBound="0" upperBound="-1"/>
+	</objectType>
+</package>

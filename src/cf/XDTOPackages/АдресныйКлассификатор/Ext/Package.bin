@@ -1,0 +1,282 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.v8.1c.ru/ssl/AddressSystem">
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<property name="AddressObjects">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.v8.1c.ru/ssl/AddressSystem" name="Object" type="d4p1:Object" lowerBound="0" upperBound="-1"/>
+			<property name="Version" type="xs:int" form="Attribute"/>
+			<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+		</typeDef>
+	</property>
+	<property name="Houses">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.v8.1c.ru/ssl/AddressSystem" name="House" type="d4p1:House" lowerBound="0" upperBound="-1"/>
+			<property name="Version" type="xs:int" form="Attribute"/>
+			<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+		</typeDef>
+	</property>
+	<property name="AdditionalAddressInfo">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AdditionalAddressInfo" type="d4p1:AdditionalAddressInfo" lowerBound="0" upperBound="-1"/>
+			<property name="Version" type="xs:int" form="Attribute"/>
+			<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+		</typeDef>
+	</property>
+	<property name="ArchiveObjects">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.v8.1c.ru/ssl/AddressSystem" name="ArchiveObject" type="d4p1:ArchiveObject" lowerBound="0" upperBound="-1"/>
+			<property name="Version" type="xs:int" form="Attribute"/>
+			<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+		</typeDef>
+	</property>
+	<property name="AddressStatuses">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AddressStatus" type="d4p1:AddressStatus" lowerBound="0" upperBound="-1"/>
+			<property name="Version" type="xs:int" form="Attribute"/>
+			<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+		</typeDef>
+	</property>
+	<property name="RegulatoryDocs">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.v8.1c.ru/ssl/AddressSystem" name="RegulatoryDoc" type="d4p1:RegulatoryDoc" lowerBound="0" upperBound="-1"/>
+			<property name="Version" type="xs:int" form="Attribute"/>
+			<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+		</typeDef>
+	</property>
+	<property name="Landmarks">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.v8.1c.ru/ssl/AddressSystem" name="Landmark" type="d4p1:Landmark" lowerBound="0" upperBound="-1"/>
+			<property name="Version" type="xs:int" form="Attribute"/>
+			<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+		</typeDef>
+	</property>
+	<property name="Steads">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.v8.1c.ru/ssl/AddressSystem" name="Stead" type="d4p1:Stead" lowerBound="0" upperBound="-1"/>
+			<property name="Version" type="xs:int" form="Attribute"/>
+			<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+		</typeDef>
+	</property>
+	<property name="Links">
+		<typeDef xsi:type="ObjectType">
+			<property xmlns:d4p1="http://www.v8.1c.ru/ssl/AddressSystem" name="Link" type="d4p1:Link" lowerBound="0" upperBound="-1"/>
+			<property name="Version" type="xs:int" form="Attribute"/>
+			<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+			<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+		</typeDef>
+	</property>
+	<valueType name="SortDirection" base="xs:string" variety="Atomic">
+		<enumeration>ASC</enumeration>
+		<enumeration>DESC</enumeration>
+	</valueType>
+	<valueType name="StringBlob" variety="Union" memberTypes="{http://www.w3.org/2001/XMLSchema}base64Binary {http://www.w3.org/2001/XMLSchema}string"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/8.1/data/core" name="UUID" variety="Union" memberTypes="{http://v8.1c.ru/8.1/data/core}UUID {http://www.w3.org/2001/XMLSchema}base64Binary"/>
+	<valueType name="Levels" variety="List" itemType="xs:int"/>
+	<objectType name="Object">
+		<property name="REGIONCODE" type="xs:int" form="Attribute"/>
+		<property name="AUTOCODE" type="xs:int" form="Attribute"/>
+		<property name="AREACODE" type="xs:int" form="Attribute"/>
+		<property name="CITYCODE" type="xs:int" form="Attribute"/>
+		<property name="CTARCODE" type="xs:int" form="Attribute"/>
+		<property name="PLACECODE" type="xs:int" form="Attribute"/>
+		<property name="STREETCODE" type="xs:int" form="Attribute"/>
+		<property name="EXTRCODE" type="xs:int" form="Attribute"/>
+		<property name="SEXTCODE" type="xs:int" form="Attribute"/>
+		<property name="AOLEVEL" type="xs:int" form="Attribute"/>
+		<property name="FORMALNAME" type="xs:string" lowerBound="1" form="Attribute"/>
+		<property name="SHORTNAME" type="xs:string" lowerBound="1" form="Attribute"/>
+		<property name="POSTALCODE" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="EXTRAGUID" type="d3p1:UUID" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="CODE" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AOGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property name="CURRSTATUS" type="xs:int" form="Attribute"/>
+	</objectType>
+	<objectType name="ArchiveObject">
+		<property name="REGIONCODE" type="xs:int" lowerBound="1" form="Attribute"/>
+		<property name="AUTOCODE" type="xs:int" form="Attribute"/>
+		<property name="AREACODE" type="xs:int" form="Attribute"/>
+		<property name="CITYCODE" type="xs:int" form="Attribute"/>
+		<property name="CTARCODE" type="xs:int" form="Attribute"/>
+		<property name="PLACECODE" type="xs:int" form="Attribute"/>
+		<property name="STREETCODE" type="xs:int" form="Attribute"/>
+		<property name="EXTRCODE" type="xs:int" form="Attribute"/>
+		<property name="SEXTCODE" type="xs:int" form="Attribute"/>
+		<property name="AOLEVEL" type="xs:int" lowerBound="1" form="Attribute"/>
+		<property name="FORMALNAME" type="xs:string" form="Attribute"/>
+		<property name="SHORTNAME" type="xs:string" form="Attribute"/>
+		<property name="POSTALCODE" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="EXTRAGUID" type="d3p1:UUID" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="CODE" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AOGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AOID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property name="STARTDATE" type="xs:dateTime" lowerBound="0" form="Attribute"/>
+		<property name="ENDDATE" type="xs:dateTime" lowerBound="0" form="Attribute"/>
+		<property name="OPERSTATUS" type="xs:int" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="House">
+		<property name="REGIONCODE" type="xs:int" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AOGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property name="POSTALCODE" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="BUILDINGS" type="d3p1:StringBlob" lowerBound="1" form="Attribute"/>
+	</objectType>
+	<objectType name="AdditionalAddressInfo">
+		<property name="REGIONCODE" type="xs:int" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="EXTRAGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property name="OKATO" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="OKTMO" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="IFNSFL" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="IFNSUL" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="TERRIFNSFL" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="TERRIFNSUL" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+	</objectType>
+	<objectType name="RegulatoryDoc">
+		<property name="REGIONCODE" type="xs:int" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="DOCID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="OBJID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property name="ISDESCR" type="xs:boolean" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="DESCR" type="d3p1:StringBlob" lowerBound="0" nillable="true" form="Attribute"/>
+	</objectType>
+	<objectType name="Landmark">
+		<property name="REGIONCODE" type="xs:int" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="LANDGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AOGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="EXTRAGUID" type="d3p1:UUID" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="LOCATION" type="d3p1:StringBlob" lowerBound="1" form="Attribute"/>
+		<property name="POSTALCODE" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+	</objectType>
+	<objectType name="AddressStatus">
+		<property name="TYPE" type="xs:string" form="Attribute"/>
+		<property name="ID" type="xs:int" form="Attribute"/>
+		<property name="KEY" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="VALUE" type="xs:string" form="Attribute"/>
+	</objectType>
+	<objectType name="Publications">
+		<property name="Publication" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property name="Url" type="xs:string" form="Attribute"/>
+				<property name="Version" type="xs:int" form="Attribute"/>
+				<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+				<property name="UpdateDate" type="xs:dateTime" form="Attribute"/>
+				<property name="Region" lowerBound="0" upperBound="-1" nillable="true">
+					<typeDef xsi:type="ObjectType">
+						<property name="REGIONCODE" type="xs:int" form="Attribute"/>
+						<property name="NAME" type="xs:string" form="Attribute"/>
+						<property name="FORMALNAME" type="xs:string" form="Attribute"/>
+						<property name="SHORTNAME" type="xs:string" form="Attribute"/>
+						<property name="POSTALCODE" type="xs:int" lowerBound="0" nillable="true" form="Attribute"/>
+						<property xmlns:d7p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AOGUID" type="d7p1:UUID" form="Attribute"/>
+						<property name="Url" type="xs:string" form="Attribute"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="AddressAnalysisResult">
+		<property name="Item" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property name="Error" lowerBound="0" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property name="Key" type="xs:string" lowerBound="1" form="Attribute"/>
+						<property name="Text" type="xs:string" lowerBound="1" form="Attribute"/>
+						<property name="Suggestion" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+					</typeDef>
+				</property>
+				<property name="Variant" lowerBound="0" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="http://www.v8.1c.ru/ssl/AddressSystem" name="ID" type="d7p1:UUID" form="Attribute"/>
+						<property name="PostalCode" type="xs:int" lowerBound="0" nillable="true" form="Attribute"/>
+						<property name="KLADRCode" type="xs:long" lowerBound="0" nillable="true" form="Attribute"/>
+						<property name="OKATO" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+						<property name="OKTMO" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+						<property name="IFNSFL" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+						<property name="IFNSUL" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+						<property name="TERRIFNSFL" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+						<property name="TERRIFNSUL" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="AddressList">
+		<property name="Item" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://www.v8.1c.ru/ssl/AddressSystem" name="Address" type="d5p1:АдресРФ"/>
+				<property xmlns:d5p1="http://www.v8.1c.ru/ssl/AddressSystem" name="Levels" type="d5p1:Levels" lowerBound="0" upperBound="1" nillable="true" form="Attribute"/>
+				<property xmlns:d5p1="http://www.v8.1c.ru/ssl/AddressSystem" name="ID" type="d5p1:UUID" lowerBound="0" nillable="false" form="Attribute"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="StringList">
+		<property name="Item" type="xs:string" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="PresentationList">
+		<property name="Title" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="Item" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://www.v8.1c.ru/ssl/AddressSystem" name="ID" type="d5p1:UUID" lowerBound="1" form="Attribute"/>
+				<property name="Presentation" type="xs:string" lowerBound="1" form="Attribute"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="ExtraInfo">
+		<property name="OKATO" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="OKTMO" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="IFNSFL" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="IFNSUL" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="TERRIFNSFL" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+		<property name="TERRIFNSUL" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+	</objectType>
+	<objectType name="АдресРФ">
+		<property name="СубъектРФ" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Округ" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="СвРайМО" lowerBound="0" nillable="true">
+			<typeDef xsi:type="ObjectType">
+				<property name="Район" type="xs:string" lowerBound="0" nillable="true"/>
+				<property name="СвМО" lowerBound="0" nillable="true" form="Element">
+					<typeDef xsi:type="ObjectType">
+						<property name="МунОбр1" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+						<property name="МунОбр2" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Город" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ВнутригРайон" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="НаселПункт" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Улица" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ОКТМО" type="xs:integer" lowerBound="0" nillable="true"/>
+		<property name="ОКАТО" type="xs:integer" lowerBound="0" nillable="true"/>
+		<property name="ДопАдрЭл" lowerBound="0" upperBound="-1" nillable="true">
+			<typeDef xsi:type="ObjectType">
+				<property name="ТипАдрЭл" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+				<property name="Значение" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+				<property name="Номер" lowerBound="0" upperBound="1" nillable="true">
+					<typeDef xsi:type="ObjectType">
+						<property name="Тип" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+						<property name="Значение" type="xs:string" lowerBound="0" nillable="true" form="Attribute"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Адрес_по_документу" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Местоположение" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType name="Stead">
+		<property name="REGIONCODE" type="xs:int" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AOGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property name="POSTALCODE" type="xs:decimal" lowerBound="0" nillable="true" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="NUMBERS" type="d3p1:StringBlob" lowerBound="1" form="Attribute"/>
+	</objectType>
+	<objectType name="Link">
+		<property name="REGIONCODE" type="xs:int" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="AOGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://www.v8.1c.ru/ssl/AddressSystem" name="MUNPARENTGUID" type="d3p1:UUID" lowerBound="1" form="Attribute"/>
+	</objectType>
+</package>

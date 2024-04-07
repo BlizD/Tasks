@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<MobileDeviceCommandBarContent>
 		<xr:Item>
@@ -198,6 +198,34 @@
 					<CommandName>Form.StandardCommand.Help</CommandName>
 					<ExtendedTooltip name="ФормаСправкаExtendedTooltip" id="108"/>
 				</Button>
+				<SearchStringAddition name="ВнешниеПользователиПоиск" id="229">
+					<AdditionSource>
+						<Item>ВнешниеПользователиСписок</Item>
+						<Type>SearchStringRepresentation</Type>
+					</AdditionSource>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Внешние пользователи поиск</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ВнешниеПользователиПоискКонтекстноеМеню" id="230"/>
+					<ExtendedTooltip name="ВнешниеПользователиПоискРасширеннаяПодсказка" id="231"/>
+				</SearchStringAddition>
+				<SearchControlAddition name="ВнешниеПользователиПоискУправление" id="232">
+					<AdditionSource>
+						<Item>ВнешниеПользователиСписок</Item>
+						<Type>SearchControl</Type>
+					</AdditionSource>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Внешние пользователи поиск управление</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ВнешниеПользователиПоискУправлениеКонтекстноеМеню" id="233"/>
+					<ExtendedTooltip name="ВнешниеПользователиПоискУправлениеРасширеннаяПодсказка" id="234"/>
+				</SearchControlAddition>
 			</ChildItems>
 		</CommandBar>
 		<UsualGroup name="ГруппаСодержимое" id="24">
@@ -230,7 +258,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группы пользователей</v8:content>
+									<v8:content>Группы внешних пользователей</v8:content>
 								</v8:item>
 							</Title>
 							<Behavior>Usual</Behavior>
@@ -248,6 +276,7 @@
 									<Header>false</Header>
 									<HorizontalLines>false</HorizontalLines>
 									<VerticalLines>false</VerticalLines>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
 									<InitialTreeView>ExpandTopLevel</InitialTreeView>
 									<EnableDrag>true</EnableDrag>
 									<FileDragMode>AsFile</FileDragMode>
@@ -400,6 +429,7 @@
 									<Header>false</Header>
 									<HorizontalLines>false</HorizontalLines>
 									<VerticalLines>false</VerticalLines>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
 									<EnableStartDrag>true</EnableStartDrag>
 									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>ВнешниеПользователиСписок</DataPath>
@@ -510,17 +540,18 @@
 										<Event name="ValueChoice">ВнешниеПользователиСписокВыборЗначения</Event>
 										<Event name="BeforeAddRow">ВнешниеПользователиСписокПередНачаломДобавления</Event>
 										<Event name="OnActivateRow">ВнешниеПользователиСписокПриАктивизацииСтроки</Event>
+										<Event name="OnGetDataAtServer">ВнешниеПользователиСписокПриПолученииДанныхНаСервере</Event>
 										<Event name="BeforeRowChange">ВнешниеПользователиСписокПередНачаломИзменения</Event>
 										<Event name="OnChange">ВнешниеПользователиСписокПриИзменении</Event>
 									</Events>
 									<ChildItems>
 										<LabelField name="Наименование" id="51">
-											<DataPath>ВнешниеПользователиСписок.Description</DataPath>
+											<DataPath>ВнешниеПользователиСписок.Наименование</DataPath>
 											<ContextMenu name="НаименованиеКонтекстноеМеню" id="52"/>
 											<ExtendedTooltip name="НаименованиеExtendedTooltip" id="122"/>
 										</LabelField>
 										<LabelField name="Ссылка" id="135">
-											<DataPath>ВнешниеПользователиСписок.Ref</DataPath>
+											<DataPath>ВнешниеПользователиСписок.Ссылка</DataPath>
 											<UserVisible>
 												<xr:Common>false</xr:Common>
 											</UserVisible>
@@ -588,6 +619,7 @@
 							<Representation>List</Representation>
 							<TitleLocation>Top</TitleLocation>
 							<Header>false</Header>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ВыбранныеПользователиИГруппы</DataPath>
@@ -695,6 +727,166 @@
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
+		<UsualGroup name="Легенда" id="255">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Легенда</v8:content>
+				</v8:item>
+			</Title>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ЛегендаРасширеннаяПодсказка" id="256"/>
+			<ChildItems>
+				<UsualGroup name="ВходОграничен" id="257">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вход ограничен</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ВходОграниченРасширеннаяПодсказка" id="258"/>
+					<ChildItems>
+						<PictureDecoration name="ВходОграниченКартинка" id="259">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вход ограничен картинка</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.СостояниеПользователя17</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="ВходОграниченКартинкаКонтекстноеМеню" id="260"/>
+							<ExtendedTooltip name="ВходОграниченКартинкаРасширеннаяПодсказка" id="261"/>
+						</PictureDecoration>
+						<LabelDecoration name="ВходОграниченНадпись" id="262">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вход ограничен</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Установлено ограничение входа до даты или
+установлен срок максимальной неактивности</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ContextMenu name="ВходОграниченНадписьКонтекстноеМеню" id="263"/>
+							<ExtendedTooltip name="ВходОграниченНадписьРасширеннаяПодсказка" id="264"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<LabelDecoration name="Отступ1" id="265">
+					<ContextMenu name="Отступ1КонтекстноеМеню" id="266"/>
+					<ExtendedTooltip name="Отступ1РасширеннаяПодсказка" id="267"/>
+				</LabelDecoration>
+				<UsualGroup name="НетВхода" id="268">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нет входа</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="НетВходаРасширеннаяПодсказка" id="269"/>
+					<ChildItems>
+						<PictureDecoration name="НетВходаКартинка" id="270">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нет входа картинка</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.СостояниеПользователя16</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="НетВходаКартинкаКонтекстноеМеню" id="271"/>
+							<ExtendedTooltip name="НетВходаКартинкаРасширеннаяПодсказка" id="272"/>
+						</PictureDecoration>
+						<LabelDecoration name="НетВходаНадпись" id="273">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нет входа</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Не включен вход в программу, нет прав для входа или
+нет ни одного права запуска (тонкий клиент, веб-клиент)</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ContextMenu name="НетВходаНадписьКонтекстноеМеню" id="274"/>
+							<ExtendedTooltip name="НетВходаНадписьРасширеннаяПодсказка" id="275"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<LabelDecoration name="Отступ2" id="276">
+					<ContextMenu name="Отступ2КонтекстноеМеню" id="277"/>
+					<ExtendedTooltip name="Отступ2РасширеннаяПодсказка" id="278"/>
+				</LabelDecoration>
+				<UsualGroup name="БезНастройки" id="279">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без настройки</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="БезНастройкиРасширеннаяПодсказка" id="280"/>
+					<ChildItems>
+						<PictureDecoration name="БезНастройкиКартинка" id="281">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Без настройки картинка</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.СостояниеПользователя18</xr:Ref>
+								<xr:LoadTransparent>false</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="БезНастройкиКартинкаКонтекстноеМеню" id="282"/>
+							<ExtendedTooltip name="БезНастройкиКартинкаРасширеннаяПодсказка" id="283"/>
+						</PictureDecoration>
+						<LabelDecoration name="БезНастройкиНадпись" id="284">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Без настройки</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нет пользователя информационной базы
+(пустое имя для входа)</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ContextMenu name="БезНастройкиНадписьКонтекстноеМеню" id="285"/>
+							<ExtendedTooltip name="БезНастройкиНадписьРасширеннаяПодсказка" id="286"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
 		<Pages name="Комментарии" id="148">
 			<UserVisible>
 				<xr:Common>false</xr:Common>
@@ -764,7 +956,7 @@
 							<Behavior>Usual</Behavior>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<TitleDataPath>Items.ВнешниеПользователиСписок.CurrentData.Description</TitleDataPath>
+							<TitleDataPath>Items.ВнешниеПользователиСписок.CurrentData.Наименование</TitleDataPath>
 							<ExtendedTooltip name="ЗаголовокКомментарияПользователяРасширеннаяПодсказка" id="157"/>
 							<ChildItems>
 								<InputField name="ВнешниеПользователиСписокКомментарий" id="138">
@@ -798,27 +990,23 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>ВнешниеПользователиСписок.Ref</Field>
 				<Field>ВнешниеПользователиСписок.ВозможноСменитьПароль</Field>
 				<Field>ВнешниеПользователиСписок.Недействителен</Field>
+				<Field>ВнешниеПользователиСписок.Ссылка</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	ВнешниеПользователи.Ссылка,
-	ВнешниеПользователи.Подготовлен,
-	ВнешниеПользователи.ПометкаУдаления,
-	ВнешниеПользователи.Недействителен,
-	ВнешниеПользователи.Предопределенный,
-	ВнешниеПользователи.Наименование,
-	ВнешниеПользователи.Комментарий,
+	ВнешниеПользователи.Ссылка КАК Ссылка,
+	ВнешниеПользователи.Подготовлен КАК Подготовлен,
+	ВнешниеПользователи.ПометкаУдаления КАК ПометкаУдаления,
+	ВнешниеПользователи.Недействителен КАК Недействителен,
+	ВнешниеПользователи.Предопределенный КАК Предопределенный,
+	ВнешниеПользователи.Наименование КАК Наименование,
+	ВнешниеПользователи.Комментарий КАК Комментарий,
 	ТИПЗНАЧЕНИЯ(ВнешниеПользователи.Ссылка.ОбъектАвторизации) КАК ТипОбъектаАвторизации,
-	ВЫБОР
-		КОГДА ВнешниеПользователи.ПометкаУдаления
-			ТОГДА 6
-		ИНАЧЕ 7
-	КОНЕЦ КАК НомерКартинки,
+	-1 КАК НомерКартинки,
 	ВЫБОР
 		КОГДА ВнешниеПользователи.Недействителен
 			ТОГДА ЛОЖЬ
@@ -830,9 +1018,12 @@
 			ТОГДА ЛОЖЬ
 		ИНАЧЕ ИСТИНА
 	КОНЕЦ КАК ВозможноСменитьПароль,
-	ВнешниеПользователи.ИдентификаторПользователяИБ
+	ВнешниеПользователи.ИдентификаторПользователяИБ КАК ИдентификаторПользователяИБ,
+	СведенияОПользователях.*
 ИЗ
 	Справочник.ВнешниеПользователи КАК ВнешниеПользователи
+		{ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СведенияОПользователях КАК СведенияОПользователях
+		ПО (СведенияОПользователях.Пользователь = ВнешниеПользователи.Ссылка)}
 ГДЕ
 	ВЫБОР
 			КОГДА &amp;ВсеВнешниеПользователи

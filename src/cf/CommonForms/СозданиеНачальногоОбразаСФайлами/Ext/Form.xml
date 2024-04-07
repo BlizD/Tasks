@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -19,6 +19,12 @@
 				<SkipOnInput>false</SkipOnInput>
 				<CommandName>Form.Command.СоздатьНачальныйОбраз</CommandName>
 				<ExtendedTooltip name="СоздатьНачальныйОбразExtendedTooltip" id="48"/>
+			</Button>
+			<Button name="Назад" id="105">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.Назад</CommandName>
+				<ExtendedTooltip name="НазадРасширеннаяПодсказка" id="106"/>
 			</Button>
 			<Button name="Закрыть" id="44">
 				<Type>CommandBarButton</Type>
@@ -201,23 +207,35 @@
 											<Group>HorizontalIfPossible</Group>
 											<ExtendedTooltip name="ЗаполнитьПараметрыСервернойБазыExtendedTooltip" id="59"/>
 											<ChildItems>
-												<UsualGroup name="ВертикальнаяГруппа1" id="75">
+												<UsualGroup name="ОсновныеПараметрыСервернойБазы" id="75">
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Вертикальная группа 1</v8:content>
+															<v8:content>Основные параметры серверной базы</v8:content>
 														</v8:item>
 													</Title>
 													<Group>Vertical</Group>
 													<Behavior>Usual</Behavior>
 													<Representation>None</Representation>
 													<ShowTitle>false</ShowTitle>
-													<ExtendedTooltip name="ВертикальнаяГруппа1РасширеннаяПодсказка" id="76"/>
+													<ExtendedTooltip name="ОсновныеПараметрыСервернойБазыРасширеннаяПодсказка" id="76"/>
 													<ChildItems>
 														<InputField name="Сервер" id="9">
 															<DataPath>Сервер</DataPath>
 															<ContextMenu name="СерверКонтекстноеМеню" id="10"/>
 															<ExtendedTooltip name="СерверExtendedTooltip" id="60"/>
+														</InputField>
+														<InputField name="ИмяАдминистратораКластера" id="99">
+															<DataPath>ИмяАдминистратораКластера</DataPath>
+															<Wrap>false</Wrap>
+															<ContextMenu name="ИмяАдминистратораКластераКонтекстноеМеню" id="100"/>
+															<ExtendedTooltip name="ИмяАдминистратораКластераExtendedTooltip" id="101"/>
+														</InputField>
+														<InputField name="ПарольАдминистратораКластера" id="102">
+															<DataPath>ПарольАдминистратораКластера</DataPath>
+															<PasswordMode>true</PasswordMode>
+															<ContextMenu name="ПарольАдминистратораКластераКонтекстноеМеню" id="103"/>
+															<ExtendedTooltip name="ПарольАдминистратораКластераExtendedTooltip" id="104"/>
 														</InputField>
 														<InputField name="ИмяБазы" id="11">
 															<DataPath>ИмяБазы</DataPath>
@@ -291,18 +309,18 @@
 														</CheckBoxField>
 													</ChildItems>
 												</UsualGroup>
-												<UsualGroup name="ВертикальнаяГруппа2" id="77">
+												<UsualGroup name="ДополнительныеПараметрыСервернойБазы" id="77">
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Вертикальная группа 2</v8:content>
+															<v8:content>Дополнительные параметры серверной базы</v8:content>
 														</v8:item>
 													</Title>
 													<Group>Vertical</Group>
 													<Behavior>Usual</Behavior>
 													<Representation>None</Representation>
 													<ShowTitle>false</ShowTitle>
-													<ExtendedTooltip name="ВертикальнаяГруппа2РасширеннаяПодсказка" id="78"/>
+													<ExtendedTooltip name="ДополнительныеПараметрыСервернойБазыРасширеннаяПодсказка" id="78"/>
 													<ChildItems>
 														<InputField name="ТипСУБД" id="15">
 															<DataPath>ТипСУБД</DataPath>
@@ -366,6 +384,9 @@
 															</ChoiceList>
 															<ContextMenu name="ТипСУБДКонтекстноеМеню" id="16"/>
 															<ExtendedTooltip name="ТипСУБДExtendedTooltip" id="63"/>
+															<Events>
+																<Event name="OnChange">ТипСУБДПриИзменении</Event>
+															</Events>
 														</InputField>
 														<InputField name="СерверБазыДанных" id="17">
 															<DataPath>СерверБазыДанных</DataPath>
@@ -549,6 +570,13 @@
 							<VerticalAlign>Center</VerticalAlign>
 							<ContextMenu name="СтатусГотовоКонтекстноеМеню" id="97"/>
 							<ExtendedTooltip name="СтатусГотовоРасширеннаяПодсказка" id="98"/>
+						</LabelDecoration>
+						<LabelDecoration name="СтатусОшибка" id="107">
+							<Visible>false</Visible>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="СтатусОшибкаКонтекстноеМеню" id="108"/>
+							<ExtendedTooltip name="СтатусОшибкаРасширеннаяПодсказка" id="109"/>
 						</LabelDecoration>
 					</ChildItems>
 				</Page>
@@ -845,6 +873,36 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ИмяАдминистратораКластера" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя администратора кластера</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПарольАдминистратораКластера" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль администратора кластера</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="СоздатьНачальныйОбраз" id="1">
@@ -862,6 +920,21 @@
 			</ToolTip>
 			<Action>СоздатьНачальныйОбраз</Action>
 			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Назад" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt; Назад</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назад</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Назад</Action>
 		</Command>
 	</Commands>
 </Form>

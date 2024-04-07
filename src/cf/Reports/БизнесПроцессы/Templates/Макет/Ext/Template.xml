@@ -11,11 +11,6 @@
 			<field>Автор</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>БизнесПроцесс</dataPath>
-			<field>БизнесПроцесс</field>
-			<presentationExpression>Наименование</presentationExpression>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Дата</dataPath>
 			<field>Дата</field>
 			<title xsi:type="v8:LocalStringType">
@@ -57,16 +52,29 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>БизнесПроцесс</dataPath>
+			<field>БизнесПроцесс</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бизнес процесс</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	ДанныеБизнесПроцессов.БизнесПроцесс,
+	ДанныеБизнесПроцессов.Владелец КАК БизнесПроцесс,
 	ДанныеБизнесПроцессов.Дата,
 	ДанныеБизнесПроцессов.Завершен,
 	ДанныеБизнесПроцессов.Стартован,
 	ДанныеБизнесПроцессов.Автор,
 	ДанныеБизнесПроцессов.ДатаЗавершения,
 	ДанныеБизнесПроцессов.Наименование,
-	ТИПЗНАЧЕНИЯ(ДанныеБизнесПроцессов.БизнесПроцесс) КАК ВидБизнесПроцесса
+	ТИПЗНАЧЕНИЯ(ДанныеБизнесПроцессов.Владелец) КАК ВидБизнесПроцесса
 ИЗ
 	РегистрСведений.ДанныеБизнесПроцессов КАК ДанныеБизнесПроцессов
 {ГДЕ

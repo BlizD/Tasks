@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Group>HorizontalIfPossible</Group>
 	<ChildItemsWidth>LeftWide</ChildItemsWidth>
 	<AutoTime>CurrentOrLast</AutoTime>
@@ -234,6 +234,7 @@
 								<Table name="Участники" id="23">
 									<Representation>List</Representation>
 									<SkipOnInput>false</SkipOnInput>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
 									<AutoInsertNewRow>true</AutoInsertNewRow>
 									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>Объект.Участники</DataPath>
@@ -290,34 +291,93 @@
 									<ChildItems>
 										<InputField name="ПредставлениеКонтакта" id="30">
 											<DataPath>Объект.Участники.ПредставлениеКонтакта</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Контакт</v8:content>
+												</v8:item>
+											</Title>
 											<Width>15</Width>
 											<Wrap>false</Wrap>
+											<ChoiceButton>true</ChoiceButton>
+											<OpenButton>true</OpenButton>
 											<ContextMenu name="ПредставлениеКонтактаКонтекстноеМеню" id="31"/>
 											<ExtendedTooltip name="ПредставлениеКонтактаExtendedTooltip" id="126"/>
 											<Events>
 												<Event name="OnChange">ПредставлениеКонтактаПриИзменении</Event>
+												<Event name="AutoComplete">ПредставлениеКонтактаАвтоПодбор</Event>
+												<Event name="StartChoice">ПредставлениеКонтактаНачалоВыбора</Event>
+												<Event name="Opening">ПредставлениеКонтактаОткрытие</Event>
+												<Event name="ChoiceProcessing">ПредставлениеКонтактаОбработкаВыбора</Event>
 											</Events>
 										</InputField>
 										<InputField name="КакСвязаться" id="32">
 											<DataPath>Объект.Участники.КакСвязаться</DataPath>
+											<AutoCellHeight>true</AutoCellHeight>
 											<Width>15</Width>
-											<Wrap>false</Wrap>
 											<ContextMenu name="КакСвязатьсяКонтекстноеМеню" id="33"/>
 											<ExtendedTooltip name="КакСвязатьсяExtendedTooltip" id="127"/>
 										</InputField>
-										<InputField name="Контакт" id="28">
-											<DataPath>Объект.Участники.Контакт</DataPath>
-											<Width>15</Width>
-											<Wrap>false</Wrap>
-											<ContextMenu name="КонтактКонтекстноеМеню" id="29"/>
-											<ExtendedTooltip name="КонтактExtendedTooltip" id="128"/>
-											<Events>
-												<Event name="OnChange">КонтактПриИзменении</Event>
-												<Event name="StartChoice">КонтактНачалоВыбора</Event>
-											</Events>
-										</InputField>
 									</ChildItems>
 								</Table>
+								<Pages name="СтраницыУказаныКонтакты" id="82">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страницы указаны контакты</v8:content>
+										</v8:item>
+									</Title>
+									<GroupVerticalAlign>Top</GroupVerticalAlign>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="СтраницыУказаныКонтактыExtendedTooltip" id="118"/>
+									<ChildItems>
+										<Page name="СтраницаКонтактыНеЗаполнены" id="83">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница контакты не заполнены</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="СтраницаКонтактыНеЗаполненыExtendedTooltip" id="119"/>
+											<ChildItems>
+												<LabelDecoration name="ДекорацияКонтактыНеЗаполнены" id="84">
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<TextColor>style:FieldSelectionBackColor</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Не для всех участников подобраны контакты.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ДекорацияКонтактыНеЗаполненыКонтекстноеМеню" id="85"/>
+													<ExtendedTooltip name="ДекорацияКонтактыНеЗаполненыExtendedTooltip" id="120"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+										<Page name="СтраницаКонтактыЗаполнены" id="86">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница контакты заполнены</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="СтраницаКонтактыЗаполненыExtendedTooltip" id="121"/>
+											<ChildItems>
+												<LabelDecoration name="ДекорацияКонтактыЗаполнены" id="87">
+													<TextColor>style:ПоясняющийТекст</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Участников рекомендуется подбирать из списка контактов.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ДекорацияКонтактыЗаполненыКонтекстноеМеню" id="88"/>
+													<ExtendedTooltip name="ДекорацияКонтактыЗаполненыExtendedTooltip" id="122"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
 							</ChildItems>
 						</Page>
 						<Page name="СтраницаКомментарий" id="89">
@@ -419,58 +479,6 @@
 					<ContextMenu name="ВажностьКонтекстноеМеню" id="48"/>
 					<ExtendedTooltip name="ВажностьExtendedTooltip" id="104"/>
 				</InputField>
-				<Pages name="СтраницыУказаныКонтакты" id="82">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страницы указаны контакты</v8:content>
-						</v8:item>
-					</Title>
-					<GroupVerticalAlign>Top</GroupVerticalAlign>
-					<PagesRepresentation>None</PagesRepresentation>
-					<ExtendedTooltip name="СтраницыУказаныКонтактыExtendedTooltip" id="118"/>
-					<ChildItems>
-						<Page name="СтраницаКонтактыНеЗаполнены" id="83">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страница контакты не заполнены</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="СтраницаКонтактыНеЗаполненыExtendedTooltip" id="119"/>
-							<ChildItems>
-								<LabelDecoration name="ДекорацияКонтактыНеЗаполнены" id="84">
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<TextColor>style:FieldSelectionBackColor</TextColor>
-									<Title formatted="false">
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Не все контакты подобраны</v8:content>
-										</v8:item>
-									</Title>
-									<ContextMenu name="ДекорацияКонтактыНеЗаполненыКонтекстноеМеню" id="85"/>
-									<ExtendedTooltip name="ДекорацияКонтактыНеЗаполненыExtendedTooltip" id="120"/>
-								</LabelDecoration>
-							</ChildItems>
-						</Page>
-						<Page name="СтраницаКонтактыЗаполнены" id="86">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страница контакты заполнены</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="СтраницаКонтактыЗаполненыExtendedTooltip" id="121"/>
-							<ChildItems>
-								<LabelDecoration name="ДекорацияКонтактыЗаполнены" id="87">
-									<TextColor>style:ПоясняющийТекст</TextColor>
-									<ContextMenu name="ДекорацияКонтактыЗаполненыКонтекстноеМеню" id="88"/>
-									<ExtendedTooltip name="ДекорацияКонтактыЗаполненыExtendedTooltip" id="122"/>
-								</LabelDecoration>
-							</ChildItems>
-						</Page>
-					</ChildItems>
-				</Pages>
 				<UsualGroup name="ГруппаДатаАвтор" id="170">
 					<Title>
 						<v8:item>
@@ -614,6 +622,9 @@
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ПараметрыСвойств" id="10">
+			<Type/>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ПозвонитьУчастникам" id="1">
@@ -666,7 +677,7 @@
 	<CommandInterface>
 		<NavigationPanel>
 			<Item>
-				<Command>3:617de19c-bf01-4900-832a-c169e9faeb79</Command>
+				<Command>0</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>
@@ -674,7 +685,7 @@
 				</Visible>
 			</Item>
 			<Item>
-				<Command>3:ee6e5e56-5848-46b6-89bf-b9345a57d94c</Command>
+				<Command>0</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>
@@ -682,7 +693,7 @@
 				</Visible>
 			</Item>
 			<Item>
-				<Command>3:fb5b79a2-caec-4c6e-a112-27e78a184d5e</Command>
+				<Command>0</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>
@@ -690,7 +701,7 @@
 				</Visible>
 			</Item>
 			<Item>
-				<Command>CommonCommand.СтруктураПодчиненности</Command>
+				<Command>CommonCommand.СвязанныеДокументы</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>

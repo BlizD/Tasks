@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="ПричинаОтмены" id="4">
+			<DataPath>ПричинаОтмены</DataPath>
+			<Width>50</Width>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Height>5</Height>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="ПричинаОтменыКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ПричинаОтменыРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<CommandBar name="ГруппаКоманднаяПанель" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalLocation>Right</HorizontalLocation>
+			<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="8"/>
+			<ChildItems>
+				<Button name="ОтменитьДоверенность" id="11">
+					<Type>CommandBarButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.ОтменитьДоверенность</CommandName>
+					<ExtendedTooltip name="ОтменитьДоверенностьРасширеннаяПодсказка" id="12"/>
+				</Button>
+				<Button name="Отмена" id="9">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.Cancel</CommandName>
+					<ExtendedTooltip name="ОтменаРасширеннаяПодсказка" id="10"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Доверенность" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogRef.МашиночитаемыеДоверенности</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПричинаОтмены" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Причина отмены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="НомерДоверенности" id="3">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОтменитьДоверенность" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить доверенность</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить доверенность</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтменитьДоверенность</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Доверенность">
+			<Type>
+				<v8:Type>cfg:CatalogRef.МашиночитаемыеДоверенности</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

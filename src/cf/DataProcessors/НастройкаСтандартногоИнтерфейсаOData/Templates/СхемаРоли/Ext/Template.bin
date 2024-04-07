@@ -1,0 +1,36 @@
+﻿<xs:schema xmlns:tns="http://v8.1c.ru/8.2/roles" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://v8.1c.ru/8.2/roles" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xs:complexType name="ObjectType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="right" type="tns:RightType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RestrictionTemplateType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="condition" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RightType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="value" type="xs:boolean"/>
+			<xs:element name="restrictionByCondition" type="tns:RlsType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Rights">
+		<xs:sequence>
+			<xs:element name="object" type="tns:ObjectType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="restrictionTemplate" type="tns:RestrictionTemplateType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="setForNewObjects" type="xs:boolean"/>
+			<xs:element name="setForAttributesByDefault" type="xs:boolean"/>
+			<xs:element name="independentRightsOfChildObjects" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RlsType">
+		<xs:sequence>
+			<xs:element name="field" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="condition" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
