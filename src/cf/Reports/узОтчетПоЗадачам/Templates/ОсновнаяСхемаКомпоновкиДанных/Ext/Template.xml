@@ -135,6 +135,16 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Проект</dataPath>
+			<field>Проект</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проект</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	узЗадачи.Ссылка КАК Задача,
@@ -156,6 +166,11 @@
 	1 КАК КоличествоЗадач,
 	узЗадачи.ЧасыПлан,
 	узФактПоЗадачамОбороты.ФактОборот КАК ЧасыФакт,
+	ВЫБОР узЗадачи.ОсновнаяЗадача
+		КОГДА ЗНАЧЕНИЕ(Справочник.узЗадачи.ПустаяСсылка)
+			ТОГДА узЗадачи.Проект
+		ИНАЧЕ узЗадачи.ОсновнаяЗадача.Проект
+	КОНЕЦ КАК Проект,
 	узЗадачи.ЧасыКОплате
 ИЗ
 	Справочник.узЗадачи КАК узЗадачи
@@ -332,6 +347,12 @@
 					</dcsset:right>
 					<dcsset:userSettingID>244b0a1b-9445-4996-aeae-eab1da46a8be</dcsset:userSettingID>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Проект</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>bcf715f5-0923-4151-aa4e-646809ee6c41</dcsset:userSettingID>
+				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -478,6 +499,12 @@
 						<v8:lastId xsi:type="xs:decimal">-1</v8:lastId>
 					</dcsset:right>
 					<dcsset:userSettingID>6d8166e1-6d38-48c1-8a60-75901c0f0582</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Проект</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>ed586cd2-e770-4a16-b399-8bf783e39a25</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:outputParameters>
