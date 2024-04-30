@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
-	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -213,6 +213,115 @@
 						</Table>
 					</ChildItems>
 				</Page>
+				<Page name="ГруппаСтраницаСменаСтатусов" id="107">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Смена статусов</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа страница смена статусов</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаСтраницаСменаСтатусовРасширеннаяПодсказка" id="108"/>
+					<ChildItems>
+						<CheckBoxField name="ОграничиватьСменуСтатусов" id="76">
+							<DataPath>Объект.ОграничиватьСменуСтатусов</DataPath>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Switcher</CheckBoxType>
+							<ContextMenu name="ОграничиватьСменуСтатусовКонтекстноеМеню" id="77"/>
+							<ExtendedTooltip name="ОграничиватьСменуСтатусовРасширеннаяПодсказка" id="78"/>
+							<Events>
+								<Event name="OnChange">ОграничиватьСменуСтатусовПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<Table name="СписокОграничиватьСменуСтатусов" id="79">
+							<TitleLocation>Top</TitleLocation>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>СписокОграничиватьСменуСтатусов</DataPath>
+							<RowPictureDataPath>СписокОграничиватьСменуСтатусов.DefaultPicture</RowPictureDataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Разрешены следующие изменения статусов задач</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:FieldSelectionBackColor</TitleTextColor>
+							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СписокОграничиватьСменуСтатусовКонтекстноеМеню" id="80"/>
+							<AutoCommandBar name="СписокОграничиватьСменуСтатусовКоманднаяПанель" id="81"/>
+							<ExtendedTooltip name="СписокОграничиватьСменуСтатусовРасширеннаяПодсказка" id="82"/>
+							<SearchStringAddition name="СписокОграничиватьСменуСтатусовСтрокаПоиска" id="83">
+								<AdditionSource>
+									<Item>СписокОграничиватьСменуСтатусов</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОграничиватьСменуСтатусовСтрокаПоискаКонтекстноеМеню" id="84"/>
+								<ExtendedTooltip name="СписокОграничиватьСменуСтатусовСтрокаПоискаРасширеннаяПодсказка" id="85"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокОграничиватьСменуСтатусовСостояниеПросмотра" id="86">
+								<AdditionSource>
+									<Item>СписокОграничиватьСменуСтатусов</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОграничиватьСменуСтатусовСостояниеПросмотраКонтекстноеМеню" id="87"/>
+								<ExtendedTooltip name="СписокОграничиватьСменуСтатусовСостояниеПросмотраРасширеннаяПодсказка" id="88"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокОграничиватьСменуСтатусовУправлениеПоиском" id="89">
+								<AdditionSource>
+									<Item>СписокОграничиватьСменуСтатусов</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОграничиватьСменуСтатусовУправлениеПоискомКонтекстноеМеню" id="90"/>
+								<ExtendedTooltip name="СписокОграничиватьСменуСтатусовУправлениеПоискомРасширеннаяПодсказка" id="91"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">СписокОграничиватьСменуСтатусовПередНачаломДобавления</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="СписокОграничиватьСменуСтатусовПользовательГруппа" id="95">
+									<DataPath>СписокОграничиватьСменуСтатусов.ПользовательГруппа</DataPath>
+									<ContextMenu name="СписокОграничиватьСменуСтатусовПользовательГруппаКонтекстноеМеню" id="96"/>
+									<ExtendedTooltip name="СписокОграничиватьСменуСтатусовПользовательГруппаРасширеннаяПодсказка" id="97"/>
+								</LabelField>
+								<LabelField name="СписокОграничиватьСменуСтатусовСтатусИсточник" id="101">
+									<DataPath>СписокОграничиватьСменуСтатусов.СтатусИсточник</DataPath>
+									<ContextMenu name="СписокОграничиватьСменуСтатусовСтатусИсточникКонтекстноеМеню" id="102"/>
+									<ExtendedTooltip name="СписокОграничиватьСменуСтатусовСтатусИсточникРасширеннаяПодсказка" id="103"/>
+								</LabelField>
+								<LabelField name="СписокОграничиватьСменуСтатусовСтатусПриемник" id="104">
+									<DataPath>СписокОграничиватьСменуСтатусов.СтатусПриемник</DataPath>
+									<ContextMenu name="СписокОграничиватьСменуСтатусовСтатусПриемникКонтекстноеМеню" id="105"/>
+									<ExtendedTooltip name="СписокОграничиватьСменуСтатусовСтатусПриемникРасширеннаяПодсказка" id="106"/>
+								</LabelField>
+								<CheckBoxField name="СписокОграничиватьСменуСтатусовОтключено" id="92">
+									<DataPath>~СписокОграничиватьСменуСтатусов.Отключено</DataPath>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="СписокОграничиватьСменуСтатусовОтключеноКонтекстноеМеню" id="93"/>
+									<ExtendedTooltip name="СписокОграничиватьСменуСтатусовОтключеноРасширеннаяПодсказка" id="94"/>
+								</CheckBoxField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 				<Page name="ГруппаДополнительно" id="50">
 					<Title>
 						<v8:item>
@@ -233,13 +342,6 @@
 							<EditMode>EnterOnInput</EditMode>
 							<ContextMenu name="КодКонтекстноеМеню" id="2"/>
 							<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
-						</InputField>
-						<InputField name="Префикс" id="13">
-							<DataPath>Объект.Префикс</DataPath>
-							<ToolTipRepresentation>Button</ToolTipRepresentation>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ПрефиксКонтекстноеМеню" id="14"/>
-							<ExtendedTooltip name="ПрефиксРасширеннаяПодсказка" id="15"/>
 						</InputField>
 					</ChildItems>
 				</Page>
@@ -303,5 +405,88 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
+		<Attribute name="СписокОграничиватьСменуСтатусов" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список ограничивать смену статусов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	РегистрСведенийузДоступностьСменыСтатусовЗадач.ПользовательГруппа КАК ПользовательГруппа,
+	РегистрСведенийузДоступностьСменыСтатусовЗадач.СтатусИсточник КАК СтатусИсточник,
+	РегистрСведенийузДоступностьСменыСтатусовЗадач.СтатусПриемник КАК СтатусПриемник
+ИЗ
+	РегистрСведений.узДоступностьСменыСтатусовЗадач КАК РегистрСведенийузДоступностьСменыСтатусовЗадач
+ГДЕ
+	РегистрСведенийузДоступностьСменыСтатусовЗадач.Проект = &amp;Проект</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПользовательГруппа</dcssch:dataPath>
+					<dcssch:field>ПользовательГруппа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатусПриемник</dcssch:dataPath>
+					<dcssch:field>СтатусПриемник</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатусИсточник</dcssch:dataPath>
+					<dcssch:field>СтатусИсточник</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проект</dcssch:dataPath>
+					<dcssch:field>Проект</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>Проект</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проект</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:CatalogRef.узПроекты</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<MainTable>InformationRegister.узДоступностьСменыСтатусовЗадач</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:dataParameters/>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
 	</Attributes>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.узДоступностьСменыСтатусовЗадач.StandardCommand.OpenByValue.Проект</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
 </Form>
