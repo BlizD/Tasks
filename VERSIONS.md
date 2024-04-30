@@ -23,6 +23,7 @@
 
 Рис. 1 Доступные смены статусов 
 ![image](https://github.com/BlizD/Tasks/assets/10989306/b317065e-d058-4f53-ba23-ead331b76e0d)
+
 Рис. 2 Добавления факта работ прямо из канбан доски
 ![image](https://github.com/BlizD/Tasks/assets/10989306/c9127079-d28d-4524-a6b2-02ebc433e615)
 
