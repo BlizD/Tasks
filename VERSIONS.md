@@ -2,6 +2,8 @@
 Что сделать дополнительно: 
 * Обновить в файле настроек сонара новую версию релиза sonar.projectVersion=1.0.5.ххх
 
+[![Quality Gate Status](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=alert_status)](https://sonar.openbsl.ru/dashboard?id=tasks)
+
 **Выпущена версия 2024.хх.хх.0 (Обновление от хх.хх.2024)**
 
 **Изменения**
