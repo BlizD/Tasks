@@ -4,6 +4,15 @@
 
 [![Quality Gate Status](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=alert_status)](https://sonar.openbsl.ru/dashboard?id=tasks)
 
+**Выпущена версия 2024.xx.xx.x (Обновление от xx.xx.2024)**
+
+**Изменения**
+
+**Расширения**
+
+* [Расширение: База знаний](https://github.com/BlizD/Tasks/issues/275) Новая версия 1.1.6.5 теперь в форме списка можно искать не только по содержимому записей, но и по названию и содержимому прикрепленных файлов. [Видео с демо 1.1.6.5](https://github.com/BlizD/Tasks/issues/275) Автор @serg33rus
+
+
 **Выпущена версия 2024.05.11.1 (Обновление от 11.05.2024)**
 
 **Изменения**
