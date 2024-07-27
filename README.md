@@ -1,5 +1,4 @@
 [![Stars](https://img.shields.io/github/stars/BlizD/Tasks.svg?label=Github%20%E2%98%85&a)](https://github.com/BlizD/Tasks/stargazers)
-[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.neocities.org/badges/2/68359534.json)](https://openyellow.notion.site/openyellow/24727888daa641af95514b46bee4d6f2?p=6374f416ad474bdfb46b33c9b71e4546&amp;pm=s)
 [![Release](https://img.shields.io/github/tag/BlizD/Tasks.svg?label=Last%20release&a)](https://github.com/BlizD/Tasks/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/BlizD/Tasks/total.svg)]() 
 [![Infostart](https://img.shields.io/badge/infostart-downloads%201к-blue.svg)](https://infostart.ru/public/552480/)
@@ -8,6 +7,7 @@
 [![telegram](https://img.shields.io/badge/telegram-channal-green.svg)](https://t.me/tasksm)
 [![telegram](https://img.shields.io/badge/telegram-chat-green.svg)](https://t.me/joinchat/KbD_hhM1tJGb3B3gz6QIvA)
 [![Sonar bugs](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=bugs)](https://sonar.openbsl.ru/dashboard?id=tasks)
+[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.neocities.org/badges/2/68359534.json)](https://openyellow.notion.site/openyellow/24727888daa641af95514b46bee4d6f2?p=6374f416ad474bdfb46b33c9b71e4546&amp;pm=s)
 
 
 ## Скачать последний релиз ## 
