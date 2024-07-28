@@ -57,6 +57,7 @@
 * [Расширение: АТС](https://github.com/BlizD/Tasks/issues/276) Автор @serg33rus
 * [Расширение: База знаний](https://github.com/BlizD/Tasks/issues/275) Автор @serg33rus
 * [Расширение: Автоматизация рутины](https://github.com/hawkxtreme/Tasker1C_AutomationRoutine) Автор @hawkxtreme
+* [Расширение "Интеграция Битрикс24"](https://github.com/hawkxtreme/Tasker1C_Bitrix24) Автор @hawkxtreme
 * [Расширение: Авторегистрация ошибок из внешних баз по HTTP сервису](https://github.com/serg33rus/RegErr) Автор @serg33rus
 * [Расширение: Тайм-трекер](https://github.com/BlizD/Tasks/issues/294) Автор @dyuha07
 * [Расширение: Процедуры и функции (документация)](https://github.com/BlizD/Tasks/issues/324) Автор @DenVortEP
