@@ -7,7 +7,7 @@
 [![telegram](https://img.shields.io/badge/telegram-channal-green.svg)](https://t.me/tasksm)
 [![telegram](https://img.shields.io/badge/telegram-chat-green.svg)](https://t.me/joinchat/KbD_hhM1tJGb3B3gz6QIvA)
 [![Sonar bugs](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=bugs)](https://sonar.openbsl.ru/dashboard?id=tasks)
-[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.neocities.org/badges/2/68359534.json)](https://openyellow.notion.site/openyellow/24727888daa641af95514b46bee4d6f2?p=6374f416ad474bdfb46b33c9b71e4546&amp;pm=s)
+[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/2/68359534.json)](https://openyellow.org/grid?data=top&repo=68359534)
 
 
 ## Скачать последний релиз ## 
