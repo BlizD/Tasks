@@ -49,6 +49,7 @@
 [Badya67](https://github.com/Badya67)
 [KnightAlone](https://infostart.ru/profile/48625/)
 [DenVortEP](https://github.com/DenVortEP)
+[PahomovAA](https://github.com/PahomovAA)
 
 ## Расширения ## 
 * [Расширение: Смена основного стиля на серый с синим (BAS)](https://github.com/BlizD/Tasks/issues/213) Автор @79Vlad
