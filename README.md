@@ -98,8 +98,8 @@ https://infostart.ru/1c/articles/1470366/
 ## Видео инструкции (очень короткие самое длинное это 8 мин) ##
 
 * [RuTube](https://rutube.ru/video/0b8bcbbdbdd80663637e26b240f4dfdd/) - Планирование проекта
-* [RuTube](https://rutube.ru/video/524b1d2bc89385b3aa7f6150c5863cc8/) [Youtube](https://youtu.be/r6tNabne97s) - Общая схема работы службы поддержки (ServiceDesk);
-* [RuTube](https://rutube.ru/video/aa554fc96ec80391bec03a28d88890c6/) [Youtube](https://youtu.be/tqTCGAFS4LQ) - Настройка службы поддержки (ServiceDesk);
+* [VK видео](https://vk.com/video1393438_456239021?t=29s) [Youtube](https://youtu.be/r6tNabne97s) - Общая схема работы службы поддержки (ServiceDesk);
+* [VK видео](https://vk.com/video1393438_456239019?t=1m32s) [Youtube](https://youtu.be/tqTCGAFS4LQ) - Настройка службы поддержки (ServiceDesk);
 * [RuTube](https://rutube.ru/video/30f9e3db23dd514b9a25c6576d3ff936/) [Youtube](https://youtu.be/kwgkH9lPBVo) - канбан доска, перетаскивание карточек, произвольные отборы, видимость колонок;
 * [RuTube](https://rutube.ru/video/d76593b150382091d5b5832d2d59fd62/) [Youtube](https://youtu.be/XzWCFyrIPcI) - как работать с документом "Выпуск релиза";
 * [RuTube](https://rutube.ru/video/8ce1caf65fc35d6f8e81007a8dd5f950/) [Youtube](https://youtu.be/mBQWm7G9U18) - как указать WIP лимит; 
