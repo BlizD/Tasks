@@ -7,11 +7,12 @@
 [![telegram](https://img.shields.io/badge/telegram-channal-green.svg)](https://t.me/tasksm)
 [![telegram](https://img.shields.io/badge/telegram-chat-green.svg)](https://t.me/joinchat/KbD_hhM1tJGb3B3gz6QIvA)
 [![Sonar bugs](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=bugs)](https://sonar.openbsl.ru/dashboard?id=tasks)
+[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/2/68359534.json)](https://openyellow.org/grid?data=top&repo=68359534)
 
 
 ## Скачать последний релиз ## 
 
-* [Скачать последний релиз 2024.05.11.1](https://github.com/BlizD/Tasks/releases/download/2024.05.11.1/Tasks_2024.05.11.1.zip)
+* [Скачать последний релиз 2024.11.04.1](https://github.com/BlizD/Tasks/releases/download/2024.11.04.1/Tasks_2024.11.04.1.zip)
 * [Все релизы](https://github.com/BlizD/Tasks/releases)
 * [Промежуточные тестовые релизы](https://github.com/BlizD/Tasks/issues/129) 
 
@@ -48,6 +49,7 @@
 [Badya67](https://github.com/Badya67)
 [KnightAlone](https://infostart.ru/profile/48625/)
 [DenVortEP](https://github.com/DenVortEP)
+[PahomovAA](https://github.com/PahomovAA)
 
 ## Расширения ## 
 * [Расширение: Смена основного стиля на серый с синим (BAS)](https://github.com/BlizD/Tasks/issues/213) Автор @79Vlad
@@ -56,18 +58,21 @@
 * [Расширение: АТС](https://github.com/BlizD/Tasks/issues/276) Автор @serg33rus
 * [Расширение: База знаний](https://github.com/BlizD/Tasks/issues/275) Автор @serg33rus
 * [Расширение: Автоматизация рутины](https://github.com/hawkxtreme/Tasker1C_AutomationRoutine) Автор @hawkxtreme
+* [Расширение "Интеграция Битрикс24"](https://github.com/hawkxtreme/Tasker1C_Bitrix24) Автор @hawkxtreme
 * [Расширение: Авторегистрация ошибок из внешних баз по HTTP сервису](https://github.com/serg33rus/RegErr) Автор @serg33rus
 * [Расширение: Тайм-трекер](https://github.com/BlizD/Tasks/issues/294) Автор @dyuha07
 * [Расширение: Процедуры и функции (документация)](https://github.com/BlizD/Tasks/issues/324) Автор @DenVortEP
 * [Все расширения](https://github.com/BlizD/Tasks/wiki/Расширения)
 
-# Управление задачами: Канбан доска #
+# Tasks - трекер задач конфигурация "Управление задачами" #
 
-Конфигурация "Управление задачами" с использованием библиотеки стандартных подсистем. Канбан доска
+Tasks - трекер задач, конфигурация 1с: канбан доска, загрузка изменений из хранилища, выпуск релизов, учет времени
+
+Конфигурация "Управление задачами"
 
 Полное описание смотрим на инфостарт: (http://infostart.ru/public/552480/)
 
-Служба поддержки (ServiceDesk): https://infostart.ru/public/788003/
+Организация службы поддержки (ServiceDesk) в конфигурации: https://infostart.ru/public/788003/
 
 Канал в телеграмме: [@mtasks](https://t.me/mtasks)
 
@@ -75,12 +80,11 @@
 
 Почта проекта:  **sdesk1c@bk.ru**
 
-
 ## Видео и публикации: ## 
 
 * Канбан в условиях российской действительности https://infostart.ru/public/871013/
 
-**Используют Управление задачами у себя в работе**
+**Используют Tasks - трекер задач у себя в работе**
 
 * Григорий Шатров. Как приручить драконов - история построения экосистемы на основе 1С https://youtu.be/XAbzrQGDsvM?t=1616
 
@@ -93,30 +97,33 @@ https://infostart.ru/1c/articles/1470366/
 
 ## Видео инструкции (очень короткие самое длинное это 8 мин) ##
 
-* https://youtu.be/r6tNabne97s - Общая схема работы службы поддержки (ServiceDesk);
-* https://youtu.be/tqTCGAFS4LQ - Настройка службы поддержки (ServiceDesk);
-* https://youtu.be/kwgkH9lPBVo - канбан доска, перетаскивание карточек, произвольные отборы, видимость колонок;
-* https://youtu.be/XzWCFyrIPcI - как работать с документом "Выпуск релиза";
-* https://youtu.be/mBQWm7G9U18 - как указать WIP лимит; 
-* https://youtu.be/PMvp0UqKybk - Статистика использования в период с Ноября 16 по Июнь 17;
-* https://youtu.be/eoKuUn8w1r8 - активность пользователя;
-* https://youtu.be/gS1Gi6Acjt4 - как добавить задачу, что такое основная задача, иерархия задач; 
-* https://youtu.be/eYvjlt5P0P4 - как следить за чужой задачей, чеклист/комментарии в задаче;
-* https://youtu.be/uRX_iuWirtI - как добавить свой реквизит в задачу без программирования; 
-* https://youtu.be/uRX_iuWirtI - как указать заметку для задачи, которая будет видна только Вам; 
-* https://youtu.be/jgNKw-6sCeQ - как быстро получить все открытые вопросы по задачам;
-* https://youtu.be/2VGnRisLa4Y - как вести свои текущие дела; 
-* https://youtu.be/khAwpz3eMMI - как ввести описания задачи с помощью Markdown;
-* https://youtu.be/vbdx8JhhDac - связь изменений в метаданных и задач, настройка загрузки изменений из хранилища 1с;
-* https://youtu.be/ILI_-HaBxM8 - как установить конфигурацию и как настроить отправку уведомлений; 
-* https://youtu.be/mBQWm7G9U18 - как установить WIP лимит;
+* [RuTube](https://rutube.ru/video/0b8bcbbdbdd80663637e26b240f4dfdd/) - Планирование проекта
+* [VK видео](https://vk.com/video1393438_456239021?t=29s) [Youtube](https://youtu.be/r6tNabne97s) - Общая схема работы службы поддержки (ServiceDesk);
+* [VK видео](https://vk.com/video1393438_456239019?t=1m32s) [Youtube](https://youtu.be/tqTCGAFS4LQ) - Настройка службы поддержки (ServiceDesk);
+* [RuTube](https://rutube.ru/video/30f9e3db23dd514b9a25c6576d3ff936/) [Youtube](https://youtu.be/kwgkH9lPBVo) - канбан доска, перетаскивание карточек, произвольные отборы, видимость колонок;
+* [RuTube](https://rutube.ru/video/d76593b150382091d5b5832d2d59fd62/) [Youtube](https://youtu.be/XzWCFyrIPcI) - как работать с документом "Выпуск релиза";
+* [RuTube](https://rutube.ru/video/8ce1caf65fc35d6f8e81007a8dd5f950/) [Youtube](https://youtu.be/mBQWm7G9U18) - как указать WIP лимит; 
+* [RuTube](https://rutube.ru/video/6779cbf34cab01810b1d3c7b5392449b/) [Youtube](https://youtu.be/PMvp0UqKybk) - Статистика использования в период с Ноября 16 по Июнь 17;
+* [RuTube](https://rutube.ru/video/bd290512d0e1600865db39abc6eaff13/) [Youtube](https://youtu.be/eoKuUn8w1r8) - активность пользователя;
+* [RuTube](https://rutube.ru/video/30f9e3db23dd514b9a25c6576d3ff936/) [Youtube](https://youtu.be/gS1Gi6Acjt4) - как добавить задачу, что такое основная задача, иерархия задач; 
+* [RuTube](https://rutube.ru/video/b7bada3c78f6d7359f1487f3f78ccd53/) [Youtube](https://youtu.be/eYvjlt5P0P4) - как следить за чужой задачей, чеклист/комментарии в задаче;
+* [RuTube](https://rutube.ru/video/a090f715052361878ebcdca12d7cf6b7/) [Youtube](https://youtu.be/uRX_iuWirtI) - как добавить свой реквизит в задачу без программирования; 
+* [RuTube](https://rutube.ru/video/a090f715052361878ebcdca12d7cf6b7/) [Youtube](https://youtu.be/uRX_iuWirtI) - как указать заметку для задачи, которая будет видна только Вам; 
+* [RuTube](https://rutube.ru/video/f91cc80847d35ef5cc226083e91c6e42/) [Youtube](https://youtu.be/jgNKw-6sCeQ) - как быстро получить все открытые вопросы по задачам;
+* [RuTube](https://rutube.ru/video/d16ae2f9010312de951d785ce66b5c5e/) [Youtube](https://youtu.be/2VGnRisLa4Y) - как вести свои текущие дела; 
+* [RuTube](https://rutube.ru/video/3975e435348e18683d1c3d96226a243e/) [Youtube](https://youtu.be/khAwpz3eMMI) - как ввести описания задачи с помощью Markdown;
+* [RuTube](https://rutube.ru/video/43131cea619cef1d8c220800317efc79/) [Youtube](https://youtu.be/vbdx8JhhDac) - связь изменений в метаданных и задач, настройка загрузки изменений из хранилища 1с;
+* [RuTube](https://rutube.ru/video/b9d51260fe54bc731ecf24c9c0fe4701/) [Youtube](https://youtu.be/ILI_-HaBxM8) - как установить конфигурацию и как настроить отправку уведомлений; 
+* [RuTube](https://rutube.ru/video/069338c0cb4c20ef195f607f7f165cd6/) [Youtube](https://youtu.be/AmgvHFM87No) - Метки (ярлыки) в задачах
+* [RuTube](https://rutube.ru/video/658657547c81bf152ea75abb02d8cd7c/) [Youtube](https://youtu.be/7dqqf_TjCos) - Как добавить свою метку для задачи
+* [RuTube](https://rutube.ru/video/cee1ebc462c854a1cfbcd11342f6e3de/) - Настройка RLS ограничение на уровне записей
 * (пока нет видео, но это уже есть в конфигурации) - как добавить свои статусы задач;
 * (пока нет видео, но это уже есть в конфигурации) - как указывать произвольные цвета для задач;
 * (пока нет видео, но это уже есть в конфигурации) - как указывать фактические, плановые, часы к оплате в задаче;
 * (пока нет видео, но это уже есть в конфигурации) - как включить версионирование для задач;
 * (пока нет видео, но это уже есть в конфигурации) - как добавить напоминание о задаче;
 * (пока нет видео, но это уже есть в конфигурации) - как прикрепить файл к задаче;
-* https://youtu.be/PMvp0UqKybk - Статистика использования в период с Ноября 16 по Июнь 17;
+* [RuTube](https://rutube.ru/video/6779cbf34cab01810b1d3c7b5392449b/) [Youtube](https://youtu.be/PMvp0UqKybk) - Статистика использования в период с Ноября 16 по Июнь 17;
 
 ##  Если вы хотите доработать Tasks, добро пожаловать :)
 
@@ -151,8 +158,6 @@ https://infostart.ru/1c/articles/1470366/
 
 ## Вариант доработки через Github (Краткая инструкция)
 
-Нужно соблюсти очень простые правила:
-
 1. Поискать задачу в списке задач (issues) проекта https://github.com/BlizD/Tasks/issues
 1. Если нет уже существующей задачи, создайте новую, в которой опишите новые требования. В этой задаче можно будет обсудить как само требование, так и реализацию.
     1. Возможно, Ваше требование уже реализовано или может быть реализован другим способом, отличным от придуманного Вами.
@@ -179,15 +184,3 @@ https://infostart.ru/1c/articles/1470366/
 ##  Кейсы в работе
 * [Кейс: как можно настроить уведомления о задаче пришедшей из почты и обработка новых входящих задач](https://github.com/BlizD/Tasks/wiki/Кейс:-как-можно-настроить-уведомления-о-задаче-пришедшей-из-почты)
 
-## Статистика использование программы за 2 года ## 
-С ноября 2016 по январь 2019
-
-![image](https://user-images.githubusercontent.com/10989306/51374627-ab5ff800-1b14-11e9-8949-a5f00daa166b.png)
-
-| Статистика за 2 года | Количество| 
-| ------------- | -----:|
-|Всего задач|3807|
-|Действующие задачи|3564|
-|Выполнено задач|2709|
-|Процент выполненных задач|76%|
-|Выпущено релизов|288|
