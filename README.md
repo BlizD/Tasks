@@ -103,10 +103,9 @@ https://infostart.ru/1c/articles/1470366/
 * [VK видео](https://vk.com/video1393438_456239022) [Youtube](https://youtu.be/kwgkH9lPBVo) - канбан доска, перетаскивание карточек, произвольные отборы, видимость колонок;
 * [VK видео](https://vkvideo.ru/video1393438_456239026) [Youtube](https://youtu.be/XzWCFyrIPcI) - как работать с документом "Выпуск релиза";
 * [VK видео](https://vkvideo.ru/video1393438_456239027) [Youtube](https://youtu.be/mBQWm7G9U18) - как указать WIP лимит; 
-* [RuTube](https://rutube.ru/video/6779cbf34cab01810b1d3c7b5392449b/) [Youtube](https://youtu.be/PMvp0UqKybk) - Статистика использования в период с Ноября 16 по Июнь 17;
-* [RuTube](https://rutube.ru/video/bd290512d0e1600865db39abc6eaff13/) [Youtube](https://youtu.be/eoKuUn8w1r8) - активность пользователя;
-* [RuTube](https://vkvideo.ru/video1393438_456239024) [Youtube](https://youtu.be/gS1Gi6Acjt4) - как добавить задачу, что такое основная задача, иерархия задач; 
-* [RuTube](https://rutube.ru/video/b7bada3c78f6d7359f1487f3f78ccd53/) [Youtube](https://youtu.be/eYvjlt5P0P4) - как следить за чужой задачей, чеклист/комментарии в задаче;
+* [VK видео](https://vkvideo.ru/video1393438_456239029) [Youtube](https://youtu.be/eoKuUn8w1r8) - активность пользователя;
+* [VK видео](https://vkvideo.ru/video1393438_456239030) [Youtube](https://youtu.be/gS1Gi6Acjt4) - как добавить задачу, что такое основная задача, иерархия задач; 
+* [VK видео](https://vkvideo.ru/video1393438_456239031) [Youtube](https://youtu.be/eYvjlt5P0P4) - как следить за чужой задачей, чеклист/комментарии в задаче;
 * [VK видео](https://vkvideo.ru/video1393438_456239025) [Youtube](https://youtu.be/uRX_iuWirtI) - как добавить свой реквизит в задачу без программирования; 
 * [RuTube](https://rutube.ru/video/a090f715052361878ebcdca12d7cf6b7/) [Youtube](https://youtu.be/uRX_iuWirtI) - как указать заметку для задачи, которая будет видна только Вам; 
 * [RuTube](https://rutube.ru/video/f91cc80847d35ef5cc226083e91c6e42/) [Youtube](https://youtu.be/jgNKw-6sCeQ) - как быстро получить все открытые вопросы по задачам;
