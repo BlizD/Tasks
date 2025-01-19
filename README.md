@@ -107,13 +107,13 @@ https://infostart.ru/1c/articles/1470366/
 * [VK видео](https://vkvideo.ru/video1393438_456239030) [Youtube](https://youtu.be/gS1Gi6Acjt4) - как добавить задачу, что такое основная задача, иерархия задач; 
 * [VK видео](https://vkvideo.ru/video1393438_456239031) [Youtube](https://youtu.be/eYvjlt5P0P4) - как следить за чужой задачей, чеклист/комментарии в задаче;
 * [VK видео](https://vkvideo.ru/video1393438_456239025) [Youtube](https://youtu.be/uRX_iuWirtI) - как добавить свой реквизит в задачу без программирования; 
-* [RuTube](https://rutube.ru/video/a090f715052361878ebcdca12d7cf6b7/) [Youtube](https://youtu.be/uRX_iuWirtI) - как указать заметку для задачи, которая будет видна только Вам; 
-* [RuTube](https://rutube.ru/video/f91cc80847d35ef5cc226083e91c6e42/) [Youtube](https://youtu.be/jgNKw-6sCeQ) - как быстро получить все открытые вопросы по задачам;
-* [RuTube](https://rutube.ru/video/d16ae2f9010312de951d785ce66b5c5e/) [Youtube](https://youtu.be/2VGnRisLa4Y) - как вести свои текущие дела; 
-* [RuTube](https://rutube.ru/video/3975e435348e18683d1c3d96226a243e/) [Youtube](https://youtu.be/khAwpz3eMMI) - как ввести описания задачи с помощью Markdown;
-* [RuTube](https://rutube.ru/video/43131cea619cef1d8c220800317efc79/) [Youtube](https://youtu.be/vbdx8JhhDac) - связь изменений в метаданных и задач, настройка загрузки изменений из хранилища 1с;
+* [VK видео](https://vkvideo.ru/video1393438_456239025) [Youtube](https://youtu.be/uRX_iuWirtI) - как указать заметку для задачи, которая будет видна только Вам; 
+* [VK видео](https://vkvideo.ru/video1393438_456239034) [Youtube](https://youtu.be/jgNKw-6sCeQ) - как быстро получить все открытые вопросы по задачам;
+* [VK видео](https://vkvideo.ru/video1393438_456239035) [Youtube](https://youtu.be/2VGnRisLa4Y) - как вести свои текущие дела; 
+* [VK видео](https://vkvideo.ru/video1393438_456239036) [Youtube](https://youtu.be/khAwpz3eMMI) - как ввести описания задачи с помощью Markdown;
+* [VK видео](https://vkvideo.ru/video1393438_456239037) [Youtube](https://youtu.be/vbdx8JhhDac) - связь изменений в метаданных и задач, настройка загрузки изменений из хранилища 1с;
 * [VK видео](https://vkvideo.ru/video1393438_456239023) [Youtube](https://youtu.be/ILI_-HaBxM8) - как установить конфигурацию и как настроить отправку уведомлений; 
-* [RuTube](https://rutube.ru/video/069338c0cb4c20ef195f607f7f165cd6/) [Youtube](https://youtu.be/AmgvHFM87No) - Метки (ярлыки) в задачах
+* [VK видео](https://vkvideo.ru/video1393438_456239038) [Youtube](https://youtu.be/AmgvHFM87No) - Метки (ярлыки) в задачах
 * [RuTube](https://rutube.ru/video/658657547c81bf152ea75abb02d8cd7c/) [Youtube](https://youtu.be/7dqqf_TjCos) - Как добавить свою метку для задачи
 * [RuTube](https://rutube.ru/video/cee1ebc462c854a1cfbcd11342f6e3de/) - Настройка RLS ограничение на уровне записей
 * (пока нет видео, но это уже есть в конфигурации) - как добавить свои статусы задач;
