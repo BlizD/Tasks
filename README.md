@@ -50,6 +50,7 @@
 [KnightAlone](https://infostart.ru/profile/48625/)
 [DenVortEP](https://github.com/DenVortEP)
 [PahomovAA](https://github.com/PahomovAA)
+[RuDaVa](https://github.com/RuDaVa)
 
 ## Как можете помочь проекту ## 
 
