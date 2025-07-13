@@ -115,11 +115,11 @@ https://infostart.ru/1c/articles/1470366/
 * [VK видео](https://vkvideo.ru/video1393438_456239028) - Планирование проекта
 * [VK видео](https://vk.com/video1393438_456239021) [Youtube](https://youtu.be/r6tNabne97s) - Общая схема работы службы поддержки (ServiceDesk);
 * [VK видео](https://vk.com/video1393438_456239019) [Youtube](https://youtu.be/tqTCGAFS4LQ) - Настройка службы поддержки (ServiceDesk);
-* [VK видео](https://vk.com/video1393438_456239022) [Youtube](https://youtu.be/kwgkH9lPBVo) - канбан доска, перетаскивание карточек, произвольные отборы, видимость колонок;
+* [VK видео](https://vk.com/video1393438_456239022) [RuTube](https://rutube.ru/video/2fa8961670a95a908b19ad20a2eb175b/) [Youtube](https://youtu.be/kwgkH9lPBVo) - канбан доска, перетаскивание карточек, произвольные отборы, видимость колонок;
 * [VK видео](https://vkvideo.ru/video1393438_456239026) [Youtube](https://youtu.be/XzWCFyrIPcI) - как работать с документом "Выпуск релиза";
 * [VK видео](https://vkvideo.ru/video1393438_456239027) [Youtube](https://youtu.be/mBQWm7G9U18) - как указать WIP лимит; 
 * [VK видео](https://vkvideo.ru/video1393438_456239029) [Youtube](https://youtu.be/eoKuUn8w1r8) - активность пользователя;
-* [VK видео](https://vkvideo.ru/video1393438_456239030) [Youtube](https://youtu.be/gS1Gi6Acjt4) - как добавить задачу, что такое основная задача, иерархия задач; 
+* [VK видео](https://vkvideo.ru/video1393438_456239030) [RuTube](https://rutube.ru/video/private/fddddda744c66cbe863b31f3287480a7/?p=DSyA-qz2BQ0fOJgjWidC7w) [Youtube](https://youtu.be/gS1Gi6Acjt4) - как добавить задачу, что такое основная задача, иерархия задач; 
 * [VK видео](https://vkvideo.ru/video1393438_456239031) [Youtube](https://youtu.be/eYvjlt5P0P4) - как следить за чужой задачей, чеклист/комментарии в задаче;
 * [VK видео](https://vkvideo.ru/video1393438_456239025) [Youtube](https://youtu.be/uRX_iuWirtI) - как добавить свой реквизит в задачу без программирования; 
 * [VK видео](https://vkvideo.ru/video1393438_456239025) [Youtube](https://youtu.be/uRX_iuWirtI) - как указать заметку для задачи, которая будет видна только Вам; 
