@@ -114,8 +114,8 @@ https://infostart.ru/1c/articles/1470366/
 ## Видео инструкции (очень короткие самое длинное это 8 мин) ##
 
 * [VK видео](https://vkvideo.ru/video1393438_456239028) - Планирование проекта
-* [VK видео](https://vk.com/video1393438_456239021) [Youtube](https://youtu.be/r6tNabne97s) - Общая схема работы службы поддержки (ServiceDesk);
-* [VK видео](https://vk.com/video1393438_456239019) [Youtube](https://youtu.be/tqTCGAFS4LQ) - Настройка службы поддержки (ServiceDesk);
+* [VK видео](https://vk.com/video1393438_456239021) [RuTube](https://rutube.ru/video/0b50c7d0f71cf7d414548b0007e715c5/)[Youtube](https://youtu.be/r6tNabne97s) - Общая схема работы службы поддержки (ServiceDesk);
+* [VK видео](https://vk.com/video1393438_456239019) [RuTube](https://rutube.ru/video/6ad7dc0147fb859ffcab0ef3caf30610/)[Youtube](https://youtu.be/tqTCGAFS4LQ) - Настройка службы поддержки (ServiceDesk);
 * [VK видео](https://vk.com/video1393438_456239022) [RuTube](https://rutube.ru/video/2fa8961670a95a908b19ad20a2eb175b/) [Youtube](https://youtu.be/kwgkH9lPBVo) - канбан доска, перетаскивание карточек, произвольные отборы, видимость колонок;
 * [VK видео](https://vkvideo.ru/video1393438_456239026) [Youtube](https://youtu.be/XzWCFyrIPcI) - как работать с документом "Выпуск релиза";
 * [VK видео](https://vkvideo.ru/video1393438_456239027) [Youtube](https://youtu.be/mBQWm7G9U18) - как указать WIP лимит; 
