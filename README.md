@@ -52,6 +52,7 @@
 [PahomovAA](https://github.com/PahomovAA)
 [RuDaVa](https://github.com/RuDaVa)
 [@OLEG-LV](https://github.com/OLEG-LV)
+[ViktorErmakov](https://github.com/ViktorErmakov)
 
 ## Как можете помочь проекту ## 
 
@@ -78,6 +79,7 @@
 * [Расширение: Авторегистрация ошибок из внешних баз по HTTP сервису](https://github.com/serg33rus/RegErr) Автор @serg33rus
 * [Расширение: Тайм-трекер](https://github.com/BlizD/Tasks/issues/294) Автор @dyuha07
 * [Расширение: Процедуры и функции (документация)](https://github.com/BlizD/Tasks/issues/324) Автор @DenVortEP
+* [Расширение: OneKanban - канбан доска для платформы 1С написанная на HTML/CSS/JS](https://github.com/ViktorErmakov/OneKanban) Автор @ViktorErmakov
 * [Все расширения](https://github.com/BlizD/Tasks/wiki/Расширения)
 
 # Tasks - трекер задач конфигурация "Управление задачами" #
