@@ -4,6 +4,8 @@
 
 [![Quality Gate Status](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=alert_status)](https://sonar.openbsl.ru/dashboard?id=tasks)
 
+[Тебе письмо | Иванов Антон](https://t.me/dark_companions) - личный канал автора (о жизни, финансах, работе, софт скиллы, дети) 
+
 ## Как можете помочь проекту ## 
 
 * Можно поставить звезду нашему [проекту](https://github.com/BlizD/Tasks);
@@ -34,6 +36,8 @@
 **Инструкции**
 * [Как добавить телеграмм бота в групповой чат](https://github.com/BlizD/Tasks/wiki/%D0%94%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D1%82%D0%B5%D0%BB%D0%B5%D0%B3%D1%80%D0%B0%D0%BC%D0%BC-%D0%B1%D0%BE%D1%82%D0%B0-%D0%B2-%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%BE%D0%B2%D0%BE%D0%B9-%D1%87%D0%B0%D1%82)
 * [Новые команды телеграмм бота (мои задачи, указание исполнителя для задач, изменить статус задачи)](https://github.com/BlizD/Tasks/wiki/%D0%9A%D0%B0%D0%BA-%D0%B4%D0%BE%D0%B1%D0%B0%D0%B2%D0%BB%D1%8F%D1%82%D1%8C-%D1%87%D0%B5%D1%80%D0%B5%D0%B7-%D1%82%D0%B5%D0%BB%D0%B5%D0%B3%D1%80%D0%B0%D0%BC%D0%BC-%D1%82%D0%B5%D0%BA%D1%83%D1%89%D0%B8%D0%B5-%D0%B4%D0%B5%D0%BB%D0%B0,-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8,-%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B)
+![Image](https://github.com/user-attachments/assets/6ee66923-6df7-4969-b14a-1e10c1df4e44)
+
 
 **Выпущена версия 2025.03.30.1 (Обновление от 30.03.2025)**
 

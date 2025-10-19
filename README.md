@@ -8,7 +8,7 @@
 [![telegram](https://img.shields.io/badge/telegram-chat-green.svg)](https://t.me/joinchat/KbD_hhM1tJGb3B3gz6QIvA)
 [![Sonar bugs](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=bugs)](https://sonar.openbsl.ru/dashboard?id=tasks)
 [![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/2/68359534.json)](https://openyellow.org/grid?data=top&repo=68359534)
-
+[![Static Badge](https://img.shields.io/badge/Blog-channel-orange)](https://t.me/dark_companions)
 
 ## Скачать последний релиз ## 
 
