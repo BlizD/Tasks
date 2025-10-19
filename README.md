@@ -53,6 +53,7 @@
 [RuDaVa](https://github.com/RuDaVa)
 [@OLEG-LV](https://github.com/OLEG-LV)
 [ViktorErmakov](https://github.com/ViktorErmakov)
+[@ЭдуардСуровый](https://t.me/Osmium90)
 
 ## Как можете помочь проекту ## 
 
