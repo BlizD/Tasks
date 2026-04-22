@@ -4,7 +4,7 @@
 [![Infostart](https://img.shields.io/badge/infostart-downloads%201к-blue.svg)](https://infostart.ru/public/552480/)
 [![1clancer.ru](https://img.shields.io/badge/1clancer.ru-downloads%201.3к-orange.svg)](http://1clancer.ru/catalog/2764)
 [![Github Releases](https://img.shields.io/github/downloads/BlizD/Tasks/latest/total.svg)]()
-[![telegram](https://img.shields.io/badge/telegram-channal-green.svg)](https://t.me/tasksm)
+[![telegram](https://img.shields.io/badge/telegram-channel-green.svg)](https://t.me/tasksm)
 [![telegram](https://img.shields.io/badge/telegram-chat-green.svg)](https://t.me/joinchat/KbD_hhM1tJGb3B3gz6QIvA)
 [![Sonar bugs](https://sonar.openbsl.ru/api/project_badges/measure?project=tasks&metric=bugs)](https://sonar.openbsl.ru/dashboard?id=tasks)
 [![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/2/68359534.json)](https://openyellow.org/grid?data=top&repo=68359534)
