@@ -54,6 +54,7 @@
 [@OLEG-LV](https://github.com/OLEG-LV)
 [ViktorErmakov](https://github.com/ViktorErmakov)
 [@ЭдуардСуровый](https://t.me/Osmium90)
+[@pravets](https://github.com/pravets)
 
 ## Как можете помочь проекту ## 
 
