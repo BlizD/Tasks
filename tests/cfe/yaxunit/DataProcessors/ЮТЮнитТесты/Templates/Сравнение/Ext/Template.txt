@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=9">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="GENERATOR" content="MSHTML 11.00.9600.19003">
+        <meta charset="UTF-8" />
+        <!-- jsdiff -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.1.0/diff.min.js" integrity="sha512-vco9RAxEuv4PQ+iTQyuKElwoUOcsVdp+WgU6Lgo82ASpDfF7vI66LlWz+CZc2lMdn52tjjLOuHvy8BQJFp8a1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- diff2html -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
+        <style>
+            //.d2h-file-collapse, .d2h-info, .hidden, .d2h-tag { display: none !important; }
+            html,
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif;
+                font-size: 14px;
+                line-height: 22px;
+            }
+            
+            body {
+                padding-top: 1em;
+            }
+        </style>
+        <script type="text/javascript">
+            function renderDiff() {
+                var renderTo = document.getElementById("container");
+                var expected = document.getElementById("expected").value;
+                var actual = document.getElementById("actual").value;
+                var diff = Diff.createTwoFilesPatch("expected", "actual", expected, actual);
+                var render =new Diff2HtmlUI(renderTo, diff, 
+                    {
+                        inputFormat: 'diff',
+                        synchronisedScroll: true,
+                        matching: 'words',
+                        diffStyle: 'char',
+                        outputFormat: 'side-by-side',
+                        renderNothingWhenEmpty: false,
+                        drawFileList: false,
+                        showFiles: false, 
+                        highlight: false,
+                        stickyFileHeaders: false
+                    }
+                );
+                render.draw();
+            }
+        </script>
+    </head>
+    <body onload="renderDiff();">
+        <div class="hidden">
+            <textarea id="expected">ИсходныйТекст</textarea>
+        </div>
+        <div class="hidden">
+            <textarea id="actual">СравниваемыйТекст</textarea>
+        </div>
+        
+        <div id="container"></div>
+    </body>
+</html>

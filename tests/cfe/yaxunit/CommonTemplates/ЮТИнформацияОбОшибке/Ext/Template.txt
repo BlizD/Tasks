@@ -1,0 +1,167 @@
+﻿<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        html {
+            font-family: monospace, sans-serif;
+            font-size: 10pt;
+            font-style: normal;
+            font-weight: normal;
+        }
+        
+        body {
+            overflow-x: hidden;
+            overflow-y: auto;
+            overflow-wrap: anywhere;
+            margin: 0;
+            padding: 0;
+            display: flow-root;
+        }
+        
+        .caret {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .caret::before {
+            display: inline-block;
+            content: '➖';
+            vertical-align: middle;
+            text-align: center;
+
+            width: 1.4em;
+            height: 1.4em;
+            border: 1px solid silver;
+            border-radius: 10px;
+
+        }
+        
+        .caret-collapse::before {
+            content: '➕'
+        }
+        
+        .hide {
+            display: none;
+        }
+        
+        .status {
+            margin: 0;
+            padding: 0;
+            margin-right: 0.1em;
+        }
+        
+        .status::before {
+            display: inline-block;
+        }
+        
+        .success .status::before {
+            content:url("data:image/svg+xml,%3C!-- Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. --%3E%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='testPassed'%3E%3Cpath id='Path 2' fill-rule='evenodd' clip-rule='evenodd' d='M6.86976 12.9679L14.6479 5.18974L12.5266 3.06842L6.86976 8.72527L4.04133 5.89685L1.92001 8.01817L6.86976 12.9679Z' fill='%2362B543' fill-opacity='0.7'/%3E%3C/g%3E%3C/svg%3E%0A");
+        }
+        
+        .error .status::before {
+            content: url("data:image/svg+xml,%3C!-- Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. --%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23E05555' fill-opacity='.7' fill-rule='evenodd' d='M8,14.5 C4.41014913,14.5 1.5,11.5898509 1.5,8 C1.5,4.41014913 4.41014913,1.5 8,1.5 C11.5898509,1.5 14.5,4.41014913 14.5,8 C14.5,11.5898509 11.5898509,14.5 8,14.5 Z M7,4 L7,8 L9,8 L9,4 L7,4 Z M7,10 L7,12 L9,12 L9,10 L7,10 Z'/%3E%3C/svg%3E%0A");
+        }
+        
+        .failure .status::before {
+            content: url("data:image/svg+xml,%3C!-- Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file. --%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%233574F0' fill-opacity='.7' fill-rule='evenodd' d='M9.20446966,8.00000012 L11.7854095,5.41906027 L10.583328,4.2169787 L8.0023881,6.79791856 L5.42144836,4.21697882 L4.2193668,5.41906038 L6.80030654,8.00000012 L4.21936692,10.5809397 L5.42144848,11.7830213 L8.0023881,9.20208168 L10.5833278,11.7830214 L11.7854094,10.5809399 L9.20446966,8.00000012 Z M8.0023881,14.5 C4.41253722,14.5 1.5023881,11.5898509 1.5023881,8 C1.5023881,4.41014913 4.41253722,1.5 8.0023881,1.5 C11.592239,1.5 14.5023881,4.41014913 14.5023881,8 C14.5023881,11.5898509 11.592239,14.5 8.0023881,14.5 Z'/%3E%3C/svg%3E%0A");
+        }
+        
+        .skipped .status::before {
+            content: url("data:image/svg+xml,%3C!-- Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. --%3E%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='6.5' stroke='%236C707E'/%3E%3Cpath d='M3.5 12.5L12.5 3.5' stroke='%236C707E'/%3E%3C/svg%3E%0A");
+        }
+        
+        .line .status::before {
+            content: '-'
+        }
+        
+        .line {
+            border-top: 1px solid rgb(230, 230, 230);
+        }
+        
+        .row {
+            display: flex;
+            padding-top: 0.5em;
+            cursor: default;
+            flex-direction: column;
+        }
+        
+        .row-title {
+            display: flex;
+            flex-direction:row;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+        }
+        
+        .row-title:hover {
+            background: rgb(230, 230, 230);
+        }
+        
+        pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            margin: 0;
+            display: inline;
+        }
+        .main {
+            font-weight: bold;
+        }
+        
+        .side {
+            color: rgb(96, 96, 96);
+            font-weight: normal;
+        }
+        .error-line, .note-line, .warn-line  {
+            border-left: 4px solid;
+            margin: 2px;
+            padding-left: 4px;
+            display: block;
+        }
+        .error-line {
+            border-color: red;
+        }
+        .note-line {
+            border-color: silver;
+        }
+        .warn-line {
+            border-color: orange;
+        }
+        .log-block {
+            display: flex;
+            padding: 0.5em;
+            margin-left: 2em;
+            flex-direction: column;
+            border: 1px solid #e2e2e2;
+            background: #f7f7f7;
+            border-radius: 6px;
+        }
+        .log-title {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    TREE_CONTENT
+<script type="text/javascript">
+    function toggleTreeItem(event) {
+        this.parentElement.parentElement.querySelector(".nested").classList.toggle("hide");
+        this.classList.toggle("caret-collapse");
+    }    
+    function toggleLog(event) {
+        this.parentElement.querySelector(".nested").classList.toggle("hide");
+    }
+    carets = document.getElementsByClassName("caret");
+    for (i = 0; i < carets.length; i++) {
+        carets[i].addEventListener("click", toggleTreeItem, false);
+    }
+    carets = document.getElementsByClassName("log-title");
+    for (i = 0; i < carets.length; i++) {
+        carets[i].addEventListener("click", toggleLog, false);
+    }
+</script>
+</body>
+</html>

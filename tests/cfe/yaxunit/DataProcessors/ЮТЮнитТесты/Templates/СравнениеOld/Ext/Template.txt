@@ -1,0 +1,936 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8" />
+    <title>Diff test</title>
+    <script>
+        var SourceDiff = SourceDiff || {};
+
+        SourceDiff.Diff = function(ignoreLeadingWS) {
+            var trimTrailingWhiteSpace = function(str) {
+                if (str) {
+                    return str.trim();
+                }
+                return str;
+            };
+
+            var checkTrimLeadingWhiteSpace = function(str) {
+                if (str && ignoreLeadingWS) {
+                    return str.trim();
+                }
+                return str;
+            };
+
+            var trimWhiteSpace = function(str) {
+                if (!str) return str;
+
+                if (ignoreLeadingWS) {
+                    return str.trim();
+                } else {
+                    return str.trim();
+                }
+            };
+
+            var lineDiff = function(originalLine, editedLine) {
+                var originalTrimmed = checkTrimLeadingWhiteSpace(originalLine);
+                var editedTrimmed = checkTrimLeadingWhiteSpace(editedLine);
+
+                var originalOffset = originalLine.length - originalTrimmed.length;
+                var editOffset = editedLine.length - editedTrimmed.length;
+
+                originalTrimmed = trimTrailingWhiteSpace(originalTrimmed);
+                editedTrimmed = trimTrailingWhiteSpace(editedTrimmed);
+
+                var matrix = createMatrix(0, originalTrimmed, editedTrimmed);
+
+                fillMatrix(0, originalTrimmed, editedTrimmed, matrix);
+
+                return createLineDiff(originalTrimmed, editedTrimmed, originalOffset, editOffset, matrix);
+            };
+
+            var createLineDiff = function(originalTrimmed, editedTrimmed, originalOffset, editOffset, matrix) {
+                var diff = new SourceDiff.LineDiff();
+
+                var i = originalTrimmed.length;
+                var j = editedTrimmed.length;
+
+                while (i >= 0 && j >= 0) {
+                    if (originalTrimmed[i - 1] === editedTrimmed[j - 1]) {
+                        if (originalTrimmed[i - 1]) {
+                            diff.addCommon(originalOffset + i - 1, editOffset + j - 1);
+                        }
+                        i--;
+                        j--;
+                    } else if (j >= 0 && (i === 0 || matrix[i][j - 1] >= matrix[i - 1][j])) {
+                        if (editedTrimmed[j - 1].length > 0) {
+                            diff.addInsert(editOffset + j - 1);
+                        }
+                        j--;
+                    } else if (i >= 0 && (j === 0 || matrix[i][j - 1] < matrix[i - 1][j])) {
+                        if (originalTrimmed[i - 1].length > 0) {
+                            diff.addDelete(originalOffset + i - 1);
+                        }
+                        i--;
+                    }
+                }
+
+                return diff;
+            };
+
+            var diff = function(originalText, editedText) {
+                var originalLines = SourceDiff.split(originalText);
+                var editedLines = SourceDiff.split(editedText);
+
+                SourceDiff.padBlankLines(originalLines);
+                SourceDiff.padBlankLines(editedLines);
+
+                var startPos = trimCommonLines(originalLines, editedLines);
+
+                var matrix = createMatrix(startPos, originalLines, editedLines);
+
+                fillMatrix(startPos, originalLines, editedLines, matrix);
+
+                var results = findAddsAndDeletes(originalLines, editedLines, startPos, matrix);
+
+                checkShiftEdits(SourceDiff.split(originalText), results.deleted);
+                checkShiftEdits(SourceDiff.split(editedText), results.added);
+
+                return results;
+            };
+
+            var findAddsAndDeletes = function(originalLines, editedLines, startPos, matrix) {
+                var i = originalLines.length;
+                var j = editedLines.length;
+
+                var added = new SourceDiff.EditSet();
+                var deleted = new SourceDiff.EditSet();
+
+                var allAddsOrDeletes = checkAllAddsOrDeletes(originalLines, editedLines, added) ||
+                    checkAllAddsOrDeletes(editedLines, originalLines, deleted);
+
+                if (!allAddsOrDeletes) {
+                    while (i >= startPos && j >= startPos) {
+                        var m = i - startPos;
+                        var n = j - startPos;
+                        if (m > 0 && n > 0 && linesAreEqual(originalLines[i - 1], editedLines[j - 1])) {
+                            i--;
+                            j--;
+                        } else if (j >= startPos && (i === startPos || matrix[m][n - 1] >= matrix[m - 1][n])) {
+                            if (j - 1 >= startPos && editedLines[j - 1].length > 0) {
+                                added.add(j - 1);
+                            }
+                            j--;
+                        } else if (i >= startPos && (j === startPos || matrix[m][n - 1] < matrix[m - 1][n])) {
+                            if (i - 1 >= startPos && originalLines[i - 1].length > 0) {
+                                deleted.add(i - 1);
+                            }
+                            i--;
+                        }
+                    }
+                }
+
+                return {
+                    added: added,
+                    deleted: deleted
+                };
+            };
+
+            var checkAllAddsOrDeletes = function(lines, otherLines, editSet) {
+                if (lines.length === 1 && lines[0] === '') {
+                    for (var i = 0; i < otherLines.length; i++) {
+                        editSet.add(i);
+                    }
+                    return true;
+                }
+                return false;
+            };
+
+            var linesAreEqual = function(line1, line2) {
+                return trimWhiteSpace(line1) === trimWhiteSpace(line2);
+            };
+
+            //Find all continuous runs of inserts or deletes. For each run, see if it can be shifted forward 1 line.
+            //This is useful for properly pairing opening and closing braces in C-like languages, for example.
+            var checkShiftEdits = function(textLines, editSet) {
+                var editArray = editSet.all();
+                if (editArray.length > 0) {
+                    var startRun = editArray[0];
+
+                    var current = startRun;
+                    for (var i = 1; i < editArray.length; i++) {
+                        if (i === editArray.length - 1) { //end of the run and the edits
+                            if (editArray[i] === current + 1) {
+                                current++;
+                            }
+                            checkShiftRun(textLines, editSet, startRun, current);
+                        } else if (editArray[i] === current + 1) {
+                            current++;
+                        } else { //end of the run
+                            checkShiftRun(textLines, editSet, startRun, current);
+
+                            startRun = current = editArray[i];
+                        }
+                    }
+                }
+            };
+
+            var checkShiftRun = function(textLines, editSet, startRun, endRun) {
+                if (linesAreEqual(textLines[startRun], textLines[endRun + 1]) && lineIsBlank(textLines[startRun + 1])) {
+                    editSet.remove(startRun);
+                    editSet.add(endRun + 1);
+                }
+            };
+
+            var lineIsBlank = function(line) {
+                return /^\s*$/.test(line);
+            };
+
+            var createMatrix = function(startPos, originalLines, editedLines) {
+                var matrix = [];
+                for (var i = 0; i <= originalLines.length - startPos; i++) {
+                    matrix[i] = new Array(editedLines.length - startPos + 1);
+                    matrix[i][0] = 0;
+                }
+
+                for (var j = 1; j <= editedLines.length - startPos; j++) {
+                    matrix[0][j] = 0;
+                }
+
+                return matrix;
+            };
+
+            var fillMatrix = function(startPos, originalLines, editedLines, matrix) {
+                for (var i = 1; i <= originalLines.length - startPos; i++) {
+                    var originalTrimmed = trimWhiteSpace(originalLines[i + startPos - 1]);
+                    for (var j = 1; j <= editedLines.length - startPos; j++) {
+                        var trimmedEdit = trimWhiteSpace(editedLines[j + startPos - 1]);
+                        if (originalTrimmed === trimmedEdit) {
+                            matrix[i][j] = matrix[i - 1][j - 1] + 1;
+                        } else {
+                            matrix[i][j] = Math.max(matrix[i][j - 1], matrix[i - 1][j]);
+                        }
+                    }
+                }
+            };
+
+            var trimCommonLines = function(originalLines, editedLines) {
+                var linesRemaining = function(startPos) {
+                    return originalLines.length > startPos && editedLines.length > startPos
+                };
+
+                var startPos = 0;
+
+                while (linesRemaining(startPos) && linesAreEqual(originalLines[startPos], editedLines[startPos])) {
+                    startPos++;
+                }
+
+                while (linesRemaining(startPos) && linesAreEqual(originalLines[originalLines.length - 1], editedLines[editedLines.length - 1])) {
+                    originalLines.pop();
+                    editedLines.pop();
+                }
+
+                return startPos;
+            };
+
+            return {
+                diff: diff,
+                trimCommonLines: trimCommonLines, //exposed for testing
+                lineDiff: lineDiff
+            };
+        };
+
+        SourceDiff.padBlankLines = function(lines) {
+            if (lines.length === 1 && lines[0] === '') {
+                return;
+            }
+
+            for (var l = 0; l < lines.length; l++) {
+                if (lines[l] === '') {
+                    lines[l] = ' ';
+                }
+            }
+        };
+
+        SourceDiff.split = function(string) {
+            return string.split(/\r?\n/);
+        };
+
+        SourceDiff.LineFormatter = function(results, lineDiffs) {
+            var anchors = new SourceDiff.EditSet();
+
+            var added = results.added.all();
+            var deleted = results.deleted.all();
+
+            var lineIsCommon = function(i) {
+                return !results.added.contains(i) && !results.deleted.contains(i)
+            };
+
+            if (!lineIsCommon(0)) {
+                anchors.add(0);
+            }
+
+            for (var i = 0; i < Math.max(Math.max.apply(null, added), Math.max.apply(null, deleted)); i++) {
+                if (lineIsCommon(i) && !lineIsCommon(i + 1)) {
+                    anchors.add(i);
+                }
+            }
+
+            var formatLeftText = function(text1Lines) {
+                var deletedText = '';
+
+                var startingPos = getStartingPos(results);
+                var text1EndingPos = getEndingPos(results, text1Lines);
+
+                for (var i = startingPos; i < text1EndingPos; i++) {
+                    if (anchors.contains(i)) {
+                        deletedText += '<a name="' + i + '"></a>';
+                    }
+                    if (lineDiffs.contains(i) && results.modifiedLeft.contains(i)) {
+                        var lineDiff = lineDiffs.get(i);
+                        deletedText += appendModifiedLine(text1Lines[i], lineDiff.deleted);
+                    } else {
+                        var className = getClassNameLeft(results, i);
+                        deletedText += appendLine(className, text1Lines[i]);
+                    }
+                }
+
+                return deletedText;
+            };
+
+            var formatRightText = function(text2Lines) {
+                var addedText = '';
+
+                var startingPos = getStartingPos(results);
+                var text2EndingPos = getEndingPos(results, text2Lines);
+
+                for (var i = startingPos; i < text2EndingPos; i++) {
+                    if (lineDiffs.contains(i) && results.modifiedRight.contains(i)) {
+                        var lineDiff = lineDiffs.get(i);
+                        addedText += appendModifiedLine(text2Lines[i], lineDiff.added);
+                    } else {
+                        var className = getClassNameRight(results, i);
+                        addedText += appendLine(className, text2Lines[i]);
+                    }
+                }
+                return addedText;
+            };
+
+            var appendModifiedLine = function(textLine, lineEdits) {
+                var formattedText = '<span class="modified">';
+                var startIndex = 0;
+                for (var j = 0; j < lineEdits.length; j++) {
+                    formattedText += escapeHtml(textLine.substring(startIndex, lineEdits[j].position));
+                    startIndex = lineEdits[j].endPosition + 1;
+                    formattedText += '<span class="modified-light">' + escapeHtml(textLine.substring(lineEdits[j].position, startIndex)) +
+                        '</span>';
+                }
+
+                if (startIndex < textLine.length) {
+                    formattedText += escapeHtml(textLine.substring(startIndex, textLine.length));
+                }
+
+                formattedText += '</span><br>';
+
+                return formattedText;
+            };
+
+            var getStartingPos = function(results) {
+                var allDeletes = results.deleted.all();
+
+                var firstDelete = allDeletes.length > 0 ?
+                    allDeletes[0] :
+                    -1;
+
+                var allAdds = results.added.all();
+
+                var firstAdd = allAdds.length > 0 ?
+                    allAdds[0] :
+                    -1;
+
+                var firstEdit;
+                if (firstDelete === -1) {
+                    firstEdit = firstAdd;
+                } else if (firstAdd === -1) {
+                    firstEdit = firstDelete;
+                } else {
+                    firstEdit = Math.min(firstDelete, firstAdd)
+                }
+
+                return Math.max(0, firstEdit - 10);
+            };
+
+            var getEndingPos = function(results, lines) {
+                var allDeletes = results.deleted.all();
+
+                var lastDelete = allDeletes.length > 0 ?
+                    allDeletes[allDeletes.length - 1] :
+                    0;
+
+                var allAdds = results.added.all();
+
+                var lastAdd = allAdds.length > 0 ?
+                    allAdds[allAdds.length - 1] :
+                    0;
+
+                var lastEdit = Math.max(lastDelete, lastAdd);
+
+                return Math.min(lines.length, lastEdit + 11);
+            };
+
+            var getClassNameLeft = function(results, i) {
+                var className = '';
+                if (results.modifiedLeft.contains(i)) {
+                    className = 'modified';
+                } else if (results.paddingLeft.contains(i)) {
+                    className = 'padding';
+                } else if (results.deleted.contains(i)) {
+                    className = 'deleted';
+                }
+                return className;
+            };
+
+            var getClassNameRight = function(results, i) {
+                var className = '';
+                if (results.modifiedRight.contains(i)) {
+                    className = 'modified';
+                } else if (results.paddingRight.contains(i)) {
+                    className = 'padding';
+                } else if (results.added.contains(i)) {
+                    className = 'inserted';
+                }
+                return className;
+            };
+
+            var appendLine = function(className, line) {
+                var append = '';
+
+                if (className != '') {
+                    append += '<span class="' + className + '">';
+                }
+                append += escapeHtml(line);
+                if (className != '') {
+                    append += '</span>';
+                }
+
+                append += '<br>';
+
+                return append;
+            };
+
+            var escapeHtml = function(string) {
+                var entityMap = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;',
+                    '/': '&#x2F;'
+                };
+
+                var replacedTabs = string.replace(/\t/g, '   ');
+
+                return String(replacedTabs).replace(/[&<>"'\/]/g, function(s) {
+                    return entityMap[s];
+                });
+            };
+
+            var getEditIterator = function() {
+                return new SourceDiff.AnchorIterator(anchors);
+            };
+
+            return {
+                formatLeftText: formatLeftText,
+                formatRightText: formatRightText,
+                getEditIterator: getEditIterator
+            };
+        };
+
+        SourceDiff.LineDiff = function() {
+            var _added = [];
+            var _deleted = [];
+            var _common = [];
+
+            var addCommon = function(leftPosition, rightPosition) {
+                _common.unshift({
+                    leftPosition: leftPosition,
+                    leftEndPosition: leftPosition,
+                    rightPosition: rightPosition,
+                    rightEndPosition: rightPosition
+                });
+            };
+
+            var addDelete = function(position) {
+                _deleted.unshift({
+                    position: position,
+                    endPosition: position
+                });
+            };
+
+            var addInsert = function(position) {
+                _added.unshift({
+                    position: position,
+                    endPosition: position
+                });
+            };
+
+            var editLength = function(edit) {
+                if (!edit) {
+                    return 0;
+                }
+                return edit.endPosition - edit.position + 1;
+            };
+
+            var cleanUp = function() {
+                mergeAdjacent(_added);
+                mergeAdjacent(_deleted);
+                mergeAdjacentCommon();
+
+                do {
+                    var didMerge = false;
+                    for (var i = 0; i < _common.length; i++) {
+                        var equalityLength = _common[i].leftEndPosition - _common[i].leftPosition + 1;
+
+                        var leftDelete = findEditWithEndingPosition(_deleted, _common[i].leftPosition - 1);
+                        var rightDelete = findEditWithPosition(_deleted, _common[i].leftEndPosition + 1);
+
+                        var leftAdd = findEditWithEndingPosition(_added, _common[i].rightPosition - 1);
+                        var rightAdd = findEditWithPosition(_added, _common[i].rightEndPosition + 1);
+                        if (equalityLength <= 8 && editLength(leftDelete) + editLength(leftAdd) >= equalityLength &&
+                            editLength(rightDelete) + editLength(rightAdd) >= equalityLength) {
+                            didMerge = true;
+                            if (leftDelete && rightDelete) {
+                                leftDelete.endPosition = rightDelete.endPosition;
+                                removeEdit(_deleted, rightDelete);
+                            } else if (leftDelete) {
+                                leftDelete.endPosition = _common[i].leftEndPosition;
+                            } else if (rightDelete) {
+                                rightDelete.position = _common[i].leftPosition;
+                            } else {
+                                addEdit(_deleted, _common[i].leftPosition, _common[i].leftEndPosition);
+                            }
+
+                            if (leftAdd && rightAdd) {
+                                leftAdd.endPosition = rightAdd.endPosition;
+                                removeEdit(_added, rightAdd);
+                            } else if (leftAdd) {
+                                leftAdd.endPosition = _common[i].rightEndPosition;
+                            } else if (rightAdd) {
+                                rightAdd.position = _common[i].rightPosition;
+                            } else {
+                                addEdit(_added, _common[i].rightPosition, _common[i].rightEndPosition);
+                            }
+
+                            _common.splice(i, 1);
+                        }
+                    }
+                } while (didMerge)
+            };
+
+            var mergeAdjacentCommon = function() {
+                for (var i = 0; i < _common.length; i++) {
+                    if (i + 1 < _common.length &&
+                        _common[i].leftEndPosition + 1 === _common[i + 1].leftPosition &&
+                        _common[i].rightEndPosition + 1 === _common[i + 1].rightPosition) {
+                        _common[i].leftEndPosition = _common[i + 1].leftEndPosition;
+                        _common[i].rightEndPosition = _common[i + 1].rightEndPosition;
+                        _common.splice(i + 1, 1);
+                        i--;
+                    }
+                }
+            };
+
+            var addEdit = function(edits, position, endPosition) {
+                var newEdit = {
+                    position: position,
+                    endPosition: endPosition
+                };
+
+                if (edits.length === 0) {
+                    edits.push(newEdit);
+                } else if (position < edits[0].position) {
+                    edits.unshift(newEdit);
+                } else {
+                    for (var i = edits.length - 1; i >= 0; i--) {
+                        if (position > edits[i].position) {
+                            edits.splice(i + 1, 0, newEdit);
+                            break;
+                        }
+                    }
+                }
+            };
+
+            var removeEdit = function(edits, item) {
+                for (var i = 0; i < edits.length; i++) {
+                    if (edits[i] === item) {
+                        edits.splice(i, 1);
+                        break;
+                    }
+                }
+            };
+
+            var findEditWithPosition = function(edits, pos) {
+                for (var i = 0; i < edits.length; i++) {
+                    if (edits[i].position === pos) {
+                        return edits[i];
+                    }
+                }
+            };
+
+            var findEditWithEndingPosition = function(edits, endPos) {
+                for (var i = 0; i < edits.length; i++) {
+                    if (edits[i].endPosition === endPos) {
+                        return edits[i];
+                    }
+                }
+            };
+
+            var mergeAdjacent = function(edits) {
+                for (var i = 0; i < edits.length; i++) {
+                    if (i + 1 < edits.length && edits[i].endPosition + 1 === edits[i + 1].position) {
+                        edits[i].endPosition = edits[i + 1].endPosition;
+                        edits.splice(i + 1, 1);
+                        i--;
+                    }
+                }
+            };
+
+            return {
+                addDelete: addDelete,
+                addInsert: addInsert,
+                addCommon: addCommon,
+                cleanUp: cleanUp,
+                added: _added,
+                deleted: _deleted,
+                common: _common
+            };
+        };
+
+        SourceDiff.EditSet = function() {
+            var _set = {};
+
+            var add = function(line) {
+                _set[line] = true;
+            };
+
+            var addValue = function(line, value) {
+                _set[line] = value;
+            };
+
+            var remove = function(line) {
+                _set[line] = undefined;
+            };
+
+            var count = function() {
+                return all().length;
+            };
+
+            var get = function(line) {
+                return _set[line];
+            }
+
+            var sortIntegers = function(a, b) {
+                return a - b;
+            };
+
+            var all = function() {
+                var arr = [];
+
+                for (var prop in _set) {
+                    if (_set[prop]) {
+                        arr.push(parseInt(prop));
+                    }
+                }
+
+                return arr.sort(sortIntegers);
+            };
+
+            var contains = function(lineNumber) {
+                return _set[lineNumber] !== undefined;
+            };
+
+            var updateNumbers = function(lineNumber) {
+                var newSet = {};
+
+                for (var prop in _set) {
+                    var value = _set[prop];
+                    if (value) {
+                        var parsed = parseInt(prop);
+                        if (parsed >= lineNumber) {
+                            newSet[parsed + 1] = value;
+                        } else {
+                            newSet[parsed] = value;
+                        }
+                    }
+                }
+
+                _set = newSet;
+            };
+
+            return {
+                add: add,
+                addValue: addValue,
+                get: get,
+                remove: remove,
+                count: count,
+                all: all,
+                updateNumbers: updateNumbers,
+                contains: contains
+            };
+        };
+
+        SourceDiff.DiffFormatter = function(diff) {
+            var formattedDiff = function(originalText, editedText) {
+                var results = diff.diff(originalText, editedText);
+
+                var lines = lineUpText(originalText, editedText, results);
+
+                var originalLines = lines[0];
+                var editedLines = lines[1];
+
+                findModifiedLines(originalLines, editedLines, results);
+
+                var lineDiffs = diffModifiedLines(originalLines, editedLines, results);
+
+                var lineFormatter = SourceDiff.LineFormatter(results, lineDiffs);
+
+                var deletedText = lineFormatter.formatLeftText(originalLines);
+                var addedText = lineFormatter.formatRightText(editedLines);
+
+                return [deletedText, addedText, lineFormatter.getEditIterator()];
+            };
+
+            var lineUpText = function(originalText, editedText, results) {
+                var originalLines = SourceDiff.split(originalText);
+                var editedLines = SourceDiff.split(editedText);
+
+                SourceDiff.padBlankLines(originalLines);
+                SourceDiff.padBlankLines(editedLines);
+
+                results.paddingLeft = new SourceDiff.EditSet();
+                results.paddingRight = new SourceDiff.EditSet();
+
+                for (var i = 0; i < Math.max(originalLines.length, editedLines.length); i++) {
+                    if (!results.deleted.contains(i) && results.added.contains(i)) {
+                        originalLines.splice(i, 0, ' ');
+                        results.deleted.updateNumbers(i);
+                        results.paddingLeft.add(i);
+                    } else if (results.deleted.contains(i) && !results.added.contains(i)) {
+                        editedLines.splice(i, 0, ' ');
+                        results.added.updateNumbers(i);
+                        results.paddingRight.add(i);
+                    }
+                }
+
+                return [originalLines, editedLines];
+            };
+
+            var findModifiedLines = function(originalLines, editedLines, results) {
+                results.modifiedRight = new SourceDiff.EditSet();
+                results.modifiedLeft = new SourceDiff.EditSet();
+                for (var i = 0; i < originalLines.length && i < editedLines.length; i++) {
+                    if (results.added.contains(i) && results.deleted.contains(i)) {
+                        results.modifiedLeft.add(i);
+                        results.modifiedRight.add(i);
+                    } else if (results.added.contains(i) && results.modifiedRight.contains(i - 1)) {
+                        results.modifiedRight.add(i);
+                    } else if (results.deleted.contains(i) && results.modifiedLeft.contains(i - 1)) {
+                        results.modifiedLeft.add(i);
+                    }
+                }
+            };
+
+            var diffModifiedLines = function(originalLines, editedLines, results) {
+                var lineDiffs = new SourceDiff.EditSet();
+
+                for (var i = 0; i < originalLines.length && i < editedLines.length; i++) {
+                    if (results.modifiedLeft.contains(i) || results.modifiedRight.contains(i)) {
+                        var lineDiff = diff.lineDiff(originalLines[i], editedLines[i]);
+                        lineDiff.cleanUp();
+
+                        lineDiffs.addValue(i, lineDiff);
+                    }
+                }
+
+                return lineDiffs;
+            };
+
+            return {
+                lineUpText: lineUpText, //exposed for testing
+                formattedDiff: formattedDiff
+            };
+        };
+
+        SourceDiff.AnchorIterator = function(anchors) {
+            var allAnchors = anchors.all();
+            var currentIndex = 0;
+
+            var getNextEdit = function() {
+                if (currentIndex + 1 < allAnchors.length) {
+                    currentIndex++;
+                    return allAnchors[currentIndex];
+                }
+                return false;
+            };
+
+            var getPrevEdit = function() {
+                if (currentIndex - 1 >= 0) {
+                    currentIndex--;
+                    return allAnchors[currentIndex];
+                }
+                return false;
+            };
+
+            return {
+                getNextEdit: getNextEdit,
+                getPrevEdit: getPrevEdit
+            };
+        };
+    </script>
+    <style>
+        pre {
+            background-color: white;
+            margin: 5px;
+            white-space: pre;
+            word-wrap: normal;
+            border: none;
+        }
+        
+        h3 {
+            margin: 10px;
+        }
+        
+        .text {
+            width: 50%;
+        }
+        
+        .wrapper {
+            width: 98%;
+        }
+        
+        .left {
+            float: left;
+            width: 49%;
+        }
+        
+        .right {
+            float: right;
+            width: 49%;
+        }
+        
+        .scroll {
+            overflow-x: scroll;
+            overflow-y: auto;
+            height: 98%;
+        }
+        
+        .inserted {
+            background-color: #9E9;
+            min-width: 100%;
+            display: inline-block;
+        }
+        
+        .deleted {
+            background-color: #E99;
+            min-width: 100%;
+            display: inline-block;
+        }
+        
+        .modified {
+            background-color: #FD8;
+            min-width: 100%;
+            display: inline-block;
+        }
+        
+        .modified-light {
+            background-color: #fcffb6;
+            /*min-width: 100%;*/
+            /*display: inline-block;*/
+        }
+        
+        .padding {
+            background-color: lightgray;
+            min-width: 100%;
+            display: inline-block;
+        }
+        
+        .header {
+            position: fixed;
+            background: white;
+            width: 50%;
+            text-align: center;
+        }
+        
+        .spacer {
+            width: 100%;
+            height: 50px;
+        }
+        
+        textarea {
+            display: none;
+        }
+        
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body onload="doDiff()">
+    <textarea id="original">ИсходныйТекст</textarea>
+    <textarea id="edited">СравниваемыйТекст</textarea>
+    <div class="wrapper header">
+        <div class="right">
+            <h3>Edit</h3>
+        </div>
+    </div>
+    <div class="left scroll diff-content" id="scrollLeft">
+        <div class="header">
+            <h3>Ожидаемое значение</h3>
+        </div>
+        <div class="spacer"></div>
+        <pre id="original_result"></pre>
+    </div>
+    <div class="right scroll diff-content" id="scrollRight">
+        <div class="header">
+            <h3>Фактическое значение</h3>
+        </div>
+        <div class="spacer"></div>
+        <pre id="edited_result"></pre>
+    </div>
+    <script>
+        var scrollLeft = document.getElementById('scrollLeft');
+        var scrollRight = document.getElementById('scrollRight');
+
+        scrollLeft.addEventListener('scroll', function() {
+            scrollRight.scrollLeft = scrollLeft.scrollLeft;
+            scrollRight.scrollTop = scrollLeft.scrollTop;
+        });
+
+        scrollRight.addEventListener('scroll', function() {
+            scrollLeft.scrollLeft = scrollRight.scrollLeft;
+            scrollLeft.scrollTop = scrollRight.scrollTop;
+        });
+
+        function doDiff() {
+            var diff = new SourceDiff.Diff(true); //ignore leading whitespace
+            var formatter = new SourceDiff.DiffFormatter(diff);
+
+            var text1 = document.getElementById('original').value;
+            var text2 = document.getElementById('edited').value;
+
+            var results = formatter.formattedDiff(text1, text2);
+
+            document.getElementById('original_result').innerHTML = results[0];
+            document.getElementById('edited_result').innerHTML = results[1];
+        }
+    </script>
+</body>
+
+</html>
