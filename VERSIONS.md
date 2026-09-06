@@ -26,6 +26,11 @@
 
 * #373 Замена предпросмотра markdown в узЗадачи на onec-markdown-viewer-. Спасибо @pravets
 
+**Автотесты**
+
+* #374 Юнит-тесты YAxUnit на логику просмотрщика markdown и подстановки ссылок на задачи- Спасибо @pravets
+
+
 **Расширения**
 
 * [Расширение: OneKanban - канбан доска для платформы 1С написанная на HTML/CSS/JS](https://github.com/ViktorErmakov/OneKanban) Автор @ViktorErmakov
