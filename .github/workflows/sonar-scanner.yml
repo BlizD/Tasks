@@ -5,8 +5,8 @@ on:
     branches:
     - master
     - features
-  push: 
-    branches: 
+  push:
+    branches:
     - master
     - develope
     - features
@@ -15,34 +15,29 @@ jobs:
   SonarScanner:
     if: github.repository == 'BlizD/Tasks'
     runs-on: ubuntu-latest
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        fetch-depth: ''
-    - run: |
-        git fetch --prune --unshallow
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        java-version: 21
-        distribution: 'temurin'
-    - name: Setup SonarQube scanner
-      uses: warchant/setup-sonar-scanner@v8
+        fetch-depth: 0
     - name: Run SonarQube on push
       if: github.event_name == 'push'
-      run: sonar-scanner
-        -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        -Dsonar.host.url=https://sonar.openbsl.ru
-        -Dsonar.branch.name=${GITHUB_REF#refs/heads/}
+      uses: SonarSource/sonarqube-scan-action@v6
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: https://sonar.openbsl.ru
+      with:
+        args: >
+          -Dsonar.branch.name=${{ github.ref_name }}
     - name: Run SonarQube on pull request
       if: github.event_name == 'pull_request'
-      run: sonar-scanner
-        -X
-        -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        -Dsonar.host.url=https://sonar.openbsl.ru
-        -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
-        -Dsonar.pullrequest.branch=${{ github.event.pull_request.head.ref }}
-        -Dsonar.pullrequest.base=${{ github.event.pull_request.base.ref }}
+      uses: SonarSource/sonarqube-scan-action@v6
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: https://sonar.openbsl.ru
+      with:
+        args: >
+          -X
+          -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
+          -Dsonar.pullrequest.branch=${{ github.event.pull_request.head.ref }}
+          -Dsonar.pullrequest.base=${{ github.event.pull_request.base.ref }}
